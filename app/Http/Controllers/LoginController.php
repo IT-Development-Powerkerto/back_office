@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function authenticate(Request $request){
         $credentials = $request -> validate([
             //terlalu ketat harus gmail 'email' => 'required|email:dns',
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
