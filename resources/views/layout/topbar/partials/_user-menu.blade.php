@@ -153,7 +153,7 @@
 												<div class="menu-item px-5">
 												<form action="/logout" method="POST">
 												@csrf
-												<a type="submit" class="menu-link px-5">Sign Out</a>
+													<button type="submit" class="nav-link px-5 bg-light border-0"><span data-feather="log-out"></span> Logout</button>
 												</form>
 												</div>
 												<!--end::Menu item-->
