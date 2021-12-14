@@ -24,7 +24,7 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/about', function () {
     return view('about', [
@@ -37,7 +37,7 @@ Route::get('/about', function () {
     ]);
 });
 Route::get('/blog', [PostController::class, 'index'])->name('blog');
-Route::get('/post/{post:slug}', [PostController::class, 'show']); 
+Route::get('/post/{post:slug}', [PostController::class, 'show']);
 Route::get('/categories',[CategoryController::class,'index']);
 
 Route::get('/login',[LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -68,7 +68,7 @@ Route::resource('/dashboard/categories', AdminCategoryController::class)->except
 //         'title' => "Post By Author : $author->name",
 //         'post' => $author->post->load('category','author'),
 //     ]);
-    
+
 // });
 
 
