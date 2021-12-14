@@ -23,10 +23,7 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('home',[
-        "title" => "Home",
-        "active" =>  "home"
-    ]);
+    return view('welcome');
 });
 
 Route::get('/about', function () {
@@ -52,7 +49,7 @@ Route::post('/logout',[LoginController::class, 'logout']);
 Route::get('/register',[RegisterController::class, 'create'])->middleware('guest');
 Route::post('/register',[RegisterController::class, 'store']);
 
-Route::get('/dashboard', function () { return view('dashboard.index'); })->middleware('auth');
+Route::get('/dashboard', function () { return view('dashboard'); })->middleware('auth');
 
 Route::get('/dashboard/blog/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/blog', DashboardPostController::class)->middleware('auth');
