@@ -40,9 +40,8 @@
 															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 														</div>
 													@endif
-													<form action="{{ route('login') }}" method="POST">
+													<form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
 													@csrf
-
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
 																<label for="inputFullname" class="col-form-label">Fullname</label>
