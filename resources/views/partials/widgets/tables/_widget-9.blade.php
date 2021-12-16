@@ -87,15 +87,16 @@
 																<label for="inputPassword6" class="col-form-label">Role</label>
 															</div>
 															<div class="dropdown col-10">
-																<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-																	Role
-																</a>
-
-																<ul id= "select_role" class="dropdown-menu" aria-labelledby="dropdownMenuLink" name="role_id">
-																	@foreach ($role as $role )
-                                                                    <li class="dropdown-item" value="{{$role->id}}">{{$role->name}}</a></li>
-                                                                    @endforeach
-																</ul>
+																<select name="role_id" class="form-control">
+																	<option value="">CEO</option>
+																	<option value="">Project Manager</option>
+																	<option value="">HRD</option>
+																	<option value="">Advertiser</option>
+																	<option value="">Costumer Service</option>
+																	<option value="">DGM</option>
+																	<option value="">CWM</option>
+																	<option value="">IT Development</option>
+																</select>
 															</div>
 														</div>
 
