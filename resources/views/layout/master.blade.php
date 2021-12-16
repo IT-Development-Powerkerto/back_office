@@ -12,7 +12,7 @@
 			@include('layout/header/_base')
 
 
-			@include('layout/_toolbar')
+			
 
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">

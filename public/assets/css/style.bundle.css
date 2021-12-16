@@ -73,6 +73,15 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.w5-edit h1 {
+  font-size: 36px;
+  margin-top: -15px;
+}
+
+.w5-edit h1 span{
+  font-size: 14px;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;

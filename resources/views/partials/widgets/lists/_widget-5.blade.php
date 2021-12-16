@@ -1,10 +1,10 @@
 <!--begin::List Widget 5-->
-<div class="card card-xl-stretch mb-xl-8">
+<div class="card card-l-stretch mb-xl-8">
 	<!--begin::Header-->
 	<div class="card-header align-items-center border-0 mt-4">
 		<h3 class="card-title align-items-start flex-column">
-			<span class="fw-bolder mb-2 text-dark">Activities</span>
-			<span class="text-muted fw-bold fs-7">890,344 Sales</span>
+			<span class="fw-bolder mb-2 text-dark">Notifications</span>
+			<span class="text-muted fw-bold fs-7">4 Notifications</span>
 		</h3>
 		<div class="card-toolbar">
 			<!--begin::Menu-->
@@ -24,7 +24,20 @@
 				<!--end::Svg Icon-->
 			</button>
 
-			@include('partials/menus/_menu-1')
+			<!--begin::Menu 3-->
+			<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
+				<!--begin::Heading-->
+				<div class="menu-item px-3">
+					<div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Menu</div>
+				</div>
+				<!--end::Heading-->
+				<!--begin::Menu item-->
+				<div class="menu-item px-3">
+					<a href="#" class="menu-link px-3">Create</a>
+				</div>
+
+			</div>
+			<!--end::Menu 3-->
 
 			<!--end::Menu-->
 		</div>
@@ -97,72 +110,6 @@
 				<!--begin::Text-->
 				<div class="timeline-content fw-mormal text-muted ps-3">Indulging in poorly driving and keep structure
 					keep great</div>
-				<!--end::Text-->
-			</div>
-			<!--end::Item-->
-			<!--begin::Item-->
-			<div class="timeline-item">
-				<!--begin::Label-->
-				<div class="timeline-label fw-bolder text-gray-800 fs-6">21:03</div>
-				<!--end::Label-->
-				<!--begin::Badge-->
-				<div class="timeline-badge">
-					<i class="fa fa-genderless text-danger fs-1"></i>
-				</div>
-				<!--end::Badge-->
-				<!--begin::Desc-->
-				<div class="timeline-content fw-bold text-gray-800 ps-3">New order placed
-					<a href="#" class="text-primary">#XF-2356</a>.
-				</div>
-				<!--end::Desc-->
-			</div>
-			<!--end::Item-->
-			<!--begin::Item-->
-			<div class="timeline-item">
-				<!--begin::Label-->
-				<div class="timeline-label fw-bolder text-gray-800 fs-6">16:50</div>
-				<!--end::Label-->
-				<!--begin::Badge-->
-				<div class="timeline-badge">
-					<i class="fa fa-genderless text-primary fs-1"></i>
-				</div>
-				<!--end::Badge-->
-				<!--begin::Text-->
-				<div class="timeline-content fw-mormal text-muted ps-3">Indulging in poorly driving and keep structure
-					keep great</div>
-				<!--end::Text-->
-			</div>
-			<!--end::Item-->
-			<!--begin::Item-->
-			<div class="timeline-item">
-				<!--begin::Label-->
-				<div class="timeline-label fw-bolder text-gray-800 fs-6">21:03</div>
-				<!--end::Label-->
-				<!--begin::Badge-->
-				<div class="timeline-badge">
-					<i class="fa fa-genderless text-danger fs-1"></i>
-				</div>
-				<!--end::Badge-->
-				<!--begin::Desc-->
-				<div class="timeline-content fw-bold text-gray-800 ps-3">New order placed
-					<a href="#" class="text-primary">#XF-2356</a>.
-				</div>
-				<!--end::Desc-->
-			</div>
-			<!--end::Item-->
-			<!--begin::Item-->
-			<div class="timeline-item">
-				<!--begin::Label-->
-				<div class="timeline-label fw-bolder text-gray-800 fs-6">10:30</div>
-				<!--end::Label-->
-				<!--begin::Badge-->
-				<div class="timeline-badge">
-					<i class="fa fa-genderless text-success fs-1"></i>
-				</div>
-				<!--end::Badge-->
-				<!--begin::Text-->
-				<div class="timeline-content fw-mormal text-muted ps-3">Finance KPI Mobile app launch preparion meeting
-				</div>
 				<!--end::Text-->
 			</div>
 			<!--end::Item-->
