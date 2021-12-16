@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class AdvMiddleware
+class HrdMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class AdvMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || !auth()->user()->role_id === 5){
+        if(auth()->guest() || !auth()->user()->role_id === 4){
             abort(403);
         }
         return $next($request);

@@ -10,6 +10,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +58,12 @@ Route::get('/dashboard/blog/checkSlug', [DashboardPostController::class, 'checkS
 Route::resource('/dashboard/blog', DashboardPostController::class)->middleware('auth');
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
+
+Route::resource('user', UserController::class);
+
+Route::resource('announcement', AnnouncementController::class);
+
+Route::resource('role', RoleController::class);
 
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('blog', [

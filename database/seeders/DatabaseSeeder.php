@@ -6,6 +6,8 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,10 +21,11 @@ class DatabaseSeeder extends Seeder
     User::factory(4)->create();
      User::create([
         'name'      => "Administrator",
-        'role'      => "admin",
+        'role_id'   => "1",
         'username'  => "admin",
         'email'     => "admin@admin.com",
-        'password'  => bcrypt('1234')
+        'password'  => Hash::make('1234'),
+        'remember_token' => Str::random(10),
      ]);
   //    User::create([
   //     'name' => "Zahra Zhafira",
@@ -58,6 +61,10 @@ class DatabaseSeeder extends Seeder
       'slug' => 'digital-marketing'
    ]);
      Post::factory(25)->create();
+
+     $this->call([
+         RoleSeeder::class,
+     ]);
    //   Post::create([
    //      'title' => 'Judul Pertama',
    //      'slug' => 'judul-pertama',
