@@ -87,21 +87,16 @@
 																<label for="inputPassword6" class="col-form-label">Role</label>
 															</div>
 															<div class="dropdown col-10">
-																<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-																	Role
-																</a>
-
-																<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" name="role_id">
-																	<li class="dropdown-item">Admin</a></li>
-																	<li class="dropdown-item">CEO</a></li>
-																	<li class="dropdown-item">Project Manager</a></li>
-																	<li class="dropdown-item">HRD</a></li>
-																	<li class="dropdown-item">Advertiser</a></li>
-																	<li class="dropdown-item">Costumer Service</a></li>
-																	<li class="dropdown-item">Design Grapich Multimedia</a></li>
-																	<li class="dropdown-item">Content Web Marketing</a></li>
-																	<li class="dropdown-item">IT Development</a></li>
-																</ul>
+																<select name="role_id" class="form-control">
+																	<option value="">CEO</option>
+																	<option value="">Project Manager</option>
+																	<option value="">HRD</option>
+																	<option value="">Advertiser</option>
+																	<option value="">Costumer Service</option>
+																	<option value="">DGM</option>
+																	<option value="">CWM</option>
+																	<option value="">IT Development</option>
+																</select>
 															</div>
 														</div>
 
