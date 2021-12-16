@@ -13,6 +13,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,8 @@ Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 Route::resource('announcements', AnnouncementController::class);
 
 Route::resource('roles', RoleController::class);
+
+Route::resource('roles', StatusController::class);
 
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('blog', [

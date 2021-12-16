@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
      User::create([
         'name'      => "Administrator",
         'role_id'   => "1",
+        'status_id' => "1",
         'username'  => "admin",
         'email'     => "admin@admin.com",
         'password'  => Hash::make('1234'),
@@ -64,6 +65,7 @@ class DatabaseSeeder extends Seeder
 
      $this->call([
          RoleSeeder::class,
+         StatusSeeder::class,
      ]);
    //   Post::create([
    //      'title' => 'Judul Pertama',

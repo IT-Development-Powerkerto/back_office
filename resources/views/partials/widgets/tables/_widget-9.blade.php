@@ -102,7 +102,7 @@
 																	<li class="dropdown-item">Design Grapich Multimedia</a></li>
 																	<li class="dropdown-item">Content Web Marketing</a></li>
 																	<li class="dropdown-item">IT Development</a></li>
-																</ul>	
+																</ul>
 															</div>
 														</div>
 
@@ -167,7 +167,11 @@
 															<td class="text-end">
 																<div class="d-flex flex-column w-100 me-2">
 																	<div class="d-flex flex-stack">
-																		<span class="badge badge-light-danger">{{$user->status}}</span>
+                                                                        @if ($user->status_id == 1)
+                                                                            <span class="badge badge-light-success">{{$user->status->name}}</span>
+                                                                        @else
+                                                                            <span class="badge badge-light-danger">{{$user->status->name}}</span>
+                                                                        @endif
 																	</div>
 																</div>
 															</td>

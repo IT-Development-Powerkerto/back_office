@@ -56,4 +56,7 @@ class User extends Authenticatable
     public function announcement(){
         return $this->hasMany(Announcement::class);
     }
+    public function status(){
+        return $this->belongsTo(Status::class);
+    }
 }
