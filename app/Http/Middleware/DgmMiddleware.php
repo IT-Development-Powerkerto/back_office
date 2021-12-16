@@ -16,7 +16,7 @@ class DgmMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || !auth()->user()->role === 7){
+        if(auth()->guest() || !auth()->user()->role_id === 7){
             abort(403);
         }
         return $next($request);

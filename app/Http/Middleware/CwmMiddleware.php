@@ -16,7 +16,7 @@ class CwmMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || !auth()->user()->role === 8){
+        if(auth()->guest() || !auth()->user()->role_id === 8){
             abort(403);
         }
         return $next($request);

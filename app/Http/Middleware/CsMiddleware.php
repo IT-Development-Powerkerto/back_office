@@ -16,7 +16,7 @@ class CsMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || !auth()->user()->role === 6){
+        if(auth()->guest() || !auth()->user()->role_id === 6){
             abort(403);
         }
         return $next($request);

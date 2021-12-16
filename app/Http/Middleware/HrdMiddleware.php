@@ -16,7 +16,7 @@ class HrdMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || !auth()->user()->role === 4){
+        if(auth()->guest() || !auth()->user()->role_id === 4){
             abort(403);
         }
         return $next($request);
