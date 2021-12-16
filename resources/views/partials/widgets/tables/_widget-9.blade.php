@@ -91,16 +91,10 @@
 																	Role
 																</a>
 
-																<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" name="role_id">
-																	<li class="dropdown-item">Admin</a></li>
-																	<li class="dropdown-item">CEO</a></li>
-																	<li class="dropdown-item">Project Manager</a></li>
-																	<li class="dropdown-item">HRD</a></li>
-																	<li class="dropdown-item">Advertiser</a></li>
-																	<li class="dropdown-item">Costumer Service</a></li>
-																	<li class="dropdown-item">Design Grapich Multimedia</a></li>
-																	<li class="dropdown-item">Content Web Marketing</a></li>
-																	<li class="dropdown-item">IT Development</a></li>
+																<ul id= "select_role" class="dropdown-menu" aria-labelledby="dropdownMenuLink" name="role_id">
+																	@foreach ($role as $role )
+                                                                    <li class="dropdown-item" value="{{$role->id}}">{{$role->name}}</a></li>
+                                                                    @endforeach
 																</ul>
 															</div>
 														</div>
@@ -221,3 +215,5 @@
 										<!--begin::Body-->
 									</div>
 									<!--end::Tables Widget 9-->
+
+

@@ -96,4 +96,19 @@ class RoleController extends Controller
 
         return redirect('/dashboard')->with('success','Successull! Role Deleted');
     }
+
+    public function select(Request $request)
+    {
+        $roles = [];
+
+        if ($request->has('q')) {
+            $search = $request->q;
+            $roles = Role::select("id", "name")
+                ->Where('name', 'LIKE', "%$search%")
+                ->get();
+        } else {
+            $roles = Role::limit(10)->get();
+        }
+        return response()->json($roles);
+    }
 }

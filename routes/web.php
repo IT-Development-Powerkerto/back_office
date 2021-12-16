@@ -69,6 +69,11 @@ Route::resource('roles', RoleController::class);
 
 Route::resource('roles', StatusController::class);
 
+Route::get('getRole/{id}', function ($id) {
+    $roles = App\Models\User::where('role_id',$id)->get();
+    return response()->json($roles);
+});
+
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('blog', [
 //         'title' => "Post By Category : $category->name",

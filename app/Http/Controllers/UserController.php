@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -16,7 +17,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('dashboard')->with('users',$users);
+        $roles = Role::all();
+        return view('dashboard',['role'=>$roles])->with('users',$users);
     }
 
     /**
@@ -131,5 +133,20 @@ class UserController extends Controller
         $user->delete();
 
         return redirect('/dashboard')->with('success','Successull! User Deleted');
+    }
+
+    public function select(Request $request)
+    {
+        $roles = [];
+
+        if ($request->has('q')) {
+            $search = $request->q;
+            $roles = Role::select("id", "name")
+                ->Where('name', 'LIKE', "%$search%")
+                ->get();
+        } else {
+            $roles = Role::limit(10)->get();
+        }
+        return response()->json($roles);
     }
 }
