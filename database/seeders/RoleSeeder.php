@@ -34,7 +34,7 @@ class RoleSeeder extends Seeder
                'name'  => 'Customer Service',
             ],
             [
-               'name'  => 'Design Graphic Marketing',
+               'name'  => 'Design Graphic Multimedia',
             ],
             [
                'name'  => 'Content Web Marketing',
