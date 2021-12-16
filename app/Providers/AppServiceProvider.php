@@ -32,28 +32,28 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         Gate::define('admin', function(User $user) {
-            return $user->role === 'admin';
-        }) ;
-        Gate::define('adv', function(User $user) {
-            return $user->role === 'adv';
-        }) ;
-        Gate::define('cs', function(User $user) {
-            return $user->role === 'cs';
-        }) ;
-        Gate::define('dgm', function(User $user) {
-            return $user->role === 'dgm';
-        }) ;
-        Gate::define('cwm', function(User $user) {
-            return $user->role === 'cwm';
+            return $user->role_id === 1;
         }) ;
         Gate::define('ceo', function(User $user) {
-            return $user->role === 'ceo';
+            return $user->role === 2;
         }) ;
         Gate::define('manager', function(User $user) {
-            return $user->role === 'manager';
+            return $user->role === 3;
         }) ;
         Gate::define('hrd', function(User $user) {
-            return $user->role === 'hrd';
+            return $user->role === 4;
+        }) ;
+        Gate::define('adv', function(User $user) {
+            return $user->role === 5;
+        }) ;
+        Gate::define('cs', function(User $user) {
+            return $user->role === 6;
+        }) ;
+        Gate::define('dgm', function(User $user) {
+            return $user->role === 7;
+        }) ;
+        Gate::define('cwm', function(User $user) {
+            return $user->role === 8;
         }) ;
         //
     }

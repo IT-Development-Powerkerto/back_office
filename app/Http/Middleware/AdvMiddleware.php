@@ -16,7 +16,7 @@ class AdvMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || !auth()->user()->role === 'adv'){
+        if(auth()->guest() || !auth()->user()->role === 5){
             abort(403);
         }
         return $next($request);
