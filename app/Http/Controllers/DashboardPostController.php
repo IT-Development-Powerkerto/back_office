@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,9 +19,12 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        return view('dashboard.blog.index', [
-            'blog' => Post::where('user_id', Auth()->user()->id)->get(),
-        ]);
+        // return view('dashboard.blog.index', [
+        //     'blog' => Post::where('user_id', Auth()->user()->id)->get(),
+        // ]);
+
+        $users = User::all();
+        return view('dashboard')->with('user',$users);
         //
     }
 

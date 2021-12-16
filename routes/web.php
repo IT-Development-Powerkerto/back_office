@@ -52,18 +52,19 @@ Route::post('/logout',[LoginController::class, 'logout']);
 Route::get('/register',[RegisterController::class, 'create'])->middleware('guest');
 Route::post('/register',[RegisterController::class, 'store']);
 
-Route::get('/dashboard', function () { return view('dashboard'); })->middleware('auth');
+//Route::get('/dashboard', function () { return view('dashboard'); })->middleware('auth');
 
 Route::get('/dashboard/blog/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/blog', DashboardPostController::class)->middleware('auth');
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 
-Route::resource('user', UserController::class);
+Route::resource('users', UserController::class);
+Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 
-Route::resource('announcement', AnnouncementController::class);
+Route::resource('announcements', AnnouncementController::class);
 
-Route::resource('role', RoleController::class);
+Route::resource('roles', RoleController::class);
 
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('blog', [
