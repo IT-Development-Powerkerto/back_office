@@ -16,10 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $roles = Role::all();
-        return view('dashboard',['role'=>$roles])->with('users',$users);
+        return view('myprofile');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -85,7 +84,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

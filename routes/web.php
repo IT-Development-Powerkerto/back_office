@@ -65,6 +65,7 @@ Route::resource('users', UserController::class);
 //Route::resource('/dasboard', DashboardController::class);
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
+Route::get('/myprofile',[UserController::class, 'index'])->middleware('auth');
 
 Route::resource('announcements', AnnouncementController::class);
 

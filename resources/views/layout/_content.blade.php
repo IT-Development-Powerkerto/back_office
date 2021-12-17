@@ -2,7 +2,7 @@
 <div id="kt_content_container" class="container-xxl">
 
 	<!--begin::Row-->
-	<div class="row gy-5 g-xl-8">
+	<div class="row gy-5 g-xl-12">
 		<!--begin::Col-->
 		<div class="col-xl-4">
 			

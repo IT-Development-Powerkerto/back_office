@@ -12,7 +12,7 @@
 														<!--begin::Username-->
 														<div class="d-flex flex-column">
 															<div class="fw-bolder d-flex align-items-center fs-5">{{ Auth()->user()->name }}</div>
-															<a href="#" class="fw-bold text-muted text-hover-primary fs-7">{{ Auth()->user()->role->name }}</a>
+															<p class="fw-bold text-muted text-hover-primary fs-7">{{ Auth()->user()->role->name }}</p>
 														</div>
 														<!--end::Username-->
 													</div>
@@ -23,7 +23,7 @@
 												<!--end::Menu separator-->
 												<!--begin::Menu item-->
 												<div class="menu-item px-5">
-													<a href="?page=account/overview" class="menu-link px-5">My Profile</a>
+													<a href="{{ route('users.index') }}" class="menu-link px-5">My Profile</a>
 												</div>
 												<!--end::Menu item-->
 
