@@ -165,9 +165,15 @@
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-primary btn-xs m-3 ">
-																		Edit
-																	</button>
+                                                                    {{-- <a href="{{ route('users.edit',['user' => $user->id]) }}" data-bs-toggle="modal" class="btn btn-outline-primary btn-xs m-3 ">
+                                                                        Edit
+                                                                    </a> --}}
+                                                                    <form action="{{ route('users.edit',['user' => $user->id]) }}" method="GET">
+                                                                        @csrf
+                                                                        <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-primary btn-xs m-3 ">
+                                                                            Edit
+                                                                        </button>
+                                                                    </form>
                                                                     <form action="{{ route('dashboard.destroy', ['dashboard'=>$user->id]) }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
