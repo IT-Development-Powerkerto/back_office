@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class DashboardController extends Controller
 {
