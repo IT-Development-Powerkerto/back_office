@@ -180,7 +180,7 @@
 																				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																			</div>
 																			<div class="modal-body d-flex justify-content-center">
-																			<input type="submit" class="btn btn-danger btn-xs m-3" value="Delete" data-bs-toggle="modal" data-bs-target="#delete">
+																				<input type="submit" class="btn btn-danger btn-xs m-3" value="Delete" data-bs-toggle="modal" data-bs-target="#delete">
 																				<button type="button" class="btn btn-outline-primary">Cancel</button>
 																			</div>
 																		</div>
