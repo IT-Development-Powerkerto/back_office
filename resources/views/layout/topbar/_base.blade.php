@@ -14,7 +14,7 @@
 		<!--begin::Menu wrapper-->
 		<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
 			data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-			<img src="assets/media/avatars/150-26.jpg" alt="image" />
+			<img src={{ Auth()->user()->image }} alt="image" />
 		</div>
 
 		@include('layout/topbar/partials/_user-menu')
