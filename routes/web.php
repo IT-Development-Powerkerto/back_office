@@ -63,14 +63,15 @@ Route::resource('/dashboard/categories', AdminCategoryController::class)->except
 
 Route::resource('users', UserController::class);
 //Route::resource('/dasboard', DashboardController::class);
-Route::resource('/dashboard',DashboardController::class)->middleware('auth');
+Route::resource('/dashboard', DashboardController::class)->middleware('auth');
+Route::delete('/dashboard/{user}', [DashboardController::class, 'destroy'])->name('dashboard.destroy');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 
 Route::resource('announcements', AnnouncementController::class);
 
 Route::resource('roles', RoleController::class);
 
-Route::resource('roles', StatusController::class);
+Route::resource('statuses', StatusController::class);
 
 Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
