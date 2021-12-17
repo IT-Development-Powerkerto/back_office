@@ -63,7 +63,7 @@
 																<label for="inputPhone" class="col-form-label">Phone</label>
 															</div>
 															<div class="col-10">
-																<input type="number" name="phone" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
+																<input type="text" name="phone" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
@@ -136,7 +136,7 @@
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
-																	<div class="symbol symbol-45px me-5">
+																	<div class="symbol symbol-45px me-5 image-size">
 																		<img src="{{$user->image}}" width="100px" alt="" />
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">

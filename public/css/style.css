@@ -8,6 +8,8 @@ body {
     box-sizing: border-box;
 }
 
+/* WELCOME */
+
 .lp {
     display: flex;
     flex-direction: column;
@@ -77,26 +79,6 @@ footer {
     overflow: hidden;
 }
 
-/*
-.lp .leftside {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 130px;
-}
-
-.lp .leftside h1 {
-    font-weight: 700;
-}
-
-.lp .leftside p {
-    font-weight: 500;
-}
-
-.lp .leftside .costume {
-    width: 200px !important;
-} */
-
 .fas {
     height: 25px;
 }
@@ -105,3 +87,4 @@ footer {
 .fa-unlock-alt {
     padding-top: 6px !important;
 }
+
