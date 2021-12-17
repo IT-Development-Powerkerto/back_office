@@ -123,11 +123,12 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy( User $user)
     {
         //File::delete($user->image);
+        //DB::table('users')->find($id)->delete();
+        //DB::delete('delete from users where id = ?', [$user]);
         $user->delete();
-        //DB::table('users')->where('id','==', $user)->delete();
         return redirect('/dashboard')->with('success','Successull! User Deleted');
     }
 }

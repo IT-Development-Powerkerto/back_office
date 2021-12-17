@@ -180,7 +180,11 @@
 																				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																			</div>
 																			<div class="modal-body d-flex justify-content-center">
-																				<input type="submit" class="btn btn-danger btn-xs m-3" value="Delete" data-bs-toggle="modal" data-bs-target="#delete">
+                                                                                <form action="{{ route('dashboard.destroy',['user'=>$user->id]) }}" method="POST">
+                                                                                    @method('DELETE')
+                                                                                    @csrf
+																				    <input type="submit" class="btn btn-danger btn-xs m-3" value="Delete" data-bs-toggle="modal" data-bs-target="#delete">
+                                                                                </form>
 																				<button type="button" class="btn btn-outline-primary">Cancel</button>
 																			</div>
 																		</div>
