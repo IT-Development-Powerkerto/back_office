@@ -28,15 +28,8 @@
 	</div>
 	<!--end::Row-->
 	<!--begin::Row-->
-	<div class="row gy-5 g-xl-8">
-		
-		<!--begin::Col-->
-		<div class="col-xxl-8">
-
-			@include('partials/widgets/tables/_widget-9')
-
-		</div>
-		<!--end::Col-->
+	<div class="row gy-5 g-xl-1">
+		@include('partials/widgets/tables/_widget-9')
 	</div>
 	<!--end::Row-->
 
