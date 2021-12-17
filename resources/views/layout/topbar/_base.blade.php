@@ -1,12 +1,5 @@
 <!--begin::Toolbar wrapper-->
 <div class="d-flex align-items-stretch flex-shrink-0">
-	<!--begin::Search-->
-	<div class="d-flex align-items-stretch ms-1 ms-lg-3">
-
-		@include('layout/search/_base')
-
-	</div>
-	<!--end::Search-->
 	<!--begin::Activities-->
 	<div class="d-flex align-items-center ms-1 ms-lg-3">
 		<!--begin::Drawer toggle-->
@@ -16,43 +9,6 @@
 		<!--end::Drawer toggle-->
 	</div>
 	<!--end::Activities-->
-	<!--begin::Quick links-->
-	<div class="d-flex align-items-center ms-1 ms-lg-3">
-		<!--begin::Menu wrapper-->
-		<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
-			data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-			<i class="bi bi-clipboard-check fs-2"></i>
-		</div>
-
-		@include('layout/topbar/partials/_quick-links-menu')
-
-		<!--end::Menu wrapper-->
-	</div>
-	<!--end::Quick links-->
-	<!--begin::Chat-->
-	<div class="d-flex align-items-center ms-1 ms-lg-3">
-		<!--begin::Menu wrapper-->
-		<div class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px pulse pulse-success"
-			id="kt_drawer_chat_toggle">
-			<i class="bi bi-app-indicator fs-2"></i>
-			<span class="pulse-ring w-45px h-45px"></span>
-		</div>
-		<!--end::Menu wrapper-->
-	</div>
-	<!--end::Chat-->
-	<!--begin::Notifications-->
-	<div class="d-flex align-items-center ms-1 ms-lg-3">
-		<!--begin::Menu- wrapper-->
-		<div class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px"
-			data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-			<i class="bi bi-grid fs-2"></i>
-		</div>
-
-		@include('layout/topbar/partials/_notifications-menu')
-
-		<!--end::Menu wrapper-->
-	</div>
-	<!--end::Notifications-->
 	<!--begin::User-->
 	<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 		<!--begin::Menu wrapper-->
