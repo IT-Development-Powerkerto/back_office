@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use File;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Role;
@@ -47,7 +48,7 @@ class DashboardController extends Controller
             $path = $request->image->move('assets/img',$namaFile);
             $image = $path;
         }
-        
+
         DB::table('users')->insert([
             'name'      => $request->name,
             'role_id'   => $request->role_id,
@@ -91,9 +92,29 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'user-'.time().".".$extFile;
+            File::delete($user->image);
+            $path = $request->image->move('assets/images',$namaFile);
+            $image = $path;
+        }
+
+        DB::table('users')->find($user)->update([
+            'name'      => $request->name,
+            'role_id'   => $request->role_id,
+            'phone'     => $request->phone,
+            'username'  => $request->username,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password),
+            'image'     => $image,
+            'status_id' => 1,
+        ]);
+
+        return redirect('/dashboard')->with('success','Successull! User Updated');
     }
 
     /**
@@ -102,8 +123,9 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        DB::table('users')->find($user)->delete();
+        return redirect('/dashboard')->with('success','Successull! User Deleted');
     }
 }
