@@ -14,6 +14,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +62,9 @@ Route::resource('/dashboard/blog', DashboardPostController::class)->middleware('
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 
 Route::resource('users', UserController::class);
-Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
+//Route::resource('/dasboard', DashboardController::class);
+Route::resource('/dashboard',DashboardController::class)->middleware('auth');
+//Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 
 Route::resource('announcements', AnnouncementController::class);
 

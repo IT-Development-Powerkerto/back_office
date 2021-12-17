@@ -39,27 +39,40 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request ->validate([
+        $validateData = $request ->validate([
             'name'      => 'required|max:255',
             'role_id'   => 'required',
             'phone'     => 'required|min:11|max:13',
             'username'  => 'required|min:3|max:255|unique:users',
             'email'     => 'required|email:dns|unique:users',
             'password'  => 'required|min:4|max:255',
-            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'required|image|mimes:jpeg,png,jpg,',
+            'status_id' => 'required',
         ]);
 
-        if ($image = $request->file('image')) {
-            $destinationPath = '/image';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }
-
         // $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['password'] = Hash::make($validatedData['password']);
+        // $validateData['password'] = Hash::make($validateData['password']);
+        // $validateData['status_id'] = 1;
 
-        User::create($validatedData);
+        $user = new User();
+        $user->name = $validateData['name'];
+        $user->role_id = $validateData['role_id'];
+        $user->phone = $validateData['phone'];
+        $user->username = $validateData['username'];
+        $user->email = $validateData['email'];
+        $user->password = Hash::make($validateData['password']);
+        $user->status_id = 1;
+
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'user-'.time().".".$extFile;
+            $path = $request->image->move('assets/images',$namaFile);
+            $user->image = $path;
+        }
+        $user->save();
+
+        //User::create($validatedData);
         // $request->session()->flash('success','Registration Successfull! Please Login');
         return redirect('/dashboard')->with('success','Successull! User Added');
     }
@@ -97,16 +110,12 @@ class UserController extends Controller
     {
         $validatedData = $request ->validate([
             'name'      => 'required|max:255',
-            'role_id'   => 'required',
             'phone'     => 'required|min:11|max:13',
-            'username'  => 'required|min:3|max:255|unique:users',
-            'email'     => 'required|email:dns|unique:users',
-            'password'  => 'required|min:4|max:255',
-            'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image'     => 'required|image|mimes:jpeg,png,jpg,|max:2048',
         ]);
 
         if ($image = $request->file('image')) {
-            $destinationPath = 'image/';
+            $destinationPath = '/img';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
