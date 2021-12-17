@@ -169,9 +169,22 @@
 																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-user" class="btn btn-outline-primary btn-xs m-3 ">
 																		Edit
 																	</button>
-																	<button type="submit" class="btn btn-danger btn-xs m-3">
-																		Delete
-																	</button>
+																	<button type="submit" class="btn btn-danger btn-xs m-3" value="Delete" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
+																	
+																</div>
+																<div class="modal fade" tabindex="-1" id="delete">
+																	<div class="modal-dialog">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<h5 class="modal-title">Delete</h5>
+																				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																			</div>
+																			<div class="modal-body d-flex justify-content-center">
+																			<input type="submit" class="btn btn-danger btn-xs m-3" value="Delete" data-bs-toggle="modal" data-bs-target="#delete">
+																				<button type="button" class="btn btn-outline-primary">Cancel</button>
+																			</div>
+																		</div>
+																	</div>
 																</div>
 															</td>
 														</tr>
