@@ -65,22 +65,8 @@ License: For each use you must have a valid license purchased only from above li
 							<!--end::Page title=-->
 							<!--begin::Wrapper-->
 							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
-								<!--begin::Aside mobile toggle-->
-								<div class="btn btn-icon btn-active-icon-primary" id="kt_aside_toggle">
-									<!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
-									<span class="svg-icon svg-icon-2x">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-											<path d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z" fill="black" />
-											<path opacity="0.3" d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z" fill="black" />
-										</svg>
-									</span>
-									<!--end::Svg Icon-->
-								</div>
-								<!--end::Aside mobile toggle-->
 								<!--begin::Logo-->
-								<a href="../dist/index.html" class="d-flex align-items-center">
-									<img alt="Logo" src="assets/media/logos/logo-default.svg" class="h-40px" />
-								</a>
+								    <img alt="Logo" src="img/logo.png" class="h-40px" />
 								<!--end::Logo-->
 							</div>
 							<!--end::Wrapper-->
@@ -88,7 +74,7 @@ License: For each use you must have a valid license purchased only from above li
 							<div class="d-flex flex-shrink-0">
 								<!--begin::Create app-->
 								<div class="d-flex ms-3">
-									<a href="{{ route('dashboard.index') }}" class="btn btn-info" tooltip="New App" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" id="kt_toolbar_primary_button">Home</a>
+									<a href="{{ route('dashboard.index') }}" class="btn btn-info">Home</a>
 								</div>
 								<!--end::Create app-->
 							</div>
@@ -194,6 +180,46 @@ License: For each use you must have a valid license purchased only from above li
 															<!--end::Number-->
 															<!--begin::Label-->
 															<div class="fw-bold fs-6 text-gray-400">Points</div>
+															<!--end::Label-->
+														</div>
+														<!--end::Stat-->
+                                                        <!--begin::Stat-->
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
+																<span class="svg-icon svg-icon-3 svg-icon-danger me-2">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black" />
+																		<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black" />
+																	</svg>
+																</span>
+																<!--end::Svg Icon-->
+																<div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="100">0</div>
+															</div>
+															<!--end::Number-->
+															<!--begin::Label-->
+															<div class="fw-bold fs-6 text-gray-400">Minus</div>
+															<!--end::Label-->
+														</div>
+														<!--end::Stat-->
+                                                        <!--begin::Stat-->
+														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+															<!--begin::Number-->
+															<div class="d-flex align-items-center">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
+																<span class="svg-icon svg-icon-3 svg-icon-danger me-2">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black" />
+																		<path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black" />
+																	</svg>
+																</span>
+																<!--end::Svg Icon-->
+																<div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="2500">0</div>
+															</div>
+															<!--end::Number-->
+															<!--begin::Label-->
+															<div class="fw-bold fs-6 text-gray-400">Equal</div>
 															<!--end::Label-->
 														</div>
 														<!--end::Stat-->
