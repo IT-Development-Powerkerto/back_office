@@ -16,13 +16,13 @@
 														<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
 													</svg>
 												</span>
-												<!--end::Svg Icon-->New Member</a>
+												<!--end::Svg Icon-->Add Staff</a>
 											</div>
 											<div class="modal fade" tabindex="-1" id="add-user">
 												<div class="modal-dialog">
 													<div class="modal-content">
 													<div class="modal-header">
-														<h5 class="modal-title">Add User</h5>
+														<h5 class="modal-title">Add Staff</h5>
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
@@ -40,8 +40,8 @@
 															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 														</div>
 													@endif
-													<form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
-													@csrf
+													<form action={{ route('dashboard.store') }} method="post" enctype="multipart/form-data">
+                                                        @csrf
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
 																<label for="inputFullname" class="col-form-label">Fullname</label>
@@ -55,7 +55,7 @@
 																<label for="inputEmail" class="col-form-label">Email</label>
 															</div>
 															<div class="col-10">
-																<input type="text" name="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
+																<input type="email" name="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
@@ -63,7 +63,7 @@
 																<label for="inputPhone" class="col-form-label">Phone</label>
 															</div>
 															<div class="col-10">
-																<input type="text" name="phone" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
+																<input type="number" name="phone" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
@@ -87,6 +87,7 @@
 															<div class="col-2">
 																<label for="inputRole" class="col-form-label">Role</label>
 															</div>
+<<<<<<< HEAD
 															<div class="dropdown col-10" id="inputRole">
 																<select name="role_id" class="form-control">
 																	<option value="">CEO</option>
@@ -97,10 +98,16 @@
 																	<option value="">DGM</option>
 																	<option value="">CWM</option>
 																	<option value="">IT Development</option>
+=======
+															<div class="dropdown col-10">
+																<select name="role_id" id="role_id" class="form-control">
+                                                                    @foreach ($role as $role)
+                                                                    <option value={{$role->id}}>{{$role->name}}</option>
+                                                                    @endforeach
+>>>>>>> 6cf939d43f33adce2d0b9e5f3658ac771f1cc7f8
 																</select>
 															</div>
 														</div>
-
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
 																<label for="inputimage" class="col-form-label">Image</label>
@@ -111,8 +118,8 @@
 																</div>
 															</div>
 														</div>
-
-													<button type="submit" class="btn btn-primary mt-5 tombol center">Add</button>
+                                                        {{ csrf_field() }}
+													    <input type="submit" class="btn btn-primary mt-5 tombol center" value="Add">
 													</form>
 													</div>
 													</div>
@@ -144,7 +151,7 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="symbol symbol-45px me-5">
-																		<img src="/image/{{$user->image}}" width="100px" alt="" />
+																		<img src="{{$user->image}}" width="100px" alt="" />
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
 																		<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{$user->name}}</a>
