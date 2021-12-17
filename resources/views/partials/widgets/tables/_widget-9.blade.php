@@ -82,11 +82,12 @@
 																<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
 															</div>
 														</div>
+
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
-																<label for="inputPassword6" class="col-form-label">Role</label>
+																<label for="inputRole" class="col-form-label">Role</label>
 															</div>
-															<div class="dropdown col-10">
+															<div class="dropdown col-10" id="inputRole">
 																<select name="role_id" class="form-control">
 																	<option value="">CEO</option>
 																	<option value="">Project Manager</option>
@@ -102,11 +103,11 @@
 
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
-																<label for="inputPassword6" class="col-form-label">Image</label>
+																<label for="inputimage" class="col-form-label">Image</label>
 															</div>
 															<div class="dropdown col-10">
 																<div class="mb-3">
-																	<input class="form-control" type="file" name="image" id="formFileMultiple" multiple>
+																	<input class="form-control" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
 																</div>
 															</div>
 														</div>
@@ -216,5 +217,3 @@
 										<!--begin::Body-->
 									</div>
 									<!--end::Tables Widget 9-->
-
-
