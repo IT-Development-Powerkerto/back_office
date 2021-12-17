@@ -82,13 +82,12 @@
 																<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
 															</div>
 														</div>
-
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
 																<label for="inputRole" class="col-form-label">Role</label>
 															</div>
 															<div class="dropdown col-10">
-																<select name="role_id" id="role_id" class="form-control">
+																<select name="role_id" id="role_id1" class="form-control">
                                                                     @foreach ($role as $role)
                                                                     <option value={{$role->id}}>{{$role->name}}</option>
                                                                     @endforeach
@@ -166,7 +165,7 @@
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-user" class="btn btn-outline-primary btn-xs m-3 ">
+																	<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-primary btn-xs m-3 ">
 																		Edit
 																	</button>
                                                                     <form action="{{ route('dashboard.destroy', ['dashboard'=>$user->id]) }}" method="POST">
@@ -175,7 +174,7 @@
 																	    <button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button>
                                                                     </form>
 																</div>
-																
+
 															</td>
 														</tr>
                                                         @endforeach

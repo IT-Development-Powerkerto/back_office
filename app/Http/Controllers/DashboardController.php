@@ -81,9 +81,10 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user)
     {
-        //
+        $result = User::findOrFail($user);
+        return view('dashboard.edit',['user' => $result]);
     }
 
     /**
@@ -126,7 +127,7 @@ class DashboardController extends Controller
      */
     public function destroy($user)
     {
-        //File::delete($user->image);
+        File::delete('$user->image');
         //DB::table('users')->find($user)->delete('delete * from users where id = ?', []);
         DB::delete('delete from users where id = ?', [$user]);
         //$user->delete();
