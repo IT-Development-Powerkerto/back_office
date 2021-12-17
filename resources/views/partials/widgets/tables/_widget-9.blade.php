@@ -169,6 +169,14 @@
 																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-user" class="btn btn-outline-primary btn-xs m-3 ">
 																		Edit
 																	</button>
+<<<<<<< HEAD
+                                                                    <form action="{{ route('dashboard.destroy',['user'=>$user->id]) }}" method="POST">
+                                                                        @method('DELETE')
+                                                                        @csrf
+                                                                        {{ csrf_field() }}
+																	    <input type="submit" class="btn btn-danger btn-xs m-3" value="Delete">
+                                                                    </form>
+=======
 																	<button type="submit" class="btn btn-danger btn-xs m-3" value="Delete" data-bs-toggle="modal" data-bs-target="#delete">Delete</button>
 																	
 																</div>
@@ -185,6 +193,7 @@
 																			</div>
 																		</div>
 																	</div>
+>>>>>>> 1f4842c849d37449785c441d2bce6af5eec85b6b
 																</div>
 															</td>
 														</tr>

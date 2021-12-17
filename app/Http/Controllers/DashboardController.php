@@ -103,7 +103,7 @@ class DashboardController extends Controller
             $image = $path;
         }
 
-        DB::table('users')->find($user)->update([
+        DB::table('users')->where('id', $user)->update([
             'name'      => $request->name,
             'role_id'   => $request->role_id,
             'phone'     => $request->phone,
@@ -125,7 +125,9 @@ class DashboardController extends Controller
      */
     public function destroy(User $user)
     {
-        DB::table('users')->find($user)->delete();
+        //File::delete($user->image);
+        $user->delete();
+        //DB::table('users')->where('id','==', $user)->delete();
         return redirect('/dashboard')->with('success','Successull! User Deleted');
     }
 }
