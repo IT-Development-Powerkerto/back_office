@@ -70,7 +70,36 @@ License: For each use you must have a valid license purchased only from above li
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            $('#role_id').on('change', function() {
+            $('#role_id1').on('change', function() {
+                var roleId = $(this).val();
+                if(roleId) {
+                    $.ajax({
+                        url: '/getRole/'+roleId,
+                        type: "GET",
+                        data : {"_token":"{{ csrf_token() }}"},
+                        dataType: "json",
+                        //success:function(data)
+                        // {
+                        //     if(data){
+                        //         $('#course').empty();
+                        //         $('#course').append('<option hidden>Choose Course</option>');
+                        //         $.each(data, function(key, course){
+                        //             $('select[name="course"]').append('<option value="'+ key +'">' + course.name+ '</option>');
+                        //         });
+                        //     }else{
+                        //         $('#course').empty();
+                        //     }
+                        // }
+                    });
+                }//else{
+                //     $('#course').empty();
+            // }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#role_id2').on('change', function() {
                 var roleId = $(this).val();
                 if(roleId) {
                     $.ajax({
