@@ -303,8 +303,9 @@
 											</div>
 											<div class="dropdown col-10">
 												<select name="role_id" id="role_id1" class="form-control">
+                                                    <option disable selected value="{{ $user->role_id }}" hidden>{{$user->role->name}}</option>
 													@foreach ($roles as $role)
-													<option value="{{ old('role') ?? $user->role_id }}">{{$role->name}}</option>
+													<option value="{{ $role->id }}">{{$role->name}}</option>
 													@endforeach
 												</select>
 											</div>
@@ -315,7 +316,7 @@
 											</div>
 											<div class="dropdown col-10">
 												<div class="mb-3">
-													<input class="form-control" src="img/<?= $user["image"]; ?>" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+													<input class="form-control" src="" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
 												</div>
 											</div>
 										</div>
@@ -325,7 +326,7 @@
 								</div>
 								<!--end::Card body-->
 							</div>
-							<!--end::details View-->			
+							<!--end::details View-->
 					<!--begin::Footer-->
 					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
 						<!--begin::Container-->
