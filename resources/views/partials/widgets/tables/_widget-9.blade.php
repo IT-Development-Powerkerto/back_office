@@ -40,7 +40,7 @@
 															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 														</div>
 													@endif
-													<form action={{ route('dashboard.store') }} method="post" enctype="multipart/form-data">
+													<form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
                                                         @csrf
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
@@ -165,9 +165,6 @@
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-                                                                    {{-- <a href="{{ route('users.edit',['user' => $user->id]) }}" data-bs-toggle="modal" class="btn btn-outline-primary btn-xs m-3 ">
-                                                                        Edit
-                                                                    </a> --}}
                                                                     <form action="{{ route('users.edit',['user' => $user->id]) }}" method="GET">
                                                                         @csrf
                                                                         <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-primary btn-xs m-3 ">

@@ -95,8 +95,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $roles = Role::all();
         $result = User::findOrFail($id);
-        return view('editing',['user' => $result]);
+        return view('editing',['user' => $result])->with('roles', $roles);
     }
 
     /**
