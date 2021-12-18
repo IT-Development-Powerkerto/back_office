@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -108,25 +110,25 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $validatedData = $request ->validate([
-            'name'      => 'required|max:255',
-            'phone'     => 'required|min:11|max:13',
-            'image'     => 'required|image|mimes:jpeg,png,jpg,|max:2048',
-        ]);
-
-        if ($image = $request->file('image')) {
-            $destinationPath = '/img';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }else{
-            unset($input['image']);
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'user-'.time().".".$extFile;
+            File::delete($user->image);
+            $path = $request->image->move('assets/images',$namaFile);
+            $image = $path;
         }
 
-        // $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['password'] = Hash::make($validatedData['password']);
-
-        $user->update($validatedData);
+        DB::table('users')->where('id', $user)->update([
+            'name'      => $request->name,
+            // 'role_id'   => $request->role_id,
+            'phone'     => $request->phone,
+            'username'  => $request->username,
+            'email'     => $request->email,
+            'password'  => Hash::make($request->password),
+            'image'     => $image,
+            'status_id' => 1,
+        ]);
 
         return redirect('/dashboard')->with('success','Successull! User Updated');
     }
