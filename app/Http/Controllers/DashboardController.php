@@ -42,6 +42,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
+        
         if($request->hasFile('image'))
         {
             $extFile = $request->image->getClientOriginalExtension();
@@ -96,27 +97,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        if($request->hasFile('image'))
-        {
-            $extFile = $request->image->getClientOriginalExtension();
-            $namaFile = 'user-'.time().".".$extFile;
-            File::delete($user->image);
-            $path = $request->image->move('assets/images',$namaFile);
-            $image = $path;
-        }
 
-        DB::table('users')->where('id', $user)->update([
-            'name'      => $request->name,
-            'role_id'   => $request->role_id,
-            'phone'     => $request->phone,
-            'username'  => $request->username,
-            'email'     => $request->email,
-            'password'  => Hash::make($request->password),
-            'image'     => $image,
-            'status_id' => 1,
-        ]);
-
-        return redirect('/dashboard')->with('success','Successull! User Updated');
     }
 
     /**
