@@ -21,12 +21,11 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-         if(Auth::attempt($credentials)) {
-             $request->session()->regenerate();
-             return redirect('dashboard');
-         }
-
-         return back()->with('error', 'Login Failed!');
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
+        }
+        return back()->with('error', 'Login Failed!');
     }
     public function logout(Request $request){
         Auth::logout();
