@@ -109,20 +109,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $user)
     {
         if($request->hasFile('image'))
         {
             $extFile = $request->image->getClientOriginalExtension();
             $namaFile = 'user-'.time().".".$extFile;
-            File::delete($user->image);
-            $path = $request->image->move('assets/images',$namaFile);
+            //File::delete($user->image);
+            $path = $request->image->move('assets/img',$namaFile);
             $image = $path;
         }
 
         DB::table('users')->where('id', $user)->update([
             'name'      => $request->name,
-            // 'role_id'   => $request->role_id,
+            'role_id'   => $request->role_id,
             'phone'     => $request->phone,
             'username'  => $request->username,
             'email'     => $request->email,

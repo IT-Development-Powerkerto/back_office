@@ -254,14 +254,15 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
+									<form action="{{ route('users.update',['user' => $user->id]) }}" method="POST" enctype="multipart/form-data">
 										@csrf
+										@method('PATCH')
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputFullname" class="col-form-label">Fullname</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="name" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline">
+												<input type="text" name="name" value="{{ old('name') ?? $user->name }}" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -269,7 +270,7 @@
 												<label for="inputEmail" class="col-form-label">Email</label>
 											</div>
 											<div class="col-10">
-												<input type="email" name="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
+												<input type="email" name="email" value="{{ old('email') ?? $user->email }}" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -277,7 +278,7 @@
 												<label for="inputPhone" class="col-form-label">Phone</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="phone" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
+												<input type="text" name="phone" value="{{ old('phone') ?? $user->phone }}" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -285,7 +286,7 @@
 												<label for="inputUsername" class="col-form-label">Username</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="username" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
+												<input type="text" name="username" value="{{ old('username') ?? $user->username }}" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -303,7 +304,7 @@
 											<div class="dropdown col-10">
 												<select name="role_id" id="role_id1" class="form-control">
 													@foreach ($roles as $role)
-													<option value={{$role->id}}>{{$role->name}}</option>
+													<option value="{{ old('role') ?? $user->role_id }}">{{$role->name}}</option>
 													@endforeach
 												</select>
 											</div>
@@ -314,7 +315,7 @@
 											</div>
 											<div class="dropdown col-10">
 												<div class="mb-3">
-													<input class="form-control" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+													<input class="form-control" src="img/<?= $user["image"]; ?>" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
 												</div>
 											</div>
 										</div>
