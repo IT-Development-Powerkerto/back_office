@@ -40,14 +40,18 @@
 															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 														</div>
 													@endif
-													<form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
+													<form action="{{ route('announcements.store') }}" method="post" enctype="multipart/form-data">
                                                         @csrf
 														<div class="row align-items-center col-12 pb-5">
-															<div class="col-4">
-																<label for="inputicon" class="col-form-label">Icon</label>
+															<div class="col-2">
+																<label for="inputRole" class="col-form-label">Icon</label>
 															</div>
-															<div class="col-8">
-																<input type="email" name="icon" id="inputicon" class="form-control" aria-describedby="iconHelpInline">
+															<div class="dropdown col-10">
+																<select name="role_id" id="role_id1" class="form-control">
+                                                                    @foreach ($icon as $icon)
+                                                                    <option value={{$icon->id}}>{{$icon->name}}</option>
+                                                                    @endforeach
+																</select>
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">

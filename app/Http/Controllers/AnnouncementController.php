@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AnnouncementController extends Controller
 {
@@ -35,13 +36,12 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request ->validate([
-            'announcement'      => 'required|max:255',
+        DB::table('announcements')->insert([
+            'icon_id'      => $request->name,
+            'announcement' => $request->role_id,
         ]);
 
-        Announcement::create($validatedData);
-        // $request->session()->flash('success','Registration Successfull! Please Login');
-        return redirect('/dashboard')->with('success','Successull! Announcement Created');
+        return redirect('/dashboard')->with('success','Successull! Announcement Added');
     }
 
     /**

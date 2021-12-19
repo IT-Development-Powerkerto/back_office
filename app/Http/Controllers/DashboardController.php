@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Announcement;
 use App\Models\Role;
+use App\Models\Icon;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
@@ -23,7 +24,8 @@ class DashboardController extends Controller
         $users = User::all();
         $announcements = Announcement::all();
         $roles = Role::all();
-        return view('dashboard',['role'=>$roles])->with('users',$users)->with('announcements',$announcements);
+        $icons = Icon::all();
+        return view('dashboard',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons);
     }
 
     /**
@@ -44,7 +46,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         if($request->hasFile('image'))
         {
             $extFile = $request->image->getClientOriginalExtension();
