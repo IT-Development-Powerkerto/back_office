@@ -45,75 +45,27 @@
 	<!--end::Header-->
 	<!--begin::Body-->
 	<div class="card-body pt-5">
+        @foreach ($announcements as $announcement)
 		<!--begin::Timeline-->
 		<div class="timeline-label">
 			<!--begin::Item-->
 			<div class="timeline-item">
 				<!--begin::Label-->
-				<div class="timeline-label fw-bolder text-gray-800 fs-6">08:42</div>
+				<div class="timeline-label fw-bolder text-gray-800 fs-6">{{$announcement->created_at}}</div>
 				<!--end::Label-->
 				<!--begin::Badge-->
 				<div class="timeline-badge">
-					<i class="fa fa-genderless text-warning fs-1"></i>
+					<i class="{{$announcement->icon->name}}"></i>
 				</div>
 				<!--end::Badge-->
 				<!--begin::Text-->
-				<div class="fw-mormal timeline-content text-muted ps-3">Outlines keep you honest. And keep structure
-				</div>
+				<div class="fw-mormal timeline-content text-muted ps-3">{{$announcement->announcement}}</div>
 				<!--end::Text-->
 			</div>
 			<!--end::Item-->
 			<!--begin::Item-->
-			<div class="timeline-item">
-				<!--begin::Label-->
-				<div class="timeline-label fw-bolder text-gray-800 fs-6">10:00</div>
-				<!--end::Label-->
-				<!--begin::Badge-->
-				<div class="timeline-badge">
-					<i class="fa fa-genderless text-success fs-1"></i>
-				</div>
-				<!--end::Badge-->
-				<!--begin::Content-->
-				<div class="timeline-content d-flex">
-					<span class="fw-bolder text-gray-800 ps-3">AEOL meeting</span>
-				</div>
-				<!--end::Content-->
-			</div>
-			<!--end::Item-->
-			<!--begin::Item-->
-			<div class="timeline-item">
-				<!--begin::Label-->
-				<div class="timeline-label fw-bolder text-gray-800 fs-6">14:37</div>
-				<!--end::Label-->
-				<!--begin::Badge-->
-				<div class="timeline-badge">
-					<i class="fa fa-genderless text-danger fs-1"></i>
-				</div>
-				<!--end::Badge-->
-				<!--begin::Desc-->
-				<div class="timeline-content fw-bolder text-gray-800 ps-3">Make deposit
-					<a href="#" class="text-primary">USD 700</a>. to ESL
-				</div>
-				<!--end::Desc-->
-			</div>
-			<!--end::Item-->
-			<!--begin::Item-->
-			<div class="timeline-item">
-				<!--begin::Label-->
-				<div class="timeline-label fw-bolder text-gray-800 fs-6">16:50</div>
-				<!--end::Label-->
-				<!--begin::Badge-->
-				<div class="timeline-badge">
-					<i class="fa fa-genderless text-primary fs-1"></i>
-				</div>
-				<!--end::Badge-->
-				<!--begin::Text-->
-				<div class="timeline-content fw-mormal text-muted ps-3">Indulging in poorly driving and keep structure
-					keep great</div>
-				<!--end::Text-->
-			</div>
-			<!--end::Item-->
 		</div>
+        @endforeach
 		<!--end::Timeline-->
 	</div>
 	<!--end: Card Body-->
