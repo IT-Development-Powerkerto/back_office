@@ -47,7 +47,7 @@
 																<label for="inputRole" class="col-form-label">Icon</label>
 															</div>
 															<div class="dropdown col-10">
-																<select name="role_id" id="role_id1" class="form-control">
+																<select name="icon_id" id="role_id1" class="form-control">
                                                                     @foreach ($icon as $icon)
                                                                     <option value={{$icon->id}}>{{$icon->fa_name}}</option>
                                                                     @endforeach
@@ -108,13 +108,13 @@
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-                                                                    <form action="{{ route('users.edit',['user' => $user->id]) }}" method="GET">
+                                                                    <form action="" method="GET">
                                                                         @csrf
                                                                         <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-primary btn-xs m-3 ">
                                                                             Edit
                                                                         </button>
                                                                     </form>
-                                                                    <form action="{{ route('dashboard.destroy', ['dashboard'=>$user->id]) }}" method="POST">
+                                                                    <form action="" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
 																	    <button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button>

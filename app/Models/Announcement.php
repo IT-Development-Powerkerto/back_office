@@ -10,8 +10,8 @@ class Announcement extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'announcement',
+        'icon_id'
         ];
 
     public function user(){

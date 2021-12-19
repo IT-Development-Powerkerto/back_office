@@ -8,6 +8,7 @@ use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -94,6 +95,8 @@ class UserController extends Controller
             'password'  => Hash::make($request->password),
             'image'     => $image,
             'status_id' => 1,
+            'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
 
         return redirect('/dashboard')->with('success','Successull! User Updated');

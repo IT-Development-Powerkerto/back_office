@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class AnnouncementController extends Controller
 {
@@ -37,8 +38,10 @@ class AnnouncementController extends Controller
     public function store(Request $request)
     {
         DB::table('announcements')->insert([
-            'icon_id'      => $request->name,
-            'announcement' => $request->role_id,
+            'announcement' => $request->announcement,
+            'icon_id'      => $request->icon_id,
+            'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
 
         return redirect('/dashboard')->with('success','Successull! Announcement Added');

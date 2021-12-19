@@ -11,6 +11,7 @@ use App\Models\Role;
 use App\Models\Icon;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -64,6 +65,8 @@ class DashboardController extends Controller
             'password'  => Hash::make($request->password),
             'image'     => $image,
             'status_id' => 1,
+            'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
 
         return redirect('/dashboard')->with('success','Successull! User Added');
