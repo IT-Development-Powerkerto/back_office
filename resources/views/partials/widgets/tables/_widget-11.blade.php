@@ -81,7 +81,7 @@
 													<thead>
 														<tr class="fw-bolder text-muted">
 															<th class="min-w-100px">Created At</th>
-															<th class="min-w-100px"></th>
+															<th class="min-w-100px">Icon</th>
 															<th class="min-w-140px">Announcement</th>
 															<th class="min-w-100px text-end">Actions</th>
 														</tr>

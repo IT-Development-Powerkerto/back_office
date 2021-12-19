@@ -19,6 +19,6 @@ class Announcement extends Model
     }
 
     public function icon(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Icon::class);
     }
 }
