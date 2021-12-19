@@ -9,8 +9,13 @@
 	</div>
 	<!--end::Header-->
 	<!--end: Card Body-->
+<<<<<<< HEAD
 	<div class="card-body pt-1">
         @foreach ($announcements as $announcement)
+=======
+	<div class="card-body pt-5">
+        @foreach ($announcements->reverse() as $announcement)
+>>>>>>> ae8e38b8c65b011a2c8f951d11f7739ecf084493
 		<div class="timeline timeline-5">
 			<div class="timeline-items">
 				<!--begin::Item-->
@@ -22,7 +27,6 @@
 						</span>
 					</div>
 					<!--end::Icon-->
-
 					<!--begin::Info-->
 					<div class="timeline-desc timeline-desc-light-primary mx-3">
 						<span class="fw-mormal text-gray-800">{{$announcement->created_at}}</span>

@@ -10,8 +10,8 @@ use App\Models\Announcement;
 use App\Models\Role;
 use App\Models\Icon;
 use Illuminate\Support\Facades\DB;
-use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
+
 
 class DashboardController extends Controller
 {
@@ -22,7 +22,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         $announcements = Announcement::all();
         $roles = Role::all();
         $icons = Icon::all();
