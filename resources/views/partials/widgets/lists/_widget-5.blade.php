@@ -3,8 +3,8 @@
 	<!--begin::Header-->
 	<div class="card-header align-items-center border-0 mt-4">
 		<h3 class="card-title align-items-start flex-column">
-			<span class="fw-bolder mb-2 text-dark">Notifications</span>
-			<span class="text-muted fw-bold fs-7">4 Notifications</span>
+			<span class="fw-bolder mb-2 text-dark">Announcements</span>
+			<span class="text-muted fw-bold fs-7">4 Announcements</span>
 		</h3>
 		<div class="card-toolbar">
 			<!--begin::Menu-->

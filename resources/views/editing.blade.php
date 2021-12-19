@@ -314,6 +314,7 @@
 											<div class="col-2">
 												<label for="inputimage" class="col-form-label">Image</label>
 											</div>
+											
 											<div class="dropdown col-10">
 												<div class="mb-3">
 													<input class="form-control" src="" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>

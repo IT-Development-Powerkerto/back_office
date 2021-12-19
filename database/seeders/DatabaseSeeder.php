@@ -66,6 +66,7 @@ class DatabaseSeeder extends Seeder
      $this->call([
          RoleSeeder::class,
          StatusSeeder::class,
+         Announcmentseeder::class,
      ]);
    //   Post::create([
    //      'title' => 'Judul Pertama',

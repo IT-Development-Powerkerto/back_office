@@ -30,6 +30,7 @@
 	<!--begin::Row-->
 	<div class="row gy-5 g-xl-1">
 		@include('partials/widgets/tables/_widget-9')
+		@include('partials/widgets/tables/_widget-11')
 	</div>
 	<!--end::Row-->
 
