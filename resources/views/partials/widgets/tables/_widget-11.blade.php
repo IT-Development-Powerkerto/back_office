@@ -49,7 +49,7 @@
 															<div class="dropdown col-10">
 																<select name="role_id" id="role_id1" class="form-control">
                                                                     @foreach ($icon as $icon)
-                                                                    <option value={{$icon->id}}>{{$icon->name}}</option>
+                                                                    <option value={{$icon->id}}>{{$icon->fa_name}}</option>
                                                                     @endforeach
 																</select>
 															</div>
