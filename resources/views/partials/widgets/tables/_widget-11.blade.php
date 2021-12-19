@@ -89,7 +89,7 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
-                                                        @foreach ($announcements as $announcement)
+                                                        @foreach ($announcements->reverse() as $announcement)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
@@ -120,13 +120,15 @@
 																	    <button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button>
                                                                     </form>
 																</div>
-
 															</td>
 														</tr>
                                                         @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>
+                                                <div class="d-flex justify-content-center">
+                                                    {{ $announcements->links() }}
+                                                </div>
 												<!--end::Table-->
 											</div>
 											<!--end::Table container-->
