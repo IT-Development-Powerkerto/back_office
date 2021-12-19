@@ -105,7 +105,7 @@
 															</div>
 														</div>
                                                         {{ csrf_field() }}
-													    <input type="submit" class="btn btn-primary mt-5 tombol center" value="Add">
+													    <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Staff">
 													</form>
 													</div>
 													</div>

@@ -43,7 +43,7 @@
 													<form action="{{ route('announcements.store') }}" method="post" enctype="multipart/form-data">
                                                         @csrf
 														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
+															<div class="col-4">
 																<label for="inputRole" class="col-form-label">Icon</label>
 															</div>
 															<div class="dropdown col-10">
@@ -63,7 +63,7 @@
 															</div>
 														</div>
                                                         {{ csrf_field() }}
-													    <input type="submit" class="btn btn-primary mt-5 tombol center" value="Add">
+													    <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Announcement">
 													</form>
 													</div>
 													</div>
