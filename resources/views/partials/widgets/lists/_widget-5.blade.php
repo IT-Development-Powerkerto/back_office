@@ -9,13 +9,8 @@
 	</div>
 	<!--end::Header-->
 	<!--end: Card Body-->
-<<<<<<< HEAD
-	<div class="card-body pt-1">
-        @foreach ($announcements as $announcement)
-=======
 	<div class="card-body pt-5">
         @foreach ($announcements->reverse() as $announcement)
->>>>>>> ae8e38b8c65b011a2c8f951d11f7739ecf084493
 		<div class="timeline timeline-5">
 			<div class="timeline-items">
 				<!--begin::Item-->
