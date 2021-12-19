@@ -70,7 +70,7 @@ License: For each use you must have a valid license purchased only from above li
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
-            $('#role_id1').on('change', function() {
+            $('#role_id').on('change', function() {
                 var roleId = $(this).val();
                 if(roleId) {
                     $.ajax({
@@ -99,7 +99,7 @@ License: For each use you must have a valid license purchased only from above li
     </script>
     <script>
         $(document).ready(function() {
-            $('#role_id2').on('change', function() {
+            $('#icon_id').on('change', function() {
                 var roleId = $(this).val();
                 if(roleId) {
                     $.ajax({

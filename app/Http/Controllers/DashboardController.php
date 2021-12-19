@@ -116,9 +116,7 @@ class DashboardController extends Controller
     public function destroy($user)
     {
         File::delete('$user->image');
-        //DB::table('users')->find($user)->delete('delete * from users where id = ?', []);
         DB::delete('delete from users where id = ?', [$user]);
-        //$user->delete();
         return redirect('/dashboard')->with('success','Successull! User Deleted');
     }
 }

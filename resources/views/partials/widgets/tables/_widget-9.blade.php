@@ -87,7 +87,7 @@
 																<label for="inputRole" class="col-form-label">Role</label>
 															</div>
 															<div class="dropdown col-10">
-																<select name="role_id" id="role_id1" class="form-control">
+																<select name="role_id" id="role_id" class="form-control">
                                                                     @foreach ($role as $role)
                                                                     <option value={{$role->id}}>{{$role->name}}</option>
                                                                     @endforeach

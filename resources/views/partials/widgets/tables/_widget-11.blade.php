@@ -47,7 +47,7 @@
 																<label for="inputRole" class="col-form-label">Icon</label>
 															</div>
 															<div class="dropdown col-8">
-																<select name="icon_id" id="role_id1" class="form-control">
+																<select name="icon_id" id="icon_id" class="form-control">
                                                                     @foreach ($icon as $icon)
                                                                     <option value={{$icon->id}}>{{$icon->fa_name}}</option>
                                                                     @endforeach
@@ -114,7 +114,7 @@
                                                                             Edit
                                                                         </button>
                                                                     </form>
-                                                                    <form action="" method="POST">
+                                                                    <form action="{{ route('announcements.destroy', ['announcement'=>$announcement->id]) }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
 																	    <button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button>
