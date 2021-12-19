@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Announcement;
 use App\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -20,8 +21,9 @@ class DashboardController extends Controller
     public function index()
     {
         $users = User::all();
+        $announcements = Announcement::all();
         $roles = Role::all();
-        return view('dashboard',['role'=>$roles])->with('users',$users);
+        return view('dashboard',['role'=>$roles])->with('users',$users)->with('announcements',$announcements);
     }
 
     /**
