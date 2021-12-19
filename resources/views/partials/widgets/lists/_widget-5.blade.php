@@ -43,30 +43,35 @@
 		</div>
 	</div>
 	<!--end::Header-->
-	<!--begin::Body-->
+	<!--end: Card Body-->
 	<div class="card-body pt-5">
         @foreach ($announcements as $announcement)
-		<!--begin::Timeline-->
-		<div class="timeline-label">
-			<!--begin::Item-->
-			<div class="timeline-item">
-				<!--begin::Label-->
-				<div class="timeline-label fw-bolder text-gray-800 fs-6">{{$announcement->created_at}}</div>
-				<!--end::Label-->
-				<!--begin::Badge-->
-				<div class="timeline-badge">
-					<i class="{{$announcement->icon->name}}"></i>
+		<div class="timeline timeline-5">
+			<div class="timeline-items">
+				<!--begin::Item-->
+				<div class="timeline-item">
+					<!--begin::Icon-->
+					<div class="timeline-badge">
+						<span class="svg-icon-primary svg-icon-md">
+							<i class="{{$announcement->icon->name}}"></i>
+						</span>
+					</div>
+					<!--end::Icon-->
+
+					<!--begin::Info-->
+					<div class="timeline-desc timeline-desc-light-primary mx-3">
+						<span class="fw-mormal text-gray-800">{{$announcement->created_at}}</span>
+						<p class="fw-bolder pb-2">
+							{{$announcement->announcement}}
+						</p>
+					</div>
+					<!--end::Info-->
 				</div>
-				<!--end::Badge-->
-				<!--begin::Text-->
-				<div class="fw-mormal timeline-content text-muted ps-3">{{$announcement->announcement}}</div>
-				<!--end::Text-->
+				<!--end::Item-->
 			</div>
-			<!--end::Item-->
-			<!--begin::Item-->
 		</div>
-        @endforeach
 		<!--end::Timeline-->
+		@endforeach
 	</div>
 	<!--end: Card Body-->
 </div>
