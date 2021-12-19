@@ -16,6 +16,16 @@
 			data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
 			<img src={{ Auth()->user()->image }} alt="image" />
 		</div>
+		
+		<div class="menu-item py-5">
+			<div class="menu-content">
+				<label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
+					<input class="form-check-input w-30px h-20px" type="checkbox" value="1" name="mode" />
+					<span class="pulse-ring ms-n1"></span>
+					<span class="form-check-label text-gray-600 fs-7"></span>
+				</label>
+			</div>
+		</div>
 
 		@include('layout/topbar/partials/_user-menu')
 
