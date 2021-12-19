@@ -60,7 +60,7 @@
 												<span class="text-muted fw-bold fs-7">Kamis, 16 December 2021</span>
 												<h1 class="badge-light-danger">100<span>leads</span></h1>
 											</div>
-											<div class="mixed-widget-5-chart card-rounded-top" data-kt-chart-color="danger" style="height: 140px"></div>											<!--end::Chart-->											
+											<div class="mixed-widget-5-chart card-rounded-top" data-kt-chart-color="danger" style="height: 145px"></div>											<!--end::Chart-->											
 												
 										</div>
 										<!--end::Body-->

@@ -72,7 +72,7 @@
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
-										<div class="card-body py-3">
+										<div class="card-body py-3 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 415px">
 											<!--begin::Table container-->
 											<div class="table-responsive">
 												<!--begin::Table-->
@@ -108,12 +108,12 @@
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-                                                                    <form action="" method="GET">
+                                                                    <!-- <form action="" method="GET">
                                                                         @csrf
                                                                         <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-primary btn-xs m-3 ">
                                                                             Edit
                                                                         </button>
-                                                                    </form>
+                                                                    </form> -->
                                                                     <form action="{{ route('announcements.destroy', ['announcement'=>$announcement->id]) }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')

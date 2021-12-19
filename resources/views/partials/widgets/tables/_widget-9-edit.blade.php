@@ -1,6 +1,6 @@
 									
 									<!--begin::Tables Widget 9-->
-									<div class="card card-l-stretch mb-5 mb-xl-8 pb-4">
+									<div class="card card-l-stretch mb-5 mb-xl-8 pb-4 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 315px">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
