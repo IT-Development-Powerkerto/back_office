@@ -46,7 +46,7 @@
 															<div class="col-4">
 																<label for="inputRole" class="col-form-label">Icon</label>
 															</div>
-															<div class="dropdown col-10">
+															<div class="dropdown col-8">
 																<select name="icon_id" id="role_id1" class="form-control">
                                                                     @foreach ($icon as $icon)
                                                                     <option value={{$icon->id}}>{{$icon->fa_name}}</option>
