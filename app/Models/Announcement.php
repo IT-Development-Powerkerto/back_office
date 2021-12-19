@@ -12,10 +12,13 @@ class Announcement extends Model
     protected $fillable = [
         'user_id',
         'announcement',
-        'icon',
         ];
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function icon(){
+        return $this->belongsTo(Category::class);
     }
 }
