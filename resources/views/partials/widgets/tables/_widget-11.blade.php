@@ -81,7 +81,7 @@
 													<thead>
 														<tr class="fw-bolder text-muted">
 															<th class="min-w-100px">Created At</th>
-															<th class="min-w-100px"></th>
+															<th class="min-w-100px">Icon</th>
 															<th class="min-w-140px">Announcement</th>
 															<th class="min-w-100px text-end">Actions</th>
 														</tr>
@@ -100,7 +100,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$announcement->icon}}</h1>
+																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$icon->fa_name}}</h1>
 																</div>
 															</td>
 															<td>
