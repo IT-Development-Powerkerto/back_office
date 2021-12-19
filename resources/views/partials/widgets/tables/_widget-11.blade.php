@@ -100,7 +100,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$announcement->icon}}</h1>
+																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$announcement->icon->fa_name}}</h1>
 																</div>
 															</td>
 															<td>
