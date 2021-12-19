@@ -23,7 +23,7 @@ class DashboardController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        $announcements = Announcement::paginate(5);
+        $announcements = Announcement::all();
         $roles = Role::all();
         $icons = Icon::all();
         return view('dashboard',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons);

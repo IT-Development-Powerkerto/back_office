@@ -126,9 +126,6 @@
 													</tbody>
 													<!--end::Table body-->
 												</table>
-                                                <div class="d-flex justify-content-center">
-                                                    {{ $announcements->links() }}
-                                                </div>
 												<!--end::Table-->
 											</div>
 											<!--end::Table container-->
