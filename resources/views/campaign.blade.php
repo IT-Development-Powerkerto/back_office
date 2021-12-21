@@ -76,7 +76,7 @@
 										<span class="text-muted mt-1 fw-bold fs-7">10 Campign</span>
 									</h3>
 									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
-										<a href="#" data-bs-toggle="modal" data-bs-target="#add-campaign" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
+										<a href="/campaign/create" class="btn btn-sm btn-light btn-active-primary">
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 										<span class="svg-icon svg-icon-3">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -85,63 +85,6 @@
 											</svg>
 										</span>
 										<!--end::Svg Icon-->Create Campaign</a>
-									</div>
-									<div class="modal fade" tabindex="-1" id="add-campaign">
-										<div class="modal-dialog">
-											<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title">Create Campaign</h5>
-												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-											</div>
-											<div class="modal-body">
-
-											@if(session()->has('success'))
-												<div class="alert alert-success alert-dismissible fade show" role="alert">
-													{{ session('success') }}
-													<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-												</div>
-											@endif
-
-											@if(session()->has('error'))
-												<div class="alert alert-danger alert-dismissible fade show" role="alert">
-													{{ session('error') }}
-													<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-												</div>
-											@endif
-											<form action="" method="post" enctype="multipart/form-data">
-												@csrf
-												<div class="row align-items-center col-12 pb-5">
-													<div class="col-4">
-														<label for="inputtittle" class="col-form-label">Tittle</label>
-													</div>
-													<div class="col-8">
-														<input type="text" name="tittle" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline"></input>
-													</div>
-												</div>
-												<div class="row align-items-center col-12 pb-5">
-													<div class="col-4">
-														<label for="operator" class="col-form-label">Operator</label>
-													</div>
-													<div class="dropdown col-8">
-														<select name="operator" id="operator" class="form-control">
-															<option value="Select Your Operator">CS 1</option>
-														</select>
-													</div>
-												</div>
-												<div class="row align-items-center col-12 pb-5">
-													<div class="col-4">
-														<label for="inputannouncement" class="col-form-label">Announcement</label>
-													</div>
-													<div class="col-8">
-														<textarea type="text" name="announcement" id="inputannouncement" class="form-control" aria-describedby="announcementHelpInline"></textarea>
-													</div>
-												</div>
-												{{ csrf_field() }}
-												<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Announcement">
-											</form>
-											</div>
-											</div>
-										</div>
 									</div>
 								</div>
 								<!--end::Header-->
@@ -246,6 +189,49 @@
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="assets/js/custom/widgets.js"></script>
 		<!--end::Page Custom Javascript-->
+		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script> 
+
+		<script id="document-template" type="text/x-handlebars-template">
+		<tr class="delete_add_more_item" id="delete_add_more_item">
+
+			<td>
+				<input type="text" name="operator" value="">
+			</td>
+			<td>
+			<i class="removeaddmore" style="cursor:pointer;color:red;">Remove</i>
+			</td>
+
+		</tr>
+		</script>
+
+		<script type="text/javascript">
+		
+		$(document).on('click','#addMore',function(){
+			
+			$('.table').show();
+
+			var operator = $("#operator").val();\
+			var source = $("#document-template").html();
+			var template = Handlebars.compile(source);
+
+			var data = {
+				task_name: task_name,
+				cost: cost
+			}
+
+			var html = template(data);
+			$("#addRow").append(html)
+		
+			total_ammount_price();
+		});
+
+		$(document).on('click','.removeaddmore',function(event){
+			$(this).closest('.delete_add_more_item').remove();
+		});
+							
+		</script>
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->

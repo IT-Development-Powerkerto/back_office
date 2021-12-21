@@ -15,6 +15,8 @@ class Campign extends Model
         'facebook_pixel',
         'even_pixel_id',
         ];
+    
+    public $table = "campigns";
 
     public function campign(){
         return $this->hasMany(Campign::class);
