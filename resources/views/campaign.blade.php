@@ -180,7 +180,7 @@
 																</div>
 															</div>
 
-															<form action="" method="POST">
+															<form action="{{route('campaign.destroy',['campaign' => $campaigns->id])}}" method="POST">
 																@csrf
 																@method('DELETE')
 																<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
