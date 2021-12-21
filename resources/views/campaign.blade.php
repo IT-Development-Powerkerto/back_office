@@ -143,10 +143,9 @@
 																@method('DELETE')
 																<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
 																	<div class="btn-group" role="group" aria-label="First group">
-																		<button type="button" class="btn btn-primary  btn-icon"><i class="la la-file-text-o"></i></button>
-																		<button type="button" class="btn btn-success btn-icon"><i class="la la-paperclip"></i></button>
-																		<button type="button" class="btn btn-warning btn-icon"><i class="la la-files-o"></i></button>
-																		<button type="button" class="btn btn-info btn-icon"><i class="la la-scissors"></i></button>
+																		<button type="button" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
+																		<button type="button" class="btn btn-success btn-icon"><i class="la la-users"></i></button>
+																		<button type="button" class="btn btn-danger btn-icon"><i class="la la-trash"></i></button>
 																	</div>
 																</div>
 																<!-- <button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button> -->
