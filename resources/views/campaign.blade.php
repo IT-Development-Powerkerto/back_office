@@ -204,7 +204,7 @@
 																<div class="modal-dialog">
 																	<div class="modal-content">
 																		<div class="modal-header">
-																			<h5 class="modal-title">Operator</h5>
+																			<h5 class="modal-title">Script</h5>
 																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																		</div>
 																		<div class="modal-body">
@@ -226,17 +226,11 @@
 																						t.src=v;s=b.getElementsByTagName(e)[0];
 																						s.parentNode.insertBefore(t,s)}(window, document,'script',
 																						'https://connect.facebook.net/en_US/fbevents.js');
-																						fbq('init', '1067888140623230');
-																						fbq('track', 'PageView');
-																						fbq('track', 'AddToCart');
-																						fbq('track', 'Lead');
-																						fbq('track', 'Purchase', {
-																									'value': 4,
-																									'currency': 'IDR'
-																						});
+																						fbq('init', '{{$campaigns->facebook_pixel}}');
+																						{{$campaigns->event_pixel->event_pixel}}
 																						</script>
 																						<noscript>
-																						<img height="1" width="1" style="display:none" 
+																						<img height="1" width="1" style="display:none"
 																							src="https://www.facebook.com/tr?-ev=PageView&noscript=1"/>
 																						</noscript>
 
