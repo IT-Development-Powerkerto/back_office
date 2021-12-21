@@ -9,6 +9,7 @@ class Campign extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'tittle',
         'message',
         'facebook_pixel',
