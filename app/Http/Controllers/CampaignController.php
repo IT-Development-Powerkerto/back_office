@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Campign;
 
 class CampaignController extends Controller
 {
@@ -23,7 +24,36 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        //
+        return view ('CreateCampaign');
+
+    }
+
+    public function addMorePost(Request $request)
+    {
+        $rules = [];
+
+
+        foreach($request->input('operator') as $key => $value) {
+            $rules["operator.{$key}"] = 'required';
+        }
+
+
+        $validator = Validator::make($request->all(), $rules);
+
+
+        if ($validator->passes()) {
+
+
+            foreach($request->input('operator') as $key => $value) {
+                Campign::create(['operator'=>$value]);
+            }
+
+
+            return response()->json(['success'=>'done']);
+        }
+
+
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
 
     /**
