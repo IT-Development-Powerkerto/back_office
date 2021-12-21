@@ -14,7 +14,7 @@ class Campign extends Model
         'facebook_pixel',
         'even_pixel_id',
     ];
-    
+
     public function user(){
         return $this->belongsTo(User::class);
     }
