@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Campaign</title>
+		<title>Operator</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -29,14 +29,14 @@
 							<!--begin::Page title-->
 							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
 								<!--begin::Heading-->
-								<h1 class="text-dark fw-bold my-0 fs-2">Campaigns</h1>
+								<h1 class="text-dark fw-bold my-0 fs-2">Operator</h1>
 								<!--end::Heading-->
 								<!--begin::Breadcrumb-->
 								<ul class="breadcrumb breadcrumb-line text-muted fw-bold fs-base my-1">
 									<li class="breadcrumb-item text-muted">
 										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
 									</li>
-									<li class="breadcrumb-item text-dark">Campaign</li>
+									<li class="breadcrumb-item text-dark">Operator</li>
 								</ul>
 								<!--end::Breadcrumb-->
 							</div>
@@ -71,8 +71,8 @@
 								<!--begin::Header-->
 								<div class="card-header border-0 pt-5">
 									<h3 class="card-title align-items-start flex-column">
-										<span class="card-label fw-bolder fs-3 mb-1">Campaign</span>
-										<span class="text-muted mt-1 fw-bold fs-7">{{$campaigns->count()}} Campaign</span>
+										<span class="card-label fw-bolder fs-3 mb-1">Operator</span>
+										<span class="text-muted mt-1 fw-bold fs-7">1 Operator</span>
 									</h3>
 									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
 										<a href="/campaign/create" class="btn btn-sm btn-light btn-active-primary">
@@ -83,7 +83,7 @@
 												<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
 											</svg>
 										</span>
-										<!--end::Svg Icon-->Create Campaign</a>
+										<!--end::Svg Icon-->Create Operator</a>
 									</div>
 								</div>
 								<!--end::Header-->
@@ -96,21 +96,21 @@
 											<!--begin::Table head-->
 											<thead>
 												<tr class="fw-bolder text-muted">
-													<th class="min-w-50px">No</th>
+													<th class="min-w-30px">No</th>
+													<th class="min-w-30px">Status</th>
 													<th class="min-w-200px">Name</th>
-													<th class="min-w-120px">Operators</th>
-													<th class="min-w-120px">Trafic</th>
-													<th class="min-w-100px text-end">Actions</th>
+													<th class="min-w-200px">Type</th>
+													<th class="min-w-200px">Assign To</th>
+                                                    <th class="min-w-100px text-end">Action</th>
 												</tr>
 											</thead>
 											<!--end::Table head-->
 											<!--begin::Table body-->
 											<tbody>
-                                                <?php $n=0; ?>
-												@foreach ($campaigns as $campaigns)
+                                                
 												<tr>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$n+=1}}</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">1</label>                                               
 													</td>
 													<td>
 														<!-- <div class="d-flex align-items-center">
@@ -118,31 +118,47 @@
 															<h1 class="text-dark fw-bolder text-hover-primary fs-6">https://mauorder.online/wa-generosku-2 </h1>
 														</div> -->
 														<div class="timeline-desc timeline-desc-light-primary mx-3">
-															<span class="fw-mormal text-gray-800">{{$campaigns->tittle}}</span>
-															<!-- <p class="fw-bolder pb-2">
-																https://mauorder.online/wa-generosku-2
-															</p> -->
+                                                            <div class="menu-content">
+                                                                <label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
+                                                                    <input data-id="{{Auth()->user()->id}}" class="form-check-input w-30px h-20px" type="checkbox" name="status" data-toggle="toggle" data-on="1" data-off="0" {{ Auth()->user()->status_id ? 'checked' : '' }}/>
+                                                                    <span class="pulse-ring ms-n1"></span>
+                                                                    <span class="form-check-label text-gray-600 fs-7"></span>
+                                                                </label>
+                                                            </div>
 														</div>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">0 Operator</label>
+                                                        <div class="timeline-desc timeline-desc-light-primary">
+                                                            <span class="fw-mormal text-gray-800">CS Zall</span>
+                                                            <p class="fw-bolder pb-2">
+                                                                cszall@zall.com
+                                                            </p>
+                                                        </div>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">0 View</label>
+														<label class="badge badge-light-primary mb-5">Email</label>
+													</td>
+                                                    <td>
+                                                        <div class="timeline-desc timeline-desc-light-primary">
+                                                            <span class="fw-mormal text-gray-800">1 Campaigns</span>
+                                                            <p class="fw-bolder pb-2">
+                                                                79 Traffic
+                                                            </p>
+                                                        </div>
 													</td>
 													<td>
 														<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-															<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
+															<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																<div class="btn-group" role="group" aria-label="First group">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-operator" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
+																	<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-op" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
 																</div>
 															</div>
 
-															<div class="modal fade" tabindex="-1" id="edit-operator">
+															<div class="modal fade" tabindex="-1" id="edit-op">
 																<div class="modal-dialog">
 																	<div class="modal-content">
 																		<div class="modal-header">
-																			<h5 class="modal-title">Operator</h5>
+																			<h5 class="modal-title">Create Operator</h5>
 																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																		</div>
 																		<div class="modal-body">
@@ -151,36 +167,38 @@
 
 																				<div class="row align-items-center col-12 pb-5">
 																					<div class="col-2">
-																						<label for="inputtittle" class="col-form-label">Tittle</label>
+																						<label for="inputtittle" class="col-form-label">Name</label>
 																					</div>
 																					<div class="col-10">
-																						<input type="text" name="tittle" value="" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+																						<input type="text" name="nameop" value="" id="inputtittle" class="form-control" aria-describedby="nameopHelpInline">
 																					</div>
 																				</div>
 																				<div class="row align-items-center col-12 pb-5">
 																					<div class="col-2">
-																						<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
+																						<label for="inputnickname" class="col-form-label">Nickname</label>
 																					</div>
 																					<div class="col-10">
-																						<input type="text" name="fbp" value="" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
+																						<input type="text" name="nickname" value="" id="inputnickname" class="form-control" aria-describedby="fbpHelpInline">
 																					</div>
 																				</div>
 																				<div class="row align-items-center col-12 pb-5">
 																					<div class="col-2">
-																						<label for="inputRole" class="col-form-label">Facebook Event</label>
+																						<label for="inputType" class="col-form-label">Type</label>
 																					</div>
 																					<div class="dropdown col-10">
-																						<select name="fbe" id="fbe1" class="form-control">
-																							<option value="">Costume</option>
+																						<select name="typeop" id="inputType" class="form-control">
+																							<option value="">Choose Type</option>
+                                                                                            <option value="">WhatsApp</option>
+                                                                                            <option value="">Email</option>
 																						</select>
 																					</div>
 																				</div>
-																				<div class="row align-items-center col-12 pb-5">
+                                                                                <div class="row align-items-center col-12 pb-5">
 																					<div class="col-2">
-																						<label for="inputtp" class="col-form-label">Thanks Page</label>
+																						<label for="inputidentity" class="col-form-label">Identity</label>
 																					</div>
 																					<div class="col-10">
-																						<textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
+																						<input type="text" name="identity" value="" id="inputidentity" class="form-control" aria-describedby="fbpHelpInline">
 																					</div>
 																				</div>
 																				{{ csrf_field() }}
@@ -191,44 +209,7 @@
 																</div>
 															</div>
 
-
-															<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
-																<div class="btn-group" role="group" aria-label="First group">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-operator" class="btn btn-success btn-icon"><i class="la la-users"></i></button>
-																</div>
-															</div>
-
-															<div class="modal fade" tabindex="-1" id="add-operator">
-																<div class="modal-dialog">
-																	<div class="modal-content">
-																		<div class="modal-header">
-																			<h5 class="modal-title">Operator</h5>
-																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-																		</div>
-																		<div class="modal-body">
-																			<form action="" method="post" enctype="multipart/form-data">
-																				@csrf
-																				<div class="row align-items-center col-12 pb-5">
-																					<div class="col-2">
-																						<label for="operator" class="col-form-label">Operator</label>
-																					</div>
-																					<div class="col-10">
-																						<select name="operator" id="operator" class="form-control">
-																							<option value="">CS1</option>
-																							<option value="">CS2</option>
-																							<option value="">CS3</option>
-																						</select>
-																					</div>
-																				</div>
-																				{{ csrf_field() }}
-																				<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Operator">
-																			</form>
-																		</div>
-																	</div>
-																</div>
-															</div>
-
-															<form action="{{route('campaign.destroy',['campaign' => $campaigns->id])}}" method="POST">
+															<form action="" method="POST">
 																@csrf
 																@method('DELETE')
 																<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
@@ -240,7 +221,6 @@
 														</div>
 													</td>
 												</tr>
-												@endforeach
 											</tbody>
 											<!--end::Table body-->
 										</table>

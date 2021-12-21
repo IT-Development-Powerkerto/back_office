@@ -38,7 +38,7 @@
 									<li class="breadcrumb-item text-muted">
 										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
 									</li>
-									<li class="breadcrumb-item text-muted">Account</li>
+									<li class="breadcrumb-item text-muted">Campaign</li>
 									<li class="breadcrumb-item text-dark">Create Campaign</li>
 								</ul>
 								<!--end::Breadcrumb-->

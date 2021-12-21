@@ -14,6 +14,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\OperatorController;
 use App\Models\Campign;
 
 /*
@@ -77,6 +78,8 @@ Route::resource('statuses', StatusController::class);
 
 Route::resource('campaign', CampaignController::class)->middleware('auth');
 //Route::post("/campaign", [CampaignController::class, 'addMorePost']);
+
+Route::resource('operator', OperatorController::class)->middleware('auth');
 
 
 Route::get('getRole/{id}', function ($id) {
