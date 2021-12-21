@@ -153,11 +153,10 @@
                                                 </form> -->
                                                 <form method="post" id="dynamic_form">
                                                     <span id="result"></span>
-                                                    <table class="table table-bordered table-striped" id="user_table">
-                                                        <thead>
+                                                    <table  id="user_table">
+                                                        <thead class="mx-3">
                                                             <tr>
-                                                                <th width="35%">First Name</th>
-                                                                <th width="35%">Last Name</th>
+                                                                <th width="100%">Operator</th>
                                                                 <th width="30%">Action</th>
                                                             </tr>
                                                         </thead>
@@ -167,10 +166,6 @@
                                                         <tfoot>
                                                             <tr>
                                                                 <td colspan="2" align="right">&nbsp;</td>
-                                                                <td>
-                                                            @csrf
-                                                                    <input type="submit" name="save" id="save" class="btn btn-primary" value="Save" />
-                                                                </td>
                                                             </tr>
                                                         </tfoot>
                                                     </table>
@@ -178,7 +173,7 @@
                                             </div>
                                         </div>
 										{{ csrf_field() }}
-										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">
+										<input type="submit" name="save" id="save" class="btn btn-primary mt-5 float-end me-6" value="Create">
 									</form>
 								</div>
 								<!--end::Card body-->
@@ -287,7 +282,6 @@
             {
             html = '<tr>';
                     html += '<td><input type="text" name="first_name[]" class="form-control" /></td>';
-                    html += '<td><input type="text" name="last_name[]" class="form-control" /></td>';
                     if(number > 1)
                     {
                         html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';
@@ -313,7 +307,7 @@
             $('#dynamic_form').on('submit', function(event){
                     event.preventDefault();
                     $.ajax({
-                        url:'{{ route("dynamic-field.insert") }}',
+                        url:'',
                         method:'post',
                         data:$(this).serialize(),
                         dataType:'json',
