@@ -23,7 +23,7 @@ class OperatorController extends Controller
      */
     public function create()
     {
-        //
+        return view('CreateOperator');
     }
 
     /**
