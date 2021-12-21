@@ -22,7 +22,7 @@ class CampaignController extends Controller
     {
         $campaigns = Campign::all();
         $events = EventPixel::all();
-        return view('campaign', ['event'=>$events])->with('campaigns', $campaigns);
+        return view('campaign', ['events'=>$events])->with('campaigns', $campaigns);
     }
 
     /**

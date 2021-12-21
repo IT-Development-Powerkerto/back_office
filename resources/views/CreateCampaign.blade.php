@@ -107,7 +107,7 @@
                                             <div class="dropdown col-10">
                                                 <select name="event_id" id="event_id" class="form-control">
                                                     @foreach ($event as $event)
-                                                    <option value={{$event->id}}>{{$event->name}}</option>
+                                                    <option value="{{$event->id}}">{{$event->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

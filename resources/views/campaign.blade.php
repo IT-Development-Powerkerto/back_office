@@ -172,8 +172,8 @@
 																					<div class="dropdown col-10">
 																						<select name="event_id" id="event_id" class="form-control">
                                                                                             <option disable selected value="{{ $campaigns->event_pixel_id }}" hidden>{{$campaigns->event_pixel->name}}</option>
-                                                                                            @foreach ($event as $event)
-                                                                                            <option value="{{ $event->id }}">{{$event->name}}</option>
+                                                                                            @foreach ($events as $event)
+                                                                                            <option value="{{$event->id}}">{{$event->name}}</option>
                                                                                             @endforeach
                                                                                         </select>
 																					</div>
