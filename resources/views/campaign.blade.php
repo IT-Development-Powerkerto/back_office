@@ -107,10 +107,11 @@
 											<!--end::Table head-->
 											<!--begin::Table body-->
 											<tbody>
+                                                <?php $n=0; ?>
 												@foreach ($campaigns as $campaigns)
 												<tr>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">1</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$n+=1}}</label>                                                        </label>
 													</td>
 													<td>
 														<!-- <div class="d-flex align-items-center">

@@ -97,6 +97,7 @@ class CampaignController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete('delete from users where id = ?', [$id]);
+        return redirect('/campaign')->with('success','Successull! Campaign Deleted');
     }
 }
