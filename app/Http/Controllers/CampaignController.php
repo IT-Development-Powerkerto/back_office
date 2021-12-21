@@ -17,7 +17,8 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        return view('campaign');
+        $campaigns = Campign::all();
+        return view('campaign')->with('campaigns', $campaigns);
     }
 
     /**

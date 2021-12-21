@@ -118,14 +118,6 @@
 												<textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 											</div>
 										</div>
-                                        <div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputtp" class="col-form-label">Operator</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="operator" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline">
-											</div>
-										</div>
 										{{ csrf_field() }}
 										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">
 									</form>
