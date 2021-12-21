@@ -64,4 +64,7 @@ class User extends Authenticatable
     public function status(){
         return $this->belongsTo(Status::class);
     }
+    public function campign(){
+        return $this->hasMany(Campign::class);
+    }
 }

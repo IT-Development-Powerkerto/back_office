@@ -15,10 +15,14 @@ class Campign extends Model
         'facebook_pixel',
         'even_pixel_id',
         ];
-    
+
     public $table = "campigns";
 
-    public function campign(){
-        return $this->hasMany(Campign::class);
+    public function event_pixel(){
+        return $this->hasMany(EventPixel::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
