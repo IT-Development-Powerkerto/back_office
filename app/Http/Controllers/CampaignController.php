@@ -31,34 +31,6 @@ class CampaignController extends Controller
 
     }
 
-    public function addMorePost(Request $request)
-    {
-        $rules = [];
-
-
-        foreach($request->input('operator') as $key => $value) {
-            $rules["operator.{$key}"] = 'required';
-        }
-
-
-        $validator = Validator::make($request->all(), $rules);
-
-
-        if ($validator) {
-
-
-            foreach($request->input('operator') as $key => $value) {
-                Campign::create(['operator'=>$value]);
-            }
-
-
-            return response()->json(['success'=>'done']);
-        }
-
-
-        return response()->json(['error'=>$validator->errors()->all()]);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -67,51 +39,15 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        // for ($i = 1; $i < count($request->operator); $i++) {
-        //     $operators[] = [
-        //         'operator' => $request->operator[$i],
-        //     ];
-        // }
 
-        // DB::table('campigns')->insert([
-        //     'tittle'     => $request->tittle,
-        //     'operator'  => $request->operator,
-        //     'message'   => $request->tp,
-        //     'facebook_pixel'  => $request->fbp,
-        //     'event_pixel_id' => 3,
-        // ]);
-        // return redirect('/campaign')->with('success','Successfull! Campaign Added');
-
-        if($request->ajax())
-        {
-            $rules = array(
-            'first_name.*'  => 'required',
-            'last_name.*'  => 'required'
-            );
-            $error = Validator::make($request->all(), $rules);
-            if($error->fails())
-            {
-                return response()->json([
-                    'error'  => $error->errors()->all()
-                ]);
-            }
-
-            $first_name = $request->first_name;
-            $last_name = $request->last_name;
-            for($count = 0; $count < count($first_name); $count++)
-            {
-                $data = array(
-                    'first_name' => $first_name[$count],
-                    'last_name'  => $last_name[$count]
-                );
-                $insert_data[] = $data;
-            }
-
-            Campign::insert($insert_data);
-            return response()->json([
-            'success'  => 'Data Added successfully.'
-            ]);
-        }
+        DB::table('campigns')->insert([
+            'tittle'     => $request->tittle,
+            'operator'  => $request->operator,
+            'message'   => $request->tp,
+            'facebook_pixel'  => $request->fbp,
+            'event_pixel_id' => 3,
+        ]);
+        return redirect('/campaign')->with('success','Successfull! Campaign Added');
     }
 
     /**

@@ -81,7 +81,7 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<!-- <form action="{{route('campaign.store')}}" method="POST">
+									<form action="{{route('campaign.store')}}" method="POST">
 										@csrf
 
 										<div class="row align-items-center col-12 pb-5">
@@ -118,7 +118,7 @@
 												<textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 											</div>
 										</div>
-                                        <div class="row align-items-center col-12 pb-5">
+                                        <!-- <div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputfu" class="col-form-label">Follow Up</label>
 											</div>
@@ -126,89 +126,6 @@
 												<textarea type="text" name="fu" value="" id="inputfu" class="form-control" aria-describedby="fuHelpInline"></textarea>
 											</div>
 										</div> -->
-                                        <form method="post" id="dynamic_form">
-                                        @csrf
-
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputtittle" class="col-form-label">Tittle</label>
-                                            </div>
-                                            <div class="col-10">
-                                                <input type="text" name="tittle" value="" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputfbp" class="col-form-label">Facebook Pixel</label>
-                                            </div>
-                                            <div class="col-10">
-                                                <input type="text" name="fbp" value="" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputRole" class="col-form-label">Facebook Event</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-                                                <select name="fbe" id="fbe1" class="form-control">
-                                                    <option value="">Costume</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputtp" class="col-form-label">Thanks Page</label>
-                                            </div>
-                                            <div class="col-10">
-                                                <textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputfu" class="col-form-label">Follow Up</label>
-                                            </div>
-                                            <div class="col-10">
-                                                <textarea type="text" name="fu" value="" id="inputfu" class="form-control" aria-describedby="fuHelpInline"></textarea>
-                                            </div>
-                                        </div>
-                                            <div class="row align-items-center col-12 pb-5" id="tittle">
-                                                <div class="col-2">
-                                                    <label for="inputtittle" class="col-form-label">Operator</label>
-                                                </div>
-                                                <div class="col-10">
-                                                <!-- <form name="add_name" id="add_name">  
-                                                    <div class="alert alert-danger print-error-msg" style="display:none">
-                                                        <ul></ul>
-                                                    </div>
-                                                    <div class="alert alert-success print-success-msg" style="display:none">
-                                                        <ul></ul>
-                                                    </div>
-                                                    <div class="table-responsive">
-                                                        <table class="table table-bordered" id="dynamic_field">
-                                                            <tr>
-                                                                <td>
-                                                                    <select name="operator[]" id="fbe1" class="form-control">
-                                                                        <option value="">Costume</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td><button type="button" name="add" id="add" class="btn btn-primary">Add More</button></td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                </form> -->
-                                                
-                                                        <span id="result"></span>
-                                                        <table  id="user_table">
-                                                            <tbody></tbody>
-                                                            <tfoot>
-                                                                <tr>
-                                                                    <td colspan="2" align="right">&nbsp;</td>
-                                                                </tr>
-                                                            </tfoot>
-                                                        </table>
-                                                </div>
-                                            </div>
-                                        </form>
 										{{ csrf_field() }}
 										<input type="submit" name="save" id="save" class="btn btn-primary mt-5 float-end me-6" value="Create">
 									</form>
@@ -246,134 +163,7 @@
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="../assets/js/custom/widgets.js"></script>
 		<!--end::Page Custom Javascript-->
-
-        <script type="text/javascript">
-            $(document).ready(function(){
-            var postURL = "<?php echo url('addmore'); ?>";
-            var i=1;
-
-
-            $('#add').click(function(){
-                i++;
-                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><select name="operator[]" id="fbe1" class="form-control"><option value="">Costume</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-            });
-
-
-            $(document).on('click', '.btn_remove', function(){
-                var button_id = $(this).attr("id");
-                $('#row'+button_id+'').remove();
-            });
-
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-
-            $('#submit').click(function(){
-                $.ajax({
-                        url:postURL,
-                        method:"POST",
-                        data:$('#add_name').serialize(),
-                        type:'json',
-                        success:function(data)
-                        {
-                            if(data.error){
-                                printErrorMsg(data.error);
-                            }else{
-                                i=1;
-                                $('.dynamic-added').remove();
-                                $('#add_name')[0].reset();
-                                $(".print-success-msg").find("ul").html('');
-                                $(".print-success-msg").css('display','block');
-                                $(".print-error-msg").css('display','none');
-                                $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
-                            }
-                        }
-                });
-            });
-
-
-            function printErrorMsg (msg) {
-                $(".print-error-msg").find("ul").html('');
-                $(".print-error-msg").css('display','block');
-                $(".print-success-msg").css('display','none');
-                $.each( msg, function( key, value ) {
-                    $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-                });
-            }
-            });  
-        </script> -->
-
-
-        <script>
-            $(document).ready(function(){
-
-            var count = 1;
-
-            dynamic_field(count);
-
-            function dynamic_field(number)
-            {
-            html = '<tr>';
-                    html += '<td><input type="text" name="first_name[]" class="form-control" /></td>';
-                    if(number > 1)
-                    {
-                        html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';
-                        $('tbody').append(html);
-                    }
-                    else
-                    {   
-                        html += '<td><button type="button" name="add" id="add" class="btn btn-success">Add</button></td></tr>';
-                        $('tbody').html(html);
-                    }
-            }
-
-            $(document).on('click', '#add', function(){
-            count++;
-            dynamic_field(count);
-            });
-
-            $(document).on('click', '.remove', function(){
-            count--;
-            $(this).closest("tr").remove();
-            });
-
-            $('#dynamic_form').on('submit', function(event){
-                    event.preventDefault();
-                    $.ajax({
-                        url:'',
-                        method:'post',
-                        data:$(this).serialize(),
-                        dataType:'json',
-                        beforeSend:function(){
-                            $('#save').attr('disabled','disabled');
-                        },
-                        success:function(data)
-                        {
-                            if(data.error)
-                            {
-                                var error_html = '';
-                                for(var count = 0; count < data.error.length; count++)
-                                {
-                                    error_html += '<p>'+data.error[count]+'</p>';
-                                }
-                                $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');
-                            }
-                            else
-                            {
-                                dynamic_field(1);
-                                $('#result').html('<div class="alert alert-success">'+data.success+'</div>');
-                            }
-                            $('#save').attr('disabled', false);
-                        }
-                    })
-            });
-
-            });
-        </script>
+        
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
