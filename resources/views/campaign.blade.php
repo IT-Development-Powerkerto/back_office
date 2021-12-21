@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--begin::Head-->
+	<head><base href="../">
+		<title>My Profile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Global Stylesheets Bundle(used by all pages)-->
+		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Global Stylesheets Bundle-->
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed aside-secondary-enabled">
+		<!--begin::Main-->
+		<!--begin::Root-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Page-->
+			<div class="page d-flex flex-row flex-column-fluid">
+				<!--begin::Wrapper-->
+				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+					<!--begin::Header-->
+					<div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+						<!--begin::Container-->
+						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
+							<!--begin::Page title-->
+							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
+								<!--begin::Heading-->
+								<h1 class="text-dark fw-bold my-0 fs-2">Profile Overview</h1>
+								<!--end::Heading-->
+								<!--begin::Breadcrumb-->
+								<ul class="breadcrumb breadcrumb-line text-muted fw-bold fs-base my-1">
+									<li class="breadcrumb-item text-muted">
+										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
+									</li>
+									<li class="breadcrumb-item text-muted">Account</li>
+									<li class="breadcrumb-item text-dark">My Profile</li>
+								</ul>
+								<!--end::Breadcrumb-->
+							</div>
+							<!--end::Page title=-->
+							<!--begin::Wrapper-->
+							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
+								<!--begin::Logo-->
+								    <img alt="Logo" src="img/logo.png" class="h-40px" />
+								<!--end::Logo-->
+							</div>
+							<!--end::Wrapper-->
+							<!--begin::Toolbar wrapper-->
+							<div class="d-flex flex-shrink-0">
+								<!--begin::Create app-->
+								<div class="d-flex ms-3">
+									<a href="{{ route('dashboard.index') }}" class="btn btn-primary">Home</a>
+								</div>
+								<!--end::Create app-->
+							</div>
+							<!--end::Toolbar wrapper-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Header-->
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Container-->
+						<div class="container-xxl" id="kt_content_container">
+							
+							<!--begin::Tables Widget 11-->
+							<div class="card card-xxl-stretch mb-5 mb-xl-8">
+								<!--begin::Header-->
+								<div class="card-header border-0 pt-5">
+									<h3 class="card-title align-items-start flex-column">
+										<span class="card-label fw-bolder fs-3 mb-1">Campign</span>
+										<span class="text-muted mt-1 fw-bold fs-7">10 Campign</span>
+									</h3>
+									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
+										<a href="#" data-bs-toggle="modal" data-bs-target="#add-campaign" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
+										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+										<span class="svg-icon svg-icon-3">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+												<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
+												<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+											</svg>
+										</span>
+										<!--end::Svg Icon-->Create Campaign</a>
+									</div>
+									<div class="modal fade" tabindex="-1" id="add-campaign">
+										<div class="modal-dialog">
+											<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title">Create Campaign</h5>
+												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+
+											@if(session()->has('success'))
+												<div class="alert alert-success alert-dismissible fade show" role="alert">
+													{{ session('success') }}
+													<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+												</div>
+											@endif
+
+											@if(session()->has('error'))
+												<div class="alert alert-danger alert-dismissible fade show" role="alert">
+													{{ session('error') }}
+													<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+												</div>
+											@endif
+											<form action="" method="post" enctype="multipart/form-data">
+												@csrf
+												<div class="row align-items-center col-12 pb-5">
+													<div class="col-4">
+														<label for="inputtittle" class="col-form-label">Tittle</label>
+													</div>
+													<div class="col-8">
+														<input type="text" name="tittle" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline"></input>
+													</div>
+												</div>
+												<div class="row align-items-center col-12 pb-5">
+													<div class="col-4">
+														<label for="operator" class="col-form-label">Operator</label>
+													</div>
+													<div class="dropdown col-8">
+														<select name="operator" id="operator" class="form-control">
+															<option value="Select Your Operator">CS 1</option>
+														</select>
+													</div>
+												</div>
+												<div class="row align-items-center col-12 pb-5">
+													<div class="col-4">
+														<label for="inputannouncement" class="col-form-label">Announcement</label>
+													</div>
+													<div class="col-8">
+														<textarea type="text" name="announcement" id="inputannouncement" class="form-control" aria-describedby="announcementHelpInline"></textarea>
+													</div>
+												</div>
+												{{ csrf_field() }}
+												<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Announcement">
+											</form>
+											</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Header-->
+								<!--begin::Body-->
+								<div class="card-body py-3 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 415px">
+									<!--begin::Table container-->
+									<div class="table-responsive">
+										<!--begin::Table-->
+										<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+											<!--begin::Table head-->
+											<thead>
+												<tr class="fw-bolder text-muted">
+													<th class="min-w-100px">No</th>
+													<th class="min-w-140px">Name</th>
+													<th class="min-w-120px">Operators</th>
+													<th class="min-w-120px">Trafic</th>
+													<th class="min-w-100px text-end">Actions</th>
+												</tr>
+											</thead>
+											<!--end::Table head-->
+											<!--begin::Table body-->
+											<tbody>
+												<tr>
+													<td>
+														<div class="d-flex align-items-center">
+															<div class="d-flex justify-content-start flex-column">
+																<label class="text-dark fw-bolder text-hover-primary fs-6">1</label>
+															</div>
+														</div>
+													</td>
+													<td>
+														<!-- <div class="d-flex align-items-center">
+															<label for="">WA Generosku</label>
+															<h1 class="text-dark fw-bolder text-hover-primary fs-6">https://mauorder.online/wa-generosku-2 </h1>
+														</div> -->
+														<div class="timeline-desc timeline-desc-light-primary mx-3">
+															<span class="fw-mormal text-gray-800">WA Generosku</span>
+															<p class="fw-bolder pb-2">
+																https://mauorder.online/wa-generosku-2 
+															</p>
+														</div>
+													</td>
+													<td>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">2 Operator</label>
+													</td>
+													<td>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">0 View</label>
+													</td>
+													<td>
+														<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
+															<!-- <form action="" method="GET">
+																@csrf
+																<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-primary btn-xs m-3 ">
+																	Edit
+																</button>
+															</form> -->
+															<form action="" method="POST">
+																@csrf
+																@method('DELETE')
+																<button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button>
+															</form>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+											<!--end::Table body-->
+										</table>
+										<!--end::Table-->
+									</div>
+									<!--end::Table container-->
+								</div>
+								<!--begin::Body-->
+							</div>
+							<!--end::Tables Widget 11-->
+					<!--begin::Footer-->
+					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+						<!--begin::Container-->
+						<div class="container-xxl d-flex flex-column flex-md-row flex-stack">
+							<!--begin::Copyright-->
+							<div class="text-dark order-2 order-md-1">
+								<span class="text-gray-400 fw-bold me-1">Created by</span>
+								<a href="https://powerkerto.com" target="_blank" class="text-muted text-hover-primary fw-bold me-2 fs-6">Powerkerto</a>
+							</div>
+							<!--end::Copyright-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Footer-->
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::Root-->
+		<!--end::Main-->
+		<script>var hostUrl = "assets/";</script>
+		<!--begin::Javascript-->
+		<!--begin::Global Javascript Bundle(used by all pages)-->
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src="assets/js/custom/widgets.js"></script>
+		<!--end::Page Custom Javascript-->
+		<!--end::Javascript-->
+	</body>
+	<!--end::Body-->
+</html>

@@ -13,6 +13,7 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CampaignController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,10 @@ Route::resource('announcements', AnnouncementController::class);
 Route::resource('roles', RoleController::class);
 
 Route::resource('statuses', StatusController::class);
+
+
+Route::resource('campaign', CampaignController::class)->middleware('auth');
+
 
 Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
