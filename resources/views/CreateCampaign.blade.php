@@ -118,20 +118,20 @@
 												<textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 											</div>
 										</div>
-                                        <div class="row align-items-center col-12 pb-5">
+                                        {{-- <div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputfu" class="col-form-label">Follow Up</label>
 											</div>
 											<div class="col-10">
 												<textarea type="text" name="fu" value="" id="inputfu" class="form-control" aria-describedby="fuHelpInline"></textarea>
 											</div>
-										</div>
+										</div> --}}
                                         <div class="row align-items-center col-12 pb-5" id="tittle">
                                             <div class="col-2">
 												<label for="inputtittle" class="col-form-label">Operator</label>
 											</div>
                                             <div class="col-10">
-                                                <!-- <form name="add_name" id="add_name">  
+                                                <!-- <form name="add_name" id="add_name">
                                                     <div class="alert alert-danger print-error-msg" style="display:none">
                                                         <ul></ul>
                                                     </div>
@@ -259,7 +259,7 @@
                     $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
                 });
             }
-            });  
+            });
         </script> -->
 
 
@@ -273,14 +273,14 @@
             function dynamic_field(number)
             {
             html = '<tr>';
-                    html += '<td><input type="text" name="first_name[]" class="form-control" /></td>';
+                    html += '<td><input type="text" name="operator[]" class="form-control" /></td>';
                     if(number > 1)
                     {
                         html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove">Remove</button></td></tr>';
                         $('tbody').append(html);
                     }
                     else
-                    {   
+                    {
                         html += '<td><button type="button" name="add" id="add" class="btn btn-success">Add</button></td></tr>';
                         $('tbody').html(html);
                     }
@@ -299,7 +299,7 @@
             $('#dynamic_form').on('submit', function(event){
                     event.preventDefault();
                     $.ajax({
-                        url:'',
+                        url:'{{ route("campaign.store") }}',
                         method:'post',
                         data:$(this).serialize(),
                         dataType:'json',

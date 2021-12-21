@@ -85,8 +85,7 @@ class CampaignController extends Controller
         if($request->ajax())
         {
             $rules = array(
-            'first_name.*'  => 'required',
-            'last_name.*'  => 'required'
+            'operator.*'  => 'required',
             );
             $error = Validator::make($request->all(), $rules);
             if($error->fails())
@@ -96,13 +95,11 @@ class CampaignController extends Controller
                 ]);
             }
 
-            $first_name = $request->first_name;
-            $last_name = $request->last_name;
-            for($count = 0; $count < count($first_name); $count++)
+            $operator = $request->operator;
+            for($count = 0; $count < count($operator); $count++)
             {
                 $data = array(
-                    'first_name' => $first_name[$count],
-                    'last_name'  => $last_name[$count]
+                    'first_name' => $operator[$count],
                 );
                 $insert_data[] = $data;
             }
