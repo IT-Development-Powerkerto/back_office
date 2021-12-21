@@ -1,4 +1,4 @@
-
+									
 									<!--begin::Tables Widget 9-->
 									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 600px">
 										<!--begin::Header-->
@@ -26,20 +26,6 @@
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
 													<div class="modal-body">
-
-													@if(session()->has('success'))
-														<div class="alert alert-success alert-dismissible fade show" role="alert">
-															{{ session('success') }}
-															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-														</div>
-													@endif
-
-													@if(session()->has('error'))
-														<div class="alert alert-danger alert-dismissible fade show" role="alert">
-															{{ session('error') }}
-															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-														</div>
-													@endif
 													<form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
                                                         @csrf
 														<div class="row align-items-center col-12 pb-5">
