@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Edit</title>
+		<title>Create Campaign</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -112,10 +112,10 @@
 										</div>
                                         <div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputmessage" class="col-form-label">Message</label>
+												<label for="inputtp" class="col-form-label">Thanks Page</label>
 											</div>
 											<div class="col-10">
-												<textarea type="text" name="message" value="" id="inputmessage" class="form-control" aria-describedby="messageHelpInline"></textarea>
+												<textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 											</div>
 										</div>
                                         <div class="row align-items-center col-12 pb-5" id="tittle">
@@ -133,7 +133,11 @@
                                                     <div class="table-responsive">  
                                                         <table class="table table-bordered" id="dynamic_field">  
                                                             <tr>  
-                                                                <td><input type="text" name="operator[]" placeholder="Enter your Operator" class="form-control name_list" /></td>  
+                                                                <td>
+                                                                    <select name="operator[]" id="fbe1" class="form-control">
+                                                                        <option value="">Costume</option>
+                                                                    </select>
+                                                                </td>
                                                                 <td><button type="button" name="add" id="add" class="btn btn-primary">Add More</button></td>  
                                                             </tr>  
                                                         </table>  
@@ -187,7 +191,7 @@
 
             $('#add').click(function(){  
                 i++;  
-                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="operator[]" placeholder="Enter your Operator" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><select name="operator[]" id="fbe1" class="form-control"><option value="">Costume</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
             });  
 
 
