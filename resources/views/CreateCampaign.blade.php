@@ -118,42 +118,14 @@
 												<textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 											</div>
 										</div>
-                                        <!-- <div class="row align-items-center col-12 pb-5">
+                                        <div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputtp" class="col-form-label">Operator</label>
 											</div>
 											<div class="col-10">
 												<input type="text" name="operator" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline">
 											</div>
-										</div> -->
 										</div>
-                                        <div class="row align-items-center col-12 pb-5" id="tittle">
-                                            <div class="col-2">
-												<label for="inputtittle" class="col-form-label">Operator</label>
-											</div>
-                                            <div class="col-10">
-                                                <form name="add_name" id="add_name">
-                                                    <div class="alert alert-danger print-error-msg" style="display:none">
-                                                        <ul></ul>
-                                                    </div>
-                                                    <div class="alert alert-success print-success-msg" style="display:none">
-                                                        <ul></ul>
-                                                    </div>
-                                                    <div class="table-responsive">
-                                                        <table class="table table-bordered" id="dynamic_field">
-                                                            <tr>
-                                                                <td>
-                                                                    <select name="operator[]" id="fbe1" class="form-control">
-                                                                        <option value="">Costume</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td><button type="button" name="add" id="add" class="btn btn-primary">Add More</button></td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div> 
 										{{ csrf_field() }}
 										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">
 									</form>
