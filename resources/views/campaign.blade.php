@@ -66,14 +66,14 @@
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 						<!--begin::Container-->
 						<div class="container-xxl" id="kt_content_container">
-							
+
 							<!--begin::Tables Widget 11-->
 							<div class="card card-xxl-stretch mb-5 mb-xl-8">
 								<!--begin::Header-->
 								<div class="card-header border-0 pt-5">
 									<h3 class="card-title align-items-start flex-column">
 										<span class="card-label fw-bolder fs-3 mb-1">Campign</span>
-										<span class="text-muted mt-1 fw-bold fs-7">10 Campign</span>
+										<span class="text-muted mt-1 fw-bold fs-7">{{$campaigns->count()}} Campign</span>
 									</h3>
 									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
 										<a href="/campaign/create" class="btn btn-sm btn-light btn-active-primary">
@@ -116,7 +116,7 @@
 														<div class="timeline-desc timeline-desc-light-primary mx-3">
 															<span class="fw-mormal text-gray-800">{{$campaigns->tittle}}</span>
 															<!-- <p class="fw-bolder pb-2">
-																https://mauorder.online/wa-generosku-2 
+																https://mauorder.online/wa-generosku-2
 															</p> -->
 														</div>
 													</td>
@@ -185,7 +185,7 @@
 		<!--end::Page Custom Javascript-->
 		<script src="//code.jquery.com/jquery.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script> 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 
 		<script id="document-template" type="text/x-handlebars-template">
 		<tr class="delete_add_more_item" id="delete_add_more_item">
@@ -201,9 +201,9 @@
 		</script>
 
 		<script type="text/javascript">
-		
+
 		$(document).on('click','#addMore',function(){
-			
+
 			$('.table').show();
 
 			var operator = $("#operator").val();\
@@ -217,14 +217,14 @@
 
 			var html = template(data);
 			$("#addRow").append(html)
-		
+
 			total_ammount_price();
 		});
 
 		$(document).on('click','.removeaddmore',function(event){
 			$(this).closest('.delete_add_more_item').remove();
 		});
-							
+
 		</script>
 		<!--end::Javascript-->
 	</body>
