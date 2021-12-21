@@ -133,24 +133,61 @@
 													</td>
 													<td>
 														<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-															<!-- <form action="" method="GET">
+															<form action="" method="GET">
 																@csrf
-																<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-primary btn-xs m-3 ">
-																	Edit
-																</button>
-															</form> -->
+																<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
+																	<div class="btn-group" role="group" aria-label="First group">
+																		<button type="submit" data-bs-toggle="modal" data-bs-target="" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
+																	</div>
+																</div>
+															</form>
+
+
+																<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
+																	<div class="btn-group" role="group" aria-label="First group">
+																		<button type="submit" data-bs-toggle="modal" data-bs-target="#add-operator" class="btn btn-success btn-icon"><i class="la la-users"></i></button>
+																	</div>
+																</div>
+
+
+															<div class="modal fade" tabindex="-1" id="add-operator">
+																<div class="modal-dialog">
+																	<div class="modal-content">
+																		<div class="modal-header">
+																			<h5 class="modal-title">Operator</h5>
+																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																		</div>
+																		<div class="modal-body">
+																			<form action="" method="post" enctype="multipart/form-data">
+																				@csrf
+																				<div class="row align-items-center col-12 pb-5">
+																					<div class="col-2">
+																						<label for="operator" class="col-form-label">Operator</label>
+																					</div>
+																					<div class="col-10">
+																						<select name="operator" id="operator" class="form-control">
+																							<option value="">CS1</option>
+																							<option value="">CS2</option>
+																							<option value="">CS3</option>
+																						</select>
+																					</div>
+																				</div>
+																				{{ csrf_field() }}
+																				<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Operator">
+																			</form>
+																		</div>
+																	</div>
+																</div>
+															</div>
+
 															<form action="" method="POST">
 																@csrf
 																@method('DELETE')
 																<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
 																	<div class="btn-group" role="group" aria-label="First group">
-																		<button type="button" class="btn btn-primary  btn-icon"><i class="la la-file-text-o"></i></button>
-																		<button type="button" class="btn btn-success btn-icon"><i class="la la-paperclip"></i></button>
-																		<button type="button" class="btn btn-warning btn-icon"><i class="la la-files-o"></i></button>
-																		<button type="button" class="btn btn-info btn-icon"><i class="la la-scissors"></i></button>
+																		<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
 																	</div>
 																</div>
-																<!-- <button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button> -->
 															</form>
 														</div>
 													</td>

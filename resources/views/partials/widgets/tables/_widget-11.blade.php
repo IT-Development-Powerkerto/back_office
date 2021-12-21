@@ -94,16 +94,14 @@
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-                                                                    <!-- <form action="" method="GET">
-                                                                        @csrf
-                                                                        <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-primary btn-xs m-3 ">
-                                                                            Edit
-                                                                        </button>
-                                                                    </form> -->
                                                                     <form action="{{ route('announcements.destroy', ['announcement'=>$announcement->id]) }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
-																	    <button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button>
+																	    <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+																			<div class="btn-group" role="group" aria-label="First group">
+																				<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
+																			</div>
+																		</div>
                                                                     </form>
 																</div>
 															</td>

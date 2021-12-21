@@ -21,79 +21,79 @@
 											<div class="modal fade" tabindex="-1" id="add-user">
 												<div class="modal-dialog">
 													<div class="modal-content">
-													<div class="modal-header">
-														<h5 class="modal-title">Add Staff</h5>
-														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-													</div>
-													<div class="modal-body">
-													<form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
-                                                        @csrf
-														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
-																<label for="inputFullname" class="col-form-label">Fullname</label>
-															</div>
-															<div class="col-10">
-																<input type="text" name="name" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline">
-															</div>
+														<div class="modal-header">
+															<h5 class="modal-title">Add Staff</h5>
+															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
-														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
-																<label for="inputEmail" class="col-form-label">Email</label>
-															</div>
-															<div class="col-10">
-																<input type="email" name="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
-															</div>
-														</div>
-														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
-																<label for="inputPhone" class="col-form-label">Phone</label>
-															</div>
-															<div class="col-10">
-																<input type="text" name="phone" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
-															</div>
-														</div>
-														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
-																<label for="inputUsername" class="col-form-label">Username</label>
-															</div>
-															<div class="col-10">
-																<input type="text" name="username" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
-															</div>
-														</div>
-														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
-																<label for="inputPassword6" class="col-form-label">Password</label>
-															</div>
-															<div class="col-10">
-																<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
-															</div>
-														</div>
-														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
-																<label for="inputRole" class="col-form-label">Role</label>
-															</div>
-															<div class="dropdown col-10">
-																<select name="role_id" id="role_id" class="form-control">
-                                                                    @foreach ($role as $role)
-                                                                    <option value={{$role->id}}>{{$role->name}}</option>
-                                                                    @endforeach
-																</select>
-															</div>
-														</div>
-														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
-																<label for="inputimage" class="col-form-label">Image</label>
-															</div>
-															<div class="dropdown col-10">
-																<div class="mb-3">
-																	<input class="form-control" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+														<div class="modal-body">
+															<form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
+																@csrf
+																<div class="row align-items-center col-12 pb-5">
+																	<div class="col-2">
+																		<label for="inputFullname" class="col-form-label">Fullname</label>
+																	</div>
+																	<div class="col-10">
+																		<input type="text" name="name" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline">
+																	</div>
 																</div>
-															</div>
+																<div class="row align-items-center col-12 pb-5">
+																	<div class="col-2">
+																		<label for="inputEmail" class="col-form-label">Email</label>
+																	</div>
+																	<div class="col-10">
+																		<input type="email" name="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
+																	</div>
+																</div>
+																<div class="row align-items-center col-12 pb-5">
+																	<div class="col-2">
+																		<label for="inputPhone" class="col-form-label">Phone</label>
+																	</div>
+																	<div class="col-10">
+																		<input type="text" name="phone" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
+																	</div>
+																</div>
+																<div class="row align-items-center col-12 pb-5">
+																	<div class="col-2">
+																		<label for="inputUsername" class="col-form-label">Username</label>
+																	</div>
+																	<div class="col-10">
+																		<input type="text" name="username" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
+																	</div>
+																</div>
+																<div class="row align-items-center col-12 pb-5">
+																	<div class="col-2">
+																		<label for="inputPassword6" class="col-form-label">Password</label>
+																	</div>
+																	<div class="col-10">
+																		<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+																	</div>
+																</div>
+																<div class="row align-items-center col-12 pb-5">
+																	<div class="col-2">
+																		<label for="inputRole" class="col-form-label">Role</label>
+																	</div>
+																	<div class="dropdown col-10">
+																		<select name="role_id" id="role_id" class="form-control">
+																			@foreach ($role as $role)
+																			<option value={{$role->id}}>{{$role->name}}</option>
+																			@endforeach
+																		</select>
+																	</div>
+																</div>
+																<div class="row align-items-center col-12 pb-5">
+																	<div class="col-2">
+																		<label for="inputimage" class="col-form-label">Image</label>
+																	</div>
+																	<div class="dropdown col-10">
+																		<div class="mb-3">
+																			<input class="form-control" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+																		</div>
+																	</div>
+																</div>
+																{{ csrf_field() }}
+																<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Staff">
+															</form>
 														</div>
-                                                        {{ csrf_field() }}
-													    <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Staff">
-													</form>
-													</div>
 													</div>
 												</div>
 											</div>
@@ -153,14 +153,20 @@
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
                                                                     <form action="{{ route('users.edit',['user' => $user->id]) }}" method="GET">
                                                                         @csrf
-                                                                        <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-info btn-xs m-3 ">
-                                                                            Edit
-                                                                        </button>
+																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
+																			<div class="btn-group" role="group" aria-label="First group">
+																				<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
+																			</div>
+																		</div>
                                                                     </form>
                                                                     <form action="{{ route('dashboard.destroy', ['dashboard'=>$user->id]) }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
-																	    <button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button>
+																		<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+																			<div class="btn-group" role="group" aria-label="First group">
+																				<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
+																			</div>
+																		</div>
                                                                     </form>
 																</div>
 
