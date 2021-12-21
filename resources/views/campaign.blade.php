@@ -100,7 +100,8 @@
 													<th class="min-w-200px">Name</th>
 													<th class="min-w-200px">Operators</th>
 													<th class="min-w-200px">Trafic</th>
-													<th class="min-w-100px text-end">Actions</th>
+													<th class="min-w-200px">Code</th>
+													<th class="min-w-200px text-end">Actions</th>
 												</tr>
 											</thead>
 											<!--end::Table head-->
@@ -129,6 +130,54 @@
 													</td>
 													<td>
 														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">0 View</label>
+													</td>
+													<td>
+														<textarea type="text" name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline" >
+<!doctype html>
+<html lang="en">
+<head>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<script>
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window, document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '{{$campaigns->facebook_pixel}}');
+	fbq('track', 'PageView');
+	{{$campaigns->event_pixel->event_pixel}}
+	</script>
+	<noscript>
+	<img height="1" width="1" style="display:none"
+		src="https://www.facebook.com/tr?-ev=PageView&noscript=1"/>
+	</noscript>
+
+	<title>Hello, world!</title>
+</head>
+<body>
+
+	<form action="https://api.pwkbackoffice.com/public/api/clients" method="POST">
+	<div class="mb-3">
+			<label for="exampleInputNama" class="form-label">Nama Lengkap</label>
+		<input type="nama" name="name" class="form-control" id="exampleInputNama" aria-describedby="namaHelp">
+	</div>
+	<div class="mb-3">
+			<label for="exampleInputWhatsapp" class="form-label">No. Whatsapp</label>
+			<input type="text" name="whatsapp" class="form-control" id="exampleInputWhatsapp">
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>
+														</textarea>
 													</td>
 													<td>
 														<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
@@ -193,77 +242,6 @@
 																	</div>
 																</div>
 															</div>
-
-															<div class="btn-toolbar justify-content-between ms-2" role="toolbar" aria-label="Toolbar with button groups">
-																<div class="btn-group" role="group" aria-label="First group">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#html-code" class="btn btn-info btn-icon"><i class="la la-code"></i></button>
-																</div>
-															</div>
-
-															<div class="modal fade" tabindex="-1" id="html-code">
-																<div class="modal-dialog">
-																	<div class="modal-content">
-																		<div class="modal-header">
-																			<h5 class="modal-title">Script</h5>
-																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-																		</div>
-																		<div class="modal-body">
-																			<!-- FB PIXEL -->
-																			<form action="" method="get">
-																				<textarea type="text" name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline" style="height: 600px">
-
-																					<!doctype html>
-																					<html lang="en">
-																					<head>
-
-																						<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-																						<script>
-																						!function(f,b,e,v,n,t,s)
-																						{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-																						n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-																						if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-																						n.queue=[];t=b.createElement(e);t.async=!0;
-																						t.src=v;s=b.getElementsByTagName(e)[0];
-																						s.parentNode.insertBefore(t,s)}(window, document,'script',
-																						'https://connect.facebook.net/en_US/fbevents.js');
-																						fbq('init', '{{$campaigns->facebook_pixel}}');
-                                                                                        fbq('track', 'PageView');
-																						{{$campaigns->event_pixel->event_pixel}}
-																						</script>
-																						<noscript>
-																						<img height="1" width="1" style="display:none"
-																							src="https://www.facebook.com/tr?-ev=PageView&noscript=1"/>
-																						</noscript>
-
-																						<title>Hello, world!</title>
-																					</head>
-																					<body>
-
-																						<form action="https://api.pwkbackoffice.com/public/api/clients" method="POST">
-																						<div class="mb-3">
-																								<label for="exampleInputNama" class="form-label">Nama Lengkap</label>
-																							<input type="nama" name="name" class="form-control" id="exampleInputNama" aria-describedby="namaHelp">
-																						</div>
-																						<div class="mb-3">
-																								<label for="exampleInputWhatsapp" class="form-label">No. Whatsapp</label>
-																								<input type="text" name="whatsapp" class="form-control" id="exampleInputWhatsapp">
-																						</div>
-																						<button type="submit" class="btn btn-primary">Submit</button>
-																						</form>
-
-																						<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-																					</body>
-																					</html>
-
-																				</textarea>
-																			</form>
-																		</div>
-																	</div>
-																</div>
-															</div>
-
 
 															<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																<div class="btn-group" role="group" aria-label="First group">
