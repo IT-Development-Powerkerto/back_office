@@ -71,5 +71,6 @@ class Kernel extends HttpKernel
         'manager' => \App\Http\Middleware\ManagerMiddleware::class,
         'hrd' => \App\Http\Middleware\HrdMiddleware::class,
         'it' => \App\Http\Middleware\ItMiddleware::class,
+        'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
     ];
 }

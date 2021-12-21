@@ -115,6 +115,15 @@ class UserController extends Controller
         return redirect('/dashboard')->with('success','Successull! User Deleted');
     }
 
+    public function changeStatus(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->status_id = $request->status;
+        $user->save();
+
+        return response()->json(['success'=>'Status change successfully.']);
+    }
+
     public function select(Request $request)
     {
         $roles = [];

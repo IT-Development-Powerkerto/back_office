@@ -126,6 +126,24 @@ License: For each use you must have a valid license purchased only from above li
             });
         });
     </script>
+    <script>
+        $(function() {
+          $('.toggle-class').change(function() {
+              var status = $(this).prop('checked') == true ? 1 : 2;
+              var user_id = $(this).data('id');
+
+              $.ajax({
+                  type: "GET",
+                  dataType: "json",
+                  url: '/changeStatus',
+                  data: {'status': status, 'user_id': user_id},
+                  success: function(data){
+                    console.log(data.success)
+                  }
+              });
+          })
+        })
+      </script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
 </body>

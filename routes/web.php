@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
-use App\Models\Post;
-use App\Models\User;
-use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
@@ -62,6 +60,7 @@ Route::resource('/dashboard/blog', DashboardPostController::class)->middleware('
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 
 Route::resource('users', UserController::class);
+Route::get('changeStatus', [UserController::class, 'changeStatus']);
 //Route::resource('/dasboard', DashboardController::class);
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
