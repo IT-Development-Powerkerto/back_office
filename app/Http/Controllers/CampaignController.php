@@ -39,6 +39,11 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
+        // for ($i = 1; $i < count($request->operator); $i++) {
+        //     $operators[] = [
+        //         'operator' => $request->operator[$i],
+        //     ];
+        // }
 
         DB::table('campigns')->insert([
             'tittle'     => $request->tittle,
