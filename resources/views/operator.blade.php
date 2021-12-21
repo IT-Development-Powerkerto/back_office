@@ -75,7 +75,7 @@
 										<span class="text-muted mt-1 fw-bold fs-7">1 Operator</span>
 									</h3>
 									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
-										<a href="/campaign/create" class="btn btn-sm btn-light btn-active-primary">
+										<a href="/operator/create " class="btn btn-sm btn-light btn-active-primary">
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 										<span class="svg-icon svg-icon-3">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -97,7 +97,7 @@
 											<thead>
 												<tr class="fw-bolder text-muted">
 													<th class="min-w-30px">No</th>
-													<th class="min-w-30px">Status</th>
+													<!-- <th class="min-w-30px">Status</th> -->
 													<th class="min-w-200px">Name</th>
 													<th class="min-w-200px">Type</th>
 													<th class="min-w-200px">Assign To</th>
@@ -112,11 +112,7 @@
 													<td>
 														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">1</label>                                               
 													</td>
-													<td>
-														<!-- <div class="d-flex align-items-center">
-															<label for="">WA Generosku</label>
-															<h1 class="text-dark fw-bolder text-hover-primary fs-6">https://mauorder.online/wa-generosku-2 </h1>
-														</div> -->
+													<!-- <td>
 														<div class="timeline-desc timeline-desc-light-primary mx-3">
                                                             <div class="menu-content">
                                                                 <label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
@@ -126,7 +122,7 @@
                                                                 </label>
                                                             </div>
 														</div>
-													</td>
+													</td> -->
 													<td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
                                                             <span class="fw-mormal text-gray-800">CS Zall</span>

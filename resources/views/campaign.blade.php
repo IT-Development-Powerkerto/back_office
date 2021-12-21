@@ -98,8 +98,8 @@
 												<tr class="fw-bolder text-muted">
 													<th class="min-w-50px">No</th>
 													<th class="min-w-200px">Name</th>
-													<th class="min-w-120px">Operators</th>
-													<th class="min-w-120px">Trafic</th>
+													<th class="min-w-200px">Operators</th>
+													<th class="min-w-200px">Trafic</th>
 													<th class="min-w-100px text-end">Actions</th>
 												</tr>
 											</thead>
