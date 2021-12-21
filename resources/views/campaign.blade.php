@@ -118,7 +118,7 @@
 															<h1 class="text-dark fw-bolder text-hover-primary fs-6">https://mauorder.online/wa-generosku-2 </h1>
 														</div> -->
 														<div class="timeline-desc timeline-desc-light-primary mx-3">
-															<span class="fw-mormal text-gray-800">{{$campaigns->tittle}}</span>
+															<span class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$campaigns->tittle}}</span>
 															<!-- <p class="fw-bolder pb-2">
 																https://mauorder.online/wa-generosku-2
 															</p> -->
