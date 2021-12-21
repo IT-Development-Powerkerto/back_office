@@ -153,7 +153,7 @@
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
                                                                     <form action="{{ route('users.edit',['user' => $user->id]) }}" method="GET">
                                                                         @csrf
-																		<div class="btn-toolbar justify-content-between px-5" role="toolbar" aria-label="Toolbar with button groups">
+																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																			<div class="btn-group" role="group" aria-label="First group">
 																				<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
 																			</div>
