@@ -20,7 +20,7 @@
 		<div class="menu-item py-5">
 			<div class="menu-content">
 				<label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
-					<input class="form-check-input w-30px h-20px toggle-class" type="checkbox" name="mode" data-toggle="toggle" data-on="Active" data-off="InActive" {{ Auth()->user()->status_id ? 'checked' : '' }}/>
+					<input data-id="{{Auth()->user()->id}}" class="form-check-input w-30px h-20px" type="checkbox" name="status" data-toggle="toggle" data-on="1" data-off="0" {{ Auth()->user()->status_id ? 'checked' : '' }}/>
 					<span class="pulse-ring ms-n1"></span>
 					<span class="form-check-label text-gray-600 fs-7"></span>
 				</label>
