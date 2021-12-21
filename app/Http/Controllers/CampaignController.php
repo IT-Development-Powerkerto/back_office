@@ -94,17 +94,16 @@ class CampaignController extends Controller
      */
     public function update(Request $request, $campaign)
     {
-        DB::table('users')->where('id', $campaign)->update([
+        DB::table('campigns')->where('id', $campaign)->update([
             'user_id'           => Auth()->user()->id,
             'tittle'            => $request->tittle,
             'message'           => $request->tp,
             'facebook_pixel'    => $request->fbp,
             'event_pixel_id'    => $request->event_id,
-            'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
 
-        return redirect('/dashboard')->with('success','Successull! User Updated');
+        return redirect('/campaign')->with('success','Successull! Campaign Updated');
     }
 
     /**

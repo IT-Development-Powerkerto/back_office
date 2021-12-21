@@ -9,6 +9,7 @@ class EventPixel extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'name',
         'even_pixel',
         ];
 

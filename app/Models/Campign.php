@@ -19,4 +19,8 @@ class Campign extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function event_pixel(){
+        return $this->belongsTo(EventPixel::class);
+    }
 }

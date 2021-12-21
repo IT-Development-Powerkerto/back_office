@@ -110,7 +110,7 @@
 												@foreach ($campaigns as $campaigns)
 												<tr>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$n+=1}}</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$n+=1}}</label>
 													</td>
 													<td>
 														<!-- <div class="d-flex align-items-center">
@@ -142,19 +142,19 @@
 																<div class="modal-dialog">
 																	<div class="modal-content">
 																		<div class="modal-header">
-																			<h5 class="modal-title">Operator</h5>
+																			<h5 class="modal-title">Campaign</h5>
 																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																		</div>
 																		<div class="modal-body">
-																			<form action="" method="POST">
+																			<form action="{{ route('campaign.update',['campaign' => $campaigns->id]) }}" method="POST">
 																				@csrf
-
+                                                                                @method('PATCH')
 																				<div class="row align-items-center col-12 pb-5">
 																					<div class="col-2">
 																						<label for="inputtittle" class="col-form-label">Tittle</label>
 																					</div>
 																					<div class="col-10">
-																						<input type="text" name="tittle" value="" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+																						<input type="text" name="tittle" value="{{ old('tittle') ?? $campaigns->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
 																					</div>
 																				</div>
 																				<div class="row align-items-center col-12 pb-5">
@@ -162,7 +162,7 @@
 																						<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
 																					</div>
 																					<div class="col-10">
-																						<input type="text" name="fbp" value="" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
+																						<input type="text" name="fbp" value="{{ old('facebook_pixel') ?? $campaigns->facebook_pixel }}" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
 																					</div>
 																				</div>
 																				<div class="row align-items-center col-12 pb-5">
@@ -170,9 +170,12 @@
 																						<label for="inputRole" class="col-form-label">Facebook Event</label>
 																					</div>
 																					<div class="dropdown col-10">
-																						<select name="fbe" id="fbe1" class="form-control">
-																							<option value="">Costume</option>
-																						</select>
+																						<select name="event_id" id="event_id" class="form-control">
+                                                                                            <option disable selected value="{{ $campaigns->event_pixel_id }}" hidden>{{$campaigns->event_pixel->name}}</option>
+                                                                                            @foreach ($event as $event)
+                                                                                            <option value="{{ $event->id }}">{{$event->name}}</option>
+                                                                                            @endforeach
+                                                                                        </select>
 																					</div>
 																				</div>
 																				<div class="row align-items-center col-12 pb-5">
@@ -180,7 +183,7 @@
 																						<label for="inputtp" class="col-form-label">Thanks Page</label>
 																					</div>
 																					<div class="col-10">
-																						<textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
+																						<textarea type="text" name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline">{{ old('message') ?? $campaigns->message }}</textarea>
 																					</div>
 																				</div>
 																				{{ csrf_field() }}
@@ -325,6 +328,22 @@
 
 		</script>
 		<!--end::Javascript-->
+        <script>
+            $(document).ready(function() {
+                $('#event_id').on('change', function() {
+                    var eventId = $(this).val();
+                    if(eventId) {
+                        $.ajax({
+                            url: '/getEvent/'+eventId,
+                            type: "GET",
+                            data : {"_token":"{{ csrf_token() }}"},
+                            dataType: "json",
+                            success:function(data)
+                        });
+                    }
+                });
+            });
+        </script>
 	</body>
 	<!--end::Body-->
 </html>

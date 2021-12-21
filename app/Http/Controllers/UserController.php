@@ -95,7 +95,6 @@ class UserController extends Controller
             'password'  => Hash::make($request->password),
             'image'     => $image,
             'status_id' => 1,
-            'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
 
