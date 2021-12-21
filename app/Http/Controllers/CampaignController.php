@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Campign;
+use Illuminate\Support\Facades\Validator;
 
 
 class CampaignController extends Controller
@@ -42,7 +43,7 @@ class CampaignController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
 
-        if ($validator->passes()) {
+        if ($validator) {
 
 
             foreach($request->input('operator') as $key => $value) {
