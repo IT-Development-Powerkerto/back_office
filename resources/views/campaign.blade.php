@@ -97,7 +97,8 @@
 											<!--begin::Table head-->
 											<thead>
 												<tr class="fw-bolder text-muted">
-													<th class="min-w-140px">Name</th>
+													<th class="min-w-50px">No</th>
+													<th class="min-w-200px">Name</th>
 													<th class="min-w-120px">Operators</th>
 													<th class="min-w-120px">Trafic</th>
 													<th class="min-w-100px text-end">Actions</th>
@@ -108,6 +109,9 @@
 											<tbody>
 												@foreach ($campaigns as $campaigns)
 												<tr>
+													<td>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">1</label>
+													</td>
 													<td>
 														<!-- <div class="d-flex align-items-center">
 															<label for="">WA Generosku</label>
@@ -137,7 +141,15 @@
 															<form action="" method="POST">
 																@csrf
 																@method('DELETE')
-																<button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button>
+																<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+																	<div class="btn-group" role="group" aria-label="First group">
+																		<button type="button" class="btn btn-primary  btn-icon"><i class="la la-file-text-o"></i></button>
+																		<button type="button" class="btn btn-success btn-icon"><i class="la la-paperclip"></i></button>
+																		<button type="button" class="btn btn-warning btn-icon"><i class="la la-files-o"></i></button>
+																		<button type="button" class="btn btn-info btn-icon"><i class="la la-scissors"></i></button>
+																	</div>
+																</div>
+																<!-- <button type="submit" class="btn btn-danger btn-xs m-3" value="Delete"  onclick="return confirm('Jadi Delete Kah ?')">Delete</button> -->
 															</form>
 														</div>
 													</td>
