@@ -120,20 +120,6 @@
 										</div>
                                         <div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-<<<<<<< HEAD
-												<label for="inputtp" class="col-form-label">Operator</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="operator" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline">
-											</div>
-										</div>
-                                        {{-- <div class="row align-items-center col-12 pb-5" id="tittle">
-                                            <div class="col-2">
-												<label for="inputtittle" class="col-form-label">Operator</label>
-											</div>
-                                            {{-- <div class="col-10">
-                                                <form name="add_name" id="add_name">
-=======
 												<label for="inputfu" class="col-form-label">Follow Up</label>
 											</div>
 											<div class="col-10">
@@ -146,7 +132,6 @@
 											</div>
                                             <div class="col-10">
                                                 <!-- <form name="add_name" id="add_name">  
->>>>>>> 7c752494befe137e8077a0be2e21d8eec8f203c7
                                                     <div class="alert alert-danger print-error-msg" style="display:none">
                                                         <ul></ul>
                                                     </div>
@@ -169,15 +154,7 @@
                                                 <form method="post" id="dynamic_form">
                                                     <span id="result"></span>
                                                     <table  id="user_table">
-                                                        <thead class="mx-3">
-                                                            <tr>
-                                                                <th width="100%">Operator</th>
-                                                                <th width="30%">Action</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-
-                                                        </tbody>
+                                                        <tbody></tbody>
                                                         <tfoot>
                                                             <tr>
                                                                 <td colspan="2" align="right">&nbsp;</td>
@@ -186,7 +163,7 @@
                                                     </table>
                                                 </form>
                                             </div>
-                                        </div> --}}
+                                        </div>
 										{{ csrf_field() }}
 										<input type="submit" name="save" id="save" class="btn btn-primary mt-5 float-end me-6" value="Create">
 									</form>
@@ -225,13 +202,8 @@
 		<script src="../assets/js/custom/widgets.js"></script>
 		<!--end::Page Custom Javascript-->
 
-<<<<<<< HEAD
         <script type="text/javascript">
             $(document).ready(function(){
-=======
-        <!-- <script type="text/javascript">
-            $(document).ready(function(){      
->>>>>>> 7c752494befe137e8077a0be2e21d8eec8f203c7
             var postURL = "<?php echo url('addmore'); ?>";
             var i=1;
 
@@ -287,8 +259,6 @@
                     $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
                 });
             }
-<<<<<<< HEAD
-=======
             });  
         </script> -->
 
@@ -357,7 +327,6 @@
                     })
             });
 
->>>>>>> 7c752494befe137e8077a0be2e21d8eec8f203c7
             });
         </script>
 		<!--end::Javascript-->
