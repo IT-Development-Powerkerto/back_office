@@ -73,42 +73,14 @@ class CampaignController extends Controller
         //     ];
         // }
 
-        // DB::table('campigns')->insert([
-        //     'tittle'     => $request->tittle,
-        //     'operator'  => $request->operator,
-        //     'message'   => $request->tp,
-        //     'facebook_pixel'  => $request->fbp,
-        //     'event_pixel_id' => 3,
-        // ]);
-        // return redirect('/campaign')->with('success','Successfull! Campaign Added');
-
-        if($request->ajax())
-        {
-            $rules = array(
-            'operator.*'  => 'required',
-            );
-            $error = Validator::make($request->all(), $rules);
-            if($error->fails())
-            {
-                return response()->json([
-                    'error'  => $error->errors()->all()
-                ]);
-            }
-
-            $operator = $request->operator;
-            for($count = 0; $count < count($operator); $count++)
-            {
-                $data = array(
-                    'first_name' => $operator[$count],
-                );
-                $insert_data[] = $data;
-            }
-
-            Campign::insert($insert_data);
-            return response()->json([
-            'success'  => 'Data Added successfully.'
-            ]);
-        }
+        DB::table('campigns')->insert([
+            'tittle'     => $request->tittle,
+            'operator'  => $request->operator,
+            'message'   => $request->tp,
+            'facebook_pixel'  => $request->fbp,
+            'event_pixel_id' => 3,
+        ]);
+        return redirect('/campaign')->with('success','Successfull! Campaign Added');
     }
 
     /**
