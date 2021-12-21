@@ -118,6 +118,14 @@
 												<textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 											</div>
 										</div>
+                                        <div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputfu" class="col-form-label">Follow Up</label>
+											</div>
+											<div class="col-10">
+												<textarea type="text" name="fu" value="" id="inputfu" class="form-control" aria-describedby="fuHelpInline"></textarea>
+											</div>
+										</div>
                                         <div class="row align-items-center col-12 pb-5" id="tittle">
                                             <div class="col-2">
 												<label for="inputtittle" class="col-form-label">Operator</label>
