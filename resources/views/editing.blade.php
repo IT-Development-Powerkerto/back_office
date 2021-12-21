@@ -294,7 +294,7 @@
 												<label for="inputPassword6" class="col-form-label">Password</label>
 											</div>
 											<div class="col-10">
-												<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+												<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" required>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">

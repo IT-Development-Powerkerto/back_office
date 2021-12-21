@@ -24,15 +24,16 @@
 												<!--begin::Menu item-->
 												<div class="menu-item px-5">
 													<a href="{{ route('users.index') }}" class="menu-link px-5">My Profile</a>
+													<a href="{{ route('campaign.index') }}" class="menu-link px-5">Campaign</a>
 												</div>
 												<!--end::Menu item-->
 
 												<!--begin::Menu item-->
-												<div class="menu-item px-5">
-												<form action="/logout" method="POST">
-												@csrf
-													<button type="submit" class="nav-link px-5 bg-light border-0"><span data-feather="log-out"></span> Logout</button>
-												</form>
+												<div class="menu-link px-5 py-5 d-flex justify-content-center">
+													<form action="/logout" method="POST">
+													@csrf
+														<button type="submit" class="nav-link px-5 bg-light border-0 "><span data-feather="log-out"></span> Logout</button>
+													</form>
 												</div>
 												<!--end::Menu item-->
 											</div>

@@ -167,7 +167,7 @@
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
                                                                     <form action="{{ route('users.edit',['user' => $user->id]) }}" method="GET">
                                                                         @csrf
-                                                                        <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-primary btn-xs m-3 ">
+                                                                        <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-outline-info btn-xs m-3 ">
                                                                             Edit
                                                                         </button>
                                                                     </form>
