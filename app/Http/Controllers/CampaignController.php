@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Campign;
+use App\Models\EventPixel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 
 class CampaignController extends Controller
@@ -18,7 +21,8 @@ class CampaignController extends Controller
     public function index()
     {
         $campaigns = Campign::all();
-        return view('campaign')->with('campaigns', $campaigns);
+        $events = EventPixel::all();
+        return view('campaign', ['event'=>$events])->with('campaigns', $campaigns);
     }
 
     /**
@@ -28,7 +32,8 @@ class CampaignController extends Controller
      */
     public function create()
     {
-        return view ('CreateCampaign');
+        $events = EventPixel::all();
+        return view ('CreateCampaign',['event'=>$events]);
 
     }
 
@@ -47,10 +52,13 @@ class CampaignController extends Controller
         // }
 
         DB::table('campigns')->insert([
-            'tittle'     => $request->tittle,
-            'message'   => $request->tp,
+            'user_id'         => Auth()->user()->id,
+            'tittle'          => $request->tittle,
+            'message'         => $request->tp,
             'facebook_pixel'  => $request->fbp,
-            'event_pixel_id' => 3,
+            'event_pixel_id'  => $request->event_id,
+            'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
         return redirect('/campaign')->with('success','Successfull! Campaign Added');
     }
@@ -84,9 +92,19 @@ class CampaignController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $campaign)
     {
-        //
+        DB::table('users')->where('id', $campaign)->update([
+            'user_id'           => Auth()->user()->id,
+            'tittle'            => $request->tittle,
+            'message'           => $request->tp,
+            'facebook_pixel'    => $request->fbp,
+            'event_pixel_id'    => $request->event_id,
+            'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+
+        return redirect('/dashboard')->with('success','Successull! User Updated');
     }
 
     /**

@@ -104,11 +104,13 @@
 											<div class="col-2">
 												<label for="inputRole" class="col-form-label">Facebook Event</label>
 											</div>
-											<div class="dropdown col-10">
-												<select name="fbe" id="fbe1" class="form-control">
-													<option value="">Costume</option>
-												</select>
-											</div>
+                                            <div class="dropdown col-10">
+                                                <select name="event_id" id="event_id" class="form-control">
+                                                    @foreach ($event as $event)
+                                                    <option value={{$event->id}}>{{$event->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
 										</div>
                                         <div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
@@ -155,7 +157,23 @@
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="../assets/js/custom/widgets.js"></script>
 		<!--end::Page Custom Javascript-->
-        
+
+        <script>
+            $(document).ready(function() {
+                $('#event_id').on('change', function() {
+                    var eventId = $(this).val();
+                    if(eventId) {
+                        $.ajax({
+                            url: '/getEvent/'+eventId,
+                            type: "GET",
+                            data : {"_token":"{{ csrf_token() }}"},
+                            dataType: "json",
+                            success:function(data)
+                        });
+                    }
+                });
+            });
+        </script>
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
