@@ -81,9 +81,9 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form action="" method="POST" enctype="multipart/form-data">
+									<form action="{{route('campaign.store')}}" method="POST">
 										@csrf
-										@method('PATCH')
+
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputtittle" class="col-form-label">Tittle</label>
@@ -118,33 +118,41 @@
 												<textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 											</div>
 										</div>
-                                        <div class="row align-items-center col-12 pb-5" id="tittle">
+                                        <div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputtp" class="col-form-label">Operator</label>
+											</div>
+											<div class="col-10">
+												<input type="text" name="operator" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline">
+											</div>
+										</div>
+                                        {{-- <div class="row align-items-center col-12 pb-5" id="tittle">
                                             <div class="col-2">
 												<label for="inputtittle" class="col-form-label">Operator</label>
 											</div>
-                                            <div class="col-10">
-                                                <form name="add_name" id="add_name">  
+                                            {{-- <div class="col-10">
+                                                <form name="add_name" id="add_name">
                                                     <div class="alert alert-danger print-error-msg" style="display:none">
                                                         <ul></ul>
                                                     </div>
                                                     <div class="alert alert-success print-success-msg" style="display:none">
                                                         <ul></ul>
                                                     </div>
-                                                    <div class="table-responsive">  
-                                                        <table class="table table-bordered" id="dynamic_field">  
-                                                            <tr>  
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered" id="dynamic_field">
+                                                            <tr>
                                                                 <td>
                                                                     <select name="operator[]" id="fbe1" class="form-control">
                                                                         <option value="">Costume</option>
                                                                     </select>
                                                                 </td>
-                                                                <td><button type="button" name="add" id="add" class="btn btn-primary">Add More</button></td>  
-                                                            </tr>  
-                                                        </table>  
+                                                                <td><button type="button" name="add" id="add" class="btn btn-primary">Add More</button></td>
+                                                            </tr>
+                                                        </table>
                                                     </div>
                                                 </form>
                                             </div>
-                                        </div>
+                                        </div> --}}
 										{{ csrf_field() }}
 										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">
 									</form>
@@ -184,21 +192,21 @@
 		<!--end::Page Custom Javascript-->
 
         <script type="text/javascript">
-            $(document).ready(function(){      
+            $(document).ready(function(){
             var postURL = "<?php echo url('addmore'); ?>";
-            var i=1;  
+            var i=1;
 
 
-            $('#add').click(function(){  
-                i++;  
-                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><select name="operator[]" id="fbe1" class="form-control"><option value="">Costume</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
-            });  
+            $('#add').click(function(){
+                i++;
+                $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><select name="operator[]" id="fbe1" class="form-control"><option value="">Costume</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+            });
 
 
-            $(document).on('click', '.btn_remove', function(){  
-                var button_id = $(this).attr("id");   
-                $('#row'+button_id+'').remove();  
-            });  
+            $(document).on('click', '.btn_remove', function(){
+                var button_id = $(this).attr("id");
+                $('#row'+button_id+'').remove();
+            });
 
 
             $.ajaxSetup({
@@ -208,13 +216,13 @@
             });
 
 
-            $('#submit').click(function(){            
-                $.ajax({  
-                        url:postURL,  
-                        method:"POST",  
+            $('#submit').click(function(){
+                $.ajax({
+                        url:postURL,
+                        method:"POST",
                         data:$('#add_name').serialize(),
                         type:'json',
-                        success:function(data)  
+                        success:function(data)
                         {
                             if(data.error){
                                 printErrorMsg(data.error);
@@ -227,9 +235,9 @@
                                 $(".print-error-msg").css('display','none');
                                 $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
                             }
-                        }  
-                });  
-            });  
+                        }
+                });
+            });
 
 
             function printErrorMsg (msg) {
@@ -240,7 +248,7 @@
                     $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
                 });
             }
-            });  
+            });
         </script>
 		<!--end::Javascript-->
 	</body>
