@@ -208,6 +208,7 @@
 																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																		</div>
 																		<div class="modal-body">
+																			<!-- FB PIXEL -->
 																			<form action="" method="post" enctype="multipart/form-data">
 																				<textarea type="text" name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline" style="height: 600px">
 
