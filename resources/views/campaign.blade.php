@@ -209,7 +209,7 @@
 																		</div>
 																		<div class="modal-body">
 																			<!-- FB PIXEL -->
-																			<form action="" method="post" enctype="multipart/form-data">
+																			<form action="" method="get">
 																				<textarea type="text" name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline" style="height: 600px">
 
 																					<!doctype html>
@@ -228,6 +228,7 @@
 																						s.parentNode.insertBefore(t,s)}(window, document,'script',
 																						'https://connect.facebook.net/en_US/fbevents.js');
 																						fbq('init', '{{$campaigns->facebook_pixel}}');
+                                                                                        fbq('track', 'PageView');
 																						{{$campaigns->event_pixel->event_pixel}}
 																						</script>
 																						<noscript>
