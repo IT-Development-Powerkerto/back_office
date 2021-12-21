@@ -97,7 +97,6 @@
 											<!--begin::Table head-->
 											<thead>
 												<tr class="fw-bolder text-muted">
-													<th class="min-w-100px">No</th>
 													<th class="min-w-140px">Name</th>
 													<th class="min-w-120px">Operators</th>
 													<th class="min-w-120px">Trafic</th>
@@ -107,28 +106,22 @@
 											<!--end::Table head-->
 											<!--begin::Table body-->
 											<tbody>
+												@foreach ($campaigns as $campaigns)
 												<tr>
-													<td>
-														<div class="d-flex align-items-center">
-															<div class="d-flex justify-content-start flex-column">
-																<label class="text-dark fw-bolder text-hover-primary fs-6">1</label>
-															</div>
-														</div>
-													</td>
 													<td>
 														<!-- <div class="d-flex align-items-center">
 															<label for="">WA Generosku</label>
 															<h1 class="text-dark fw-bolder text-hover-primary fs-6">https://mauorder.online/wa-generosku-2 </h1>
 														</div> -->
 														<div class="timeline-desc timeline-desc-light-primary mx-3">
-															<span class="fw-mormal text-gray-800">WA Generosku</span>
-															<p class="fw-bolder pb-2">
+															<span class="fw-mormal text-gray-800">{{$campaigns->tittle}}</span>
+															<!-- <p class="fw-bolder pb-2">
 																https://mauorder.online/wa-generosku-2 
-															</p>
+															</p> -->
 														</div>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">2 Operator</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">0 Operator</label>
 													</td>
 													<td>
 														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">0 View</label>
@@ -149,6 +142,7 @@
 														</div>
 													</td>
 												</tr>
+												@endforeach
 											</tbody>
 											<!--end::Table body-->
 										</table>

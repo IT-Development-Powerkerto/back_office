@@ -17,7 +17,8 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        return view('campaign');
+        $campaigns = Campign::all();
+        return view('campaign')->with('campaigns', $campaigns);
     }
 
     /**
@@ -47,7 +48,6 @@ class CampaignController extends Controller
 
         DB::table('campigns')->insert([
             'tittle'     => $request->tittle,
-            'operator'  => $request->operator,
             'message'   => $request->tp,
             'facebook_pixel'  => $request->fbp,
             'event_pixel_id' => 3,
