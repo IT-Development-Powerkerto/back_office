@@ -16,7 +16,6 @@ class CreateCampignsTable extends Migration
         Schema::create('campigns', function (Blueprint $table) {
             $table->id();
             $table->string('tittle');
-            $table->foreignId('operator');
             $table->string('message');
             $table->string('facebook_pixel');
             $table->foreignId('event_pixel_id');

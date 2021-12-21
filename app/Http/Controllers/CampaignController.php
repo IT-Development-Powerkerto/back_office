@@ -47,7 +47,6 @@ class CampaignController extends Controller
 
         DB::table('campigns')->insert([
             'tittle'     => $request->tittle,
-            'operator'  => $request->operator,
             'message'   => $request->tp,
             'facebook_pixel'  => $request->fbp,
             'event_pixel_id' => 3,
