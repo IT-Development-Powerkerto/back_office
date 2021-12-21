@@ -76,7 +76,7 @@ Route::resource('statuses', StatusController::class);
 
 
 Route::resource('campaign', CampaignController::class)->middleware('auth');
-Route::post("/create/campaign", [CampaignController::class, 'addMorePost']);
+//Route::post("/campaign", [CampaignController::class, 'addMorePost']);
 
 
 Route::get('getRole/{id}', function ($id) {
