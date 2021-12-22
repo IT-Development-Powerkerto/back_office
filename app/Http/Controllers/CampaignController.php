@@ -83,8 +83,9 @@ class CampaignController extends Controller
      */
     public function edit($id)
     {
-        $result = Campign::findOrFail($id);
-        return view('EditingCampaign',['campaign' => $result]);
+        $campaigns = Campign::findOrFail($id);
+        $event = EventPixel::all();
+        return view('EditingCampaign',['campaign' => $campaigns])->with('event', $event);
     }
 
     /**
