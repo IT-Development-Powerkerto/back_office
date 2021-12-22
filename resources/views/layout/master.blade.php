@@ -5,9 +5,12 @@
 	<div class="page d-flex flex-row flex-column-fluid">
 
 		<!--begin::Wrapper-->
-		<div class="d-flex flex-column flex-row-fluid wrapper">
+		<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 
 			@include('layout/header/_base')
+
+
+			@include('layout/_toolbar')
 
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -28,9 +31,6 @@
 <!--begin::Drawers-->
 
 @include('layout/topbar/partials/_activity-drawer')
-
-
-
 
 
 <!--begin::Chat drawer-->

@@ -1,4 +1,4 @@
-
+											
 											<!--begin::Menu-->
 											<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
 												<!--begin::Menu item-->
@@ -12,7 +12,7 @@
 														<!--begin::Username-->
 														<div class="d-flex flex-column">
 															<div class="fw-bolder d-flex align-items-center fs-5">{{ Auth()->user()->name }}</div>
-															<p class="fw-bold text-muted text-hover-primary fs-7">{{ Auth()->user()->role->name }}</p>
+															<a href="#" class="fw-bold text-muted text-hover-primary fs-7">{{ Auth()->user()->role->name }}</a>
 														</div>
 														<!--end::Username-->
 													</div>
@@ -25,18 +25,22 @@
 												<div class="menu-item px-5">
 													<a href="{{ route('dashboard.index') }}" class="menu-link px-5">Dashboard</a>
 													<a href="{{ route('users.index') }}" class="menu-link px-5">My Profile</a>
-													<a href="{{ route('campaign.index') }}" class="menu-link px-5">Campaign</a>
-													<a href="{{ route('operator.index') }}" class="menu-link px-5">Operator</a>
 												</div>
 												<!--end::Menu item-->
-
+												<!--begin::Menu separator-->
+												<div class="separator my-2"></div>
+												<!--end::Menu separator-->
 												<!--begin::Menu item-->
-												<div class="menu-link px-5 py-5 d-flex justify-content-center">
+												<div class="menu-item px-5">
 													<form action="/logout" method="POST">
-													@csrf
-														<button type="submit" class="nav-link px-5 bg-light border-0 "><span data-feather="log-out"></span> Logout</button>
+														@csrf
+														<button type="submit" class="btn btn-link-dark font-weight-bold px-5">Sign Out</button>
 													</form>
 												</div>
 												<!--end::Menu item-->
+												<!--begin::Menu separator-->
+												<div class="separator my-2"></div>
+												<!--end::Menu separator-->
 											</div>
 											<!--end::Menu-->
+											

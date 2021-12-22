@@ -9,7 +9,105 @@
 		id="#kt_header_menu" data-kt-menu="true">
 		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
 			class="menu-item here show menu-lg-down-accordion me-lg-1">
-			<img src="../../img/logo.png" alt="">
+			<a class="menu-link active py-3" href="?page=index">
+				<span class="menu-title">Dashboards</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+				<div class="menu-item">
+					<a class="menu-link active py-3" href="?page=index">
+						<span class="menu-icon">
+							<i class="bi bi-archive fs-3"></i>
+						</span>
+						<span class="menu-title">Admin</span>
+					</a>
+				</div>
+				<div class="menu-item">
+					<a class="menu-link py-3" href="?page=dashboards/compact">
+						<span class="menu-icon">
+							<i class="bi bi-clipboard-data fs-2"></i>
+						</span>
+						<span class="menu-title">Advertiser</span>
+					</a>
+				</div>
+				<div class="menu-item">
+					<a class="menu-link py-3" href="?page=dashboards/minimal">
+						<span class="menu-icon">
+							<i class="bi bi-tablet fs-2"></i>
+						</span>
+						<span class="menu-title">Costumer Service</span>
+					</a>
+				</div>
+				<!-- <div class="menu-item">
+					<a class="menu-link py-3" href="?page=landing">
+						<span class="menu-icon">
+							<i class="bi bi-app-indicator fs-3"></i>
+						</span>
+						<span class="menu-title">Landing</span>
+					</a>
+				</div> -->
+			</div>
+		</div>
+		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+			class="menu-item menu-lg-down-accordion me-lg-1">
+			<span class="menu-link py-3">
+				<span class="menu-title">Admin</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</span>
+			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+				<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start"
+					class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<span class="menu-title">Link</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+			class="menu-item menu-lg-down-accordion me-lg-1">
+			<span class="menu-link py-3">
+				<span class="menu-title">Advertiser</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</span>
+			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route('campaign.index') }}" class="menu-title">Campaign</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route('operator.index') }}" class="menu-title">Operator</a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+			class="menu-item menu-lg-down-accordion me-lg-1">
+			<span class="menu-link py-3">
+				<span class="menu-title">Costumer Service</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</span>
+			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+				<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start"
+					class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<span class="menu-title">Link</span>
+					</span>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!--end::Menu-->

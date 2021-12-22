@@ -84,6 +84,25 @@
 												<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"></div>
 											</div>
 										</div>
+										<!-- <div class="image-input image-input-empty image-input-outline" id="kt_image_5" style="background-image: url(assets/media/users/blank.png)">
+											<div class="image-input-wrapper">
+												<img alt="Logo" src="{{ url('') }}/{{$user->image}}" />
+											</div>
+
+											<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+												<i class="fa fa-pen icon-sm text-muted"></i>
+												<input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg"/>
+												<input type="hidden" name="profile_avatar_remove"/>
+											</label>
+
+											<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+												<i class="ki ki-bold-close icon-xs text-muted"></i>
+											</span>
+
+											<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove avatar">
+												<i class="ki ki-bold-close icon-xs text-muted"></i>
+											</span>
+										</div> -->
 										<!--end::Pic-->
 										<!--begin::Info-->
 										<div class="flex-grow-1">
@@ -358,6 +377,9 @@
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="../assets/plugins/global/plugins.bundle.js"></script>
 		<script src="../assets/js/scripts.bundle.js"></script>
+		<script>
+			var avatar1 = new KTImageInput('kt_image_1');
+		</script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="../assets/js/custom/widgets.js"></script>
