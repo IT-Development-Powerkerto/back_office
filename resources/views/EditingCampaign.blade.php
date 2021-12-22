@@ -88,7 +88,7 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-								<form action="{{ route('campaign.update',['campaign' => $campaigns->id]) }}" method="POST">
+								<form action="{{ route('campaign.update',['campaign' => $campaign->id]) }}" method="POST">
 									@csrf
 									@method('PATCH')
 									<div class="row align-items-center col-12 pb-5">
@@ -96,7 +96,7 @@
 											<label for="inputtittle" class="col-form-label">Tittle</label>
 										</div>
 										<div class="col-10">
-											<input type="text" name="tittle" required value="{{ old('tittle') ?? $campaigns->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+											<input type="text" name="tittle" required value="{{ old('tittle') ?? $campaign->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
 										</div>
 									</div>
 									<div class="row align-items-center col-12 pb-5">
@@ -104,7 +104,7 @@
 											<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
 										</div>
 										<div class="col-10">
-											<input type="text" name="fbp" required value="{{ old('facebook_pixel') ?? $campaigns->facebook_pixel }}" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
+											<input type="text" name="fbp" required value="{{ old('facebook_pixel') ?? $campaign->facebook_pixel }}" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
 										</div>
 									</div>
 									<div class="row align-items-center col-12 pb-5">
@@ -113,7 +113,7 @@
 										</div>
 										<div class="dropdown col-10">
 											<select name="event_id" id="event_id" class="form-control">
-												<option disable selected value="{{ $campaigns->event_pixel_id }}" hidden>{{$campaigns->event_pixel->name}}</option>
+												<option disable selected value="{{ $campaign->event_pixel_id }}" hidden>{{$campaign->event_pixel->name}}</option>
 												@foreach ($events as $event)
 												<option value="{{$event->id}}" required>{{$event->name}}</option>
 												@endforeach
@@ -125,12 +125,13 @@
 											<label for="inputtp" class="col-form-label">Thanks Page</label>
 										</div>
 										<div class="col-10">
-											<textarea type="text" required name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline">{{ old('message') ?? $campaigns->message }}</textarea>
+											<textarea type="text" required name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline">{{ old('message') ?? $campaign->message }}</textarea>
 										</div>
 									</div>
 									{{ csrf_field() }}
 									<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Operator">
 								</form>
+                                @endforeach
 								</div>
 								<!--end::Card body-->
 							</div>
