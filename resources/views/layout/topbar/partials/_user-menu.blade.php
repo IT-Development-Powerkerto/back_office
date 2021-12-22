@@ -23,6 +23,7 @@
 												<!--end::Menu separator-->
 												<!--begin::Menu item-->
 												<div class="menu-item px-5">
+													<a href="{{ route('dashboard.index') }}" class="menu-link px-5">Dashboard</a>
 													<a href="{{ route('users.index') }}" class="menu-link px-5">My Profile</a>
 													<a href="{{ route('campaign.index') }}" class="menu-link px-5">Campaign</a>
 													<a href="{{ route('operator.index') }}" class="menu-link px-5">Operator</a>

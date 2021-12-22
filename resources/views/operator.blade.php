@@ -48,15 +48,19 @@
 								<!--end::Logo-->
 							</div>
 							<!--end::Wrapper-->
-							<!--begin::Toolbar wrapper-->
-							<div class="d-flex flex-shrink-0">
-								<!--begin::Create app-->
-								<div class="d-flex ms-3">
-									<a href="{{ route('dashboard.index') }}" class="btn btn-primary">Home</a>
+							<!--begin::User-->
+							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+								<!--begin::Menu wrapper-->
+								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
+									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+									<img src={{ Auth()->user()->image }} alt="image" />
 								</div>
-								<!--end::Create app-->
+
+								@include('layout/topbar/partials/_user-menu')
+
+								<!--end::Menu wrapper-->
 							</div>
-							<!--end::Toolbar wrapper-->
+							<!--end::User -->
 						</div>
 						<!--end::Container-->
 					</div>
@@ -74,17 +78,6 @@
 										<span class="card-label fw-bolder fs-3 mb-1">Operator</span>
 										<span class="text-muted mt-1 fw-bold fs-7">1 Operator</span>
 									</h3>
-									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
-										<a href="/operator/create " class="btn btn-sm btn-light btn-active-primary">
-										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-										<span class="svg-icon svg-icon-3">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-												<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-												<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-											</svg>
-										</span>
-										<!--end::Svg Icon-->Create Operator</a>
-									</div>
 								</div>
 								<!--end::Header-->
 								<!--begin::Body-->
@@ -96,13 +89,12 @@
 											<!--begin::Table head-->
 											<thead>
 												<tr class="fw-bolder text-muted">
-													<th class="min-w-30px">No</th>
+													<th class="min-w-100px">No</th>
 													<!-- <th class="min-w-30px">Status</th> -->
 													<th class="min-w-200px">Name</th>
 													<th class="min-w-200px">Email</th>
 													<th class="min-w-200px">Whatsapp</th>
 													<th class="min-w-200px">Assign To</th>
-                                                    <th class="min-w-100px text-end">Action</th>
 												</tr>
 											</thead>
 											<!--end::Table head-->
@@ -113,27 +105,14 @@
 													<td>
 														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">1</label>                                               
 													</td>
-													<!-- <td>
-														<div class="timeline-desc timeline-desc-light-primary mx-3">
-                                                            <div class="menu-content">
-                                                                <label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
-                                                                    <input data-id="{{Auth()->user()->id}}" class="form-check-input w-30px h-20px" type="checkbox" name="status" data-toggle="toggle" data-on="1" data-off="0" {{ Auth()->user()->status_id ? 'checked' : '' }}/>
-                                                                    <span class="pulse-ring ms-n1"></span>
-                                                                    <span class="form-check-label text-gray-600 fs-7"></span>
-                                                                </label>
-                                                            </div>
-														</div>
-													</td> -->
 													<td>
-                                                        <div class="timeline-desc timeline-desc-light-primary">
-                                                            <span class="fw-mormal text-gray-800">CS Zall</span>
-                                                            <p class="fw-bolder pb-2">
-                                                                cszall@zall.com
-                                                            </p>
-                                                        </div>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">Zall</label>                                               
 													</td>
 													<td>
-														<label class="badge badge-light-primary mb-5">Email</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">zall@zall.com</label> 
+													</td>
+													<td>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">081245527645</label>                                               
 													</td>
                                                     <td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
@@ -142,80 +121,6 @@
                                                                 79 Traffic
                                                             </p>
                                                         </div>
-													</td>
-													<td>
-														<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-															<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
-																<div class="btn-group" role="group" aria-label="First group">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-op" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
-																</div>
-															</div>
-
-															<div class="modal fade" tabindex="-1" id="edit-op">
-																<div class="modal-dialog">
-																	<div class="modal-content">
-																		<div class="modal-header">
-																			<h5 class="modal-title">Create Operator</h5>
-																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-																		</div>
-																		<div class="modal-body">
-																			<form action="" method="POST">
-																				@csrf
-
-																				<div class="row align-items-center col-12 pb-5">
-																					<div class="col-2">
-																						<label for="inputtittle" class="col-form-label">Name</label>
-																					</div>
-																					<div class="col-10">
-																						<input type="text" name="nameop" value="" id="inputtittle" class="form-control" aria-describedby="nameopHelpInline">
-																					</div>
-																				</div>
-																				<div class="row align-items-center col-12 pb-5">
-																					<div class="col-2">
-																						<label for="inputnickname" class="col-form-label">Nickname</label>
-																					</div>
-																					<div class="col-10">
-																						<input type="text" name="nickname" value="" id="inputnickname" class="form-control" aria-describedby="fbpHelpInline">
-																					</div>
-																				</div>
-																				<div class="row align-items-center col-12 pb-5">
-																					<div class="col-2">
-																						<label for="inputType" class="col-form-label">Type</label>
-																					</div>
-																					<div class="dropdown col-10">
-																						<select name="typeop" id="inputType" class="form-control">
-																							<option value="">Choose Type</option>
-                                                                                            <option value="">WhatsApp</option>
-                                                                                            <option value="">Email</option>
-																						</select>
-																					</div>
-																				</div>
-                                                                                <div class="row align-items-center col-12 pb-5">
-																					<div class="col-2">
-																						<label for="inputidentity" class="col-form-label">Identity</label>
-																					</div>
-																					<div class="col-10">
-																						<input type="text" name="identity" value="" id="inputidentity" class="form-control" aria-describedby="fbpHelpInline">
-																					</div>
-																				</div>
-																				{{ csrf_field() }}
-																				<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Operator">
-																			</form>
-																		</div>
-																	</div>
-																</div>
-															</div>
-
-															<form action="" method="POST">
-																@csrf
-																@method('DELETE')
-																<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-																	<div class="btn-group" role="group" aria-label="First group">
-																		<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
-																	</div>
-																</div>
-															</form>
-														</div>
 													</td>
 												</tr>
 											</tbody>
