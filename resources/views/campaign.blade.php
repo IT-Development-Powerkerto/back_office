@@ -270,37 +270,50 @@
 																			<h5 class="modal-title">Operator</h5>
 																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																		</div>
-																		<div class="modal-body">
-																			<form action="{{ url('store-input-fields') }}" method="POST">
-																				@csrf
-																				@if ($errors->any())
-																				<div class="alert alert-danger" role="alert">
-																					<ul>
-																						@foreach ($errors->all() as $error)
-																						<li>{{ $error }}</li>
-																						@endforeach
-																					</ul>
-																				</div>
-																				@endif
-																				@if (Session::has('success'))
-																				<div class="alert alert-success text-center">
-																					<p>{{ Session::get('success') }}</p>
-																				</div>
-																				@endif
-																				<table class="table table-bordered" id="dynamicAddRemove">
-																					<tr>
-																						<th>Operator</th>
-																						<th>Action</th>
-																					</tr>
-																					<tr>
-																						<td><input type="text" name="addMoreInputFields[0][subject]" placeholder="Enter Operator" class="form-control" />
-																						</td>
-																						<td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Subject</button></td>
-																					</tr>
-																				</table>
-																				<button type="submit" class="btn btn-outline-success btn-block">Save</button>
-																			</form>
-																		</div>
+																		<form action="/dinamis/proses" method="post">
+                                                                            {{ csrf_field() }}
+                                                                            <div class="field_wrapper">
+                                                                                <div class="form-group">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-10">
+                                                                                            <input class="form-control" placeholder="Bahasa Pemrograman" type="text" name="nama_bahasa[]" value=""/>
+                                                                                        </div>
+                                                                                        <div class="col-md-2">
+                                                                                            <a class="btn btn-success" href="javascript:void(0);" id="add_button" title="Add field">TAMBAH</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <button class="btn btn-lg btn-primary" type="submit">SIMPAN</a>
+                                                                            <script type="text/javascript">
+                                                                                $(document).ready(function(){
+                                                                                    var maxField = 10; //Input fields increment limitation
+                                                                                    var addButton = $('#add_button'); //Add button selector
+                                                                                    var wrapper = $('.field_wrapper'); //Input field wrapper
+                                                                                    var fieldHTML = '<div class="form-group add"><div class="row">';
+                                                                                    fieldHTML=fieldHTML + '<div class="col-md-10"><input class="form-control" placeholder="Bahasa Pemrograman" type="text" name="nama_bahasa[]" /></div>';
+                                                                                    fieldHTML=fieldHTML + '<div class="col-md-2"><a href="javascript:void(0);" class="remove_button btn btn-danger">HAPUS</a></div>';
+                                                                                    fieldHTML=fieldHTML + '</div></div>';
+                                                                                    var x = 1; //Initial field counter is 1
+
+                                                                                    //Once add button is clicked
+                                                                                    $(addButton).click(function(){
+                                                                                        //Check maximum number of input fields
+                                                                                        if(x < maxField){
+                                                                                            x++; //Increment field counter
+                                                                                            $(wrapper).append(fieldHTML); //Add field html
+                                                                                        }
+                                                                                    });
+
+                                                                                    //Once remove button is clicked
+                                                                                    $(wrapper).on('click', '.remove_button', function(e){
+                                                                                        e.preventDefault();
+                                                                                        $(this).parent('').parent('').remove(); //Remove field html
+                                                                                        x--; //Decrement field counter
+                                                                                    });
+                                                                                });
+                                                                            </script>
+                                                                        </form>
 																	</div>
 																</div>
 															</div>
@@ -364,7 +377,7 @@
 
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-		<script type="text/javascript">
+        <script type="text/javascript">
 			var i = 0;
 			$("#dynamic-ar").click(function () {
 				++i;
