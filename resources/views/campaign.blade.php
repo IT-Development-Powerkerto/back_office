@@ -90,8 +90,8 @@
 										<span class="card-label fw-bolder fs-3 mb-1">Campaign</span>
 										<span class="text-muted mt-1 fw-bold fs-7">{{$campaigns->count()}} Campaign</span>
 									</h3>
-									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
-										<a href="/campaign/create" class="btn btn-sm btn-light btn-active-primary">
+									<div class="card-toolbar" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
+										<a href="" data-bs-toggle="modal" data-bs-target="#create-campaign" class="btn btn-sm btn-light btn-active-primary">
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 										<span class="svg-icon svg-icon-3">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -198,11 +198,11 @@
 														<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
 															<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
 																<div class="btn-group" role="group" aria-label="First group">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-operator" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
+																	<a href="campaign/create" type="submit" data-bs-toggle="modal" data-bs-target="#edit-operator" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></a>
 																</div>
 															</div>
 
-															<div class="modal fade" tabindex="-1" id="edit-operator">
+															<div class="modal fade" tabindex="-1" id="create-campaign">
 																<div class="modal-dialog">
 																	<div class="modal-content">
 																		<div class="modal-header">
@@ -210,15 +210,15 @@
 																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																		</div>
 																		<div class="modal-body">
-																			<form action="{{ route('campaign.update',['campaign' => $campaigns->id]) }}" method="POST">
+																			<form action="{{route('campaign.store')}}" method="POST">
 																				@csrf
-                                                                                @method('PATCH')
+
 																				<div class="row align-items-center col-12 pb-5">
 																					<div class="col-2">
 																						<label for="inputtittle" class="col-form-label">Tittle</label>
 																					</div>
 																					<div class="col-10">
-																						<input type="text" name="tittle" required value="{{ old('tittle') ?? $campaigns->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+																						<input type="text" name="tittle" value="" required id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
 																					</div>
 																				</div>
 																				<div class="row align-items-center col-12 pb-5">
@@ -226,7 +226,7 @@
 																						<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
 																					</div>
 																					<div class="col-10">
-																						<input type="text" name="fbp" required value="{{ old('facebook_pixel') ?? $campaigns->facebook_pixel }}" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
+																						<input type="text" name="fbp" value="" required id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
 																					</div>
 																				</div>
 																				<div class="row align-items-center col-12 pb-5">
@@ -235,23 +235,22 @@
 																					</div>
 																					<div class="dropdown col-10">
 																						<select name="event_id" id="event_id" class="form-control">
-                                                                                            <option disable selected value="{{ $campaigns->event_pixel_id }}" hidden>{{$campaigns->event_pixel->name}}</option>
-                                                                                            @foreach ($events as $event)
-                                                                                            <option value="{{$event->id}}" required>{{$event->name}}</option>
-                                                                                            @endforeach
-                                                                                        </select>
+																							@foreach ($events as $event)
+																							<option value="{{$event->id}}" required>{{$event->name}}</option>
+																							@endforeach
+																						</select>
 																					</div>
 																				</div>
 																				<div class="row align-items-center col-12 pb-5">
 																					<div class="col-2">
-																						<label for="inputtp" class="col-form-label">Thanks Page</label>
+																						<label for="inputtp"  class="col-form-label">Thanks Page</label>
 																					</div>
 																					<div class="col-10">
-																						<textarea type="text" required name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline">{{ old('message') ?? $campaigns->message }}</textarea>
+																						<textarea type="text" name="tp" value="" required id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 																					</div>
 																				</div>
 																				{{ csrf_field() }}
-																				<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Operator">
+																				<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">
 																			</form>
 																		</div>
 																	</div>
@@ -272,22 +271,34 @@
 																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																		</div>
 																		<div class="modal-body">
-																			<form action="" method="post" enctype="multipart/form-data">
+																			<form action="{{ url('store-input-fields') }}" method="POST">
 																				@csrf
-																				<div class="row align-items-center col-12 pb-5">
-																					<div class="col-2">
-																						<label for="operator" class="col-form-label">Operator</label>
-																					</div>
-																					<div class="col-10">
-																						<select name="operator" id="operator" class="form-control">
-																							<option value="">CS1</option>
-																							<option value="">CS2</option>
-																							<option value="">CS3</option>
-																						</select>
-																					</div>
+																				@if ($errors->any())
+																				<div class="alert alert-danger" role="alert">
+																					<ul>
+																						@foreach ($errors->all() as $error)
+																						<li>{{ $error }}</li>
+																						@endforeach
+																					</ul>
 																				</div>
-																				{{ csrf_field() }}
-																				<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Operator">
+																				@endif
+																				@if (Session::has('success'))
+																				<div class="alert alert-success text-center">
+																					<p>{{ Session::get('success') }}</p>
+																				</div>
+																				@endif
+																				<table class="table table-bordered" id="dynamicAddRemove">
+																					<tr>
+																						<th>Operator</th>
+																						<th>Action</th>
+																					</tr>
+																					<tr>
+																						<td><input type="text" name="addMoreInputFields[0][subject]" placeholder="Enter Operator" class="form-control" />
+																						</td>
+																						<td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Subject</button></td>
+																					</tr>
+																				</table>
+																				<button type="submit" class="btn btn-outline-success btn-block">Save</button>
 																			</form>
 																		</div>
 																	</div>
@@ -351,62 +362,20 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 
-		<script id="document-template" type="text/x-handlebars-template">
-		<tr class="delete_add_more_item" id="delete_add_more_item">
-
-			<td>
-				<input type="text" name="operator" value="">
-			</td>
-			<td>
-			<i class="removeaddmore" style="cursor:pointer;color:red;">Remove</i>
-			</td>
-
-		</tr>
-		</script>
-
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
 		<script type="text/javascript">
-
-		$(document).on('click','#addMore',function(){
-
-			$('.table').show();
-
-			var operator = $("#operator").val();\
-			var source = $("#document-template").html();
-			var template = Handlebars.compile(source);
-
-			var data = {
-				task_name: task_name,
-				cost: cost
-			}
-
-			var html = template(data);
-			$("#addRow").append(html)
-
-			total_ammount_price();
-		});
-
-		$(document).on('click','.removeaddmore',function(event){
-			$(this).closest('.delete_add_more_item').remove();
-		});
-
+			var i = 0;
+			$("#dynamic-ar").click(function () {
+				++i;
+				$("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i +
+					'][subject]" placeholder="Enter subject" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+					);
+			});
+			$(document).on('click', '.remove-input-field', function () {
+				$(this).parents('tr').remove();
+			});
 		</script>
-		<!--end::Javascript-->
-        <script>
-            $(document).ready(function() {
-                $('#event_id').on('change', function() {
-                    var eventId = $(this).val();
-                    if(eventId) {
-                        $.ajax({
-                            url: '/getEvent/'+eventId,
-                            type: "GET",
-                            data : {"_token":"{{ csrf_token() }}"},
-                            dataType: "json",
-                            success:function(data)
-                        });
-                    }
-                });
-            });
-        </script>
 	</body>
 	<!--end::Body-->
 </html>

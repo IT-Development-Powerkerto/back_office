@@ -31,7 +31,7 @@
 							<!--begin::Page title-->
 							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
 								<!--begin::Heading-->
-								<h1 class="text-dark fw-bold my-0 fs-2">Create Campaign</h1>
+								<h1 class="text-dark fw-bold my-0 fs-2">Editing Campaign</h1>
 								<!--end::Heading-->
 								<!--begin::Breadcrumb-->
 								<ul class="breadcrumb breadcrumb-line text-muted fw-bold fs-base my-1">
@@ -41,7 +41,7 @@
 									<li class="breadcrumb-item text-muted">
 										<a href="{{ route('campaign.index') }}" class="text-muted">Campaign</a>
 									</li>
-									<li class="breadcrumb-item text-dark">Create Campaign</li>
+									<li class="breadcrumb-item text-dark">Editing Campaign</li>
 								</ul>
 								<!--end::Breadcrumb-->
 							</div>
