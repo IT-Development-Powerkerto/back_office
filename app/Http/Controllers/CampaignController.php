@@ -83,7 +83,8 @@ class CampaignController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result = Campign::findOrFail($id);
+        return view('EditingCampaign',['campaign' => $result]);
     }
 
     /**

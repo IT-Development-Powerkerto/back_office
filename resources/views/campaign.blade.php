@@ -101,6 +101,60 @@
 										</span>
 										<!--end::Svg Icon-->Create Campaign</a>
 									</div>
+									<div class="modal fade" tabindex="-1" id="create-campaign">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">Campaign</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<form action="{{route('campaign.store')}}" method="POST">
+														@csrf
+
+														<div class="row align-items-center col-12 pb-5">
+															<div class="col-2">
+																<label for="inputtittle" class="col-form-label">Tittle</label>
+															</div>
+															<div class="col-10">
+																<input type="text" name="tittle" value="" required id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+															</div>
+														</div>
+														<div class="row align-items-center col-12 pb-5">
+															<div class="col-2">
+																<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
+															</div>
+															<div class="col-10">
+																<input type="text" name="fbp" value="" required id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
+															</div>
+														</div>
+														<div class="row align-items-center col-12 pb-5">
+															<div class="col-2">
+																<label for="inputRole" class="col-form-label">Facebook Event</label>
+															</div>
+															<div class="dropdown col-10">
+																<select name="event_id" id="event_id" class="form-control">
+																	@foreach ($events as $event)
+																	<option value="{{$event->id}}" required>{{$event->name}}</option>
+																	@endforeach
+																</select>
+															</div>
+														</div>
+														<div class="row align-items-center col-12 pb-5">
+															<div class="col-2">
+																<label for="inputtp"  class="col-form-label">Thanks Page</label>
+															</div>
+															<div class="col-10">
+																<textarea type="text" name="tp" value="" required id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
+															</div>
+														</div>
+														{{ csrf_field() }}
+														<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 								<!--end::Header-->
 								<!--begin::Body-->
@@ -196,66 +250,14 @@
 													</td>
 													<td>
 														<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-															<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
-																<div class="btn-group" role="group" aria-label="First group">
-																	<a href="campaign/create" type="submit" data-bs-toggle="modal" data-bs-target="#edit-operator" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></a>
-																</div>
-															</div>
-
-															<div class="modal fade" tabindex="-1" id="create-campaign">
-																<div class="modal-dialog">
-																	<div class="modal-content">
-																		<div class="modal-header">
-																			<h5 class="modal-title">Campaign</h5>
-																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-																		</div>
-																		<div class="modal-body">
-																			<form action="{{route('campaign.store')}}" method="POST">
-																				@csrf
-
-																				<div class="row align-items-center col-12 pb-5">
-																					<div class="col-2">
-																						<label for="inputtittle" class="col-form-label">Tittle</label>
-																					</div>
-																					<div class="col-10">
-																						<input type="text" name="tittle" value="" required id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
-																					</div>
-																				</div>
-																				<div class="row align-items-center col-12 pb-5">
-																					<div class="col-2">
-																						<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
-																					</div>
-																					<div class="col-10">
-																						<input type="text" name="fbp" value="" required id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
-																					</div>
-																				</div>
-																				<div class="row align-items-center col-12 pb-5">
-																					<div class="col-2">
-																						<label for="inputRole" class="col-form-label">Facebook Event</label>
-																					</div>
-																					<div class="dropdown col-10">
-																						<select name="event_id" id="event_id" class="form-control">
-																							@foreach ($events as $event)
-																							<option value="{{$event->id}}" required>{{$event->name}}</option>
-																							@endforeach
-																						</select>
-																					</div>
-																				</div>
-																				<div class="row align-items-center col-12 pb-5">
-																					<div class="col-2">
-																						<label for="inputtp"  class="col-form-label">Thanks Page</label>
-																					</div>
-																					<div class="col-10">
-																						<textarea type="text" name="tp" value="" required id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
-																					</div>
-																				</div>
-																				{{ csrf_field() }}
-																				<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">
-																			</form>
-																		</div>
+															<form action="{{ route('campaign.edit',['campaign' => $campaigns->id]) }}" method="GET">
+																@csrf
+																<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
+																	<div class="btn-group" role="group" aria-label="First group">
+																		<a href="" type="submit" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></a>
 																	</div>
 																</div>
-															</div>
+                                                            </form>
 
 															<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																<div class="btn-group" role="group" aria-label="First group">
