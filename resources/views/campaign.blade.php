@@ -254,7 +254,7 @@
 																@csrf
 																<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
 																	<div class="btn-group" role="group" aria-label="First group">
-																		<a href="" type="submit" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></a>
+																		<button type="submit" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
 																	</div>
 																</div>
                                                             </form>
