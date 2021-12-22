@@ -88,42 +88,40 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-								<form action="{{ route('campaign.update',['campaign' => $campaign->id]) }}" method="POST">
-									@csrf
-									@method('PATCH')
-									<div class="row align-items-center col-12 pb-5">
-										<div class="col-2">
-											<label for="inputtittle" class="col-form-label">Tittle</label>
+
+									<form action="{{ route('campaign.update',['campaign' => $campaign->id]) }}" method="POST">
+										@csrf
+										@method('PATCH')
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputtittle" class="col-form-label">Tittle</label>
+											</div>
+											<div class="col-10">
+												<input type="text" name="tittle" required value="" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+											</div>
 										</div>
-										<div class="col-10">
-											<input type="text" name="tittle" required value="{{ old('tittle') ?? $campaign->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
+											</div>
+											<div class="col-10">
+												<input type="text" name="fbp" required value="" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
+											</div>
 										</div>
-									</div>
-									<div class="row align-items-center col-12 pb-5">
-										<div class="col-2">
-											<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputRole" class="col-form-label">Facebook Event</label>
+											</div>
+											<div class="dropdown col-10">
+												<select name="event_id" id="event_id" class="form-control">
+													<option disable selected value="" hidden></option>
+
+													<option value="" required></option>
+
+												</select>
+											</div>
 										</div>
-										<div class="col-10">
-											<input type="text" name="fbp" required value="{{ old('facebook_pixel') ?? $campaign->facebook_pixel }}" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
-										</div>
-									</div>
-									<div class="row align-items-center col-12 pb-5">
-										<div class="col-2">
-											<label for="inputRole" class="col-form-label">Facebook Event</label>
-										</div>
-										<div class="dropdown col-10">
-											<select name="event_id" id="event_id" class="form-control">
-												<option disable selected value="{{ $campaign->event_pixel_id }}" hidden>{{$campaign->event_pixel->name}}</option>
-												@foreach ($events as $event)
-												<option value="{{$event->id}}" required>{{$event->name}}</option>
-												@endforeach
-											</select>
-										</div>
-									</div>
-									<div class="row align-items-center col-12 pb-5">
-										<div class="col-2">
-											<label for="inputtp" class="col-form-label">Thanks Page</label>
-										</div>
+<<<<<<< HEAD
 										<div class="col-10">
 											<textarea type="text" required name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline">{{ old('message') ?? $campaign->message }}</textarea>
 										</div>
@@ -132,6 +130,19 @@
 									<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Operator">
 								</form>
                                 @endforeach
+=======
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputtp" class="col-form-label">Thanks Page</label>
+											</div>
+											<div class="col-10">
+												<textarea type="text" required name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
+											</div>
+										</div>
+										{{ csrf_field() }}
+										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Campaign">
+									</form>
+>>>>>>> 40c19d807893af043c69e5d7bbefb4940ed70665
 								</div>
 								<!--end::Card body-->
 							</div>
