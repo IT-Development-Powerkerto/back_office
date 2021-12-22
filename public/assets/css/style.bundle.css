@@ -625,10 +625,23 @@ progress {
   margin-left: auto;
 }
 
+@media (max-width: 768px) {
+  .knowledge, .knowledge1 {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    width: 100%;
+    margin-left: 50px;
+    align-items: center;
+  }
+
+}
+
 @media (min-width: 576px) {
   .container-sm, .container {
     max-width: 540px;
   }
+  
 }
 @media (min-width: 768px) {
   .container-md, .container-sm, .container {
