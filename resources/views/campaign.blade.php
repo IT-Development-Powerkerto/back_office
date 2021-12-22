@@ -198,7 +198,7 @@
 														<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
 															<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
 																<div class="btn-group" role="group" aria-label="First group">
-																	<a href="campaign/create" type="submit" data-bs-toggle="modal" data-bs-target="#edit-operator" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></a>
+																	<a href="campaign/create" type="submit" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></a>
 																</div>
 															</div>
 
