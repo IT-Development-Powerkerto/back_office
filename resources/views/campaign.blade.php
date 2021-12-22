@@ -47,20 +47,36 @@
 								    <img alt="Logo" src="img/logo.png" class="h-40px" />
 								<!--end::Logo-->
 							</div>
-							<!--end::Wrapper-->
-							<!--begin::Toolbar wrapper-->
-							<div class="d-flex flex-shrink-0">
-								<!--begin::Create app-->
-								<div class="d-flex ms-3">
-									<a href="{{ route('dashboard.index') }}" class="btn btn-primary">Home</a>
+							<!--begin::User-->
+							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+								<!--begin::Menu wrapper-->
+								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
+									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+									<img src={{ Auth()->user()->image }} alt="image" />
 								</div>
-								<!--end::Create app-->
+
+								@include('layout/topbar/partials/_user-menu')
+
+								<!--end::Menu wrapper-->
 							</div>
-							<!--end::Toolbar wrapper-->
+							<!--end::User -->
 						</div>
 						<!--end::Container-->
 					</div>
 					<!--end::Header-->
+					@if(session()->has('success'))
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+							{{ session('success') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					@endif
+
+					@if(session()->has('error'))
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							{{ session('error') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					@endif
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 						<!--begin::Container-->
@@ -111,7 +127,7 @@
 												@foreach ($campaigns as $campaigns)
 												<tr>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$n+=1}}</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6" >{{$n+=1}}</label>
 													</td>
 													<td>
 														<!-- <div class="d-flex align-items-center">
@@ -203,7 +219,7 @@
 																						<label for="inputtittle" class="col-form-label">Tittle</label>
 																					</div>
 																					<div class="col-10">
-																						<input type="text" name="tittle" value="{{ old('tittle') ?? $campaigns->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+																						<input type="text" name="tittle" required value="{{ old('tittle') ?? $campaigns->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
 																					</div>
 																				</div>
 																				<div class="row align-items-center col-12 pb-5">
@@ -211,7 +227,7 @@
 																						<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
 																					</div>
 																					<div class="col-10">
-																						<input type="text" name="fbp" value="{{ old('facebook_pixel') ?? $campaigns->facebook_pixel }}" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
+																						<input type="text" name="fbp" required value="{{ old('facebook_pixel') ?? $campaigns->facebook_pixel }}" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
 																					</div>
 																				</div>
 																				<div class="row align-items-center col-12 pb-5">
@@ -222,7 +238,7 @@
 																						<select name="event_id" id="event_id" class="form-control">
                                                                                             <option disable selected value="{{ $campaigns->event_pixel_id }}" hidden>{{$campaigns->event_pixel->name}}</option>
                                                                                             @foreach ($events as $event)
-                                                                                            <option value="{{$event->id}}">{{$event->name}}</option>
+                                                                                            <option value="{{$event->id}}" required>{{$event->name}}</option>
                                                                                             @endforeach
                                                                                         </select>
 																					</div>
@@ -232,7 +248,7 @@
 																						<label for="inputtp" class="col-form-label">Thanks Page</label>
 																					</div>
 																					<div class="col-10">
-																						<textarea type="text" name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline">{{ old('message') ?? $campaigns->message }}</textarea>
+																						<textarea type="text" required name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline">{{ old('message') ?? $campaigns->message }}</textarea>
 																					</div>
 																				</div>
 																				{{ csrf_field() }}

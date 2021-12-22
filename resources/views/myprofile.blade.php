@@ -50,13 +50,19 @@
 							</div>
 							<!--end::Wrapper-->
 							<!--begin::Toolbar wrapper-->
-							<div class="d-flex flex-shrink-0">
-								<!--begin::Create app-->
-								<div class="d-flex ms-3">
-									<a href="{{ route('dashboard.index') }}" class="btn btn-primary">Home</a>
+							<!--begin::User-->
+							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+								<!--begin::Menu wrapper-->
+								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
+									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+									<img src={{ Auth()->user()->image }} alt="image" />
 								</div>
-								<!--end::Create app-->
+
+								@include('layout/topbar/partials/_user-menu')
+
+								<!--end::Menu wrapper-->
 							</div>
+							<!--end::User -->
 							<!--end::Toolbar wrapper-->
 						</div>
 						<!--end::Container-->

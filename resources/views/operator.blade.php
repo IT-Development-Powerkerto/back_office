@@ -99,7 +99,8 @@
 													<th class="min-w-30px">No</th>
 													<!-- <th class="min-w-30px">Status</th> -->
 													<th class="min-w-200px">Name</th>
-													<th class="min-w-200px">Type</th>
+													<th class="min-w-200px">Email</th>
+													<th class="min-w-200px">Whatsapp</th>
 													<th class="min-w-200px">Assign To</th>
                                                     <th class="min-w-100px text-end">Action</th>
 												</tr>

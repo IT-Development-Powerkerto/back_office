@@ -38,7 +38,9 @@
 									<li class="breadcrumb-item text-muted">
 										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
 									</li>
-									<li class="breadcrumb-item text-muted">Campaign</li>
+									<li class="breadcrumb-item text-muted">
+										<a href="{{ route('campaign.index') }}" class="text-muted">Campaign</a>
+									</li>
 									<li class="breadcrumb-item text-dark">Create Campaign</li>
 								</ul>
 								<!--end::Breadcrumb-->
@@ -52,14 +54,19 @@
 							</div>
 							<!--end::Wrapper-->
 							<!--begin::Toolbar wrapper-->
-							<div class="d-flex flex-shrink-0">
-								<!--begin::Create app-->
-								<div class="d-flex ms-3">
-									<a href="{{ route('campaign.index') }}" class="btn btn-primary">Back</a>
+							<!--begin::User-->
+							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+								<!--begin::Menu wrapper-->
+								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
+									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+									<img src={{ Auth()->user()->image }} alt="image" />
 								</div>
-								<!--end::Create app-->
+
+								@include('layout/topbar/partials/_user-menu')
+
+								<!--end::Menu wrapper-->
 							</div>
-							<!--end::Toolbar wrapper-->
+							<!--end::User -->
 						</div>
 						<!--end::Container-->
 					</div>
@@ -89,7 +96,7 @@
 												<label for="inputtittle" class="col-form-label">Tittle</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="tittle" value="" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+												<input type="text" name="tittle" value="" required id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
 											</div>
 										</div>
                                         <div class="row align-items-center col-12 pb-5">
@@ -97,7 +104,7 @@
 												<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="fbp" value="" id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
+												<input type="text" name="fbp" value="" required id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
 											</div>
 										</div>
                                         <div class="row align-items-center col-12 pb-5">
@@ -107,17 +114,17 @@
                                             <div class="dropdown col-10">
                                                 <select name="event_id" id="event_id" class="form-control">
                                                     @foreach ($event as $event)
-                                                    <option value="{{$event->id}}">{{$event->name}}</option>
+                                                    <option value="{{$event->id}}" required>{{$event->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
 										</div>
                                         <div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputtp" class="col-form-label">Thanks Page</label>
+												<label for="inputtp"  class="col-form-label">Thanks Page</label>
 											</div>
 											<div class="col-10">
-												<textarea type="text" name="tp" value="" id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
+												<textarea type="text" name="tp" value="" required id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 											</div>
 										</div>
 										{{ csrf_field() }}

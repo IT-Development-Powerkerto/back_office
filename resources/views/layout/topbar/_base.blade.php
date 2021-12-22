@@ -17,6 +17,7 @@
 			<img src={{ Auth()->user()->image }} alt="image" />
 		</div>
 
+		
 		<div class="menu-item py-5">
 			<div class="menu-content">
 				<label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
