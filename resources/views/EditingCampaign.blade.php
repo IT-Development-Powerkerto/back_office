@@ -130,7 +130,7 @@
 											</div>
 										</div>
 										{{ csrf_field() }}
-										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Operator">
+										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Campaign">
 									</form>
 								</div>
 								<!--end::Card body-->
