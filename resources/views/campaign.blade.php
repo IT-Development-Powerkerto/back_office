@@ -272,7 +272,7 @@
 																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																		</div>
 																		<div class="modal-body">
-																			<form action="" method="POST">
+																			<form action={{route('operator.store')}} method="post" name="product_name" id="product_name">
 																				@csrf
 																				@if ($errors->any())
 																				<div class="alert alert-danger" role="alert">
@@ -288,7 +288,18 @@
 																					<p>{{ Session::get('success') }}</p>
 																				</div>
 																				@endif
-																				<table class="table table-bordered" id="dynamicAddRemove">
+
+                                                                                <table class="table table-bordered" id="dynamic_field">
+                                                                                    <tr>
+                                                                                        <th>Subject</th>
+                                                                                        <th>Action</th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><input type="text" name="user_id[]" placeholder="Enter Operator" class="form-control name_list" /></td>
+                                                                                        <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+                                                                                    </tr>
+                                                                                </table>
+																				{{-- <table class="table table-bordered" id="dynamicAddRemove">
 																					<tr>
 																						<th>Subject</th>
 																						<th>Action</th>
@@ -298,10 +309,10 @@
 																						</td>
 																						<td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Subject</button></td>
 																					</tr>
-																				</table>
+																				</table> --}}
 																				<button type="submit" class="btn btn-outline-success btn-block">Save</button>
 																			</form>
-																		</div>	
+																		</div>
 																	</div>
 																</div>
 															</div>
@@ -365,7 +376,64 @@
 
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-		<script type="text/javascript">
+        <script type="text/javascript">
+            $(document).ready(function(){
+              var postURL = "<?php echo url('addProduct'); ?>";
+              var i=1;
+
+              $('#add').click(function(){
+                   i++;
+                   $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="user_id[]" placeholder="Enter Operator" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+              });
+
+              $(document).on('click', '.btn_remove', function(){
+                   var button_id = $(this).attr("id");
+                   $('#row'+button_id+'').remove();
+              });
+
+
+              $.ajaxSetup({
+                  headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+
+
+              $('#submit').click(function(){
+                   $.ajax({
+                        url:postURL,
+                        method:"POST",
+                        data:$('#product_name').serialize(),
+                        type:'json',
+                        success:function(data)
+                        {
+                            if(data.error){
+                                previewMessage(data.error);
+                            }else{
+                                i=1;
+                                $('.dynamic-added').remove();
+                                $('#product_name')[0].reset();
+                                $(".print-success-msg").find("ul").html('');
+                                $(".print-success-msg").css('display','block');
+                                $(".error-message-display").css('display','none');
+                                $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
+                            }
+                        }
+                   });
+              });
+
+
+              function previewMessage (msg) {
+                 $(".error-message-display").find("ul").html('');
+                 $(".error-message-display").css('display','block');
+                 $(".print-success-msg").css('display','none');
+                 $.each( msg, function( key, value ) {
+                    $(".error-message-display").find("ul").append('<li>'+value+'</li>');
+                 });
+              }
+            });
+        </script>
+		{{-- <script type="text/javascript">
 			var i = 0;
 			$("#dynamic-ar").click(function () {
 				++i;
@@ -376,7 +444,7 @@
 			$(document).on('click', '.remove-input-field', function () {
 				$(this).parents('tr').remove();
 			});
-		</script>
+		</script> --}}
 	</body>
 	<!--end::Body-->
 </html>

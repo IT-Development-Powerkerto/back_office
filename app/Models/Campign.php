@@ -23,4 +23,8 @@ class Campign extends Model
     public function event_pixel(){
         return $this->belongsTo(EventPixel::class);
     }
+
+    public function operator(){
+        return $this->hasMany(Operator::class);
+    }
 }

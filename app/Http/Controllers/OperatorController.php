@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Operator;
 use Illuminate\Http\Request;
+use Validator;
 
 class OperatorController extends Controller
 {
@@ -34,7 +36,19 @@ class OperatorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [];
+        foreach($request->input('user_id') as $key => $value) {
+            $rules["user_id.{$key}"] = 'required';
+        }
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->passes()) {
+            foreach($request->input('user_id') as $key => $value) {
+                Operator::create(['campaign_id'=>1,'user_id'=>$value]);
+            }
+            return redirect('campaign');
+        }
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
 
     /**

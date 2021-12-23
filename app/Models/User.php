@@ -67,4 +67,7 @@ class User extends Authenticatable
     public function campign(){
         return $this->hasMany(Campign::class);
     }
+    public function operator(){
+        return $this->hasMany(Operator::class);
+    }
 }
