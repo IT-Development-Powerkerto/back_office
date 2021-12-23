@@ -19,8 +19,8 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->string('whatsapp');
             $table->integer('quantity')->nullable();
-            $table->integer('total_price');
-            $table->foreignId('status_id');
+            $table->integer('total_price')->nullable();
+            $table->foreignId('status_id')->nullable();
             $table->timestamps();
         });
     }
