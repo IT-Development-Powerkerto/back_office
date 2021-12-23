@@ -94,6 +94,7 @@
                                                         </div>
 													</td>
 												</tr>
+												@endforeach
 											</tbody>
 											<!--end::Table body-->
 										</table>
