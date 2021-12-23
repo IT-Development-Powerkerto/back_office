@@ -4,6 +4,17 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!--begin::Fonts-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+	<!--end::Fonts-->
+	<!--begin::Page Vendor Stylesheets(used by this page)-->
+	<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+	<!--end::Page Vendor Stylesheets-->
+	<!--begin::Global Stylesheets Bundle(used by all pages)-->
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<!--end::Global Stylesheets Bundle-->
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -19,62 +30,58 @@
     <title>Back Office Powerkerto</title>
   </head>
   <body>
-    <div class="lp">
-        <div class="contents">
+    <div class="loginlp">
+        <div class="lp">
             <h1><span>POWER</span>KERTO</h1>
-            <h2>KREATIF INOVATIF SOLUTIF</h2>
-            <button type="button" class="btn btn-primary tombol" data-bs-toggle="modal" data-bs-target="#login">
-                Login
-            </button>
+            <h2>Sign In</h2>
+            <p>Enter your username and password</p>
+            <div class="contents">
+                @if(session()->has('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                @if(session()->has('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                <form action="{{ route('login') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="exampleusername" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control rounded-pill" id="exampleusername" aria-describedby="emailHelp">
+                        @error('username')
+                        <div class="invalid-feedback">
+                        {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control rounded-pill" id="exampleInputPassword1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary rounded-pill text-end">Submit</button>
+                </form>
+            </div>
+            <footer>
+                <p>Powered by powerkerto</p>
+            </footer>
         </div>
-    </div>
-    <footer><p>Powered by powerkerto</p></footer>
+        
 
-    <div class="modal fade" tabindex="-1" id="login">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Login</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-            @if(session()->has('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            @if(session()->has('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-            <form action="{{ route('login') }}" method="POST">
-            @csrf
-            <div class="form-floating">
-                <input type="username" name="username" class="form-control rounded-top @error('username') is-invalid @enderror" id="username" placeholder="username" autofocus required value="{{ old('username') }}">
-                <label for="username">username</label>
-                @error('username')
-                <div class="invalid-feedback">
-                {{ $message }}
-                </div>
-                @enderror
-            </div>
-            <div class="form-floating mt-3">
-                <input type="password" name="password" class="form-control rounded-bottom" id="password" placeholder="Password" required>
-                <label for="password">Password</label>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3 tombol">Login</button>
-            </form>
-            </div>
-            </div>
+        <div class="lr">
+            <h1>Welcome To Powerkerto Back Office!</h1>
+            <h2>Don't be busy, be productive!</h2>
         </div>
     </div>
 
     
+
+
     <!-- halo0 -->
 
     <!-- Font Awesome -->
