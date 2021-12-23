@@ -27,39 +27,10 @@
 						<!--begin::Container-->
 						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 							<!--begin::Page title-->
-							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
-								<!--begin::Heading-->
-								<h1 class="text-dark fw-bold my-0 fs-2">Campaigns</h1>
-								<!--end::Heading-->
-								<!--begin::Breadcrumb-->
-								<ul class="breadcrumb breadcrumb-line text-muted fw-bold fs-base my-1">
-									<li class="breadcrumb-item text-muted">
-										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
-									</li>
-									<li class="breadcrumb-item text-dark">Campaign</li>
-								</ul>
-								<!--end::Breadcrumb-->
-							</div>
-							<!--end::Page title=-->
-							<!--begin::Wrapper-->
-							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
-								<!--begin::Logo-->
-								    <img alt="Logo" src="img/logo.png" class="h-40px" />
-								<!--end::Logo-->
-							</div>
-							<!--begin::User-->
-							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-								<!--begin::Menu wrapper-->
-								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
-									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-									<img src={{ Auth()->user()->image }} alt="image" />
-								</div>
+							@include('layout/header/_base')
 
-								@include('layout/topbar/partials/_user-menu')
 
-								<!--end::Menu wrapper-->
-							</div>
-							<!--end::User -->
+							@include('layout/_toolbar')
 						</div>
 						<!--end::Container-->
 					</div>
