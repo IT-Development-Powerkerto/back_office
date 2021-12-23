@@ -48,7 +48,7 @@ class ProductController extends Controller
 
         DB::table('products')->insert([
             'name'         => $request->name,
-            'price'        => $request->role_id,
+            'price'        => $request->price,
             'discount'     => $request->phone,
             'image'        => $image,
             'product_link' => $request->product_link,
@@ -56,7 +56,7 @@ class ProductController extends Controller
             'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);
 
-        //return redirect('/dashboard')->with('success','Successull! User Added');
+        return redirect('/dashboard')->with('success','Successull! Product Added');
     }
 
     /**

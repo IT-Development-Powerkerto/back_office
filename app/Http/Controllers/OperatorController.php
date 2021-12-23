@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Operator;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -15,7 +16,9 @@ class OperatorController extends Controller
      */
     public function index()
     {
-        return view('operator');
+        $operators = User::where('role_id', 6)->get();
+        // $total = User::where('role_id', 6)->count();
+        return view('operator', ['operators'=>$operators]);
     }
 
     /**

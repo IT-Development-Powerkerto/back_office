@@ -16,10 +16,22 @@ class StatusSeeder extends Seeder
     {
         $status = [
             [
-               'name'  => 'Idle',
+                'name'  => 'Idle',
             ],
             [
-               'name'  => 'Work',
+                'name'  => 'Work',
+            ],
+            [
+                'name'  => 'Waiting',
+            ],
+            [
+                'name'  => 'Processing',
+            ],
+            [
+                'name'  => 'Closing',
+            ],
+            [
+                'name'  => 'Process Now',
             ],
         ];
 

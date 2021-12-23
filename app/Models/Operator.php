@@ -13,7 +13,7 @@ class Operator extends Model
         'campaign_id',
         'user_id'];
 
-        public function campaign() {
+        public function campign() {
             return $this->hasMany(Campign::class);
         }
 

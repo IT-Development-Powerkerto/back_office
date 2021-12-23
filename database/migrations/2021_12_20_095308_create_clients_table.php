@@ -15,8 +15,12 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('campaign_id');
             $table->string('name');
             $table->string('whatsapp');
+            $table->integer('quantity')->nullable();
+            $table->integer('total_price')->nullable();
+            $table->foreignId('status_id')->nullable();
             $table->timestamps();
         });
     }

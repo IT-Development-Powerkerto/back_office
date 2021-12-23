@@ -1,4 +1,4 @@
-									
+
 									<!--begin::Tables Widget 9-->
 									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
 										<!--begin::Header-->
@@ -169,7 +169,6 @@
 																		</div>
                                                                     </form>
 																</div>
-
 															</td>
 														</tr>
                                                         @endforeach
