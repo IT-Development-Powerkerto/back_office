@@ -25,15 +25,15 @@
 		<!--end::Col-->
 		<!--begin::Col-->
 		<div class="col-xl-4">
-			
-			@include('partials/widgets/mixed/_widget-5')
 
+			@include('partials/widgets/tables/_widget-7')
+			
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
-			@include('partials/widgets/tables/_widget-9-edit')
+			@include('partials/widgets/tables/_widget-6')
 
 		</div>
 		<!--end::Col-->
@@ -41,7 +41,6 @@
 	<!--end::Row-->
 	<!--begin::Row-->
 	<div class="row gy-5 my-n8 g-xl-1">
-		@include('partials/widgets/tables/_widget-7')
 		@include('partials/widgets/tables/_widget-8')
 		@include('partials/widgets/tables/_widget-9')
 		@include('partials/widgets/tables/_widget-11')
