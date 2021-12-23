@@ -17,7 +17,8 @@ class OperatorController extends Controller
     public function index()
     {
         $operators = User::where('role_id', 6)->get();
-        return view('operator', ['operators'=>$operators]);
+        $total = User::where('role_id', 6)->count();
+        return view('operator', ['operators'=>$operators, 'total'=>$total]);
     }
 
     /**
