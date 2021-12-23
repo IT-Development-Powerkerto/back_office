@@ -27,4 +27,8 @@ class Campign extends Model
     public function operator(){
         return $this->hasMany(Operator::class);
     }
+
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
 }

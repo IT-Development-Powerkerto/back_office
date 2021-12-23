@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Campign;
 use App\Models\EventPixel;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +23,8 @@ class CampaignController extends Controller
     {
         $campaigns = Campign::all();
         $events = EventPixel::all();
-        return view('campaign', ['events'=>$events])->with('campaigns', $campaigns);
+        $product = Product::all();
+        return view('campaign', ['events'=>$events])->with('campaigns', $campaigns)->with('products', $product);
     }
 
     /**
@@ -54,6 +56,7 @@ class CampaignController extends Controller
         DB::table('campigns')->insert([
             'user_id'         => Auth()->user()->id,
             'tittle'          => $request->tittle,
+            'product_id'      => $request->product_id,
             'message'         => $request->tp,
             'facebook_pixel'  => $request->fbp,
             'event_pixel_id'  => $request->event_id,
@@ -85,7 +88,8 @@ class CampaignController extends Controller
     {
         $campaigns = Campign::findOrFail($id);
         $event = EventPixel::all();
-        return view('EditingCampaign',['campaign' => $campaigns])->with('event', $event);
+        $product = Product::all();
+        return view('EditingCampaign',['campaign' => $campaigns])->with('event', $event)->with('products', $product);
     }
 
     /**
@@ -100,6 +104,7 @@ class CampaignController extends Controller
         DB::table('campigns')->where('id', $campaign)->update([
             'user_id'           => Auth()->user()->id,
             'tittle'            => $request->tittle,
+            'product'           => $request->product,
             'message'           => $request->tp,
             'facebook_pixel'    => $request->fbp,
             'event_pixel_id'    => $request->event_id,
