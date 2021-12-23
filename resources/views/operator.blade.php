@@ -70,19 +70,20 @@
 											<!--end::Table head-->
 											<!--begin::Table body-->
 											<tbody>
-                                                
+                                                <?php $n=0; ?>
+												@foreach ($operators as $operator)
 												<tr>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">1</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>                                               
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">Zall</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->name }}</label>                                               
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">zall@zall.com</label> 
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->email }}</label> 
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">081245527645</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->phone }}</label>                                               
 													</td>
                                                     <td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
