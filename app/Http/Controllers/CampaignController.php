@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Campign;
 use App\Models\EventPixel;
 use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
@@ -35,7 +33,8 @@ class CampaignController extends Controller
     public function create()
     {
         $events = EventPixel::all();
-        return view ('CreateCampaign',['event'=>$events]);
+        $product = Product::all();
+        return view ('CreateCampaign',['event'=>$events])->with('products', $product);
 
     }
 
@@ -47,12 +46,6 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        // for ($i = 1; $i < count($request->operator); $i++) {
-        //     $operators[] = [
-        //         'operator' => $request->operator[$i],
-        //     ];
-        // }
-
         DB::table('campigns')->insert([
             'user_id'         => Auth()->user()->id,
             'tittle'          => $request->tittle,
@@ -75,7 +68,8 @@ class CampaignController extends Controller
     public function show($campaign)
     {
         $campaigns = Campign::find($campaign);
-        return view('campaign',compact($campaigns));
+        $product = Product::all();
+        return view('campaign',compact($campaigns))->with('products', $product);
     }
 
     /**

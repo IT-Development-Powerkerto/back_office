@@ -90,6 +90,18 @@
 																<input type="text" name="tittle" value="" required id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
 															</div>
 														</div>
+                                                        <div class="row align-items-center col-12 pb-5">
+															<div class="col-2">
+																<label for="inputRole" class="col-form-label">Product</label>
+															</div>
+															<div class="dropdown col-10">
+																<select name="product_id" id="product_id" class="form-control">
+																	@foreach ($products as $product)
+																	<option value="{{$product->id}}" required>{{$product->name}}</option>
+																	@endforeach
+																</select>
+															</div>
+														</div>
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
 																<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
@@ -404,6 +416,7 @@
               }
             });
         </script>
+
 		{{-- <script type="text/javascript">
 			var i = 0;
 			$("#dynamic-ar").click(function () {
@@ -416,6 +429,22 @@
 				$(this).parents('tr').remove();
 			});
 		</script> --}}
+        <script>
+            $(document).ready(function() {
+                $('#product_id').on('change', function() {
+                    var roleId = $(this).val();
+                    if(roleId) {
+                        $.ajax({
+                            url: '/getRole/'+roleId,
+                            type: "GET",
+                            data : {"_token":"{{ csrf_token() }}"},
+                            dataType: "json",
+                            success:function(data)
+                        });
+                    }
+                });
+            });
+        </script>
 	</body>
 	<!--end::Body-->
 </html>

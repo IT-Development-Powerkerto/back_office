@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Announcement;
 use App\Models\Role;
 use App\Models\Icon;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
@@ -26,7 +27,9 @@ class DashboardController extends Controller
         $announcements = Announcement::all();
         $roles = Role::all();
         $icons = Icon::all();
-        return view('dashboard',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons);
+        $products = Product::all();
+        return view('dashboard',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
+        ->with('products', $products);
     }
 
     /**
