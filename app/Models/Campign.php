@@ -12,6 +12,7 @@ class Campign extends Model
         'user_id',
         'tittle',
         'message',
+        'product_id',
         'facebook_pixel',
         'even_pixel_id',
     ];

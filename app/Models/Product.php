@@ -13,6 +13,7 @@ class Product extends Model
         'price',
         'discount',
         'image',
+        'product_link',
     ];
 
     public function campaign(){
