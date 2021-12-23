@@ -15,7 +15,7 @@
 			</a>
 			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
 				<div class="menu-item">
-					<a class="menu-link active py-3" href="?page=index">
+					<a class="menu-link active py-3" href="{{ route('dashboard.index') }}">
 						<span class="menu-icon">
 							<i class="bi bi-archive fs-3"></i>
 						</span>
