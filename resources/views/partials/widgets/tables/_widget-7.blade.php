@@ -1,4 +1,4 @@
-									
+
 									<!--begin::Tables Widget 9-->
 									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 250px">
 										<!--begin::Header-->
@@ -26,7 +26,7 @@
 															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
 														<div class="modal-body">
-															<form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
+															<form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
 																@csrf
 																<div class="row align-items-center col-12 pb-5">
 																	<div class="col-2">
@@ -41,7 +41,7 @@
 																		<label for="inputprice" class="col-form-label">Price</label>
 																	</div>
 																	<div class="col-10">
-																		<input type="price" name="price" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
+																		<input type="number" name="price" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
 																	</div>
 																</div>
 																<div class="row align-items-center col-12 pb-5">
@@ -78,16 +78,17 @@
 												</div>
 											</div>
 										</div>
-										
+
 										<!--end::Header-->
 										<!--begin::Body-->
 										<div class="card-body py-3 ">
 											<!--begin::Table container-->
 											<div class="row row-cols-10 d-flex justify-content-center knowledge">
+                                                @foreach ($products as $product)
 												<div class="col-2 text-center knowledge1">
-													<img src="../img/Frame 76.png" alt="Freshmag" data-bs-toggle="modal" data-bs-target="#add-product-1">
+													<img src="{{$product->image}}" width="130" height="130" alt="Freshmag" data-bs-toggle="modal" data-bs-target="#add-product-1">
 													<div class="menu-link">
-														<a href="#" class="text-dark fw-bolder fs-6">Freshmag</a>
+														<a href="#" class="text-dark fw-bolder fs-6">{{$product->name}}</a>
 													</div>
 													<div class="modal fade" tabindex="-1" id="add-product-1">
 														<div class="modal-dialog">
@@ -126,6 +127,7 @@
 														</div>
 													</div>
 												</div>
+                                                @endforeach
 											</div>
 											<!--end::Table container-->
 										</div>

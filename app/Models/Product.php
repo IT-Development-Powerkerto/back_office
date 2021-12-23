@@ -16,7 +16,7 @@ class Product extends Model
         'product_link',
     ];
 
-    public function campaign(){
+    public function campign(){
         return $this->belongsTo(Campign::class);
     }
 }
