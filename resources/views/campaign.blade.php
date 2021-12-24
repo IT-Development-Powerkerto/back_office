@@ -212,7 +212,7 @@
 </head>
 <body>
 
-	<form action="https://api.pwkbackoffice.com/public/api/clients" method="POST">
+	<form action="https://api.pwkbackoffice.com/public/api/lead/{{$campaign->id}}" method="POST">
     <div class="mb-3" hidden>
 			<label for="exampleInputNama" class="form-label">Campaign Id</label>
 		<input type="number" name="campaign_id" value= '{{$campaigns->id}}' class="form-control" id="exampleInputNama" aria-describedby="namaHelp">

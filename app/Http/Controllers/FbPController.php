@@ -39,27 +39,7 @@ class FbPController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = Validator::make($request->all(),[
-        //'campaign_id'      => 'required',
-        'name'             => 'required',
-        'whatsapp'         => 'required',
-        //     'total'               => 'required',
-        // 'status_id'              => 'required',
-        ]);
-        if ($validateData->fails()) {
-            return response($validateData->errors(), 400);
-        }else{
-            $clients = new Client();
-            //$clients->campaign_id = $request->campaign_id;
-            $clients->name = $request->name;
-            $clients->whatsapp = $request->whatsapp;
-        //     $order->total = $request->total;
-            $clients->status_id = 3;
-            $clients->save();
-            return response()->json([
-                "message" => "order record created"
-                ], 201);
-        }
+
     }
 
     /**
@@ -147,5 +127,27 @@ class FbPController extends Controller
         //         "message" => "order not found"
         //         ], 404);
         //     }
+    }
+
+    public function lead(Request $request, $campaign_id){
+        $validateData = Validator::make($request->all(),[
+            'campaign_id'      => 'required',
+            'name'             => 'required',
+            'whatsapp'         => 'required',
+            'status_id'        => 'required',
+            ]);
+            if ($validateData->fails()) {
+                return response($validateData->errors(), 400);
+            }else{
+                $clients = new Client();
+                $clients->campaign_id = $campaign_id;
+                $clients->name = $request->name;
+                $clients->whatsapp = $request->whatsapp;
+                $clients->status_id = 3;
+                $clients->save();
+                return response()->json([
+                    "message" => "order record created"
+                    ], 201);
+            }
     }
 }
