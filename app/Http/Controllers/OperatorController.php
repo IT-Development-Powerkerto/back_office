@@ -17,7 +17,6 @@ class OperatorController extends Controller
     public function index()
     {
         $operators = User::where('role_id', 6)->get();
-        // $total = User::where('role_id', 6)->count();
         return view('operator', ['operators'=>$operators]);
     }
 
@@ -47,7 +46,7 @@ class OperatorController extends Controller
 
         if ($validator->passes()) {
             foreach($request->input('user_id') as $key => $value) {
-                Operator::create(['campaign_id'=>1,'user_id'=>$value]);
+                Operator::create(['campaign_id'=>$request->campaign_id,'user_id'=>$value]);
             }
             return redirect('campaign');
         }
