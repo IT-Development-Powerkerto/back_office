@@ -160,7 +160,7 @@
 											<!--begin::Table body-->
 											<tbody>
                                                 <?php $n=0; ?>
-												@foreach ($campaigns as $campaigns)
+												@foreach ($campaigns as $campaign)
 												<tr>
 													<td>
 														<label class="text-dark fw-bolder text-hover-primary d-block fs-6" >{{$n+=1}}</label>
@@ -171,7 +171,7 @@
 															<h1 class="text-dark fw-bolder text-hover-primary fs-6">https://mauorder.online/wa-generosku-2 </h1>
 														</div> -->
 														<div class="timeline-desc timeline-desc-light-primary mx-3">
-															<span class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$campaigns->tittle}}</span>
+															<span class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$campaign->tittle}}</span>
 															<!-- <p class="fw-bolder pb-2">
 																https://mauorder.online/wa-generosku-2
 															</p> -->
@@ -200,7 +200,7 @@
 	t.src=v;s=b.getElementsByTagName(e)[0];
 	s.parentNode.insertBefore(t,s)}(window, document,'script',
 	'https://connect.facebook.net/en_US/fbevents.js');
-	fbq('init', '{{$campaigns->facebook_pixel}}');
+	fbq('init', '{{$campaign->facebook_pixel}}');
 	fbq('track', 'PageView');
 	</script>
 	<noscript>
@@ -215,7 +215,7 @@
 	<form action="https://api.pwkbackoffice.com/public/api/clients" method="POST">
     <div class="mb-3" hidden>
 			<label for="exampleInputNama" class="form-label">Campaign Id</label>
-		<input type="number" name="campaign_id" value="{{$campaigns->id}}" class="form-control" id="exampleInputNama" aria-describedby="namaHelp">
+		<input type="number" name="campaign_id" value="{{$campaign->id}}" class="form-control" id="exampleInputNama" aria-describedby="namaHelp">
 	</div>
 	<div class="mb-3">
 			<label for="exampleInputNama" class="form-label">Nama Lengkap</label>
@@ -225,7 +225,7 @@
 			<label for="exampleInputWhatsapp" class="form-label">No. Whatsapp</label>
 			<input type="text" name="whatsapp" class="form-control" id="exampleInputWhatsapp">
 	</div>
-	<button type="submit" class="btn btn-primary" onclick="{{$campaigns->event_pixel->event_pixel}}">Submit</button>
+	<button type="submit" class="btn btn-primary" onclick="{{$campaign->event_pixel->event_pixel}}">Submit</button>
 	</form>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -236,7 +236,7 @@
 													</td>
 													<td>
 														<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-															<form action="{{ route('campaign.edit',['campaign' => $campaigns->id]) }}" method="GET">
+															<form action="{{ route('campaign.edit',['campaign' => $campaign->id]) }}" method="GET">
 																@csrf
 																<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
 																	<div class="btn-group" role="group" aria-label="First group">
@@ -247,11 +247,12 @@
 
 															<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																<div class="btn-group" role="group" aria-label="First group">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-operator" class="btn btn-success btn-icon"><i class="la la-users"></i></button>
+																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-operator{{ $campaign->id }}" class="btn btn-success btn-icon"><i class="la la-users"></i></button>
 																</div>
 															</div>
 
-															<div class="modal fade" tabindex="-1" id="add-operator">
+															<div class="modal fade" tabindex="-1" id="add-operator{{ $campaign->id }}">
+																<input type="text" id="campaign_id" name="campaign_id" value="{{ $campaign->id }}" class="form-control" hidden/>
 																<div class="modal-dialog">
 																	<div class="modal-content">
 																		<div class="modal-header">
@@ -277,8 +278,8 @@
 																				@endif
 
                                                                                 <table class="table table-bordered" id="dynamic_field">
-                                                                                    <tr>
-                                                                                        <th>Subject</th>
+																					<tr>
+																						<th>Subject</th>
                                                                                         <th>Action</th>
                                                                                     </tr>
                                                                                     <tr>
@@ -304,7 +305,7 @@
 																</div>
 															</div>
 
-															<form action="{{route('campaign.destroy',['campaign' => $campaigns->id])}}" method="POST">
+															<form action="{{route('campaign.destroy',['campaign' => $campaign->id])}}" method="POST">
 																@csrf
 																@method('DELETE')
 																<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
