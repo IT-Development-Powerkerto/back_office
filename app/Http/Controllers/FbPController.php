@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campign;
 use App\Models\Client;
+use Dotenv\Parser\Value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -38,17 +40,17 @@ class FbPController extends Controller
     public function store(Request $request)
     {
         $validateData = Validator::make($request->all(),[
-        'campaign_id'      => 'required',
+        //'campaign_id'      => 'required',
         'name'             => 'required',
         'whatsapp'         => 'required',
         //     'total'               => 'required',
-        'status_id'              => 'required',
+        // 'status_id'              => 'required',
         ]);
         if ($validateData->fails()) {
             return response($validateData->errors(), 400);
         }else{
             $clients = new Client();
-            $clients->campaign_id = $request->campaign_id;
+            //$clients->campaign_id = $request->campaign_id;
             $clients->name = $request->name;
             $clients->whatsapp = $request->whatsapp;
         //     $order->total = $request->total;

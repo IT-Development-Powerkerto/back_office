@@ -64,7 +64,7 @@
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" name="password" class="form-control rounded-pill" id="exampleInputPassword1" required>
                     </div>
-                    <button type="submit" class="btn btn-primary rounded-pill text-end">Submit</button>
+                    <button type="submit" class="btn btn-primary rounded-pill text-end">Login</button>
                 </form>
             </div>
             <footer>
