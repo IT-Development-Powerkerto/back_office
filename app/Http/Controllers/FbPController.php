@@ -131,10 +131,8 @@ class FbPController extends Controller
 
     public function lead(Request $request, $campaign_id){
         $validateData = Validator::make($request->all(),[
-            'campaign_id'      => 'required',
             'name'             => 'required',
             'whatsapp'         => 'required',
-            'status_id'        => 'required',
             ]);
             if ($validateData->fails()) {
                 return response($validateData->errors(), 400);
