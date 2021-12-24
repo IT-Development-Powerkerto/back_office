@@ -101,20 +101,21 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        <?php $n=0; ?>
                                                         @foreach ($products as $product)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">1</h1>
+																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$n+=1}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="symbol symbol-45px me-5">
-																		<img src="assets/media/avatars/150-11.jpg" alt="" />
+																		<img src="{{ $product->image }}" alt="" />
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
-																		<span class="text-dark fw-bolder text-hover-primary fs-6">Freshmag</span>
+																		<span class="text-dark fw-bolder text-hover-primary fs-6">{{ $product->name }}</span>
 																	</div>
 																</div>
 															</td>

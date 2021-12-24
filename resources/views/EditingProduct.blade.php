@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Edit Campaign</title>
+		<title>Edit Product</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -31,17 +31,14 @@
 							<!--begin::Page title-->
 							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
 								<!--begin::Heading-->
-								<h1 class="text-dark fw-bold my-0 fs-2">Editing Campaign</h1>
+								<h1 class="text-dark fw-bold my-0 fs-2">Edit Product</h1>
 								<!--end::Heading-->
 								<!--begin::Breadcrumb-->
 								<ul class="breadcrumb breadcrumb-line text-muted fw-bold fs-base my-1">
 									<li class="breadcrumb-item text-muted">
 										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
 									</li>
-									<li class="breadcrumb-item text-muted">
-										<a href="{{ route('campaign.index') }}" class="text-muted">Campaign</a>
-									</li>
-									<li class="breadcrumb-item text-dark">Editing Campaign</li>
+									<li class="breadcrumb-item text-dark">Edit Product</li>
 								</ul>
 								<!--end::Breadcrumb-->
 							</div>
@@ -81,7 +78,7 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Create Campaign</h3>
+										<h3 class="fw-bolder m-0">Edit Product</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
@@ -89,14 +86,14 @@
 								<!--begin::Card body-->
 								<div class="card-body p-9">
 
-                                    <form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
+                                    <form action="{{ route('product.update',['product' => $product->id]) }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
                                                 <label for="inputFullname" class="col-form-label">Name</label>
                                             </div>
                                             <div class="col-10">
-                                                <input type="text" name="name" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline">
+                                                <input type="text" name="name" id="inputFullname" value="{{ old('name') ?? $product->name }}" class="form-control" aria-describedby="fullnameHelpInline">
                                             </div>
                                         </div>
                                         <div class="row align-items-center col-12 pb-5">
@@ -104,7 +101,7 @@
                                                 <label for="inputprice" class="col-form-label">Price</label>
                                             </div>
                                             <div class="col-10">
-                                                <input type="price" name="price" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
+                                                <input type="price" name="price" id="inputprice" value="{{ old('price') ?? $product->price }}" class="form-control" aria-describedby="priceHelpInline">
                                             </div>
                                         </div>
                                         <div class="row align-items-center col-12 pb-5">
@@ -112,7 +109,7 @@
                                                 <label for="inputdiscount" class="col-form-label">Discount</label>
                                             </div>
                                             <div class="col-10">
-                                                <input type="text" name="discount" id="inputdiscount" class="form-control" aria-describedby="discountHelpInline">
+                                                <input type="text" name="discount" id="inputdiscount" value="{{ old('discount') ?? $product->discount }}" class="form-control" aria-describedby="discountHelpInline">
                                             </div>
                                         </div>
                                         <div class="row align-items-center col-12 pb-5">
@@ -121,7 +118,7 @@
                                             </div>
                                             <div class="dropdown col-10">
                                                 <div class="mb-3">
-                                                    <input class="form-control" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+                                                    <input class="form-control" value="{{ old('image') ?? $product->image }}" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
                                                 </div>
                                             </div>
                                         </div>
@@ -130,13 +127,13 @@
                                                 <label for="inputproduct_link6" class="col-form-label">Product Link</label>
                                             </div>
                                             <div class="col-10">
-                                                <input type="product_link" name="product_link" id="inputproduct_link6" class="form-control" aria-describedby="passwordHelpInline">
+                                                <input type="product_link" name="product_link" id="inputproduct_link6" value="{{ old('product_link') ?? $product->product_link }}" class="form-control" aria-describedby="passwordHelpInline">
                                             </div>
                                         </div>
                                         {{ csrf_field() }}
-                                        <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Product">
+                                        <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Product">
                                     </form>
-                                    
+
 								</div>
 								<!--end::Card body-->
 							</div>
