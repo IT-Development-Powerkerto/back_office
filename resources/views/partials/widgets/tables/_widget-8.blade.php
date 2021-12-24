@@ -110,7 +110,7 @@
 															<th class="min-w-50px">No</th>
 															<th class="min-w-130px">Advertiser</th>
 															<th class="min-w-130px">Operator</th>
-															<th class="min-w-120px">Porduct</th>
+															<th class="min-w-120px">Product</th>
 															<th class="min-w-120px">Quantity</th>
 															<th class="min-w-120px">Price</th>
 															<th class="min-w-120px">Total</th>

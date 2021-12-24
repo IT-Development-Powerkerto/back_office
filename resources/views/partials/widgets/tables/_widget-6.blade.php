@@ -16,7 +16,7 @@
 														<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
 													</svg>
 												</span>
-												<!--end::Svg Icon-->Add Produk</a>
+												<!--end::Svg Icon-->Add Product</a>
 											</div>
 											<div class="modal fade" tabindex="-1" id="add-product">
 												<div class="modal-dialog">
