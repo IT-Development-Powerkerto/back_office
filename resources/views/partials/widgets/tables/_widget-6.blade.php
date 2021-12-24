@@ -2,12 +2,12 @@
 									<!--begin::Tables Widget 9-->
 									<div class="card card-l-stretch mb-5 mb-xl-8 pb-4 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 315px">
 										<!--begin::Header-->
-										<div class="card-header border-0 pt-5">
+										<div class="card-header border-0 pt-5" style="border: 1px solid red;">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Product</span>
 												<span class="text-muted mt-1 fw-bold fs-7">1 Product</span>
 											</h3>
-											<div class="card-toolbar" style="margin-left: 125px;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a product">
+											<div class="card-toolbar " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a product">
 												<a href="#" data-bs-toggle="modal" data-bs-target="#add-product" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 												<span class="svg-icon svg-icon-3">
@@ -76,11 +76,6 @@
 														</div>
 													</div>
 												</div>
-											</div>
-
-
-											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a user">
-
 											</div>
 										</div>
 										<!--end::Header-->
