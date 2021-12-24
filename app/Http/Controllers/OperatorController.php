@@ -36,21 +36,28 @@ class OperatorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        $rules = [];
-        foreach($request->input('user_id') as $key => $value) {
-            $rules["user_id.{$key}"] = 'required';
-        }
-        $validator = Validator::make($request->all(), $rules);
+        // $rules = [];
+        // foreach($request->input('user_id') as $key => $value) {
+        //     $rules["user_id.{$key}"] = 'required';
+        // }
+        // $validator = Validator::make($request->all(), $rules);
 
-        if ($validator->passes()) {
-            foreach($request->input('user_id') as $key => $value) {
-                Operator::create(['campaign_id'=>$request->campaign_id,'user_id'=>$value]);
-            }
-            return redirect('campaign');
-        }
-        return response()->json(['error'=>$validator->errors()->all()]);
+        // if ($validator->passes()) {
+        //     foreach($request->input('user_id') as $key => $value) {
+        //         Operator::create(['campaign_id'=>$request->campaign_id,'user_id'=>$value]);
+        //     }
+        //     return redirect('campaign');
+        // }
+        // return response()->json(['error'=>$validator->errors()->all()]);
+        DB::table('operators')->insert([
+            'campaign_id'     => $id,
+            'user_id'         => $request->operator_id,
+            'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+        return redirect('/campaign/{{$id}}')->with('success','Successfull! Campaign Added');
     }
 
     /**
