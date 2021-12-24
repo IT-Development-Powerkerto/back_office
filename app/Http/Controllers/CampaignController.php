@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Campign;
 use App\Models\EventPixel;
+use App\Models\Operator;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
@@ -119,5 +121,13 @@ class CampaignController extends Controller
         //DB::delete('delete from users where id = ?', [$campaign]);
         $campaign->delete();
         return redirect('/campaign')->with('success','Successull! Campaign Deleted');
+    }
+
+    public function addOperator($id)
+    {
+        $campaigns = Campign::findOrFail($id);
+        $operators = User::where('role_id', 6)->get();
+        $operatorCampaigns = Operator::where('campaign_id', $id)->get();
+        return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns);
     }
 }

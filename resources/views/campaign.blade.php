@@ -60,7 +60,7 @@
 										<span class="card-label fw-bolder fs-3 mb-1">Campaign</span>
 										<span class="text-muted mt-1 fw-bold fs-7">{{$campaigns->count()}} Campaign</span>
 									</h3>
-									<div class="card-toolbar" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
+									<div class="card-toolbar" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Campaign">
 										<a href="" data-bs-toggle="modal" data-bs-target="#create-campaign" class="btn btn-sm btn-light btn-active-primary">
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 										<span class="svg-icon svg-icon-3">
@@ -244,14 +244,23 @@
 																	</div>
 																</div>
                                                             </form>
-
-															<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
-																<div class="btn-group" role="group" aria-label="First group">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-operator{{ $campaign->id }}" class="btn btn-success btn-icon"><i class="la la-users"></i></button>
+															<form action="{{ route('addOperator', ['campaign' => $campaign->id]) }}" method="GET">
+																@csrf
+																<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
+																	<div class="btn-group" role="group" aria-label="First group">
+																		<button type="submit" class="btn btn-success  btn-icon"><i class="la la-users"></i></button>
+																	</div>
 																</div>
-															</div>
+                                                            </form>
 
-															<div class="modal fade" tabindex="-1" id="add-operator{{ $campaign->id }}">
+
+															{{-- <div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
+																<div class="btn-group" role="group" aria-label="First group">
+																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-operator" data-id="{{ $campaign->id }}" class="btn btn-success btn-icon"><i class="la la-users"></i></button>
+																</div>
+															</div>  --}}
+
+															<div class="modal fade" tabindex="-1" id="add-operator">
 																<div class="modal-dialog">
 																	<div class="modal-content">
 																		<div class="modal-header">
@@ -282,7 +291,7 @@
                                                                                         <th>Action</th>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <input type="text" id="campaign_id" name="campaign_id" value="{{ $campaign->id }}" class="form-control"/>
+                                                                                        {{--  <input type="text" id="campaign_id" name="campaign_id" value="{{ $campaign->id }}" class="form-control"/>  --}}
                                                                                         <td><input type="text" name="user_id[]" placeholder="Enter Operator" class="form-control name_list" /></td>
                                                                                         <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
                                                                                     </tr>
