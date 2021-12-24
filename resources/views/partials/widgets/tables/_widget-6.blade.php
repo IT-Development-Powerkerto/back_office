@@ -1,4 +1,4 @@
-									
+
 									<!--begin::Tables Widget 9-->
 									<div class="card card-l-stretch mb-5 mb-xl-8 pb-4 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 315px">
 										<!--begin::Header-->
@@ -101,6 +101,7 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        @foreach ($products as $product)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
@@ -119,7 +120,7 @@
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-                                                                    <form action="" method="GET">
+                                                                    <form action="{{ route('product.edit',['product' => $product->id]) }}" method="GET">
                                                                         @csrf
 																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																			<div class="btn-group" role="group" aria-label="First group">
@@ -137,9 +138,9 @@
 																		</div>
                                                                     </form>
 																</div>
-
 															</td>
 														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>
@@ -150,4 +151,3 @@
 										<!--begin::Body-->
 									</div>
 									<!--end::Tables Widget 9-->
-									

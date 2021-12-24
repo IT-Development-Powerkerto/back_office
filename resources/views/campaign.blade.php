@@ -252,7 +252,6 @@
 															</div>
 
 															<div class="modal fade" tabindex="-1" id="add-operator{{ $campaign->id }}">
-																<input type="text" id="campaign_id" name="campaign_id" value="{{ $campaign->id }}" class="form-control" hidden/>
 																<div class="modal-dialog">
 																	<div class="modal-content">
 																		<div class="modal-header">
@@ -260,7 +259,7 @@
 																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																		</div>
 																		<div class="modal-body">
-																			<form action={{route('operator.store')}} method="post" name="product_name" id="product_name">
+																			<form action={{route('operator.store')}} method="post" name="operator_name" id="operator_name">
 																				@csrf
 																				@if ($errors->any())
 																				<div class="alert alert-danger" role="alert">
@@ -283,6 +282,7 @@
                                                                                         <th>Action</th>
                                                                                     </tr>
                                                                                     <tr>
+                                                                                        <input type="text" id="campaign_id" name="campaign_id" value="{{ $campaign->id }}" class="form-control"/>
                                                                                         <td><input type="text" name="user_id[]" placeholder="Enter Operator" class="form-control name_list" /></td>
                                                                                         <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
                                                                                     </tr>
@@ -391,7 +391,7 @@
                    $.ajax({
                         url:postURL,
                         method:"POST",
-                        data:$('#product_name').serialize(),
+                        data:$('#operator_name').serialize(),
                         type:'json',
                         success:function(data)
                         {
@@ -400,7 +400,7 @@
                             }else{
                                 i=1;
                                 $('.dynamic-added').remove();
-                                $('#product_name')[0].reset();
+                                $('#operator_name')[0].reset();
                                 $(".print-success-msg").find("ul").html('');
                                 $(".print-success-msg").css('display','block');
                                 $(".error-message-display").css('display','none');
