@@ -124,6 +124,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        //return redirect('/dashboard')->with('success','Successull! User Deleted');
+        return redirect('/dashboard')->with('success','Successull! Product Deleted');
     }
 }

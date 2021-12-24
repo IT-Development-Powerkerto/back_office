@@ -129,7 +129,7 @@
 																			</div>
 																		</div>
                                                                     </form>
-                                                                    <form action="" method="POST">
+                                                                    <form action="{{ route('product.destroy', ['product'=>$product->id]) }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
 																		<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
