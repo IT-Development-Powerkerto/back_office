@@ -79,6 +79,9 @@ Route::resource('statuses', StatusController::class);
 Route::resource('product', ProductController::class)->middleware('auth');
 
 Route::resource('campaign', CampaignController::class)->middleware('auth');
+Route::get('campaign/{campaign}', [CampaignController::class, 'addOperator'])->name('addOperator')->middleware('auth');
+Route::post('campaign/{campaign}', [OperatorController::class, 'store'])->name('addOperator.store')->middleware('auth');
+
 //Route::post("/campaign", [CampaignController::class, 'addMorePost']);
 
 Route::resource('operator', OperatorController::class)->middleware('auth');
