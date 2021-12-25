@@ -31,8 +31,7 @@ class DashboardController extends Controller
         $icons = Icon::all();
         $products = Product::all();
         $clients = Client::all();
-        $campaign = Campign::where('product_id',2);
-        $total_lead = Client::where('campaign_id')->get();
+        $total_lead = DB::table('clients')->join('campigns', 'clients.campaign_id', '=', 'campigns.id')->get();
         return view('dashboard',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
         ->with('products', $products)->with('client', $clients)->with('total_lead', $total_lead);
     }

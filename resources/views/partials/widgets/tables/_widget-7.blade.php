@@ -46,7 +46,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-end">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$total_lead->count()}}</h1>
+																	{{-- <h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$total_lead}}</h1> --}}
 																</div>
 															</td>
 														</tr>
