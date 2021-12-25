@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Operator;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -57,7 +59,7 @@ class OperatorController extends Controller
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
-        return redirect('/campaign/{{$id}}')->with('success','Successfull! Campaign Added');
+        return redirect('/campaign')->with('success','Successfull! Campaign Added');
     }
 
     /**

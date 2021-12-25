@@ -79,8 +79,8 @@
 													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 												</div>
 												<div class="modal-body">
-													{{-- <form action="{{route('addOperator.store')}}" method="POST"> --}}
-													<form action="{{route('operator.store', ['campaign' => $campaigns->id])}}" method="POST">
+													{{--  <form action="{{route('addOperator.store')}}" method="POST">  --}}
+													<form action="{{route('addOperator.store', ['campaign' => $campaigns->id])}}" method="POST">
 														@csrf
 
 														<div class="row align-items-center col-12 pb-5">
@@ -88,15 +88,16 @@
 																<label for="inputtittle" class="col-form-label">Operator</label>
 															</div>
 															<div class="col-10">
-																<input type="text" name="operator_id" value="" required id="operator_id" class="form-control" aria-describedby="fbpHelpInline">
-																{{-- <select class="form-control" name="operator_id">
+
+																{{--  <input type="text" name="campaign_id" value="{{ $campaigns->id }}" required class="form-control">  --}}
+																<select class="form-control" name="operator_id">
 																	<option>Select Operator</option>
 																	@foreach ($operators as $operator)
 																		<option value="{{ $operator->id }}"> 
 																			{{ $operator->name }} 
 																		</option>
 																	@endforeach    
-																</select> --}}
+																</select>
 															</div>
 														</div>
 														
@@ -262,13 +263,13 @@
                 });
             });
         </script>
-		<script>
+		{{--  <script>
 			$('body').on('click', '#add-operator', function (event) {
 				event.preventDefault();
 				var id = $(this).data('id');
 				$.get('c')
 			})
-		</script>
+		</script>  --}}
 	</body>
 	<!--end::Body-->
 </html>
