@@ -29,7 +29,6 @@
 							<!--begin::Page title-->
 							@include('layout/header/_base')
 
-
 							@include('layout/_toolbar')
 						</div>
 						<!--end::Container-->
@@ -247,11 +246,11 @@
 
 															<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																<div class="btn-group" role="group" aria-label="First group">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-operator{{ $campaign->id }}" class="btn btn-success btn-icon"><i class="la la-users"></i></button>
+																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-operator" class="btn btn-success btn-icon"><i class="la la-users"></i></button>
 																</div>
 															</div>
 
-															<div class="modal fade" tabindex="-1" id="add-operator{{ $campaign->id }}">
+															<div class="modal fade" tabindex="-1" id="add-operator">
 																<div class="modal-dialog">
 																	<div class="modal-content">
 																		<div class="modal-header">
@@ -282,22 +281,11 @@
                                                                                         <th>Action</th>
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <input type="text" id="campaign_id" name="campaign_id" value="{{ $campaign->id }}" class="form-control"/>
+                                                                                        <td><input type="text" name="campaign_id" placeholder="Enter Operator" value="{{ $campaign->id }}" class="form-control name_list" /></td>
                                                                                         <td><input type="text" name="user_id[]" placeholder="Enter Operator" class="form-control name_list" /></td>
                                                                                         <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
                                                                                     </tr>
                                                                                 </table>
-																				{{-- <table class="table table-bordered" id="dynamicAddRemove">
-																					<tr>
-																						<th>Subject</th>
-																						<th>Action</th>
-																					</tr>
-																					<tr>
-																						<td><input type="text" name="addMoreInputFields[0][subject]" placeholder="Enter subject" class="form-control" />
-																						</td>
-																						<td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Subject</button></td>
-																					</tr>
-																				</table> --}}
 																				<button type="submit" class="btn btn-outline-success btn-block">Save</button>
 																			</form>
 																		</div>
@@ -400,7 +388,7 @@
                             }else{
                                 i=1;
                                 $('.dynamic-added').remove();
-                                $('#operator_name')[0].reset();
+                                $('#operator_name').reset();
                                 $(".print-success-msg").find("ul").html('');
                                 $(".print-success-msg").css('display','block');
                                 $(".error-message-display").css('display','none');
@@ -409,7 +397,6 @@
                         }
                    });
               });
-
 
               function previewMessage (msg) {
                  $(".error-message-display").find("ul").html('');
@@ -420,6 +407,24 @@
                  });
               }
             });
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('#add-operator').on('show.bs.modal', function (e) {
+                var rowid = $(e.relatedTarget).data('id');
+                //menggunakan fungsi ajax untuk pengambilan data
+                $.ajax({
+                    type : 'post',
+                    url : '',
+                    data :  'rowid='+ rowid,
+                    success : function(data){
+                    $('.fetched-data').html(data);//menampilkan data ke dalam modal
+                    }
+                });
+            });
+        });
         </script>
 
 		{{-- <script type="text/javascript">
@@ -437,10 +442,10 @@
         <script>
             $(document).ready(function() {
                 $('#product_id').on('change', function() {
-                    var roleId = $(this).val();
-                    if(roleId) {
+                    var productId = $(this).val();
+                    if(productId) {
                         $.ajax({
-                            url: '/getRole/'+roleId,
+                            url: '/getRole/'+productId,
                             type: "GET",
                             data : {"_token":"{{ csrf_token() }}"},
                             dataType: "json",
