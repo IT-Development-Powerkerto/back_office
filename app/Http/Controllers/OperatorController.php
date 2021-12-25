@@ -56,11 +56,8 @@ class OperatorController extends Controller
         // return response()->json(['error'=>$validator->errors()->all()]);
 
         $user_id = $request->operator_id;
-        $availableCampaign = Operator::where('campaign_id', $id);
-        $availableOperator = Operator::where('user_id', $user_id);
         $operatorExists = Operator::where('campaign_id', $id)->where('user_id', $user_id)->exists();
         if($operatorExists){
-            // dd($operatorExists);
             return redirect('/campaign')->with('error','Error!, Operator already exists');
         }
             DB::table('operators')->insert([
