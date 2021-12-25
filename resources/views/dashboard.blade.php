@@ -16,7 +16,8 @@ License: For each use you must have a valid license purchased only from above li
 <head>
 	<base href="">
 	<title>{{Auth()->user()->role->name}}</title>
-	<meta charset="utf-8" />
+
+
 	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
 	<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 	<!--begin::Fonts-->
