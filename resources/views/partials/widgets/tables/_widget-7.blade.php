@@ -29,66 +29,28 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        @foreach ($products as $product)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">Etawa</h1>
+																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$product->name}}</h1>
 																</div>
 															</td>
 															<td>
-																<a href="#" class="text-dark fw-bolder text-hover-primary d-block fs-6">Link</a>
+																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">MT</label>
 															</td>
 															<td class="text-end">
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">100</h1>
+																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">MT</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-end">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">50</h1>
+																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$total_lead->count()}}</h1>
 																</div>
 															</td>
 														</tr>
-														<tr>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">Gizidat</h1>
-																</div>
-															</td>
-															<td>
-																<a href="#" class="text-dark fw-bolder text-hover-primary d-block fs-6">Link</a>
-															</td>
-															<td class="text-end">
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">100</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-end">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">50</h1>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">Generos</h1>
-																</div>
-															</td>
-															<td>
-																<a href="#" class="text-dark fw-bolder text-hover-primary d-block fs-6">Link</a>
-															</td>
-															<td class="text-end">
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">100</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-end">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">50</h1>
-																</div>
-															</td>
-														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>
@@ -99,4 +61,3 @@
 										<!--begin::Body-->
 									</div>
 									<!--end::Tables Widget 9-->
-									
