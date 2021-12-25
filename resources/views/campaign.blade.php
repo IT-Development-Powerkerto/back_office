@@ -246,74 +246,12 @@
                                                             </form>
 															<form action="{{ route('addOperator', ['campaign' => $campaign->id]) }}" method="GET">
 																@csrf
-																<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
+																<div class="btn-toolbar justify-content-between px-2 " role="toolbar" aria-label="Toolbar with button groups">
 																	<div class="btn-group" role="group" aria-label="First group">
 																		<button type="submit" class="btn btn-success  btn-icon"><i class="la la-users"></i></button>
 																	</div>
 																</div>
                                                             </form>
-
-
-															<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
-																<div class="btn-group" role="group" aria-label="First group">
-																	<button type="submit" data-bs-toggle="modal" data-bs-target="#add-operator" data-id="{{ $campaign->id }}" class="btn btn-success btn-icon"><i class="la la-users"></i></button>
-																</div>
-															</div>
-
-															<div class="modal fade" tabindex="-1" id="add-operator">
-																<div class="modal-dialog">
-																	<div class="modal-content">
-																		<div class="modal-header">
-																			<h5 class="modal-title">Operator</h5>
-																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-																		</div>
-																		<div class="modal-body">
-																			<form action={{route('operator.store')}} method="post" name="operator_name" id="operator_name">
-																				@csrf
-																				@if ($errors->any())
-																				<div class="alert alert-danger" role="alert">
-																					<ul>
-																						@foreach ($errors->all() as $error)
-																						<li>{{ $error }}</li>
-																						@endforeach
-																					</ul>
-																				</div>
-																				@endif
-																				@if (Session::has('success'))
-																				<div class="alert alert-success text-center">
-																					<p>{{ Session::get('success') }}</p>
-																				</div>
-																				@endif
-
-                                                                                <table class="table table-bordered" id="dynamic_field">
-																					<tr>
-																						<th>Subject</th>
-                                                                                        <th>Action</th>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <input type="text" id="campaign_id" name="campaign_id" value="{{ $campaign->id }}" class="form-control"/>  --}}
-                                                                                        <td><input type="text" name="user_id[]" placeholder="Enter Operator" class="form-control name_list" /></td>
-                                                                                        <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
-                                                                                    </tr>
-                                                                                </table>
-																				<table class="table table-bordered" id="dynamicAddRemove">
-																					<tr>
-																						<th>Subject</th>
-																						<th>Action</th>
-																					</tr>
-																					<tr>
-																						<td><input type="text" name="addMoreInputFields[0][subject]" placeholder="Enter subject" class="form-control" />
-																						</td>
-																						<td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Subject</button></td>
-																					</tr>
-																				</table>
-																				<button type="submit" class="btn btn-outline-success btn-block">Save</button>
-																			</form>
-																		</div>
-																	</div>
-																</div>
-															</div>
-
 															<form action="{{route('campaign.destroy',['campaign' => $campaign->id])}}" method="POST">
 																@csrf
 																@method('DELETE')
