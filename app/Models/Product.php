@@ -17,6 +17,6 @@ class Product extends Model
     ];
 
     public function campign(){
-        return $this->belongsTo(Campign::class);
+        return $this->hasMany(Campign::class);
     }
 }
