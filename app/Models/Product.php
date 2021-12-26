@@ -21,6 +21,6 @@ class Product extends Model
         return $this->hasMany(Campign::class);
     }
     public function client(){
-        return $this->hasMany(Campign::class);
+        return $this->hasMany(Client::class);
     }
 }
