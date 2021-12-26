@@ -1,5 +1,6 @@
 
 									<!--begin::Tables Widget 9-->
+                                    @can('admin')
 									<div class="card card-xxl-stretch mb-5 mb-xl-8">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
@@ -116,4 +117,5 @@
 										</div>
 										<!--begin::Body-->
 									</div>
+                                    @endcan
 									<!--end::Tables Widget 9-->

@@ -7,6 +7,7 @@
 												<span class="card-label fw-bolder fs-3 mb-1">Product</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$products->count()}} Product</span>
 											</h3>
+                                            @can('admin')
 											<div class="card-toolbar " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a product">
 												<a href="#" data-bs-toggle="modal" data-bs-target="#add-product" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
@@ -77,6 +78,7 @@
 													</div>
 												</div>
 											</div>
+                                            @endcan
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
