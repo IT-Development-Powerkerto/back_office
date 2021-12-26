@@ -26,7 +26,7 @@
 															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
 														<div class="modal-body">
-															<form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
+															<form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
 																@csrf
 																<div class="row align-items-center col-12 pb-5">
 																	<div class="col-2">
