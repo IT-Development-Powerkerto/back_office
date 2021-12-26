@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Announcement;
+use App\Models\Campign;
+use App\Models\Client;
 use App\Models\Role;
 use App\Models\Icon;
 use App\Models\Product;
@@ -28,8 +30,10 @@ class DashboardController extends Controller
         $roles = Role::all();
         $icons = Icon::all();
         $products = Product::all();
+        $clients = Client::all();
+        $total_lead = DB::table('products')->pluck('lead');
         return view('dashboard',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-        ->with('products', $products);
+        ->with('products', $products)->with('client', $clients)->with('total_lead', $total_lead);
     }
 
     /**

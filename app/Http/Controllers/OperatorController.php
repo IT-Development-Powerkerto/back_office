@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campign;
 use App\Models\Operator;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -51,13 +54,19 @@ class OperatorController extends Controller
         //     return redirect('campaign');
         // }
         // return response()->json(['error'=>$validator->errors()->all()]);
-        DB::table('operators')->insert([
-            'campaign_id'     => $id,
-            'user_id'         => $request->operator_id,
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString(),
-        ]);
-        return redirect('/campaign/{{$id}}')->with('success','Successfull! Campaign Added');
+
+        $user_id = $request->operator_id;
+        $operatorExists = Operator::where('campaign_id', $id)->where('user_id', $user_id)->exists();
+        if($operatorExists){
+            return redirect('/campaign')->with('error','Error!, Operator already exists');
+        }
+            DB::table('operators')->insert([
+                'campaign_id'     => $id,
+                'user_id'         => $user_id,
+                'created_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+            return redirect('/campaign')->with('success','Successfull! Campaign Added');
     }
 
     /**

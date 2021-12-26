@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
+            $table->integer('lead')->default(0);
             $table->double('discount')->nullable();
             $table->string('image');
             $table->string('product_link');

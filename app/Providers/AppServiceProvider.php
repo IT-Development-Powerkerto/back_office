@@ -58,6 +58,10 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('it', function(User $user) {
             return $user->role_id === 9;
         }) ;
+
+        Gate::define('announcement', function(User $user){
+            return $user->role_id === 1 || $user->role_id === 2 || $user->role_id === 3 || $user->role_id === 4;
+        });
         //
     }
 }

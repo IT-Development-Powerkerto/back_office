@@ -5,8 +5,9 @@
 										<div class="card-header border-0 pt-5" style="border: 1px solid red;">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Product</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Product</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$products->count()}} Product</span>
 											</h3>
+                                            @can('admin')
 											<div class="card-toolbar " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a product">
 												<a href="#" data-bs-toggle="modal" data-bs-target="#add-product" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
@@ -26,7 +27,7 @@
 															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
 														<div class="modal-body">
-															<form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
+															<form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
 																@csrf
 																<div class="row align-items-center col-12 pb-5">
 																	<div class="col-2">
@@ -77,6 +78,7 @@
 													</div>
 												</div>
 											</div>
+                                            @endcan
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
