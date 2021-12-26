@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="pwkbackoffice" />
     <meta name="description" content="pwkbackoffice powered by PT.Powerkerto Wahyu Keprabon" />
-
+    
     <!--begin::Fonts-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 	<!--end::Fonts-->
@@ -28,7 +28,7 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
 
-    <a href="{{route('login')}}" class="btn btn-primary"> Login</a>
+    <button>Login</button>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
