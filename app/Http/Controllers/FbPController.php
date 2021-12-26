@@ -6,6 +6,7 @@ use App\Models\Campign;
 use App\Models\Client;
 use Dotenv\Parser\Value;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class FbPController extends Controller
@@ -87,7 +88,7 @@ class FbPController extends Controller
         //
     }
 
-    public function lead(Request $request, $campaign_id){
+    public function lead(Request $request, $campaign_id, $product_id){
         $validateData = Validator::make($request->all(),[
             'name'             => 'required',
             'whatsapp'         => 'required',
@@ -97,10 +98,12 @@ class FbPController extends Controller
             }else{
                 $clients = new Client();
                 $clients->campaign_id = $campaign_id;
+                $clients->product_id = $product_id;
                 $clients->name = $request->name;
                 $clients->whatsapp = $request->whatsapp;
                 $clients->status_id = 3;
                 $clients->save();
+                DB::table('products')->whereid($product_id)->increment('lead');
                 return response()->json([
                     "message" => "order record created"
                     ], 201);

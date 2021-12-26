@@ -11,12 +11,16 @@ class Product extends Model
     protected $fillable = [
         'name',
         'price',
+        'lead',
         'discount',
         'image',
         'product_link',
     ];
 
     public function campign(){
+        return $this->hasMany(Campign::class);
+    }
+    public function client(){
         return $this->hasMany(Campign::class);
     }
 }

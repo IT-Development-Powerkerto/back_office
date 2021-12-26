@@ -10,6 +10,7 @@ class Client extends Model
     use HasFactory;
     protected $fillable = [
         'campaign_id',
+        'product_id',
         'name',
         'whatsapp',
         'quantity',
@@ -22,6 +23,9 @@ class Client extends Model
     }
 
     public function campign(){
+        return $this->hasMany(Campign::class);
+    }
+    public function product(){
         return $this->hasMany(Campign::class);
     }
 }

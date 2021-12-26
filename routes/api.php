@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('lead/{campaign}', [FbPController::class, 'lead'])->name('lead');
+Route::post('lead/{campaign}/{product}', [FbPController::class, 'lead'])->name('lead');
