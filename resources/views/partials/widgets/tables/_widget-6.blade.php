@@ -7,7 +7,7 @@
 												<span class="card-label fw-bolder fs-3 mb-1">Product</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$products->count()}} Product</span>
 											</h3>
-                                            @can('admin')
+                                            @can('product')
 											<div class="card-toolbar " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a product">
 												<a href="#" data-bs-toggle="modal" data-bs-target="#add-product" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
@@ -92,7 +92,10 @@
 														<tr class="fw-bolder text-muted">
 															<th class="min-w-30px">No</th>
 															<th class="min-w-100px">Name</th>
+															<th class="min-w-100px">Price</th>
+															@can('product')
 															<th class="min-w-100px text-end">Action</th>
+															@endcan
 														</tr>
 													</thead>
 													<!--end::Table head-->
@@ -117,6 +120,14 @@
 																</div>
 															</td>
 															<td>
+																<div class="d-flex align-items-center">
+																	<div class="d-flex justify-content-start flex-column">
+																		<span class="text-dark fw-bolder text-hover-primary fs-6">{{ $product->price }}</span>
+																	</div>
+																</div>
+															</td>
+															@can('product')
+															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
                                                                     <form action="{{ route('product.edit',['product' => $product->id]) }}" method="GET">
                                                                         @csrf
@@ -137,6 +148,7 @@
                                                                     </form>
 																</div>
 															</td>
+															@endcan
 														</tr>
                                                         @endforeach
 													</tbody>
