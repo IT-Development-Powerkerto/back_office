@@ -40,31 +40,28 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('manager', function(User $user) {
             return $user->role_id === 3;
         }) ;
-        Gate::define('hrd', function(User $user) {
+        Gate::define('adv', function(User $user) {
             return $user->role_id === 4;
         }) ;
-        Gate::define('adv', function(User $user) {
+        Gate::define('cs', function(User $user) {
             return $user->role_id === 5;
         }) ;
-        Gate::define('cs', function(User $user) {
+        Gate::define('dgm', function(User $user) {
             return $user->role_id === 6;
         }) ;
-        Gate::define('dgm', function(User $user) {
+        Gate::define('cwm', function(User $user) {
             return $user->role_id === 7;
         }) ;
-        Gate::define('cwm', function(User $user) {
-            return $user->role_id === 8;
-        }) ;
         Gate::define('it', function(User $user) {
-            return $user->role_id === 9;
+            return $user->role_id === 8;
         }) ;
 
         Gate::define('announcement', function(User $user){
-            return $user->role_id === 1 || $user->role_id === 2 || $user->role_id === 3 || $user->role_id === 4;
+            return $user->role_id === 1 || $user->role_id === 2 || $user->role_id === 3;
         });
         //
         Gate::define('staff', function(User $user){
-            return $user->role_id === 1 || $user->role_id === 4;
+            return $user->role_id === 1;
         });
         Gate::define('product', function(User $user){
             return $user->role_id === 1 || $user->role_id === 5;
