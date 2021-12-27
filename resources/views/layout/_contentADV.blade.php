@@ -42,7 +42,7 @@
 	<!--begin::Row-->
 	<div class="row gy-5 my-n8 g-xl-1">
 		@include('partials/widgets/tables/_widget-8')
-		@include('partials/widgets/tables/_widget-9')
+		@include('partials/widgets/tables/_widget-user')
 	</div>
 	<!--end::Row-->
 
