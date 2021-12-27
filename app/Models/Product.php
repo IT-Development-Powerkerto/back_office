@@ -23,4 +23,7 @@ class Product extends Model
     public function client(){
         return $this->hasMany(Client::class);
     }
+    public function crm(){
+        return $this->hasMany(CRM::class);
+    }
 }
