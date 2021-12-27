@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PT. Powerkerto Wahyu Keprabon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" CONTENT="pwkbackoffice.com created by PT. Powerkerto Wahyu Keprabon.">
+    <meta name="google-site-verification" content="doC9zcjTLw5ZpuBCzLvMNG7W6D88D-hl_VsYJyWQJJc"/>
+    <meta name="keywords" content="pwkbackoffice">
+    <meta name="author" content="PT. Powerkerto Wahyu Keprabon">
+    <meta name="robots" content="noindex,nofollow">
+
+    <title>Pwkbackoffice</title>
+
     <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
     <link rel="stylesheet" href="css/lp.css">
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    
 </head>
 <body class="is-boxed has-animations">
     <div class="body-wrap boxed-container">
