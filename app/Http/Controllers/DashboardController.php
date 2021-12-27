@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Announcement;
 use App\Models\Campign;
 use App\Models\Client;
+use App\Models\CRM;
 use App\Models\Role;
 use App\Models\Icon;
 use App\Models\Product;
@@ -30,11 +31,21 @@ class DashboardController extends Controller
         $roles = Role::all();
         $icons = Icon::all();
         $products = Product::all();
-        $clients = Client::all();
+        // $clients = Client::all();
+        $crms = CRM::all();
+        // $clients = DB::table('clients')
+        //     ->join('campigns', 'clients.campaign_id', '=', 'campigns.id')
+        //     ->join('operators', 'campigns.id', '=', 'operators.campaign_id')
+        //     ->join('products', 'products.id', '=', 'campigns.product_id')
+        //     ->join('users', 'users.id', '=', 'campigns.user_id')
+        //     ->select('users.name as adv')
+        //     ->get();
+        // dd($clients);
+
         $campaigns = Campign::all();
         $total_lead = DB::table('products')->pluck('lead');
         return view('dashboard',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-        ->with('products', $products)->with('clients', $clients)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+        ->with('products', $products)->with('crms', $crms)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
     }
 
     /**

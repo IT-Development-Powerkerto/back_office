@@ -34,7 +34,7 @@
 													<!--begin::Table body-->
 													<tbody>
                                                         <?php $n=0; ?>
-                                                        @foreach ($clients as $client)
+                                                        @foreach ($crms as $crm)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center ">
@@ -43,7 +43,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6"></h1>
+																	<h1 class="text-dark fw-bolder fs-6">{{ $crm->advertiser }}</h1>
 																</div>
 															</td>
 															<td>
@@ -53,22 +53,22 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-primary fw-bolder fs-6">{{$client->product->name}}</h1>
+																	<h1 class="text-primary fw-bolder fs-6">{{$crm->product->name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$client->quantity}}</h1>
+																	<h1 class="text-dark fw-bolder fs-6">{{$crm->quantity}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$client->product->price}}</h1>
+																	<h1 class="text-dark fw-bolder fs-6">{{$crm->price}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$client->total_price}}</h1>
+																	{{--  <h1 class="text-dark fw-bolder fs-6">{{$client->total_price}}</h1>  --}}
 																</div>
 															</td>
 															<td>
