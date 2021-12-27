@@ -23,9 +23,9 @@ class Client extends Model
     }
 
     public function campign(){
-        return $this->hasMany(Campign::class);
+        return $this->belongsTo(Campign::class);
     }
     public function product(){
-        return $this->hasMany(Campign::class);
+        return $this->belongsTo(Product::class);
     }
 }
