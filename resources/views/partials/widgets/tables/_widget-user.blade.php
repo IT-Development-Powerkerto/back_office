@@ -7,17 +7,6 @@
 												<span class="card-label fw-bolder fs-3 mb-1">Staff</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$users->count()}} Staff</span>
 											</h3>
-											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a user">
-												<a href="#" data-bs-toggle="modal" data-bs-target="#add-user" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
-												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-												<span class="svg-icon svg-icon-3">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-														<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-													</svg>
-												</span>
-												<!--end::Svg Icon-->Add Staff</a>
-											</div>
 											<div class="modal fade" tabindex="-1" id="add-user">
 												<div class="modal-dialog">
 													<div class="modal-content">
@@ -112,7 +101,6 @@
 															<th class="min-w-100px">Point</th>
 															<th class="min-w-140px">Division</th>
 															<th class="min-w-120px">Status</th>
-                                                            <th class="min-w-100px text-end">Actions</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
@@ -149,27 +137,7 @@
 																	</div>
 																</div>
 															</td>
-															<td>
-																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-                                                                    <form action="{{ route('users.edit',['user' => $user->id]) }}" method="GET">
-                                                                        @csrf
-																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
-																			<div class="btn-group" role="group" aria-label="First group">
-																				<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
-																			</div>
-																		</div>
-                                                                    </form>
-                                                                    <form action="{{ route('dashboard.destroy', ['dashboard'=>$user->id]) }}" method="POST">
-                                                                        @csrf
-                                                                        @method('DELETE')
-																		<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-																			<div class="btn-group" role="group" aria-label="First group">
-																				<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
-																			</div>
-																		</div>
-                                                                    </form>
-																</div>
-															</td>
+															
 														</tr>
                                                         @endforeach
 													</tbody>

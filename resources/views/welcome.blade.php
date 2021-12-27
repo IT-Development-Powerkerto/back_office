@@ -12,10 +12,12 @@
 
     <title>Pwkbackoffice</title>
 
+    <link rel="icon" href="img/favicon.png">
+
     <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
     <link rel="stylesheet" href="css/lp.css">
     <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
-    
+
 </head>
 <body class="is-boxed has-animations">
     <div class="body-wrap boxed-container">

@@ -12,15 +12,24 @@ class LoginController extends Controller
     }
 
     public function authenticate(Request $request){
-        $credentials = $request -> validate([
-            //terlalu ketat harus gmail 'email' => 'required|email:dns',
-            'username' => 'required',
-            'password' => 'required'
-        ]);
+        // $credentials = $request -> validate([
+        //     //terlalu ketat harus gmail 'email' => 'required|email:dns',
+        //     'username' => 'required',
+        //     'password' => 'required'
+        // ]);
 
-        if(Auth::attempt($credentials)) {
+        $data = $request->input();
+        if(Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '1'||'2'||'3'||'8'])) {
             $request->session()->regenerate();
             return redirect()->intended('dashboard');
+        }
+        elseif (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '4'])){
+            $request->session()->regenerate();
+            return redirect()->intended('adv');
+        }
+        elseif (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '5'])){
+            $request->session()->regenerate();
+            return redirect()->intended('cs');
         }
         return back()->with('error', 'Login Failed!');
     }

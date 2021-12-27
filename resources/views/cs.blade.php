@@ -37,7 +37,7 @@ License: For each use you must have a valid license purchased only from above li
 <body id="kt_body"
 	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed">
 
-	@include('layout/master')
+	@include('layout/masterCS')
 
 	<script>
 		var hostUrl = "assets/";
