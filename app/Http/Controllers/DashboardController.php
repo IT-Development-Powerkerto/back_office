@@ -127,4 +127,17 @@ class DashboardController extends Controller
         DB::delete('delete from users where id = ?', [$user]);
         return redirect('/dashboard')->with('success','Successull! User Deleted');
     }
+
+    public function adv(){
+        $users = User::paginate(10);
+        $announcements = Announcement::all();
+        $roles = Role::all();
+        $icons = Icon::all();
+        $products = Product::all();
+        $clients = Client::all();
+        $campaigns = Campign::all();
+        $total_lead = DB::table('products')->pluck('lead');
+        return view('adv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
+        ->with('products', $products)->with('clients', $clients)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+    }
 }

@@ -67,6 +67,7 @@ Route::resource('users', UserController::class);
 Route::get('changeStatus', [UserController::class, 'changeStatus']);
 //Route::resource('/dasboard', DashboardController::class);
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
+Route::get('/adv', [DashboardController::class, 'adv'])->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 Route::get('/myprofile',[UserController::class, 'index'])->middleware('auth');
 
