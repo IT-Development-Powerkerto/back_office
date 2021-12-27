@@ -30,7 +30,7 @@ use App\Models\Campign;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return view('welcome');
 })->name('welcome')->middleware('guest');
 
 Route::get('/about', function () {
