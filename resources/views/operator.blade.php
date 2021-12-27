@@ -3,6 +3,7 @@
 	<!--begin::Head-->
 	<head><base href="../">
 		<title>Operator</title>
+		<link rel="icon" href="img/favicon.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
