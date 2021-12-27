@@ -1,3 +1,4 @@
+@can('adv')
 <!DOCTYPE html>
 <!--
 Author: Keenthemes
@@ -113,3 +114,4 @@ License: For each use you must have a valid license purchased only from above li
 </body>
 <!--end::Body-->
 </html>
+@endcan

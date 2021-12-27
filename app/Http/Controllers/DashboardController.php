@@ -140,4 +140,17 @@ class DashboardController extends Controller
         return view('adv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
         ->with('products', $products)->with('clients', $clients)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
     }
+
+    public function cs(){
+        $users = User::paginate(10);
+        $announcements = Announcement::all();
+        $roles = Role::all();
+        $icons = Icon::all();
+        $products = Product::all();
+        $clients = Client::all();
+        $campaigns = Campign::all();
+        $total_lead = DB::table('products')->pluck('lead');
+        return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
+        ->with('products', $products)->with('clients', $clients)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+    }
 }

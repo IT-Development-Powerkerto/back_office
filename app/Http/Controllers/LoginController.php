@@ -19,13 +19,17 @@ class LoginController extends Controller
         // ]);
 
         $data = $request->input();
-        if(Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '5'])) {
+        if(Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '1'||'2'||'3'||'8'])) {
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
+        }
+        elseif (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '4'])){
             $request->session()->regenerate();
             return redirect()->intended('adv');
         }
-        elseif (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '1'])){
+        elseif (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '5'])){
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended('cs');
         }
         return back()->with('error', 'Login Failed!');
     }
