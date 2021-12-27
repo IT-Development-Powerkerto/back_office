@@ -25,7 +25,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
+        $users = User::all();
         $announcements = Announcement::all();
         $roles = Role::all();
         $icons = Icon::all();
@@ -60,7 +60,7 @@ class DashboardController extends Controller
         {
             $extFile = $request->image->getClientOriginalExtension();
             $namaFile = 'user-'.time().".".$extFile;
-            $path = $request->image->move('assets/img',$namaFile);
+            $path = $request->image->move('public/assets/img',$namaFile);
             $image = $path;
         }
 

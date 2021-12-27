@@ -82,7 +82,7 @@ class UserController extends Controller
             $extFile = $request->image->getClientOriginalExtension();
             $namaFile = 'user-'.time().".".$extFile;
             //File::delete($user->image);
-            $path = $request->image->move('assets/img',$namaFile);
+            $path = $request->image->move('public/assets/img',$namaFile);
             $image = $path;
         }
 

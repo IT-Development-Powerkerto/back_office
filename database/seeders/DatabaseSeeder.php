@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    User::factory(4)->create();
-     User::create([
+    //User::factory(4)->create();
+    User::create([
         'name'      => "Administrator",
         'role_id'   => "1",
         'status_id' => "1",
@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         'email'     => "admin@admin.com",
         'password'  => Hash::make('1234'),
         'remember_token' => Str::random(10),
-     ]);
+    ]);
   //    User::create([
   //     'name' => "Zahra Zhafira",
   //     'email' => "zahra@gmail.com",
