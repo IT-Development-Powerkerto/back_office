@@ -7,7 +7,6 @@
 												<span class="card-label fw-bolder fs-3 mb-1">Staff</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$users->count()}} Staff</span>
 											</h3>
-                                            @can('staff')
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a user">
 												<a href="#" data-bs-toggle="modal" data-bs-target="#add-user" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
@@ -98,7 +97,6 @@
 													</div>
 												</div>
 											</div>
-                                            @endcan
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
@@ -114,9 +112,7 @@
 															<th class="min-w-100px">Point</th>
 															<th class="min-w-140px">Division</th>
 															<th class="min-w-120px">Status</th>
-                                                            @can('staff')
                                                             <th class="min-w-100px text-end">Actions</th>
-                                                            @endcan
 														</tr>
 													</thead>
 													<!--end::Table head-->
@@ -153,7 +149,6 @@
 																	</div>
 																</div>
 															</td>
-                                                            @can('staff')
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
                                                                     <form action="{{ route('users.edit',['user' => $user->id]) }}" method="GET">
@@ -175,7 +170,6 @@
                                                                     </form>
 																</div>
 															</td>
-                                                            @endcan
 														</tr>
                                                         @endforeach
 													</tbody>
