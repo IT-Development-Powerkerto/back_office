@@ -26,7 +26,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
