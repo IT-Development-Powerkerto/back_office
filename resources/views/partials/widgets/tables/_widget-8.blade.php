@@ -25,16 +25,18 @@
 															<th class="min-w-120px">Quantity</th>
 															<th class="min-w-120px">Price</th>
 															<th class="min-w-120px">Total</th>
-															<th class="min-w-120px">Time's</th>
+															<th class="min-w-120px">Times</th>
 															<th class="min-w-120px">Progress</th>
+															@can('crm')
 															<th class="min-w-100px text-end">Actions</th>
+															@endcan
 														</tr>
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
                                                         <?php $n=0; ?>
-                                                        @foreach ($client as $client)
+                                                        @foreach ($clients as $client)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center ">
@@ -81,6 +83,7 @@
 																	<h1 class="text-dark fw-bolder fs-6 badge badge-light-danger">Process Now</h1>
 																</div>
 															</td>
+															@can('crm')
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
                                                                     <form action="" method="GET">
@@ -102,6 +105,7 @@
                                                                     </form>
 																</div>
 															</td>
+															@endcan
 														</tr>
                                                         @endforeach
 													</tbody>
