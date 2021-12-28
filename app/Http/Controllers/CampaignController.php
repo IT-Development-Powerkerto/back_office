@@ -100,7 +100,7 @@ class CampaignController extends Controller
         DB::table('campigns')->where('id', $campaign)->update([
             'user_id'           => Auth()->user()->id,
             'tittle'            => $request->tittle,
-            'product'           => $request->product,
+            'product_id'        => $request->product_id,
             'message'           => $request->tp,
             'facebook_pixel'    => $request->fbp,
             'event_pixel_id'    => $request->event_id,

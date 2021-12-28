@@ -199,10 +199,10 @@
         <script>
             $(document).ready(function() {
                 $('#product_id').on('change', function() {
-                    var roleId = $(this).val();
-                    if(roleId) {
+                    var productId = $(this).val();
+                    if(productId) {
                         $.ajax({
-                            url: '/getRole/'+roleId,
+                            url: '/getProduct/'+productId,
                             type: "GET",
                             data : {"_token":"{{ csrf_token() }}"},
                             dataType: "json",
