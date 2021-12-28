@@ -31,17 +31,7 @@ class DashboardController extends Controller
         $roles = Role::all();
         $icons = Icon::all();
         $products = Product::all();
-        // $clients = Client::all();
         $crms = CRM::all();
-        // $clients = DB::table('clients')
-        //     ->join('campigns', 'clients.campaign_id', '=', 'campigns.id')
-        //     ->join('operators', 'campigns.id', '=', 'operators.campaign_id')
-        //     ->join('products', 'products.id', '=', 'campigns.product_id')
-        //     ->join('users', 'users.id', '=', 'campigns.user_id')
-        //     ->select('users.name as adv')
-        //     ->get();
-        // dd($clients);
-
         $campaigns = Campign::all();
         $total_lead = DB::table('products')->pluck('lead');
         return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
@@ -140,28 +130,28 @@ class DashboardController extends Controller
     }
 
     public function adv(){
-        $users = User::paginate(10);
+        $users = User::all();
         $announcements = Announcement::all();
         $roles = Role::all();
         $icons = Icon::all();
         $products = Product::all();
-        $clients = Client::all();
+        $crms = CRM::all();
         $campaigns = Campign::all();
         $total_lead = DB::table('products')->pluck('lead');
         return view('adv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-        ->with('products', $products)->with('clients', $clients)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+        ->with('products', $products)->with('crms', $crms)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
     }
 
     public function cs(){
-        $users = User::paginate(10);
+        $users = User::all();
         $announcements = Announcement::all();
         $roles = Role::all();
         $icons = Icon::all();
         $products = Product::all();
-        $clients = Client::all();
+        $crms = CRM::all();
         $campaigns = Campign::all();
         $total_lead = DB::table('products')->pluck('lead');
         return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-        ->with('products', $products)->with('clients', $clients)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+        ->with('products', $products)->with('crms', $crms)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
     }
 }

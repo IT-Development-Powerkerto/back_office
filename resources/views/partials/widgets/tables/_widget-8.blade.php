@@ -4,8 +4,8 @@
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Leads Tunneling</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$crms->count()}} Leads</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Lead tunneling</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$crms->count()}} Lead</span>
 											</h3>
 										</div>
 										<!--end::Header-->
