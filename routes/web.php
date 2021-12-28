@@ -79,6 +79,7 @@ Route::resource('roles', RoleController::class);
 Route::resource('statuses', StatusController::class);
 
 Route::resource('product', ProductController::class)->middleware('auth');
+Route::resource('crm', CRMControlle::class)->middleware('auth');
 
 Route::resource('campaign', CampaignController::class)->middleware('auth');
 Route::get('campaign/{campaign}', [CampaignController::class, 'addOperator'])->name('addOperator')->middleware('auth');
