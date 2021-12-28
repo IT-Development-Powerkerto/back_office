@@ -42,7 +42,7 @@ class ProductController extends Controller
         {
             $extFile = $request->image->getClientOriginalExtension();
             $namaFile = 'product-'.time().".".$extFile;
-            $path = $request->image->move('assets/img/product',$namaFile);
+            $path = $request->image->move('public/assets/img/product',$namaFile);
             $image = $path;
         }
 
@@ -98,7 +98,7 @@ class ProductController extends Controller
             $extFile = $request->image->getClientOriginalExtension();
             $namaFile = 'product-'.time().".".$extFile;
             //File::delete($user->image);
-            $path = $request->image->move('assets/img/product',$namaFile);
+            $path = $request->image->move('public/assets/img/product',$namaFile);
             $image = $path;
         }
 
