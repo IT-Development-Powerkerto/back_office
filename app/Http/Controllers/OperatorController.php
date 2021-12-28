@@ -19,7 +19,7 @@ class OperatorController extends Controller
      */
     public function index()
     {
-        $operators = User::where('role_id', 6)->get();
+        $operators = User::where('role_id', 5)->get();
         return view('operator', ['operators'=>$operators]);
     }
 

@@ -14,7 +14,7 @@ class CRM extends Model
     protected $fillable = [
         'advertiser',
         'operator',
-        'product',
+        'product_id',
         'quantity',
         'price',
         'total_price',

@@ -126,7 +126,7 @@ class CampaignController extends Controller
     public function addOperator($id)
     {
         $campaigns = Campign::findOrFail($id);
-        $operators = User::where('role_id', 6)->get();
+        $operators = User::where('role_id', 5)->get();
         $operatorCampaigns = Operator::where('campaign_id', $id)->get();
         return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns);
     }
