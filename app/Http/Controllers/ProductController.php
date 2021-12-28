@@ -111,7 +111,7 @@ class ProductController extends Controller
             'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);
 
-        //return redirect('/dashboard')->with('success','Successull! User Updated');
+        return redirect('/dashboard')->with('success','Successull! Product Updated');
     }
 
     /**

@@ -88,6 +88,7 @@
 
                                     <form action="{{ route('product.update',['product' => $product->id]) }}" method="post" enctype="multipart/form-data">
                                         @csrf
+                                        @method('PATCH')
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
                                                 <label for="inputFullname" class="col-form-label">Name</label>
