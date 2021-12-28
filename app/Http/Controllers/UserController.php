@@ -114,11 +114,12 @@ class UserController extends Controller
         return redirect('/dashboard')->with('success','Successull! User Deleted');
     }
 
-    public function changeStatus(Request $request)
+    public function updateStatus(Request $request)
     {
-        $user = User::find($request->user_id);
+        $user = User::findOrFail($request->user_id);
         $user->status = $request->status;
         $user->save();
+        return redirect()->to('/dashboard');
     }
 
     public function select(Request $request)

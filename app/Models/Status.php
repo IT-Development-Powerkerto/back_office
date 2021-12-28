@@ -12,10 +12,6 @@ class Status extends Model
         'name',
         ];
 
-    public function user(){
-        return $this->hasMany(User::class);
-    }
-
     public function client(){
         return $this->hasMany(Client::class);
     }
