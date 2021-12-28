@@ -141,10 +141,10 @@
 															<td class="text-end">
 																<div class="d-flex flex-column w-100 me-2">
 																	<div class="d-flex flex-stack">
-                                                                        @if ($user->status_id == 1)
-                                                                            <span class="badge badge-light-success">{{$user->status->name}}</span>
+                                                                        @if ($user->status == 1)
+                                                                            <span class="badge badge-light-danger">Work</span>
                                                                         @else
-                                                                            <span class="badge badge-light-danger">{{$user->status->name}}</span>
+                                                                            <span class="badge badge-light-success">Idle</span>
                                                                         @endif
 																	</div>
 																</div>

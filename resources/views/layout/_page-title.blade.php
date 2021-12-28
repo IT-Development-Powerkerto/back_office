@@ -11,14 +11,21 @@
 		<small class="text-muted fs-7 fw-bold my-1 ms-1">{{Auth()->user()->role->name}}</small>
 		<div class="d-flex align-items-center flex-wrap">
 			<div class="menu-content px-5">
-				<label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
-					<input class="form-check-input w-30px h-20px" type="checkbox" value="1" name="mode" id="kt_user_menu_dark_mode_toggle" data-kt-url="#" />
+				{{-- <label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="kt_user_menu_dark_mode_toggle">
+					<input data-id="{{Auth()->user()->id}}" class="form-check-input w-30px h-20px toggle-class" type="checkbox" name="mode" id="kt_user_menu_dark_mode_toggle" data-kt-url="dashboard" data-toggle="toggle" data-on="1" data-off="2" {{ Auth()->user()->status_id ? 'checked' : '' }} />
 					<span class="pulse-ring ms-n1"></span>
-				</label>
+				</label> --}}
+                <input type="checkbox" data-id="{{ Auth()->user()->id }}" name="status" class="js-switch" {{ Auth()->user()->status == 1 ? 'checked' : '' }}>
 			</div>
 		</div>
 		<!--end::Description-->
 	</h1>
 	<!--end::Title-->
 </div>
+
+<script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+    elems.forEach(function(html) {
+        let switchery = new Switchery(html,  { size: 'small' });
+    });
+</script>
 <!--end::Page title-->

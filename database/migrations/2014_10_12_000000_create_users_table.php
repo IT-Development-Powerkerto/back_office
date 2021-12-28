@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone')->nullable();
             $table->string('image')->nullable();
-            $table->foreignId('status_id');
+            $table->boolean('status')->default(1);
             $table->integer('point')->nullable();
             $table->rememberToken()->nullable();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
