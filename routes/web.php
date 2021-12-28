@@ -14,6 +14,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\LeadController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\ProductController;
 use App\Models\Campign;
@@ -79,7 +80,7 @@ Route::resource('roles', RoleController::class);
 Route::resource('statuses', StatusController::class);
 
 Route::resource('product', ProductController::class)->middleware('auth');
-Route::resource('crm', CRMControlle::class)->middleware('auth');
+Route::resource('lead', LeadController::class)->middleware('auth');
 
 Route::resource('campaign', CampaignController::class)->middleware('auth');
 Route::get('campaign/{campaign}', [CampaignController::class, 'addOperator'])->name('addOperator')->middleware('auth');

@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Lead tunneling</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$crms->count()}} Lead</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$leads->count()}} Lead</span>
 											</h3>
 										</div>
 										<!--end::Header-->
@@ -34,7 +34,7 @@
 													<!--begin::Table body-->
 													<tbody>
                                                         <?php $n=0; ?>
-                                                        @foreach ($crms as $crm)
+                                                        @foreach ($leads as $lead)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center ">
@@ -43,7 +43,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{ $crm->advertiser }}</h1>
+																	<h1 class="text-dark fw-bolder fs-6">{{ $lead->advertiser }}</h1>
 																</div>
 															</td>
 															<td>
@@ -53,22 +53,22 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-primary fw-bolder fs-6">{{$crm->product->name}}</h1>
+																	<h1 class="text-primary fw-bolder fs-6">{{$lead->product->name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$crm->quantity}}</h1>
+																	<h1 class="text-dark fw-bolder fs-6">{{$lead->quantity}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$crm->price}}</h1>
+																	<h1 class="text-dark fw-bolder fs-6">{{$lead->price}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$crm->total_price}}</h1>
+																	<h1 class="text-dark fw-bolder fs-6">{{$lead->total_price}}</h1>
 																</div>
 															</td>
 															<td>
@@ -83,7 +83,7 @@
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-                                                                    <form action="{{ route('crm.edit',['crm' => $crm->id]) }}" method="GET">
+                                                                    <form action="{{ route('lead.edit',['lead' => $lead->id]) }}" method="GET">
                                                                         @csrf
 																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																			<div class="btn-group" role="group" aria-label="First group">

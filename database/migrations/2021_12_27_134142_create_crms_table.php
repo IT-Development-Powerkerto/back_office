@@ -15,13 +15,6 @@ class CreateCrmsTable extends Migration
     {
         Schema::create('crms', function (Blueprint $table) {
             $table->id();
-            $table->string('advertiser');
-            $table->string('operator')->nullable();
-            $table->foreignId('product_id');
-            $table->integer('quantity')->nullable();
-            $table->integer('price');
-            $table->integer('total_price')->nullable();
-            $table->foreignId('status_id')->nullable();
             $table->timestamps();
         });
     }

@@ -67,7 +67,7 @@ class User extends Authenticatable
     public function operator(){
         return $this->hasMany(Operator::class);
     }
-    public function crm(){
-        return $this->hasMany(CRM::class);
+    public function lead(){
+        return $this->hasMany(Lead::class);
     }
 }

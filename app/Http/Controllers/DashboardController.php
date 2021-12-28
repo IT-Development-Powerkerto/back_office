@@ -12,6 +12,7 @@ use App\Models\Client;
 use App\Models\CRM;
 use App\Models\Role;
 use App\Models\Icon;
+use App\Models\Lead;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -31,11 +32,11 @@ class DashboardController extends Controller
         $roles = Role::all();
         $icons = Icon::all();
         $products = Product::all();
-        $crms = CRM::all();
+        $leads = Lead::all();
         $campaigns = Campign::all();
         $total_lead = DB::table('products')->pluck('lead');
         return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-        ->with('products', $products)->with('crms', $crms)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+        ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
     }
 
     /**
@@ -135,11 +136,11 @@ class DashboardController extends Controller
         $roles = Role::all();
         $icons = Icon::all();
         $products = Product::all();
-        $crms = CRM::all();
+        $leads = Lead::all();
         $campaigns = Campign::all();
         $total_lead = DB::table('products')->pluck('lead');
         return view('adv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-        ->with('products', $products)->with('crms', $crms)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+        ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
     }
 
     public function cs(){
@@ -148,10 +149,10 @@ class DashboardController extends Controller
         $roles = Role::all();
         $icons = Icon::all();
         $products = Product::all();
-        $crms = CRM::all();
+        $leads = Lead::all();
         $campaigns = Campign::all();
         $total_lead = DB::table('products')->pluck('lead');
         return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-        ->with('products', $products)->with('crms', $crms)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+        ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
     }
 }
