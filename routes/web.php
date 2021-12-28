@@ -17,7 +17,6 @@ use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\ProductController;
-use App\Models\Campign;
 
 /*
 |--------------------------------------------------------------------------

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCampignsTable extends Migration
+class CreateCampaignsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCampignsTable extends Migration
      */
     public function up()
     {
-        Schema::create('campigns', function (Blueprint $table) {
+        Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('tittle');
+            $table->string('title');
             $table->foreignId('product_id');
             $table->string('message');
             $table->string('facebook_pixel');
@@ -32,6 +32,6 @@ class CreateCampignsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('campigns');
+        Schema::dropIfExists('campaigns');
     }
 }

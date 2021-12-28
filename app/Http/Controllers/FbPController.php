@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Campign;
+use App\Models\Campaign;
 use App\Models\Client;
 use App\Models\CRM;
 use Dotenv\Parser\Value;
@@ -99,7 +99,7 @@ class FbPController extends Controller
             }else{
                 $clients = new Client();
                 $crm = new CRM();
-                $adv_id = DB::table('campigns')->where('id', $campaign_id)->value('user_id');
+                $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
                 $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
                 $product_price = DB::table('products')->where('id', $product_id)->value('price');
                 $clients->campaign_id = $campaign_id;

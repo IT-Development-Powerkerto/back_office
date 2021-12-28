@@ -22,8 +22,8 @@ class Client extends Model
         return $this->belongsTo(Status::class);
     }
 
-    public function campign(){
-        return $this->belongsTo(Campign::class);
+    public function campaign(){
+        return $this->belongsTo(Campaign::class);
     }
     public function product(){
         return $this->belongsTo(Product::class);

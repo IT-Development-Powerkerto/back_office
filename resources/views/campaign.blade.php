@@ -85,10 +85,10 @@
 
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
-																<label for="inputtittle" class="col-form-label">Tittle</label>
+																<label for="inputtitle" class="col-form-label">Tittle</label>
 															</div>
 															<div class="col-10">
-																<input type="text" name="tittle" value="" required id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+																<input type="text" name="title" value="" required id="inputtitle" class="form-control" aria-describedby="titleHelpInline">
 															</div>
 														</div>
                                                         <div class="row align-items-center col-12 pb-5">
@@ -172,7 +172,7 @@
 															<h1 class="text-dark fw-bolder text-hover-primary fs-6">https://mauorder.online/wa-generosku-2 </h1>
 														</div> -->
 														<div class="timeline-desc timeline-desc-light-primary mx-3">
-															<span class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$campaign->tittle}}</span>
+															<span class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$campaign->title}}</span>
 															<!-- <p class="fw-bolder pb-2">
 																https://mauorder.online/wa-generosku-2
 															</p> -->

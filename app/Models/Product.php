@@ -17,8 +17,8 @@ class Product extends Model
         'product_link',
     ];
 
-    public function campign(){
-        return $this->hasMany(Campign::class);
+    public function campaign(){
+        return $this->hasMany(Campaign::class);
     }
     public function client(){
         return $this->hasMany(Client::class);

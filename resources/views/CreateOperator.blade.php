@@ -86,10 +86,10 @@
 
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
-                                                <label for="inputtittle" class="col-form-label">Name</label>
+                                                <label for="inputtitle" class="col-form-label">Name</label>
                                             </div>
                                             <div class="col-10">
-                                                <input type="text" name="nameop" value="" id="inputtittle" class="form-control" aria-describedby="nameopHelpInline">
+                                                <input type="text" name="nameop" value="" id="inputtitle" class="form-control" aria-describedby="nameopHelpInline">
                                             </div>
                                         </div>
                                         <div class="row align-items-center col-12 pb-5">

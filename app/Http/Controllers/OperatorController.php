@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Campign;
+use App\Models\Campaign;
 use App\Models\Operator;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;

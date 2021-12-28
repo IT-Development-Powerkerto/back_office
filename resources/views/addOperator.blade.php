@@ -57,7 +57,7 @@
 								<!--begin::Header-->
 								<div class="card-header border-0 pt-5">
 									<h3 class="card-title align-items-start flex-column">
-										<span class="card-label fw-bolder fs-3 mb-1">Campaign {{ $campaigns->tittle }}</span>
+										<span class="card-label fw-bolder fs-3 mb-1">Campaign {{ $campaigns->title }}</span>
 										<span class="text-muted mt-1 fw-bold fs-7">{{$operatorCampaigns->count()}} Opertor</span>
 									</h3>
 									<div class="card-toolbar" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Operator">
@@ -85,7 +85,7 @@
 
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
-																<label for="inputtittle" class="col-form-label">Operator</label>
+																<label for="inputtitle" class="col-form-label">Operator</label>
 															</div>
 															<div class="col-10">
 

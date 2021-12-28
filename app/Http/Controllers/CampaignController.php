@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Campign;
+use App\Models\Campaign;
 use App\Models\EventPixel;
 use App\Models\Operator;
 use App\Models\Product;
@@ -21,7 +21,7 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        $campaigns = Campign::all();
+        $campaigns = Campaign::all();
         $events = EventPixel::all();
         $product = Product::all();
         return view('campaign', ['events'=>$events])->with('campaigns', $campaigns)->with('products', $product);
@@ -48,9 +48,9 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('campigns')->insert([
+        DB::table('campaigns')->insert([
             'user_id'         => Auth()->user()->id,
-            'tittle'          => $request->tittle,
+            'title'          => $request->title,
             'product_id'      => $request->product_id,
             'message'         => $request->tp,
             'facebook_pixel'  => $request->fbp,
@@ -69,7 +69,7 @@ class CampaignController extends Controller
      */
     public function show($campaign)
     {
-        $campaigns = Campign::find($campaign);
+        $campaigns = Campaign::find($campaign);
         $product = Product::all();
         return view('campaign',compact($campaigns))->with('products', $product);
     }
@@ -82,7 +82,7 @@ class CampaignController extends Controller
      */
     public function edit($id)
     {
-        $campaigns = Campign::findOrFail($id);
+        $campaigns = Campaign::findOrFail($id);
         $event = EventPixel::all();
         $product = Product::all();
         return view('EditingCampaign',['campaign' => $campaigns])->with('event', $event)->with('products', $product);
@@ -97,9 +97,9 @@ class CampaignController extends Controller
      */
     public function update(Request $request, $campaign)
     {
-        DB::table('campigns')->where('id', $campaign)->update([
+        DB::table('campaigns')->where('id', $campaign)->update([
             'user_id'           => Auth()->user()->id,
-            'tittle'            => $request->tittle,
+            'title'            => $request->title,
             'product_id'        => $request->product_id,
             'message'           => $request->tp,
             'facebook_pixel'    => $request->fbp,
@@ -116,7 +116,7 @@ class CampaignController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Campign $campaign)
+    public function destroy(Campaign $campaign)
     {
         //DB::delete('delete from users where id = ?', [$campaign]);
         $campaign->delete();
@@ -125,7 +125,7 @@ class CampaignController extends Controller
 
     public function addOperator($id)
     {
-        $campaigns = Campign::findOrFail($id);
+        $campaigns = Campaign::findOrFail($id);
         $operators = User::where('role_id', 5)->get();
         $operatorCampaigns = Operator::where('campaign_id', $id)->get();
         return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns);
