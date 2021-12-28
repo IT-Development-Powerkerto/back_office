@@ -94,60 +94,26 @@
 										@method('PATCH')
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputtittle" class="col-form-label">Advertiser</label>
+												<label for="inputQuantity" class="col-form-label">Quantity</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="tittle" required value="{{ old('tittle') ?? $campaign->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
-											</div>
-										</div>
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputRole" class="col-form-label">Operator</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-                                                <select name="product_id" id="product_id" class="form-control">
-                                                    <option disable selected value="{{ $campaign->product_id }}" hidden>{{$campaign->product->name}}</option>
-                                                    @foreach ($products as $product)
-                                                    <option value="{{$product->id}}" required>{{$product->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-										<div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputRole" class="col-form-label">Product</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-                                                <select name="product_id" id="product_id" class="form-control">
-                                                    <option disable selected value="{{ $campaign->product_id }}" hidden>{{$campaign->product->name}}</option>
-                                                    @foreach ($products as $product)
-                                                    <option value="{{$product->id}}" required>{{$product->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputtittle" class="col-form-label">Quantity</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="tittle" required value="{{ old('tittle') ?? $campaign->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+												<input type="text" name="quantity" required value="{{ old('quantity') ?? $crms->quantity }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputtittle" class="col-form-label">Price</label>
+												<label for="inputprice" class="col-form-label">Price</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="tittle" required value="{{ old('tittle') ?? $campaign->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+												<input type="text" name="price" required value="{{ old('price') ?? $crms->price }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputtittle" class="col-form-label">Total</label>
+												<label for="inputTotal" class="col-form-label">Total</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="tittle" required value="{{ old('tittle') ?? $campaign->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+												<input type="text" name="total" required value="{{ old('total') ?? $campaign->total }}" id="inputtotal" class="form-control" aria-describedby="totalHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -155,11 +121,11 @@
                                                 <label for="inputRole" class="col-form-label">Progress</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <select name="product_id" id="product_id" class="form-control">
-                                                    <option disable selected value="{{ $campaign->product_id }}" hidden>{{$campaign->product->name}}</option>
-                                                    @foreach ($products as $product)
-                                                    <option value="{{$product->id}}" required>{{$product->name}}</option>
-                                                    @endforeach
+                                                <select name="progress" id="progress" class="form-control">
+                                                    <option value="" required>Waiting</option>
+													<option value="" required>Proccessing</option>
+													<option value="" required>Failed</option>
+													<option value="" required>Closing</option>
                                                 </select>
                                             </div>
                                         </div>
