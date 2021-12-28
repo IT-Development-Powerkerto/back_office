@@ -94,6 +94,36 @@
 										@method('PATCH')
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
+												<label for="inputAdvertiser" class="col-form-label">Advertiser</label>
+											</div>
+											<div class="col-10">
+												<input type="text" name="advertiser" required value="{{ old('advertiser') ?? $crms->advertiser }}" id="inputadvertiser" class="form-control" aria-describedby="advertiserHelpInline">
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputOperator" class="col-form-label">Operator</label>
+											</div>
+											<div class="col-10">
+												<input type="text" name="operator" required value="{{ old('operator') ?? $crms->operator }}" id="inputoperator" class="form-control" aria-describedby="operatorHelpInline" disabled>
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+                                            <div class="col-2">
+                                                <label for="inputProduct" class="col-form-label">Product</label>
+                                            </div>
+                                            <div class="dropdown col-10">
+                                                <select name="product" id="product" class="form-control">
+                                                    <option value="" required>Generos</option>
+													<option value="" required>Freshmag</option>
+													<option value="" required>Gizidat</option>
+													<option value="" required>Etawaku</option>
+													<option value="" required>Rube</option>
+                                                </select>
+                                            </div>
+                                        </div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
 												<label for="inputQuantity" class="col-form-label">Quantity</label>
 											</div>
 											<div class="col-10">
@@ -117,8 +147,16 @@
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputTime" class="col-form-label">Time</label>
+											</div>
+											<div class="col-10">
+												<input type="text" name="time" required value="{{ old('time') ?? $campaign->time }}" id="inputtime" class="form-control" aria-describedby="totalHelpInline">
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
-                                                <label for="inputRole" class="col-form-label">Progress</label>
+                                                <label for="inputProgress" class="col-form-label">Progress</label>
                                             </div>
                                             <div class="dropdown col-10">
                                                 <select name="progress" id="progress" class="form-control">
@@ -130,7 +168,7 @@
                                             </div>
                                         </div>
 										{{ csrf_field() }}
-										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Campaign">
+										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Lead Tenneling">
 									</form>
 								</div>
 								<!--end::Card body-->
