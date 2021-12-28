@@ -39,7 +39,7 @@
 										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
 									</li>
 									<li class="breadcrumb-item text-muted">
-										<a href="{{ route('campaign.index') }}" class="text-muted">Lead Tunelling</a>
+										<a href="{{ route('crm.index') }}" class="text-muted">Lead Tunelling</a>
 									</li>
 									<li class="breadcrumb-item text-dark">Edit Lead Tunelling</li>
 								</ul>
@@ -89,7 +89,7 @@
 								<!--begin::Card body-->
 								<div class="card-body p-9">
 
-									<form action="{{ route('campaign.update',['campaign' => $campaign->id]) }}" method="POST">
+									<form action="{{ route('crm.update',['crm' => $crm->id]) }}" method="POST">
 										@csrf
 										@method('PATCH')
 										<div class="row align-items-center col-12 pb-5">
@@ -97,7 +97,7 @@
 												<label for="inputAdvertiser" class="col-form-label">Advertiser</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="advertiser" required value="{{ old('advertiser') ?? $crms->advertiser }}" id="inputadvertiser" class="form-control" aria-describedby="advertiserHelpInline">
+												<input type="text" name="advertiser" required value="{{ old('advertiser') ?? $crm->advertiser }}" id="inputadvertiser" class="form-control" aria-describedby="advertiserHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -105,7 +105,7 @@
 												<label for="inputOperator" class="col-form-label">Operator</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="operator" required value="{{ old('operator') ?? $crms->operator }}" id="inputoperator" class="form-control" aria-describedby="operatorHelpInline" disabled>
+												<input type="text" name="operator" required value="{{ old('operator') ?? $crm->operator }}" id="inputoperator" class="form-control" aria-describedby="operatorHelpInline" disabled>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -127,7 +127,7 @@
 												<label for="inputQuantity" class="col-form-label">Quantity</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="quantity" required value="{{ old('quantity') ?? $crms->quantity }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
+												<input type="text" name="quantity" required value="{{ old('quantity') ?? $crm->quantity }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -135,7 +135,7 @@
 												<label for="inputprice" class="col-form-label">Price</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="price" required value="{{ old('price') ?? $crms->price }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
+												<input type="text" name="price" required value="{{ old('price') ?? $crm->price }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -143,17 +143,17 @@
 												<label for="inputTotal" class="col-form-label">Total</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="total" required value="{{ old('total') ?? $campaign->total }}" id="inputtotal" class="form-control" aria-describedby="totalHelpInline">
+												<input type="text" name="total" required value="{{ old('total') ?? $crm->total_price }}" id="inputtotal" class="form-control" aria-describedby="totalHelpInline">
 											</div>
 										</div>
-										<div class="row align-items-center col-12 pb-5">
+										{{--  <div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputTime" class="col-form-label">Time</label>
 											</div>
 											<div class="col-10">
 												<input type="text" name="time" required value="{{ old('time') ?? $campaign->time }}" id="inputtime" class="form-control" aria-describedby="totalHelpInline">
 											</div>
-										</div>
+										</div>  --}}
 										<div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
                                                 <label for="inputProgress" class="col-form-label">Progress</label>
