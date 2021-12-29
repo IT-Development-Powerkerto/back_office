@@ -17,8 +17,8 @@ class CreateClientsTable extends Migration
             $table->id();
             $table->foreignId('campaign_id');
             $table->foreignId('product_id');
-            $table->string('name');
-            $table->string('whatsapp');
+            $table->string('name')->nullable();
+            $table->string('whatsapp')->nullable();
             $table->integer('quantity')->nullable();
             $table->integer('total_price')->nullable();
             $table->foreignId('status_id')->nullable();

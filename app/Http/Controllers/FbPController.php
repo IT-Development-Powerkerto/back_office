@@ -30,7 +30,7 @@ class FbPController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**
@@ -41,7 +41,7 @@ class FbPController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -119,5 +119,16 @@ class FbPController extends Controller
                     "message" => "order record created"
                     ], 201);
             }
+    }
+
+    public function lead_wa($campaign_id, $product_id){
+        $clients = new Client();
+        $clients->campaign_id = $campaign_id;
+        $clients->product_id = $product_id;
+        $clients->status_id = 3;
+        $clients->save();
+        return response()->json([
+            "message" => "order record created"
+            ], 201);
     }
 }
