@@ -122,13 +122,12 @@ class FbPController extends Controller
     }
 
     public function lead_wa($campaign_id, $product_id){
+        $text = Campaign::where('id', $campaign_id)->value('auto_text');
         $clients = new Client();
         $clients->campaign_id = $campaign_id;
         $clients->product_id = $product_id;
         $clients->status_id = 3;
         $clients->save();
-        return response()->json([
-            "message" => "order record created"
-            ], 201);
+        return redirect('https://api.whatsapp.com/send/?phone=18336361122&text='.$text);
     }
 }
