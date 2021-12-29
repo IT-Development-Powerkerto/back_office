@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Campaign;
 use App\Models\Client;
 use App\Models\Lead;
+use App\Models\User;
 use Dotenv\Parser\Value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -115,9 +116,10 @@ class FbPController extends Controller
                 $lead->status_id = 3;
                 $lead->save();
                 DB::table('products')->whereid($product_id)->increment('lead');
-                return response()->json([
-                    "message" => "order record created"
-                    ], 201);
+                // return response()->json([
+                //     "message" => "order record created"
+                //     ], 201);
+                return redirect('http://anakgemukcerdas.com/');
             }
     }
 
@@ -128,6 +130,20 @@ class FbPController extends Controller
         $clients->product_id = $product_id;
         $clients->status_id = 3;
         $clients->save();
+        
+        $lead = new Lead();
+        $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
+        $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
+        $product_price = DB::table('products')->where('id', $product_id)->value('price');
+        $lead->advertiser = $adv_name;
+        $lead->product_id = $product_id;
+        $lead->price = $product_price;
+        $lead->status_id = 3;
+        $lead->save();
+        DB::table('products')->whereid($product_id)->increment('lead');
+
+        // $phone = DB::table('users')
+        //     ->join
         return redirect('https://api.whatsapp.com/send/?phone=18336361122&text='.$text);
     }
 }
