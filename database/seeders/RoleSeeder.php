@@ -25,7 +25,7 @@ class RoleSeeder extends Seeder
                'name'  => 'Manager',
             ],
             [
-               'name'  => 'Advertise',
+               'name'  => 'Advertiser',
             ],
             [
                'name'  => 'Customer Service',

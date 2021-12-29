@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Campign;
+use App\Models\Campaign;
 use App\Models\Client;
-use App\Models\CRM;
+use App\Models\Lead;
 use Dotenv\Parser\Value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -98,8 +98,8 @@ class FbPController extends Controller
                 return response($validateData->errors(), 400);
             }else{
                 $clients = new Client();
-                $crm = new CRM();
-                $adv_id = DB::table('campigns')->where('id', $campaign_id)->value('user_id');
+                $lead = new Lead();
+                $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
                 $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
                 $product_price = DB::table('products')->where('id', $product_id)->value('price');
                 $clients->campaign_id = $campaign_id;
@@ -109,11 +109,11 @@ class FbPController extends Controller
                 $clients->status_id = 3;
                 $clients->save();
 
-                $crm->advertiser = $adv_name;
-                $crm->product_id = $product_id;
-                $crm->price = $product_price;
-                $crm->status_id = 3;
-                $crm->save();
+                $lead->advertiser = $adv_name;
+                $lead->product_id = $product_id;
+                $lead->price = $product_price;
+                $lead->status_id = 3;
+                $lead->save();
                 DB::table('products')->whereid($product_id)->increment('lead');
                 return response()->json([
                     "message" => "order record created"

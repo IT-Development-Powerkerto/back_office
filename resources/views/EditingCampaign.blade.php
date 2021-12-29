@@ -94,10 +94,10 @@
 										@method('PATCH')
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputtittle" class="col-form-label">Tittle</label>
+												<label for="inputtitle" class="col-form-label">Tittle</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="tittle" required value="{{ old('tittle') ?? $campaign->tittle }}" id="inputtittle" class="form-control" aria-describedby="tittleHelpInline">
+												<input type="text" name="title" required value="{{ old('title') ?? $campaign->title }}" id="inputtitle" class="form-control" aria-describedby="titleHelpInline">
 											</div>
 										</div>
                                         <div class="row align-items-center col-12 pb-5">

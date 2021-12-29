@@ -66,7 +66,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('product', function(User $user){
             return $user->role_id === 1 || $user->role_id === 5;
         });
-        Gate::define('crm', function(User $user){
+        Gate::define('lead', function(User $user){
             return $user->role_id === 1 || $user->role_id === 6;
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOperatorsTable extends Migration
+class CreateCampaignsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateOperatorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('operators', function (Blueprint $table) {
+        Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('campaign_id');
             $table->foreignId('user_id');
-            $table->double('closing_rate');
+            $table->string('title');
+            $table->foreignId('product_id');
+            $table->string('message');
+            $table->string('facebook_pixel');
+            $table->foreignId('event_pixel_id');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateOperatorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operators');
+        Schema::dropIfExists('campaigns');
     }
 }

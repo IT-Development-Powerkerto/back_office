@@ -61,13 +61,13 @@ class User extends Authenticatable
     public function announcement(){
         return $this->hasMany(Announcement::class);
     }
-    public function campign(){
-        return $this->hasMany(Campign::class);
+    public function campaign(){
+        return $this->hasMany(Campaign::class);
     }
     public function operator(){
         return $this->hasMany(Operator::class);
     }
-    public function crm(){
-        return $this->hasMany(CRM::class);
+    public function lead(){
+        return $this->hasMany(Lead::class);
     }
 }

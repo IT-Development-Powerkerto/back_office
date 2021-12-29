@@ -13,7 +13,7 @@ class EventPixel extends Model
         'even_pixel',
         ];
 
-    public function campign(){
-        return $this->hasMany(Campign::class);
+    public function campaign(){
+        return $this->hasMany(Campaign::class);
     }
 }

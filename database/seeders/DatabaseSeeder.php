@@ -19,14 +19,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     //User::factory(4)->create();
-    User::create([
-        'name'      => "Administrator",
-        'role_id'   => "1",
-        'username'  => "admin",
-        'email'     => "admin@admin.com",
-        'password'  => Hash::make('1234'),
-        'remember_token' => Str::random(10),
-    ]);
+   //  User::create([
+   //      'name'      => "Administrator",
+   //      'role_id'   => "1",
+   //      'username'  => "admin",
+   //      'email'     => "admin@admin.com",
+   //      'password'  => Hash::make('1234'),
+   //      'remember_token' => Str::random(10),
+   //  ]);
   //    User::create([
   //     'name' => "Zahra Zhafira",
   //     'email' => "zahra@gmail.com",
@@ -63,11 +63,9 @@ class DatabaseSeeder extends Seeder
      Post::factory(25)->create();
 
      $this->call([
+         UserSeeder::class,
          RoleSeeder::class,
-         StatusSeeder::class,
-         IconSeeder::class,
-         EventSeeder::class,
-         //ProductSeeder::class,
+         ProductSeeder::class,
      ]);
    //   Post::create([
    //      'title' => 'Judul Pertama',
