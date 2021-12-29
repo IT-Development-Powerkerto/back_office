@@ -151,7 +151,7 @@
 																<textarea type="text" name="at" value="" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
 															</div>
 														</div>
-														
+
 														{{ csrf_field() }}
 														<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">
 													</form>
@@ -269,7 +269,7 @@
 </head>
 <body>
 
-	<form action="https://api.pwkbackoffice.com/public/api/lead/{{$campaign->id}}/{{$campaign->product_id}}" method="POST">
+	<form action="https://api.pwkbackoffice.com/public/api/lead_wa/{{$campaign->id}}/{{$campaign->product_id}}" method="POST">
 		<button type="submit" class="btn btn-primary" onclick="{{$campaign->event_pixel->event_pixel}}">Submit</button>
 	</form>
 
