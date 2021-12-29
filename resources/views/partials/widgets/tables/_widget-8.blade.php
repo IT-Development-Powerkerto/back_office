@@ -7,6 +7,19 @@
 												<span class="card-label fw-bolder fs-3 mb-1">Lead tunneling</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$leads->count()}} Lead</span>
 											</h3>
+											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
+												<a href="#" class="btn btn-sm btn-light btn-active-primary mx-2" title="Click For Detail">
+												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+												<span class="svg-icon svg-icon-3">
+													<i class="fas fa-chart-line"></i>
+												</span>
+												<!--end::Svg Icon-->Detail</a>
+												
+												<form action="#" method="GET" class="d-flex">
+													<input class="form-control mt-0" name="search" type="search" placeholder="Search" aria-label="Search" style="height: 33px;">
+													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
+												</form>
+											</div>
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
@@ -17,7 +30,7 @@
 												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
 													<!--begin::Table head-->
 													<thead>
-														<tr class="fw-bolder text-muted">
+														<tr class="fw-medium text-muted">
 															<th class="min-w-50px">No</th>
 															<th class="min-w-130px">Advertiser</th>
 															<th class="min-w-130px">Operator</th>
@@ -38,37 +51,37 @@
 														<tr>
 															<td>
 																<div class="d-flex align-items-center ">
-																	<h1 class="text-dark fw-bolder fs-6">{{$n+=1}}</h1>
+																	<h1 class="text-dark fw-medium fs-6">{{$n+=1}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{ $lead->advertiser }}</h1>
+																	<h1 class="text-dark fw-medium fs-6">{{ $lead->advertiser }}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6"></h1>
+																	<h1 class="text-dark fw-medium fs-6"></h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-primary fw-bolder fs-6">{{$lead->product->name}}</h1>
+																	<h1 class="text-primary fw-medium fs-6">{{$lead->product->name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$lead->quantity}}</h1>
+																	<h1 class="text-dark fw-medium fs-6">{{$lead->quantity}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$lead->price}}</h1>
+																	<h1 class="text-dark fw-medium fs-6">{{$lead->price}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$lead->total_price}}</h1>
+																	<h1 class="text-dark fw-medium fs-6">{{$lead->total_price}}</h1>
 																</div>
 															</td>
 															<td>

@@ -19,7 +19,7 @@
 												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
 													<!--begin::Table head-->
 													<thead>
-														<tr class="fw-bolder text-muted">
+														<tr class="fw text-muted">
 															<th class="min-w-100px">Product</th>
 															<th class="min-w-90px">Link</th>
 															<th class="min-w-80px">Visitors</th>
@@ -33,20 +33,20 @@
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$product->name}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$product->name}}</h1>
 																</div>
 															</td>
 															<td>
-																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">MT</label>
+																<label class="text-dark fw-normal d-block fs-6">MT</label>
 															</td>
 															<td class="text-end">
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">MT</h1>
+																	<h1 class="text-dark fw-normal fs-6">MT</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-end">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{ $product->lead }}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{ $product->lead }}</h1>
 																</div>
 															</td>
 														</tr>
