@@ -10,6 +10,7 @@ use Dotenv\Parser\Value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Carbon;
 
 class FbPController extends Controller
 {
@@ -130,20 +131,30 @@ class FbPController extends Controller
         $clients->product_id = $product_id;
         $clients->status_id = 3;
         $clients->save();
-        
-        $lead = new Lead();
+
+        //$lead = new Lead();
         $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
         $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
         $product_price = DB::table('products')->where('id', $product_id)->value('price');
-        $lead->advertiser = $adv_name;
-        $lead->product_id = $product_id;
-        $lead->price = $product_price;
-        $lead->status_id = 3;
-        $lead->save();
+        // $lead->advertiser = $adv_name;
+        // $lead->product_id = $product_id;
+        // $lead->price = $product_price;
+        // $lead->status_id = 3;
+        // $lead->save();
+        DB::table('leads')->insert([
+            'advertiser' => $adv_name,
+            'product_id' => $product_id,
+            'price'      => $product_price,
+            'status_id'  => 3,
+            'created_at' => Carbon::now()->format('Y-m-d'),
+            'updated_at' => Carbon::now()->format('Y-m-d'),
+        ]);
         DB::table('products')->whereid($product_id)->increment('lead');
-
+        return response()->json([
+                "message" => "order record created"
+                ], 201);
         // $phone = DB::table('users')
         //     ->join
-        return redirect('https://api.whatsapp.com/send/?phone=18336361122&text='.$text);
+        //return redirect('https://api.whatsapp.com/send/?phone=18336361122&text='.$text);
     }
 }

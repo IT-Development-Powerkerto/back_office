@@ -70,4 +70,8 @@ class User extends Authenticatable
     public function lead(){
         return $this->hasMany(Lead::class);
     }
+
+    public function closing_rate(){
+        return $this->hasMany(ClosingRate::class);
+    }
 }
