@@ -113,7 +113,7 @@
 														</div>
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
-																<label for="inputRole" class="col-form-label">Facebook Event</label>
+																<label for="inputRole" class="col-form-label">Facebook Event Form</label>
 															</div>
 															<div class="dropdown col-10">
 																<select name="event_id" id="event_id" class="form-control">
@@ -131,6 +131,27 @@
 																<textarea type="text" name="tp" value="" required id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 															</div>
 														</div>
+														<div class="row align-items-center col-12 pb-5">
+															<div class="col-2">
+																<label for="wa_event_id" class="col-form-label">Facebook Event WA</label>
+															</div>
+															<div class="dropdown col-10">
+																<select name="wa_event_id" id="wa_event_id" class="form-control">
+																	@foreach ($events as $event)
+																	<option value="{{$event->id}}" required>{{$event->name}}</option>
+																	@endforeach
+																</select>
+															</div>
+														</div>
+														<div class="row align-items-center col-12 pb-5">
+															<div class="col-2">
+																<label for="inputat"  class="col-form-label">Auto Text Wa</label>
+															</div>
+															<div class="col-10">
+																<textarea type="text" name="at" value="" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
+															</div>
+														</div>
+														
 														{{ csrf_field() }}
 														<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">
 													</form>
