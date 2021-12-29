@@ -128,7 +128,7 @@
 																<label for="inputtp"  class="col-form-label">Thanks Page</label>
 															</div>
 															<div class="col-10">
-																<textarea type="text" name="tp" value="" required id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
+																<textarea type="text" name="tp" required id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
@@ -136,8 +136,8 @@
 																<label for="wa_event_id" class="col-form-label">Facebook Event WA</label>
 															</div>
 															<div class="dropdown col-10">
-																<select name="wa_event_id" id="wa_event_id" class="form-control">
-																	@foreach ($events as $event)
+																<select name="event_wa" id="wa_event_id" class="form-control">
+																	@foreach ($eventWa as $event)
 																	<option value="{{$event->id}}" required>{{$event->name}}</option>
 																	@endforeach
 																</select>
@@ -148,7 +148,7 @@
 																<label for="inputat"  class="col-form-label">Auto Text Wa</label>
 															</div>
 															<div class="col-10">
-																<textarea type="text" name="at" value="" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
+																<textarea type="text" name="auto_text" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
 															</div>
 														</div>
 
@@ -270,7 +270,7 @@
 <body>
 
 	<form action="https://api.pwkbackoffice.com/public/api/lead_wa/{{$campaign->id}}/{{$campaign->product_id}}" method="POST">
-		<button type="submit" class="btn btn-primary" onclick="{{$campaign->event_pixel->event_pixel}}">Submit</button>
+		<button type="submit" class="btn btn-primary" onclick="{{$campaign->event_wa->event_pixel}}">Submit</button>
 	</form>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

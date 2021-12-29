@@ -147,9 +147,9 @@
 												<label for="wa_event_id" class="col-form-label">Facebook Event WA</label>
 											</div>
 											<div class="dropdown col-10">
-												<select name="wa_event_id" id="wa_event_id" class="form-control">
-													<option disable selected value="{{ $campaign->event_pixel_id }}" hidden>{{$campaign->event_pixel->name}}</option>
-													@foreach ($event as $event)
+												<select name="event_wa" id="wa_event_id" class="form-control">
+													<option disable selected value="{{ $campaign->event_wa_id }}" hidden>{{$campaign->event_wa->name}}</option>
+													@foreach ($eventWa as $event)
 													<option value="{{ $event->id }}">{{$event->name}}</option>
 													@endforeach
 												</select>
@@ -160,7 +160,7 @@
 												<label for="inputat" class="col-form-label">Auto Text WA</label>
 											</div>
 											<div class="col-10">
-												<textarea type="text" required name="at" id="inputat" class="form-control" aria-describedby="atHelpInline">{{ old('message') ?? $campaign->message }}</textarea>
+												<textarea type="text" required name="auto_text" id="inputat" class="form-control" aria-describedby="atHelpInline">{{ old('auto_text') ?? $campaign->auto_text }}</textarea>
 											</div>
 										</div>
 										{{ csrf_field() }}

@@ -14,7 +14,8 @@ class Campaign extends Model
         'message',
         'product_id',
         'facebook_pixel',
-        'even_pixel_id',
+        'event_pixel_id',
+        'event_wa',
     ];
 
     public function user(){
@@ -35,5 +36,9 @@ class Campaign extends Model
 
     public function client(){
         return $this->hasMany(Client::class);
+    }
+
+    public function event_wa(){
+        return $this->belongsTo(EventWa::class);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Campaign;
 use App\Models\EventPixel;
+use App\Models\EventWa;
 use App\Models\Operator;
 use App\Models\Product;
 use App\Models\User;
@@ -23,8 +24,9 @@ class CampaignController extends Controller
     {
         $campaigns = Campaign::all();
         $events = EventPixel::all();
+        $eventWa = EventWa::all();
         $product = Product::all();
-        return view('campaign', ['events'=>$events])->with('campaigns', $campaigns)->with('products', $product);
+        return view('campaign', ['eventWa'=>$eventWa])->with('campaigns', $campaigns)->with('products', $product)->with('events', $events);
     }
 
     /**
@@ -55,6 +57,8 @@ class CampaignController extends Controller
             'message'         => $request->tp,
             'facebook_pixel'  => $request->fbp,
             'event_pixel_id'  => $request->event_id,
+            'event_wa_id'     => $request->event_wa,
+            'auto_text'       => $request->auto_text,
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
@@ -84,8 +88,9 @@ class CampaignController extends Controller
     {
         $campaigns = Campaign::findOrFail($id);
         $event = EventPixel::all();
+        $eventWa = EventWa::all();
         $product = Product::all();
-        return view('EditingCampaign',['campaign' => $campaigns])->with('event', $event)->with('products', $product);
+        return view('EditingCampaign',['campaign' => $campaigns])->with('event', $event)->with('products', $product)->with('eventWa', $eventWa);
     }
 
     /**
@@ -104,6 +109,8 @@ class CampaignController extends Controller
             'message'           => $request->tp,
             'facebook_pixel'    => $request->fbp,
             'event_pixel_id'    => $request->event_id,
+            'event_wa_id'       => $request->event_wa,
+            'auto_text'         => $request->auto_text,
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
 

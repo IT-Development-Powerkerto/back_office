@@ -67,6 +67,7 @@ class DatabaseSeeder extends Seeder
          RoleSeeder::class,
          ProductSeeder::class,
          EventSeeder::class,
+         EventWaSeeder::class,
      ]);
    //   Post::create([
    //      'title' => 'Judul Pertama',
