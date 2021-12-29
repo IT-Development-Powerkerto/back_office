@@ -20,18 +20,22 @@ License: For each use you must have a valid license purchased only from above li
 
 	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
 	<link rel="icon" href="img/favicon.png">
+    
 	<!--begin::Fonts-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 	<!--end::Fonts-->
+
 	<!--begin::Page Vendor Stylesheets(used by this page)-->
 	<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
 	<!--end::Page Vendor Stylesheets-->
+
 	<!--begin::Global Stylesheets Bundle(used by all pages)-->
 	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 	<!--end::Global Stylesheets Bundle-->
+    
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -52,6 +56,7 @@ License: For each use you must have a valid license purchased only from above li
 	<!--begin::Page Vendors Javascript(used by this page)-->
 	<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
 	<!--end::Page Vendors Javascript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<!--begin::Page Custom Javascript(used by this page)-->
 	<script src="assets/js/custom/widgets.js"></script>
 	<script src="assets/js/custom/apps/chat/chat.js"></script>
@@ -71,7 +76,7 @@ License: For each use you must have a valid license purchased only from above li
                         type: "GET",
                         data : {"_token":"{{ csrf_token() }}"},
                         dataType: "json",
-                        success:function(data)
+                        success:function(data);
                     });
                 }
             });
@@ -87,7 +92,7 @@ License: For each use you must have a valid license purchased only from above li
                         type: "GET",
                         data : {"_token":"{{ csrf_token() }}"},
                         dataType: "json",
-                        success:function(data)
+                        success:function(data);
                     });
                 }
             });
