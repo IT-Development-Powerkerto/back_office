@@ -17,6 +17,7 @@ class CreateOperatorsTable extends Migration
             $table->id();
             $table->foreignId('campaign_id');
             $table->foreignId('user_id');
+            $table->double('closing_rate');
             $table->timestamps();
         });
     }

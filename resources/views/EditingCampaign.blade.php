@@ -123,7 +123,7 @@
 										</div>
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputRole" class="col-form-label">Facebook Event</label>
+												<label for="inputRole" class="col-form-label">Facebook Event Form</label>
 											</div>
 											<div class="dropdown col-10">
 												<select name="event_id" id="event_id" class="form-control">
@@ -140,6 +140,27 @@
 											</div>
 											<div class="col-10">
 												<textarea type="text" required name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline">{{ old('message') ?? $campaign->message }}</textarea>
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="wa_event_id" class="col-form-label">Facebook Event WA</label>
+											</div>
+											<div class="dropdown col-10">
+												<select name="wa_event_id" id="wa_event_id" class="form-control">
+													<option disable selected value="{{ $campaign->event_pixel_id }}" hidden>{{$campaign->event_pixel->name}}</option>
+													@foreach ($event as $event)
+													<option value="{{ $event->id }}">{{$event->name}}</option>
+													@endforeach
+												</select>
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputat" class="col-form-label">Auto Text WA</label>
+											</div>
+											<div class="col-10">
+												<textarea type="text" required name="at" id="inputat" class="form-control" aria-describedby="atHelpInline">{{ old('message') ?? $campaign->message }}</textarea>
 											</div>
 										</div>
 										{{ csrf_field() }}

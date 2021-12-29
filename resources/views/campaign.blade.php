@@ -113,7 +113,7 @@
 														</div>
 														<div class="row align-items-center col-12 pb-5">
 															<div class="col-2">
-																<label for="inputRole" class="col-form-label">Facebook Event</label>
+																<label for="inputRole" class="col-form-label">Facebook Event Form</label>
 															</div>
 															<div class="dropdown col-10">
 																<select name="event_id" id="event_id" class="form-control">
@@ -131,6 +131,27 @@
 																<textarea type="text" name="tp" value="" required id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 															</div>
 														</div>
+														<div class="row align-items-center col-12 pb-5">
+															<div class="col-2">
+																<label for="wa_event_id" class="col-form-label">Facebook Event WA</label>
+															</div>
+															<div class="dropdown col-10">
+																<select name="wa_event_id" id="wa_event_id" class="form-control">
+																	@foreach ($events as $event)
+																	<option value="{{$event->id}}" required>{{$event->name}}</option>
+																	@endforeach
+																</select>
+															</div>
+														</div>
+														<div class="row align-items-center col-12 pb-5">
+															<div class="col-2">
+																<label for="inputat"  class="col-form-label">Auto Text Wa</label>
+															</div>
+															<div class="col-10">
+																<textarea type="text" name="at" value="" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
+															</div>
+														</div>
+														
 														{{ csrf_field() }}
 														<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">
 													</form>
@@ -153,7 +174,8 @@
 													<th class="min-w-200px">Name</th>
 													<th class="min-w-200px">Operators</th>
 													<th class="min-w-200px">Trafic</th>
-													<th class="min-w-200px">Code</th>
+													<th class="min-w-200px">Fp code</th>
+													<th class="min-w-200px">WA code</th>
 													<th class="min-w-200px text-end">Actions</th>
 												</tr>
 											</thead>
@@ -209,7 +231,7 @@
 		src="https://www.facebook.com/tr?-ev=PageView&noscript=1"/>
 	</noscript>
 
-	<title>Hello, world!</title>
+	<title></title>
 </head>
 <body>
 
@@ -227,6 +249,28 @@
 			<input type="text" name="whatsapp" class="form-control" id="exampleInputWhatsapp">
 	</div>
 	<button type="submit" class="btn btn-primary" onclick="{{$campaign->event_pixel->event_pixel}}">Submit</button>
+	</form>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>
+														</textarea>
+													</td>
+													<td>
+														<textarea type="text" name="wp" id="inputwp" class="form-control" aria-describedby="wpHelpInline" >
+<!doctype html>
+<html lang="en">
+<head>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<title></title>
+</head>
+<body>
+
+	<form action="https://api.pwkbackoffice.com/public/api/lead/{{$campaign->id}}/{{$campaign->product_id}}" method="POST">
+		<button type="submit" class="btn btn-primary" onclick="{{$campaign->event_pixel->event_pixel}}">Submit</button>
 	</form>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
