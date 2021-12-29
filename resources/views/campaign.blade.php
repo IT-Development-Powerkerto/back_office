@@ -173,7 +173,7 @@
 													<th class="min-w-50px">No</th>
 													<th class="min-w-200px">Name</th>
 													<th class="min-w-200px">Operators</th>
-													<th class="min-w-200px">Trafic</th>
+													<th class="min-w-200px">Leads</th>
 													<th class="min-w-200px">Fp code</th>
 													<th class="min-w-200px">WA code</th>
 													<th class="min-w-200px text-end">Actions</th>
@@ -201,10 +201,10 @@
 														</div>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $campaign->operator->count() }}</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $campaign->operator->count() }} Operators</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">0 View</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$campaign->client->count()}} Leads</label>
 													</td>
 													<td>
 														<textarea type="text" name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline" >
