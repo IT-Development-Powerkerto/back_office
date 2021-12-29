@@ -201,7 +201,7 @@
 														</div>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">0 Operator</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $campaign->operator->count() }}</label>
 													</td>
 													<td>
 														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">0 View</label>
