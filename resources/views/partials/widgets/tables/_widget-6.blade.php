@@ -87,8 +87,7 @@
 												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
 													<!--begin::Table head-->
 													<thead>
-														<tr class="fw-bolder text-muted">
-															<th class="min-w-30px">No</th>
+														<tr class=" text-muted">
 															<th class="min-w-100px">Name</th>
 															<th class="min-w-100px">Price</th>
 															<th class="min-w-100px text-end">Action</th>
@@ -102,23 +101,18 @@
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$n+=1}}</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
 																	<div class="symbol symbol-45px me-5">
 																		<img src="{{ $product->image }}" alt="" />
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
-																		<span class="text-dark fw-bolder text-hover-primary fs-6">{{ $product->name }}</span>
+																		<span class="text-dark text-hover-primary fs-6">{{ $product->name }}</span>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<span class="text-dark fw-bolder text-hover-primary fs-6">{{ $product->price }}</span>
+																		<span class="text-dark text-hover-primary fs-6">{{ $product->price }}</span>
 																	</div>
 																</div>
 															</td>

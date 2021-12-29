@@ -126,17 +126,17 @@
 																		<img src="{{$user->image}}" width="100px" alt="" />
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
-																		<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{$user->name}}</a>
+																		<a href="#" class="text-dark fw-medium text-hover-primary fs-6">{{$user->name}}</a>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">50 Points </h1>
+																	<h1 class="badge badge-light-info">50 Points </h1>
 																</div>
 															</td>
 															<td>
-																<a href="#" class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$user->role->name}}</a>
+																<a href="#" class="text-dark fw-medium text-hover-primary d-block fs-6">{{$user->role->name}}</a>
 															</td>
 															<td class="text-end">
 																<div class="d-flex flex-column w-100 me-2">

@@ -65,7 +65,7 @@
 												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
 													<!--begin::Table head-->
 													<thead>
-														<tr class="fw-bolder text-muted">
+														<tr class="fw-medium text-muted">
 															<th class="min-w-100px">Created At</th>
 															<th class="min-w-100px">Icon</th>
 															<th class="min-w-140px">Announcement</th>
@@ -80,17 +80,17 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{$announcement->created_at}}</a>
+																		<a href="#" class="text-dark fw-medium text-hover-primary fs-6">{{$announcement->created_at}}</a>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder text-hover-primary fs-6">{{$announcement->icon->fa_name}}</h1>
+																	<h1 class="text-dark fw-medium text-hover-primary fs-6">{{$announcement->icon->fa_name}}</h1>
 																</div>
 															</td>
 															<td>
-																<a href="#" class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$announcement->announcement}}</a>
+																<a href="#" class="text-dark fw-medium text-hover-primary d-block fs-6">{{$announcement->announcement}}</a>
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">

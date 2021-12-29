@@ -17,7 +17,7 @@
 												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
 													<!--begin::Table head-->
 													<thead>
-														<tr class="fw-bolder text-muted">
+														<tr class="fw-medium text-muted">
 															<th class="min-w-50px">No</th>
 															<th class="min-w-130px">Advertiser</th>
 															<th class="min-w-130px">Operator</th>
@@ -38,37 +38,37 @@
 														<tr>
 															<td>
 																<div class="d-flex align-items-center ">
-																	<h1 class="text-dark fw-bolder fs-6">{{$n+=1}}</h1>
+																	<h1 class="text-dark fw-medium fs-6">{{$n+=1}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{ $lead->advertiser }}</h1>
+																	<h1 class="text-dark fw-medium fs-6">{{ $lead->advertiser }}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6"></h1>
+																	<h1 class="text-dark fw-medium fs-6"></h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-primary fw-bolder fs-6">{{$lead->product->name}}</h1>
+																	<h1 class="text-primary fw-medium fs-6">{{$lead->product->name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$lead->quantity}}</h1>
+																	<h1 class="text-dark fw-medium fs-6">{{$lead->quantity}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$lead->price}}</h1>
+																	<h1 class="text-dark fw-medium fs-6">{{$lead->price}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">{{$lead->total_price}}</h1>
+																	<h1 class="text-dark fw-medium fs-6">{{$lead->total_price}}</h1>
 																</div>
 															</td>
 															<td>
