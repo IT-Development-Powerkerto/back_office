@@ -50,7 +50,7 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('campaigns')->insert([
+        $campaign_id = DB::table('campaigns')->insertGetId([
             'user_id'         => Auth()->user()->id,
             'title'          => $request->title,
             'product_id'      => $request->product_id,
@@ -61,6 +61,11 @@ class CampaignController extends Controller
             'auto_text'       => $request->auto_text,
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+        // $campaign_id = $campaign->id;
+        DB::table('distribution_counters')->insert([
+            'campaign_id' => $campaign_id,
+            'counter' => 0
         ]);
         return redirect('/campaign')->with('success','Successfull! Campaign Added');
     }

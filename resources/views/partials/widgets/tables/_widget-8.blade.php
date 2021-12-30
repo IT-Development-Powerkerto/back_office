@@ -61,7 +61,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6"></h1>
+																	<h1 class="text-dark fw-medium fs-6">{{ $lead->operator->name }}</h1>
 																</div>
 															</td>
 															<td>

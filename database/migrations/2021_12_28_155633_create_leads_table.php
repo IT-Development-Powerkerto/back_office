@@ -16,7 +16,7 @@ class CreateLeadsTable extends Migration
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
             $table->string('advertiser');
-            $table->foreignId('operator')->nullable();
+            $table->foreignId('operator_id')->nullable();
             $table->foreignId('product_id');
             $table->integer('quantity')->nullable();
             $table->integer('price');
