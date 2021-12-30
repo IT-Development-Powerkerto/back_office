@@ -14,7 +14,7 @@
 													<i class="fas fa-chart-line"></i>
 												</span>
 												<!--end::Svg Icon-->Detail</a>
-												
+
 												<form action="#" method="GET" class="d-flex">
 													<input class="form-control mt-0" name="search" type="search" placeholder="Search" aria-label="Search" style="height: 33px;">
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
@@ -85,8 +85,20 @@
 																</div>
 															</td>
 															<td>
+<<<<<<< HEAD
 																<div class="d-flex align-items-center">
 																	<h1 class="text-dark fw-bolder fs-6 badge badge-light-success"><span id="time">05:00</span></h1>
+=======
+																<div class="d-flex align-items-center clock{{ $lead->id }}">
+																	{{-- <h1 class="text-dark fw-bolder fs-6"><span id="time">05:00</span></h1> --}}
+                                                                    <script>
+                                                                        window.addEventListener('load', function() {
+                                                                            var fiveMinutes{{ $lead->id}} = 60*5,
+                                                                            display = document.querySelector('.clock{{ $lead->id }}');
+                                                                            startTimer(fiveMinutes{{$lead->id}}, display);
+                                                                        });
+                                                                    </script>
+>>>>>>> 9e05b15956dbb613ecc5c741de5c42459eedf75d
 																</div>
 															</td>
 															<td>
