@@ -9,6 +9,7 @@ use App\Models\EventWa;
 use App\Models\Operator;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Lead;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
@@ -140,6 +141,7 @@ class CampaignController extends Controller
         $campaigns = Campaign::findOrFail($id);
         $operators = User::where('role_id', 5)->get();
         $operatorCampaigns = Operator::where('campaign_id', $id)->get();
-        return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns);
+        $lead = Lead::all();
+        return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns)->with('lead', $lead);
     }
 }

@@ -93,14 +93,14 @@
 																<select class="form-control" name="operator_id">
 																	<option>Select Operator</option>
 																	@foreach ($operators as $operator)
-																		<option value="{{ $operator->id }}"> 
-																			{{ $operator->name }} 
+																		<option value="{{ $operator->id }}">
+																			{{ $operator->name }}
 																		</option>
-																	@endforeach    
+																	@endforeach
 																</select>
 															</div>
 														</div>
-														
+
 														{{ csrf_field() }}
 														<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add"/>
 													</form>
@@ -108,7 +108,7 @@
 											</div>
 										</div>
 									</div>
-									
+
 								</div>
 								<!--end::Header-->
 								<!--begin::Body-->
@@ -135,22 +135,22 @@
 												@foreach ($operatorCampaigns as $operatorCampaign)
 												<tr>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->name }}</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->name }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->email }}</label> 
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->email }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->phone }}</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->phone }}</label>
 													</td>
                                                     <td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
-                                                            <span class="fw-mormal text-gray-800">1 Campaigns</span>
+                                                            <span class="fw-mormal text-gray-800">{{$operatorCampaign->user->operator->count()}} Campaigns</span>
                                                             <p class="fw-bolder pb-2">
-                                                                79 Traffic
+                                                                {{$operatorCampaign->lead->count()}} Leads
                                                             </p>
                                                         </div>
 													</td>
@@ -206,7 +206,7 @@
             $(document).ready(function(){
 				var postURL = "<?php echo url('addProduct'); ?>";
 				var i=1;
-				
+
 				$('#add').click(function(){
 					i++;
 					$('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><input type="text" name="user_id[]" placeholder="Enter Operator" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
@@ -216,7 +216,7 @@
 					var button_id = $(this).attr("id");
 					$('#row'+button_id+'').remove();
 				});
-				
+
 				$.ajaxSetup({
 					headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -227,7 +227,7 @@
 				$(".error-message-display").find("ul").html('');
 				$(".error-message-display").css('display','block');
 				$(".print-success-msg").css('display','none');
-				
+
 				$.each( msg, function( key, value ) {
                     $(".error-message-display").find("ul").append('<li>'+value+'</li>');
                 });
