@@ -13,14 +13,15 @@ class ClosingRateController extends Controller
         $day = Carbon::now()->format('Y-m-d');
         $month = Carbon::now()->format('Y-m');
 
-        $month_in_table = DB::table('leads')->value('created_at');
-        $m = Carbon::parse(DB::table('leads')->where('operator', $user_id)->value('created_at'))->format('Y-m');
-        $day_lead = Lead::where('created_at', $day)->where('operator', $user_id)->count();
-        $day_closing = Lead::where('created_at', $day)->where('status_id', 5)->count();
+        
+        // $month_in_table = DB::table('leads')->value('created_at');
+        $m = Carbon::parse(DB::table('leads as l')->join('operators as o', 'o.id', '=', 'l.operator_id')->where('o.user_id', $user_id)->value('l.created_at'))->format('Y-m');
+        $day_lead = DB::table('leads as l')->join('operators as o', 'o.id', '=', 'l.operator_id')->where('l.created_at', $day)->where('o.user_id', $user_id)->count();
+        $day_closing = DB::table('leads as l')->join('operators as o', 'o.id', '=', 'l.operator_id')->where('l.created_at', $day)->where('l.status_id', 5)->where('o.user_id', $user_id)->count();
 
         if($m == $month){
-            $month_lead = Lead::where('operator', $user_id)->count();
-            $month_closing = Lead::where('operator', $user_id)->where('status_id', 5)->count();
+            $month_lead = DB::table('leads as l')->join('operators as o', 'o.id', '=', 'l.operator_id')->where('o.user_id', $user_id)->count();
+            $month_closing = DB::table('leads as l')->join('operators as o', 'o.id', '=', 'l.operator_id')->where('o.user_id', $user_id)->where('l.status_id', 5)->count();
         }
         DB::table('closing_rates')->where('id', $user_id)->insert([
             'user_id'            => $user_id,
@@ -29,5 +30,7 @@ class ClosingRateController extends Controller
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
+        // $day_closing_rate = $day_closing/$day_lead;
+        // return $day_closing;
     }
 }
