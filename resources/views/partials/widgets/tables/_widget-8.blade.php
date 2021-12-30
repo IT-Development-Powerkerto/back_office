@@ -86,7 +86,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6">00:49</h1>
+																	<h1 class="text-dark fw-bolder fs-6"><span id="time">05:00</span></h1>
 																</div>
 															</td>
 															<td>
