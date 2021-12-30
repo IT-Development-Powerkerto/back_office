@@ -41,4 +41,7 @@ class Campaign extends Model
     public function event_wa(){
         return $this->belongsTo(EventWa::class);
     }
+    public function lead(){
+        return $this->hasMany(Lead::class);
+    }
 }

@@ -23,7 +23,7 @@
 														<tr class="fw text-muted">
 															<th class="min-w-100px">Nama</th>
 															<th class="min-w-90px">No Whatsapp</th>
-															<th class="min-w-80px">Costumer</th>
+															<th class="min-w-80px">Costumer Service</th>
 															<th class="min-w-80px">Response Time</th>
 														</tr>
 													</thead>

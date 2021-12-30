@@ -165,10 +165,11 @@ class FbPController extends Controller
             DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
         }
         $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
-        $operator_id = DB::table('operators')->where('user_id', $user_id)->value('id'); 
+        $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id'); 
 
         DB::table('leads')->insert([
             'advertiser' => $adv_name,
+            'campaign_id' => $campaign_id,
             'operator_id'   => $operator_id,
             'product_id' => $product_id,
             'price'      => $product_price,

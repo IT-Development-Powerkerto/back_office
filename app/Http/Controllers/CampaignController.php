@@ -139,7 +139,9 @@ class CampaignController extends Controller
     public function addOperator($id)
     {
         $campaigns = Campaign::findOrFail($id);
+        // untuk menampilkan daftar CS di dropdown saat menambah operator
         $operators = User::where('role_id', 5)->get();
+        // untuk menampilkan operator berdasarkan campaign
         $operatorCampaigns = Operator::where('campaign_id', $id)->get();
         $lead = Lead::all();
         return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns)->with('lead', $lead);
