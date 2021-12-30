@@ -171,9 +171,9 @@
 											<thead>
 												<tr class="fw-bolder text-muted">
 													<th class="min-w-50px">No</th>
-													<th class="min-w-200px">Name</th>
-													<th class="min-w-200px">Operators</th>
-													<th class="min-w-200px">Leads</th>
+													<th class="min-w-150px">Name</th>
+													<th class="min-w-150px">Operators</th>
+													<th class="min-w-150px">Leads</th>
 													<th class="min-w-200px">Fp code</th>
 													<th class="min-w-200px">WA code</th>
 													<th class="min-w-200px text-end">Actions</th>

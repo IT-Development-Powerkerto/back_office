@@ -20,7 +20,7 @@ License: For each use you must have a valid license purchased only from above li
 
 	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
 	<link rel="icon" href="img/favicon.png">
-    
+
 	<!--begin::Fonts-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 	<!--end::Fonts-->
@@ -35,7 +35,7 @@ License: For each use you must have a valid license purchased only from above li
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 	<!--end::Global Stylesheets Bundle-->
-    
+
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -135,11 +135,11 @@ License: For each use you must have a valid license purchased only from above li
             }, 1000);
         }
 
-        window.onload = function () {
-            var fiveMinutes = 60 * 5,
-                display = document.querySelector('#time');
-            startTimer(fiveMinutes, display);
-        };
+        // window.onload = function () {
+        //     var fiveMinutes = 60 * 5,
+        //         display = document.querySelector('#time');
+        //     startTimer(fiveMinutes, display);
+        // };
     </script>
 	<!--end::Javascript-->
 </body>

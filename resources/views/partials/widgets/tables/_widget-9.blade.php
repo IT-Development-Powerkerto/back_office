@@ -136,7 +136,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="badge badge-light-info">50 Points </h1>
+																	<h1 class="badge badge-light-info">50 Points</h1>
 																</div>
 															</td>
 															<td>

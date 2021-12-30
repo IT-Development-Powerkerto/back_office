@@ -36,8 +36,15 @@ class DashboardController extends Controller
         $clients = Client::all();
         $campaigns = Campaign::all();
         $total_lead = DB::table('products')->pluck('lead');
+
+        // $now = DB::table('leads')->value('created_at');
+        // $countdown = Countdown::from($now)
+        //      ->to($now->copy()->addYears(5))
+        //      ->get()->toHuman('{days} days, {hours} hours and {minutes} minutes');
+
         return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
         ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('clients', $clients);
+        // ->with('countdown', $countdown);
     }
 
     /**
