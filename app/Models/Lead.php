@@ -25,6 +25,9 @@ class Lead extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    public function operator(){
+        return $this->belongsTo(Operator::class);
+    }
     public function campaign(){
         return $this->hasMany(Campaign::class);
     }

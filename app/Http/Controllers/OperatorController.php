@@ -56,6 +56,7 @@ class OperatorController extends Controller
         // return response()->json(['error'=>$validator->errors()->all()]);
 
         $user_id = $request->operator_id;
+        $name = User::where('id', $user_id)->value('name');
         $operatorExists = Operator::where('campaign_id', $id)->where('user_id', $user_id)->exists();
         if($operatorExists){
             return redirect('/campaign')->with('error','Error!, Operator already exists');
@@ -63,6 +64,7 @@ class OperatorController extends Controller
             DB::table('operators')->insert([
                 'campaign_id'     => $id,
                 'user_id'         => $user_id,
+                'name'            => $name,
                 'created_at' => Carbon::now()->toDateTimeString(),
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);

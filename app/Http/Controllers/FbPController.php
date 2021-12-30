@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Campaign;
 use App\Models\Client;
 use App\Models\Lead;
+use App\Models\Operator;
 use App\Models\User;
 use Dotenv\Parser\Value;
 use Illuminate\Http\Request;
@@ -132,6 +133,15 @@ class FbPController extends Controller
         $clients->status_id = 3;
         $clients->save();
 
+        // $operator = Operator::where('campaign_id', $campaign_id)->get('user_id');
+        // $wa = User::where('id', $operator)->get();
+        $wa = DB::table('operators')
+            ->leftJoin('users', 'operators.user_id', '=', 'users.id')
+            ->where('campaign_id', $campaign_id)
+            ->select('users.phone')
+            ->get();
+        // $user_id = DB::table('users')->where('phone', $wa)->value('id');
+        // $operator_id = DB::table('operators')->where('user_id', $user_id)->value('id');    
         //$lead = new Lead();
         $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
         $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
@@ -143,6 +153,7 @@ class FbPController extends Controller
         // $lead->save();
         DB::table('leads')->insert([
             'advertiser' => $adv_name,
+            // 'operator_id'   => $operator_id,
             'product_id' => $product_id,
             'price'      => $product_price,
             'status_id'  => 3,
@@ -150,11 +161,40 @@ class FbPController extends Controller
             'updated_at' => Carbon::now()->format('Y-m-d'),
         ]);
         DB::table('products')->whereid($product_id)->increment('lead');
-        return response()->json([
-                "message" => "order record created"
-                ], 201);
+        // return response()->json([
+        //         "message" => "order record created"
+        //         ], 201);
+        $operator_count = DB::table('operators')
+            ->leftJoin('users', 'operators.user_id', '=', 'users.id')
+            ->where('campaign_id', $campaign_id)
+            ->count();
+        $counter = DB::table('distribution_counters')->value('counter'); 
+        //if()
+        //for($i=0; $i<$operator_count; $i++){
+        // DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
+        // return $counter;
+        if($counter == $operator_count-1){
+            DB::table('distribution_counters')
+            ->where('campaign_id', $campaign_id)
+            ->update([
+                'campaign_id' => $campaign_id,
+                'counter' => 0
+            ]);
+            // return $wa[$counter]->phone;
+            
+        }else{
+            DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
+            // return $wa[$counter]->phone;
+        }
+        // return $wa[$counter]->phone;
+
+        //}
+
+        // $i = 0;
+        // $i += 1;
+        // return $operator_count;
         // $phone = DB::table('users')
         //     ->join
-        //return redirect('https://api.whatsapp.com/send/?phone=18336361122&text='.$text);
+        return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
     }
 }

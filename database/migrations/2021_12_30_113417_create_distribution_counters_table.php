@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOperatorsTable extends Migration
+class CreateDistributionCountersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateOperatorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('operators', function (Blueprint $table) {
+        Schema::create('distribution_counters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('campaign_id');
-            $table->foreignId('user_id');
-            $table->string('name');
-            // $table->double('closing_rate');
+            $table->integer('counter')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateOperatorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operators');
+        Schema::dropIfExists('distribution_counters');
     }
 }
