@@ -69,6 +69,7 @@ class DatabaseSeeder extends Seeder
          EventSeeder::class,
          EventWaSeeder::class,
          StatusSeeder::class,
+         ClosingRateSeeder::class,
      ]);
    //   Post::create([
    //      'title' => 'Judul Pertama',
