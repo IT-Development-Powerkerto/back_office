@@ -105,7 +105,7 @@
 												<label for="inputOperator" class="col-form-label">Operator</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="operator" required value="{{ old('operator') ?? $lead->operator }}" id="inputoperator" class="form-control" aria-describedby="operatorHelpInline" disabled>
+												<input type="text" name="operator" required value="{{ old('operator') ?? $lead->operator->name }}" id="inputoperator" class="form-control" aria-describedby="operatorHelpInline" disabled>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -127,7 +127,7 @@
 												<label for="inputQuantity" class="col-form-label">Quantity</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="quantity" required value="{{ old('quantity') ?? $lead->quantity }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
+												<input type="text" id="quantity" name="quantity" required value="{{ old('quantity') ?? $lead->quantity }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -135,7 +135,7 @@
 												<label for="inputprice" class="col-form-label">Price</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="price" required value="{{ old('price') ?? $lead->price }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
+												<input type="text" id="price" name="price" required value="{{ old('price') ?? $lead->price }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -143,7 +143,7 @@
 												<label for="inputTotal" class="col-form-label">Total</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="total" required value="{{ old('total') ?? $lead->total_price }}" id="inputtotal" class="form-control" aria-describedby="totalHelpInline">
+												<input type="text" id="total" name="total" required value="{{ old('total') ?? $lead->total_price }}" id="inputtotal" class="form-control" aria-describedby="totalHelpInline">
 											</div>
 										</div>
 										{{--  <div class="row align-items-center col-12 pb-5">
@@ -237,6 +237,17 @@
                 });
             });
         </script>
+		<script type="text/javascript">
+			function total_price(){
+				var quantity = parseInt(document.getElementById('quantity').value);
+				
+				var price = parseInt(document.getElementById('price').value);
+
+				var total = price * quantity;
+
+				document.getElementByID('total').value = total;
+			}
+		</script>
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
