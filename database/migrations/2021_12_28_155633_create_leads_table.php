@@ -16,13 +16,14 @@ class CreateLeadsTable extends Migration
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
             $table->string('advertiser');
-            $table->string('operator')->nullable();
+            $table->foreignId('operator')->nullable();
             $table->foreignId('product_id');
             $table->integer('quantity')->nullable();
             $table->integer('price');
             $table->integer('total_price')->nullable();
             $table->foreignId('status_id')->nullable();
-            $table->timestamps();
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 
