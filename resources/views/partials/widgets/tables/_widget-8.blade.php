@@ -85,10 +85,6 @@
 																</div>
 															</td>
 															<td>
-<<<<<<< HEAD
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6 badge badge-light-success"><span id="time">05:00</span></h1>
-=======
 																<div class="d-flex align-items-center clock{{ $lead->id }}">
 																	{{-- <h1 class="text-dark fw-bolder fs-6"><span id="time">05:00</span></h1> --}}
                                                                     <script>
@@ -98,7 +94,6 @@
                                                                             startTimer(fiveMinutes{{$lead->id}}, display);
                                                                         });
                                                                     </script>
->>>>>>> 9e05b15956dbb613ecc5c741de5c42459eedf75d
 																</div>
 															</td>
 															<td>
