@@ -134,14 +134,13 @@ class FbPController extends Controller
         $clients->save();
 
         // $operator = Operator::where('campaign_id', $campaign_id)->get('user_id');
-        // $wa = User::where('id', $operator)->get();
+
         $wa = DB::table('operators')
             ->leftJoin('users', 'operators.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
             ->select('users.phone')
             ->get();
-        // $user_id = DB::table('users')->where('phone', $wa)->value('id');
-        // $operator_id = DB::table('operators')->where('user_id', $user_id)->value('id');    
+           
         //$lead = new Lead();
         $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
         $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
@@ -151,16 +150,7 @@ class FbPController extends Controller
         // $lead->price = $product_price;
         // $lead->status_id = 3;
         // $lead->save();
-        DB::table('leads')->insert([
-            'advertiser' => $adv_name,
-            // 'operator_id'   => $operator_id,
-            'product_id' => $product_id,
-            'price'      => $product_price,
-            'status_id'  => 3,
-            'created_at' => Carbon::now()->format('Y-m-d'),
-            'updated_at' => Carbon::now()->format('Y-m-d'),
-        ]);
-        DB::table('products')->whereid($product_id)->increment('lead');
+        
         // return response()->json([
         //         "message" => "order record created"
         //         ], 201);
@@ -180,21 +170,25 @@ class FbPController extends Controller
                 'campaign_id' => $campaign_id,
                 'counter' => 0
             ]);
-            // return $wa[$counter]->phone;
+
             
         }else{
             DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
-            // return $wa[$counter]->phone;
         }
+        $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
+        $operator_id = DB::table('operators')->where('user_id', $user_id)->value('id'); 
         // return $wa[$counter]->phone;
+        DB::table('leads')->insert([
+            'advertiser' => $adv_name,
+            'operator_id'   => $operator_id,
+            'product_id' => $product_id,
+            'price'      => $product_price,
+            'status_id'  => 3,
+            'created_at' => Carbon::now()->format('Y-m-d'),
+            'updated_at' => Carbon::now()->format('Y-m-d'),
+        ]);
+        DB::table('products')->whereid($product_id)->increment('lead');
 
-        //}
-
-        // $i = 0;
-        // $i += 1;
-        // return $operator_count;
-        // $phone = DB::table('users')
-        //     ->join
         return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
     }
 }
