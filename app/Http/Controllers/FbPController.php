@@ -152,7 +152,7 @@ class FbPController extends Controller
             ->count();
         
         // menghitung jumlah click tombol WA
-        $counter = DB::table('distribution_counters')->value('counter'); 
+        $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter'); 
         // rotasi nomer WA
         if($counter == $operator_count-1){
             DB::table('distribution_counters')
@@ -179,5 +179,6 @@ class FbPController extends Controller
         DB::table('products')->whereid($product_id)->increment('lead');
 
         return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
+        // return $counter;
     }
 }
