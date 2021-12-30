@@ -8,7 +8,7 @@
 												<span class="text-muted mt-1 fw-bold fs-7">{{$leads->count()}} Lead</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
-												<a href="#" class="btn btn-sm btn-light btn-active-primary mx-2" title="Click For Detail">
+												<a href=/ld class="btn btn-sm btn-light btn-active-primary mx-2" title="Click For Detail">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 												<span class="svg-icon svg-icon-3">
 													<i class="fas fa-chart-line"></i>
@@ -38,7 +38,7 @@
 															<th class="min-w-120px">Quantity</th>
 															<th class="min-w-120px">Price</th>
 															<th class="min-w-120px">Total</th>
-															<th class="min-w-120px">Times</th>
+															<th class="min-w-120px">Response Time</th>
 															<th class="min-w-120px">Progress</th>
 															<th class="min-w-100px text-end">Actions</th>
 														</tr>

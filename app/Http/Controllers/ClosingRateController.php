@@ -30,7 +30,5 @@ class ClosingRateController extends Controller
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
-        // $day_closing_rate = $day_closing/$day_lead;
-        // return $day_closing;
     }
 }

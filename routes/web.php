@@ -67,6 +67,7 @@ Route::resource('users', UserController::class);
 Route::get('/status/update', [UserController::class, 'updateStatus'])->name('users.update.status');
 //Route::resource('/dasboard', DashboardController::class);
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
+Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld');
 Route::get('/adv', [DashboardController::class, 'adv'])->middleware('adv');
 Route::get('/cs', [DashboardController::class, 'cs'])->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
