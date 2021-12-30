@@ -126,43 +126,34 @@ class FbPController extends Controller
     }
 
     public function lead_wa($campaign_id, $product_id){
-        $text = Campaign::where('id', $campaign_id)->value('auto_text');
         $clients = new Client();
         $clients->campaign_id = $campaign_id;
         $clients->product_id = $product_id;
         $clients->status_id = 3;
         $clients->save();
-
-        // $operator = Operator::where('campaign_id', $campaign_id)->get('user_id');
-
+        
+        // ambil text untuk dikirim ke WA
+        $text = Campaign::where('id', $campaign_id)->value('auto_text');
+        // ambil nomer WA CS
         $wa = DB::table('operators')
             ->leftJoin('users', 'operators.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
             ->select('users.phone')
             ->get();
-           
-        //$lead = new Lead();
+
         $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
         $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
         $product_price = DB::table('products')->where('id', $product_id)->value('price');
-        // $lead->advertiser = $adv_name;
-        // $lead->product_id = $product_id;
-        // $lead->price = $product_price;
-        // $lead->status_id = 3;
-        // $lead->save();
-        
-        // return response()->json([
-        //         "message" => "order record created"
-        //         ], 201);
+
+        // menghitung jumlah operator tiap campaign
         $operator_count = DB::table('operators')
             ->leftJoin('users', 'operators.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
             ->count();
+        
+        // menghitung jumlah click tombol WA
         $counter = DB::table('distribution_counters')->value('counter'); 
-        //if()
-        //for($i=0; $i<$operator_count; $i++){
-        // DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
-        // return $counter;
+        // rotasi nomer WA
         if($counter == $operator_count-1){
             DB::table('distribution_counters')
             ->where('campaign_id', $campaign_id)
@@ -170,14 +161,12 @@ class FbPController extends Controller
                 'campaign_id' => $campaign_id,
                 'counter' => 0
             ]);
-
-            
         }else{
             DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
         }
         $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
         $operator_id = DB::table('operators')->where('user_id', $user_id)->value('id'); 
-        // return $wa[$counter]->phone;
+
         DB::table('leads')->insert([
             'advertiser' => $adv_name,
             'operator_id'   => $operator_id,
