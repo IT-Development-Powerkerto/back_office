@@ -29,7 +29,7 @@ class Lead extends Model
         return $this->belongsTo(Operator::class);
     }
     public function campaign(){
-        return $this->hasMany(Campaign::class);
+        return $this->belongsTo(Campaign::class);
     }
     public function product(){
         return $this->belongsTo(Product::class);
