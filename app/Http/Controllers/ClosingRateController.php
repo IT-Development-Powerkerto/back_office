@@ -13,7 +13,7 @@ class ClosingRateController extends Controller
         $day = Carbon::now()->format('Y-m-d');
         $month = Carbon::now()->format('Y-m');
 
-        $month_in_table = DB::table('leads')->value('created_at');
+        //$month_in_table = DB::table('leads')->value('created_at');
         $m = Carbon::parse(DB::table('leads')->where('operator', $user_id)->value('created_at'))->format('Y-m');
         $day_lead = Lead::where('created_at', $day)->where('operator', $user_id)->count();
         $day_closing = Lead::where('created_at', $day)->where('status_id', 5)->count();
