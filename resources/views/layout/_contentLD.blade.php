@@ -3,30 +3,15 @@
 	<!--begin::Row-->
 	<div class="row gy-5 g-xl-12 my-5">
 		<!--begin::Col-->
-		<div class="col-xl-6">
+        <?php $n=0; ?>
+        @foreach ($campaign as $campaign)
+        <div class="col-xl-6">
 
 			@include('partials/widgets/tables/_widget-5')
-			
+
 		</div>
+        @endforeach
 
-		<div class="col-xl-6">
-
-			@include('partials/widgets/tables/_widget-5')
-			
-		</div>
-
-		<div class="col-xl-6">
-
-			@include('partials/widgets/tables/_widget-5')
-			
-		</div>
-
-		<div class="col-xl-6">
-
-			@include('partials/widgets/tables/_widget-5')
-			
-		</div>
-		
 		<!--end::Col-->
 	</div>
 	<!--end::Row-->

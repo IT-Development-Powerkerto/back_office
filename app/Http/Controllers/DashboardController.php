@@ -165,7 +165,9 @@ class DashboardController extends Controller
     }
 
     public function ld() {
-        return view('DetailLead');
+        $campaigns = Campaign::all();
+        $client = Client::all();
+        return view('DetailLead')->with('campaign', $campaigns)->with('client', $client);
     }
 
 }
