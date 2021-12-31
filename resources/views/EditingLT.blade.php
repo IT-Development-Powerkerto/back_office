@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<link rel="icon" href="../img/favicon.png">
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<!-- <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" /> -->
@@ -97,7 +98,7 @@
 												<label for="inputAdvertiser" class="col-form-label">Advertiser</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="advertiser" required value="{{ old('advertiser') ?? $lead->advertiser }}" id="inputadvertiser" class="form-control" aria-describedby="advertiserHelpInline">
+												<label class="col-form-label form-control" value="">{{ old('advertiser') ?? $lead->advertiser }}</label>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -105,7 +106,7 @@
 												<label for="inputOperator" class="col-form-label">Operator</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="operator" required value="{{ old('operator') ?? $lead->operator->name }}" id="inputoperator" class="form-control" aria-describedby="operatorHelpInline" disabled>
+												<label class="col-form-label form-control" value="">{{ old('operator') ?? $lead->operator->name }}</label>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -113,13 +114,7 @@
                                                 <label for="inputProduct" class="col-form-label">Product</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <select name="product" id="product" class="form-control">
-                                                    <option value="" required>Generos</option>
-													<option value="" required>Freshmag</option>
-													<option value="" required>Gizidat</option>
-													<option value="" required>Etawaku</option>
-													<option value="" required>Rube</option>
-                                                </select>
+												<label class="col-form-label form-control" value="">{{ old('product') ?? $lead->product->name }}</label>
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
