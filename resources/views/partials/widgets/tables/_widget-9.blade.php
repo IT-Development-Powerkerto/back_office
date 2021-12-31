@@ -17,8 +17,8 @@
 													</svg>
 												</span>
 												<!--end::Svg Icon-->Add Staff</a>
-												<form class="d-flex ms-2">
-													<input class="form-control mt-0" type="search" placeholder="Search" aria-label="Search" style="height: 33px;">
+												<form action="/dashboard" class="d-flex ms-2">
+													<input class="form-control mt-0" type="search" placeholder="Search" name="search" aria-label="Search" style="height: 33px;">
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
 												</form>
 											</div>
