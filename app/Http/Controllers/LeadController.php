@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LeadController extends Controller
 {
@@ -68,9 +70,25 @@ class LeadController extends Controller
      * @param  \App\Models\Lead  $lead
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lead $lead)
+    public function update(Request $request, $lead)
     {
-        //
+        // dd($request);
+        DB::table('leads')->where('id', $lead)->update([
+            'quantity'        => $request->quantity,
+            'price'        => $request->price,
+            'total_price'     => $request->total_price,
+            'status_id'        => $request->status_id,
+            'updated_at'   => Carbon::now()->toDateTimeString(),
+        ]);
+
+        DB::table('clients')->where('id', $lead)->update([
+            'quantity'        => $request->quantity,
+            'total_price'     => $request->total_price,
+            'status_id'        => $request->status_id,
+            'updated_at'   => Carbon::now()->toDateTimeString(),
+        ]);
+
+        return redirect('/dashboard')->with('success','Successull! Updated');
     }
 
     /**

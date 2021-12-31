@@ -138,7 +138,7 @@
 												<label for="inputTotal" class="col-form-label">Total</label>
 											</div>
 											<div class="col-10">
-												<input type="text" id="total" name="total" required value="{{ old('total') ?? $lead->total_price }}" id="inputtotal" class="form-control" aria-describedby="totalHelpInline">
+												<input type="text" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->total_price }}" id="inputtotal" class="form-control" aria-describedby="totalHelpInline">
 											</div>
 										</div>
 										{{--  <div class="row align-items-center col-12 pb-5">
@@ -154,11 +154,12 @@
                                                 <label for="inputProgress" class="col-form-label">Progress</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <select name="progress" id="progress" class="form-control">
-                                                    <option value="" required>Waiting</option>
-													<option value="" required>Proccessing</option>
-													<option value="" required>Failed</option>
-													<option value="" required>Closing</option>
+                                                <select name="status_id" id="status_id" class="form-control">
+                                                    <option value="3" {{ (old('status_id') ?? $lead->status_id ) == '3' ? 'selected': '' }} required>Waiting</option>
+													<option value="4" {{ (old('status_id') ?? $lead->status_id ) == '4' ? 'selected': '' }} required>Proccessing</option>
+													<option value="5" {{ (old('status_id') ?? $lead->status_id ) == '5' ? 'selected': '' }} required>Closing</option>
+													<option value="6" {{ (old('status_id') ?? $lead->status_id ) == '6' ? 'selected': '' }} required>Proccrss Now</option>
+													<option value="7" {{ (old('status_id') ?? $lead->status_id ) == '7' ? 'selected': '' }} required>Failed</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -233,7 +234,7 @@
             });
         </script>
 		<script type="text/javascript">
-			function total_price(){
+			function calculate(){
 				var quantity = parseInt(document.getElementById('quantity').value);
 				
 				var price = parseInt(document.getElementById('price').value);
