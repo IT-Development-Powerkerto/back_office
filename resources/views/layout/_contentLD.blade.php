@@ -3,7 +3,7 @@
 	<!--begin::Row-->
 	<div class="row gy-5 g-xl-12 my-5">
 		<!--begin::Col-->
-        <?php $n=0; ?>
+        
         @foreach ($campaign as $campaign)
         <div class="col-xl-6">
 
