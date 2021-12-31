@@ -126,6 +126,7 @@
 													<th class="min-w-200px">Email</th>
 													<th class="min-w-200px">Whatsapp</th>
 													<th class="min-w-200px">Assign To</th>
+													<th class="min-w-200px">Closing Rate</th>
 												</tr>
 											</thead>
 											<!--end::Table head-->
@@ -153,6 +154,9 @@
                                                                 {{$operatorCampaign->lead->count()}} Leads
                                                             </p>
                                                         </div>
+													</td>
+													<td>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->closing_rate[0]->month_closing_rate }}</label>
 													</td>
 												</tr>
 												@endforeach

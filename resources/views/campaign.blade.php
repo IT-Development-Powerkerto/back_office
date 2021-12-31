@@ -204,7 +204,7 @@
 														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $campaign->operator->count() }} Operators</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$campaign->client->count()}} Leads</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{$campaign->lead->count()}} Leads</label>
 													</td>
 													<td>
 														<textarea type="text" name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline" >

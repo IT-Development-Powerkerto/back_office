@@ -137,8 +137,10 @@ class FbPController extends Controller
         // ambil nomer WA CS
         $wa = DB::table('operators')
             ->leftJoin('users', 'operators.user_id', '=', 'users.id')
+            ->leftJoin('closing_rates as cr', 'cr.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
             ->select('users.phone')
+            ->orderByDesc('month_closing_rate')
             ->get();
 
         $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
@@ -180,6 +182,6 @@ class FbPController extends Controller
         DB::table('products')->whereid($product_id)->increment('lead');
 
         return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
-        // return $counter;
+        // return $wa;
     }
 }

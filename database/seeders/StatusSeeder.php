@@ -33,6 +33,9 @@ class StatusSeeder extends Seeder
             [
                 'name'  => 'Process Now',
             ],
+            [
+                'name'  => 'Failed',
+            ],
         ];
 
         DB::table('statuses')->insert($status);

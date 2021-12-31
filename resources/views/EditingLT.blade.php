@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<link rel="icon" href="../img/favicon.png">
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<!-- <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" /> -->
@@ -97,7 +98,7 @@
 												<label for="inputAdvertiser" class="col-form-label">Advertiser</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="advertiser" required value="{{ old('advertiser') ?? $lead->advertiser }}" id="inputadvertiser" class="form-control" aria-describedby="advertiserHelpInline">
+												<label class="col-form-label form-control" value="">{{ old('advertiser') ?? $lead->advertiser }}</label>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -105,7 +106,7 @@
 												<label for="inputOperator" class="col-form-label">Operator</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="operator" required value="{{ old('operator') ?? $lead->operator }}" id="inputoperator" class="form-control" aria-describedby="operatorHelpInline" disabled>
+												<label class="col-form-label form-control" value="">{{ old('operator') ?? $lead->operator->name }}</label>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -113,13 +114,7 @@
                                                 <label for="inputProduct" class="col-form-label">Product</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <select name="product" id="product" class="form-control">
-                                                    <option value="" required>Generos</option>
-													<option value="" required>Freshmag</option>
-													<option value="" required>Gizidat</option>
-													<option value="" required>Etawaku</option>
-													<option value="" required>Rube</option>
-                                                </select>
+												<label class="col-form-label form-control" value="">{{ old('product') ?? $lead->product->name }}</label>
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
@@ -127,7 +122,7 @@
 												<label for="inputQuantity" class="col-form-label">Quantity</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="quantity" required value="{{ old('quantity') ?? $lead->quantity }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
+												<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" required value="{{ old('quantity') ?? $lead->quantity }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -135,7 +130,7 @@
 												<label for="inputprice" class="col-form-label">Price</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="price" required value="{{ old('price') ?? $lead->price }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
+												<input type="number" min="0" id="price" name="price" required value="{{ old('price') ?? $lead->price }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -143,7 +138,8 @@
 												<label for="inputTotal" class="col-form-label">Total</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="total" required value="{{ old('total') ?? $lead->total_price }}" id="inputtotal" class="form-control" aria-describedby="totalHelpInline">
+												{{--  <label class="col-form-label form-control" id="total_price" name="total_price" required value="" aria-describedby="totalHelpInline">{{ old('total') ?? $lead->total_price }}</label>  --}}
+												<input class="col-form-label form-control" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->total_price}}" aria-describedby="totalHelpInline" disabled>
 											</div>
 										</div>
 										{{--  <div class="row align-items-center col-12 pb-5">
@@ -159,11 +155,12 @@
                                                 <label for="inputProgress" class="col-form-label">Progress</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <select name="progress" id="progress" class="form-control">
-                                                    <option value="" required>Waiting</option>
-													<option value="" required>Proccessing</option>
-													<option value="" required>Failed</option>
-													<option value="" required>Closing</option>
+                                                <select name="status_id" id="status_id" class="form-control">
+                                                    <option value="3" {{ (old('status_id') ?? $lead->status_id ) == '3' ? 'selected': '' }} required>Waiting</option>
+													<option value="4" {{ (old('status_id') ?? $lead->status_id ) == '4' ? 'selected': '' }} required>Proccessing</option>
+													<option value="5" {{ (old('status_id') ?? $lead->status_id ) == '5' ? 'selected': '' }} required>Closing</option>
+													<option value="6" {{ (old('status_id') ?? $lead->status_id ) == '6' ? 'selected': '' }} required>Proccrss Now</option>
+													<option value="7" {{ (old('status_id') ?? $lead->status_id ) == '7' ? 'selected': '' }} required>Failed</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -237,6 +234,18 @@
                 });
             });
         </script>
+		<script type="text/javascript">
+			function calculate(qty){
+				{{--  var quantity = parseInt(document.getElementById('quantity').value);  --}}
+				
+				var price = parseInt(document.getElementById('price').value);
+
+				var total = price * qty;
+
+				var total_price = document.getElementById('total_price');
+				total_price.value = total;
+			}
+		</script>
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
