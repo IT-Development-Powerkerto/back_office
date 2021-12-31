@@ -73,17 +73,18 @@ class LeadController extends Controller
     public function update(Request $request, $lead)
     {
         // dd($request);
+        $total_price = $request->price * $request->quantity;
         DB::table('leads')->where('id', $lead)->update([
             'quantity'        => $request->quantity,
             'price'        => $request->price,
-            'total_price'     => $request->total_price,
+            'total_price'     => $total_price,
             'status_id'        => $request->status_id,
             'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);
 
         DB::table('clients')->where('id', $lead)->update([
             'quantity'        => $request->quantity,
-            'total_price'     => $request->total_price,
+            'total_price'     => $total_price,
             'status_id'        => $request->status_id,
             'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);

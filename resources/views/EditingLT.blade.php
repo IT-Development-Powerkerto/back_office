@@ -122,7 +122,7 @@
 												<label for="inputQuantity" class="col-form-label">Quantity</label>
 											</div>
 											<div class="col-10">
-												<input type="text" id="quantity" name="quantity" required value="{{ old('quantity') ?? $lead->quantity }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
+												<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" required value="{{ old('quantity') ?? $lead->quantity }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -130,7 +130,7 @@
 												<label for="inputprice" class="col-form-label">Price</label>
 											</div>
 											<div class="col-10">
-												<input type="text" id="price" name="price" required value="{{ old('price') ?? $lead->price }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
+												<input type="number" min="0" id="price" name="price" required value="{{ old('price') ?? $lead->price }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -138,7 +138,8 @@
 												<label for="inputTotal" class="col-form-label">Total</label>
 											</div>
 											<div class="col-10">
-												<input type="text" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->total_price }}" id="inputtotal" class="form-control" aria-describedby="totalHelpInline">
+												{{--  <label class="col-form-label form-control" id="total_price" name="total_price" required value="" aria-describedby="totalHelpInline">{{ old('total') ?? $lead->total_price }}</label>  --}}
+												<input class="col-form-label form-control" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->total_price}}" aria-describedby="totalHelpInline" disabled>
 											</div>
 										</div>
 										{{--  <div class="row align-items-center col-12 pb-5">
@@ -234,14 +235,15 @@
             });
         </script>
 		<script type="text/javascript">
-			function calculate(){
-				var quantity = parseInt(document.getElementById('quantity').value);
+			function calculate(qty){
+				{{--  var quantity = parseInt(document.getElementById('quantity').value);  --}}
 				
 				var price = parseInt(document.getElementById('price').value);
 
-				var total = price * quantity;
+				var total = price * qty;
 
-				document.getElementByID('total').value = total;
+				var total_price = document.getElementById('total_price');
+				total_price.value = total;
 			}
 		</script>
 		<!--end::Javascript-->
