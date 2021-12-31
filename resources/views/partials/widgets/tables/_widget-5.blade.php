@@ -30,19 +30,21 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
-                                                        @foreach ($client as $client)
+                                                        @foreach ($client->where('campaign_id', $campaign->id) as $client)
                                                         <tr>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$client->campaign}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">
+                                                                        {{$client->name}}
+                                                                    </h1>
 																</div>
 															</td>
 															<td>
-																<label class="text-dark fw-normal d-block fs-6">081245527645</label>
+																<label class="text-dark fw-normal d-block fs-6">{{$client->whatsapp}}</label>
 															</td>
-															<td class="text-end">
+                                                            <td class="text-end">
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Zall</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$client->campaign->operator}}</h1>
 																</div>
 															</td>
 															<td>
@@ -52,7 +54,6 @@
 															</td>
 														</tr>
                                                         @endforeach
-
 													</tbody>
 													<!--end::Table body-->
 												</table>
