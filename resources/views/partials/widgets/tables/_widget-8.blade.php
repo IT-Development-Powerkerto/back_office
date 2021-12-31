@@ -98,7 +98,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6 badge badge-light-danger">Process Now</h1>
+																	<h1 class="text-dark fw-bolder fs-6 badge badge-light-danger">{{ $lead->status->name }}</h1>
 																</div>
 															</td>
 															<td>

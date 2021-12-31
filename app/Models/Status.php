@@ -15,4 +15,7 @@ class Status extends Model
     public function client(){
         return $this->hasMany(Client::class);
     }
+    public function lead(){
+        return $this->hasMany(Lead::class);
+    }
 }

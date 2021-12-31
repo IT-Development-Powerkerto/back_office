@@ -34,4 +34,8 @@ class Lead extends Model
     public function product(){
         return $this->belongsTo(Product::class);
     }
+    public function status(){
+        return $this->belongsTo(Status::class);
+    }
+
 }
