@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Lead;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -100,8 +101,10 @@ class LeadController extends Controller
      */
     public function destroy(Lead $lead)
     {
+        // dd($lead);
         $lead->delete();
-
+        $client = Client::where('id', $lead->client_id);
+        $client->delete();
         return redirect('/dashboard')->with('success','Successull! Lead Deleted');
     }
 }
