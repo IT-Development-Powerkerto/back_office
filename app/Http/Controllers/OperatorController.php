@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
+use App\Models\Lead;
 use App\Models\Operator;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,11 @@ class OperatorController extends Controller
     public function index()
     {
         $operators = User::where('role_id', 5)->get();
-        return view('operator', ['operators'=>$operators]);
+        $lead_count = DB::table('leads')
+            ->join('operators', 'leads.operator_id', '=', 'operators.id')
+            ->get();
+        $campaign_count = Operator::all();
+        return view('operator', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count);
     }
 
     /**
