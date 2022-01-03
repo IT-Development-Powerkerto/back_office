@@ -13,6 +13,7 @@ use App\Models\CRM;
 use App\Models\Role;
 use App\Models\Icon;
 use App\Models\Lead;
+use App\Models\Operator;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -167,7 +168,9 @@ class DashboardController extends Controller
     public function ld() {
         $campaigns = Campaign::all();
         $client = Client::all();
-        return view('DetailLead')->with('campaign', $campaigns)->with('client', $client);
+        $operator = Operator::all();
+        $lead = Lead::all();
+        return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead);
     }
 
 }

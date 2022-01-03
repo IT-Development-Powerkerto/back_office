@@ -23,4 +23,7 @@ class Operator extends Model
         public function lead() {
             return $this->hasMany(Lead::class);
         }
+        public function client() {
+            return $this->hasMany(Client::class);
+        }
 }
