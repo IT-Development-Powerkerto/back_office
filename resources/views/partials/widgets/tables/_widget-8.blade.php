@@ -89,9 +89,24 @@
 																	{{-- <h1 class="text-dark fw-bolder fs-6"><span id="time">05:00</span></h1> --}}
                                                                     <script>
                                                                         window.addEventListener('load', function() {
-                                                                            var fiveMinutes{{ $lead->id}} = 60*5,
-                                                                            display = document.querySelector('.clock{{ $lead->id }}');
-                                                                            startTimer(fiveMinutes{{$lead->id}}, display);
+                                                                            var t1 = new Date('{{$lead->client->created_at}}');
+                                                                            var t2 = new Date();
+                                                                            var futureDate = new Date(t1.getTime() + 300000);
+                                                                            var dif = (t2.getTime() - futureDate.getTime()) / 1000;
+
+                                                                            if ( dif < 0 ){
+                                                                                var Seconds_Between_Dates = Math.abs(Math.round(dif));
+                                                                                var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
+                                                                                display = document.querySelector('.clock{{ $lead->id }}');
+                                                                                CountDownTimer(fiveMinutes{{$lead->id}}, display);
+                                                                            }
+                                                                            else {
+                                                                                var Seconds_Between_Dates = Math.abs(Math.round(dif));
+                                                                                var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
+                                                                                display = document.querySelector('.clock{{ $lead->id }}');
+                                                                                CountUpTimer(fiveMinutes{{$lead->id}}, display);
+                                                                            }
+
                                                                         });
                                                                     </script>
 																</div>
