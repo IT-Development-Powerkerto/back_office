@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Campaign;
 use App\Models\Client;
 use App\Models\Lead;
-use App\Models\Operator;
-use App\Models\User;
-use Dotenv\Parser\Value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -156,7 +153,8 @@ class FbPController extends Controller
 
             DB::table('products')->whereid($product_id)->increment('lead');
             $message = Campaign::where('id', $campaign_id)->value('message');
-            return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.$text.'/'.$message);
+            // return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.$text.'/'.$message);
+            return redirect('http://orderku.site/'.$wa[$counter]->phone.'/'.$text.'/'.$message);
         }
     }
 
