@@ -27,9 +27,14 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
+        if($request){
+            $users = User::where('name', 'like', '%'.$request->search.'%')->get();
+        }else{
+            $users = User::all();
+        }
+        
         $announcements = Announcement::all();
         $roles = Role::all();
         $icons = Icon::all();
