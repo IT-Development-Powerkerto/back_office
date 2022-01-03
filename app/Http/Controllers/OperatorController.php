@@ -116,8 +116,12 @@ class OperatorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($campaign, $operator)
     {
-        //
+        //DB::delete('delete from users where id = ?', [$campaign]);
+        // dd($operator);
+        $operator = Operator::where('id', $operator)->where('campaign_id', $campaign);
+        $operator->delete();
+        return redirect('/campaign')->with('success','Successull! Operator Deleted');
     }
 }
