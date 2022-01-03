@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Campaign;
 use App\Models\Client;
 use App\Models\Lead;
-use App\Models\Operator;
-use App\Models\User;
-use Dotenv\Parser\Value;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -93,89 +90,72 @@ class FbPController extends Controller
     }
 
     public function lead(Request $request, $campaign_id, $product_id){
-        // $validateData = Validator::make($request->all(),[
-        //     'name'             => 'required',
-        //     'whatsapp'         => 'required',
-        //     ]);
-        //     if ($validateData->fails()) {
-        //         return response($validateData->errors(), 400);
-        //     }else{
-        //         $clients = new Client();
-        //         $clients->campaign_id = $campaign_id;
-        //         $clients->product_id = $product_id;
-        //         $clients->name = $request->name;
-        //         $clients->whatsapp = $request->whatsapp;
-        //         $clients->status_id = 3;
-        //         $clients->save();
-        //         $lead = new Lead();
-        //         $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
-        //         $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
-        //         $product_price = DB::table('products')->where('id', $product_id)->value('price');
-
-                $lead->advertiser = $adv_name;
-                $lead->product_id = $product_id;
-                $lead->client_id  = $clients->id;
-                $lead->price = $product_price;
-                $lead->status_id = 3;
-                $lead->save();
-                DB::table('leads')->whereid($id)->increment('client_id');
-                DB::table('products')->whereid($product_id)->increment('lead');
-                // return response()->json([
-                //     "message" => "order record created"
-                //     ], 201);
-                //return redirect('http://anakgemukcerdas.com/');
-         //   }
-        //         // ambil text untuk dikirim ke WA
-        $text = Campaign::where('id', $campaign_id)->value('auto_text');
-        // // ambil nomer WA CS
-        $wa = DB::table('operators')
-            ->leftJoin('users', 'operators.user_id', '=', 'users.id')
-            ->leftJoin('closing_rates as cr', 'cr.user_id', '=', 'users.id')
-            ->where('campaign_id', $campaign_id)
-            ->select('users.phone')
-            ->orderByDesc('month_closing_rate')
-            ->get();
-
-        // $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
-        // $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
-        // $product_price = DB::table('products')->where('id', $product_id)->value('price');
-
-        // // menghitung jumlah operator tiap campaign
-        $operator_count = DB::table('operators')
-            ->leftJoin('users', 'operators.user_id', '=', 'users.id')
-            ->where('campaign_id', $campaign_id)
-            ->count();
-
-        // // menghitung jumlah click tombol WA
-        $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter');
-        // rotasi nomer WA
-        if($counter == $operator_count-1){
-            DB::table('distribution_counters')
-            ->where('campaign_id', $campaign_id)
-            ->update([
-                'campaign_id' => $campaign_id,
-                'counter' => 0
-            ]);
+        $validateData = Validator::make($request->all(),[
+            'name'             => 'required',
+            'whatsapp'         => 'required',
+        ]);
+        if ($validateData->fails()) {
+            return response($validateData->errors(), 400);
         }else{
-            DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
-        }
-        // $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
-        // $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id');
+            $clients = new Client();
+            $clients->campaign_id = $campaign_id;
+            $clients->product_id = $product_id;
+            $clients->name = $request->name;
+            $clients->whatsapp = $request->whatsapp;
+            $clients->status_id = 3;
+            $clients->save();
 
-        // DB::table('leads')->insert([
-        //     'advertiser' => $adv_name,
-        //     'campaign_id' => $campaign_id,
-        //     'operator_id'   => $operator_id,
-        //     'product_id' => $product_id,
-        //     'price'      => $product_price,
-        //     'status_id'  => 3,
-        //     'created_at' => Carbon::now()->format('Y-m-d'),
-        //     'updated_at' => Carbon::now()->format('Y-m-d'),
-        // ]);
-        // DB::table('products')->whereid($product_id)->increment('lead');
-        $message = Campaign::where('id', $campaign_id)->value('message');
-        // dd($message);
-        return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.$text.'/'.$message);
+            $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
+            $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
+            $product_price = DB::table('products')->where('id', $product_id)->value('price');
+
+
+            // ambil text untuk dikirim ke WA
+            $text = Campaign::where('id', $campaign_id)->value('auto_text');
+            // ambil nomer WA CS
+            $wa = DB::table('operators')
+                ->leftJoin('users', 'operators.user_id', '=', 'users.id')
+                ->leftJoin('closing_rates as cr', 'cr.user_id', '=', 'users.id')
+                ->where('campaign_id', $campaign_id)
+                ->select('users.phone')
+                ->orderByDesc('month_closing_rate')
+                ->get();
+            // menghitung jumlah operator tiap campaign
+            $operator_count = DB::table('operators')
+                ->leftJoin('users', 'operators.user_id', '=', 'users.id')
+                ->where('campaign_id', $campaign_id)
+                ->count();
+    
+            // menghitung jumlah click tombol WA
+            $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter'); 
+            // rotasi nomer WA
+            if($counter == $operator_count-1){
+                DB::table('distribution_counters')
+                ->where('campaign_id', $campaign_id)
+                ->update([
+                    'campaign_id' => $campaign_id,
+                    'counter' => 0
+                ]);
+            }else{
+                DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
+            }
+            $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
+            $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id'); 
+            $lead = new Lead();
+            $lead->advertiser = $adv_name;
+            $lead->operator_id = $operator_id;
+            $lead->campaign_id = $campaign_id;
+            $lead->client_id  = $clients->id;
+            $lead->product_id = $product_id;
+            $lead->price = $product_price;
+            $lead->status_id = 3;
+            $lead->save();
+
+            DB::table('products')->whereid($product_id)->increment('lead');
+            $message = Campaign::where('id', $campaign_id)->value('message');
+            // return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.$text.'/'.$message);
+            return redirect('http://orderku.site/'.$wa[$counter]->phone.'/'.$text.'/'.$message);
+        }
     }
 
     public function lead_wa($campaign_id, $product_id){

@@ -88,9 +88,9 @@
 													</td>
                                                     <td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
-                                                            <span class="fw-mormal text-gray-800">1 Campaigns</span>
+                                                            <span class="fw-mormal text-gray-800">{{ $campaign_count->where('user_id', $operator->id)->count() }} Campaigns</span>
                                                             <p class="fw-bolder pb-2">
-                                                                79 Traffic
+                                                                {{ $lead_count->where('user_id', $operator->id)->count() }} Lead
                                                             </p>
                                                         </div>
 													</td>
