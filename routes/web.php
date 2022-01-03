@@ -85,6 +85,7 @@ Route::resource('lead', LeadController::class)->middleware('auth');
 Route::resource('campaign', CampaignController::class)->middleware('auth');
 Route::get('campaign/{campaign}', [CampaignController::class, 'addOperator'])->name('addOperator')->middleware('auth');
 Route::post('campaign/{campaign}', [OperatorController::class, 'store'])->name('addOperator.store')->middleware('auth');
+Route::delete('campaign/{campaign}/{operator}', [OperatorController::class, 'destroy'])->name('addOperator.destroy')->middleware('auth');
 
 //Route::post("/campaign", [CampaignController::class, 'addMorePost']);
 
