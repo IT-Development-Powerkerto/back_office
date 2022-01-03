@@ -100,6 +100,8 @@ class LeadController extends Controller
      */
     public function destroy(Lead $lead)
     {
-        //
+        $lead->delete();
+
+        return redirect('/dashboard')->with('success','Successull! Lead Deleted');
     }
 }
