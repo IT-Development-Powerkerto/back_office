@@ -132,7 +132,7 @@ License: For each use you must have a valid license purchased only from above li
                                   '</h1>';
 
 
-                display.textContent = codeDisplay;
+                display.innerHTML = codeDisplay;
 
                 if (--timer < 0) {
                     timer = duration;
