@@ -114,9 +114,11 @@ class FbPController extends Controller
 
                 $lead->advertiser = $adv_name;
                 $lead->product_id = $product_id;
+                $lead->client_id  = $clients->id;
                 $lead->price = $product_price;
                 $lead->status_id = 3;
                 $lead->save();
+                DB::table('leads')->whereid($id)->increment('client_id');
                 DB::table('products')->whereid($product_id)->increment('lead');
                 // return response()->json([
                 //     "message" => "order record created"
@@ -131,7 +133,7 @@ class FbPController extends Controller
         $clients->product_id = $product_id;
         $clients->status_id = 3;
         $clients->save();
-        
+
         // ambil text untuk dikirim ke WA
         $text = Campaign::where('id', $campaign_id)->value('auto_text');
         // ambil nomer WA CS
@@ -152,9 +154,9 @@ class FbPController extends Controller
             ->leftJoin('users', 'operators.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
             ->count();
-        
+
         // menghitung jumlah click tombol WA
-        $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter'); 
+        $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter');
         // rotasi nomer WA
         if($counter == $operator_count-1){
             DB::table('distribution_counters')
@@ -167,13 +169,14 @@ class FbPController extends Controller
             DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
         }
         $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
-        $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id'); 
+        $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id');
 
         DB::table('leads')->insert([
             'advertiser' => $adv_name,
             'campaign_id' => $campaign_id,
             'operator_id'   => $operator_id,
             'product_id' => $product_id,
+            'client_id'    => $clients->id,
             'price'      => $product_price,
             'status_id'  => 3,
             'created_at' => Carbon::now()->format('Y-m-d'),

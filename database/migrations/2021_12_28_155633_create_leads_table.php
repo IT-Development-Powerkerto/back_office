@@ -18,6 +18,7 @@ class CreateLeadsTable extends Migration
             $table->string('advertiser');
             $table->foreignId('operator_id')->nullable();
             $table->foreignId('campaign_id');
+            $table->foreignId('client_id');
             $table->foreignId('product_id');
             $table->integer('quantity')->nullable();
             $table->integer('price');

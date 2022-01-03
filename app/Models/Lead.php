@@ -15,6 +15,7 @@ class Lead extends Model
     protected $fillable = [
         'advertiser',
         'operator',
+        'client_id',
         'product_id',
         'quantity',
         'price',
@@ -36,6 +37,9 @@ class Lead extends Model
     }
     public function status(){
         return $this->belongsTo(Status::class);
+    }
+    public function client(){
+        return $this->belongsTo(Client::class);
     }
 
 }

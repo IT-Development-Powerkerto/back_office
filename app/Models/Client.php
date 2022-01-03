@@ -31,4 +31,7 @@ class Client extends Model
     public function operator(){
         return $this->belongsTo(Operator::class);
     }
+    public function lead(){
+        return $this->hasOne(Lead::class);
+    }
 }
