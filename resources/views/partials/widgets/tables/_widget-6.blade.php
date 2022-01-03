@@ -2,7 +2,7 @@
 									<!--begin::Tables Widget 9-->
 									<div class="card card-l-stretch mb-5 mb-xl-8 pb-4 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 315px">
 										<!--begin::Header-->
-										<div class="card-header border-0 pt-5" style="border: 1px solid red;">
+										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Product</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$products->count()}} Product</span>
@@ -89,8 +89,8 @@
 													<thead>
 														<tr class=" text-muted">
 															<th class="min-w-100px">Name</th>
-															<th class="min-w-100px">Price</th>
-															<th class="min-w-100px text-end">Action</th>
+															<th class="min-w-90px">Price</th>
+															<th class="min-w-50px text-end">Action</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->

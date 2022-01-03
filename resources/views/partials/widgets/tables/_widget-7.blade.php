@@ -21,9 +21,9 @@
 													<thead>
 														<tr class="fw text-muted">
 															<th class="min-w-100px">Product</th>
-															<th class="min-w-90px">Link</th>
-															<th class="min-w-80px">Visitors</th>
-															<th class="min-w-80px">Leads</th>
+															<th class="min-w-100px">Link</th>
+															<th class="min-w-50px">Visitors</th>
+															<th class="min-w-50px">Leads</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
