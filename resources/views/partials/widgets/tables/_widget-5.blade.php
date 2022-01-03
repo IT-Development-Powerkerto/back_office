@@ -49,7 +49,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-end">
-                                                                        <h1 class="text-dark fw-normal fs-6 badge badge-succes">05:00</h1>
+
                                                                     </div>
                                                                 </td>
                                                             </tr>

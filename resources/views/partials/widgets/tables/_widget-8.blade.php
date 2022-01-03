@@ -93,20 +93,26 @@
                                                                             var t2 = new Date();
                                                                             var futureDate = new Date(t1.getTime() + 300000);
                                                                             var dif = (t2.getTime() - futureDate.getTime()) / 1000;
+                                                                            if('{{$lead->status_id == 3}}'){
 
-                                                                            if ( dif < 0 ){
+                                                                                if ( dif < 0 ){
+                                                                                    var Seconds_Between_Dates = Math.abs(Math.round(dif));
+                                                                                    var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
+                                                                                    display = document.querySelector('.clock{{ $lead->id }}');
+                                                                                    CountDownTimer(fiveMinutes{{$lead->id}}, display);
+                                                                                }
+                                                                                else {
+                                                                                    var Seconds_Between_Dates = Math.abs(Math.round(dif));
+                                                                                    var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
+                                                                                    display = document.querySelector('.clock{{ $lead->id }}');
+                                                                                    CountUpTimer(fiveMinutes{{$lead->id}}, display);
+                                                                                }
+                                                                            } else {
                                                                                 var Seconds_Between_Dates = Math.abs(Math.round(dif));
                                                                                 var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
                                                                                 display = document.querySelector('.clock{{ $lead->id }}');
-                                                                                CountDownTimer(fiveMinutes{{$lead->id}}, display);
+                                                                                StopTimer(fiveMinutes{{$lead->id}}, display);
                                                                             }
-                                                                            else {
-                                                                                var Seconds_Between_Dates = Math.abs(Math.round(dif));
-                                                                                var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
-                                                                                display = document.querySelector('.clock{{ $lead->id }}');
-                                                                                CountUpTimer(fiveMinutes{{$lead->id}}, display);
-                                                                            }
-
                                                                         });
                                                                     </script>
 																</div>
