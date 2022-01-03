@@ -86,7 +86,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center clock{{ $lead->id }}">
-																	{{-- <h1 class="text-dark fw-bolder fs-6"><span id="time">05:00</span></h1> --}}
+																	{{-- <h1 class="text-ligth fw-normal badge badge-light-success"><span id="time">05:00</span></h1> --}}
                                                                     <script>
                                                                         window.addEventListener('load', function() {
                                                                             var createdDate = new Date('{{$lead->client->created_at}}');
