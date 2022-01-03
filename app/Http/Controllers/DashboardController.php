@@ -17,7 +17,8 @@ use App\Models\Operator;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class DashboardController extends Controller
 {
@@ -141,29 +142,39 @@ class DashboardController extends Controller
     }
 
     public function adv(){
-        $users = User::all();
-        $announcements = Announcement::all();
-        $roles = Role::all();
-        $icons = Icon::all();
-        $products = Product::all();
-        $leads = Lead::all();
-        $campaigns = Campaign::all();
-        $total_lead = DB::table('products')->pluck('lead');
-        return view('adv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-        ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+        $x = auth()->user();
+        if($x->role_id == 4){
+            $users = User::all();
+            $announcements = Announcement::all();
+            $roles = Role::all();
+            $icons = Icon::all();
+            $products = Product::all();
+            $leads = Lead::all();
+            $campaigns = Campaign::all();
+            $total_lead = DB::table('products')->pluck('lead');
+            return view('adv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
+            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+        }else{
+            return Redirect::back();
+        }
     }
 
     public function cs(){
-        $users = User::all();
-        $announcements = Announcement::all();
-        $roles = Role::all();
-        $icons = Icon::all();
-        $products = Product::all();
-        $leads = Lead::all();
-        $campaigns = Campaign::all();
-        $total_lead = DB::table('products')->pluck('lead');
-        return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-        ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+        $x = auth()->user();
+        if($x->role_id == 5){
+            $users = User::all();
+            $announcements = Announcement::all();
+            $roles = Role::all();
+            $icons = Icon::all();
+            $products = Product::all();
+            $leads = Lead::all();
+            $campaigns = Campaign::all();
+            $total_lead = DB::table('products')->pluck('lead');
+            return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
+            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+        }else{
+            return Redirect::back();
+        }
     }
 
     public function ld() {
