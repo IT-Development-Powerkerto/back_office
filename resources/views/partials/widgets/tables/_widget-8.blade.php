@@ -51,37 +51,37 @@
 														<tr>
 															<td>
 																<div class="d-flex align-items-center ">
-																	<h1 class="text-dark fw-medium fs-6">{{$n+=1}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">{{ $lead->advertiser }}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{ $lead->advertiser }}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">{{ $lead->operator->name }}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{ $lead->operator->name }}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-primary fw-medium fs-6">{{$lead->product->name}}</h1>
+																	<h1 class="text-primary fw-normal fs-6">{{$lead->product->name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">{{$lead->quantity}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->quantity}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">{{$lead->price}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->price}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">{{$lead->total_price}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->total_price}}</h1>
 																</div>
 															</td>
 															<td>
@@ -120,7 +120,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-bolder fs-6 badge badge-light-danger">{{ $lead->status->name }}</h1>
+																	<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">{{ $lead->status->name }}</h1>
 																</div>
 															</td>
 															<td>

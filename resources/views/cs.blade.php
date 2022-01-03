@@ -69,7 +69,7 @@ License: For each use you must have a valid license purchased only from above li
                         type: "GET",
                         data : {"_token":"{{ csrf_token() }}"},
                         dataType: "json",
-                        success:function(data)
+                        success:function(data);
                     });
                 }
             });
@@ -85,29 +85,28 @@ License: For each use you must have a valid license purchased only from above li
                         type: "GET",
                         data : {"_token":"{{ csrf_token() }}"},
                         dataType: "json",
-                        success:function(data)
+                        success:function(data);
                     });
                 }
             });
         });
     </script>
     <script>
-        $(function() {
-            $('.toggle-class').change(function() {
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                var user_id = $(this).data('id');
-
+        $(document).ready(function(){
+            $('.js-switch').change(function () {
+                let status = $(this).prop('checked') === true ? 1 : 0;
+                let userId = $(this).data('id');
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: '/changeStatus',
-                    data: {'status': status, 'user_id': user_id},
-                    success: function(data){
-                    console.log(data.success)
+                    url: '{{ route('users.update.status') }}',
+                    data: {'status': status, 'user_id': userId},
+                    success: function (data) {
+                        console.log(data.message);
                     }
                 });
-            })
-        })
+            });
+        });
     </script>
 	<!--end::Page Custom Javascript-->
 	<!--end::Javascript-->
