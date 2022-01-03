@@ -107,7 +107,11 @@ class FbPController extends Controller
             $clients->whatsapp = $request->whatsapp;
             $clients->status_id = 3;
             $clients->save();
-            $lead = new Lead();
+
+            $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
+            $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
+            $product_price = DB::table('products')->where('id', $product_id)->value('price');
+
 
             // ambil text untuk dikirim ke WA
             $text = Campaign::where('id', $campaign_id)->value('auto_text');
@@ -119,11 +123,6 @@ class FbPController extends Controller
                 ->select('users.phone')
                 ->orderByDesc('month_closing_rate')
                 ->get();
-
-            $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
-            $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
-            $product_price = DB::table('products')->where('id', $product_id)->value('price');
-
             // menghitung jumlah operator tiap campaign
             $operator_count = DB::table('operators')
                 ->leftJoin('users', 'operators.user_id', '=', 'users.id')
@@ -137,7 +136,7 @@ class FbPController extends Controller
                 DB::table('distribution_counters')
                 ->where('campaign_id', $campaign_id)
                 ->update([
-                    // 'campaign_id' => $campaign_id,
+                    'campaign_id' => $campaign_id,
                     'counter' => 0
                 ]);
             }else{
@@ -145,17 +144,16 @@ class FbPController extends Controller
             }
             $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
             $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id'); 
+            $lead = new Lead();
+            $lead->advertiser = $adv_name;
+            $lead->operator_id = $operator_id;
+            $lead->campaign_id = $campaign_id;
+            $lead->client_id  = $clients->id;
+            $lead->product_id = $product_id;
+            $lead->price = $product_price;
+            $lead->status_id = 3;
+            $lead->save();
 
-            DB::table('leads')->insert([
-                'advertiser' => $adv_name,
-                'campaign_id' => $campaign_id,
-                'operator_id'   => $operator_id,
-                'product_id' => $product_id,
-                'price'      => $product_price,
-                'status_id'  => 3,
-                'created_at' => Carbon::now()->format('Y-m-d'),
-                'updated_at' => Carbon::now()->format('Y-m-d'),
-            ]);
             DB::table('products')->whereid($product_id)->increment('lead');
             $message = Campaign::where('id', $campaign_id)->value('message');
             return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.$text.'/'.$message);
@@ -168,7 +166,7 @@ class FbPController extends Controller
         $clients->product_id = $product_id;
         $clients->status_id = 3;
         $clients->save();
-        
+
         // ambil text untuk dikirim ke WA
         $text = Campaign::where('id', $campaign_id)->value('auto_text');
         // ambil nomer WA CS
@@ -189,9 +187,9 @@ class FbPController extends Controller
             ->leftJoin('users', 'operators.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
             ->count();
-        
+
         // menghitung jumlah click tombol WA
-        $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter'); 
+        $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter');
         // rotasi nomer WA
         if($counter == $operator_count-1){
             DB::table('distribution_counters')
@@ -204,13 +202,14 @@ class FbPController extends Controller
             DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
         }
         $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
-        $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id'); 
+        $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id');
 
         DB::table('leads')->insert([
             'advertiser' => $adv_name,
             'campaign_id' => $campaign_id,
             'operator_id'   => $operator_id,
             'product_id' => $product_id,
+            'client_id'    => $clients->id,
             'price'      => $product_price,
             'status_id'  => 3,
             'created_at' => Carbon::now()->format('Y-m-d'),

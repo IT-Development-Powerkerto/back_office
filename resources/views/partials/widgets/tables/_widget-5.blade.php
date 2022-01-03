@@ -31,30 +31,28 @@
 													<!--begin::Table body-->
 													<tbody>
                                                         @foreach ($lead->where('campaign_id', $campaign->id) as $key =>$lead)
-                                                            @foreach ($client->where('campaign_id', $lead->campaign_id) as $client)
-                                                                <tr>
-                                                                    <td>
-                                                                        <div class="d-flex align-items-center">
-                                                                            <h1 class="text-dark fw-normal fs-6">
-                                                                                {{$client->name}}
-                                                                            </h1>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <label class="text-dark fw-normal d-block fs-6">{{$client->whatsapp}}</label>
-                                                                    </td>
-                                                                    <td class="text-end">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <h1 class="text-dark fw-normal fs-6">{{$client->campaign->operator->whereIn('id',$key+1)->implode('name')}}</h1>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="d-flex align-items-end">
-                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-succes">05:00</h1>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            @endforeach
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <h1 class="text-dark fw-normal fs-6">
+                                                                            {{$lead->client->name}}
+                                                                        </h1>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <label class="text-dark fw-normal d-block fs-6">{{$lead->client->whatsapp}}</label>
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <h1 class="text-dark fw-normal fs-6">{{$lead->operator->name}}</h1>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-end">
+                                                                        <h1 class="text-dark fw-normal fs-6 badge badge-succes">05:00</h1>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
                                                         @endforeach
 													</tbody>
 													<!--end::Table body-->
