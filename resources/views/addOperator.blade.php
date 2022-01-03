@@ -127,6 +127,7 @@
 													<th class="min-w-200px">Whatsapp</th>
 													<th class="min-w-200px">Assign To</th>
 													<th class="min-w-200px">Closing Rate</th>
+													<th class="min-w-100px">Actions</th>
 												</tr>
 											</thead>
 											<!--end::Table head-->
@@ -157,6 +158,17 @@
 													</td>
 													<td>
 														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->closing_rate[0]->month_closing_rate }}</label>
+													</td>
+													<td>
+														<form action="" method="POST">
+															@csrf
+															@method('DELETE')
+															<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+																<div class="btn-group" role="group" aria-label="First group">
+																	<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
+																</div>
+															</div>
+														</form>
 													</td>
 												</tr>
 												@endforeach
