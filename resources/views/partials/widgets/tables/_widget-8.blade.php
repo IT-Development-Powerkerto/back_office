@@ -89,12 +89,12 @@
 																	{{-- <h1 class="text-dark fw-bolder fs-6"><span id="time">05:00</span></h1> --}}
                                                                     <script>
                                                                         window.addEventListener('load', function() {
-                                                                            var t1 = new Date('{{$lead->client->created_at}}');
-                                                                            var t2 = new Date();
-                                                                            var futureDate = new Date(t1.getTime() + 300000);
-                                                                            var dif = (t2.getTime() - futureDate.getTime()) / 1000;
+                                                                            var createdDate = new Date('{{$lead->client->created_at}}');
+                                                                            var updatedDate = new Date('{{$lead->client->updated_at}}');
+                                                                            var nowDate = new Date();
                                                                             if('{{$lead->status_id == 3}}'){
-
+                                                                                var futureDate = new Date(createdDate.getTime() + 300000);
+                                                                                var dif = (nowDate.getTime() - futureDate.getTime()) / 1000;
                                                                                 if ( dif < 0 ){
                                                                                     var Seconds_Between_Dates = Math.abs(Math.round(dif));
                                                                                     var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
@@ -108,6 +108,7 @@
                                                                                     CountUpTimer(fiveMinutes{{$lead->id}}, display);
                                                                                 }
                                                                             } else {
+                                                                                var dif = (createdDate.getTime() - updatedDate.getTime()) / 1000;
                                                                                 var Seconds_Between_Dates = Math.abs(Math.round(dif));
                                                                                 var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
                                                                                 display = document.querySelector('.clock{{ $lead->id }}');
