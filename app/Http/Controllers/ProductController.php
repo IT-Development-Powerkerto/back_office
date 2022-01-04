@@ -105,7 +105,7 @@ class ProductController extends Controller
             $image = $path;
         }
         else{
-            $image = DB::table('products')->where('id', $id)->implode('image');
+            $image = DB::table('products')->where('id', $product->id)->implode('image');
         }
 
         DB::table('products')->where('id', $product->id)->update([
