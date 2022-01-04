@@ -119,7 +119,7 @@ License: For each use you must have a valid license purchased only from above li
     {{-- Countdown --}}
     <script>
         function CountDownTimer(duration, display) {
-            var timer = duration, minutes, seconds;
+            let timer = duration, minutes, seconds;
             setInterval(function () {
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
@@ -127,7 +127,7 @@ License: For each use you must have a valid license purchased only from above li
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                var codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-success">' +
+                let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-success">' +
                                     minutes + ":" + seconds +
                                   '</h1>';
 
@@ -142,7 +142,7 @@ License: For each use you must have a valid license purchased only from above li
     </script>
     <script>
         function CountUpTimer(duration, display) {
-            var timer = duration, minutes, seconds;
+            let timer = duration, minutes, seconds;
             setInterval(function () {
                 minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
@@ -150,7 +150,7 @@ License: For each use you must have a valid license purchased only from above li
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                var codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">' +
+                let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">' +
                                     minutes + ":" + seconds +
                                   '</h1>';
 
