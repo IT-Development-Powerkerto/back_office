@@ -7,8 +7,8 @@ use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
+use File;
 
 class UserController extends Controller
 {
@@ -75,18 +75,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $user)
+    public function update(Request $request, User $user)
     {
         if($request->hasFile('image'))
         {
             $extFile = $request->image->getClientOriginalExtension();
             $namaFile = 'user-'.time().".".$extFile;
-            //File::delete($user->image);
+            File::delete($user->image);
             $path = $request->image->move('public/assets/img',$namaFile);
             $image = $path;
         }
+        else{
+            $image = DB::table('users')->where('id', $user->id)->implode('image');
+        }
 
-        DB::table('users')->where('id', $user)->update([
+        DB::table('users')->where('id', $user->id)->update([
             'name'      => $request->name,
             'role_id'   => $request->role_id,
             'phone'     => $request->phone,
@@ -110,7 +113,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-
+        File::delete($user->image);
         return redirect('/dashboard')->with('success','Successull! User Deleted');
     }
 
