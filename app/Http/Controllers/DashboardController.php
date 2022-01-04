@@ -87,26 +87,26 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
 
-        if($request->hasFile('image'))
-        {
+        $user = new User();
+        $user->name = $request->name;
+        $user->role_id = $request->role_id;
+        $user->phone = $request->phone;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->status = 1;
+        $user->created_at = Carbon::now()->toDateTimeString();
+        $user->updated_at = Carbon::now()->toDateTimeString();
+        if($request->hasFile('image')){
             $extFile = $request->image->getClientOriginalExtension();
             $namaFile = 'user-'.time().".".$extFile;
             $path = $request->image->move('public/assets/img',$namaFile);
-            $image = $path;
+            $user->image = $path;
+        } else {
+            $user->image = null;
         }
 
-        DB::table('users')->insert([
-            'name'      => $request->name,
-            'role_id'   => $request->role_id,
-            'phone'     => $request->phone,
-            'username'  => $request->username,
-            'email'     => $request->email,
-            'password'  => Hash::make($request->password),
-            'image'     => $image,
-            'status_id' => 1,
-            'created_at' => Carbon::now()->toDateTimeString(),
-            'updated_at' => Carbon::now()->toDateTimeString(),
-        ]);
+        $user->save();
 
         return redirect('/dashboard')->with('success','Successull! User Added');
     }
