@@ -167,6 +167,13 @@ License: For each use you must have a valid license purchased only from above li
             }, 1000);
         }
     </script>
+    @if(!empty(Session::get('error_code')) && Session::get('error_code') == 5)
+    <script>
+    $(function() {
+        $('#add-user').modal('show');
+    });
+    </script>
+    @endif
 	<!--end::Javascript-->
 
 </body>

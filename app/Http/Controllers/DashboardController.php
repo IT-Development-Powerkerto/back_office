@@ -17,8 +17,10 @@ use App\Models\Operator;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardController extends Controller
 {
@@ -86,14 +88,24 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|unique:users|max:255',
+            'email' => 'required|unique:users|email',
+            'phone' => 'required|unique:users',
+            'password' => 'required'
+        ]);
+        if($validator->fails()){
+            // return back()->with('error','Error! User not been Added')->withInput()->withErrors($validator);
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
         $user = new User();
         $user->name = $request->name;
         $user->role_id = $request->role_id;
-        $user->phone = $request->phone;
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        $user->phone = $validated['phone'];
+        $user->username = $validated['username'];
+        $user->email = $validated['email'];
+        $user->password = bcrypt($validated['password']);
         $user->status = 1;
         $user->created_at = Carbon::now()->toDateTimeString();
         $user->updated_at = Carbon::now()->toDateTimeString();
