@@ -37,7 +37,7 @@
 																		<label for="inputFullname" class="col-form-label">Fullname</label>
 																	</div>
 																	<div class="col-10">
-																		<input type="text" name="name" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline">
+																		<input type="text" value="{{ old('name') }}" name="name" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline" required>
 																	</div>
 																</div>
 																<div class="row align-items-center col-12 pb-5">
@@ -45,31 +45,55 @@
 																		<label for="inputEmail" class="col-form-label">Email</label>
 																	</div>
 																	<div class="col-10">
-																		<input type="email" name="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
+																		<input type="email" value="{{ old('email') }}" name="email" id="inputEmail" class="form-control @error('email') is-invalid @enderror" aria-describedby="emailHelpInline" required>
 																	</div>
+																	@error('email')
+																		<div class="col-2">
+																			<div></div>
+																		</div>
+																		<div class="col-10 ">
+																			<div class="form-control alert alert-danger">{{ $message }}</div>
+																		</div>
+																	@enderror
 																</div>
 																<div class="row align-items-center col-12 pb-5">
 																	<div class="col-2">
 																		<label for="inputPhone" class="col-form-label">Phone</label>
 																	</div>
 																	<div class="col-10">
-																		<input type="text" name="phone" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
+																		<input type="text" value="{{ old('phone') }}" name="phone" id="inputPhone" class="form-control @error('phone') is-invalid @enderror" aria-describedby="phoneHelpInline" required>
 																	</div>
+																	@error('phone')
+																		<div class="col-2">
+																			<div></div>
+																		</div>
+																		<div class="col-10 ">
+																			<div class="form-control alert alert-danger">{{ $message }}</div>
+																		</div>
+																	@enderror
 																</div>
 																<div class="row align-items-center col-12 pb-5">
 																	<div class="col-2">
 																		<label for="inputUsername" class="col-form-label">Username</label>
 																	</div>
 																	<div class="col-10">
-																		<input type="text" name="username" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
+																		<input type="text" value="{{ old('username') }}" name="username" id="inputUsername" class="form-control @error('username') is-invalid @enderror" aria-describedby="usernameHelpInline" required>
 																	</div>
+																	@error('username')
+																		<div class="col-2">
+																			<div></div>
+																		</div>
+																		<div class="col-10 ">
+																			<div class="form-control alert alert-danger">{{ $message }}</div>
+																		</div>
+																	@enderror
 																</div>
 																<div class="row align-items-center col-12 pb-5">
 																	<div class="col-2">
 																		<label for="inputPassword6" class="col-form-label">Password</label>
 																	</div>
 																	<div class="col-10">
-																		<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+																		<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" required>
 																	</div>
 																</div>
 																<div class="row align-items-center col-12 pb-5">
