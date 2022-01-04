@@ -103,8 +103,9 @@ class LeadController extends Controller
     {
         // dd($lead);
         $lead->delete();
-        $client = Client::where('id', $lead->client_id);
+        $client = Client::whereid($lead->client_id);
         $client->delete();
+        DB::table('products')->whereid($lead->product_id)->decrement('lead');
         return redirect('/dashboard')->with('success','Successull! Lead Deleted');
     }
 }

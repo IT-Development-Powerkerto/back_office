@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use File;
 
 class ProductController extends Controller
 {
@@ -91,18 +93,22 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $product)
+    public function update(Request $request, Product $product)
     {
+
         if($request->hasFile('image'))
         {
             $extFile = $request->image->getClientOriginalExtension();
             $namaFile = 'product-'.time().".".$extFile;
-            //File::delete($user->image);
+            File::delete($product->image);
             $path = $request->image->move('public/assets/img/product',$namaFile);
             $image = $path;
         }
+        else{
+            $image = DB::table('products')->where('id', $product->id)->implode('image');
+        }
 
-        DB::table('products')->where('id', $product)->update([
+        DB::table('products')->where('id', $product->id)->update([
             'name'         => $request->name,
             'price'        => $request->price,
             'discount'     => $request->discount,
@@ -123,6 +129,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
+        File::delete($product->image);
 
         return redirect('/dashboard')->with('success','Successull! Product Deleted');
     }
