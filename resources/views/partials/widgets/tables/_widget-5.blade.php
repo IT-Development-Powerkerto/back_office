@@ -48,8 +48,28 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <div class="d-flex align-items-end">
-																		<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">05:00</h1>
+                                                                    <div class="d-flex align-items-end clock{{ $lead->id }}">
+																		<script>
+                                                                            window.addEventListener('load', function() {
+                                                                                var createdDate = new Date('{{$lead->client->created_at}}');
+                                                                                var updatedDate = new Date('{{$lead->client->updated_at}}');
+                                                                                var nowDate = new Date();
+                                                                                if('{{$lead->status_id == 3}}'){
+                                                                                    var futureDate = new Date(createdDate.getTime() + 0);
+                                                                                    var dif = (nowDate.getTime() - futureDate.getTime()) / 1000;
+                                                                                    var Seconds_Between_Dates = Math.abs(Math.round(dif));
+                                                                                    var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
+                                                                                    display = document.querySelector('.clock{{ $lead->id }}');
+                                                                                    CountUpTimer(fiveMinutes{{$lead->id}}, display);
+                                                                                } else {
+                                                                                    var dif = (createdDate.getTime() - updatedDate.getTime()) / 1000;
+                                                                                    var Seconds_Between_Dates = Math.abs(Math.round(dif));
+                                                                                    var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
+                                                                                    display = document.querySelector('.clock{{ $lead->id }}');
+                                                                                    StopTimer(fiveMinutes{{$lead->id}}, display);
+                                                                                }
+                                                                            });
+                                                                        </script>
                                                                     </div>
                                                                 </td>
                                                             </tr>

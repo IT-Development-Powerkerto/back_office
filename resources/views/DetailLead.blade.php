@@ -119,19 +119,19 @@ License: For each use you must have a valid license purchased only from above li
     {{-- Countdown --}}
     <script>
         function CountDownTimer(duration, display) {
-            let timer = duration, minutes, seconds;
+            var timer = duration, hours, minutes, seconds;
             setInterval(function () {
-                minutes = parseInt(timer / 60, 10);
+                hours = parseInt((timer / 3600) % 24, 10);
+                minutes = parseInt((timer / 60) % 60, 10);
                 seconds = parseInt(timer % 60, 10);
 
+                hours = hours < 10 ? "0" + hours : hours;
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
-                let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-success">' +
-                                    minutes + ":" + seconds +
-                                  '</h1>';
-
-
+                let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">' +
+                                    hours+ ":" + minutes + ":" + seconds +
+                                    '</h1>';
                 display.innerHTML = codeDisplay;
 
                 if (--timer < 0) {
@@ -139,27 +139,45 @@ License: For each use you must have a valid license purchased only from above li
                 }
             }, 1000);
         }
-    </script>
-    <script>
         function CountUpTimer(duration, display) {
-            let timer = duration, minutes, seconds;
+            var timer = duration, hours, minutes, seconds;
             setInterval(function () {
-                minutes = parseInt(timer / 60, 10);
+                hours = parseInt((timer / 3600) % 24, 10);
+                minutes = parseInt((timer / 60) % 60, 10);
                 seconds = parseInt(timer % 60, 10);
 
+                hours = hours < 10 ? "0" + hours : hours;
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">' +
-                                    minutes + ":" + seconds +
-                                  '</h1>';
-
-
+                                    hours+ ":" + minutes + ":" + seconds +
+                                    '</h1>';
                 display.innerHTML = codeDisplay;
-
-                // display.textContent = minutes + ":" + seconds;
+                //display.textContent = minutes + ":" + seconds;
 
                 if (++timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+        function StopTimer(duration, display) {
+            var timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt((timer / 3600) % 24, 10);
+                minutes = parseInt((timer / 60) % 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-success">' +
+                                    hours+ ":" + minutes + ":" + seconds +
+                                    '</h1>';
+                display.innerHTML = codeDisplay;
+
+                if (timer < 0) {
                     timer = duration;
                 }
             }, 1000);

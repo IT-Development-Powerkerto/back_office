@@ -37,7 +37,7 @@
 																</div>
 															</td>
 															<td>
-																<label class="text-dark fw-normal d-block fs-6">MT</label>
+																<a href="{{$product->product_link}}" class="text-dark fw-normal d-block fs-6">{{$product->product_link}}</a>
 															</td>
 															<td class="text-end">
 																<div class="d-flex align-items-center">
