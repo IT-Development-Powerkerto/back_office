@@ -91,18 +91,21 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $product)
+    public function update(Request $request, $id)
     {
+
         if($request->hasFile('image'))
         {
             $extFile = $request->image->getClientOriginalExtension();
             $namaFile = 'product-'.time().".".$extFile;
-            //File::delete($user->image);
             $path = $request->image->move('public/assets/img/product',$namaFile);
             $image = $path;
         }
+        else{
+            $image = DB::table('products')->where('id', $id)->implode('image');
+        }
 
-        DB::table('products')->where('id', $product)->update([
+        DB::table('products')->where('id', $id)->update([
             'name'         => $request->name,
             'price'        => $request->price,
             'discount'     => $request->discount,
