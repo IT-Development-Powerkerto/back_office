@@ -7,85 +7,13 @@
 												<span class="card-label fw-bolder fs-3 mb-1">Staff</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$users->count()}} Staff</span>
 											</h3>
-											<div class="modal fade" tabindex="-1" id="add-user">
-												<div class="modal-dialog">
-													<div class="modal-content">
-														<div class="modal-header">
-															<h5 class="modal-title">Add Staff</h5>
-															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-														</div>
-														<div class="modal-body">
-															<form action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
-																@csrf
-																<div class="row align-items-center col-12 pb-5">
-																	<div class="col-2">
-																		<label for="inputFullname" class="col-form-label">Fullname</label>
-																	</div>
-																	<div class="col-10">
-																		<input type="text" name="name" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline">
-																	</div>
-																</div>
-																<div class="row align-items-center col-12 pb-5">
-																	<div class="col-2">
-																		<label for="inputEmail" class="col-form-label">Email</label>
-																	</div>
-																	<div class="col-10">
-																		<input type="email" name="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
-																	</div>
-																</div>
-																<div class="row align-items-center col-12 pb-5">
-																	<div class="col-2">
-																		<label for="inputPhone" class="col-form-label">Phone</label>
-																	</div>
-																	<div class="col-10">
-																		<input type="text" name="phone" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
-																	</div>
-																</div>
-																<div class="row align-items-center col-12 pb-5">
-																	<div class="col-2">
-																		<label for="inputUsername" class="col-form-label">Username</label>
-																	</div>
-																	<div class="col-10">
-																		<input type="text" name="username" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
-																	</div>
-																</div>
-																<div class="row align-items-center col-12 pb-5">
-																	<div class="col-2">
-																		<label for="inputPassword6" class="col-form-label">Password</label>
-																	</div>
-																	<div class="col-10">
-																		<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
-																	</div>
-																</div>
-																<div class="row align-items-center col-12 pb-5">
-																	<div class="col-2">
-																		<label for="inputRole" class="col-form-label">Role</label>
-																	</div>
-																	<div class="dropdown col-10">
-																		<select name="role_id" id="role_id" class="form-control">
-																			@foreach ($role as $role)
-																			<option value={{$role->id}}>{{$role->name}}</option>
-																			@endforeach
-																		</select>
-																	</div>
-																</div>
-																<div class="row align-items-center col-12 pb-5">
-																	<div class="col-2">
-																		<label for="inputimage" class="col-form-label">Image</label>
-																	</div>
-																	<div class="dropdown col-10">
-																		<div class="mb-3">
-																			<input class="form-control" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
-																		</div>
-																	</div>
-																</div>
-																{{ csrf_field() }}
-																<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Staff">
-															</form>
-														</div>
-													</div>
-												</div>
+											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to search a user">
+												<form action="" method="GET" class="d-flex ms-2">
+													<input class="form-control mt-0" type="text" placeholder="Search" name="search" id="search" style="height: 33px;">
+													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
+												</form>
 											</div>
+											
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->

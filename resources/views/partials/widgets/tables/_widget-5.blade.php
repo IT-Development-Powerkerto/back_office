@@ -21,10 +21,11 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw text-muted">
-															<th class="min-w-100px">Nama</th>
-															<th class="min-w-90px">No Whatsapp</th>
-															<th class="min-w-80px">Costumer Service</th>
-															<th class="min-w-80px">Response Time</th>
+															<th class="min-w-120px">Nama</th>
+															<th class="min-w-120px">No Whatsapp</th>
+															<th class="min-w-120px">Costumer Service</th>
+															<th class="min-w-50px">Response Time</th>
+                                                            <th class="min-w-100px">Actions</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
@@ -70,6 +71,27 @@
                                                                                 }
                                                                             });
                                                                         </script>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
+                                                                        <form action="{{ route('lead.edit',['lead' => $lead->id]) }}" method="GET">
+                                                                            @csrf
+                                                                            <div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
+                                                                                <div class="btn-group" role="group" aria-label="First group">
+                                                                                    <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        <form action="{{ route('lead.destroy', ['lead'=>$lead->id]) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                                                <div class="btn-group" role="group" aria-label="First group">
+                                                                                    <button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
                                                                     </div>
                                                                 </td>
                                                             </tr>
