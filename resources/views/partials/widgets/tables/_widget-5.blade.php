@@ -52,8 +52,8 @@
                                                                     <div class="d-flex align-items-end clock{{ $lead->id }}">
 																		<script>
                                                                             window.addEventListener('load', function() {
-                                                                                var createdDate = new Date('{{$lead->client->created_at}}');
-                                                                                var updatedDate = new Date('{{$lead->client->updated_at}}');
+                                                                                var createdDate = new Date('{{$lead->created_at}}');
+                                                                                var updatedDate = new Date('{{$lead->updated_at}}');
                                                                                 var nowDate = new Date();
                                                                                 if('{{$lead->status_id == 3}}'){
                                                                                     var futureDate = new Date(createdDate.getTime() + 0);
