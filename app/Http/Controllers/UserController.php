@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use File;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -99,7 +100,7 @@ class UserController extends Controller
             'phone'     => $request->phone,
             'username'  => $request->username,
             'email'     => $request->email,
-            'password'  => Hash::make($request->password),
+            // 'password'  => Hash::make($request->password),
             'image'     => $image,
             'status'    => 1,
             'updated_at' => Carbon::now()->toDateTimeString(),
@@ -142,5 +143,28 @@ class UserController extends Controller
             $roles = Role::limit(10)->get();
         }
         return response()->json($roles);
+    }
+    public function changePassword(Request $request,User $user)
+    {
+        // dd(auth()->user()->password);
+        $result =  Hash::check($request->cpassword, auth()->user()->password);
+
+        if($result){
+            // $user->name = auth()->user()->name;
+            // dd($user->id);
+            DB::table('users')->where('id', auth()->user()->id)->update([
+                'password' => Hash::make($request->password),
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+            // $user->password = Hash::make($request->password);
+            // $user->update();
+            // dd($request->password);
+            return redirect('/myprofile')->with('success','Successull! Password has been changed');
+            // Auth::logout();
+            // return route('/logout');
+        }else{
+            return redirect('/myprofile')->with('error','Error! Wrong password');
+            // return 'salah';
+        }
     }
 }

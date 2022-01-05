@@ -73,6 +73,19 @@
 						<!--end::Container-->
 					</div>
 					<!--end::Header-->
+					@if(session()->has('success'))
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+							{{ session('success') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					@endif
+				
+					@if(session()->has('error'))
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							{{ session('error') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					@endif
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 						<!--begin::Container-->
@@ -143,7 +156,8 @@
 																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 															</div>
 															<div class="modal-body">
-																<form action="" method="post">
+																<form action="{{ route('changePassword') }}" method="POST">
+																	@method('PATCH')
 																	@csrf
 																	<div class="row align-items-center col-12 pb-5">
 																		<div class="col-4">
