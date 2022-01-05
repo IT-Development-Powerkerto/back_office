@@ -16,12 +16,12 @@ class CreateClientsTable extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->foreignId('campaign_id');
-            $table->foreignId('product_id');
+            // $table->foreignId('product_id');
             $table->string('name')->nullable();
             $table->string('whatsapp')->nullable();
-            $table->integer('quantity')->nullable();
-            $table->integer('total_price')->nullable();
-            $table->foreignId('status_id')->nullable();
+            // $table->integer('quantity')->nullable();
+            // $table->integer('total_price')->nullable();
+            // $table->foreignId('status_id')->nullable();
             $table->timestamps();
         });
     }

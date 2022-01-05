@@ -99,10 +99,8 @@ class FbPController extends Controller
         }else{
             $clients = new Client();
             $clients->campaign_id = $campaign_id;
-            $clients->product_id = $product_id;
             $clients->name = $request->name;
             $clients->whatsapp = $request->whatsapp;
-            $clients->status_id = 3;
             $clients->save();
 
             $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
@@ -161,8 +159,6 @@ class FbPController extends Controller
     public function lead_wa($campaign_id, $product_id){
         $clients = new Client();
         $clients->campaign_id = $campaign_id;
-        $clients->product_id = $product_id;
-        $clients->status_id = 3;
         $clients->save();
 
         // ambil text untuk dikirim ke WA
@@ -216,6 +212,5 @@ class FbPController extends Controller
         DB::table('products')->whereid($product_id)->increment('lead');
 
         return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
-        // return $wa;
     }
 }
