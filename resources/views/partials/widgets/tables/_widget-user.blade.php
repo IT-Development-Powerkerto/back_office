@@ -39,7 +39,12 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="symbol symbol-45px me-5 image-size">
+																		@if(is_null($user->image))
+																		<img src="/assets/img/default.jpg" width="100px" alt="" />
+																		@else
+																		
 																		<img src="{{$user->image}}" width="100px" alt="" />
+																		@endif
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
 																		<a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{$user->name}}</a>
