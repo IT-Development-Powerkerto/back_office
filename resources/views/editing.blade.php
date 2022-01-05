@@ -56,7 +56,11 @@
 								<!--begin::Menu wrapper-->
 								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
 									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+									@if(is_null(Auth()->user()->image))
+									<img src="/assets/img/default.jpg" alt="" />
+									@else
 									<img src={{ Auth()->user()->image }} alt="image" />
+									@endif
 								</div>
 
 								@include('layout/topbar/partials/_user-menu')
@@ -139,26 +143,6 @@
 													<!--end::Info-->
 												</div>
 												<!--end::User-->
-												<!--begin::Actions-->
-												<div class="d-flex my-2">
-													<a href="#" class="btn btn-light me-3" id="kt_user_follow_button">
-														<!--begin::Svg Icon | path: icons/duotune/arrows/arr012.svg-->
-														<span class="svg-icon svg-icon-3 d-none">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<path opacity="0.3" d="M10 18C9.7 18 9.5 17.9 9.3 17.7L2.3 10.7C1.9 10.3 1.9 9.7 2.3 9.3C2.7 8.9 3.29999 8.9 3.69999 9.3L10.7 16.3C11.1 16.7 11.1 17.3 10.7 17.7C10.5 17.9 10.3 18 10 18Z" fill="black" />
-																<path d="M10 18C9.7 18 9.5 17.9 9.3 17.7C8.9 17.3 8.9 16.7 9.3 16.3L20.3 5.3C20.7 4.9 21.3 4.9 21.7 5.3C22.1 5.7 22.1 6.30002 21.7 6.70002L10.7 17.7C10.5 17.9 10.3 18 10 18Z" fill="black" />
-															</svg>
-														</span>
-														<!--end::Svg Icon-->
-														<!--begin::Indicator-->
-														<span class="indicator-label">Follow</span>
-														<span class="indicator-progress">Please wait...
-														<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-														<!--end::Indicator-->
-													</a>
-													<a href="#" class="btn btn-primary me-3" data-kt-drawer-show="true" data-kt-drawer-target="#kt_drawer_chat">Send Message</a>
-												</div>
-												<!--end::Actions-->
 											</div>
 											<!--end::Title-->
 											<!--begin::Stats-->
@@ -236,7 +220,7 @@
 												<!--begin::Progress-->
 												<div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
 													<div class="d-flex justify-content-between w-100 mt-auto mb-2">
-														<span class="fw-bold fs-6 text-gray-400">Profile Compleation</span>
+														<span class="fw-bold fs-6 text-gray-400">Points</span>
 														<span class="fw-bolder fs-6">50%</span>
 													</div>
 													<div class="h-5px mx-3 w-100 bg-light mb-3">
@@ -310,14 +294,6 @@
 											</div>
 											<div class="col-10">
 												<input type="text" name="username" value="{{ old('username') ?? $user->username }}" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputPassword6" class="col-form-label">Password</label>
-											</div>
-											<div class="col-10">
-												<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" required>
 											</div>
 										</div>
 										{{-- @can('change-role') --}}

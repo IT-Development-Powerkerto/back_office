@@ -56,7 +56,11 @@
 								<!--begin::Menu wrapper-->
 								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
 									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+									@if(is_null(Auth()->user()->image))
+									<img src="/assets/img/default.jpg" alt="" />
+									@else
 									<img src={{ Auth()->user()->image }} alt="image" />
+									@endif
 								</div>
 
 								@include('layout/topbar/partials/_user-menu')
@@ -81,7 +85,11 @@
 										<!--begin: Pic-->
 										<div class="me-7 mb-4">
 											<div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                                                <img alt="Logo" src="{{ Auth()->user()->image }}" />
+                                                @if(is_null(Auth()->user()->image))
+												<img src="/assets/img/default.jpg" alt="" />
+												@else
+												<img src={{ Auth()->user()->image }} alt="image" />
+												@endif
 												<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"></div>
 											</div>
 										</div>
@@ -247,7 +255,7 @@
 												<!--begin::Progress-->
 												<div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
 													<div class="d-flex justify-content-between w-100 mt-auto mb-2">
-														<span class="fw-bold fs-6 text-gray-400">Profile Compleation</span>
+														<span class="fw-bold fs-6 text-gray-400">Points</span>
 														<span class="fw-bolder fs-6">50%</span>
 													</div>
 													<div class="h-5px mx-3 w-100 bg-light mb-3">
