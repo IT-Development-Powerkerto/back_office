@@ -31,6 +31,7 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
+        // dd($request->search);
         if($request){
             $users = User::where('name', 'like', '%'.$request->search.'%')->get();
         }else{
@@ -53,12 +54,10 @@ class DashboardController extends Controller
         //      ->get()->toHuman('{days} days, {hours} hours and {minutes} minutes');
         $x = auth()->user();
         if($x->role_id === 4){
-            return view('adv', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('clients', $clients)->with('now', $now);
+            return redirect(route('advDashboard'));
         }
         if($x->role_id === 5){
-            return view('cs', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('clients', $clients)->with('now', $now);
+            return redirect(route('csDashboard'));
         }
         else{
 
@@ -171,10 +170,14 @@ class DashboardController extends Controller
         return redirect('/dashboard')->with('success','Successull! User Deleted');
     }
 
-    public function adv(){
+    public function adv(Request $request){
+        if($request){
+            $users = User::where('name', 'like', '%'.$request->search.'%')->get();
+        }else{
+            $users = User::all();
+        }
         $x = auth()->user();
         if($x->role_id === 4){
-            $users = User::all();
             $announcements = Announcement::all();
             $roles = Role::all();
             $icons = Icon::all();
@@ -189,10 +192,14 @@ class DashboardController extends Controller
         }
     }
 
-    public function cs(){
+    public function cs(Request $request){
+        if($request){
+            $users = User::where('name', 'like', '%'.$request->search.'%')->get();
+        }else{
+            $users = User::all();
+        }
         $x = auth()->user();
         if($x->role_id === 5){
-            $users = User::all();
             $announcements = Announcement::all();
             $roles = Role::all();
             $icons = Icon::all();
