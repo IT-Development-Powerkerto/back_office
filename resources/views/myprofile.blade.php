@@ -247,7 +247,7 @@
 												<!--begin::Progress-->
 												<div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
 													<div class="d-flex justify-content-between w-100 mt-auto mb-2">
-														<span class="fw-bold fs-6 text-gray-400">Profile Compleation</span>
+														<span class="fw-bold fs-6 text-gray-400">Points</span>
 														<span class="fw-bolder fs-6">50%</span>
 													</div>
 													<div class="h-5px mx-3 w-100 bg-light mb-3">
