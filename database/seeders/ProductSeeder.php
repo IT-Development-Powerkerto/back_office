@@ -16,11 +16,11 @@ class ProductSeeder extends Seeder
     {
         $product = [
             [
-               'name'         => 'Generos',
-               'price'        => 15000,
-               'discount'     => null,
-               'image'        => "",
-               'product_link' => "",
+                'name'         => 'Generos',
+                'price'        => 15000,
+                'discount'     => null,
+                'image'        => "",
+                'product_link' => "",
             ],
             [
                 'name'         => 'Freshmag',
@@ -28,7 +28,28 @@ class ProductSeeder extends Seeder
                 'discount'     => null,
                 'image'        => "",
                 'product_link' => "",
-             ],
+            ],
+            [
+                'name'         => 'Gizidat',
+                'price'        => 20000,
+                'discount'     => null,
+                'image'        => "",
+                'product_link' => "",
+            ],
+            [
+                'name'         => 'Etawaku',
+                'price'        => 20000,
+                'discount'     => null,
+                'image'        => "",
+                'product_link' => "",
+            ],
+            [
+                'name'         => 'Rube',
+                'price'        => 20000,
+                'discount'     => null,
+                'image'        => "",
+                'product_link' => "",
+            ],
         ];
 
         DB::table('products')->insert($product);

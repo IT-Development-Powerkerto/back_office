@@ -33,45 +33,48 @@ class DatabaseSeeder extends Seeder
   //     "password" => bcrypt('12345')
   //  ]);
 
-     Category::create([
-        'name' => 'Web Programming',
-        'slug' => 'web-programming'
-     ]);
+        Category::create([
+            'name' => 'Web Programming',
+            'slug' => 'web-programming'
+        ]);
 
 
-     Category::create([
-        'name' => 'Personal',
-        'slug' => 'personal'
-     ]);
+        Category::create([
+            'name' => 'Personal',
+            'slug' => 'personal'
+        ]);
 
-     Category::create([
-        'name' => 'Web Design',
-        'slug' => 'web-design'
-     ]);
-     Category::create([
-      'name' => 'Coding',
-      'slug' => 'coding'
-   ]);
-   Category::create([
-      'name' => 'Graphic Design',
-      'slug' => 'graphic-design'
-   ]);
-   Category::create([
-      'name' => 'Digital Marketing',
-      'slug' => 'digital-marketing'
-   ]);
-     Post::factory(25)->create();
+        Category::create([
+            'name' => 'Web Design',
+            'slug' => 'web-design'
+        ]);
+        Category::create([
+        'name' => 'Coding',
+        'slug' => 'coding'
+    ]);
+    Category::create([
+        'name' => 'Graphic Design',
+        'slug' => 'graphic-design'
+    ]);
+    Category::create([
+        'name' => 'Digital Marketing',
+        'slug' => 'digital-marketing'
+    ]);
+        Post::factory(25)->create();
 
-     $this->call([
-         UserSeeder::class,
-         RoleSeeder::class,
-         ProductSeeder::class,
-         EventSeeder::class,
-         EventWaSeeder::class,
-         StatusSeeder::class,
-         ClosingRateSeeder::class,
-         IconSeeder::class,
-     ]);
+        $this->call([
+            UserSeeder::class,
+            RoleSeeder::class,
+            ProductSeeder::class,
+            EventSeeder::class,
+            EventWaSeeder::class,
+            StatusSeeder::class,
+            ClosingRateSeeder::class,
+            IconSeeder::class,
+            CampaignSeeder::class,
+            OperatorSeeder::class,
+            LeadSeeder::class,
+        ]);
    //   Post::create([
    //      'title' => 'Judul Pertama',
    //      'slug' => 'judul-pertama',
