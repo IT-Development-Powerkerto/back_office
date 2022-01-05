@@ -88,10 +88,14 @@ class UserController extends Controller
         else{
             $image = DB::table('users')->where('id', $user->id)->implode('image');
         }
-
+        if(is_null($request->role_id)){
+            $role_id = auth()->user()->role_id;
+        }else{
+            $role_id = $request->role_id;
+        }
         DB::table('users')->where('id', $user->id)->update([
             'name'      => $request->name,
-            'role_id'   => $request->role_id,
+            'role_id'   => $role_id,
             'phone'     => $request->phone,
             'username'  => $request->username,
             'email'     => $request->email,
