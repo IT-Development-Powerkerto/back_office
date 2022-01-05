@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Lead tunneling</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$leads->count()}} Lead</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$leads->total()}} Lead</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<a href=/ld class="btn btn-sm btn-light btn-active-primary mx-2" title="Click For Detail">
@@ -46,6 +46,7 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+														{{ $leads->links() }}
                                                         <?php $n=0; ?>
                                                         @foreach ($leads as $lead)
 														<tr>
@@ -61,12 +62,12 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{ $lead->operator->name }}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{ $lead->operator_name  }}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-primary fw-normal fs-6">{{$lead->product->name}}</h1>
+																	<h1 class="text-primary fw-normal fs-6">{{$lead->product_name}}</h1>
 																</div>
 															</td>
 															<td>
@@ -88,8 +89,8 @@
 																<div class="d-flex align-items-center clock{{ $lead->id }}">
                                                                     <script>
                                                                         window.addEventListener('load', function() {
-                                                                            var createdDate = new Date('{{$lead->client->created_at}}');
-                                                                            var updatedDate = new Date('{{$lead->client->updated_at}}');
+                                                                            var createdDate = new Date('{{$lead->created_at}}');
+                                                                            var updatedDate = new Date('{{$lead->updated_at}}');
                                                                             var nowDate = new Date();
                                                                             if('{{$lead->status_id == 3}}'){
                                                                                 var futureDate = new Date(createdDate.getTime() + 0);
@@ -111,7 +112,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal	 fs-6 badge badge-light-info">{{ $lead->status->name }}</h1>
+																	<h1 class="text-dark fw-normal	 fs-6 badge badge-light-info">{{ $lead->status }}</h1>
 																</div>
 															</td>
 															<td>
@@ -140,6 +141,7 @@
 													</tbody>
 													<!--end::Table body-->
 												</table>
+												{{ $leads->links() }}
 												<!--end::Table-->
 											</div>
 											<!--end::Table container-->
