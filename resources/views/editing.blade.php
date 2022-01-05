@@ -320,19 +320,27 @@
 												<input type="password" name="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" required>
 											</div>
 										</div>
+										{{-- @can('change-role') --}}
+
+										
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputRole" class="col-form-label">Role</label>
 											</div>
 											<div class="dropdown col-10">
-												<select name="role_id" id="role_id1" class="form-control">
-                                                    <option disable selected value="{{ $user->role_id }}" hidden>{{$user->role->name}}</option>
-													@foreach ($roles as $role)
-													<option value="{{ $role->id }}">{{$role->name}}</option>
-													@endforeach
-												</select>
+												@if (auth()->user()->role_id === 1 || auth()->user()->role_id === 2 || auth()->user()->role_id === 3)
+													<select name="role_id" id="role_id1" class="form-control">
+														<option selected value="{{ $user->role_id }}" hidden>{{$user->role->name}}</option>
+														@foreach ($roles as $role)
+														<option value="{{ $role->id }}">{{$role->name}}</option>
+														@endforeach
+													</select>
+												@else
+													<label class="form-control" >{{$user->role->name}}</label>
+												@endif
 											</div>
 										</div>
+										{{-- @endcan --}}
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputimage" class="col-form-label">Image</label>
