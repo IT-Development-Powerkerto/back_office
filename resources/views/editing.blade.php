@@ -56,7 +56,11 @@
 								<!--begin::Menu wrapper-->
 								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
 									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+									@if(is_null(Auth()->user()->image))
+									<img src="/assets/img/default.jpg" alt="" />
+									@else
 									<img src={{ Auth()->user()->image }} alt="image" />
+									@endif
 								</div>
 
 								@include('layout/topbar/partials/_user-menu')

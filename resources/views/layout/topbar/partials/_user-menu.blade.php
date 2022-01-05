@@ -6,7 +6,11 @@
 													<div class="menu-content d-flex align-items-center px-3">
 														<!--begin::Avatar-->
 														<div class="symbol symbol-50px me-5">
-															<img alt="Logo" src="{{ Auth()->user()->image }}" />
+															@if(is_null(Auth()->user()->image))
+															<img src="/assets/img/default.jpg" alt="" />
+															@else
+															<img src={{ Auth()->user()->image }} alt="image" />
+															@endif
 														</div>
 														<!--end::Avatar-->
 														<!--begin::Username-->
