@@ -216,7 +216,61 @@ License: For each use you must have a valid license purchased only from above li
             }, 1000);
         }
     </script>
-    
+
+    <script>  
+        $(document).ready(function(){  
+            $('#searchstaff').keyup(function(){  
+                search_table($(this).val());  
+            });  
+            function search_table(value){  
+                $('#staff tr').each(function(){  
+                    var found = 'false';  
+                    $(this).each(function(){  
+                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
+                            {  
+                                found = 'true';  
+                            }  
+                    });  
+                    if(found == 'true')  
+                    {  
+                            $(this).show();  
+                    }  
+                    else  
+                    {  
+                            $(this).hide();  
+                    }  
+                });  
+            }  
+        });  
+    </script>
+
+    <script>  
+        $(document).ready(function(){  
+            $('#searchlead').keyup(function(){  
+                search_table($(this).val());  
+            });  
+            function search_table(value){  
+                $('#leads tr').each(function(){  
+                    var found = 'false';  
+                    $(this).each(function(){  
+                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
+                            {  
+                                found = 'true';  
+                            }  
+                    });  
+                    if(found == 'true')  
+                    {  
+                            $(this).show();  
+                    }  
+                    else  
+                    {  
+                            $(this).hide();  
+                    }  
+                });  
+            }  
+        });  
+    </script>
+
 	<!--end::Javascript-->
 
 </body>
