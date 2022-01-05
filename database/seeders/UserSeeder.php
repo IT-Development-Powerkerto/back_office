@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
@@ -21,7 +22,7 @@ class UserSeeder extends Seeder
         //     'role_id'   => 1,
         //     'username'  => "admin",
         //     'email'     => "admin@admin.com",
-        //     'password'  => bcrypt('1234'),
+        //     'password'  => Hash::make('1234'),
         //     'remember_token' => Str::random(10),
         // ]);
         $users = [
@@ -31,7 +32,7 @@ class UserSeeder extends Seeder
                 'username'  => "admin",
                 'email'     => "admin@pwk.com",
                 'phone'     => "6289987987987",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -40,7 +41,7 @@ class UserSeeder extends Seeder
                 'username'  => "ceo",
                 'email'     => "ceo@pwk.com",
                 'phone'     => "6289098098098",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -49,7 +50,7 @@ class UserSeeder extends Seeder
                 'username'  => "manager",
                 'email'     => "manager@pwk.com",
                 'phone'     => "6289890890890",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -58,7 +59,7 @@ class UserSeeder extends Seeder
                 'username'  => "advertiser",
                 'email'     => "advertiser@pwk.com",
                 'phone'     => "6289789789789",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -67,7 +68,7 @@ class UserSeeder extends Seeder
                 'username'  => "cs",
                 'email'     => "cs@pwk.com",
                 'phone'     => "6289678678678",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -76,7 +77,7 @@ class UserSeeder extends Seeder
                 'username'  => "dgm",
                 'email'     => "dgm@pwk.com",
                 'phone'     => "6289456456456",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -85,7 +86,7 @@ class UserSeeder extends Seeder
                 'username'  => "cwm",
                 'email'     => "cwm@pwk.com",
                 'phone'     => "6289234234234",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -94,7 +95,7 @@ class UserSeeder extends Seeder
                 'username'  => "itd",
                 'email'     => "itd@pwk.com",
                 'phone'     => "6289123123123",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -103,7 +104,7 @@ class UserSeeder extends Seeder
                 'username'  => "hanif",
                 'email'     => "hanif30081997@gmail.com",
                 'phone'     => "6289698268654",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -112,7 +113,7 @@ class UserSeeder extends Seeder
                 'username'  => "awal",
                 'email'     => "awal23azwihani@gmail.com",
                 'phone'     => "6285866313726",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -121,7 +122,7 @@ class UserSeeder extends Seeder
                 'username'  => "rifan",
                 'email'     => "rifantriyulianto@gmail.com",
                 'phone'     => "6287881666931",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -130,7 +131,7 @@ class UserSeeder extends Seeder
                 'username'  => "isnan",
                 'email'     => "isnanadit@gmail.com",
                 'phone'     => "6285601615605",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -139,7 +140,7 @@ class UserSeeder extends Seeder
                 'username'  => "jihad",
                 'email'     => "jihadsalahuddin09@gmail.com",
                 'phone'     => "6281337595113",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -148,7 +149,7 @@ class UserSeeder extends Seeder
                 'username'  => "anggit",
                 'email'     => "anggithatma@gmail.com",
                 'phone'     => "6282217443670",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -157,7 +158,7 @@ class UserSeeder extends Seeder
                 'username'  => "alfian",
                 'email'     => "alfianridhoutama.business@gmail.com",
                 'phone'     => "6281542436395",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -166,7 +167,7 @@ class UserSeeder extends Seeder
                 'username'  => "hutari",
                 'email'     => "cshutaritrinurcahyani@gmail.com",
                 'phone'     => "6281389855064",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -175,7 +176,7 @@ class UserSeeder extends Seeder
                 'username'  => "rosi",
                 'email'     => "csrosinurjanah@gmail.com",
                 'phone'     => "6282233320833",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -184,7 +185,7 @@ class UserSeeder extends Seeder
                 'username'  => "noviana",
                 'email'     => "csnovianap@gmail.com",
                 'phone'     => "6281389855087",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -193,7 +194,7 @@ class UserSeeder extends Seeder
                 'username'  => "farida",
                 'email'     => "csida08@gmail.com",
                 'phone'     => "6281326510461",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -202,7 +203,7 @@ class UserSeeder extends Seeder
                 'username'  => "intan",
                 'email'     => "csintanananda@gmail.com",
                 'phone'     => "6281389855052",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -211,7 +212,7 @@ class UserSeeder extends Seeder
                 'username'  => "ristika",
                 'email'     => "csristikadamayanti@gmail.com",
                 'phone'     => "6281389855089",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -220,7 +221,7 @@ class UserSeeder extends Seeder
                 'username'  => "nandalita",
                 'email'     => "csnandalitasetiawan@gmail.com",
                 'phone'     => "6281389855068",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -229,7 +230,7 @@ class UserSeeder extends Seeder
                 'username'  => "tri",
                 'email'     => "cstrikustini@gmail.com",
                 'phone'     => "6281389855032",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -238,7 +239,7 @@ class UserSeeder extends Seeder
                 'username'  => "uswatun",
                 'email'     => "uswatunkhcs1@gmail.com",
                 'phone'     => "6282233320884",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -247,7 +248,7 @@ class UserSeeder extends Seeder
                 'username'  => "ukhti",
                 'email'     => "csukhticsukhti@gmail.com",
                 'phone'     => "6281215076244",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -256,7 +257,7 @@ class UserSeeder extends Seeder
                 'username'  => "alisa",
                 'email'     => "csalisa927@gmail.com",
                 'phone'     => "6281380092881",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -265,7 +266,7 @@ class UserSeeder extends Seeder
                 'username'  => "ferra",
                 'email'     => "csfellac@gmail.com",
                 'phone'     => "6281311130091",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -274,7 +275,7 @@ class UserSeeder extends Seeder
                 'username'  => "fadilatun",
                 'email'     => "csnidarahayu@gmail.com",
                 'phone'     => "6281311130053",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -283,7 +284,7 @@ class UserSeeder extends Seeder
                 'username'  => "septiyani",
                 'email'     => "csseptiyani@gmail.com",
                 'phone'     => "6281215075595",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -292,7 +293,7 @@ class UserSeeder extends Seeder
                 'username'  => "sukma",
                 'email'     => "Cs.sukmaindah@gmail.com",
                 'phone'     => "6281380553654",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -301,7 +302,7 @@ class UserSeeder extends Seeder
                 'username'  => "nadia",
                 'email'     => "csnadia1607@gmail.com",
                 'phone'     => "6281229449475",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -310,7 +311,7 @@ class UserSeeder extends Seeder
                 'username'  => "friska",
                 'email'     => "csfriska@gmail.com",
                 'phone'     => "6281229449475",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -319,7 +320,7 @@ class UserSeeder extends Seeder
                 'username'  => "sovi",
                 'email'     => "cssovi@gmail.com",
                 'phone'     => "6281229449475",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -328,7 +329,7 @@ class UserSeeder extends Seeder
                 'username'  => "haya",
                 'email'     => "cshaya@gmail.com",
                 'phone'     => "6281229449475",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -337,7 +338,7 @@ class UserSeeder extends Seeder
                 'username'  => "nur",
                 'email'     => "csnurhay@gmail.com",
                 'phone'     => "6281389855066",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
             [
@@ -346,7 +347,7 @@ class UserSeeder extends Seeder
                 'username'  => "riza",
                 'email'     => "csriza.maria25@gmailcom",
                 'phone'     => "6281389855070",
-                'password'  => bcrypt('1234'),
+                'password'  => Hash::make('1234'),
                 'remember_token' => Str::random(10),
             ],
 

@@ -72,6 +72,7 @@ Route::get('/adv', [DashboardController::class, 'adv'])->name('advDashboard')->m
 Route::get('/cs', [DashboardController::class, 'cs'])->name('csDashboard')->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 Route::get('/myprofile',[UserController::class, 'index'])->middleware('auth');
+Route::patch('/myprofile',[UserController::class, 'changePassword'])->name('changePassword')->middleware('auth');
 
 Route::resource('announcements', AnnouncementController::class);
 
