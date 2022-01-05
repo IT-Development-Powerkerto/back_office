@@ -336,7 +336,8 @@
 														@endforeach
 													</select>
 												@else
-													<label class="form-control" >{{$user->role->name}}</label>
+													<label class="form-control">{{$user->role->name}}</label>
+													{{-- <input class="form-control" type="text" value="{{ $user->role_id }}" hidden> --}}
 												@endif
 											</div>
 										</div>
