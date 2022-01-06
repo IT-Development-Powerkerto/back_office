@@ -90,7 +90,7 @@ class UserController extends Controller
             $image = DB::table('users')->where('id', $user->id)->implode('image');
         }
         if(is_null($request->role_id)){
-            $role_id = auth()->user()->role_id;
+            $role_id = $user->role_id;
         }else{
             $role_id = $request->role_id;
         }

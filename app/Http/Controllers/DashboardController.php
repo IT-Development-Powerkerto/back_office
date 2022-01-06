@@ -32,12 +32,8 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         // dd($request->search);
-        if($request){
-            $users = User::where('name', 'like', '%'.$request->search.'%')->get();
-        }else{
-            $users = User::all();
-        }
         
+        $users = User::all();
         $announcements = Announcement::all();
         $roles = Role::all();
         $icons = Icon::all();
@@ -184,7 +180,7 @@ class DashboardController extends Controller
             $users = User::all();
         }
         $x = auth()->user();
-        if($x->role_id === 4){
+        if($x->role_id == 4){
             $announcements = Announcement::all();
             $roles = Role::all();
             $icons = Icon::all();
@@ -212,7 +208,7 @@ class DashboardController extends Controller
             $users = User::all();
         }
         $x = auth()->user();
-        if($x->role_id === 5){
+        if($x->role_id == 5){
             $announcements = Announcement::all();
             $roles = Role::all();
             $icons = Icon::all();
