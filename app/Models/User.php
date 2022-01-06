@@ -73,4 +73,7 @@ class User extends Authenticatable
     public function closing_rate(){
         return $this->hasMany(ClosingRate::class);
     }
+    public function omset(){
+        return $this->hasMany(Omset::class);
+    }
 }
