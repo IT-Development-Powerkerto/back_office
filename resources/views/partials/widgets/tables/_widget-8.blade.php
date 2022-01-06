@@ -1,6 +1,6 @@
 
 									<!--begin::Tables Widget 9-->
-									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
+									<div class="card card-xxl-stretch mb-5 mb-xl-8">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
@@ -16,7 +16,7 @@
 												<!--end::Svg Icon-->Detail</a>
 
 												<form action="#" method="GET" class="d-flex">
-													<input class="form-control mt-0" name="search" type="search" placeholder="Search" aria-label="Search" style="height: 33px;">
+													<input class="form-control mt-0" name="search" id="searchlead" type="text" placeholder="Search" aria-label="Search" style="height: 33px;">
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
 												</form>
 											</div>
@@ -27,7 +27,7 @@
 											<!--begin::Table container-->
 											<div class="table-responsive">
 												<!--begin::Table-->
-												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" id="leads">
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-medium text-muted">
@@ -46,7 +46,6 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
-														{{ $leads->links() }}
                                                         <?php $n=0; ?>
                                                         @foreach ($leads as $lead)
 														<tr>

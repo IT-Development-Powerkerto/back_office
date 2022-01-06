@@ -17,8 +17,8 @@
 													</svg>
 												</span>
 												<!--end::Svg Icon-->Add Staff</a>
-												<form action="" method="GET" class="d-flex ms-2">
-													<input class="form-control mt-0" type="text" placeholder="Search" name="search" id="search" style="height: 33px;">
+												<form action="#" method="GET" class="d-flex ms-2">
+													<input class="form-control mt-0" type="text" placeholder="Search" name="search" id="searchstaff" style="height: 33px;">
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
 												</form>
 											</div>
@@ -132,7 +132,7 @@
 											<!--begin::Table container-->
 											<div class="table-responsive">
 												<!--begin::Table-->
-												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" id="staff">
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">

@@ -31,8 +31,7 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->search);
-        
+    
         $users = User::all();
         $announcements = Announcement::all();
         $roles = Role::all();
@@ -44,7 +43,7 @@ class DashboardController extends Controller
             ->join('statuses as s', 'l.status_id', '=', 's.id')
             ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status')
             ->orderBy('l.id')
-            ->paginate(10);
+            ->paginate(5);
         $clients = Client::all();
         $campaigns = Campaign::all();
         $total_lead = DB::table('products')->pluck('lead');
