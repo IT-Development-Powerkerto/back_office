@@ -69,7 +69,7 @@ class DatabaseSeeder extends Seeder
             EventSeeder::class,
             EventWaSeeder::class,
             StatusSeeder::class,
-            ClosingRateSeeder::class,
+            //ClosingRateSeeder::class,
             IconSeeder::class,
             CampaignSeeder::class,
             OperatorSeeder::class,

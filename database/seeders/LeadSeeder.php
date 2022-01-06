@@ -46,7 +46,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=1; $i<=142; $i++){
+        for($i=$n-268; $i<$n-268+142; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -83,7 +83,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-175; $i<=$n-175+79; $i++){
+        for($i=$n-175; $i<$n-175+79; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -120,7 +120,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-200; $i<=$n-200+118; $i++){
+        for($i=$n-200; $i<$n-200+118; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -157,7 +157,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-209; $i<=$n-209+117; $i++){
+        for($i=$n-209; $i<$n-209+117; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -194,7 +194,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-193; $i<=$n-193+107; $i++){
+        for($i=$n-193; $i<$n-193+107; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -231,7 +231,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-230; $i<=$n-230+184; $i++){
+        for($i=$n-230; $i<$n-230+184; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -268,7 +268,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-2; $i<=$n-2+2; $i++){
+        for($i=$n-2; $i<$n-2+2; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -305,7 +305,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-75; $i<=$n-75+53; $i++){
+        for($i=$n-75; $i<$n-75+53; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -342,7 +342,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-2; $i<=$n-2+2; $i++){
+        for($i=$n-2; $i<$n-2+2; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -379,7 +379,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-30; $i<=$n-30+21; $i++){
+        for($i=$n-30; $i<$n-30+21; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -416,7 +416,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-193; $i<=$n-193+124; $i++){
+        for($i=$n-193; $i<$n-193+124; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -453,7 +453,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-101; $i<=$n-101+78; $i++){
+        for($i=$n-101; $i<$n-101+78; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -490,7 +490,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-250; $i<=$n-250+166; $i++){
+        for($i=$n-250; $i<$n-250+166; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -527,7 +527,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-227; $i<=$n-227+184; $i++){
+        for($i=$n-227; $i<$n-227+184; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
@@ -564,7 +564,7 @@ class LeadSeeder extends Seeder
             $n+=1;
         }
 
-        for($i=$n-174; $i<=$n-174+128; $i++){
+        for($i=$n-174; $i<$n-174+128; $i++){
             DB::table('leads')->where('id', $i)->update([
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),

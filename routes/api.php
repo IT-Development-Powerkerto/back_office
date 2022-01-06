@@ -23,3 +23,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('lead/{campaign}/{product}', [FbPController::class, 'lead'])->name('lead');
 Route::post('lead_wa/{campaign}/{product}', [FbPController::class, 'lead_wa'])->name('lead_wa');
 Route::post('closing_rate/{user}', [ClosingRateController::class, 'closing_rate'])->name('closing_rate');
+Route::post('closing_rates/{campaign}/{product}/{user}', [ClosingRateController::class, 'closing_rates'])->name('closing_rates');
