@@ -145,19 +145,6 @@ class CampaignController extends Controller
         $operatorCampaigns = Operator::all()->where('campaign_id', $id);
         $lead = Lead::all();
 
-        $day = Carbon::now()->format('Y-m-d');
-        $month = Carbon::now()->format('Y-m');
-
-        $day_lead = DB::table('leads as l')->where('l.campaign_id', $campaigns->id)->where('l.product_id', $campaigns->product->id)->join('operators as o', 'o.id', '=', 'l.operator_id')->where('l.created_at', $day)->where('o.user_id', 32)->count();
-        $day_closing = DB::table('leads as l')->where('l.campaign_id', $campaigns->id)->where('l.product_id', $campaigns->product->id)->join('operators as o', 'o.id', '=', 'l.operator_id')->where('l.created_at', $day)->where('l.status_id', 5)->where('o.user_id', $operatorCampaigns->implode('user_id'))->count();
-
-        $m = Carbon::parse(DB::table('leads as l')->where('l.campaign_id', $campaigns->id)->where('l.product_id', $campaigns->product->id)->join('operators as o', 'o.id', '=', 'l.operator_id')->where('o.user_id', $operatorCampaigns->implode('user_id'))->value('l.created_at'))->format('Y-m');
-        if($m == $month){
-            $month_lead = DB::table('leads as l')->where('l.campaign_id', $campaigns->id)->where('l.product_id', $campaigns->product->id)->join('operators as o', 'o.id', '=', 'l.operator_id')->where('o.user_id', $operatorCampaigns->implode('user_id'))->count();
-            $month_closing = DB::table('leads as l')->where('l.campaign_id', $campaigns->id)->where('l.product_id', $campaigns->product->id)->join('operators as o', 'o.id', '=', 'l.operator_id')->where('o.user_id', $operatorCampaigns->implode('user_id'))->where('l.status_id', 5)->count();
-        }
-
-        $closing_rate = $day_lead;
-        return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns)->with('lead', $lead)->with('closing_rate', $closing_rate);
+        return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns)->with('lead', $lead);
     }
 }

@@ -21,7 +21,6 @@ class Client extends Model
     public function status(){
         return $this->belongsTo(Status::class);
     }
-
     public function campaign(){
         return $this->belongsTo(Campaign::class);
     }
