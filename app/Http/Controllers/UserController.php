@@ -88,6 +88,11 @@ class UserController extends Controller
         }
         else{
             $image = DB::table('users')->where('id', $user->id)->implode('image');
+            if(strlen($image) > 0){
+                $image = DB::table('users')->where('id', $user->id)->implode('image');
+            }else{
+                $image = null;
+            }
         }
         if(is_null($request->role_id)){
             $role_id = $user->role_id;
