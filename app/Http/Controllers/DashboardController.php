@@ -55,10 +55,10 @@ class DashboardController extends Controller
         //      ->to($now->copy()->addYears(5))
         //      ->get()->toHuman('{days} days, {hours} hours and {minutes} minutes');
         $x = auth()->user();
-        if($x->role_id === 4){
+        if($x->role_id == 4){
             return redirect(route('advDashboard'));
         }
-        if($x->role_id === 5){
+        if($x->role_id == 5){
             return redirect(route('csDashboard'));
         }
         else{
@@ -179,7 +179,7 @@ class DashboardController extends Controller
             $users = User::all();
         }
         $x = auth()->user();
-        if($x->role_id === 4){
+        if($x->role_id == 4){
             $announcements = Announcement::all();
             $roles = Role::all();
             $icons = Icon::all();
@@ -207,7 +207,7 @@ class DashboardController extends Controller
             $users = User::all();
         }
         $x = auth()->user();
-        if($x->role_id === 5){
+        if($x->role_id == 5){
             $announcements = Announcement::all();
             $roles = Role::all();
             $icons = Icon::all();

@@ -18,19 +18,32 @@ class LoginController extends Controller
         //     'password' => 'required'
         // ]);
 
+
         $data = $request->input();
-        if(Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '1'||'2'||'3'||'8'])) {
-            $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+        if(Auth::attempt(['username' => $data['username'], 'password' => $data['password']])) {
+            $role_id = auth()->user()->role_id;
+            
+            if($role_id == 1){
+                $request->session()->regenerate();
+                return redirect('/dashboard');
+            }
+            elseif($role_id == 4){
+                $request->session()->regenerate();
+                return redirect('/adv');
+            }
+            elseif($role_id == 5){
+                $request->session()->regenerate();
+                return redirect('/cs');
+            }
         }
-        elseif (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '4'])){
-            $request->session()->regenerate();
-            return redirect()->intended('adv');
-        }
-        elseif (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '5'])){
-            $request->session()->regenerate();
-            return redirect()->intended('cs');
-        }
+        // elseif (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '4'])){
+        //     $request->session()->regenerate();
+        //     return redirect()->intended('adv');
+        // }
+        // elseif (Auth::attempt(['username' => $data['username'], 'password' => $data['password'], 'role_id' => '5'])){
+        //     $request->session()->regenerate();
+        //     return redirect()->intended('cs');
+        // }
         return back()->with('error', 'Login Failed!');
     }
     public function logout(Request $request){
