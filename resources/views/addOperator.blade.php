@@ -157,7 +157,8 @@
                                                         </div>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->closing_rate[0]->month_closing_rate }}</label>
+														{{-- <label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->closing_rate[0]->month_closing_rate }}</label> --}}
+                                                        <label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $closing_rate }}</label>
 													</td>
 													<td>
 														<form action="{{route('addOperator.destroy',['campaign' => $operatorCampaign->campaign_id, 'operator' => $operatorCampaign->id])}}" method="POST">
