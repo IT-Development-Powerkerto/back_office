@@ -54,12 +54,12 @@
 							<!--begin::User-->
 							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 								<!--begin::Menu wrapper-->
-								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
-									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+									{{--  Image pict header  --}}
 									@if(is_null(Auth()->user()->image))
 									<img src="/assets/img/default.jpg" alt="" />
 									@else
-									<img src={{ Auth()->user()->image }} alt="image" />
+									<img src="{{ url('') }}/{{ Auth()->user()->image }}" alt="image" />
 									@endif
 								</div>
 
@@ -84,7 +84,11 @@
 										<!--begin: Pic-->
 										<div class="me-7 mb-4">
 											<div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                                                <img alt="Logo" src="{{ url('') }}/{{$user->image}}" />
+												@if(is_null($user->image))
+												<img src="{{ url('') }}/assets/img/default.jpg" alt="" />
+												@else
+												<img src="{{ url('') }}/{{ $user->image }}" alt="image" />
+												@endif
 												<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"></div>
 											</div>
 										</div>
