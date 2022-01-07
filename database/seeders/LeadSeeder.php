@@ -29,8 +29,8 @@ class LeadSeeder extends Seeder
                 'price'       => 250000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -38,8 +38,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 1,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -52,7 +52,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*250000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
         //add quantity
@@ -60,7 +60,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*250000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -76,8 +76,8 @@ class LeadSeeder extends Seeder
                 'price'       => 250000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -85,8 +85,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 1,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -99,7 +99,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*250000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -107,7 +107,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*250000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -123,8 +123,8 @@ class LeadSeeder extends Seeder
                 'price'       => 250000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -132,8 +132,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 1,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -146,7 +146,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*250000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -154,7 +154,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*250000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -170,8 +170,8 @@ class LeadSeeder extends Seeder
                 'price'       => 250000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -179,8 +179,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 1,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -193,7 +193,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*250000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -201,7 +201,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*250000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -217,8 +217,8 @@ class LeadSeeder extends Seeder
                 'price'       => 250000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -226,8 +226,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 1,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -240,7 +240,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*250000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -248,7 +248,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*250000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -264,8 +264,8 @@ class LeadSeeder extends Seeder
                 'price'       => 375000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -273,8 +273,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 2,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -287,7 +287,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*375000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -303,8 +303,8 @@ class LeadSeeder extends Seeder
                 'price'       => 375000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -312,8 +312,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 2,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -326,7 +326,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*375000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -342,8 +342,8 @@ class LeadSeeder extends Seeder
                 'price'       => 375000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -351,8 +351,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 2,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -365,7 +365,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*375000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -373,7 +373,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*375000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -389,8 +389,8 @@ class LeadSeeder extends Seeder
                 'price'       => 68000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -398,8 +398,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 3,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -412,7 +412,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*68000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -420,7 +420,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*68000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -436,8 +436,8 @@ class LeadSeeder extends Seeder
                 'price'       => 375000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -445,8 +445,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 4,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -459,7 +459,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*375000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -475,8 +475,8 @@ class LeadSeeder extends Seeder
                 'price'       => 68000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -484,8 +484,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 5,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -498,7 +498,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*68000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -506,7 +506,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*68000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -522,8 +522,8 @@ class LeadSeeder extends Seeder
                 'price'       => 375000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -531,8 +531,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 6,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -545,7 +545,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*375000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -553,7 +553,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*375000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -569,8 +569,8 @@ class LeadSeeder extends Seeder
                 'price'       => 68000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -578,8 +578,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 7,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -592,7 +592,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*68000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -600,7 +600,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*68000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -616,8 +616,8 @@ class LeadSeeder extends Seeder
                 'price'       => 140000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -625,8 +625,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 8,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -639,7 +639,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 1,
                 'total_price' => 1*140000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -647,7 +647,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 2,
                 'total_price' => 2*140000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -663,8 +663,8 @@ class LeadSeeder extends Seeder
                 'price'       => 75000,
                 'total_price' => null,
                 'status_id'   => 3,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             $client = [
@@ -672,8 +672,8 @@ class LeadSeeder extends Seeder
                 'campaign_id'   => 9,
                 'name'          => null,
                 'whatsapp'      => null,
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
+                'created_at'  => date('Y-m-d', strtotime('- 1 month')),
+                'updated_at'  => date('Y-m-d', strtotime('- 1 month')),
                 ],
             ];
             DB::table('leads')->insert($lead);
@@ -686,7 +686,7 @@ class LeadSeeder extends Seeder
                 'quantity'    => 2,
                 'total_price' => 2*75000,
                 'status_id'   => 5,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
 
@@ -694,7 +694,7 @@ class LeadSeeder extends Seeder
             DB::table('leads')->where('id', $i)->update([
                 'quantity'    => 3,
                 'total_price' => 3*75000,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => date('Y-m-d', strtotime('- 1 month')),
             ]);
         }
     }
