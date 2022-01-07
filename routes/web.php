@@ -64,6 +64,7 @@ Route::resource('/dashboard/blog', DashboardPostController::class)->middleware('
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 
 Route::resource('users', UserController::class);
+Route::get('/viewprofile/{user}', [UserController::class, 'viewProfile'])->name('viewProfile');
 Route::get('/status/update', [UserController::class, 'updateStatus'])->name('users.update.status');
 //Route::resource('/dasboard', DashboardController::class);
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');

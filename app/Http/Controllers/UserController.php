@@ -172,4 +172,10 @@ class UserController extends Controller
             // return 'salah';
         }
     }
+
+    public function viewProfile($id) {
+        $roles = Role::all();
+        $result = User::findOrFail($id);
+        return view('viewProfile',['user' => $result])->with('roles', $roles);
+    }
 }
