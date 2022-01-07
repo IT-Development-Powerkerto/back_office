@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FbPController;
 use App\Http\Controllers\ClosingRateController;
 use App\Http\Controllers\OmsetController;
+use App\Http\Controllers\UpsellingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::post('lead_wa/{campaign}/{product}', [FbPController::class, 'lead_wa'])->
 Route::post('closing_rate/{user}', [ClosingRateController::class, 'closing_rate'])->name('closing_rate');
 Route::post('closing_rates/{campaign}/{product}/{user}', [ClosingRateController::class, 'closing_rates'])->name('closing_rates');
 Route::post('omset/{campaign}/{product}/{user}', [OmsetController::class, 'omset'])->name('omset');
+Route::post('upselling/{campaign}/{product}/{user}', [UpsellingController::class, 'upselling'])->name('upselling');
