@@ -31,15 +31,15 @@
 							<!--begin::Page title-->
 							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
 								<!--begin::Heading-->
-								<h1 class="text-dark fw-bold my-0 fs-2">Profile Overview</h1>
+								<h1 class="text-dark fw-bold my-0 fs-2">Profile {{ old('name') ?? $user->name }}</h1>
 								<!--end::Heading-->
 								<!--begin::Breadcrumb-->
 								<ul class="breadcrumb breadcrumb-line text-muted fw-bold fs-base my-1">
 									<li class="breadcrumb-item text-muted">
 										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
 									</li>
-									<li class="breadcrumb-item text-muted">Account</li>
-									<li class="breadcrumb-item text-dark">My Profile</li>
+									<li class="breadcrumb-item text-muted">Profile</li>
+									<li class="breadcrumb-item text-dark">{{ old('name') ?? $user->name }}</li>
 								</ul>
 								<!--end::Breadcrumb-->
 							</div>
@@ -330,7 +330,7 @@
 												<label for="inputEmail" class="col-form-label">Email</label>
 											</div>
 											<div class="col-10">
-												<input type="email" name="email" value="" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
+												<label type="email" name="email" value="" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">{{ old('email') ?? $user->email }}</label>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -338,7 +338,7 @@
 												<label for="inputPhone" class="col-form-label">Phone</label>
 											</div>
 											<div class="col-10">
-												<label type="text" name="phone" value="{{ old('phone') ?? $user->phone }}" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline"></label>
+												<label type="text" name="phone" value="" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">{{ old('phone') ?? $user->phone }}</label>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -346,7 +346,7 @@
 												<label for="inputUsername" class="col-form-label">Username</label>
 											</div>
 											<div class="col-10">
-												<label type="text" name="username" value="{{ old('username') ?? $user->username }}" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline"></label>
+												<label type="text" name="username" value="" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">{{ old('username') ?? $user->username }}</label>
 											</div>
 										</div>
 										{{-- @can('change-role') --}}
