@@ -31,7 +31,7 @@ class OmsetController extends Controller
 
         $max_omset = Omset::max('omset');
 
-        DB::table('omsets')->where('user_id', $user->id)->insert([
+        DB::table('omsets')->where('user_id', $user->id)->update([
             'user_id'       => $user->id,
             'product_id'    => $product->id,
             'omset'         => $omset,
