@@ -322,7 +322,7 @@
 												<label for="inputFullname" class="col-form-label">Fullname</label>
 											</div>
 											<div class="col-10">
-												<label type="text" name="name" value="{{ old('name') ?? $user->name }}" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline"></label>
+												<label type="text" name="name" value="" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline">{{ old('name') ?? $user->name }}</label>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -330,7 +330,7 @@
 												<label for="inputEmail" class="col-form-label">Email</label>
 											</div>
 											<div class="col-10">
-												<input type="email" name="email" value="{{ old('email') ?? $user->email }}" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
+												<input type="email" name="email" value="" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
