@@ -76,4 +76,7 @@ class User extends Authenticatable
     public function omset(){
         return $this->hasMany(Omset::class);
     }
+    public function upselling(){
+        return $this->hasMany(Upselling::class);
+    }
 }

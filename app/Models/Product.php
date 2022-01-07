@@ -29,4 +29,7 @@ class Product extends Model
     public function omset(){
         return $this->hasOne(Omset::class);
     }
+    public function upselling(){
+        return $this->hasOne(Upselling::class);
+    }
 }

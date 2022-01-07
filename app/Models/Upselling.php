@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Omset extends Model
+class Upselling extends Model
 {
     use HasFactory;
     protected $fillable = [
         'user_id',
         'product_id',
-        'omset',
-        'omset_point',
+        'upselling',
         ];
 
     public function user(){
