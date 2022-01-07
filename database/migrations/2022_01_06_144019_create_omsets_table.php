@@ -16,8 +16,9 @@ class CreateOmsetsTable extends Migration
         Schema::create('omsets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->integer('omset');
-            $table->double('omset_point');
+            $table->foreignId('product_id');
+            $table->integer('omset')->nullable();
+            $table->double('omset_point')->nullable();
             $table->timestamps();
         });
     }

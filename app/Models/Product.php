@@ -26,4 +26,7 @@ class Product extends Model
     public function lead(){
         return $this->hasMany(Lead::class);
     }
+    public function omset(){
+        return $this->hasOne(Omset::class);
+    }
 }
