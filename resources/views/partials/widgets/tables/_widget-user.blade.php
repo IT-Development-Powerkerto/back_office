@@ -29,7 +29,7 @@
 															<th class="min-w-100px">Point</th>
 															<th class="min-w-140px">Division</th>
 															<th class="min-w-120px">Status</th>
-															<th class="min-w-120px">Action</th>
+															<th class="min-w-120px text-end">Action</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
