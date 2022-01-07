@@ -68,12 +68,6 @@ class OmsetController extends Controller
             $year = date('Y');
         }
         // get omset cs per product per month
-        $x=array('');
-        for($product_id=1; $product_id<=5; $product_id++){
-            $x = array_push($product_id);
-
-        }
-        return $x;
         // $omset = DB::table('leads as l')->join('operators as o', 'l.operator_id', '=', 'o.id')->where('product_id', $product_id)
         //             // ->where('l.operator_id',$user->operator->implode('id'))
         //             ->where('status_id', 5)
