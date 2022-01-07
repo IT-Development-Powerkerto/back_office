@@ -16,6 +16,7 @@ class LeadSeeder extends Seeder
     public function run()
     {
         $n=1;
+        //input lead campaign 1
         for ($i=1; $i<=268; $i++){
             $lead = [
                 [
@@ -25,7 +26,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 5,
                 'quantity'    => null,
-                'price'       => 20000,
+                'price'       => 250000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -45,10 +46,20 @@ class LeadSeeder extends Seeder
             DB::table('clients')->insert($client);
             $n+=1;
         }
-
+        //set status closing & quantity
         for($i=$n-268; $i<$n-268+142; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*250000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+        //add quantity
+        for($i=$n-268; $i<$n-268+8; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*250000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -62,7 +73,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 5,
                 'quantity'    => null,
-                'price'       => 20000,
+                'price'       => 250000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -85,7 +96,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-175; $i<$n-175+79; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*250000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-175; $i<$n-175+8; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*250000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -99,7 +120,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 5,
                 'quantity'    => null,
-                'price'       => 20000,
+                'price'       => 250000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -122,7 +143,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-200; $i<$n-200+118; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*250000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-200; $i<$n-200+15; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*250000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -136,7 +167,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 5,
                 'quantity'    => null,
-                'price'       => 20000,
+                'price'       => 250000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -159,7 +190,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-209; $i<$n-209+117; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*250000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-209; $i<$n-209+9; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*250000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -173,7 +214,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 5,
                 'quantity'    => null,
-                'price'       => 20000,
+                'price'       => 250000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -196,7 +237,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-193; $i<$n-193+107; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*250000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-193; $i<$n-193+6; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*250000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -210,7 +261,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 1,
                 'quantity'    => null,
-                'price'       => 15000,
+                'price'       => 375000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -233,6 +284,8 @@ class LeadSeeder extends Seeder
 
         for($i=$n-230; $i<$n-230+184; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*375000,
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
@@ -247,7 +300,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 1,
                 'quantity'    => null,
-                'price'       => 15000,
+                'price'       => 375000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -270,6 +323,8 @@ class LeadSeeder extends Seeder
 
         for($i=$n-2; $i<$n-2+2; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*375000,
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
@@ -284,7 +339,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 1,
                 'quantity'    => null,
-                'price'       => 15000,
+                'price'       => 375000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -307,7 +362,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-75; $i<$n-75+53; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*375000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-75; $i<$n-75+1; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*375000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -321,7 +386,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 3,
                 'quantity'    => null,
-                'price'       => 20000,
+                'price'       => 68000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -344,7 +409,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-2; $i<$n-2+2; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*68000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-2; $i<$n-2+2; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*68000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -358,7 +433,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 1,
                 'quantity'    => null,
-                'price'       => 15000,
+                'price'       => 375000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -381,6 +456,8 @@ class LeadSeeder extends Seeder
 
         for($i=$n-30; $i<$n-30+21; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*375000,
                 'status_id'   => 5,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
@@ -395,7 +472,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 3,
                 'quantity'    => null,
-                'price'       => 20000,
+                'price'       => 68000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -418,7 +495,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-193; $i<$n-193+124; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*68000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-193; $i<$n-193+101; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*68000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -432,7 +519,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 1,
                 'quantity'    => null,
-                'price'       => 15000,
+                'price'       => 375000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -455,7 +542,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-101; $i<$n-101+78; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*375000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-101; $i<$n-101+6; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*375000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -469,7 +566,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 3,
                 'quantity'    => null,
-                'price'       => 20000,
+                'price'       => 68000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -492,7 +589,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-250; $i<$n-250+166; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*68000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-250; $i<$n-250+127; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*68000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -506,7 +613,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 2,
                 'quantity'    => null,
-                'price'       => 20000,
+                'price'       => 140000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -529,7 +636,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-227; $i<$n-227+184; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 1,
+                'total_price' => 1*140000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-227; $i<$n-227+76; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*140000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
@@ -543,7 +660,7 @@ class LeadSeeder extends Seeder
                 'client_id'   => $n,
                 'product_id'  => 4,
                 'quantity'    => null,
-                'price'       => 20000,
+                'price'       => 75000,
                 'total_price' => null,
                 'status_id'   => 3,
                 'created_at'  => Carbon::now(),
@@ -566,7 +683,17 @@ class LeadSeeder extends Seeder
 
         for($i=$n-174; $i<$n-174+128; $i++){
             DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 2,
+                'total_price' => 2*75000,
                 'status_id'   => 5,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+
+        for($i=$n-174; $i<$n-174+36; $i++){
+            DB::table('leads')->where('id', $i)->update([
+                'quantity'    => 3,
+                'total_price' => 3*75000,
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
         }
