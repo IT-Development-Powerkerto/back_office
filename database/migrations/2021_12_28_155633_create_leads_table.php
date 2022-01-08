@@ -20,6 +20,7 @@ class CreateLeadsTable extends Migration
             $table->foreignId('campaign_id');
             $table->foreignId('client_id');
             $table->foreignId('product_id');
+            $table->foreignId('user_id');
             $table->integer('quantity')->nullable();
             $table->integer('price');
             $table->integer('total_price')->nullable();

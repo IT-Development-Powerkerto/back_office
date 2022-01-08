@@ -123,9 +123,9 @@ class FbPController extends Controller
                 ->leftJoin('users', 'operators.user_id', '=', 'users.id')
                 ->where('campaign_id', $campaign_id)
                 ->count();
-    
+
             // menghitung jumlah click tombol WA
-            $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter'); 
+            $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter');
             // rotasi nomer WA
             if($counter == $operator_count-1){
                 DB::table('distribution_counters')
@@ -138,13 +138,14 @@ class FbPController extends Controller
                 DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
             }
             $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
-            $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id'); 
+            $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id');
             $lead = new Lead();
             $lead->advertiser = $adv_name;
             $lead->operator_id = $operator_id;
             $lead->campaign_id = $campaign_id;
             $lead->client_id  = $clients->id;
             $lead->product_id = $product_id;
+            $lead->user_id  = $user_id;
             $lead->price = $product_price;
             $lead->status_id = 3;
             $lead->save();
@@ -204,6 +205,7 @@ class FbPController extends Controller
             'operator_id'   => $operator_id,
             'product_id' => $product_id,
             'client_id'    => $clients->id,
+            'user_id'    => $user_id,
             'price'      => $product_price,
             'status_id'  => 3,
             'created_at' => Carbon::now()->format('Y-m-d'),
