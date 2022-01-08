@@ -27,4 +27,8 @@ Route::post('lead_wa/{campaign}/{product}', [FbPController::class, 'lead_wa'])->
 Route::post('closing_rate/{user}', [ClosingRateController::class, 'closing_rate'])->name('closing_rate');
 Route::post('closing_rates/{campaign}/{product}/{user}', [ClosingRateController::class, 'closing_rates'])->name('closing_rates');
 Route::post('omset/{campaign}/{product}/{user}', [OmsetController::class, 'omset'])->name('omset');
+Route::get('all_omset', [OmsetController::class, 'all_omset'])->name('allOmset');
+Route::get('omset_point', [OmsetController::class, 'omset_point'])->name('omsetPoint');
 Route::post('upselling/{campaign}/{product}/{user}', [UpsellingController::class, 'upselling'])->name('upselling');
+Route::get('all_upselling', [UpsellingController::class, 'all_upselling'])->name('allUpselling');
+Route::get('upselling_point', [UpsellingController::class, 'upselling_point'])->name('upsellingPoint');
