@@ -17,7 +17,8 @@ class CreateUpsellingsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('product_id');
-            $table->integer('upselling')->nullable();
+            $table->double('upselling')->nullable();
+            $table->double('upselling_point')->nullable();
             $table->timestamps();
         });
     }
