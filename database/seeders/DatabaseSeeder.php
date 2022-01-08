@@ -71,9 +71,9 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             //ClosingRateSeeder::class,
             IconSeeder::class,
-            CampaignSeeder::class,
-            OperatorSeeder::class,
-            LeadSeeder::class,
+            //CampaignSeeder::class,
+            //OperatorSeeder::class,
+            //LeadSeeder::class,
         ]);
    //   Post::create([
    //      'title' => 'Judul Pertama',
