@@ -233,7 +233,9 @@ class DashboardController extends Controller
         $campaigns = Campaign::all();
         $client = Client::all();
         $operator = Operator::all();
-        $lead = Lead::all();
+        $day = Carbon::now()->format('Y-m-d');
+        $lead = Lead::where('updated_at', $day)->get();
+
         return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead);
     }
 
