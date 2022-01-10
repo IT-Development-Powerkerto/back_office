@@ -103,10 +103,15 @@ class DashboardController extends Controller
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
         }
         $validated = $validator->validate();
+        if(substr(trim($validated['phone']), 0, 1)=='0'){
+            $phone = '62'.substr(trim($validated['phone']), 1);
+        } else{
+            $phone = $validated['phone'];
+        }
         $user = new User();
         $user->name = $request->name;
         $user->role_id = $request->role_id;
-        $user->phone = $validated['phone'];
+        $user->phone = $phone;
         $user->username = $validated['username'];
         $user->email = $validated['email'];
         $user->password = Hash::make($validated['password']);

@@ -100,7 +100,12 @@ class FbPController extends Controller
             $clients = new Client();
             $clients->campaign_id = $campaign_id;
             $clients->name = $request->name;
-            $clients->whatsapp = $request->whatsapp;
+            if(substr(trim($request->whatsapp), 0, 1)=='0'){
+                $whatsapp = '62'.substr(trim($request->whatsapp), 1);
+            } else{
+                $whatsapp = $request->whatsapp;
+            }
+            $clients->whatsapp = $whatsapp;
             $clients->save();
 
             $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
