@@ -44,7 +44,7 @@ class DashboardController extends Controller
             ->join('statuses as s', 'l.status_id', '=', 's.id')
             ->join('clients as c', 'l.client_id', '=', 'c.id')
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as no_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status')
+            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
             ->where('l.updated_at', $day)
             ->orderByDesc('l.id')
             ->paginate(5);
@@ -193,7 +193,7 @@ class DashboardController extends Controller
                 ->join('statuses as s', 'l.status_id', '=', 's.id')
                 ->join('clients as c', 'l.client_id', '=', 'c.id')
                 ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-                ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as no_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status')
+                ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
                 ->orderByDesc('l.id')
                 ->paginate(5);
             $campaigns = Campaign::all();
@@ -223,7 +223,7 @@ class DashboardController extends Controller
                 ->join('statuses as s', 'l.status_id', '=', 's.id')
                 ->join('clients as c', 'l.client_id', '=', 'c.id')
                 ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-                ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as no_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status')
+                ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
                 ->orderByDesc('l.id')
                 ->paginate(5);
             $campaigns = Campaign::all();
