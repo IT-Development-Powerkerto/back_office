@@ -92,8 +92,9 @@
                                                                             var updatedDate = new Date('{{$lead->updated_at}}');
                                                                             var nowDate = new Date();
                                                                             if('{{$lead->status_id == 3}}'){
-                                                                                var futureDate = new Date(createdDate.getTime() + 0);
-                                                                                var dif = (nowDate.getTime() - futureDate.getTime()) / 1000;
+                                                                                // var futureDate = new Date(createdDate.getTime() - 0);
+                                                                                // var dif = (nowDate.getTime() - futureDate.getTime()) / 1000;
+                                                                                var dif = (nowDate.getTime() - createdDate.getTime()) / 1000;
                                                                                 var Seconds_Between_Dates = Math.abs(Math.round(dif));
                                                                                 var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
                                                                                 display = document.querySelector('.clock{{ $lead->id }}');

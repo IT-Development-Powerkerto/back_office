@@ -48,7 +48,6 @@ class DashboardController extends Controller
         $clients = Client::all();
         $campaigns = Campaign::all();
         $total_lead = DB::table('products')->pluck('lead');
-        $now = Carbon::now();
         // dd($leads);
 
         // $now = DB::table('leads')->value('created_at');
@@ -65,7 +64,7 @@ class DashboardController extends Controller
         else{
 
             return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('clients', $clients)->with('now', $now);
+            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('clients', $clients)->with('day', $day);
             // ->with('countdown', $countdown);
         }
 

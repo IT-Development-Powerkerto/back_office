@@ -140,7 +140,7 @@ License: For each use you must have a valid license purchased only from above li
             }, 1000);
         }
     </script>
-    
+
     <script>
         function CountUpTimer(duration, display) {
             var timer = duration, hours, minutes, seconds;
@@ -154,7 +154,7 @@ License: For each use you must have a valid license purchased only from above li
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">' +
-                                    hours+ ":" + minutes + ":" + seconds +
+                                    minutes + ":" + seconds +
                                     '</h1>';
                 display.innerHTML = codeDisplay;
                 //display.textContent = minutes + ":" + seconds;
@@ -176,7 +176,7 @@ License: For each use you must have a valid license purchased only from above li
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-success">' +
-                                    hours+ ":" + minutes + ":" + seconds +
+                                    minutes + ":" + seconds +
                                     '</h1>';
                 display.innerHTML = codeDisplay;
 
@@ -217,58 +217,58 @@ License: For each use you must have a valid license purchased only from above li
         }
     </script>
 
-    <script>  
-        $(document).ready(function(){  
-            $('#searchstaff').keyup(function(){  
-                search_table($(this).val());  
-            });  
-            function search_table(value){  
-                $('#staff tr').each(function(){  
-                    var found = 'false';  
-                    $(this).each(function(){  
-                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
-                            {  
-                                found = 'true';  
-                            }  
-                    });  
-                    if(found == 'true')  
-                    {  
-                            $(this).show();  
-                    }  
-                    else  
-                    {  
-                            $(this).hide();  
-                    }  
-                });  
-            }  
-        });  
+    <script>
+        $(document).ready(function(){
+            $('#searchstaff').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#staff tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                            {
+                                found = 'true';
+                            }
+                    });
+                    if(found == 'true')
+                    {
+                            $(this).show();
+                    }
+                    else
+                    {
+                            $(this).hide();
+                    }
+                });
+            }
+        });
     </script>
 
-    <script>  
-        $(document).ready(function(){  
-            $('#searchlead').keyup(function(){  
-                search_table($(this).val());  
-            });  
-            function search_table(value){  
-                $('#leads tr').each(function(){  
-                    var found = 'false';  
-                    $(this).each(function(){  
-                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
-                            {  
-                                found = 'true';  
-                            }  
-                    });  
-                    if(found == 'true')  
-                    {  
-                            $(this).show();  
-                    }  
-                    else  
-                    {  
-                            $(this).hide();  
-                    }  
-                });  
-            }  
-        });  
+    <script>
+        $(document).ready(function(){
+            $('#searchlead').keyup(function(){
+                search_table($(this).val());
+            });
+            function search_table(value){
+                $('#leads tr').each(function(){
+                    var found = 'false';
+                    $(this).each(function(){
+                            if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)
+                            {
+                                found = 'true';
+                            }
+                    });
+                    if(found == 'true')
+                    {
+                            $(this).show();
+                    }
+                    else
+                    {
+                            $(this).hide();
+                    }
+                });
+            }
+        });
     </script>
 
 	<!--end::Javascript-->

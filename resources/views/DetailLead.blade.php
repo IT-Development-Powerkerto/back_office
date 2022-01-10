@@ -130,7 +130,7 @@ License: For each use you must have a valid license purchased only from above li
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">' +
-                                    hours+ ":" + minutes + ":" + seconds +
+                                    minutes + ":" + seconds +
                                     '</h1>';
                 display.innerHTML = codeDisplay;
 
@@ -151,7 +151,7 @@ License: For each use you must have a valid license purchased only from above li
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">' +
-                                    hours+ ":" + minutes + ":" + seconds +
+                                    minutes + ":" + seconds +
                                     '</h1>';
                 display.innerHTML = codeDisplay;
                 //display.textContent = minutes + ":" + seconds;
@@ -173,7 +173,7 @@ License: For each use you must have a valid license purchased only from above li
                 seconds = seconds < 10 ? "0" + seconds : seconds;
 
                 let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-success">' +
-                                    hours+ ":" + minutes + ":" + seconds +
+                                    minutes + ":" + seconds +
                                     '</h1>';
                 display.innerHTML = codeDisplay;
 
