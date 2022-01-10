@@ -71,9 +71,9 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	{{--  <h1 class="text-dark fw-normal fs-6">{{$lead->no_wa}}</h1>  --}}
-																	 {{-- <a class="text-dark fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->no_wa}}&text={{ $lead->text }}">{{$lead->no_wa}}</a> --}}
-																	{{-- <a class="text-dark fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_wa}}&text={{ str_replace(array('[c_name]', '[c_wa]'), array($lead->client_name, $lead->client_wa), $lead->text) }}">{{$lead->client_wa}}</a> --}}
+																	{{--  <h1 class="text-dark fw-normal fs-6">{{$lead->client_wa}}</h1>  --}}
+																	{{--  <a class="text-dark fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->no_wa}}&text={{ $lead->text }}">{{$lead->no_wa}}</a>  --}}
+																	<a class="text-dark fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_wa}}&text={{ str_replace(array('[c_name]', '[c_wa]'), array($lead->client_name, $lead->client_wa), $lead->text) }}">{{$lead->client_wa}}</a>
 																</div>
 															</td>
 															<td>
