@@ -109,7 +109,7 @@ class FbPController extends Controller
 
 
             // ambil text untuk dikirim ke WA
-            $text = Campaign::where('id', $campaign_id)->value('auto_text');
+            $text = Campaign::where('id', $campaign_id)->value('customer_to_cs');
             // ambil nomer WA CS
             $wa = DB::table('operators')
                 ->leftJoin('users', 'operators.user_id', '=', 'users.id')
