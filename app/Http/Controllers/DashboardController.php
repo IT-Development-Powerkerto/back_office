@@ -48,7 +48,7 @@ class DashboardController extends Controller
             ->where('l.updated_at', $day)
             ->orderByDesc('l.id')
             ->paginate(5);
-        $clients = Client::all();
+        $client = Client::all();
         $campaigns = Campaign::all();
         $total_lead = DB::table('products')->pluck('lead');
         // dd($leads);
@@ -67,7 +67,7 @@ class DashboardController extends Controller
         else{
 
             return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('clients', $clients)->with('day', $day);
+            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('client', $client)->with('day', $day);
             // ->with('countdown', $countdown);
         }
 
