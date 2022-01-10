@@ -281,8 +281,8 @@
 </head>
 <body>
 
-	<form action="https://api.pwkbackoffice.com/public/api/lead_wa/{{$campaign->id}}/{{$campaign->product_id}}" method="POST">
-		<button type="submit" class="btn btn-success d-flex justify-content-center rounded-pill" onclick="{{$campaign->event_wa->event_pixel}}"><i class="lab la-whatsapp pe-3" style="font-size: 24px;"></i>Submit</button>
+	<form action="https://api.pwkbackoffice.com/public/api/lead_wa/{{$campaign->id}}/{{$campaign->product_id}}" method="POST" class="d-flex justify-content-center">
+		<button type="submit" class="btn btn-success d-flex justify-content-center rounded-pill" onclick="{{$campaign->event_wa->event_pixel}}"><i class="lab la-whatsapp pe-2" style="font-size: 24px;"></i>Pemesanan Via Whatsapp</button>
 	</form>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
