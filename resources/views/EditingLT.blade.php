@@ -122,6 +122,22 @@
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
+                                            <div class="col-2">
+                                                <label for="inputProduct" class="col-form-label">Costumer Name</label>
+                                            </div>
+                                            <div class="dropdown col-10">
+												<input class="col-form-label form-control" value="" name="cotumer">
+                                            </div>
+                                        </div>
+										<div class="row align-items-center col-12 pb-5">
+                                            <div class="col-2">
+                                                <label for="inputProduct" class="col-form-label">No Whatsapp</label>
+                                            </div>
+                                            <div class="dropdown col-10">
+												<input class="col-form-label form-control" value="" name="no_wa">
+                                            </div>
+                                        </div>
+										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputQuantity" class="col-form-label">Quantity</label>
 											</div>

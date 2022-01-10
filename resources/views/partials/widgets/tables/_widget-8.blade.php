@@ -34,10 +34,10 @@
 															<th class="min-w-50px">No</th>
 															<th class="min-w-130px">Advertiser</th>
 															<th class="min-w-130px">Operator</th>
+															<th class="min-w-130px">Customer</th>
+															<th class="min-w-130px">No Whatsapp</th>
 															<th class="min-w-120px">Product</th>
 															<th class="min-w-120px">Quantity</th>
-															<th class="min-w-120px">Price</th>
-															<th class="min-w-120px">Total</th>
 															<th class="min-w-120px">Response Time</th>
 															<th class="min-w-120px">Progress</th>
 															<th class="min-w-100px text-end">Actions</th>
@@ -66,22 +66,22 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->costumer}}</h1>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->no_wa}}</h1>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
 																	<h1 class="text-primary fw-normal fs-6">{{$lead->product_name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<h1 class="text-dark fw-normal fs-6">{{$lead->quantity}}</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->price}}</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->total_price}}</h1>
 																</div>
 															</td>
 															<td>

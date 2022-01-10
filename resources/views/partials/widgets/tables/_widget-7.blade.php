@@ -22,7 +22,7 @@
 														<tr class="fw text-muted">
 															<th class="min-w-100px">Product</th>
 															<th class="min-w-100px">Link</th>
-															<th class="min-w-50px">Visitors</th>
+															{{-- <th class="min-w-50px">Visitors</th> --}}
 															<th class="min-w-50px">Leads</th>
 														</tr>
 													</thead>
@@ -39,11 +39,11 @@
 															<td>
 																<a href="{{$product->product_link}}" class="text-dark fw-normal d-block fs-6">{{$product->product_link}}</a>
 															</td>
-															<td class="text-end">
+															{{-- <td class="text-end">
 																<div class="d-flex align-items-center">
 																	<h1 class="text-dark fw-normal fs-6">MT</h1>
 																</div>
-															</td>
+															</td> --}}
 															<td>
 																<div class="d-flex align-items-end">
 																	<h1 class="text-dark fw-normal fs-6">{{ $product->lead }}</h1>
