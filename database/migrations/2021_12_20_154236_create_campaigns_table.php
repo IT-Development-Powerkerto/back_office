@@ -22,7 +22,8 @@ class CreateCampaignsTable extends Migration
             $table->string('facebook_pixel');
             $table->foreignId('event_pixel_id');
             $table->foreignId('event_wa_id');
-            $table->string('auto_text');
+            $table->string('customer_to_cs');
+            $table->string('cs_to_customer');
             $table->timestamps();
         });
     }

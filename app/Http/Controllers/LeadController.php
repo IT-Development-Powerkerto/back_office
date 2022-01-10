@@ -83,6 +83,10 @@ class LeadController extends Controller
             'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);
 
+        DB::table('clients')->where('id', $lead)->update([
+            'updated_at'   => Carbon::now()->toDateTimeString(),
+        ]);
+
         return redirect('/dashboard')->with('success','Successull! Updated');
     }
 

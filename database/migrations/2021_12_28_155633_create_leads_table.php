@@ -25,7 +25,8 @@ class CreateLeadsTable extends Migration
             $table->integer('price');
             $table->integer('total_price')->nullable();
             $table->foreignId('status_id')->nullable();
-            $table->timestamps();
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 

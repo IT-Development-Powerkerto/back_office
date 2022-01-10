@@ -31,6 +31,9 @@ class StatusSeeder extends Seeder
                 'name'  => 'Closing',
             ],
             [
+                'name'  => 'Spam',
+            ],
+            [
                 'name'  => 'Failed',
             ],
         ];
