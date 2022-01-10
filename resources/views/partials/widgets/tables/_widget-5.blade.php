@@ -41,7 +41,8 @@
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <label class="text-dark fw-normal d-block fs-6">{{$lead->client->whatsapp}}</label>
+                                                                    {{--  <label class="text-dark fw-normal d-block fs-6">{{$lead->client->whatsapp}}</label>  --}}
+                                                                    <a href="https://api.whatsapp.com/send/?phone={{ $lead->client->whatsapp }}&text={{ $lead->campaign->cs_to_customer }}">{{ $lead->client->whatsapp }}</a>
                                                                 </td>
                                                                 <td class="text-end">
                                                                     <div class="d-flex align-items-center">
