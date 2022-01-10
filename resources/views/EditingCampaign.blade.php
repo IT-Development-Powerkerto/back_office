@@ -161,10 +161,18 @@
 										</div>
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputat" class="col-form-label">Auto Text WA</label>
+												<label for="inputat"  class="col-form-label">Costumer to CS</label>
 											</div>
 											<div class="col-10">
-												<textarea type="text" required name="auto_text" id="inputat" class="form-control" aria-describedby="atHelpInline">{{ old('auto_text') ?? $campaign->auto_text }}</textarea>
+												<textarea type="text" name="costumertocs" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputat"  class="col-form-label">CS to Costumer</label>
+											</div>
+											<div class="col-10">
+												<textarea type="text" name="cstocostumer" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
 											</div>
 										</div>
 										{{ csrf_field() }}
