@@ -126,7 +126,7 @@
                                                 <label for="inputProduct" class="col-form-label">Costumer Name</label>
                                             </div>
                                             <div class="dropdown col-10">
-												<input class="col-form-label form-control" value="{{ old('product') ?? $lead->implode('client_name') }}" name="name">
+												<input class="col-form-label form-control" value="{{ old('client') ?? $lead->implode('client_name') }}" name="name">
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
@@ -134,7 +134,7 @@
                                                 <label for="inputProduct" class="col-form-label">No Whatsapp</label>
                                             </div>
                                             <div class="dropdown col-10">
-												<input class="col-form-label form-control" value="{{ old('product') ?? $lead->implode('client_wa') }}" name="whatsapp">
+												<input class="col-form-label form-control" value="{{ old('client') ?? $lead->implode('client_wa') }}" name="whatsapp">
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
