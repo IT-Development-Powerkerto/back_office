@@ -60,8 +60,16 @@ class LeadController extends Controller
      */
     public function edit($id)
     {
-        $lead = Lead::findOrFail($id);
-        return view('EditingLT', compact('lead'));
+        // $lead = Lead::findOrFail($id);
+        $lead = DB::table('leads as l')
+            ->join('operators as o', 'l.operator_id', '=', 'o.id')
+            ->join('products as p', 'l.product_id', '=', 'p.id' )
+            ->join('statuses as s', 'l.status_id', '=', 's.id')
+            ->join('clients as c', 'l.client_id', '=', 'c.id')
+            ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.name as client_name', 'c.whatsapp as client_wa', 'c.created_at as client_created_at', 'c.updated_at as client_updated_at')
+            ->where('l.id', $id);
+        // return view('EditingLT', compact('lead'));
+        return view('EditingLT')->with('lead', $lead);
     }
 
     /**
@@ -77,13 +85,15 @@ class LeadController extends Controller
         $total_price = $request->price * $request->quantity;
         DB::table('leads')->where('id', $lead)->update([
             'quantity'        => $request->quantity,
-            'price'        => $request->price,
+            'price'           => $request->price,
             'total_price'     => $total_price,
-            'status_id'        => $request->status_id,
-            'updated_at'   => Carbon::now()->toDateTimeString(),
+            'status_id'       => $request->status_id,
+            'updated_at'      => Carbon::now()->toDateTimeString(),
         ]);
 
         DB::table('clients')->where('id', $lead)->update([
+            'name'         => $request->name,
+            'whatsapp'     => $request->whatsapp,
             'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);
 

@@ -66,12 +66,12 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->costumer}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->client_name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->no_wa}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->client_wa}}</h1>
 																</div>
 															</td>
 															<td>
@@ -88,8 +88,8 @@
 																<div class="d-flex align-items-center clock{{ $lead->id }}">
                                                                     <script>
                                                                         window.addEventListener('load', function() {
-                                                                            var createdDate = new Date('{{$lead->created_at}}');
-                                                                            var updatedDate = new Date('{{$lead->updated_at}}');
+                                                                            var createdDate = new Date('{{$lead->client_created_at}}');
+                                                                            var updatedDate = new Date('{{$lead->client_updated_at}}');
                                                                             var nowDate = new Date();
                                                                             if('{{$lead->status_id == 3}}'){
                                                                                 // var futureDate = new Date(createdDate.getTime() - 0);

@@ -39,7 +39,7 @@ class Lead extends Model
         return $this->belongsTo(Status::class);
     }
     public function client(){
-        return $this->belongsTo(Client::class);
+        return $this->belongTo(Client::class);
     }
 
 }

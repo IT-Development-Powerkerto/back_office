@@ -94,7 +94,7 @@
 								<!--begin::Card body-->
 								<div class="card-body p-9">
 
-									<form action="{{ route('lead.update',['lead' => $lead->id]) }}" method="POST">
+									<form action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
 										@csrf
 										@method('PATCH')
 										<div class="row align-items-center col-12 pb-5">
@@ -102,7 +102,7 @@
 												<label for="inputAdvertiser" class="col-form-label">Advertiser</label>
 											</div>
 											<div class="col-10">
-												<label class="col-form-label form-control" value="">{{ old('advertiser') ?? $lead->advertiser }}</label>
+												<label class="col-form-label form-control" value="">{{ old('advertiser') ?? $lead->implode('advertiser') }}</label>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -110,7 +110,7 @@
 												<label for="inputOperator" class="col-form-label">Operator</label>
 											</div>
 											<div class="col-10">
-												<label class="col-form-label form-control" value="">{{ old('operator') ?? $lead->operator->name }}</label>
+												<label class="col-form-label form-control" value="">{{ old('operator') ?? $lead->implode('operator_name') }}</label>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -118,7 +118,7 @@
                                                 <label for="inputProduct" class="col-form-label">Product</label>
                                             </div>
                                             <div class="dropdown col-10">
-												<label class="col-form-label form-control" value="">{{ old('product') ?? $lead->product->name }}</label>
+												<label class="col-form-label form-control" value="">{{ old('product') ?? $lead->implode('product_name') }}</label>
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
@@ -126,7 +126,7 @@
                                                 <label for="inputProduct" class="col-form-label">Costumer Name</label>
                                             </div>
                                             <div class="dropdown col-10">
-												<input class="col-form-label form-control" value="" name="cotumer">
+												<input class="col-form-label form-control" value="{{ old('product') ?? $lead->implode('client_name') }}" name="name">
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
@@ -134,7 +134,7 @@
                                                 <label for="inputProduct" class="col-form-label">No Whatsapp</label>
                                             </div>
                                             <div class="dropdown col-10">
-												<input class="col-form-label form-control" value="" name="no_wa">
+												<input class="col-form-label form-control" value="{{ old('product') ?? $lead->implode('client_wa') }}" name="whatsapp">
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
@@ -142,7 +142,7 @@
 												<label for="inputQuantity" class="col-form-label">Quantity</label>
 											</div>
 											<div class="col-10">
-												<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" required value="{{ old('quantity') ?? $lead->quantity }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
+												<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" required value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -150,7 +150,7 @@
 												<label for="inputprice" class="col-form-label">Price</label>
 											</div>
 											<div class="col-10">
-												<input type="number" min="0" id="price" name="price" required value="{{ old('price') ?? $lead->price }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
+												<input type="number" min="0" id="price" name="price" required value="{{ old('price') ?? $lead->implode('price') }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -159,7 +159,7 @@
 											</div>
 											<div class="col-10">
 												{{--  <label class="col-form-label form-control" id="total_price" name="total_price" required value="" aria-describedby="totalHelpInline">{{ old('total') ?? $lead->total_price }}</label>  --}}
-												<input class="col-form-label form-control" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->total_price}}" aria-describedby="totalHelpInline" disabled>
+												<input class="col-form-label form-control" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->implode('total_price')}}" aria-describedby="totalHelpInline" disabled>
 											</div>
 										</div>
 										{{--  <div class="row align-items-center col-12 pb-5">
@@ -176,11 +176,11 @@
                                             </div>
                                             <div class="dropdown col-10">
                                                 <select name="status_id" id="status_id" class="form-control">
-                                                    <option value="3" {{ (old('status_id') ?? $lead->status_id ) == '3' ? 'selected': '' }} required>Waiting</option>
-													<option value="4" {{ (old('status_id') ?? $lead->status_id ) == '4' ? 'selected': '' }} required>Proccessing</option>
-													<option value="5" {{ (old('status_id') ?? $lead->status_id ) == '5' ? 'selected': '' }} required>Closing</option>
-													<option value="6" {{ (old('status_id') ?? $lead->status_id ) == '6' ? 'selected': '' }} required>Proccrss Now</option>
-													<option value="7" {{ (old('status_id') ?? $lead->status_id ) == '7' ? 'selected': '' }} required>Failed</option>
+                                                    <option value="3" {{ (old('status_id') ?? $lead->implode('status_id') ) == '3' ? 'selected': '' }} required>Waiting</option>
+													<option value="4" {{ (old('status_id') ?? $lead->implode('status_id') ) == '4' ? 'selected': '' }} required>Proccessing</option>
+													<option value="5" {{ (old('status_id') ?? $lead->implode('status_id') ) == '5' ? 'selected': '' }} required>Closing</option>
+													<option value="6" {{ (old('status_id') ?? $lead->implode('status_id') ) == '6' ? 'selected': '' }} required>Proccrss Now</option>
+													<option value="7" {{ (old('status_id') ?? $lead->implode('status_id') ) == '7' ? 'selected': '' }} required>Failed</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -257,7 +257,7 @@
 		<script type="text/javascript">
 			function calculate(qty){
 				{{--  var quantity = parseInt(document.getElementById('quantity').value);  --}}
-				
+
 				var price = parseInt(document.getElementById('price').value);
 
 				var total = price * qty;
