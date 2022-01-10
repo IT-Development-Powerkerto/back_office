@@ -164,7 +164,7 @@
 												<label for="inputat"  class="col-form-label">Costumer to CS</label>
 											</div>
 											<div class="col-10">
-												<textarea type="text" name="costumertocs" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
+												<textarea type="text" name="customer_to_cs" value="{{ old('customer_to_cs') ?? $campaign->customer_to_cs }}" required id="inputat" class="form-control" aria-describedby="atHelpInline">{{ $campaign->customer_to_cs }}</textarea>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -172,7 +172,7 @@
 												<label for="inputat"  class="col-form-label">CS to Costumer</label>
 											</div>
 											<div class="col-10">
-												<textarea type="text" name="cstocostumer" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
+												<textarea type="text" name="cs_to_customer" value="{{ old('cs_to_customer') ?? $campaign->cs_to_customer }}" required id="inputat" class="form-control" aria-describedby="atHelpInline">{{ $campaign->cs_to_customer }}</textarea>
 											</div>
 										</div>
 										{{ csrf_field() }}
