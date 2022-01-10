@@ -38,11 +38,12 @@ class DashboardController extends Controller
         $icons = Icon::all();
         $products = Product::all();
         $day = Carbon::now()->format('Y-m-d');
+        // $filter = Lead::value('updated_at')->format('Y-m-d');
         $leads = DB::table('leads as l')
             ->join('operators as o', 'l.operator_id', '=', 'o.id')
             ->join('products as p', 'l.product_id', '=', 'p.id' )
             ->join('statuses as s', 'l.status_id', '=', 's.id')
-            ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status')->where('l.updated_at', $day)
+            ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status')
             ->orderByDesc('l.id')
             ->paginate(5);
         $clients = Client::all();

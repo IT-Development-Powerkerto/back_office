@@ -208,8 +208,8 @@ class FbPController extends Controller
             'user_id'    => $user_id,
             'price'      => $product_price,
             'status_id'  => 3,
-            'created_at' => Carbon::now()->format('Y-m-d'),
-            'updated_at' => Carbon::now()->format('Y-m-d'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
         DB::table('products')->whereid($product_id)->increment('lead');
 
