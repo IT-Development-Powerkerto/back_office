@@ -20,6 +20,7 @@ class CreateOperatorsTable extends Migration
             $table->string('name');
             // $table->double('closing_rate');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

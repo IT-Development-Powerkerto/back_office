@@ -25,6 +25,7 @@ class CreateCampaignsTable extends Migration
             $table->string('customer_to_cs');
             $table->string('cs_to_customer');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
