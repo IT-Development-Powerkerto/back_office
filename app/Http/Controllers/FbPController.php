@@ -100,13 +100,18 @@ class FbPController extends Controller
             $clients = new Client();
             $clients->campaign_id = $campaign_id;
             $clients->name = $request->name;
-            $clients->whatsapp = $request->whatsapp;
+            if(substr(trim($request->whatsapp), 0, 1)=='0'){
+                $whatsapp = '62'.substr(trim($request->whatsapp), 1);
+            } else{
+                $whatsapp = $request->whatsapp;
+            }
+            $clients->whatsapp = $whatsapp;
             $clients->save();
 
             $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
             $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
             $product_price = DB::table('products')->where('id', $product_id)->value('price');
-
+            
 
             // ambil text untuk dikirim ke WA
             $text = Campaign::where('id', $campaign_id)->value('customer_to_cs');
@@ -139,6 +144,8 @@ class FbPController extends Controller
             }
             $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
             $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id');
+            $operator_name = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('name');
+            $product_name = DB::table('products')->where('id', $product_id)->value('name');
             $lead = new Lead();
             $lead->advertiser = $adv_name;
             $lead->operator_id = $operator_id;
@@ -152,8 +159,8 @@ class FbPController extends Controller
 
             DB::table('products')->whereid($product_id)->increment('lead');
             $message = Campaign::where('id', $campaign_id)->value('message');
-            // return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.$text.'/'.$message);
-            return redirect('http://orderku.site/'.$wa[$counter]->phone.'/'.$text.'/'.$message);
+            // return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
+            return redirect('http://orderku.site/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
         }
     }
 
@@ -169,6 +176,7 @@ class FbPController extends Controller
             ->leftJoin('users', 'operators.user_id', '=', 'users.id')
             ->leftJoin('closing_rates as cr', 'cr.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
+            ->where('users.status', 1)
             ->select('users.phone')
             ->orderByDesc('month_closing_rate')
             ->get();
@@ -181,6 +189,7 @@ class FbPController extends Controller
         $operator_count = DB::table('operators')
             ->leftJoin('users', 'operators.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
+            ->where('users.status', 1)
             ->count();
 
         // menghitung jumlah click tombol WA
@@ -196,9 +205,10 @@ class FbPController extends Controller
         }else{
             DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
         }
-        $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
+        $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->where('status', 1)->value('id');
         $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id');
-
+        $operator_name = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('name');
+        $product_name = DB::table('products')->where('id', $product_id)->value('name');
         DB::table('leads')->insert([
             'advertiser' => $adv_name,
             'campaign_id' => $campaign_id,
@@ -212,7 +222,7 @@ class FbPController extends Controller
             'updated_at' => Carbon::now(),
         ]);
         DB::table('products')->whereid($product_id)->increment('lead');
-
-        return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
+        // return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
+        return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text));
     }
 }

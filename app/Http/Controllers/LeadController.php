@@ -91,12 +91,17 @@ class LeadController extends Controller
             'status_id'       => $request->status_id,
             'updated_at'      => Carbon::now()->toDateTimeString(),
         ]);
-
+        if(substr(trim($request->whatsapp), 0, 1)=='0'){
+            $whatsapp = '62'.substr(trim($request->whatsapp), 1);
+        } else{
+            $whatsapp = $request->whatsapp;
+        }
         DB::table('clients')->where('id', $lead)->update([
             'name'         => $request->name,
-            'whatsapp'     => $request->whatsapp,
+            'whatsapp'     => $whatsapp,
             'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);
+        // dd($whatsapp);
 
         return redirect('/dashboard')->with('success','Successull! Updated');
     }

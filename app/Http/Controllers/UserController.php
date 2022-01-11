@@ -99,10 +99,15 @@ class UserController extends Controller
         }else{
             $role_id = $request->role_id;
         }
+        if(substr(trim($request->phone), 0, 1)=='0'){
+            $phone = '62'.substr(trim($request->phone), 1);
+        } else{
+            $phone = $request->phone;
+        }
         DB::table('users')->where('id', $user->id)->update([
             'name'      => $request->name,
             'role_id'   => $role_id,
-            'phone'     => $request->phone,
+            'phone'     => $phone,
             'username'  => $request->username,
             'email'     => $request->email,
             // 'password'  => Hash::make($request->password),

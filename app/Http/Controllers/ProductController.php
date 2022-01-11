@@ -51,7 +51,7 @@ class ProductController extends Controller
         DB::table('products')->insert([
             'name'         => $request->name,
             'price'        => $request->price,
-            'discount'     => $request->phone,
+            'discount'     => $request->discount,
             'image'        => $image,
             'product_link' => $request->product_link,
             'created_at'   => Carbon::now()->toDateTimeString(),

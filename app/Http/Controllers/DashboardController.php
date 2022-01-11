@@ -45,9 +45,10 @@ class DashboardController extends Controller
             ->join('clients as c', 'l.client_id', '=', 'c.id')
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
             ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-            ->where('l.updated_at', $day)
+            // ->where('l.updated_at', $day)
             ->orderByDesc('l.id')
             ->paginate(5);
+            // dd($leads);
         $client = Client::all();
         $campaigns = Campaign::all();
         $total_lead = DB::table('products')->pluck('lead');
@@ -105,10 +106,15 @@ class DashboardController extends Controller
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
         }
         $validated = $validator->validate();
+        if(substr(trim($validated['phone']), 0, 1)=='0'){
+            $phone = '62'.substr(trim($validated['phone']), 1);
+        } else{
+            $phone = $validated['phone'];
+        }
         $user = new User();
         $user->name = $request->name;
         $user->role_id = $request->role_id;
-        $user->phone = $validated['phone'];
+        $user->phone = $phone;
         $user->username = $validated['username'];
         $user->email = $validated['email'];
         $user->password = Hash::make($validated['password']);

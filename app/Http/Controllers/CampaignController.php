@@ -117,7 +117,8 @@ class CampaignController extends Controller
             'facebook_pixel'    => $request->fbp,
             'event_pixel_id'    => $request->event_id,
             'event_wa_id'       => $request->event_wa,
-            'auto_text'         => $request->auto_text,
+            'cs_to_customer'  => $request->cs_to_customer,
+            'customer_to_cs'  => $request->customer_to_cs,
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
 

@@ -37,7 +37,7 @@
 															<th class="min-w-130px">Customer</th>
 															<th class="min-w-130px">No Whatsapp</th>
 															<th class="min-w-120px">Product</th>
-															<th class="min-w-120px">Quantity</th>
+															<th class="min-w-120px">Date/Time</th>
 															<th class="min-w-120px">Response Time</th>
 															<th class="min-w-120px">Progress</th>
 															<th class="min-w-100px text-end">Actions</th>
@@ -66,24 +66,24 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->client_name}}</h1>
+																	<h1 class="text-primary fw-normal fs-6 text-hover-primary">{{$lead->client_name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	{{--  <h1 class="text-dark fw-normal fs-6">{{$lead->client_wa}}</h1>  --}}
 																	{{--  <a class="text-dark fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->no_wa}}&text={{ $lead->text }}">{{$lead->no_wa}}</a>  --}}
-																	<a class="text-dark fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_wa}}&text={{ str_replace(array('[c_name]', '[c_wa]'), array($lead->client_name, $lead->client_wa), $lead->text) }}">{{$lead->client_wa}}</a>
+																	<a class="text-primary fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_wa}}&text={{ str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($lead->client_name, $lead->client_wa, $lead->operator_name, $lead->product_name), $lead->text) }}">{{$lead->client_wa}}</a>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-primary fw-normal fs-6">{{$lead->product_name}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->product_name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->quantity}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->created_at}}</h1>
 																</div>
 															</td>
 															<td>
