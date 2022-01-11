@@ -25,6 +25,13 @@ class OperatorController extends Controller
             ->join('operators', 'leads.operator_id', '=', 'operators.id')
             ->get();
         $campaign_count = Operator::all();
+        $x = auth()->user();
+        if($x->role_id == 4){
+            return view('operatorADV', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count);
+        }
+        if($x->role_id == 5){
+            return view('operatorCS', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count);
+        }
         return view('operator', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count);
     }
 
