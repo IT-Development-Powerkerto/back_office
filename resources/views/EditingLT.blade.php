@@ -142,7 +142,7 @@
 												<label for="inputQuantity" class="col-form-label">Quantity</label>
 											</div>
 											<div class="col-10">
-												<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" required value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
+												<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -150,7 +150,7 @@
 												<label for="inputprice" class="col-form-label">Price</label>
 											</div>
 											<div class="col-10">
-												<input type="number" min="0" id="price" name="price" required value="{{ old('price') ?? $lead->implode('price') }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
+												<input type="number" min="0" id="price" name="price" value="{{ old('price') ?? $lead->implode('price') }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -179,7 +179,7 @@
                                                     <option value="3" {{ (old('status_id') ?? $lead->implode('status_id') ) == '3' ? 'selected': '' }} required>Waiting</option>
 													<option value="4" {{ (old('status_id') ?? $lead->implode('status_id') ) == '4' ? 'selected': '' }} required>Proccessing</option>
 													<option value="5" {{ (old('status_id') ?? $lead->implode('status_id') ) == '5' ? 'selected': '' }} required>Closing</option>
-													<option value="6" {{ (old('status_id') ?? $lead->implode('status_id') ) == '6' ? 'selected': '' }} required>Proccrss Now</option>
+													<option value="6" {{ (old('status_id') ?? $lead->implode('status_id') ) == '6' ? 'selected': '' }} required>Spam</option>
 													<option value="7" {{ (old('status_id') ?? $lead->implode('status_id') ) == '7' ? 'selected': '' }} required>Failed</option>
                                                 </select>
                                             </div>

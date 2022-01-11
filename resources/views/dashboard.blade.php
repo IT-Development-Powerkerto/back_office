@@ -270,7 +270,21 @@ License: For each use you must have a valid license purchased only from above li
             }
         });
     </script>
+    {{-- <script>
+            function autoRefresh()
+            {
+                window.location = window.location.href;
+            }
+            setInterval('autoRefresh()', 5000).fadeOut('fast').fadeIn('fast');
+    </script> --}}
 
+    {{-- <script>
+        var auto_refresh = setInterval(
+        function()
+        {
+            $('#myDIV').fadeOut('fast').load('window.location.href').fadeIn("fast");
+        }, 5000);
+    </script> --}}
 	<!--end::Javascript-->
 
 </body>
