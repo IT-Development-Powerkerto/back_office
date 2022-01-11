@@ -6,6 +6,7 @@ use App\Models\Campaign;
 use App\Models\Client;
 use App\Models\Lead;
 use App\Events\MessageCreated;
+use Pusher\Pusher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -159,6 +160,22 @@ class FbPController extends Controller
             $lead->save();
 
             DB::table('products')->whereid($product_id)->increment('lead');
+            $data_lead = DB::table('leads')->get();
+
+            $options = array(
+                        'cluster' => env('PUSHER_APP_CLUSTER'),
+                        'encrypted' => true
+                    );
+            $pusher = new Pusher(
+                env('PUSHER_APP_KEY'),
+                env('PUSHER_APP_SECRET'),
+                env('PUSHER_APP_ID'),
+                $options
+                );
+
+            $data['message'] = $data_lead;
+            $pusher->trigger('message-channel', 'App\\Events\\MessageCreated', $data);
+
             $message = Campaign::where('id', $campaign_id)->value('message');
             // return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
             return redirect('http://orderku.site/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
@@ -224,7 +241,21 @@ class FbPController extends Controller
         ]);
         DB::table('products')->whereid($product_id)->increment('lead');
         $data_lead = DB::table('leads')->get();
-        MessageCreated::dispatch($data_lead);
+
+        $options = array(
+                    'cluster' => env('PUSHER_APP_CLUSTER'),
+                    'encrypted' => true
+                );
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            $options
+            );
+
+        $data['message'] = $data_lead;
+        $pusher->trigger('message-channel', 'App\\Events\\MessageCreated', $data);
+
         // return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
         return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.'Kode Order: ord-'.$clients->id.'%0A'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text));
     }

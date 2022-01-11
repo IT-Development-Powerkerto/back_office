@@ -276,10 +276,16 @@
     </script> --}}
 	<!--end::Javascript-->
     <script src="/js/app.js"></script>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <script>
-        window.Echo.channel("message").listener("MessageCreated", (event) => {
-            console.log("listen pusher");
-            console.log(event);
+        var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
+        cluster: '{{env("PUSHER_APP_CLUSTER")}}',
+        encrypted: true
+        });
+
+        var channel = pusher.subscribe('message-channel');
+        channel.bind('App\\Events\\MessageCreated', function(data) {
+            window.location = window.location.href;
         });
     </script>
 
