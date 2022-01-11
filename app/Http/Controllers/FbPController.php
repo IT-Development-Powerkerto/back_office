@@ -226,6 +226,6 @@ class FbPController extends Controller
         $data_lead = DB::table('leads')->get();
         MessageCreated::dispatch($data_lead);
         // return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
-        return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text));
+        return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.'Kode Order: ord-'.$clients->id.'%0A'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text));
     }
 }

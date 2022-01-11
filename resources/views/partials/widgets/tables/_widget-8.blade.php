@@ -32,6 +32,7 @@
 													<thead>
 														<tr class="fw-medium text-muted">
 															<th class="min-w-50px">No</th>
+                                                            <th class="min-w-130px">Order ID</th>
 															<th class="min-w-130px">Advertiser</th>
 															<th class="min-w-130px">Operator</th>
 															<th class="min-w-130px">Customer</th>
@@ -52,6 +53,11 @@
 															<td>
 																<div class="d-flex align-items-center ">
 																	<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
+																</div>
+															</td>
+                                                            <td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">Ord-{{ $lead->id }}</h1>
 																</div>
 															</td>
 															<td>
