@@ -69,7 +69,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Coundown Section End -->
 
     <!-- Preloader -->
@@ -86,7 +86,7 @@
     <script src="assetslp/js/jquery.countdown.min.js"></script>
     <script src="assetslp/js/classie.js"></script>
     <script src="assetslp/js/jquery.nav.js"></script>
-    <script src="assetslp/js/jquery.easing.min.js"></script> 
+    <script src="assetslp/js/jquery.easing.min.js"></script>
     <script src="assetslp/js/wow.js"></script>
     <script src="assetslp/js/jquery.slicknav.js"></script>
     <script src="assetslp/js/main.js"></script>
@@ -106,6 +106,8 @@
           ]
       });
     </script>
-      
+
+    <script src="/js/app.js"></script>
+
   </body>
 </html>

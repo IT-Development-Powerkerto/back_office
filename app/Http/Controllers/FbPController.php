@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Campaign;
 use App\Models\Client;
 use App\Models\Lead;
+use App\Events\MessageCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -111,7 +112,7 @@ class FbPController extends Controller
             $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
             $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
             $product_price = DB::table('products')->where('id', $product_id)->value('price');
-            
+
 
             // ambil text untuk dikirim ke WA
             $text = Campaign::where('id', $campaign_id)->value('customer_to_cs');
@@ -222,6 +223,8 @@ class FbPController extends Controller
             'updated_at' => Carbon::now(),
         ]);
         DB::table('products')->whereid($product_id)->increment('lead');
+        $data_lead = DB::table('leads')->get();
+        MessageCreated::dispatch($data_lead);
         // return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
         return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text));
     }

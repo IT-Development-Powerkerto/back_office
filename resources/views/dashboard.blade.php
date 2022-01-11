@@ -16,7 +16,7 @@ License: For each use you must have a valid license purchased only from above li
 <head>
 	<base href="">
 	<title>{{Auth()->user()->role->name}}</title>
-    <meta http-equiv="refresh" content="60">
+    {{-- <meta http-equiv="refresh" content="60"> --}}
 
 	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
 	<link rel="icon" href="img/favicon.png">
@@ -286,6 +286,13 @@ License: For each use you must have a valid license purchased only from above li
         }, 5000);
     </script> --}}
 	<!--end::Javascript-->
+    <script src="/js/app.js"></script>
+    <script>
+        window.Echo.channel("message").listener("MessageCreated", (event) => {
+            console.log("listen pusher");
+            console.log(event);
+        });
+    </script>
 
 </body>
 <!--end::Body-->
