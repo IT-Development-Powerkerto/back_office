@@ -66,13 +66,9 @@ class DashboardController extends Controller
             return redirect(route('csDashboard'));
         }
         else{
-            for ($i=0; $leads->count() > $i; $i++){
                 return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
             ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('client', $client)->with('day', $day);
-            // ->with('countdown', $countdown);
-            $i--;
-            return Redirect::back();
-            }
+            
 
         }
     }

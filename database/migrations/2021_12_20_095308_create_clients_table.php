@@ -23,6 +23,7 @@ class CreateClientsTable extends Migration
             // $table->integer('total_price')->nullable();
             // $table->foreignId('status_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

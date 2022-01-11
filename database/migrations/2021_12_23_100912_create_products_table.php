@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->string('product_link');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

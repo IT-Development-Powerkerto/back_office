@@ -27,6 +27,7 @@ class CreateLeadsTable extends Migration
             $table->foreignId('status_id')->nullable();
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
+            $table->softDeletes();
         });
     }
 
