@@ -5,7 +5,6 @@
 <head>
 	<base href="">
 	<title>{{Auth()->user()->role->name}}</title>
-    {{-- <meta http-equiv="refresh" content="60"> --}}
 
 	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
 	<link rel="icon" href="img/favicon.png">
