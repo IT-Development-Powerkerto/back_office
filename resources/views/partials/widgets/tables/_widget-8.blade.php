@@ -37,7 +37,7 @@
 															<th class="min-w-130px">Customer</th>
 															<th class="min-w-130px">No Whatsapp</th>
 															<th class="min-w-120px">Product</th>
-															<th class="min-w-120px">Quantity</th>
+															<th class="min-w-120px">Date/Time</th>
 															<th class="min-w-120px">Response Time</th>
 															<th class="min-w-120px">Progress</th>
 															<th class="min-w-100px text-end">Actions</th>
@@ -83,7 +83,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->quantity}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->created_at}}</h1>
 																</div>
 															</td>
 															<td>
