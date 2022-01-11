@@ -25,7 +25,7 @@
 										<!--begin::Body-->
 										<div class="card-body py-3">
 											<!--begin::Table container-->
-											<div class="table-responsive">
+											<div class="table-responsive" id="myDIV">
 												<!--begin::Table-->
 												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" id="leads">
 													<!--begin::Table head-->
@@ -47,7 +47,7 @@
 													<!--begin::Table body-->
 													<tbody>
                                                         <?php $n=0; ?>
-                                                        @foreach ($leads as $lead)
+                                                            @foreach ($leads as $lead)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center ">

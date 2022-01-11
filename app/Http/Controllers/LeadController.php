@@ -67,7 +67,7 @@ class LeadController extends Controller
             ->join('statuses as s', 'l.status_id', '=', 's.id')
             ->join('clients as c', 'l.client_id', '=', 'c.id')
             ->join('campaigns as cp', 'l.campaign_id', '=', 'cp.id')
-            ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.name as client_name', 'c.whatsapp as client_wa', 'c.created_at as client_created_at', 'c.updated_at as client_updated_at', 'cp.cs_to_customer as cs_to_customer')
+            ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.name as client_name', 'c.whatsapp as client_wa', 'c.created_at as client_created_at', 'c.updated_at as client_updated_at', 'cp.cs_to_customer as cs_to_customer', 's.name as status_name')
             ->where('l.id', $id);
         // return view('EditingLT', compact('lead'));
         return view('EditingLT')->with('lead', $lead);
