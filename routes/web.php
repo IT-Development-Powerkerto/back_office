@@ -18,6 +18,7 @@ use App\Http\Controllers\LeadController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\ProductController;
 use App\Events\MessageCreated;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,7 +100,7 @@ Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
     return response()->json($roles);
 });
-
+Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('blog', [
 //         'title' => "Post By Category : $category->name",
