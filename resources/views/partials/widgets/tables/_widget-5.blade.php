@@ -1,15 +1,15 @@
 
 									<!--begin::Tables Widget 9-->
-									<div class="card card-l-stretch mb-5 mb-xl-8 pb-4 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 315px">
+									<div class="card card-xxl-stretch mb-5 mb-l-8 pb-4 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 315px">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Campaign {{$campaign->title}}</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$lead->where('campaign_id', $campaign->id)->count()}} Leads</span>
 											</h3>
-											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a user">
-
-											</div>
+											<div class="me-2">
+                                                <input class="form-control mt-0" name="search" id="searchlead" type="date" placeholder="Search" aria-label="Search" style="height: 33px;">
+                                            </div>
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
@@ -21,12 +21,12 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw text-muted">
-                                                            <th class="min-w-50px">Order ID</th>
-															<th class="min-w-120px">Customer Nama</th>
-															<th class="min-w-120px">Whatsapp Customer</th>
-															<th class="min-w-120px">Costumer Service</th>
-															<th class="min-w-50px">Response Time</th>
-                                                            <th class="min-w-100px">Actions</th>
+                                                            <th class="min-w-50px text-center">Order ID</th>
+															<th class="text-center">Customer Nama</th>
+															<th class="text-center">Whatsapp Customer</th>
+															<th class="text-center">Costumer Service</th>
+															<th class="text-center">Response Time</th>
+                                                            <th class="text-center">Actions</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
@@ -51,7 +51,7 @@
                                                                     {{--  <a href="https://api.whatsapp.com/send/?phone={{ $lead->client->whatsapp }}&text={{ $lead->campaign->cs_to_customer }}">{{ $lead->client->whatsapp }}</a>  --}}
                                                                     <a class="text-primary fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client->whatsapp}}&text=Kode Order: ord-{{$lead->id}}%0A{{ str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($lead->client->name, $lead->client->whatsapp, $lead->operator->name, $lead->product->name), $lead->campaign->cs_to_customer) }}">{{$lead->client->whatsapp}}</a>
                                                                 </td>
-                                                                <td class="text-end">
+                                                                <td class="">
                                                                     <div class="d-flex align-items-center">
                                                                         <h1 class="text-dark fw-normal fs-6">{{$lead->operator->name}}</h1>
                                                                     </div>

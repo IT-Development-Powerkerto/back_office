@@ -6,7 +6,7 @@
         
         @foreach ($campaign as $campaign)
         <div class="col-xl-6">
-
+			
 			@include('partials/widgets/tables/_widget-5')
 
 		</div>

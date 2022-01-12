@@ -136,11 +136,11 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="min-w-100px">Name</th>
-															<th class="min-w-100px">Point</th>
-															<th class="min-w-140px">Division</th>
-															<th class="min-w-120px">Status</th>
-                                                            <th class="min-w-100px text-end">Actions</th>
+															<th class="">Name</th>
+															<th class="">Point</th>
+															<th class="">Division</th>
+															<th class="">Status</th>
+                                                            <th class="text-end">Actions</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->

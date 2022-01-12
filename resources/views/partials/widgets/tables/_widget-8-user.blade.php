@@ -8,12 +8,6 @@
 												<span class="text-muted mt-1 fw-bold fs-7">{{$leads->total()}} Lead</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
-												<a href=/ld class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Detail">
-												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-												<span class="svg-icon svg-icon-3">
-													<i class="fas fa-chart-line"></i>
-												</span>
-												<!--end::Svg Icon-->Detail</a>
 												
 												<div class="me-2">
 													<input class="form-control mt-0" name="search" id="searchlead" type="date" placeholder="Search" aria-label="Search" style="height: 33px;">

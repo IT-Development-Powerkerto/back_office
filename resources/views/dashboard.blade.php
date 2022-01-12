@@ -5,8 +5,7 @@
 <head>
 	<base href="">
 	<title>{{Auth()->user()->role->name}}</title>
-
-	<link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
+    
 	<link rel="icon" href="img/favicon.png">
 
 	<!--begin::Fonts-->
@@ -105,30 +104,6 @@
     </script>
 	<!--end::Page Custom Javascript-->
     {{-- Countdown --}}
-    <script>
-        function CountDownTimer(duration, display) {
-            var timer = duration, hours, minutes, seconds;
-            setInterval(function () {
-                hours = parseInt((timer / 3600) % 24, 10);
-                minutes = parseInt((timer / 60) % 60, 10);
-                seconds = parseInt(timer % 60, 10);
-
-                hours = hours < 10 ? "0" + hours : hours;
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                let codeDisplay = '<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">' +
-                                    hours+ ":" + minutes + ":" + seconds +
-                                    '</h1>';
-                display.innerHTML = codeDisplay;
-
-                if (--timer < 0) {
-                    timer = duration;
-                }
-            }, 1000);
-        }
-    </script>
-
     <script>
         function CountUpTimer(duration, display) {
             var timer = duration, hours, minutes, seconds;
@@ -287,7 +262,6 @@
             window.location = window.location.href;
         });
     </script>
-
 </body>
 <!--end::Body-->
 
