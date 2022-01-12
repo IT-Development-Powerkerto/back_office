@@ -68,7 +68,8 @@ class LeadController extends Controller
             ->join('clients as c', 'l.client_id', '=', 'c.id')
             ->join('campaigns as cp', 'l.campaign_id', '=', 'cp.id')
             ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.name as client_name', 'c.whatsapp as client_wa', 'c.created_at as client_created_at', 'c.updated_at as client_updated_at', 'cp.cs_to_customer as cs_to_customer', 's.name as status_name')
-            ->where('l.id', $id);
+            ->where('l.id', $id)
+            ->where('l.admin_id', auth()->user()->admin_id);
         // return view('EditingLT', compact('lead'));
         return view('EditingLT')->with('lead', $lead);
     }
@@ -84,7 +85,7 @@ class LeadController extends Controller
     {
         // dd($request);
         $total_price = $request->price * $request->quantity;
-        DB::table('leads')->where('id', $lead)->update([
+        DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
             'quantity'        => $request->quantity,
             'price'           => $request->price,
             'total_price'     => $total_price,
@@ -96,7 +97,7 @@ class LeadController extends Controller
         } else{
             $whatsapp = $request->whatsapp;
         }
-        DB::table('clients')->where('id', $lead)->update([
+        DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
             'name'         => $request->name,
             'whatsapp'     => $whatsapp,
             'updated_at'   => Carbon::now()->toDateTimeString(),

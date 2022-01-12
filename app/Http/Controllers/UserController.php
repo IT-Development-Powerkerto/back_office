@@ -65,7 +65,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $roles = Role::all();
-        $result = User::findOrFail($id);
+        $result = User::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
         return view('editing',['user' => $result])->with('roles', $roles);
     }
 
@@ -87,9 +87,9 @@ class UserController extends Controller
             $image = $path;
         }
         else{
-            $image = DB::table('users')->where('id', $user->id)->implode('image');
+            $image = DB::table('users')->where('admin_id', auth()->user()->admin_id)->where('id', $user->id)->implode('image');
             if(strlen($image) > 0){
-                $image = DB::table('users')->where('id', $user->id)->implode('image');
+                $image = DB::table('users')->where('admin_id', auth()->user()->admin_id)->where('id', $user->id)->implode('image');
             }else{
                 $image = null;
             }
@@ -104,7 +104,8 @@ class UserController extends Controller
         } else{
             $phone = $request->phone;
         }
-        DB::table('users')->where('id', $user->id)->update([
+        DB::table('users')->where('admin_id', auth()->user()->admin_id)->where('id', $user->id)->update([
+            'admin_id'  => auth()->user()->admin_id,
             'name'      => $request->name,
             'role_id'   => $role_id,
             'phone'     => $phone,
@@ -134,7 +135,7 @@ class UserController extends Controller
 
     public function updateStatus(Request $request)
     {
-        $user = User::findOrFail($request->user_id);
+        $user = User::where('admin_id', auth()->user()->admin_id)->findOrFail($request->user_id);
         $user->status = $request->status;
         $user->save();
         return redirect()->to('/dashboard');
@@ -162,7 +163,7 @@ class UserController extends Controller
         if($result){
             // $user->name = auth()->user()->name;
             // dd($user->id);
-            DB::table('users')->where('id', auth()->user()->id)->update([
+            DB::table('users')->where('admin_id', auth()->user()->admin_id)->where('id', auth()->user()->id)->update([
                 'password' => Hash::make($request->password),
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
@@ -180,7 +181,7 @@ class UserController extends Controller
 
     public function viewProfile($id) {
         $roles = Role::all();
-        $result = User::findOrFail($id);
+        $result = User::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
         return view('viewProfile',['user' => $result])->with('roles', $roles);
     }
 }

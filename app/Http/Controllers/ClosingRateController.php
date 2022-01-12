@@ -27,6 +27,7 @@ class ClosingRateController extends Controller
             $month_closing = DB::table('leads as l')->join('operators as o', 'o.id', '=', 'l.operator_id')->where('o.user_id', $user_id)->where('l.status_id', 5)->count();
         }
         DB::table('closing_rates')->where('id', $user_id)->insert([
+            'admin_id'           => auth()->user()->admin_id,
             'user_id'            => $user_id,
             'day_closing_rate'   => $day_closing / $day_lead,
             'month_closing_rate' => $month_closing / $month_lead,
@@ -49,7 +50,8 @@ class ClosingRateController extends Controller
         }
 
         DB::table('closing_rates')->insert([
-            'user_id'       => $user->id,
+            'admin_id'           => auth()->user()->admin_id,
+            'user_id'            => $user->id,
             'day_closing_rate'   => $day_closing / $day_lead,
             'month_closing_rate' => $month_closing / $month_lead,
             'created_at' => Carbon::now()->toDateTimeString(),

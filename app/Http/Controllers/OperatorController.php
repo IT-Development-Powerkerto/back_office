@@ -20,11 +20,12 @@ class OperatorController extends Controller
      */
     public function index()
     {
-        $operators = User::where('role_id', 5)->get();
+        $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
         $lead_count = DB::table('leads')
             ->join('operators', 'leads.operator_id', '=', 'operators.id')
+            ->where('admin_id', auth()->user()->admin_id)
             ->get();
-        $campaign_count = Operator::all();
+        $campaign_count = Operator::where('admin_id', auth()->user()->admin_id)->get();
         $x = auth()->user();
         if($x->role_id == 4){
             return view('operatorADV', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count);
@@ -68,12 +69,13 @@ class OperatorController extends Controller
         // return response()->json(['error'=>$validator->errors()->all()]);
 
         $user_id = $request->operator_id;
-        $name = User::where('id', $user_id)->value('name');
-        $operatorExists = Operator::where('campaign_id', $id)->where('user_id', $user_id)->exists();
+        $name = User::where('admin_id', auth()->user()->admin_id)->where('id', $user_id)->value('name');
+        $operatorExists = Operator::where('admin_id', auth()->user()->admin_id)->where('campaign_id', $id)->where('user_id', $user_id)->exists();
         if($operatorExists){
             return redirect('/campaign')->with('error','Error!, Operator already exists');
         }
             DB::table('operators')->insert([
+                'admin_id'        => auth()->user()->id,
                 'campaign_id'     => $id,
                 'user_id'         => $user_id,
                 'name'            => $name,

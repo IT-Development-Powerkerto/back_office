@@ -33,11 +33,11 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
 
-        $users = User::all();
-        $announcements = Announcement::all();
+        $users = User::where('admin_id', auth()->user()->admin_id)->get();
+        $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
         $roles = Role::all();
         $icons = Icon::all();
-        $products = Product::all();
+        $products = Product::where('admin_id', auth()->user()->admin_id)->get();
         $day = Carbon::now()->format('Y-m-d');
         $leads = DB::table('leads as l')
             ->join('operators as o', 'l.operator_id', '=', 'o.id')
@@ -46,13 +46,14 @@ class DashboardController extends Controller
             ->join('clients as c', 'l.client_id', '=', 'c.id')
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
             ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-            //->where('l.updated_at', $day)
+            ->where('l.admin_id', auth()->user()->admin_id)
+            // ->where('l.updated_at', $day)
             ->orderByDesc('l.id')
             ->paginate(5);
             // dd($leads);
-        $client = Client::all();
-        $campaigns = Campaign::all();
-        $total_lead = DB::table('products')->pluck('lead');
+        $client = Client::where('admin_id', auth()->user()->admin_id)->get();
+        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
+        $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
         // dd($leads);
 
         // $now = DB::table('leads')->value('created_at');
@@ -110,6 +111,7 @@ class DashboardController extends Controller
             $phone = $validated['phone'];
         }
         $user = new User();
+        $user->admin_id = auth()->user()->id;
         $user->name = $request->name;
         $user->role_id = $request->role_id;
         $user->phone = $phone;
@@ -152,7 +154,7 @@ class DashboardController extends Controller
      */
     public function edit($user)
     {
-        $result = User::findOrFail($user);
+        $result = User::findOrFail($user)->where('admin_id', auth()->user()->admin_id);
         return view('dashboard.edit',['user' => $result]);
     }
 
@@ -183,16 +185,16 @@ class DashboardController extends Controller
 
     public function adv(Request $request){
         if($request){
-            $users = User::where('name', 'like', '%'.$request->search.'%')->get();
+            $users = User::where('admin_id', auth()->user()->admin_id)->where('name', 'like', '%'.$request->search.'%')->get();
         }else{
-            $users = User::all();
+            $users = User::where('admin_id', auth()->user()->admin_id)->get();
         }
         $x = auth()->user();
         if($x->role_id == 4){
-            $announcements = Announcement::all();
+            $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
             $roles = Role::all();
             $icons = Icon::all();
-            $products = Product::all();
+            $products = Product::where('admin_id', auth()->user()->admin_id)->get();
             $leads = DB::table('leads as l')
                 ->join('operators as o', 'l.operator_id', '=', 'o.id')
                 ->join('products as p', 'l.product_id', '=', 'p.id' )
@@ -201,10 +203,11 @@ class DashboardController extends Controller
                 ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
                 ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
                 ->where('l.advertiser', $x->name)
+                ->where('l.admin_id', auth()->user()->admin_id)
                 ->orderByDesc('l.id')
                 ->paginate(5);
-            $campaigns = Campaign::all();
-            $total_lead = DB::table('products')->pluck('lead');
+            $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
+            $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
             return view('adv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
             ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
         }else{
@@ -214,16 +217,16 @@ class DashboardController extends Controller
 
     public function cs(Request $request){
         if($request){
-            $users = User::where('name', 'like', '%'.$request->search.'%')->get();
+            $users = User::where('admin_id', auth()->user()->admin_id)->where('name', 'like', '%'.$request->search.'%')->get();
         }else{
-            $users = User::all();
+            $users = User::where('admin_id', auth()->user()->admin_id)->get();
         }
         $x = auth()->user();
         if($x->role_id == 5){
-            $announcements = Announcement::all();
+            $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
             $roles = Role::all();
             $icons = Icon::all();
-            $products = Product::all();
+            $products = Product::where('admin_id', auth()->user()->admin_id)->get();
             $leads = DB::table('leads as l')
                 ->join('operators as o', 'l.operator_id', '=', 'o.id')
                 ->join('products as p', 'l.product_id', '=', 'p.id' )
@@ -232,10 +235,11 @@ class DashboardController extends Controller
                 ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
                 ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
                 ->where('l.user_id', $x->id)
+                ->where('l.admin_id', auth()->user()->admin_id)
                 ->orderByDesc('l.id')
                 ->paginate(5);
-            $campaigns = Campaign::all();
-            $total_lead = DB::table('products')->pluck('lead');
+            $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
+            $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
             return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
             ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
         }else{
@@ -244,9 +248,9 @@ class DashboardController extends Controller
     }
 
     public function ld() {
-        $campaigns = Campaign::all();
-        $client = Client::all();
-        $operator = Operator::all();
+        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
+        $client = Client::where('admin_id', auth()->user()->admin_id)->get();
+        $operator = Operator::where('admin_id', auth()->user()->admin_id)->get();
         $day = Carbon::now()->format('Y-m-d');
         // $lead = DB::table('leads as l')
         //     ->join('operators as o', 'l.operator_id', '=', 'o.id')
@@ -257,7 +261,7 @@ class DashboardController extends Controller
         //     ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.name as client_name', 'c.whatsapp as client_wa', 'c.created_at as client_created_at', 'c.updated_at as client_updated_at', 'cp.cs_to_customer as cs_to_customer', 'cp.id as campaign_id')
         //     ->where('c.updated_at', $day);
         //$lead = Lead::where('updated_at', $day)->orderByDesc('id')->get();
-        $lead = Lead::orderByDesc('id')->get();
+        $lead = Lead::where('admin_id', auth()->user()->admin_id)->orderByDesc('id')->get();
 
         return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead);
     }

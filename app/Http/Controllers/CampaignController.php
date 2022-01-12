@@ -23,10 +23,10 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        $campaigns = Campaign::all();
+        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
         $events = EventPixel::all();
         $eventWa = EventWa::all();
-        $product = Product::all();
+        $product = Product::where('admin_id', auth()->user()->admin_id)->get();
         return view('campaign', ['eventWa'=>$eventWa])->with('campaigns', $campaigns)->with('products', $product)->with('events', $events);
     }
 
@@ -38,7 +38,7 @@ class CampaignController extends Controller
     public function create()
     {
         $events = EventPixel::all();
-        $product = Product::all();
+        $product = Product::where('admin_id', auth()->user()->admin_id)->get();
         return view ('CreateCampaign',['event'=>$events])->with('products', $product);
 
     }
@@ -53,7 +53,8 @@ class CampaignController extends Controller
     {
         $campaign_id = DB::table('campaigns')->insertGetId([
             'user_id'         => Auth()->user()->id,
-            'title'          => $request->title,
+            'admin_id'        => auth()->user()->admin_id,
+            'title'           => $request->title,
             'product_id'      => $request->product_id,
             'message'         => $request->tp,
             'facebook_pixel'  => $request->fbp,
@@ -66,6 +67,7 @@ class CampaignController extends Controller
         ]);
         // $campaign_id = $campaign->id;
         DB::table('distribution_counters')->insert([
+            'admin_id'    => auth()->user()->admin_id,
             'campaign_id' => $campaign_id,
             'counter' => 0
         ]);
@@ -80,8 +82,8 @@ class CampaignController extends Controller
      */
     public function show($campaign)
     {
-        $campaigns = Campaign::find($campaign);
-        $product = Product::all();
+        $campaigns = Campaign::find($campaign)->where('admin_id', auth()->user()->admin_id)->get();
+        $product = Product::where('admin_id', auth()->user()->admin_id)->get();
         return view('campaign',compact($campaigns))->with('products', $product);
     }
 
@@ -93,10 +95,10 @@ class CampaignController extends Controller
      */
     public function edit($id)
     {
-        $campaigns = Campaign::findOrFail($id);
+        $campaigns = Campaign::findOrFail($id)->where('admin_id', auth()->user()->admin_id)->get();
         $event = EventPixel::all();
         $eventWa = EventWa::all();
-        $product = Product::all();
+        $product = Product::where('admin_id', auth()->user()->admin_id);
         return view('EditingCampaign',['campaign' => $campaigns])->with('event', $event)->with('products', $product)->with('eventWa', $eventWa);
     }
 
@@ -109,9 +111,10 @@ class CampaignController extends Controller
      */
     public function update(Request $request, $campaign)
     {
-        DB::table('campaigns')->where('id', $campaign)->update([
+        DB::table('campaigns')->where('id', $campaign)->where('admin_id', auth()->user()->admin_id)->update([
             'user_id'           => Auth()->user()->id,
-            'title'            => $request->title,
+            'admin_id'          => auth()->user()->admin_id,
+            'title'             => $request->title,
             'product_id'        => $request->product_id,
             'message'           => $request->tp,
             'facebook_pixel'    => $request->fbp,
@@ -140,11 +143,11 @@ class CampaignController extends Controller
 
     public function addOperator($id)
     {
-        $campaigns = Campaign::findOrFail($id);
+        $campaigns = Campaign::findOrFail($id)->where('admin_id', auth()->user()->admin_id);
         // untuk menampilkan daftar CS di dropdown saat menambah operator
-        $operators = User::where('role_id', 5)->get();
+        $operators = User::where('role_id', 5)->where('admin_id', auth()->user()->admin_id)->get();
         // untuk menampilkan operator berdasarkan campaign
-        $operatorCampaigns = Operator::all()->where('campaign_id', $id);
+        $operatorCampaigns = Operator::all()->where('campaign_id', $id)->where('admin_id', auth()->user()->admin_id);
         $lead = Lead::all();
 
         return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns)->with('lead', $lead);

@@ -93,6 +93,7 @@ class FbPController extends Controller
     }
 
     public function lead(Request $request, $campaign_id, $product_id){
+        $admin_id = DB::table('campaigns')->where('id', $campaign_id)->value('admin_id');
         $validateData = Validator::make($request->all(),[
             'name'             => 'required',
             'whatsapp'         => 'required',
@@ -101,6 +102,7 @@ class FbPController extends Controller
             return response($validateData->errors(), 400);
         }else{
             $clients = new Client();
+            $clients->admin_id = $admin_id;
             $clients->campaign_id = $campaign_id;
             $clients->name = $request->name;
             if(substr(trim($request->whatsapp), 0, 1)=='0'){
@@ -150,6 +152,7 @@ class FbPController extends Controller
             $operator_name = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('name');
             $product_name = DB::table('products')->where('id', $product_id)->value('name');
             $lead = new Lead();
+            $lead->admin_id = $admin_id;
             $lead->advertiser = $adv_name;
             $lead->operator_id = $operator_id;
             $lead->campaign_id = $campaign_id;
@@ -201,7 +204,9 @@ class FbPController extends Controller
     }
 
     public function lead_wa($campaign_id, $product_id){
+        $admin_id = DB::table('campaigns')->where('id', $campaign_id)->value('admin_id');
         $clients = new Client();
+        $clients->admin_id = $admin_id;
         $clients->campaign_id = $campaign_id;
         $clients->save();
 
@@ -246,6 +251,7 @@ class FbPController extends Controller
         $operator_name = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('name');
         $product_name = DB::table('products')->where('id', $product_id)->value('name');
         DB::table('leads')->insert([
+            'admin_id'   => $admin_id,
             'advertiser' => $adv_name,
             'campaign_id' => $campaign_id,
             'operator_id'   => $operator_id,

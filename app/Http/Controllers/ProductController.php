@@ -49,6 +49,7 @@ class ProductController extends Controller
         }
 
         DB::table('products')->insert([
+            'admin_id'     => auth()->user()->admin_id,
             'name'         => $request->name,
             'price'        => $request->price,
             'discount'     => $request->discount,
@@ -81,7 +82,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         {
-            $product = Product::findOrFail($id);
+            $product = Product::findOrFail($id)->where('admin_id', auth()->user()->admin_id)->get();
             return view('EditingProduct',['product' => $product]);
         }
     }
@@ -105,10 +106,11 @@ class ProductController extends Controller
             $image = $path;
         }
         else{
-            $image = DB::table('products')->where('id', $product->id)->implode('image');
+            $image = DB::table('products')->where('admin_id', auth()->user()->admin_id)->where('id', $product->id)->implode('image');
         }
 
         DB::table('products')->where('id', $product->id)->update([
+            'admin_id'     => auth()->user()->admin_id,
             'name'         => $request->name,
             'price'        => $request->price,
             'discount'     => $request->discount,

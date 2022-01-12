@@ -26,8 +26,9 @@ class OmsetController extends Controller
         }else{
             $year = date('Y');
         }
+        $admin_id = Lead::where('admin_id', auth()->user()->admin_id)->value('admin_id');
         // get omset cs per product per month
-        $omset = Lead::where('campaign_id', $campaign->id)->where('product_id', $product->id)
+        $omset = Lead::where('admin_id', $admin_id)->where('campaign_id', $campaign->id)->where('product_id', $product->id)
             ->where('operator_id',$user->operator->implode('id'))->where('status_id', 5)
             ->whereMonth('updated_at', $month)->whereYear('updated_at', $year)
             ->sum('total_price');
@@ -39,6 +40,7 @@ class OmsetController extends Controller
         //     $max_omset = $max_omset;
         // }
         DB::table('omsets')->updateOrInsert([
+            'admin_id'      => $admin_id,
             'user_id'       => $user->id,
             'product_id'    => $product->id,
             'omset'         => $omset,
@@ -68,23 +70,26 @@ class OmsetController extends Controller
         }else{
             $year = date('Y');
         }
+        $admin_id = Lead::where('admin_id', auth()->user()->admin_id)->value('admin_id');
         // $user = User::all();
-        $cs = User::where('role_id', 5)->get();
-        $products = Product::all();
+        $cs = User::where('role_id', 5)->where('admin_id', auth()->user()->admin_id)->get();
+        $products = Product::where('admin_id', auth()->user()->admin_id)->get();
         foreach($cs as $cs){
             foreach($products as $product){
-                $find_omset = Lead::where('user_id', $cs->id)->where('product_id', $product->id)->exists();
+                $find_omset = Lead::where('user_id', $cs->id)->where('product_id', $product->id)->where('admin_id', $admin_id)->exists();
                 if(!$find_omset){
-                
+
                     continue;
                 }
                 else{
                     $omset = Lead::where('user_id', $cs->id)->where('product_id', $product->id)
+                    ->where('admin_id', $admin_id)
                     ->where('status_id', 5)
                                 ->whereMonth('updated_at', $month)->whereYear('updated_at', $year)
                                 ->sum('total_price');
-        
+
                     DB::table('omsets')->updateOrInsert([
+                        'admin_id'      => $admin_id,
                         'user_id'       => $cs->id,
                         'product_id'    => $product->id,
                         'omset'         => $omset,
@@ -93,9 +98,9 @@ class OmsetController extends Controller
                     ]);
                 }
             }
-            
+
         }
-        
+
     }
     public function omset_point()
     {
@@ -108,16 +113,17 @@ class OmsetController extends Controller
         }else{
             $year = date('Y');
         }
+        $admin_id = Lead::where('admin_id', auth()->user()->admin_id)->value('admin_id');
         $cs = Omset::orderBy('omset')->get();
         $products = Product::all();
         foreach($cs as $cs){
             foreach($products as $product){
-                $find_omset = Omset::where('user_id', $cs->user_id)->where('product_id', $product->id)->exists();
+                $find_omset = Omset::where('user_id', $cs->user_id)->where('product_id', $product->id)->where('admin_id', $admin_id)->exists();
                 if($find_omset){
-                
-                    $omset = DB::table('omsets')->where('user_id', $cs->user_id)->where('product_id', $product->id)->whereMonth('updated_at', $month)->whereYear('updated_at', $year)->value('omset');
-                    $max_omset = DB::table('omsets')->where('product_id', $product->id)->whereMonth('updated_at', $month)->whereYear('updated_at', $year)->orderByDesc('omset')->max('omset');
-                    DB::table('omsets')->where('user_id' , $cs->user_id)->where('product_id', $product->id)->update([
+
+                    $omset = DB::table('omsets')->where('admin_id', $admin_id)->where('user_id', $cs->user_id)->where('product_id', $product->id)->whereMonth('updated_at', $month)->whereYear('updated_at', $year)->value('omset');
+                    $max_omset = DB::table('omsets')->where('admin_id', $admin_id)->where('product_id', $product->id)->whereMonth('updated_at', $month)->whereYear('updated_at', $year)->orderByDesc('omset')->max('omset');
+                    DB::table('omsets')->where('admin_id', $admin_id)->where('user_id' , $cs->user_id)->where('product_id', $product->id)->update([
                         'omset_point'   => $omset / $max_omset ,
                     ]);
                 }
