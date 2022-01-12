@@ -74,10 +74,10 @@
         </div>
     </div>
     <div class="button">
-        <a href="https://api.whatsapp.com/send/?phone={{$details['client_number']}}&text={{ str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($details['client'], $details['client_number'], $details['operator'], $details['product']), $details['FU_text']) }}" class="btn">Follow up</a>
+        <a href="https://api.whatsapp.com/send/?phone={{$details['client_number']}}&text={{ str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($details['client'], $details['client_number'], $details['operator'], $details['product']), $details['FU_text']) }}" class="btn">Follow up via Whatsapp</a>
     </div>
 
    
-    <p>Semoga closing ya.. :*</p>
+    <p>Masa Gak Closing Sih.</p>
 </body>
 </html>
