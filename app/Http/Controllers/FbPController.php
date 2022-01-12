@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class FbPController extends Controller
 {
@@ -178,7 +179,24 @@ class FbPController extends Controller
 
             $message = Campaign::where('id', $campaign_id)->value('message');
             // return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
-            return redirect('http://orderku.site/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
+            // return redirect('http://orderku.site/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
+            // $url = 'orderku.site/'..'/'.'/'.$message;
+            $wa_text = str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text);
+            $wa_number = $wa[$counter]->phone;
+            $FU_text = Campaign::where('id', $campaign_id)->value('cs_to_customer');
+
+            $cs_email = DB::table('users')->where('phone', $wa[$counter]->phone)->value('email');
+            return Redirect::route('send', [
+                'email' => $cs_email,
+                'number' => $wa_number,
+                'text' => $wa_text,
+                'thanks' => $message,
+                'product' => $product_name,
+                'client' => $clients->name,
+                'client_number' => $clients->whatsapp,
+                'FU_text' => $FU_text,
+                'operator' => $operator_name
+            ]);
         }
     }
 
