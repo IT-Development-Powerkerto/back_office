@@ -89,7 +89,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->created_at}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->client_created_at}}</h1>
 																</div>
 															</td>
 															<td>
