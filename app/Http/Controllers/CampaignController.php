@@ -143,12 +143,12 @@ class CampaignController extends Controller
 
     public function addOperator($id)
     {
-        $campaigns = Campaign::findOrFail($id)->where('admin_id', auth()->user()->admin_id);
+        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
         // untuk menampilkan daftar CS di dropdown saat menambah operator
-        $operators = User::where('role_id', 5)->where('admin_id', auth()->user()->admin_id)->get();
+        $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
         // untuk menampilkan operator berdasarkan campaign
-        $operatorCampaigns = Operator::all()->where('campaign_id', $id)->where('admin_id', auth()->user()->admin_id);
-        $lead = Lead::all();
+        $operatorCampaigns = Operator::where('admin_id', auth()->user()->admin_id)->where('campaign_id', $id)->get();
+        $lead = Lead::where('admin_id', auth()->user()->admin_id)->get();
 
         return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns)->with('lead', $lead);
     }
