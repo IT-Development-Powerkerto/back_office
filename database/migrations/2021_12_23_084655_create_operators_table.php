@@ -15,6 +15,7 @@ class CreateOperatorsTable extends Migration
     {
         Schema::create('operators', function (Blueprint $table) {
             $table->id();
+            $table->integer('admin_id');
             $table->foreignId('campaign_id');
             $table->foreignId('user_id');
             $table->string('name');

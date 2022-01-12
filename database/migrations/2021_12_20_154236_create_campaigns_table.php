@@ -15,6 +15,7 @@ class CreateCampaignsTable extends Migration
     {
         Schema::create('campaigns', function (Blueprint $table) {
             $table->id();
+            $table->integer('admin_id');
             $table->foreignId('user_id');
             $table->string('title');
             $table->foreignId('product_id');

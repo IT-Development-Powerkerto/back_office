@@ -15,6 +15,7 @@ class CreateUpsellingsTable extends Migration
     {
         Schema::create('upsellings', function (Blueprint $table) {
             $table->id();
+            $table->integer('admin_id');
             $table->foreignId('user_id');
             $table->foreignId('product_id');
             $table->double('upselling')->nullable();

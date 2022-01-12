@@ -38,6 +38,7 @@ class AnnouncementController extends Controller
     public function store(Request $request)
     {
         DB::table('announcements')->insert([
+            'admin_id'     => auth()->user()->admin_id,
             'announcement' => $request->announcement,
             'icon_id'      => $request->icon_id,
             'created_at' => Carbon::now()->toDateTimeString(),

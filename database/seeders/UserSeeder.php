@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
         // ]);
         $users = [
             [
+                'admin_id'        => 1,
                 'name'      => "Administrator",
                 'role_id'   => 1,
                 'username'  => "admin",
@@ -36,6 +37,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "CEO",
                 'role_id'   => 2,
                 'username'  => "ceo",
@@ -45,6 +47,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Manager",
                 'role_id'   => 3,
                 'username'  => "manager",
@@ -54,6 +57,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Advertiser",
                 'role_id'   => 4,
                 'username'  => "advertiser",
@@ -63,6 +67,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Customer Service",
                 'role_id'   => 5,
                 'username'  => "cs",
@@ -72,6 +77,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Design Graphic Multimedia",
                 'role_id'   => 6,
                 'username'  => "dgm",
@@ -81,6 +87,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Content Web Marketing",
                 'role_id'   => 7,
                 'username'  => "cwm",
@@ -90,6 +97,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "IT Developer",
                 'role_id'   => 8,
                 'username'  => "itd",
@@ -99,6 +107,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Hanif Muslim Azhar",
                 'role_id'   => 4,
                 'username'  => "hanif",
@@ -108,6 +117,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Awal Azwihani",
                 'role_id'   => 4,
                 'username'  => "awal",
@@ -117,6 +127,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Rifan Tri Yulianto",
                 'role_id'   => 4,
                 'username'  => "rifan",
@@ -126,6 +137,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Isnan Aditia",
                 'role_id'   => 4,
                 'username'  => "isnan",
@@ -135,6 +147,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Jihad Salahudin",
                 'role_id'   => 4,
                 'username'  => "jihad",
@@ -144,6 +157,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Anggit Hatmaji Adiyoso",
                 'role_id'   => 4,
                 'username'  => "anggit",
@@ -153,6 +167,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Alfian Ridho Utama",
                 'role_id'   => 4,
                 'username'  => "alfian",
@@ -162,6 +177,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Hutari Trinurcahyani",
                 'role_id'   => 5,
                 'username'  => "hutari",
@@ -171,6 +187,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Rosi Nurjanah",
                 'role_id'   => 5,
                 'username'  => "rosi",
@@ -180,6 +197,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Noviana Prastyani",
                 'role_id'   => 5,
                 'username'  => "noviana",
@@ -189,6 +207,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Farida Istinganah",
                 'role_id'   => 5,
                 'username'  => "farida",
@@ -198,6 +217,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Intan Ananda Fitria",
                 'role_id'   => 5,
                 'username'  => "intan",
@@ -207,6 +227,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Ristika Damayanti",
                 'role_id'   => 5,
                 'username'  => "ristika",
@@ -216,6 +237,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Nandalita Setiawan",
                 'role_id'   => 5,
                 'username'  => "nandalita",
@@ -225,6 +247,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Tri Kustini",
                 'role_id'   => 5,
                 'username'  => "tri",
@@ -234,6 +257,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Uswatun Khasanah",
                 'role_id'   => 5,
                 'username'  => "uswatun",
@@ -243,6 +267,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Ukhti Fatayah",
                 'role_id'   => 5,
                 'username'  => "ukhti",
@@ -252,6 +277,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Alisa Nur Cahyani",
                 'role_id'   => 5,
                 'username'  => "alisa",
@@ -261,6 +287,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Ferra Dita Larasaty",
                 'role_id'   => 5,
                 'username'  => "ferra",
@@ -270,6 +297,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Fadilatun Nida Rahayu",
                 'role_id'   => 5,
                 'username'  => "fadilatun",
@@ -279,6 +307,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Septiyani Dwi Putri",
                 'role_id'   => 5,
                 'username'  => "septiyani",
@@ -288,6 +317,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Sukma Indah Sari Limaran",
                 'role_id'   => 5,
                 'username'  => "sukma",
@@ -297,6 +327,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Nadia Husnadari",
                 'role_id'   => 5,
                 'username'  => "nadia",
@@ -306,6 +337,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Friska",
                 'role_id'   => 5,
                 'username'  => "friska",
@@ -315,6 +347,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Sovi",
                 'role_id'   => 5,
                 'username'  => "sovi",
@@ -324,6 +357,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Haya",
                 'role_id'   => 5,
                 'username'  => "haya",
@@ -333,6 +367,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Nurhayatun",
                 'role_id'   => 5,
                 'username'  => "nur",
@@ -342,6 +377,7 @@ class UserSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ],
             [
+                'admin_id'        => 1,
                 'name'      => "Riza Maria Indra Dini",
                 'role_id'   => 5,
                 'username'  => "riza",
