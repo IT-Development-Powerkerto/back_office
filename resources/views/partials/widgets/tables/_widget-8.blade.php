@@ -32,15 +32,15 @@
 													<thead>
 														<tr class="fw-medium text-muted">
 															<th class="min-w-50px">No</th>
-                                                            <th class="min-w-130px">Order ID</th>
-															<th class="min-w-130px">Advertiser</th>
-															<th class="min-w-130px">Operator</th>
-															<th class="min-w-130px">Customer</th>
-															<th class="min-w-130px">No Whatsapp</th>
-															<th class="min-w-120px">Product</th>
+                                                            <th class="min-w-50px">Order ID</th>
+															<th class="min-w-130px">Advertiser Name</th>
+															<th class="min-w-130px">Operator Name</th>
+															<th class="min-w-130px">Customer Name</th>
+															<th class="min-w-130px">Whatsapp Customer</th>
+															<th class="min-w-120px">Product Name</th>
 															<th class="min-w-120px">Date/Time</th>
 															<th class="min-w-120px">Response Time</th>
-															<th class="min-w-120px">Progress</th>
+															<th class="min-w-120px">Lead Progress</th>
 															<th class="min-w-100px text-end">Actions</th>
 														</tr>
 													</thead>

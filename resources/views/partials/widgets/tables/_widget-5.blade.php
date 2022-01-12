@@ -21,9 +21,9 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw text-muted">
-                                                            <th class="min-w-120px">Order ID</th>
-															<th class="min-w-120px">Nama</th>
-															<th class="min-w-120px">No Whatsapp</th>
+                                                            <th class="min-w-50px">Order ID</th>
+															<th class="min-w-120px">Customer Nama</th>
+															<th class="min-w-120px">Whatsapp Customer</th>
 															<th class="min-w-120px">Costumer Service</th>
 															<th class="min-w-50px">Response Time</th>
                                                             <th class="min-w-100px">Actions</th>
