@@ -15,6 +15,7 @@ class CreateEventPixelsTable extends Migration
     {
         Schema::create('event_pixels', function (Blueprint $table) {
             $table->id();
+            $table->integer('admin_id');
             $table->string('name');
             $table->string('event_pixel');
             $table->timestamps();

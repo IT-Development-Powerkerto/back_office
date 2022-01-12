@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
     {
         $product = [
             [
+                'admin_id'        => 1,
                 'name'         => 'Generos',
                 'price'        => 375000,
                 'discount'     => null,
@@ -23,6 +24,7 @@ class ProductSeeder extends Seeder
                 'product_link' => "",
             ],
             [
+                'admin_id'        => 1,
                 'name'         => 'Freshmag',
                 'price'        => 140000,
                 'discount'     => null,
@@ -30,6 +32,7 @@ class ProductSeeder extends Seeder
                 'product_link' => "",
             ],
             [
+                'admin_id'        => 1,
                 'name'         => 'Gizidat',
                 'price'        => 68000,
                 'discount'     => null,
@@ -37,6 +40,7 @@ class ProductSeeder extends Seeder
                 'product_link' => "",
             ],
             [
+                'admin_id'        => 1,
                 'name'         => 'Etawaku',
                 'price'        => 75000,
                 'discount'     => null,
@@ -44,6 +48,7 @@ class ProductSeeder extends Seeder
                 'product_link' => "",
             ],
             [
+                'admin_id'        => 1,
                 'name'         => 'Rube',
                 'price'        => 250000,
                 'discount'     => null,

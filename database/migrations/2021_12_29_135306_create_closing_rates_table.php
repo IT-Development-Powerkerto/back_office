@@ -15,6 +15,7 @@ class CreateClosingRatesTable extends Migration
     {
         Schema::create('closing_rates', function (Blueprint $table) {
             $table->id();
+            $table->integer('admin_id');
             $table->foreignId('user_id');
             $table->double('day_closing_rate')->nullable();
             $table->double('month_closing_rate')->nullable();

@@ -17,6 +17,7 @@ class CampaignSeeder extends Seeder
     {
         $campaign = [
             [
+                'admin_id'        => 1,
                 'user_id'         => 9,
                 'title'           => 'Hanif',
                 'product_id'      => 5,
@@ -27,6 +28,7 @@ class CampaignSeeder extends Seeder
                 'auto_text'       => Str::random(40),
             ],
             [
+                'admin_id'        => 1,
                 'user_id'         => 9,
                 'title'           => 'Hanif',
                 'product_id'      => 1,
@@ -37,6 +39,7 @@ class CampaignSeeder extends Seeder
                 'auto_text'       => Str::random(40),
             ],
             [
+                'admin_id'        => 1,
                 'user_id'         => 9,
                 'title'           => 'Hanif',
                 'product_id'      => 3,
@@ -47,6 +50,7 @@ class CampaignSeeder extends Seeder
                 'auto_text'       => Str::random(40),
             ],
             [
+                'admin_id'        => 1,
                 'user_id'         => 11,
                 'title'           => 'Rifan',
                 'product_id'      => 1,
@@ -57,6 +61,7 @@ class CampaignSeeder extends Seeder
                 'auto_text'       => Str::random(40),
             ],
             [
+                'admin_id'        => 1,
                 'user_id'         => 11,
                 'title'           => 'Rifan',
                 'product_id'      => 3,
@@ -67,6 +72,7 @@ class CampaignSeeder extends Seeder
                 'auto_text'       => Str::random(40),
             ],
             [
+                'admin_id'        => 1,
                 'user_id'         => 10,
                 'title'           => 'Awal',
                 'product_id'      => 1,
@@ -77,6 +83,7 @@ class CampaignSeeder extends Seeder
                 'auto_text'       => Str::random(40),
             ],
             [
+                'admin_id'        => 1,
                 'user_id'         => 10,
                 'title'           => 'Awal',
                 'product_id'      => 3,
@@ -87,6 +94,7 @@ class CampaignSeeder extends Seeder
                 'auto_text'       => Str::random(40),
             ],
             [
+                'admin_id'        => 1,
                 'user_id'         => 13,
                 'title'           => 'Jihad',
                 'product_id'      => 2,
@@ -97,6 +105,7 @@ class CampaignSeeder extends Seeder
                 'auto_text'       => Str::random(40),
             ],
             [
+                'admin_id'        => 1,
                 'user_id'         => 12,
                 'title'           => 'Isnan',
                 'product_id'      => 4,

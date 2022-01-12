@@ -16,6 +16,7 @@ class CreateAnnouncementsTable extends Migration
     {
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
+            $table->integer('admin_id');
             $table->foreignId('icon_id');
             $table->string('announcement');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

@@ -15,6 +15,7 @@ class CreateDistributionCountersTable extends Migration
     {
         Schema::create('distribution_counters', function (Blueprint $table) {
             $table->id();
+            $table->integer('admin_id');
             $table->foreignId('campaign_id');
             $table->integer('counter')->default(0);
             $table->timestamps();
