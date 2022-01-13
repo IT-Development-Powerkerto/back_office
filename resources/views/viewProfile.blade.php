@@ -307,7 +307,7 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Edit Profile</h3>
+										<h3 class="fw-bolder m-0">{{ old('name') ?? $user->name }}</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
@@ -372,7 +372,6 @@
 										</div>
 										{{-- @endcan --}}
 										{{ csrf_field() }}
-										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit">
 									</form>
 								</div>
 								<!--end::Card body-->
