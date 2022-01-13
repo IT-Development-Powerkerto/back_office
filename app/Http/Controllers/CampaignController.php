@@ -82,7 +82,7 @@ class CampaignController extends Controller
      */
     public function show($campaign)
     {
-        $campaigns = Campaign::find($campaign)->where('admin_id', auth()->user()->admin_id)->get();
+        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->find($campaign)->get();
         $product = Product::where('admin_id', auth()->user()->admin_id)->get();
         return view('campaign',compact($campaigns))->with('products', $product);
     }
@@ -95,7 +95,7 @@ class CampaignController extends Controller
      */
     public function edit($id)
     {
-        $campaigns = Campaign::findOrFail($id)->where('admin_id', auth()->user()->admin_id)->get();
+        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
         $event = EventPixel::all();
         $eventWa = EventWa::all();
         $product = Product::where('admin_id', auth()->user()->admin_id);

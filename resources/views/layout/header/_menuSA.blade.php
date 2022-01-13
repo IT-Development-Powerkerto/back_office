@@ -15,11 +15,11 @@
 			</a>
 			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
 				<div class="menu-item">
-					<a class="menu-link active py-3" href="{{ route('dashboard.index') }}">
+					<a class="menu-link active py-3" href="{{ route('superadmin.index') }}">
 						<span class="menu-icon">
 							<i class="bi bi-archive fs-3"></i>
 						</span>
-						<span class="menu-title">Admin</span>
+						<span class="menu-title">Super Admin</span>
 					</a>
 				</div>
 			</div>
@@ -27,7 +27,7 @@
 		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
 			class="menu-item menu-lg-down-accordion me-lg-1">
 			<span class="menu-link py-3">
-				<span class="menu-title">Admin</span>
+				<span class="menu-title">Super Admin</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</span>
 			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
@@ -42,7 +42,7 @@
 				</div>
 			</div>
 		</div>
-		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+		{{-- <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
 			class="menu-item menu-lg-down-accordion me-lg-1">
 			<span class="menu-link py-3">
 				<span class="menu-title">Advertiser</span>
@@ -84,7 +84,7 @@
 					</span>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 	</div>
 	<!--end::Menu-->
 </div>

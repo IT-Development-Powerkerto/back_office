@@ -22,8 +22,13 @@ class LoginController extends Controller
         $data = $request->input();
         if(Auth::attempt(['username' => $data['username'], 'password' => $data['password']])) {
             $role_id = auth()->user()->role_id;
-            
-            if($role_id == 1){
+            $admin_id = auth()->user()->admin_id;
+
+            if ($admin_id == 1){
+                $request->session()->regenerate();
+                return redirect('/superadmin');
+            }
+            elseif($role_id == 1){
                 $request->session()->regenerate();
                 return redirect('/dashboard');
             }

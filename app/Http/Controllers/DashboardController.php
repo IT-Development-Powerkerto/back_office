@@ -35,7 +35,7 @@ class DashboardController extends Controller
         if($request->date_filter){
             // dd($request->date_filter);
             $day = Carbon::parse($request->date_filter)->format('Y-m-d');
-            
+
             // dd($day);
             $leads = DB::table('leads as l')
             ->join('operators as o', 'l.operator_id', '=', 'o.id')
@@ -68,8 +68,8 @@ class DashboardController extends Controller
         $roles = Role::all();
         $icons = Icon::all();
         $products = Product::where('admin_id', auth()->user()->admin_id)->get();
-        
-        
+
+
         $client = Client::where('admin_id', auth()->user()->admin_id)->get();
         $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
         $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
@@ -81,6 +81,9 @@ class DashboardController extends Controller
         //      ->get()->toHuman('{days} days, {hours} hours and {minutes} minutes');
 
         $x = auth()->user();
+        if($x->admin_id == 1){
+            return redirect(route('superadmin.index'));
+        }
         if($x->role_id == 4){
             return redirect(route('advDashboard'));
         }
@@ -129,27 +132,53 @@ class DashboardController extends Controller
         } else{
             $phone = $validated['phone'];
         }
-        $user = new User();
-        $user->admin_id = auth()->user()->id;
-        $user->name = $request->name;
-        $user->role_id = $request->role_id;
-        $user->phone = $phone;
-        $user->username = $validated['username'];
-        $user->email = $validated['email'];
-        $user->password = Hash::make($validated['password']);
-        $user->status = 1;
-        $user->created_at = Carbon::now()->toDateTimeString();
-        $user->updated_at = Carbon::now()->toDateTimeString();
-        if($request->hasFile('image')){
-            $extFile = $request->image->getClientOriginalExtension();
-            $namaFile = 'user-'.time().".".$extFile;
-            $path = $request->image->move('public/assets/img',$namaFile);
-            $user->image = $path;
-        } else {
-            $user->image = null;
-        }
 
-        $user->save();
+        if($request->role_id == 1){
+            $user = new User();
+            $user->name = $request->name;
+            $user->role_id = $request->role_id;
+            $user->phone = $phone;
+            $user->username = $validated['username'];
+            $user->email = $validated['email'];
+            $user->password = Hash::make($validated['password']);
+            $user->status = 1;
+            $user->created_at = Carbon::now()->toDateTimeString();
+            $user->updated_at = Carbon::now()->toDateTimeString();
+            if($request->hasFile('image')){
+                $extFile = $request->image->getClientOriginalExtension();
+                $namaFile = 'user-'.time().".".$extFile;
+                $path = $request->image->move('public/assets/img',$namaFile);
+                $user->image = $path;
+            } else {
+                $user->image = null;
+            }
+            $user->save();
+            $user_id = User::orderBy('id', 'DESC')->value('id');
+            DB::table('users')->where('id', $user_id)->update([
+                'admin_id' => $user_id,
+            ]);
+        } else{
+            $user = new User();
+            $user->admin_id = auth()->user()->id;
+            $user->name = $request->name;
+            $user->role_id = $request->role_id;
+            $user->phone = $phone;
+            $user->username = $validated['username'];
+            $user->email = $validated['email'];
+            $user->password = Hash::make($validated['password']);
+            $user->status = 1;
+            $user->created_at = Carbon::now()->toDateTimeString();
+            $user->updated_at = Carbon::now()->toDateTimeString();
+            if($request->hasFile('image')){
+                $extFile = $request->image->getClientOriginalExtension();
+                $namaFile = 'user-'.time().".".$extFile;
+                $path = $request->image->move('public/assets/img',$namaFile);
+                $user->image = $path;
+            } else {
+                $user->image = null;
+            }
+            $user->save();
+        }
 
         return redirect('/dashboard')->with('success','Successull! User Added');
     }
