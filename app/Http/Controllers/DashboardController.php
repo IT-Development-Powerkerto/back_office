@@ -81,6 +81,9 @@ class DashboardController extends Controller
         //      ->get()->toHuman('{days} days, {hours} hours and {minutes} minutes');
 
         $x = auth()->user();
+        if($x->admin_id == 1){
+            return redirect(route('superadmin.index'));
+        }
         if($x->role_id == 4){
             return redirect(route('advDashboard'));
         }
