@@ -19,6 +19,7 @@ use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\ProductController;
 use App\Events\MessageCreated;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,11 +96,12 @@ Route::delete('campaign/{campaign}/{operator}', [OperatorController::class, 'des
 
 Route::resource('operator', OperatorController::class)->middleware('auth');
 
-
+Route::get('dashboard/export-csv', [TaskController::class, 'export_csv'])->name('export-csv');
 Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
     return response()->json($roles);
 });
+Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead');
 Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('blog', [

@@ -19,7 +19,10 @@
 													<input class="form-control mt-0" name="date_filter" id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
 												</div>
 												</form>
-												
+												<form action="{{ route('export-lead')}}" method="GET">
+													<button type="submit">Export</button>
+												</form>
+												{{--  <span data-href="{{ route('export-csv')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span>  --}}
 												<form action="#" method="GET" class="d-flex">
 													<input class="form-control mt-0" name="search" id="searchlead" type="text" placeholder="Search" aria-label="Search" style="height: 33px;">
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
@@ -163,3 +166,9 @@
 										<!--begin::Body-->
 									</div>
 									<!--end::Tables Widget 9-->
+									{{--  <script>
+										function exportTasks(_this) {
+											let _url = $(_this).data('href');
+											window.location.href = _url;
+										}
+									</script>  --}}

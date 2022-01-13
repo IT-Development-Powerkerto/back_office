@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LeadsExport;
 use App\Models\Client;
 use App\Models\Lead;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LeadController extends Controller
 {
@@ -121,5 +123,12 @@ class LeadController extends Controller
         $client->delete();
         DB::table('products')->whereid($lead->product_id)->decrement('lead');
         return redirect('/dashboard')->with('success','Successull! Lead Deleted');
+    }
+    public function export() 
+    {
+        $headers = [
+            'advertiser'
+        ];
+        return Excel::download(new LeadsExport, 'leads.xlsx', 'Xlsx', ['advertiser']);
     }
 }
