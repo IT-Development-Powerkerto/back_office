@@ -14,10 +14,11 @@
 													<i class="fas fa-chart-line"></i>
 												</span>
 												<!--end::Svg Icon-->Detail</a>
-												
+												<form action="/dashboard" method="GET" class="d-flex">
 												<div class="me-2">
-													<input class="form-control mt-0" name="search" id="searchlead" type="date" placeholder="Search" aria-label="Search" style="height: 33px;">
+													<input class="form-control mt-0" name="date_filter" id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
 												</div>
+												</form>
 												
 												<form action="#" method="GET" class="d-flex">
 													<input class="form-control mt-0" name="search" id="searchlead" type="text" placeholder="Search" aria-label="Search" style="height: 33px;">
@@ -153,7 +154,8 @@
 													</tbody>
 													<!--end::Table body-->
 												</table>
-												{{ $leads->links() }}
+												{{--  {{ $leads->links() }}  --}}
+												{{ $leads->appends(Request::all())->links() }}
 												<!--end::Table-->
 											</div>
 											<!--end::Table container-->

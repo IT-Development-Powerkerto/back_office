@@ -121,23 +121,25 @@ class FbPController extends Controller
             // ambil text untuk dikirim ke WA
             $text = Campaign::where('id', $campaign_id)->value('customer_to_cs');
             // ambil nomer WA CS
-            $wa = DB::table('operators')
-                ->leftJoin('users', 'operators.user_id', '=', 'users.id')
+            $wa = DB::table('operators as o')
+                ->leftJoin('users', 'o.user_id', '=', 'users.id')
                 ->leftJoin('closing_rates as cr', 'cr.user_id', '=', 'users.id')
                 ->where('campaign_id', $campaign_id)
+                ->where('o.deleted_at', null)
                 ->select('users.phone')
                 ->orderByDesc('month_closing_rate')
                 ->get();
             // menghitung jumlah operator tiap campaign
             $operator_count = DB::table('operators')
                 ->leftJoin('users', 'operators.user_id', '=', 'users.id')
+                ->where('operators.deleted_at', null)
                 ->where('campaign_id', $campaign_id)
                 ->count();
 
             // menghitung jumlah click tombol WA
             $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter');
             // rotasi nomer WA
-            if($counter == $operator_count-1){
+            if($counter >= $operator_count-1){
                 DB::table('distribution_counters')
                 ->where('campaign_id', $campaign_id)
                 ->update([
@@ -147,10 +149,10 @@ class FbPController extends Controller
             }else{
                 DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
             }
-            $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->value('id');
-            $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id');
-            $operator_name = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('name');
-            $product_name = DB::table('products')->where('id', $product_id)->value('name');
+            $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->where('deleted_at', null)->value('id');
+            $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('deleted_at', null)->where('user_id', $user_id)->value('id');
+            $operator_name = DB::table('operators')->where('campaign_id', $campaign_id)->where('deleted_at', null)->where('user_id', $user_id)->value('name');
+            $product_name = DB::table('products')->where('id', $product_id)->where('deleted_at', null)->value('name');
             $lead = new Lead();
             $lead->admin_id = $admin_id;
             $lead->advertiser = $adv_name;
@@ -163,8 +165,8 @@ class FbPController extends Controller
             $lead->status_id = 3;
             $lead->save();
 
-            DB::table('products')->whereid($product_id)->increment('lead');
-            $data_lead = DB::table('leads')->get();
+            DB::table('products')->whereid($product_id)->where('deleted_at', null)->increment('lead');
+            $data_lead = DB::table('leads')->where('deleted_at', null)->get();
 
             $options = array(
                         'cluster' => env('PUSHER_APP_CLUSTER'),
@@ -180,15 +182,15 @@ class FbPController extends Controller
             $data['message'] = $data_lead;
             $pusher->trigger('message-channel', 'App\\Events\\MessageCreated', $data);
 
-            $message = Campaign::where('id', $campaign_id)->value('message');
+            $message = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('message');
             // return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
             // return redirect('http://orderku.site/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
             // $url = 'orderku.site/'..'/'.'/'.$message;
             $wa_text = str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text);
             $wa_number = $wa[$counter]->phone;
-            $FU_text = Campaign::where('id', $campaign_id)->value('cs_to_customer');
+            $FU_text = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('cs_to_customer');
 
-            $cs_email = DB::table('users')->where('phone', $wa[$counter]->phone)->value('email');
+            $cs_email = DB::table('users')->where('phone', $wa[$counter]->phone)->where('deleted_at', null)->value('email');
             return Redirect::route('send', [
                 'email' => $cs_email,
                 'number' => $wa_number,
@@ -211,32 +213,34 @@ class FbPController extends Controller
         $clients->save();
 
         // ambil text untuk dikirim ke WA
-        $text = Campaign::where('id', $campaign_id)->value('customer_to_cs');
+        $text = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('customer_to_cs');
         // ambil nomer WA CS
-        $wa = DB::table('operators')
-            ->leftJoin('users', 'operators.user_id', '=', 'users.id')
+        $wa = DB::table('operators as o')
+            ->leftJoin('users', 'o.user_id', '=', 'users.id')
             ->leftJoin('closing_rates as cr', 'cr.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
             ->where('users.status', 1)
+            ->where('o.deleted_at', null)
             ->select('users.phone')
             ->orderByDesc('month_closing_rate')
             ->get();
 
-        $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
-        $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
-        $product_price = DB::table('products')->where('id', $product_id)->value('price');
+        $adv_id = DB::table('campaigns')->where('id', $campaign_id)->where('deleted_at', null)->value('user_id');
+        $adv_name = DB::table('users')->where('id', $adv_id)->where('deleted_at', null)->value('name');
+        $product_price = DB::table('products')->where('id', $product_id)->where('deleted_at', null)->value('price');
 
         // menghitung jumlah operator tiap campaign
         $operator_count = DB::table('operators')
             ->leftJoin('users', 'operators.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
+            ->where('operators.deleted_at', null)
             ->where('users.status', 1)
             ->count();
 
         // menghitung jumlah click tombol WA
         $counter = DB::table('distribution_counters')->where('campaign_id', $campaign_id)->value('counter');
         // rotasi nomer WA
-        if($counter == $operator_count-1){
+        if($counter >= $operator_count-1){
             DB::table('distribution_counters')
             ->where('campaign_id', $campaign_id)
             ->update([
@@ -246,10 +250,10 @@ class FbPController extends Controller
         }else{
             DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
         }
-        $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->where('status', 1)->value('id');
-        $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('id');
-        $operator_name = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->value('name');
-        $product_name = DB::table('products')->where('id', $product_id)->value('name');
+        $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->where('status', 1)->where('deleted_at', null)->value('id');
+        $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->where('deleted_at', null)->value('id');
+        $operator_name = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->where('deleted_at', null)->value('name');
+        $product_name = DB::table('products')->where('id', $product_id)->where('deleted_at', null)->value('name');
         DB::table('leads')->insert([
             'admin_id'   => $admin_id,
             'advertiser' => $adv_name,
@@ -263,8 +267,8 @@ class FbPController extends Controller
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
-        DB::table('products')->whereid($product_id)->increment('lead');
-        $data_lead = DB::table('leads')->get();
+        DB::table('products')->whereid($product_id)->where('deleted_at', null)->increment('lead');
+        $data_lead = DB::table('leads')->where('deleted_at', null)->get();
 
         $options = array(
                     'cluster' => env('PUSHER_APP_CLUSTER'),
