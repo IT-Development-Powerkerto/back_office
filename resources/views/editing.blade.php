@@ -351,7 +351,7 @@
 										</div>
 										{{-- @can('change-role') --}}
 
-										
+
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputRole" class="col-form-label">Role</label>
@@ -361,7 +361,11 @@
 													<select name="role_id" id="role_id1" class="form-control">
 														<option selected value="{{ $user->role_id }}" hidden>{{$user->role->name}}</option>
 														@foreach ($roles as $role)
-														<option value="{{ $role->id }}">{{$role->name}}</option>
+                                                            @if (auth()->user()->admin_id != 1)
+                                                                <option value={{$role->id == 1}} hidden>{{$role->name}}</option>
+                                                            @else
+                                                                <option value={{$role->id}}>{{$role->name}}</option>
+                                                            @endif
 														@endforeach
 													</select>
 												@else
@@ -375,7 +379,7 @@
 											<div class="col-2">
 												<label for="inputimage" class="col-form-label">Image</label>
 											</div>
-											
+
 											<div class="dropdown col-10">
 												<div class="mb-3">
 													<input class="form-control" value="{{ old('image') ?? $user->image }}" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
