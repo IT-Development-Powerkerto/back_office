@@ -46,14 +46,14 @@ class DashboardController extends Controller
             ->join('clients as c', 'l.client_id', '=', 'c.id')
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
             ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-            ->where('l.admin_id', auth()->user()->admin_id)
+            ->where('l.admin_id', auth()->user()->admin_id)->orWhere('l.admin_id', auth()->user()->id)
             // ->where('l.updated_at', $day)
             ->orderByDesc('l.id')
             ->paginate(5);
             // dd($leads);
-        $client = Client::where('admin_id', auth()->user()->admin_id)->get();
-        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
-        $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
+        $client = Client::where('admin_id', auth()->user()->admin_id)->orWhere('admin_id', auth()->user()->id)->get();
+        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->orWhere('admin_id', auth()->user()->id)->get();
+        $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->orWhere('admin_id', auth()->user()->id)->pluck('lead');
         // dd($leads);
 
         // $now = DB::table('leads')->value('created_at');
@@ -110,27 +110,53 @@ class DashboardController extends Controller
         } else{
             $phone = $validated['phone'];
         }
-        $user = new User();
-        $user->admin_id = auth()->user()->id;
-        $user->name = $request->name;
-        $user->role_id = $request->role_id;
-        $user->phone = $phone;
-        $user->username = $validated['username'];
-        $user->email = $validated['email'];
-        $user->password = Hash::make($validated['password']);
-        $user->status = 1;
-        $user->created_at = Carbon::now()->toDateTimeString();
-        $user->updated_at = Carbon::now()->toDateTimeString();
-        if($request->hasFile('image')){
-            $extFile = $request->image->getClientOriginalExtension();
-            $namaFile = 'user-'.time().".".$extFile;
-            $path = $request->image->move('public/assets/img',$namaFile);
-            $user->image = $path;
-        } else {
-            $user->image = null;
-        }
 
-        $user->save();
+        if($request->role_id == 1){
+            $user = new User();
+            $user->name = $request->name;
+            $user->role_id = $request->role_id;
+            $user->phone = $phone;
+            $user->username = $validated['username'];
+            $user->email = $validated['email'];
+            $user->password = Hash::make($validated['password']);
+            $user->status = 1;
+            $user->created_at = Carbon::now()->toDateTimeString();
+            $user->updated_at = Carbon::now()->toDateTimeString();
+            if($request->hasFile('image')){
+                $extFile = $request->image->getClientOriginalExtension();
+                $namaFile = 'user-'.time().".".$extFile;
+                $path = $request->image->move('public/assets/img',$namaFile);
+                $user->image = $path;
+            } else {
+                $user->image = null;
+            }
+            $user->save();
+            $user_id = User::orderBy('id', 'DESC')->value('id');
+            DB::table('users')->where('id', $user_id)->update([
+                'admin_id' => $user_id,
+            ]);
+        } else{
+            $user = new User();
+            $user->admin_id = auth()->user()->id;
+            $user->name = $request->name;
+            $user->role_id = $request->role_id;
+            $user->phone = $phone;
+            $user->username = $validated['username'];
+            $user->email = $validated['email'];
+            $user->password = Hash::make($validated['password']);
+            $user->status = 1;
+            $user->created_at = Carbon::now()->toDateTimeString();
+            $user->updated_at = Carbon::now()->toDateTimeString();
+            if($request->hasFile('image')){
+                $extFile = $request->image->getClientOriginalExtension();
+                $namaFile = 'user-'.time().".".$extFile;
+                $path = $request->image->move('public/assets/img',$namaFile);
+                $user->image = $path;
+            } else {
+                $user->image = null;
+            }
+            $user->save();
+        }
 
         return redirect('/dashboard')->with('success','Successull! User Added');
     }

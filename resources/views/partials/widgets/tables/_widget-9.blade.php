@@ -102,8 +102,13 @@
 																	</div>
 																	<div class="dropdown col-10">
 																		<select name="role_id" id="role_id" class="form-control">
+                                                                            <option hidden>Select Role</option>
 																			@foreach ($role as $role)
-																			<option value={{$role->id}}>{{$role->name}}</option>
+                                                                                @if (auth()->user()->admin_id != 1)
+                                                                                    <option value={{$role->id == 1}} hidden>{{$role->name}}</option>
+                                                                                @else
+                                                                                    <option value={{$role->id}}>{{$role->name}}</option>
+                                                                                @endif
 																			@endforeach
 																		</select>
 																	</div>
@@ -154,7 +159,7 @@
 																		@if(is_null($user->image))
 																		<img src="/assets/img/default.jpg" width="100px" alt="" />
 																		@else
-																		
+
 																		<img src="{{$user->image}}" width="100px" alt="" />
 																		@endif
 																	</div>

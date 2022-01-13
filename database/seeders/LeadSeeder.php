@@ -20,7 +20,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=268; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Hanif',
                 'operator_id' => 1,
                 'campaign_id' => 1,
@@ -37,7 +37,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 1,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -70,7 +70,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=175; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Hanif',
                 'operator_id' => 2,
                 'campaign_id' => 1,
@@ -87,7 +87,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 1,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -120,7 +120,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=200; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Hanif',
                 'operator_id' => 4,
                 'campaign_id' => 1,
@@ -137,7 +137,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 1,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -170,7 +170,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=209; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Hanif',
                 'operator_id' => 5,
                 'campaign_id' => 1,
@@ -187,7 +187,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 1,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -220,7 +220,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=193; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Hanif',
                 'operator_id' => 6,
                 'campaign_id' => 1,
@@ -237,7 +237,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 1,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -270,7 +270,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=230; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Hanif',
                 'operator_id' => 7,
                 'campaign_id' => 2,
@@ -287,7 +287,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 2,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -312,7 +312,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=2; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Hanif',
                 'operator_id' => 8,
                 'campaign_id' => 2,
@@ -329,7 +329,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 2,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -354,7 +354,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=75; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Hanif',
                 'operator_id' => 9,
                 'campaign_id' => 2,
@@ -371,7 +371,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 2,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -404,7 +404,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=2; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Hanif',
                 'operator_id' => 13,
                 'campaign_id' => 3,
@@ -421,7 +421,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 3,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -454,7 +454,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=30; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Rifan',
                 'operator_id' => 15,
                 'campaign_id' => 4,
@@ -471,7 +471,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 4,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -496,7 +496,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=193; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Rifan',
                 'operator_id' => 18,
                 'campaign_id' => 5,
@@ -513,7 +513,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 5,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -546,7 +546,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=101; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Awal',
                 'operator_id' => 20,
                 'campaign_id' => 6,
@@ -563,7 +563,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 6,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -596,7 +596,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=250; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Awal',
                 'operator_id' => 22,
                 'campaign_id' => 7,
@@ -613,7 +613,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 7,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -646,7 +646,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=227; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Jihad',
                 'operator_id' => 23,
                 'campaign_id' => 8,
@@ -663,7 +663,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 8,
                 'name'          => null,
                 'whatsapp'      => null,
@@ -696,7 +696,7 @@ class LeadSeeder extends Seeder
         for ($i=1; $i<=174; $i++){
             $lead = [
                 [
-                'admin_id'        => 1,
+                'admin_id'    => 2,
                 'advertiser'  => 'Isnan',
                 'operator_id' => 24,
                 'campaign_id' => 9,
@@ -713,7 +713,7 @@ class LeadSeeder extends Seeder
             ];
             $client = [
                 [
-                'admin_id'        => 1,
+                'admin_id'      => 2,
                 'campaign_id'   => 9,
                 'name'          => null,
                 'whatsapp'      => null,
