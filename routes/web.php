@@ -62,6 +62,8 @@ Route::post('/register',[RegisterController::class, 'store']);
 //Route::get('/dashboard', function () { return view('dashboard'); })->middleware('auth');
 
 Route::resource('/superadmin', SuperAdminController::class)->middleware('auth');
+Route::post('/update/aktive/{user}', [SuperAdminController::class, 'updateAktive'])->name('updateAktive');
+Route::post('/update/nonaktive/{user}', [SuperAdminController::class, 'updateNonAktive'])->name('updateNonAktive');
 
 Route::get('/dashboard/blog/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/blog', DashboardPostController::class)->middleware('auth');

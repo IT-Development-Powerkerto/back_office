@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -23,8 +24,14 @@ class LoginController extends Controller
         if(Auth::attempt(['username' => $data['username'], 'password' => $data['password']])) {
             $role_id = auth()->user()->role_id;
             $admin_id = auth()->user()->admin_id;
+            $exp = auth()->user()->exp;
 
-            if ($admin_id == 1){
+            if ($exp == 0){
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                dd('Beli bgsd');
+            }
+            elseif($admin_id == 1){
                 $request->session()->regenerate();
                 return redirect('/superadmin');
             }

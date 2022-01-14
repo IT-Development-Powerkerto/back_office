@@ -80,4 +80,7 @@ class User extends Authenticatable
     public function upselling(){
         return $this->hasMany(Upselling::class);
     }
+    public function paket(){
+        return $this->belongsTo(Paket::class);
+    }
 }
