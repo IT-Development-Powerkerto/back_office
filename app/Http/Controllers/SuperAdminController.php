@@ -50,7 +50,15 @@ class SuperAdminController extends Controller
         //     ->paginate(5);
         //     // dd($leads);
         // }
+        $day = Carbon::now()->format('Y-m-d');
         $user = User::where('role_id', 1)->get();
+        $user_expired = User::where('role_id', 1)->value('expired_at');
+        if($day >= $user_expired){
+            DB::table('users')->where('expired_at', $day)->update([
+                'exp' => 0,
+                'expired_at' => $day,
+            ]);
+        }
         return view('SuperAdmin')->with('user', $user);
     }
 
@@ -160,16 +168,19 @@ class SuperAdminController extends Controller
     }
 
     public function updateAktive($user){
-        DB::table('users')->where('id', $user)->update([
+        DB::table('users')->where('admin_id', $user)->update([
             'exp' => 1,
+            'expired_at' => date('Y-m-d', strtotime('+1 month')),
         ]);
 
         return redirect('/superadmin');
     }
 
     public function updateNonAktive($user){
-        DB::table('users')->where('id', $user)->update([
+        $day = Carbon::now()->format('Y-m-d');
+        DB::table('users')->where('admin_id', $user)->update([
             'exp' => 0,
+            'expired_at' => $day,
         ]);
 
         return redirect('/superadmin');

@@ -33,75 +33,84 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->date_filter){
-            // dd($request->date_filter);
-            $day = Carbon::parse($request->date_filter)->format('Y-m-d');
-
-            // dd($day);
-            $leads = DB::table('leads as l')
-            ->join('operators as o', 'l.operator_id', '=', 'o.id')
-            ->join('products as p', 'l.product_id', '=', 'p.id' )
-            ->join('statuses as s', 'l.status_id', '=', 's.id')
-            ->join('clients as c', 'l.client_id', '=', 'c.id')
-            ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-            ->where('l.admin_id', auth()->user()->admin_id)
-            ->where('l.updated_at', $day)
-            ->orderByDesc('l.id')
-            ->paginate(5);
-        } else {
-            $day = Carbon::now()->format('Y-m-d');
-            $leads = DB::table('leads as l')
-            ->join('operators as o', 'l.operator_id', '=', 'o.id')
-            ->join('products as p', 'l.product_id', '=', 'p.id' )
-            ->join('statuses as s', 'l.status_id', '=', 's.id')
-            ->join('clients as c', 'l.client_id', '=', 'c.id')
-            ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-            ->where('l.admin_id', auth()->user()->admin_id)
-            ->where('l.updated_at', $day)
-            ->orderByDesc('l.id')
-            ->paginate(5);
-            // dd($leads);
-        }
-        $users = User::where('admin_id', auth()->user()->admin_id)->get();
-        $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
-        if (auth()->user()->admin_id == 1){
-            $roles = Role::all();
-        }
-        else {
-            $roles = Role::where('id', '!=', 1)->get();
-        }
-
-        $icons = Icon::all();
-        $products = Product::where('admin_id', auth()->user()->admin_id)->get();
-
-
-        $client = Client::where('admin_id', auth()->user()->admin_id)->get();
-        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
-        $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
-        // dd($leads);
-
-        // $now = DB::table('leads')->value('created_at');
-        // $countdown = Countdown::from($now)
-        //      ->to($now->copy()->addYears(5))
-        //      ->get()->toHuman('{days} days, {hours} hours and {minutes} minutes');
-
-        $x = auth()->user();
-        if($x->admin_id == 1){
-            return redirect(route('superadmin.index'));
-        }
-        if($x->role_id == 4){
-            return redirect(route('advDashboard'));
-        }
-        if($x->role_id == 5){
-            return redirect(route('csDashboard'));
+        $day = Carbon::now()->format('Y-m-d');
+        $user_expired = auth()->user()->expired_at;
+        if($day >= $user_expired){
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect('/');
         }
         else{
+            if($request->date_filter){
+                // dd($request->date_filter);
+                $day = Carbon::parse($request->date_filter)->format('Y-m-d');
 
-            return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('client', $client)->with('day', $day);
-            // ->with('countdown', $countdown);
+                // dd($day);
+                $leads = DB::table('leads as l')
+                ->join('operators as o', 'l.operator_id', '=', 'o.id')
+                ->join('products as p', 'l.product_id', '=', 'p.id' )
+                ->join('statuses as s', 'l.status_id', '=', 's.id')
+                ->join('clients as c', 'l.client_id', '=', 'c.id')
+                ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+                ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+                ->where('l.admin_id', auth()->user()->admin_id)
+                ->where('l.updated_at', $day)
+                ->orderByDesc('l.id')
+                ->paginate(5);
+            } else {
+                $day = Carbon::now()->format('Y-m-d');
+                $leads = DB::table('leads as l')
+                ->join('operators as o', 'l.operator_id', '=', 'o.id')
+                ->join('products as p', 'l.product_id', '=', 'p.id' )
+                ->join('statuses as s', 'l.status_id', '=', 's.id')
+                ->join('clients as c', 'l.client_id', '=', 'c.id')
+                ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+                ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+                ->where('l.admin_id', auth()->user()->admin_id)
+                ->where('l.updated_at', $day)
+                ->orderByDesc('l.id')
+                ->paginate(5);
+                // dd($leads);
+            }
+            $users = User::where('admin_id', auth()->user()->admin_id)->get();
+            $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
+            if (auth()->user()->admin_id == 1){
+                $roles = Role::all();
+            }
+            else {
+                $roles = Role::where('id', '!=', 1)->get();
+            }
+
+            $icons = Icon::all();
+            $products = Product::where('admin_id', auth()->user()->admin_id)->get();
+
+
+            $client = Client::where('admin_id', auth()->user()->admin_id)->get();
+            $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
+            $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
+            // dd($leads);
+
+            // $now = DB::table('leads')->value('created_at');
+            // $countdown = Countdown::from($now)
+            //      ->to($now->copy()->addYears(5))
+            //      ->get()->toHuman('{days} days, {hours} hours and {minutes} minutes');
+
+            $x = auth()->user();
+            if($x->admin_id == 1){
+                return redirect(route('superadmin.index'));
+            }
+            if($x->role_id == 4){
+                return redirect(route('advDashboard'));
+            }
+            if($x->role_id == 5){
+                return redirect(route('csDashboard'));
+            }
+            else{
+
+                return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
+                ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('client', $client)->with('day', $day);
+                // ->with('countdown', $countdown);
+            }
         }
     }
 

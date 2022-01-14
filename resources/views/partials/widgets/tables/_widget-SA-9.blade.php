@@ -74,7 +74,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium fs-6">Created At</label>
+																	<label class="text-dark fw-medium fs-6">null</label>
 																</div>
 															</td>
 															<td class="text-end">
