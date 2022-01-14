@@ -49,50 +49,26 @@
 
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
-<<<<<<< HEAD
-																		<a href="#" class="text-dark fw-medium fs-6">Zall</a>
-=======
 																		<a href="#" class="text-dark fw-medium text-hover-primary fs-6">Adm-{{$user->id}}</a>
->>>>>>> d8af8447caadb647656cfc27bd354368823e83b1
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-<<<<<<< HEAD
-																	<label class="text-dark fw-medium fs-6">Zall@zall.com</label>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium fs-6">081245527645</label>
-																</div>
-															</td>
-															<td>
-																<label href="#" class="text-dark fw-medium d-block fs-6">Flexible Plan</label>
-															</td>
-															<td>
-																<a href="#" class="text-dark fw-medium d-block fs-6">Created At</a>
-=======
 																	<h1 class="badge badge-light-info">{{$user->name}}</h1>
 																</div>
 															</td>
 															<td>
 																<a href="#" class="text-dark fw-medium text-hover-primary d-block fs-6">{{$user->paket->name}}</a>
->>>>>>> d8af8447caadb647656cfc27bd354368823e83b1
 															</td>
 															<td class="text-end">
 																<div class="d-flex flex-column w-100 me-2">
 																	<div class="d-flex flex-stack">
-<<<<<<< HEAD
-                                                                            <span class="badge badge-light-success">Active</span>
-=======
                                                                         @if ($user->exp == 1)
                                                                             <span class="badge badge-light-success">Aktive</span>
                                                                         @else
                                                                             <span class="badge badge-light-danger">Non-Active</span>
                                                                         @endif
->>>>>>> d8af8447caadb647656cfc27bd354368823e83b1
 																	</div>
 																</div>
 															</td>

@@ -52,7 +52,7 @@
                                                         @foreach ($lead as $lead)
 														<tr>
 															<td>
-<<<<<<< HEAD
+
 																<div class="d-flex align-items-center justify-content-start">
 																	<h1 class="text-dark fw-normal fs-6">1</h1>
 																</div>
@@ -70,14 +70,14 @@
 															<td>
 																<div class="d-flex align-items-center justify-content-center">
 																	<h1 class="text-dark fw-normal fs-6" href="#">081245527645</h1>
-=======
+
 																<div class="d-flex align-items-center">
 																	<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
 																</div>
 															</td>
                                                             <td>
 																<div class="d-flex align-items-center">
-<<<<<<< HEAD
+
 																	<h1 class="text-dark fw-normal fs-6">Ord-{{$lead->id}}</h1>
 																</div>
 															</td>
@@ -89,9 +89,9 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<h1 class="text-dark fw-normal fs-6">{{$lead->operator_name}}</h1>
-=======
+
 																	<h1 class="text-dark fw-normal fs-6">Admin Zall</h1>
->>>>>>> 54fd236ef34b65d521d7d8e628341f6cd2796d11
+
 																</div>
 															</td>
 															<td>
@@ -104,7 +104,7 @@
 																	{{--  <h1 class="text-dark fw-normal fs-6">{{$lead->client_wa}}</h1>  --}}
 																	{{--  <a class="text-dark fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->no_wa}}&text={{ $lead->text }}">{{$lead->no_wa}}</a>  --}}
 																	<a class="text-primary fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_wa}}&text={{ str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($lead->client_name, $lead->client_wa, $lead->operator_name, $lead->product_name), $lead->text) }}">{{$lead->client_wa}}</a>
->>>>>>> d8af8447caadb647656cfc27bd354368823e83b1
+
 																</div>
 															</td>
 															<td>
