@@ -24,7 +24,10 @@
 														<tr class="fw-bolder text-muted">
 															<th class="">Admin ID</th>
 															<th class="">Admin Name</th>
+															<th class="">Email</th>
+															<th class="">No Whatsapp</th>
 															<th class="">Packet</th>
+															<th class="">Date/Time</th>
 															<th class="">Status</th>
                                                             <th class="text-end">Actions</th>
 														</tr>
@@ -34,6 +37,11 @@
 													<tbody>
                                                         @foreach ($user as $user)
 														<tr>
+															<td>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">Adm-1</label>
+																</div>
+															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="symbol symbol-45px me-5 image-size">
