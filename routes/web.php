@@ -100,7 +100,6 @@ Route::delete('campaign/{campaign}/{operator}', [OperatorController::class, 'des
 
 Route::resource('operator', OperatorController::class)->middleware('auth');
 
-Route::get('dashboard/export-csv', [TaskController::class, 'export_csv'])->name('export-csv');
 Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
     return response()->json($roles);
