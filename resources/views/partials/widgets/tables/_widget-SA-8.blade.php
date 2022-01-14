@@ -58,21 +58,7 @@
 															</td>
                                                             <td>
 																<div class="d-flex align-items-center">
-<<<<<<< HEAD
-																	<h1 class="text-dark fw-normal fs-6">Ord-{{$lead->id}}</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->advertiser}}</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->operator_name}}</h1>
-=======
-																	<h1 class="text-dark fw-normal fs-6">Admin Zall</h1>
->>>>>>> 54fd236ef34b65d521d7d8e628341f6cd2796d11
+																	<h1 class="text-dark fw-normal fs-6"></h1>
 																</div>
 															</td>
 															<td>
