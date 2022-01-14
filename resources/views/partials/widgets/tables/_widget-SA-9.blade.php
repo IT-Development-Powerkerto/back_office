@@ -22,9 +22,12 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="">Admin ID</th>
 															<th class="">Admin Name</th>
+															<th class="">Admin ID</th>
+															<th class="">Email</th>
+															<th class="">No Whatsapp</th>
 															<th class="">Packet</th>
+															<th class="">Expired Date</th>
 															<th class="">Status</th>
                                                             <th class="text-end">Actions</th>
 														</tr>
@@ -37,21 +40,42 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="symbol symbol-45px me-5 image-size">
+																		@if(is_null($user->image))
 																		<img src="/assets/img/default.jpg" width="100px" alt="" />
+																		@else
 
+																		<img src="{{$user->image}}" width="100px" alt="" />
+																		@endif
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
-																		<a href="#" class="text-dark fw-medium text-hover-primary fs-6">Adm-{{$user->id}}</a>
+																		<a href="#" class="text-dark fw-medium text-hover-primary fs-6">{{$user->name}}</a>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="badge badge-light-info">{{$user->name}}</h1>
+																	<label class="text-dark fw-medium fs-6">adm-{{$user->admin_id}}</label>
 																</div>
 															</td>
 															<td>
-																<a href="#" class="text-dark fw-medium text-hover-primary d-block fs-6">{{$user->paket->name}}</a>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">{{$user->email}}</label>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">{{$user->phone}}</label>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">{{$user->paket->name}}</label>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">null</label>
+																</div>
 															</td>
 															<td class="text-end">
 																<div class="d-flex flex-column w-100 me-2">

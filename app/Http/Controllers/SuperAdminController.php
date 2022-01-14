@@ -19,37 +19,47 @@ class SuperAdminController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->date_filter){
-            // dd($request->date_filter);
-            $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+        // if($request->date_filter){
+        //     // dd($request->date_filter);
+        //     $day = Carbon::parse($request->date_filter)->format('Y-m-d');
 
-            // dd($day);
-            $lead = DB::table('leads as l')
-            ->join('operators as o', 'l.operator_id', '=', 'o.id')
-            ->join('products as p', 'l.product_id', '=', 'p.id' )
-            ->join('statuses as s', 'l.status_id', '=', 's.id')
-            ->join('clients as c', 'l.client_id', '=', 'c.id')
-            ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-            ->where('l.updated_at', $day)
-            ->orderByDesc('l.id')
-            ->paginate(5);
-        } else {
-            $day = Carbon::now()->format('Y-m-d');
-            $lead = DB::table('leads as l')
-            ->join('operators as o', 'l.operator_id', '=', 'o.id')
-            ->join('products as p', 'l.product_id', '=', 'p.id' )
-            ->join('statuses as s', 'l.status_id', '=', 's.id')
-            ->join('clients as c', 'l.client_id', '=', 'c.id')
-            ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-            ->where('l.updated_at', $day)
-            ->orderByDesc('l.id')
-            ->paginate(5);
-            // dd($leads);
-        }
+        //     // dd($day);
+        //     $lead = DB::table('leads as l')
+        //     ->join('users as u', 'l.admin_id', '=', 'u.admin_id')
+        //     ->join('operators as o', 'l.operator_id', '=', 'o.id')
+        //     ->join('products as p', 'l.product_id', '=', 'p.id' )
+        //     ->join('statuses as s', 'l.status_id', '=', 's.id')
+        //     ->join('clients as c', 'l.client_id', '=', 'c.id')
+        //     ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+        //     ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at', 'u.name as user_name')
+        //     ->where('l.updated_at', $day)
+        //     ->orderByDesc('l.id')
+        //     ->paginate(5);
+        // } else {
+        //     $day = Carbon::now()->format('Y-m-d');
+        //     $lead = DB::table('leads as l')
+        //     ->join('users as u', 'l.admin_id', '=', 'u.admin_id')
+        //     ->join('operators as o', 'l.operator_id', '=', 'o.id')
+        //     ->join('products as p', 'l.product_id', '=', 'p.id' )
+        //     ->join('statuses as s', 'l.status_id', '=', 's.id')
+        //     ->join('clients as c', 'l.client_id', '=', 'c.id')
+        //     ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+        //     ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at', 'u.name as user_name')
+        //     ->where('l.updated_at', $day)
+        //     ->orderByDesc('l.id')
+        //     ->paginate(5);
+        //     // dd($leads);
+        // }
+        $day = Carbon::now()->format('Y-m-d');
         $user = User::where('role_id', 1)->get();
-        return view('SuperAdmin')->with('user', $user)->with('lead', $lead);
+        $user_expired = User::where('role_id', 1)->value('expired_at');
+        if($day >= $user_expired){
+            DB::table('users')->where('expired_at', $day)->update([
+                'exp' => 0,
+                'expired_at' => $day,
+            ]);
+        }
+        return view('SuperAdmin')->with('user', $user);
     }
 
     /**
@@ -158,16 +168,19 @@ class SuperAdminController extends Controller
     }
 
     public function updateAktive($user){
-        DB::table('users')->where('id', $user)->update([
+        DB::table('users')->where('admin_id', $user)->update([
             'exp' => 1,
+            'expired_at' => date('Y-m-d', strtotime('+1 month')),
         ]);
 
         return redirect('/superadmin');
     }
 
     public function updateNonAktive($user){
-        DB::table('users')->where('id', $user)->update([
+        $day = Carbon::now()->format('Y-m-d');
+        DB::table('users')->where('admin_id', $user)->update([
             'exp' => 0,
+            'expired_at' => $day,
         ]);
 
         return redirect('/superadmin');
