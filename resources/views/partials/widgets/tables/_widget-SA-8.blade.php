@@ -37,14 +37,10 @@
 													<thead>
 														<tr class="fw-medium text-muted">
 															<th class=" text-center">No</th>
-                                                            <th class=" text-center">Order ID</th>
-															<th class=" text-center">Advertiser Name</th>
-															<th class=" text-center">Operator Name</th>
+                                                            <th class=" text-center">Admin Name</th>
 															<th class=" text-center">Customer Name</th>
 															<th class=" text-center">Whatsapp Customer</th>
-															<th class=" text-center">Product Name</th>
 															<th class=" text-center">Date/Time</th>
-															<th class=" text-center">Response Time</th>
 															<th class=" text-center">Lead Progress</th>
 															<th class=" text-end">Actions</th>
 														</tr>
@@ -62,6 +58,7 @@
 															</td>
                                                             <td>
 																<div class="d-flex align-items-center">
+<<<<<<< HEAD
 																	<h1 class="text-dark fw-normal fs-6">Ord-{{$lead->id}}</h1>
 																</div>
 															</td>
@@ -73,6 +70,9 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<h1 class="text-dark fw-normal fs-6">{{$lead->operator_name}}</h1>
+=======
+																	<h1 class="text-dark fw-normal fs-6">Admin Zall</h1>
+>>>>>>> 54fd236ef34b65d521d7d8e628341f6cd2796d11
 																</div>
 															</td>
 															<td>
@@ -89,63 +89,24 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->product_name}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">Created At</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">{{$lead->client_created_at}}</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center clock{{ $lead->id }}">
-                                                                    <script>
-                                                                        window.addEventListener('load', function() {
-                                                                            var createdDate = new Date('{{$lead->client_created_at}}');
-                                                                            var updatedDate = new Date('{{$lead->client_updated_at}}');
-                                                                            var nowDate = new Date();
-                                                                            if('{{$lead->status_id == 3}}'){
-                                                                                // var futureDate = new Date(createdDate.getTime() - 0);
-                                                                                // var dif = (nowDate.getTime() - futureDate.getTime()) / 1000;
-                                                                                var dif = (nowDate.getTime() - createdDate.getTime()) / 1000;
-                                                                                var Seconds_Between_Dates = Math.abs(Math.round(dif));
-                                                                                var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
-                                                                                display = document.querySelector('.clock{{ $lead->id }}');
-                                                                                CountUpTimer(fiveMinutes{{$lead->id}}, display);
-                                                                            } else {
-                                                                                var dif = (createdDate.getTime() - updatedDate.getTime()) / 1000;
-                                                                                var Seconds_Between_Dates = Math.abs(Math.round(dif));
-                                                                                var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
-                                                                                display = document.querySelector('.clock{{ $lead->id }}');
-                                                                                StopTimer(fiveMinutes{{$lead->id}}, display);
-                                                                            }
-                                                                        });
-                                                                    </script>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal	 fs-6 badge badge-light-info">{{$lead->status}}</h1>
+																	<h1 class="text-dark fw-normal	 fs-6 badge badge-light-info">Closing 5</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
                                                                     <form action="#" method="GET">
                                                                         @csrf
-																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
-																			<div class="btn-group" role="group" aria-label="First group">
-																				<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
-																			</div>
-																		</div>
-                                                                    </form>
-                                                                    <form action="#" method="POST">
-                                                                        @csrf
-                                                                        @method('DELETE')
-																		<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-																			<div class="btn-group" role="group" aria-label="First group">
-																				<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
-																			</div>
-																		</div>
+																		<button type="button" class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Export" data-bs-toggle="modal" data-bs-target="#exampleModal">
+																			<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+																			<span class="svg-icon svg-icon-3">
+																				<i class="fas fa-chart-line"></i>
+																			</span>
+																			<!--end::Svg Icon-->Detail</button>
                                                                     </form>
 																</div>
 															</td>

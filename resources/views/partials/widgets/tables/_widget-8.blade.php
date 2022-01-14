@@ -14,16 +14,58 @@
 													<i class="fas fa-chart-line"></i>
 												</span>
 												<!--end::Svg Icon-->Detail</a>
-												<form action="/dashboard" method="GET" class="d-flex">
-												<div class="me-2">
-													<input class="form-control mt-0" name="date_filter" id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
+												<!-- Button trigger modal -->
+												<button type="button" class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Export" data-bs-toggle="modal" data-bs-target="#exampleModal">
+													<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+													<span class="svg-icon svg-icon-3">
+														<i class="las la-print" style="font-size: 18px"></i>
+													</span>
+													<!--end::Svg Icon-->Export</button>
+												
+												<!-- Modal -->
+												<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+															<h5 class="modal-title" id="exampleModalLabel">Export To Excel</h5>
+															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body">
+																<div class="row align-items-center col-12 pb-5">
+																	<div class="col-5">
+																		<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
+																	</div>
+																	<div class="col-2">
+																		<h3 class="text-center text-dark fw-bolder fs-6 pt-3">Until</h3>
+																	</div>
+																	<div class="col-5">
+																		<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
+																	</div>
+																</div>
+															</div>
+															<div class="modal-footer">
+																<form action="{{ route('export-lead')}}" method="GET">
+																	<button type="submit" class="btn btn-sm btn-primary btn-active-info me-2" title="Click For Export">
+																		<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+																		<span class="svg-icon svg-icon-3">
+																			<i class="las la-print" style="font-size: 18px"></i>
+																		</span>
+																		<!--end::Svg Icon-->Export</button>
+																</form>
+															</div>
+														</div>
+													</div>
 												</div>
+												<form action="/dashboard" method="GET" class="d-flex">
+													<div class="me-2">
+														<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
+													</div>
 												</form>
 												
-												<form action="#" method="GET" class="d-flex">
+												{{-- <form action="#" method="GET" class="d-flex">
 													<input class="form-control mt-0" name="search" id="searchlead" type="text" placeholder="Search" aria-label="Search" style="height: 33px;">
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
-												</form>
+												</form> --}}
 											</div>
 										</div>
 										<!--end::Header-->
@@ -163,3 +205,9 @@
 										<!--begin::Body-->
 									</div>
 									<!--end::Tables Widget 9-->
+									{{--  <script>
+										function exportTasks(_this) {
+											let _url = $(_this).data('href');
+											window.location.href = _url;
+										}
+									</script>  --}}
