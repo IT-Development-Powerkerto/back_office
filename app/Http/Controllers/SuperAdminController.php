@@ -163,6 +163,10 @@ class SuperAdminController extends Controller
             'paket_id'       => $request->paket_id,
         ]);
 
+        DB::table('users')->where('admin_id', $user)->update([
+            'paket_id'       => $request->paket_id,
+        ]);
+
         return redirect('/superadmin')->with('success','Successfull! Admin Updated');
     }
 
