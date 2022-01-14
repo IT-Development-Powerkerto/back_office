@@ -22,12 +22,13 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="">Admin ID</th>
 															<th class="">Admin Name</th>
+															<th class="">Admin ID</th>
 															<th class="">Email</th>
 															<th class="">No Whatsapp</th>
 															<th class="">Packet</th>
 															<th class="">Date/Time</th>
+															<th class="">Role</th>
 															<th class="">Status</th>
                                                             <th class="text-end">Actions</th>
 														</tr>
@@ -37,11 +38,6 @@
 													<tbody>
                                                         @foreach ($user as $user)
 														<tr>
-															<td>
-																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium fs-6">Adm-1</label>
-																</div>
-															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="symbol symbol-45px me-5 image-size">
@@ -55,11 +51,33 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="badge badge-light-info">{{$user->name}}</h1>
+																	<label class="text-dark fw-medium fs-6">Adm-1</label>
 																</div>
 															</td>
 															<td>
-																<a href="#" class="text-dark fw-medium text-hover-primary d-block fs-6">{{$user->paket->name}}</a>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">zall@zall.com</label>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">081245527645</label>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">Created At</label>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">{{$user->paket->name}}</label>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="badge badge-light-info">{{$user->name}}</h1>
+																</div>
 															</td>
 															<td class="text-end">
 																<div class="d-flex flex-column w-100 me-2">
