@@ -64,7 +64,10 @@
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" name="password" class="form-control rounded-pill" id="exampleInputPassword1" required>
                     </div>
-                    <button type="submit" class="btn btn-primary rounded-pill text-end">Login</button>
+                    <div class="d-flex flex-row justify-content-between align-items-center px-3">
+                        <button type="submit" class="btn btn-primary rounded-pill text-end">Login</button>
+                        <a href="/register" class="text-primary" style="text-decoration: none">Create Your Account</a>
+                    </div>
                 </form>
             </div>
             <footer>
