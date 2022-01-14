@@ -38,10 +38,10 @@
 														<tr class="fw-medium text-muted">
 															<th class=" text-center">No</th>
                                                             <th class=" text-center">Admin Name</th>
-															<th class=" text-center">Customer Name</th>
-															<th class=" text-center">Whatsapp Customer</th>
+															<th class=" text-center">Email</th>
+															<th class=" text-center">Username</th>
 															<th class=" text-center">Date/Time</th>
-															<th class=" text-center">Lead Progress</th>
+															<th class=" text-center">Total Closing</th>
 															<th class=" text-end">Actions</th>
 														</tr>
 													</thead>
@@ -51,35 +51,33 @@
                                                         <?php $n=0; ?>
 														<tr>
 															<td>
-																<div class="d-flex align-items-center">
+																<div class="d-flex align-items-center justify-content-start">
 																	<h1 class="text-dark fw-normal fs-6">1</h1>
 																</div>
 															</td>
                                                             <td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Admin Zall</h1>
+																<div class="d-flex align-items-center justify-content-center">
+																	<h1 class="text-primary fw-normal fs-6">Admin Zall</h1>
 																</div>
 															</td>
 															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-primary fw-normal fs-6 text-hover-primary">Client</h1>
+																<div class="d-flex align-items-center justify-content-center">
+																	<h1 class="text-dark fw-normal fs-6">Client</h1>
 																</div>
 															</td>
 															<td>
-																<div class="d-flex align-items-center">
-																	{{--  <h1 class="text-dark fw-normal fs-6">{{$lead->client_wa}}</h1>  --}}
-																	{{--  <a class="text-dark fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->no_wa}}&text={{ $lead->text }}">{{$lead->no_wa}}</a>  --}}
-																	<a class="text-primary fw-normal fs-6 text-hover-primary" href="#">081245527645</a>
+																<div class="d-flex align-items-center justify-content-center">
+																	<h1 class="text-dark fw-normal fs-6" href="#">081245527645</h1>
 																</div>
 															</td>
 															<td>
-																<div class="d-flex align-items-center">
+																<div class="d-flex align-items-center justify-content-center">
 																	<h1 class="text-dark fw-normal fs-6">Created At</h1>
 																</div>
 															</td>
 															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal	 fs-6 badge badge-light-info">Closing 5</h1>
+																<div class="d-flex align-items-center justify-content-center">
+																	<h1 class="text-dark fw-normal fs-6">Closing 5</h1>
 																</div>
 															</td>
 															<td>

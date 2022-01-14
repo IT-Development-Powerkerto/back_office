@@ -24,7 +24,10 @@
 														<tr class="fw-bolder text-muted">
 															<th class="">Admin ID</th>
 															<th class="">Admin Name</th>
+															<th class="">Email</th>
+															<th class="">No Whatsapp</th>
 															<th class="">Packet</th>
+															<th class="">Date/Time</th>
 															<th class="">Status</th>
                                                             <th class="text-end">Actions</th>
 														</tr>
@@ -35,27 +38,40 @@
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">Adm-1</label>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
 																	<div class="symbol symbol-45px me-5 image-size">
 																		<img src="/assets/img/default.jpg" width="100px" alt="" />
 																		
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
-																		<a href="#" class="text-dark fw-medium text-hover-primary fs-6">Admin-1</a>
+																		<a href="#" class="text-dark fw-medium fs-6">Zall</a>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="badge badge-light-info">Zall</h1>
+																	<label class="text-dark fw-medium fs-6">Zall@zall.com</label>
 																</div>
 															</td>
 															<td>
-																<a href="#" class="text-dark fw-medium text-hover-primary d-block fs-6">Pay Per Leads</a>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium fs-6">081245527645</label>
+																</div>
+															</td>
+															<td>
+																<label href="#" class="text-dark fw-medium d-block fs-6">Flexible Plan</label>
+															</td>
+															<td>
+																<a href="#" class="text-dark fw-medium d-block fs-6">Created At</a>
 															</td>
 															<td class="text-end">
 																<div class="d-flex flex-column w-100 me-2">
 																	<div class="d-flex flex-stack">
-                                                                            <span class="badge badge-light-success">Aktive</span>
+                                                                            <span class="badge badge-light-success">Active</span>
 																	</div>
 																</div>
 															</td>
