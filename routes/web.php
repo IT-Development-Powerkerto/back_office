@@ -60,7 +60,7 @@ Route::resource('/register', RegisterController::class)->middleware('guest');
 
 //Route::get('/dashboard', function () { return view('dashboard'); })->middleware('auth');
 
-Route::resource('/superadmin', SuperAdminController::class)->middleware('auth');
+Route::resource('superadmin', SuperAdminController::class)->middleware('auth');
 Route::post('/update/aktive/{user}', [SuperAdminController::class, 'updateAktive'])->name('updateAktive');
 Route::post('/update/nonaktive/{user}', [SuperAdminController::class, 'updateNonAktive'])->name('updateNonAktive');
 
