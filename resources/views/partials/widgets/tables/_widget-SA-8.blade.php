@@ -75,6 +75,7 @@
 																	<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
 																</div>
 															</td>
+															{{--  --}}
                                                             <td>
 																<div class="d-flex align-items-center">
 
