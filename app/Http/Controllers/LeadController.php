@@ -8,6 +8,7 @@ use App\Models\Lead;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 
 class LeadController extends Controller
@@ -124,11 +125,11 @@ class LeadController extends Controller
         DB::table('products')->whereid($lead->product_id)->decrement('lead');
         return redirect('/dashboard')->with('success','Successull! Lead Deleted');
     }
-    public function export() 
+    public function export(Request $request) 
     {
-        $headers = [
-            'advertiser'
-        ];
-        return Excel::download(new LeadsExport, 'leads.xlsx', 'Xlsx', ['advertiser']);
+        $from_date=$request->from_date;
+        $to_date = $request->to_date;
+        // dd($from_date);
+        return Excel::download(new LeadsExport($from_date,$to_date), 'leads.xlsx', 'Xlsx', ['advertiser']);
     }
 }
