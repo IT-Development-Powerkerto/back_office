@@ -98,7 +98,7 @@ class CampaignController extends Controller
         $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
         $event = EventPixel::all();
         $eventWa = EventWa::all();
-        $product = Product::where('admin_id', auth()->user()->admin_id);
+        $product = Product::where('admin_id', auth()->user()->admin_id)->get();
         return view('EditingCampaign',['campaign' => $campaigns])->with('event', $event)->with('products', $product)->with('eventWa', $eventWa);
     }
 

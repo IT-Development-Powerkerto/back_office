@@ -104,11 +104,12 @@
 																		<select name="role_id" id="role_id" class="form-control">
                                                                             <option hidden>Select Role</option>
 																			@foreach ($role as $role)
-                                                                                @if (auth()->user()->admin_id != 1)
-                                                                                    <option value={{$role->id == 1}} hidden>{{$role->name}}</option>
+                                                                                <option value={{$role->id}}>{{$role->name}}</option>
+                                                                                {{-- @if (auth()->user()->admin_id != 1)
+                                                                                    <option value={{$role->id == 1}}>{{$role->name}}</option>
                                                                                 @else
                                                                                     <option value={{$role->id}}>{{$role->name}}</option>
-                                                                                @endif
+                                                                                @endif --}}
 																			@endforeach
 																		</select>
 																	</div>

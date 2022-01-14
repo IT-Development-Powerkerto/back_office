@@ -71,6 +71,7 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             //ClosingRateSeeder::class,
             IconSeeder::class,
+            PaketSeeder::class,
             //CampaignSeeder::class,
             //OperatorSeeder::class,
             //LeadSeeder::class,

@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Lead Tunneling</span>
-												<span class="text-muted mt-1 fw-bold fs-7">Lead</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$lead->count()}} Lead</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<a href=/ld class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Detail">
@@ -19,7 +19,7 @@
 													<input class="form-control mt-0" name="date_filter" id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
 												</div>
 												</form>
-												
+
 												<form action="#" method="GET" class="d-flex">
 													<input class="form-control mt-0" name="search" id="searchlead" type="text" placeholder="Search" aria-label="Search" style="height: 33px;">
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
@@ -49,8 +49,10 @@
 													<!--begin::Table body-->
 													<tbody>
                                                         <?php $n=0; ?>
+                                                        @foreach ($lead as $lead)
 														<tr>
 															<td>
+<<<<<<< HEAD
 																<div class="d-flex align-items-center justify-content-start">
 																	<h1 class="text-dark fw-normal fs-6">1</h1>
 																</div>
@@ -68,6 +70,41 @@
 															<td>
 																<div class="d-flex align-items-center justify-content-center">
 																	<h1 class="text-dark fw-normal fs-6" href="#">081245527645</h1>
+=======
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
+																</div>
+															</td>
+                                                            <td>
+																<div class="d-flex align-items-center">
+<<<<<<< HEAD
+																	<h1 class="text-dark fw-normal fs-6">Ord-{{$lead->id}}</h1>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->advertiser}}</h1>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">{{$lead->operator_name}}</h1>
+=======
+																	<h1 class="text-dark fw-normal fs-6">Admin Zall</h1>
+>>>>>>> 54fd236ef34b65d521d7d8e628341f6cd2796d11
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-primary fw-normal fs-6 text-hover-primary">{{$lead->client_name}}</h1>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	{{--  <h1 class="text-dark fw-normal fs-6">{{$lead->client_wa}}</h1>  --}}
+																	{{--  <a class="text-dark fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->no_wa}}&text={{ $lead->text }}">{{$lead->no_wa}}</a>  --}}
+																	<a class="text-primary fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_wa}}&text={{ str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($lead->client_name, $lead->client_wa, $lead->operator_name, $lead->product_name), $lead->text) }}">{{$lead->client_wa}}</a>
+>>>>>>> d8af8447caadb647656cfc27bd354368823e83b1
 																</div>
 															</td>
 															<td>
@@ -94,6 +131,7 @@
 																</div>
 															</td>
 														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>

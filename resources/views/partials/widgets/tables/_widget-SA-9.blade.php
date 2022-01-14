@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Admin</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Admin</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$user->count()}} Admin</span>
 											</h3>
 											<form action="#" method="GET" class="d-flex ms-2">
 												<input class="form-control mt-0" type="text" placeholder="Search" name="search" id="searchstaff" style="height: 33px;">
@@ -35,6 +35,7 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        @foreach ($user as $user)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
@@ -45,15 +46,20 @@
 																<div class="d-flex align-items-center">
 																	<div class="symbol symbol-45px me-5 image-size">
 																		<img src="/assets/img/default.jpg" width="100px" alt="" />
-																		
+
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
+<<<<<<< HEAD
 																		<a href="#" class="text-dark fw-medium fs-6">Zall</a>
+=======
+																		<a href="#" class="text-dark fw-medium text-hover-primary fs-6">Adm-{{$user->id}}</a>
+>>>>>>> d8af8447caadb647656cfc27bd354368823e83b1
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
+<<<<<<< HEAD
 																	<label class="text-dark fw-medium fs-6">Zall@zall.com</label>
 																</div>
 															</td>
@@ -67,33 +73,50 @@
 															</td>
 															<td>
 																<a href="#" class="text-dark fw-medium d-block fs-6">Created At</a>
+=======
+																	<h1 class="badge badge-light-info">{{$user->name}}</h1>
+																</div>
+															</td>
+															<td>
+																<a href="#" class="text-dark fw-medium text-hover-primary d-block fs-6">{{$user->paket->name}}</a>
+>>>>>>> d8af8447caadb647656cfc27bd354368823e83b1
 															</td>
 															<td class="text-end">
 																<div class="d-flex flex-column w-100 me-2">
 																	<div class="d-flex flex-stack">
+<<<<<<< HEAD
                                                                             <span class="badge badge-light-success">Active</span>
+=======
+                                                                        @if ($user->exp == 1)
+                                                                            <span class="badge badge-light-success">Aktive</span>
+                                                                        @else
+                                                                            <span class="badge badge-light-danger">Non-Active</span>
+                                                                        @endif
+>>>>>>> d8af8447caadb647656cfc27bd354368823e83b1
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-																	<form action="#" method="GET">
-                                                                        @csrf
-																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
-																			<div class="btn-group" role="group" aria-label="First group">
-																				<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-success  btn-icon"><i class="lar la-check-circle"></i></button>
-																			</div>
-																		</div>
-                                                                    </form>
-                                                                    <form action="#" method="POST">
-                                                                        @csrf
-                                                                        @method('DELETE')
-																		<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-																			<div class="btn-group" role="group" aria-label="First group">
-																				<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="las la-times"></i></button>
-																			</div>
-																		</div>
-                                                                    </form>
+                                                                    @if ($user->exp == 0)
+                                                                        <form action="{{ route('updateAktive', ['user'=>$user->id]) }}" method="POST">
+                                                                            @csrf
+                                                                            <div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
+                                                                                <div class="btn-group" role="group" aria-label="First group">
+                                                                                    <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-success  btn-icon"><i class="lar la-check-circle"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    @else
+                                                                        <form action="{{ route('updateNonAktive', ['user'=>$user->id]) }}" method="POST">
+                                                                            @csrf
+                                                                            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                                                                <div class="btn-group" role="group" aria-label="First group">
+                                                                                    <button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-danger  btn-icon"><i class="las la-times"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    @endif
                                                                     <form action="#" method="GET">
                                                                         @csrf
 																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
@@ -114,6 +137,7 @@
 																</div>
 															</td>
 														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>

@@ -22,6 +22,7 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class DashboardController extends Controller
 {
@@ -65,7 +66,13 @@ class DashboardController extends Controller
         }
         $users = User::where('admin_id', auth()->user()->admin_id)->get();
         $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
-        $roles = Role::all();
+        if (auth()->user()->admin_id == 1){
+            $roles = Role::all();
+        }
+        else {
+            $roles = Role::where('id', '!=', 1)->get();
+        }
+
         $icons = Icon::all();
         $products = Product::where('admin_id', auth()->user()->admin_id)->get();
 
@@ -142,6 +149,9 @@ class DashboardController extends Controller
             $user->email = $validated['email'];
             $user->password = Hash::make($validated['password']);
             $user->status = 1;
+            $user->paket_id = auth()->user()->paket_id;
+            $user->exp = auth()->user()->exp;
+            $user->remember_token = Str::random(10);
             $user->created_at = Carbon::now()->toDateTimeString();
             $user->updated_at = Carbon::now()->toDateTimeString();
             if($request->hasFile('image')){
@@ -167,6 +177,9 @@ class DashboardController extends Controller
             $user->email = $validated['email'];
             $user->password = Hash::make($validated['password']);
             $user->status = 1;
+            $user->paket_id = auth()->user()->paket_id;
+            $user->exp = auth()->user()->exp;
+            $user->remember_token = Str::random(10);
             $user->created_at = Carbon::now()->toDateTimeString();
             $user->updated_at = Carbon::now()->toDateTimeString();
             if($request->hasFile('image')){
