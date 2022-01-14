@@ -41,27 +41,31 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="symbol symbol-45px me-5 image-size">
+																		@if(is_null($user->image))
 																		<img src="/assets/img/default.jpg" width="100px" alt="" />
+																		@else
 
+																		<img src="{{$user->image}}" width="100px" alt="" />
+																		@endif
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
-																		<a href="#" class="text-dark fw-medium text-hover-primary fs-6">Adm-{{$user->id}}</a>
+																		<a href="#" class="text-dark fw-medium text-hover-primary fs-6">{{$user->name}}</a>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium fs-6">Adm-1</label>
+																	<label class="text-dark fw-medium fs-6">adm-{{$user->admin_id}}</label>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium fs-6">zall@zall.com</label>
+																	<label class="text-dark fw-medium fs-6">{{$user->email}}</label>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium fs-6">081245527645</label>
+																	<label class="text-dark fw-medium fs-6">{{$user->phone}}</label>
 																</div>
 															</td>
 															<td>
