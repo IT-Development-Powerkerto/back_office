@@ -27,8 +27,7 @@
 															<th class="">Email</th>
 															<th class="">No Whatsapp</th>
 															<th class="">Packet</th>
-															<th class="">Date/Time</th>
-															<th class="">Role</th>
+															<th class="">Expired Date</th>
 															<th class="">Status</th>
                                                             <th class="text-end">Actions</th>
 														</tr>
@@ -76,11 +75,6 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<label class="text-dark fw-medium fs-6">Created At</label>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="badge badge-light-info">{{$user->name}}</h1>
 																</div>
 															</td>
 															<td class="text-end">
