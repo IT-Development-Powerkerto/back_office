@@ -66,12 +66,12 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium fs-6">Created At</label>
+																	<label class="text-dark fw-medium fs-6">{{$user->paket->name}}</label>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium fs-6">{{$user->paket->name}}</label>
+																	<label class="text-dark fw-medium fs-6">Created At</label>
 																</div>
 															</td>
 															<td>
