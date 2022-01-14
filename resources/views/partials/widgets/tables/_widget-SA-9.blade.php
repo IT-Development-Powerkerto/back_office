@@ -27,7 +27,7 @@
 															<th class="">Email</th>
 															<th class="">No Whatsapp</th>
 															<th class="">Packet</th>
-															<th class="">Date/Time</th>
+															<th class="">Expired Date</th>
 															<th class="">Role</th>
 															<th class="">Status</th>
                                                             <th class="text-end">Actions</th>
