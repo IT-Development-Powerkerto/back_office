@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Edit Campaign</title>
+		<title>Edit Admin</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -86,7 +86,7 @@
 								<!--begin::Card body-->
 								<div class="card-body p-9">
 
-									<form action="#" method="POST">
+									<form action="{{ route('superadmin.update',['superadmin' => $admin->id]) }}" method="POST">
 										@csrf
 										@method('PATCH')
 										<div class="row align-items-center col-12 pb-5">
@@ -94,7 +94,7 @@
 												<label for="inputname" class="col-form-label">Admin Name</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="name" required value="Zall" id="inputname" class="form-control" aria-describedby="nameHelpInline">
+												<input type="text" name="name" required value="{{old('name') ?? $admin->name}}" id="inputname" class="form-control" aria-describedby="nameHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -102,7 +102,7 @@
 												<label for="inputemail" class="col-form-label">Email</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="email" required value="Zall" id="inputemail" class="form-control" aria-describedby="emailHelpInline">
+												<input type="text" name="email" required value="{{old('email') ?? $admin->email}}" id="inputemail" class="form-control" aria-describedby="emailHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -110,15 +110,7 @@
 												<label for="inputusername" class="col-form-label">Username</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="username" required value="Zall" id="inputusername" class="form-control" aria-describedby="usernameHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputpassword" class="col-form-label">Password</label>
-											</div>
-											<div class="col-10">
-												<input type="password" name="password" required value="Zall" id="inputpassword" class="form-control" aria-describedby="passwordHelpInline">
+												<input type="text" name="username" required value="{{old('username') ?? $admin->username}}" id="inputusername" class="form-control" aria-describedby="usernameHelpInline">
 											</div>
 										</div>
                                         <div class="row align-items-center col-12 pb-5">
@@ -126,29 +118,16 @@
 												<label for="inputRole" class="col-form-label">Packet</label>
 											</div>
 											<div class="dropdown col-10">
-												<select name="event_id" id="event_id" class="form-control">
-													<option value="">Entrepreneur Plan</option>
-													<option value="">Flexible Plan</option>
-													<option value="">Corporate Plan</option>
-												</select>
-											</div>
+                                                <select name="paket_id" id="paket_id" class="form-control">
+                                                    <option disable selected value="{{ $admin->paket_id }}" hidden>{{$admin->paket->name}}</option>
+                                                    @foreach ($paket as $paket)
+                                                    <option value="{{$paket->id}}" required>{{$paket->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
 										</div>
-										<div class="d-flex align-items-center flex-wrap">
-											<div class="menu-content px-5">
-												<label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success">
-													<input type="checkbox" data-id="{{ Auth()->user()->id }}" name="status" class="form-check-input w-30px h-20px toggle-class js-switch" {{ Auth()->user()->status == 1 ? 'checked' : '' }}>
-													<span class="pulse-ring ms-n1"></span>
-												</label>
-												{{-- <input type="checkbox" data-id="{{ Auth()->user()->id }}" name="status" class="js-switch" {{ Auth()->user()->status == 1 ? 'checked' : '' }}> --}}
-											</div>
-										</div>
-										<script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
-											elems.forEach(function(html) {
-												let switchery = new Switchery(html,  { size: 'small' });
-											});
-										</script>
 										{{ csrf_field() }}
-										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Campaign">
+										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Admin">
 									</form>
 								</div>
 								<!--end::Card body-->

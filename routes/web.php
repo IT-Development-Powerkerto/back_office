@@ -56,12 +56,11 @@ Route::post('/login',[LoginController::class, 'authenticate']);
 Route::post('/logout',[LoginController::class, 'logout']);
 
 
-Route::get('/register',[RegisterController::class, 'create'])->middleware('guest');
-Route::post('/register',[RegisterController::class, 'store']);
+Route::resource('/register', RegisterController::class)->middleware('guest');
 
 //Route::get('/dashboard', function () { return view('dashboard'); })->middleware('auth');
 
-Route::resource('/superadmin', SuperAdminController::class)->middleware('auth');
+Route::resource('superadmin', SuperAdminController::class)->middleware('auth');
 Route::post('/update/aktive/{user}', [SuperAdminController::class, 'updateAktive'])->name('updateAktive');
 Route::post('/update/nonaktive/{user}', [SuperAdminController::class, 'updateNonAktive'])->name('updateNonAktive');
 
