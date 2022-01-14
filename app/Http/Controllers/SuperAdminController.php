@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Paket;
 use Illuminate\Support\Str;
 
 class SuperAdminController extends Controller
@@ -141,7 +142,9 @@ class SuperAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $paket = Paket::all();
+        return view('EditingAdmin',['admin' => $user])->with('paket', $paket);
     }
 
     /**
@@ -151,9 +154,16 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user)
     {
-        //
+        DB::table('users')->where('id', $user)->update([
+            'name'           => $request->name,
+            'email'          => $request->email,
+            'username'       => $request->username,
+            'paket_id'       => $request->paket_id,
+        ]);
+
+        return redirect('/superadmin')->with('success','Successfull! Admin Updated');
     }
 
     /**
@@ -162,9 +172,10 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        // $user->delete();
+        // return redirect('/superadmin')->with('success','Successfull! Admin Deleted');
     }
 
     public function updateAktive($user){

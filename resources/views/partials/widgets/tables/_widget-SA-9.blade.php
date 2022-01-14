@@ -74,7 +74,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium fs-6">null</label>
+																	<label class="text-dark fw-medium fs-6">{{$user->expired_at}}</label>
 																</div>
 															</td>
 															<td class="text-end">
@@ -109,7 +109,7 @@
                                                                             </div>
                                                                         </form>
                                                                     @endif
-                                                                    <form action="#" method="GET">
+                                                                    <form action="{{ route('superadmin.edit',['superadmin' => $user->id]) }}" method="GET">
                                                                         @csrf
 																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																			<div class="btn-group" role="group" aria-label="First group">
@@ -117,7 +117,7 @@
 																			</div>
 																		</div>
                                                                     </form>
-                                                                    <form action="#" method="POST">
+                                                                    <form action="{{ route('superadmin.destroy', ['superadmin'=>$user->id]) }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
 																		<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
