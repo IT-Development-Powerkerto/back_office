@@ -81,7 +81,7 @@
 																<div class="d-flex flex-column w-100 me-2">
 																	<div class="d-flex flex-stack">
                                                                         @if ($user->exp == 1)
-                                                                            <span class="badge badge-light-success">Aktive</span>
+                                                                            <span class="badge badge-light-success">Active</span>
                                                                         @else
                                                                             <span class="badge badge-light-danger">Non-Active</span>
                                                                         @endif

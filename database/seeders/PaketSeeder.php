@@ -20,7 +20,7 @@ class PaketSeeder extends Seeder
                 'price' => 139000,
             ],
             [
-                'name'  => 'Flexible Plen',
+                'name'  => 'Flexible Plan',
                 'price' => 300,
             ],
             [
