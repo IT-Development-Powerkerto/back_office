@@ -131,7 +131,7 @@
                                                     <!--begin::Col-->
                                                     <div class="col-lg-6">
                                                         <!--begin::Option-->
-                                                        <input type="radio" class="btn-check" name="account_type" value="personal" checked="checked" id="kt_create_account_form_account_type_personal" />
+                                                        <input type="radio" class="btn-check" name="account_type" value="Entrepreneur" checked="checked" id="kt_create_account_form_account_type_personal" />
                                                         <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_personal">
                                                             <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
                                                             <span class="svg-icon svg-icon-3x me-5">
@@ -154,8 +154,8 @@
                                                     <!--begin::Col-->
                                                     <div class="col-lg-6">
                                                         <!--begin::Option-->
-                                                        <input type="radio" class="btn-check" name="account_type" value="personal" checked="checked" id="kt_create_account_form_account_type_personal" />
-                                                        <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_personal">
+                                                        <input type="radio" class="btn-check" name="account_type" value="Flexible" checked="checked" id="kt_create_account_form_account_type_flexible" />
+                                                        <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_flexible">
                                                             <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
                                                             <span class="svg-icon svg-icon-3x me-5">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -328,7 +328,7 @@
                                             <!--begin::Body-->
                                             <div class="mb-0">
                                                 <!--begin::Text-->
-                                                <div class="fs-6 text-gray-600 mb-5">Your account is being verified by admin. The verification will be sent to your email account (corp@support.com).</div>
+                                                <div class="fs-6 text-gray-600 mb-5">Your account is being verified by admin. The verification will be sent to your email account (banyumax@support.com).</div>
                                                 <!--end::Text-->
                                             </div>
                                             <!--end::Body-->
