@@ -29,7 +29,7 @@ class LoginController extends Controller
             if ($exp == 0){
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
-                dd('Beli bgsd');
+                return back()->with('error', 'sorry your account is being processed, we will notify you via email');
             }
             elseif($admin_id == 1){
                 $request->session()->regenerate();
