@@ -134,7 +134,7 @@
                                                         <!--begin::Option-->
                                                         <input type="radio" class="btn-check" name="paket_id" value="1" checked="checked" id="kt_create_account_form_account_type_personal" />
                                                         <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_personal">
-                                                            
+
                                                             <!--begin::Info-->
                                                             <span class="d-block fw-bold text-start">
                                                                 <span class="text-dark fw-bolder d-block fs-4 mb-2">Entrepreneur Plan</span>
@@ -165,7 +165,7 @@
                                                         <!--begin::Option-->
                                                         <input type="radio" class="btn-check" name="paket_id" value="3" id="kt_create_account_form_account_type_corporate" />
                                                         <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center" for="kt_create_account_form_account_type_corporate">
-                                                           
+
                                                             <!--begin::Info-->
                                                             <span class="d-block fw-bold text-start">
                                                                 <span class="text-dark fw-bolder d-block fs-4 mb-2">Corporate Plan</span>
@@ -357,7 +357,7 @@
                                             <!--end::Svg Icon--></button>
                                         </div>
                                         {{ csrf_field() }}
-                                        <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Submit">
+                                        <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Submit" data-kt-stepper-action="submit">
                                         <!--end::Wrapper-->
                                     </div>
                                     <!--end::Actions-->
