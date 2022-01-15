@@ -27,12 +27,27 @@
     <div class="content d-flex flex-column flex-column-fluid " id="kt_content">
         <!--begin::Container-->
         <div class="container-xl" id="kt_content_container">
+            @if(session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if(session()->has('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <!--begin::Card-->
             <div class="card">
                 <!--begin::Card body-->
                 <div class="card-body pb-0">
+
                     <!--begin::Heading-->
                     <div class="card-px text-center pt-20 pb-5">
+
                         <!--begin::Title-->
                         <h2 class="fs-2x fw-bolder mb-0">Create Your Account Right Here.</h2>
                         <!--end::Title-->

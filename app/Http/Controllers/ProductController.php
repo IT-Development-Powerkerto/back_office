@@ -46,6 +46,8 @@ class ProductController extends Controller
             $namaFile = 'product-'.time().".".$extFile;
             $path = $request->image->move('public/assets/img/product',$namaFile);
             $image = $path;
+        }else{
+            $image = null;
         }
 
         DB::table('products')->insert([
@@ -81,10 +83,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        {
-            $product = Product::findOrFail($id)->where('admin_id', auth()->user()->admin_id)->get();
-            return view('EditingProduct',['product' => $product]);
-        }
+        $product = Product::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
+        return view('EditingProduct',['product' => $product]);
     }
 
     /**

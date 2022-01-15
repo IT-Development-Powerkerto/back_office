@@ -75,7 +75,7 @@ class OperatorController extends Controller
             return redirect('/campaign')->with('error','Error!, Operator already exists');
         }
             DB::table('operators')->insert([
-                'admin_id'        => auth()->user()->id,
+                'admin_id'        => auth()->user()->admin_id,
                 'campaign_id'     => $id,
                 'user_id'         => $user_id,
                 'name'            => $name,

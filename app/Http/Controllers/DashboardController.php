@@ -163,6 +163,7 @@ class DashboardController extends Controller
             $user->remember_token = Str::random(10);
             $user->created_at = Carbon::now()->toDateTimeString();
             $user->updated_at = Carbon::now()->toDateTimeString();
+            $user->expired_at = auth()->user()->expired_at;
             if($request->hasFile('image')){
                 $extFile = $request->image->getClientOriginalExtension();
                 $namaFile = 'user-'.time().".".$extFile;
@@ -191,6 +192,7 @@ class DashboardController extends Controller
             $user->remember_token = Str::random(10);
             $user->created_at = Carbon::now()->toDateTimeString();
             $user->updated_at = Carbon::now()->toDateTimeString();
+            $user->expired_at = auth()->user()->expired_at;
             if($request->hasFile('image')){
                 $extFile = $request->image->getClientOriginalExtension();
                 $namaFile = 'user-'.time().".".$extFile;
@@ -254,66 +256,84 @@ class DashboardController extends Controller
     }
 
     public function adv(Request $request){
-        if($request){
-            $users = User::where('admin_id', auth()->user()->admin_id)->where('name', 'like', '%'.$request->search.'%')->get();
-        }else{
-            $users = User::where('admin_id', auth()->user()->admin_id)->get();
+        $day = Carbon::now()->format('Y-m-d');
+        $user_expired = auth()->user()->expired_at;
+        if($day >= $user_expired){
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect('/');
         }
-        $x = auth()->user();
-        if($x->role_id == 4){
-            $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
-            $roles = Role::all();
-            $icons = Icon::all();
-            $products = Product::where('admin_id', auth()->user()->admin_id)->get();
-            $leads = DB::table('leads as l')
-                ->join('operators as o', 'l.operator_id', '=', 'o.id')
-                ->join('products as p', 'l.product_id', '=', 'p.id' )
-                ->join('statuses as s', 'l.status_id', '=', 's.id')
-                ->join('clients as c', 'l.client_id', '=', 'c.id')
-                ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-                ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-                ->where('l.advertiser', $x->name)
-                ->where('l.admin_id', auth()->user()->admin_id)
-                ->orderByDesc('l.id')
-                ->paginate(5);
-            $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
-            $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
-            return view('adv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
-        }else{
-            return Redirect::back();
+        else{
+            if($request){
+                $users = User::where('admin_id', auth()->user()->admin_id)->where('name', 'like', '%'.$request->search.'%')->get();
+            }else{
+                $users = User::where('admin_id', auth()->user()->admin_id)->get();
+            }
+            $x = auth()->user();
+            if($x->role_id == 4){
+                $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
+                $roles = Role::all();
+                $icons = Icon::all();
+                $products = Product::where('admin_id', auth()->user()->admin_id)->get();
+                $leads = DB::table('leads as l')
+                    ->join('operators as o', 'l.operator_id', '=', 'o.id')
+                    ->join('products as p', 'l.product_id', '=', 'p.id' )
+                    ->join('statuses as s', 'l.status_id', '=', 's.id')
+                    ->join('clients as c', 'l.client_id', '=', 'c.id')
+                    ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+                    ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+                    ->where('l.advertiser', $x->name)
+                    ->where('l.admin_id', auth()->user()->admin_id)
+                    ->orderByDesc('l.id')
+                    ->paginate(5);
+                $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
+                $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
+                return view('adv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
+                ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+            }else{
+                return Redirect::back();
+            }
         }
     }
 
     public function cs(Request $request){
-        if($request){
-            $users = User::where('admin_id', auth()->user()->admin_id)->where('name', 'like', '%'.$request->search.'%')->get();
-        }else{
-            $users = User::where('admin_id', auth()->user()->admin_id)->get();
+        $day = Carbon::now()->format('Y-m-d');
+        $user_expired = auth()->user()->expired_at;
+        if($day >= $user_expired){
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect('/');
         }
-        $x = auth()->user();
-        if($x->role_id == 5){
-            $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
-            $roles = Role::all();
-            $icons = Icon::all();
-            $products = Product::where('admin_id', auth()->user()->admin_id)->get();
-            $leads = DB::table('leads as l')
-                ->join('operators as o', 'l.operator_id', '=', 'o.id')
-                ->join('products as p', 'l.product_id', '=', 'p.id' )
-                ->join('statuses as s', 'l.status_id', '=', 's.id')
-                ->join('clients as c', 'l.client_id', '=', 'c.id')
-                ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-                ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-                ->where('l.user_id', $x->id)
-                ->where('l.admin_id', auth()->user()->admin_id)
-                ->orderByDesc('l.id')
-                ->paginate(5);
-            $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
-            $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
-            return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-            ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
-        }else{
-            return Redirect::back();
+        else{
+            if($request){
+                $users = User::where('admin_id', auth()->user()->admin_id)->where('name', 'like', '%'.$request->search.'%')->get();
+            }else{
+                $users = User::where('admin_id', auth()->user()->admin_id)->get();
+            }
+            $x = auth()->user();
+            if($x->role_id == 5){
+                $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
+                $roles = Role::all();
+                $icons = Icon::all();
+                $products = Product::where('admin_id', auth()->user()->admin_id)->get();
+                $leads = DB::table('leads as l')
+                    ->join('operators as o', 'l.operator_id', '=', 'o.id')
+                    ->join('products as p', 'l.product_id', '=', 'p.id' )
+                    ->join('statuses as s', 'l.status_id', '=', 's.id')
+                    ->join('clients as c', 'l.client_id', '=', 'c.id')
+                    ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+                    ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+                    ->where('l.user_id', $x->id)
+                    ->where('l.admin_id', auth()->user()->admin_id)
+                    ->orderByDesc('l.id')
+                    ->paginate(5);
+                $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
+                $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
+                return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
+                ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+            }else{
+                return Redirect::back();
+            }
         }
     }
 
