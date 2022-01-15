@@ -18,6 +18,7 @@ use App\Http\Controllers\LeadController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\ProductController;
 use App\Events\MessageCreated;
+use App\Http\Controllers\BigFlipController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\SuperAdminController;
 
@@ -98,6 +99,7 @@ Route::delete('campaign/{campaign}/{operator}', [OperatorController::class, 'des
 //Route::post("/campaign", [CampaignController::class, 'addMorePost']);
 
 Route::resource('operator', OperatorController::class)->middleware('auth');
+Route::get('bigflip', [BigFlipController::class, 'index'])->middleware('auth');
 
 Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
@@ -105,6 +107,7 @@ Route::get('getRole/{id}', function ($id) {
 });
 Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead');
 Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
+Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation');
 // Route::get('/categories/{category:slug}', function(Category $category){
 //     return view('blog', [
 //         'title' => "Post By Category : $category->name",

@@ -187,7 +187,9 @@ class SuperAdminController extends Controller
             'expired_at' => date('Y-m-d', strtotime('+1 month')),
         ]);
 
-        return redirect('/superadmin');
+        // return redirect('/superadmin');
+        $email = DB::table('users')->where('admin_id', $user)->value('email'); 
+        return redirect()->route('activation', ['email' => $email]);
     }
 
     public function updateNonAktive($user){

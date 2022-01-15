@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminMail;
 use App\Mail\NotificationMail;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,5 +25,15 @@ class MailController extends Controller
         Mail::to($email)->send(new NotificationMail($details));
         return Redirect::away('http://orderku.site/'.$number.'/'.$text.'/'.$thanks);
         // dd("Email sudah terkirim.");
+    }
+    public function activation($email)
+    {
+        $email = $email;
+        $details = [
+            'title' => 'Selamat Bergabung di Banyumax.id',
+            'email' => $email
+        ];
+        Mail::to($email)->send(new AdminMail($details));
+        return redirect('/superadmin');
     }
 }
