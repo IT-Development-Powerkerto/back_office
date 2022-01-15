@@ -57,7 +57,7 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
     public function role(){
-        return $this->hasOne(Role::class);
+        return $this->belongsTo(Role::class);
     }
     public function announcement(){
         return $this->hasMany(Announcement::class);
@@ -81,9 +81,9 @@ class User extends Authenticatable
         return $this->hasMany(Upselling::class);
     }
     public function paket(){
-        return $this->hasOne(Paket::class);
+        return $this->belongsTo(Paket::class);
     }
     public function proof_of_payment(){
-        return $this->hasOne(ProofOfPayment::class);
+        return $this->belongsTo(ProofOfPayment::class);
     }
 }
