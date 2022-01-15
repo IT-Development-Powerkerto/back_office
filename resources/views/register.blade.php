@@ -3,7 +3,7 @@
   <head>
     <!-- Required meta tags -->
     <title>Pwkbackoffice</title>
-    
+
 	<link rel="icon" href="img/favicon.png">
 
 	<!--begin::Fonts-->
@@ -107,7 +107,8 @@
                                 </div>
                                 <!--end::Nav-->
                                 <!--begin::Form-->
-                                <form class="mx-auto mw-600px w-100 py-10" novalidate="novalidate" id="kt_create_account_form">
+                                <form action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data">
+
                                     <!--begin::Step 1-->
                                     <div class="current" data-kt-stepper-element="content">
                                         <!--begin::Wrapper-->
@@ -131,7 +132,7 @@
                                                     <!--begin::Col-->
                                                     <div class="col-lg-6">
                                                         <!--begin::Option-->
-                                                        <input type="radio" class="btn-check" name="account_type" value="Entrepreneur" checked="checked" id="kt_create_account_form_account_type_personal" />
+                                                        <input type="radio" class="btn-check" name="paket_id" value="1" checked="checked" id="kt_create_account_form_account_type_personal" />
                                                         <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_personal">
                                                             <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
                                                             <span class="svg-icon svg-icon-3x me-5">
@@ -154,7 +155,7 @@
                                                     <!--begin::Col-->
                                                     <div class="col-lg-6">
                                                         <!--begin::Option-->
-                                                        <input type="radio" class="btn-check" name="account_type" value="Flexible" checked="checked" id="kt_create_account_form_account_type_flexible" />
+                                                        <input type="radio" class="btn-check" name="paket_id" value="2" id="kt_create_account_form_account_type_flexible" />
                                                         <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_flexible">
                                                             <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
                                                             <span class="svg-icon svg-icon-3x me-5">
@@ -177,7 +178,7 @@
                                                     <!--begin::Col-->
                                                     <div class="col-lg-6">
                                                         <!--begin::Option-->
-                                                        <input type="radio" class="btn-check" name="account_type" value="corporate" id="kt_create_account_form_account_type_corporate" />
+                                                        <input type="radio" class="btn-check" name="paket_id" value="3" id="kt_create_account_form_account_type_corporate" />
                                                         <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center" for="kt_create_account_form_account_type_corporate">
                                                             <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                                                             <span class="svg-icon svg-icon-3x me-5">
@@ -205,7 +206,7 @@
                                         <!--end::Wrapper-->
                                     </div>
                                     <!--end::Step 1-->
-                                    
+
                                     <!--begin::Step 2-->
                                     <div data-kt-stepper-element="content">
                                         <!--begin::Wrapper-->
@@ -224,10 +225,10 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="form-label required">Full Name</label>
+                                                <label class="form-label required">Name</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input name="fullname" type="text"  class="form-control form-control-lg form-control-solid" value="Full Name" />
+                                                <input name="name" type="text"  class="form-control form-control-lg form-control-solid"/>
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -239,17 +240,17 @@
                                                 </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input name="username" type="text"  class="form-control form-control-lg form-control-solid" value="Username" />
+                                                <input name="username" type="text"  class="form-control form-control-lg form-control-solid"/>
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="fs-6 fw-bold form-label required">Contact Email</label>
+                                                <label class="fs-6 fw-bold form-label required">Email</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input name="email" type="text"  class="form-control form-control-lg form-control-solid" value="sales@banyumax.id" />
+                                                <input name="email" type="text"  class="form-control form-control-lg form-control-solid"/>
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -257,11 +258,11 @@
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
                                                 <label class="d-flex align-items-center form-label">
-                                                    <span class="required">Phone Number</span>
+                                                    <span class="required">Phone</span>
                                                 </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input name="number" type="text" class="form-control form-control-lg form-control-solid" value="Username" />
+                                                <input name="phone" type="text" class="form-control form-control-lg form-control-solid"/>
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -273,7 +274,7 @@
                                                 </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input name="number" type="password" class="form-control form-control-lg form-control-solid" />
+                                                <input name="password" type="password" class="form-control form-control-lg form-control-solid" />
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -303,7 +304,7 @@
                                                     <input class="form-control form-control-lg form-control-solid" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
                                                     <!--end::Input-->
                                                 </div>
-                                                
+
                                                 <!--end::Notice-->
                                             </div>
                                             <!--end::Heading-->
@@ -353,7 +354,8 @@
                                         <!--end::Wrapper-->
                                         <!--begin::Wrapper-->
                                         <div>
-                                            <button type="button" class="btn btn-lg btn-primary me-3" data-kt-stepper-action="submit">
+
+                                            {{-- <button type="button" class="btn btn-lg btn-primary me-3" data-kt-stepper-action="submit">
                                                 <span class="indicator-label">Submit
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                                 <span class="svg-icon svg-icon-3 ms-2 me-0">
@@ -365,7 +367,7 @@
                                                 <!--end::Svg Icon--></span>
                                                 <span class="indicator-progress">Please wait...
                                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                            </button>
+                                            </button> --}}
                                             <button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="next">Continue
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                             <span class="svg-icon svg-icon-4 ms-1 me-0">
@@ -376,6 +378,8 @@
                                             </span>
                                             <!--end::Svg Icon--></button>
                                         </div>
+                                        {{ csrf_field() }}
+                                        <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Submit">
                                         <!--end::Wrapper-->
                                     </div>
                                     <!--end::Actions-->
