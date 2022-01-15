@@ -176,10 +176,9 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        // $user->delete();
-        // return redirect('/superadmin')->with('success','Successfull! Admin Deleted');
+
     }
 
     public function updateAktive($user){
