@@ -22,7 +22,7 @@
 			<!--begin::Topbar-->
 			<div class="d-flex align-items-stretch flex-shrink-0">
 
-				@include('layout/topbar/_base')
+				@include('layout/topbar/_baseSA')
 
 			</div>
 			<!--end::Topbar-->
