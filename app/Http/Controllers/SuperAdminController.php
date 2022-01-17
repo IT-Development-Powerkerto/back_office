@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Paket;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\ProofOfPayment;
 
 class SuperAdminController extends Controller
 {
@@ -136,7 +137,10 @@ class SuperAdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $paket = Paket::all();
+        $proof = ProofOfPayment::all();
+        return view('DetailAdmin',['admin' => $user])->with('paket', $paket);
     }
 
     /**
