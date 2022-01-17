@@ -1,6 +1,6 @@
 
 									<!--begin::Tables Widget 9-->
-									<div class="card card-xxl-stretch mb-5 mb-xl-8 mt-20 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
+									<div class="card card-xxl-stretch mb-5 mb-xl-8 mt-5 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
@@ -109,9 +109,17 @@
                                                                             </div>
                                                                         </form>
                                                                     @endif
-                                                                    <form action="{{ route('superadmin.edit',['superadmin' => $user->id]) }}" method="GET">
+																	<form action="{{ route('superadmin.show',['superadmin' => $user->id]) }}" method="GET">
                                                                         @csrf
 																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
+																			<div class="btn-group" role="group" aria-label="First group">
+																				<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-info  btn-icon"><i class="las la-info-circle"></i></button>
+																			</div>
+																		</div>
+                                                                    </form>
+                                                                    <form action="{{ route('superadmin.edit',['superadmin' => $user->id]) }}" method="GET">
+                                                                        @csrf
+																		<div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
 																			<div class="btn-group" role="group" aria-label="First group">
 																				<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
 																			</div>
