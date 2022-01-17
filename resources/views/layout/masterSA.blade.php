@@ -10,7 +10,7 @@
 			@include('layout/header/_baseSA')
 
 
-			@include('layout/_toolbar')
+			@include('layout/_toolbarSA')
 
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
