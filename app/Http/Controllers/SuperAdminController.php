@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Paket;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
 
 class SuperAdminController extends Controller
 {
@@ -60,7 +61,11 @@ class SuperAdminController extends Controller
                 'expired_at' => $day,
             ]);
         }
-        return view('SuperAdmin')->with('user', $user);
+        if (auth()->user()->admin_id == 1){
+            return view('SuperAdmin')->with('user', $user);
+        }else{
+            return Redirect::back();
+        }
     }
 
     /**
@@ -188,7 +193,7 @@ class SuperAdminController extends Controller
         ]);
 
         // return redirect('/superadmin');
-        $email = DB::table('users')->where('admin_id', $user)->value('email'); 
+        $email = DB::table('users')->where('admin_id', $user)->value('email');
         return redirect()->route('activation', ['email' => $email]);
     }
 
