@@ -6,13 +6,13 @@
 		<div class="px-9 pt-7 card-rounded h-275px w-100 bg-danger">
 			<!--begin::Heading-->
 			<div class="d-flex flex-stack">
-				<h3 class="m-0 text-white fw-bolder fs-3">User Active</h3>
+				<h3 class="m-0 text-white fw-bolder fs-3">User Non-Active</h3>
 			</div>
 			<!--end::Heading-->
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
-				<span class="fw-bold fs-7">User Inactive</span>
-				<span class="fw-bolder fs-2x pt-1">0</span>
+				<span class="fw-bold fs-7">User Non-Active</span>
+				<span class="fw-bolder fs-2x pt-1">{{$user->where('exp', 0)->count()}}</span>
 			</div>
 			<!--end::Balance-->
 		</div>
@@ -46,7 +46,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">0</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$user->where('exp', 0)->where('paket_id', 1)->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -78,7 +78,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">0</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$user->where('exp', 0)->where('paket_id', 2)->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -110,7 +110,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">0</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$user->where('exp', 0)->where('paket_id', 3)->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>

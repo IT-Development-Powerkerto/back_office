@@ -46,7 +46,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-6 text-gray-800 pe-1">3.750.000</div>
+						<div class="fw-bolder fs-6 text-gray-800 pe-1">{{$paket->where('id', 1)->implode('price')*($user->where('exp', 1)->where('paket_id', 1)->count()-1)}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -78,7 +78,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-6 text-gray-800 pe-1">12.000.000</div>
+						<div class="fw-bolder fs-6 text-gray-800 pe-1">{{$all_lead->count()*$paket->where('id', 2)->implode('price')}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -110,7 +110,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-6 text-gray-800 pe-1">8.000.000</div>
+						<div class="fw-bolder fs-6 text-gray-800 pe-1">{{$paket->where('id', 3)->implode('price')*$user->where('exp', 1)->where('paket_id', 3)->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>

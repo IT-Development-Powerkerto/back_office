@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Paket;
+use App\Models\Lead;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\ProofOfPayment;
@@ -55,6 +56,9 @@ class SuperAdminController extends Controller
         // }
         $day = Carbon::now()->format('Y-m-d');
         $user = User::where('role_id', 1)->get();
+        $count_flexible = User::where('role_id', 1)->where('paket_id', 2)->value('admin_id');
+        $paket = Paket::all();
+        $all_lead = Lead::where('admin_id', $count_flexible);
         $user_expired = User::where('role_id', 1)->value('expired_at');
         if($day >= $user_expired){
             DB::table('users')->where('expired_at', $day)->update([
@@ -63,7 +67,7 @@ class SuperAdminController extends Controller
             ]);
         }
         if (auth()->user()->admin_id == 1){
-            return view('SuperAdmin')->with('user', $user);
+            return view('SuperAdmin')->with('user', $user)->with('paket', $paket)->with('all_lead', $all_lead);
         }else{
             return Redirect::back();
         }
@@ -139,8 +143,8 @@ class SuperAdminController extends Controller
     {
         $user = User::findOrFail($id);
         $paket = Paket::all();
-        $proof = ProofOfPayment::all();
-        return view('DetailAdmin',['admin' => $user])->with('paket', $paket);
+        $proof = ProofOfPayment::where('user_id', $id)->value('image');
+        return view('DetailAdmin',['admin' => $user])->with('paket', $paket)->with('proof', $proof);
     }
 
     /**
