@@ -229,7 +229,7 @@
 												<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 													Show The Proof
 												</button>
-												
+
 												<!-- Modal -->
 												<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 													<div class="modal-dialog">
@@ -239,7 +239,11 @@
 														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
 														<div class="modal-body">
-															<img src="assets/img/default.jpg" width="450px" alt="image">
+                                                            @if ($proof == null)
+                                                                <img src="assets/img/default.jpg" width="450px" alt="image">
+                                                            @else
+                                                                <img src="{{$proof}}" width="450px" alt="image">
+                                                            @endif
 														</div>
 														<div class="modal-footer">
 														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -325,7 +329,7 @@
 			});
 		</script>
 		<!--end::Javascript-->
-		
+
 	</body>
 	<!--end::Body-->
 </html>

@@ -21,12 +21,12 @@
 														<i class="las la-print" style="font-size: 18px"></i>
 													</span>
 													<!--end::Svg Icon-->Export</button>
-												
+
 												<!-- Modal -->
 												<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 													<div class="modal-dialog">
 														<div class="modal-content">
-															
+
 															<form action="{{ route('export-lead')}}" method="GET">
 																<div class="modal-header">
 																	<h5 class="modal-title" id="exampleModalLabel">Export To Excel</h5>
@@ -62,7 +62,7 @@
 														<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
 													</div>
 												</form>
-												
+
 												{{-- <form action="#" method="GET" class="d-flex">
 													<input class="form-control mt-0" name="search" id="searchlead" type="text" placeholder="Search" aria-label="Search" style="height: 33px;">
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
@@ -178,15 +178,6 @@
 																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																			<div class="btn-group" role="group" aria-label="First group">
 																				<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
-																			</div>
-																		</div>
-                                                                    </form>
-                                                                    <form action="{{ route('lead.destroy', ['lead'=>$lead->id]) }}" method="POST">
-                                                                        @csrf
-                                                                        @method('DELETE')
-																		<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-																			<div class="btn-group" role="group" aria-label="First group">
-																				<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
 																			</div>
 																		</div>
                                                                     </form>

@@ -91,15 +91,6 @@
                                                                                 </div>
                                                                             </div>
                                                                         </form>
-                                                                        <form action="{{ route('lead.destroy', ['lead'=>$lead->id]) }}" method="POST">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-                                                                                <div class="btn-group" role="group" aria-label="First group">
-                                                                                    <button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </form>
                                                                     </div>
                                                                 </td>
                                                             </tr>

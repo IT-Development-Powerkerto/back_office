@@ -150,9 +150,9 @@ class FbPController extends Controller
                 DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
             }
             $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->where('deleted_at', null)->value('id');
-            $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('deleted_at', null)->where('user_id', $user_id)->value('id');
-            $operator_name = DB::table('operators')->where('campaign_id', $campaign_id)->where('deleted_at', null)->where('user_id', $user_id)->value('name');
-            $product_name = DB::table('products')->where('id', $product_id)->where('deleted_at', null)->value('name');
+            $operator_id = DB::table('operators')->where('admin_id', $admin_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('id');
+            $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
+            $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
             $lead = new Lead();
             $lead->admin_id = $admin_id;
             $lead->advertiser = $adv_name;
@@ -247,9 +247,9 @@ class FbPController extends Controller
             DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
         }
         $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->where('status', 1)->where('deleted_at', null)->value('id');
-        $operator_id = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->where('deleted_at', null)->value('id');
-        $operator_name = DB::table('operators')->where('campaign_id', $campaign_id)->where('user_id', $user_id)->where('deleted_at', null)->value('name');
-        $product_name = DB::table('products')->where('id', $product_id)->where('deleted_at', null)->value('name');
+        $operator_id = DB::table('operators')->where('admin_id', $admin_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('id');
+        $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
+        $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
         DB::table('leads')->insert([
             'admin_id'   => $admin_id,
             'advertiser' => $adv_name,
