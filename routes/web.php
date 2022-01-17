@@ -19,9 +19,9 @@ use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\ProductController;
 use App\Events\MessageCreated;
 use App\Http\Controllers\BigFlipController;
+use App\Http\Controllers\BudgetingController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\SuperAdminController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -108,20 +108,11 @@ Route::get('getRole/{id}', function ($id) {
 Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead');
 Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
 Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation');
-// Route::get('/categories/{category:slug}', function(Category $category){
-//     return view('blog', [
-//         'title' => "Post By Category : $category->name",
-//         'active' => 'categories',
-//         'post' => $category->post->load('category','author'),
-//     ]);
-// });
-// Route::get('authors/{author:username}', function (User $author) {
-//     return view('blog', [
-//         'title' => "Post By Author : $author->name",
-//         'post' => $author->post->load('category','author'),
-//     ]);
 
-// });
+
+Route::get('/closingcs', [BudgetingController::class, 'ClosingCS'])->name('closingcs');
+Route::get('/reimbursement', [BudgetingController::class, 'Reimbursement'])->name('reimbursement');
+Route::get('/budegetingadv', [BudgetingController::class, 'budgetingADV'])->name('budgetingadv');
 
 
 
