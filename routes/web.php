@@ -105,15 +105,15 @@ Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
     return response()->json($roles);
 });
-Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead')->middleware('auth');;
+Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead')->middleware('auth');
 // Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
-Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}', [MailController::class, 'index'])->name('send');
-Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation');
+Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}', [MailController::class, 'index'])->name('send')->middleware('auth');
+Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation')->middleware('auth');
 
 
-Route::get('/closingcs', [BudgetingController::class, 'ClosingCS'])->name('closingcs');
-Route::get('/reimbursement', [BudgetingController::class, 'Reimbursement'])->name('reimbursement');
-Route::get('/budegetingadv', [BudgetingController::class, 'budgetingADV'])->name('budgetingadv');
+Route::get('/closingcs', [BudgetingController::class, 'ClosingCS'])->name('closingcs')->middleware('auth');
+Route::get('/reimbursement', [BudgetingController::class, 'Reimbursement'])->name('reimbursement')->middleware('auth');
+Route::get('/budegetingadv', [BudgetingController::class, 'budgetingADV'])->name('budgetingadv')->middleware('auth');
 
 
 
