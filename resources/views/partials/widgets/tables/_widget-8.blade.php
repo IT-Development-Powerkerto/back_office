@@ -8,7 +8,7 @@
                                             @if (auth()->user()->role_id == 1)
                                                 <span class="text-muted mt-1 fw-bold fs-7">{{$leads->total()}} Lead</span>
                                             @else
-                                                <span class="text-muted mt-1 fw-bold fs-7">{{$leads->where('advertiser', auth()->user()->name)->total()}} Lead</span>
+                                                <span class="text-muted mt-1 fw-bold fs-7">{{$leads->where('advertiser', auth()->user()->name)->count()}} Lead</span>
                                             @endif
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">

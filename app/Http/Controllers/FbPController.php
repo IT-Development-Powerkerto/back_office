@@ -166,7 +166,8 @@ class FbPController extends Controller
             $lead->save();
 
             DB::table('products')->whereid($product_id)->where('deleted_at', null)->increment('lead');
-            $data_lead = DB::table('leads')->where('deleted_at', null)->get();
+            $day = Carbon::now()->format('Y-m-d');
+            $data_lead = DB::table('leads')->where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->where('deleted_at', null)->count();
 
             $options = array(
                         'cluster' => env('PUSHER_APP_CLUSTER'),
@@ -264,7 +265,8 @@ class FbPController extends Controller
             'updated_at' => Carbon::now(),
         ]);
         DB::table('products')->whereid($product_id)->where('deleted_at', null)->increment('lead');
-        $data_lead = DB::table('leads')->where('deleted_at', null)->get();
+        $day = Carbon::now()->format('Y-m-d');
+        $data_lead = DB::table('leads')->where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->where('deleted_at', null)->count();
 
         $options = array(
                     'cluster' => env('PUSHER_APP_CLUSTER'),
