@@ -90,7 +90,7 @@
                                             <div class="dropdown col-10">
                                                 <select name="role_id" id="role_id" class="form-control">
                                                     <option hidden>Select Methode</option>
-                                                    <option value="">Manual</option>
+                                                    <option value="">Transfer</option>
                                                     <option value="">COD</option>
                                                 </select>
                                             </div>
