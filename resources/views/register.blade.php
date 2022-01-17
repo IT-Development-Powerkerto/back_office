@@ -221,7 +221,10 @@
                                                 <label class="form-label required">Name</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input name="name" type="text"  class="form-control form-control-lg form-control-solid"/>
+                                                <input name="name" type="text" value="{{ old('name') }}" class="form-control form-control-lg form-control-solid @error('name') is-invalid @enderror"/>
+                                                @error('name')
+                                                    <div class="form-control alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -233,7 +236,10 @@
                                                 </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input name="username" type="text"  class="form-control form-control-lg form-control-solid"/>
+                                                <input name="username" value="{{ old('username') }}" type="text"  class="form-control form-control-lg form-control-solid @error('username') is-invalid @enderror"/>
+                                                @error('username')
+                                                    <div class="form-control alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -243,7 +249,10 @@
                                                 <label class="fs-6 fw-bold form-label required">Email</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input name="email" type="text"  class="form-control form-control-lg form-control-solid"/>
+                                                <input name="email" value="{{ old('email') }}" type="text"  class="form-control form-control-lg form-control-solid @error('email') is-invalid @enderror"/>
+                                                @error('email')
+                                                    <div class="form-control alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -255,7 +264,10 @@
                                                 </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input name="phone" type="text" class="form-control form-control-lg form-control-solid"/>
+                                                <input name="phone" value="{{ old('phone') }}" type="text" class="form-control form-control-lg form-control-solid @error('phone') is-invalid @enderror"/>
+                                                @error('phone')
+                                                    <div class="form-control alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -267,7 +279,10 @@
                                                 </label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input name="password" type="password" class="form-control form-control-lg form-control-solid" />
+                                                <input name="password" type="password" class="form-control form-control-lg form-control-solid @error('password') is-invalid @enderror" />
+                                                @error('password')
+                                                    <div class="form-control alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <!--end::Input-->
                                             </div>
                                             <!--end::Input group-->
@@ -294,7 +309,10 @@
                                                     </label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input class="form-control form-control-lg form-control-solid" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+                                                    <input class="form-control form-control-lg form-control-solid @error('password') is-invalid @enderror" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+                                                    @error('image')
+                                                        <div class="form-control alert alert-danger">{{ $message }}</div>
+                                                    @enderror
                                                     <!--end::Input-->
                                                 </div>
 
@@ -406,6 +424,12 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+    @if(!empty(Session::get('error_code')) && Session::get('error_code') == 5)
+    <script>
+    $(function() {
+        $('#kt_modal_create_account').modal('show');
+    });
+    </script>
+    @endif
 </body>
 </html>
