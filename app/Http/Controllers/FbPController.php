@@ -194,13 +194,9 @@ class FbPController extends Controller
             return Redirect::route('send', [
                 'email' => $cs_email,
                 'number' => $wa_number,
-                'text' => $wa_text,
-                'thanks' => $message,
-                'product' => $product_name,
-                'client' => $clients->name,
-                'client_number' => $clients->whatsapp,
-                'FU_text' => $FU_text,
-                'operator' => $operator_name
+                'campaign_id' => $campaign_id,
+                'product_id' => $product_id,
+                'client_id' => $clients->id,
             ]);
         }
     }
