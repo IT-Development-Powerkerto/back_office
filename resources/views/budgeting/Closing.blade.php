@@ -88,7 +88,7 @@
                                                 <label for="inputRole" class="col-form-label">Transaction Type</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <select name="role_id" id="role_id" class="form-control">
+                                                <select name="transaction" id="transaction" class="form-control">
                                                     <option hidden>Select Methode</option>
                                                     <option value="">Transfer</option>
                                                     <option value="">COD</option>
@@ -107,9 +107,16 @@
 											<div class="col-2">
 												<label for="inputproduct" class="col-form-label">Product</label>
 											</div>
-											<div class="col-10">
-												<input type="product" name="product" value="" id="inputproduct" class="form-control" aria-describedby="productHelpInline">
-											</div>
+											<div class="dropdown col-10">
+                                                <select name="product" id="product" class="form-control">
+                                                    <option hidden>Select Methode</option>
+                                                    <option value="">Etawaku</option>
+                                                    <option value="">Freshmag</option>
+                                                    <option value="">Gizidat</option>
+                                                    <option value="">Generos</option>
+                                                    <option value="">Rube</option>
+                                                </select>
+                                            </div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
