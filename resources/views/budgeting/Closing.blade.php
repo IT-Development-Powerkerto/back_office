@@ -109,7 +109,7 @@
 											</div>
 											<div class="dropdown col-10">
                                                 <select name="product" id="product" class="form-control">
-                                                    <option hidden>Select Methode</option>
+                                                    <option hidden>Select Product</option>
                                                     <option value="">Etawaku</option>
                                                     <option value="">Freshmag</option>
                                                     <option value="">Gizidat</option>
