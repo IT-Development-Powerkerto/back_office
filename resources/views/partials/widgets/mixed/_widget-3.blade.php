@@ -12,7 +12,7 @@
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
 				<span class="fw-bold fs-7">Your Balance</span>
-				<span class="fw-bolder fs-2x pt-1">Rp. 23.750.000</span>
+				<span class="fw-bolder fs-2x pt-1">Rp. {{($paket->where('id', 1)->implode('price')*($user->where('exp', 1)->where('paket_id', 1)->count()-1))+($all_lead->count()*$paket->where('id', 2)->implode('price'))+($paket->where('id', 3)->implode('price')*$user->where('exp', 1)->where('paket_id', 3)->count())}}</span>
 			</div>
 			<!--end::Balance-->
 		</div>

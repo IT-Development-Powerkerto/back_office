@@ -5,7 +5,11 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Lead Tunneling</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$leads->total()}} Lead</span>
+                                            @if (auth()->user()->role_id == 1)
+                                                <span class="text-muted mt-1 fw-bold fs-7">{{$leads->total()}} Lead</span>
+                                            @else
+                                                <span class="text-muted mt-1 fw-bold fs-7">{{$leads->where('advertiser', auth()->user()->name)->count()}} Lead</span>
+                                            @endif
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<a href=/ld class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Detail">

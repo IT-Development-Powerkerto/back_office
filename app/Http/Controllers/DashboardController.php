@@ -283,6 +283,7 @@ class DashboardController extends Controller
                     ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
                     ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
                     ->where('l.admin_id', auth()->user()->admin_id)
+                    ->where('l.advertiser', $x->name)
                     ->orderByDesc('l.id')
                     ->paginate(5);
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
@@ -310,6 +311,7 @@ class DashboardController extends Controller
                 $users = User::where('admin_id', auth()->user()->admin_id)->get();
             }
             $x = auth()->user();
+            $operator = Operator::where('user_id', $x->id)->value('user_id');
             if($x->role_id == 5){
                 $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
                 $roles = Role::all();
@@ -323,6 +325,7 @@ class DashboardController extends Controller
                     ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
                     ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
                     ->where('l.admin_id', auth()->user()->admin_id)
+                    ->where('l.user_id', $operator)
                     ->orderByDesc('l.id')
                     ->paginate(5);
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
@@ -336,7 +339,11 @@ class DashboardController extends Controller
     }
 
     public function ld() {
-        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
+        if(auth()->user()->role_id == 1){
+            $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
+        }else{
+            $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->get();
+        }
         $client = Client::where('admin_id', auth()->user()->admin_id)->get();
         $operator = Operator::where('admin_id', auth()->user()->admin_id)->get();
         $day = Carbon::now()->format('Y-m-d');

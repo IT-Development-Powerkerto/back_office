@@ -106,7 +106,8 @@ Route::get('getRole/{id}', function ($id) {
     return response()->json($roles);
 });
 Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead');
-Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
+// Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
+Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}', [MailController::class, 'index'])->name('send');
 Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation');
 
 

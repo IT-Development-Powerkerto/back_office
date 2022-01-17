@@ -166,7 +166,8 @@ class FbPController extends Controller
             $lead->save();
 
             DB::table('products')->whereid($product_id)->where('deleted_at', null)->increment('lead');
-            $data_lead = DB::table('leads')->where('deleted_at', null)->get();
+            $day = Carbon::now()->format('Y-m-d');
+            $data_lead = DB::table('leads')->where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->where('deleted_at', null)->count();
 
             $options = array(
                         'cluster' => env('PUSHER_APP_CLUSTER'),
@@ -194,13 +195,9 @@ class FbPController extends Controller
             return Redirect::route('send', [
                 'email' => $cs_email,
                 'number' => $wa_number,
-                'text' => $wa_text,
-                'thanks' => $message,
-                'product' => $product_name,
-                'client' => $clients->name,
-                'client_number' => $clients->whatsapp,
-                'FU_text' => $FU_text,
-                'operator' => $operator_name
+                'campaign_id' => $campaign_id,
+                'product_id' => $product_id,
+                'client_id' => $clients->id,
             ]);
         }
     }
@@ -268,7 +265,8 @@ class FbPController extends Controller
             'updated_at' => Carbon::now(),
         ]);
         DB::table('products')->whereid($product_id)->where('deleted_at', null)->increment('lead');
-        $data_lead = DB::table('leads')->where('deleted_at', null)->get();
+        $day = Carbon::now()->format('Y-m-d');
+        $data_lead = DB::table('leads')->where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->where('deleted_at', null)->count();
 
         $options = array(
                     'cluster' => env('PUSHER_APP_CLUSTER'),
