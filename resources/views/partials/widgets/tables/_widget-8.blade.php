@@ -8,7 +8,7 @@
                                             @if (auth()->user()->role_id == 1)
                                                 <span class="text-muted mt-1 fw-bold fs-7">{{$leads->total()}} Lead</span>
                                             @else
-                                                <span class="text-muted mt-1 fw-bold fs-7">{{$leads->where('advertiser', auth()->user()->name)->total()}} Lead</span>
+                                                <span class="text-muted mt-1 fw-bold fs-7">{{$leads->where('advertiser', auth()->user()->name)->count()}} Lead</span>
                                             @endif
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
@@ -62,8 +62,9 @@
 													</div>
 												</div>
 												<form action="/dashboard" method="GET" class="d-flex">
-													<div class="me-2">
+													<div class="me-2 d-flex flex-row">
 														<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
+														<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
 													</div>
 												</form>
 

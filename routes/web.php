@@ -19,9 +19,9 @@ use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\ProductController;
 use App\Events\MessageCreated;
 use App\Http\Controllers\BigFlipController;
+use App\Http\Controllers\BudgetingController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\SuperAdminController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,31 +62,31 @@ Route::resource('/register', RegisterController::class)->middleware('guest');
 //Route::get('/dashboard', function () { return view('dashboard'); })->middleware('auth');
 
 Route::resource('superadmin', SuperAdminController::class)->middleware('auth');
-Route::post('/update/aktive/{user}', [SuperAdminController::class, 'updateAktive'])->name('updateAktive');
-Route::post('/update/nonaktive/{user}', [SuperAdminController::class, 'updateNonAktive'])->name('updateNonAktive');
+Route::post('/update/aktive/{user}', [SuperAdminController::class, 'updateAktive'])->name('updateAktive')->middleware('auth');
+Route::post('/update/nonaktive/{user}', [SuperAdminController::class, 'updateNonAktive'])->name('updateNonAktive')->middleware('auth');
 
 Route::get('/dashboard/blog/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/blog', DashboardPostController::class)->middleware('auth');
 
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
 
-Route::resource('users', UserController::class);
-Route::get('/viewprofile/{user}', [UserController::class, 'viewProfile'])->name('viewProfile');
-Route::get('/status/update', [UserController::class, 'updateStatus'])->name('users.update.status');
+Route::resource('users', UserController::class)->middleware('auth');
+Route::get('/viewprofile/{user}', [UserController::class, 'viewProfile'])->name('viewProfile')->middleware('auth');
+Route::get('/status/update', [UserController::class, 'updateStatus'])->name('users.update.status')->middleware('auth');
 //Route::resource('/dasboard', DashboardController::class);
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
-Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld');
+Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld')->middleware('auth');
 Route::get('/adv', [DashboardController::class, 'adv'])->name('advDashboard')->middleware('auth');
 Route::get('/cs', [DashboardController::class, 'cs'])->name('csDashboard')->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 Route::get('/myprofile',[UserController::class, 'index'])->middleware('auth');
 Route::patch('/myprofile',[UserController::class, 'changePassword'])->name('changePassword')->middleware('auth');
 
-Route::resource('announcements', AnnouncementController::class);
+Route::resource('announcements', AnnouncementController::class)->middleware('auth');
 
-Route::resource('roles', RoleController::class);
+Route::resource('roles', RoleController::class)->middleware('auth');
 
-Route::resource('statuses', StatusController::class);
+Route::resource('statuses', StatusController::class)->middleware('auth');
 
 Route::resource('product', ProductController::class)->middleware('auth');
 Route::resource('lead', LeadController::class)->middleware('auth');
@@ -105,25 +105,15 @@ Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
     return response()->json($roles);
 });
-Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead');
+Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead')->middleware('auth');
 // Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
-Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}', [MailController::class, 'index'])->name('send');
-Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation');
-Route::get('inquiry', [MailController::class, 'inquiry'])->name('inquiry');
-// Route::get('/categories/{category:slug}', function(Category $category){
-//     return view('blog', [
-//         'title' => "Post By Category : $category->name",
-//         'active' => 'categories',
-//         'post' => $category->post->load('category','author'),
-//     ]);
-// });
-// Route::get('authors/{author:username}', function (User $author) {
-//     return view('blog', [
-//         'title' => "Post By Author : $author->name",
-//         'post' => $author->post->load('category','author'),
-//     ]);
+Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}', [MailController::class, 'index'])->name('send')->middleware('auth');
+Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation')->middleware('auth');
 
-// });
+
+Route::get('/closingcs', [BudgetingController::class, 'ClosingCS'])->name('closingcs')->middleware('auth');
+Route::get('/reimbursement', [BudgetingController::class, 'Reimbursement'])->name('reimbursement')->middleware('auth');
+Route::get('/budegetingadv', [BudgetingController::class, 'budgetingADV'])->name('budgetingadv')->middleware('auth');
 
 
 
