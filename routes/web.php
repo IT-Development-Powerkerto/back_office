@@ -113,10 +113,10 @@ Route::get('activation/{email}', [MailController::class, 'activation'])->name('a
 
 
 Route::get('/closingcs', [BudgetingController::class, 'ClosingCS'])->name('closingcs')->middleware('auth');
-Route::get('/reimbursement', [BudgetingController::class, 'Reimbursement']);
 Route::get('/budegetingadv', [BudgetingController::class, 'budgetingADV'])->name('budgetingadv')->middleware('auth');
 
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
+Route::resource('budgeting', BudgetingController::class)->middleware('auth');
 
 
 

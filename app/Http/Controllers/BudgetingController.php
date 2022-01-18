@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Lead;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class BudgetingController extends Controller
 {
@@ -13,7 +17,41 @@ class BudgetingController extends Controller
      */
     public function index()
     {
-        //
+        $lead1 = Lead::whereBetween('updated_at', [
+            Carbon::now()->endOfMonth()->subWeek(4),
+            Carbon::now()->endOfMonth()->subWeek(3),
+        ])->get();
+        $lead2 = Lead::whereBetween('updated_at', [
+            Carbon::now()->endOfMonth()->subWeek(3),
+            Carbon::now()->endOfMonth()->subWeek(2),
+        ])->get();
+        $lead3 = Lead::whereBetween('updated_at', [
+            Carbon::now()->endOfMonth()->subWeek(2),
+            Carbon::now()->endOfMonth()->subWeek(1),
+        ])->get();
+        $lead4 = Lead::whereBetween('updated_at', [
+            Carbon::now()->endOfMonth()->subweek(1),
+            Carbon::now()->endOfMonth(),
+        ])->get();
+        $lead_week = Lead::whereBetween('updated_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
+        ])->get();
+        $lead_month = Lead::whereBetween('updated_at', [
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth(),
+        ])->get();
+        $month = Carbon::now()->format('M');
+        $adv = User::where('admin_id', auth()->user()->id)->where('role_id', 4)->get();
+        return view('budgeting.BudgetingADV')
+        ->with('lead_week', $lead_week)
+        ->with('lead_month', $lead_month)
+        ->with('lead1', $lead1)
+        ->with('lead2', $lead2)
+        ->with('lead3', $lead3)
+        ->with('lead4', $lead4)
+        ->with('month', $month)
+        ->with('adv', $adv);
     }
 
     /**
@@ -89,11 +127,11 @@ class BudgetingController extends Controller
 
     public function Reimbursement()
     {
-        
+
     }
 
     public function budgetingADV()
     {
-        return view('budgeting.BudgetingADV');
+
     }
 }
