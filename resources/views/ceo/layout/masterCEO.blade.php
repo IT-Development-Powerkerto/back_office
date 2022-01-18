@@ -7,15 +7,15 @@
 		<!--begin::Wrapper-->
 		<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 
-			@include('finance/layout/header/_baseFinance')
+			@include('ceo/layout/header/_baseCEO')
 
 
-			@include('finance/layout/_toolbarFinance')
+			@include('ceo/layout/_toolbarCEO')
 
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-				@include('finance/layout/_contentFinance')
+				@include('ceo/layout/_contentCEO')
 
 			</div>
 			<!--end::Content-->
