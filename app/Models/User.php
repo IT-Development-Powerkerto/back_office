@@ -86,4 +86,7 @@ class User extends Authenticatable
     public function proof_of_payment(){
         return $this->belongsTo(ProofOfPayment::class);
     }
+    public function reimbursement(){
+        return $this->hasMany(Reimbursement::class);
+    }
 }

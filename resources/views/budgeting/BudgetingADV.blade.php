@@ -3,6 +3,7 @@
 	<!--begin::Head-->
 	<head><base href="../">
 		<title>Budgeting ADV</title>
+		<link rel="icon" href="img/favicon.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -73,83 +74,34 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Data Closing</h3>
+										<h3 class="fw-bolder m-0">Data Budgeting ADV</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form action="" method="POST" enctype="multipart/form-data">
-										@csrf
-										@method('PATCH')
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputRole" class="col-form-label">Transaction Type</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-                                                <select name="role_id" id="role_id" class="form-control">
-                                                    <option hidden>Select Methode</option>
-                                                    <option value="">Manual</option>
-                                                    <option value="">COD</option>
-                                                </select>
-                                            </div>
-                                        </div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputCustomer" class="col-form-label">Customer</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="name" value="" id="inputCustomer" class="form-control" aria-describedby="CustomerHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputproduct" class="col-form-label">Product</label>
-											</div>
-											<div class="col-10">
-												<input type="product" name="product" value="" id="inputproduct" class="form-control" aria-describedby="productHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputprice" class="col-form-label">Price</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="price" value="" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputquantity" class="col-form-label">Quantity</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="quantity" value="" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
-											</div>
-										</div>
-                                        <div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputtotal" class="col-form-label">Total</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="total" value="" id="inputtotal" class="form-control" aria-describedby="totalHelpInline">
-											</div>
-										</div>
-										{{-- @endcan --}}
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputimage" class="col-form-label">Upload The Proof</label>
-											</div>
+									@include('partials/widgets/budgeting/LastWeekBudgetADV')
+									@include('partials/widgets/budgeting/LastMonthBudgetADV')
+									@include('partials/widgets/budgeting/WeeklyInfoBudgetADV')
 
-											<div class="dropdown col-10">
-												<div class="mb-3">
-													<input class="form-control" value="" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
-												</div>
-											</div>
+									<div class="row col-12 d-flex align-items-center justify-content-center">
+										<div class="col-1">
+											<h1 class="fw-bolder ms-5">Rp</h1>
 										</div>
-										{{ csrf_field() }}
-										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Verification to Fincance Division">
-									</form>
+										<div class="col-4">
+										  <input type="text" class="form-control" name="budget_submission" placeholder="Budget Submission" aria-label="Budget Submission">
+										</div>
+										<div class="col-4">
+										  <input type="text" class="form-control" name="target" placeholder="Target" aria-label="Target">
+										</div>
+										<div class="col-3">
+											<button type="submit" class="btn btn-primary">Apply</button>
+										</div>
+									</div>
+									@include('partials/widgets/budgeting/LogBudgeting')
+									
+
 								</div>
 								<!--end::Card body-->
 							</div>

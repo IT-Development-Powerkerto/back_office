@@ -89,7 +89,7 @@ class BudgetingController extends Controller
 
     public function Reimbursement()
     {
-        return view('budgeting.Reimbursement');
+        
     }
 
     public function budgetingADV()
