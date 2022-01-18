@@ -19,6 +19,7 @@
 													<thead>
 														<tr class="fw-bolder text-muted">
 															<th class="">Timestamp</th>
+															<th class="">CS Name</th>
 															<th class="">Reason</th>
 															<th class="">Nominal</th>
 															<th class="">Submission Status</th>
@@ -33,6 +34,11 @@
 																	<div class="d-flex justify-content-start flex-column">
 																		<label class="text-dark fw-medium text-hover-primary fs-6">21/12/2021 11:33 WIB</label>
 																	</div>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<label class="text-dark fw-medium text-hover-primary fs-6">Rosi</label>
 																</div>
 															</td>
 															<td>
