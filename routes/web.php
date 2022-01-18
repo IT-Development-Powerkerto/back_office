@@ -108,8 +108,8 @@ Route::get('getRole/{id}', function ($id) {
 });
 Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead')->middleware('auth');
 // Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
-Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}', [MailController::class, 'index'])->name('send')->middleware('auth');
-Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation')->middleware('auth');
+Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}', [MailController::class, 'index'])->name('send');
+Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation');
 
 
 Route::get('/closingcs', [BudgetingController::class, 'ClosingCS'])->name('closingcs')->middleware('auth');

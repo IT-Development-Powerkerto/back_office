@@ -150,8 +150,8 @@ class FbPController extends Controller
                 DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
             }
             $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->where('deleted_at', null)->value('id');
-            $operator_id = DB::table('operators')->where('admin_id', $admin_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('id');
-            $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
+            $operator_id = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('id');
+            $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
             $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
             $lead = new Lead();
             $lead->admin_id = $admin_id;
@@ -167,7 +167,7 @@ class FbPController extends Controller
 
             DB::table('products')->whereid($product_id)->where('deleted_at', null)->increment('lead');
             $day = Carbon::now()->format('Y-m-d');
-            $data_lead = DB::table('leads')->where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->where('deleted_at', null)->count();
+            $data_lead = DB::table('leads')->where('created_at', $day)->where('deleted_at', null)->count();
 
             $options = array(
                         'cluster' => env('PUSHER_APP_CLUSTER'),
@@ -248,8 +248,8 @@ class FbPController extends Controller
             DB::table('distribution_counters')->where('campaign_id', $campaign_id)->increment('counter');
         }
         $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->where('status', 1)->where('deleted_at', null)->value('id');
-        $operator_id = DB::table('operators')->where('admin_id', $admin_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('id');
-        $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
+        $operator_id = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('id');
+        $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
         $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
         DB::table('leads')->insert([
             'admin_id'   => $admin_id,
@@ -266,7 +266,7 @@ class FbPController extends Controller
         ]);
         DB::table('products')->whereid($product_id)->where('deleted_at', null)->increment('lead');
         $day = Carbon::now()->format('Y-m-d');
-        $data_lead = DB::table('leads')->where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->where('deleted_at', null)->count();
+        $data_lead = DB::table('leads')->where('created_at', $day)->where('deleted_at', null)->count();
 
         $options = array(
                     'cluster' => env('PUSHER_APP_CLUSTER'),
