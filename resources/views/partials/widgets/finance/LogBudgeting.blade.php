@@ -4,7 +4,7 @@
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">ADV Activity Last Month</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Activity Logs</span>
 												<span class="text-muted mt-1 fw-bold fs-7">1 Activity</span>
 											</h3>
 										</div>
@@ -18,9 +18,11 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="min-w-225px">Time</th>
-															<th class="min-w-225px">Pengajuan</th>
-															<th class="min-w-225px text-end">Status</th>
+															<th class="min-w-150px">Timestamp</th>
+															<th class="min-w-150px">Name</th>
+															<th class="min-w-150px">Division</th>
+															<th class="min-w-150px">Nominal</th>
+															<th class="min-w-150px text-end">Submission Status</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
@@ -30,18 +32,28 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-medium fs-6">12-Jan-2022</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">21/12/2021 11:33 WIB</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">Rp. 10.000.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">Zall</h1>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">Costumer Service</h1>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">Rp. 50.000</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center justify-content-end">
-																	<h1 class="text-dark fw-medium fs-6 badge badget-light-dager">Rejected</h1>
+																	<h1 class="badge badge-light-danger">Rejected</h1>
 																</div>
 															</td>
 														</tr>

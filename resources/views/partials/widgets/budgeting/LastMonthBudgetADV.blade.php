@@ -32,30 +32,30 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-medium fs-6">Hanif</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">Hanif</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-medium fs-6">1000</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">1000</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">1000</h1>
+																	<h1 class="text-dark fw-normal fs-6">1000</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">1000</h1>
+																	<h1 class="text-dark fw-normal fs-6">1000</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center justify-content-end">
-																	<h1 class="text-dark fw-medium fs-6">Rp. 100.000.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. 100.000.000</h1>
 																</div>
 															</td>
 														</tr>

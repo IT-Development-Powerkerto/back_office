@@ -4,8 +4,8 @@
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Weekly Info ADV Activity</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Activity</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Staff Budgeting Information</span>
+												<span class="text-muted mt-1 fw-bold fs-7">1 Staff</span>
 											</h3>
 										</div>
 										<!--end::Header-->
@@ -18,12 +18,13 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="min-w-150px">Period</th>
-															<th class="min-w-150px">Product</th>
-															<th class="min-w-150px">Leads</th>
-															<th class="min-w-150px">Closing</th>
-															<th class="min-w-150px">Quantity</th>
-															<th class="min-w-150px text-end">Omzet (Rp)</th>
+															<th class="min-w-50px">No</th>
+															<th class="min-w-150px">Name</th>
+															<th class="min-w-150px">Phone</th>
+															<th class="min-w-150px">Division</th>
+															<th class="min-w-150px">Bank</th>
+															<th class="min-w-150px">No. Rek</th>
+															<th class="min-w-150px">NPWP</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
@@ -33,35 +34,40 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-medium fs-6">Week 1 - Dec</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">1</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-medium fs-6">Generos</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">Zall</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">10</h1>
+																	<h1 class="text-dark fw-normal fs-6">081245527645</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">10</h1>
+																	<h1 class="text-dark fw-normal fs-6">IT Development</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-medium fs-6">10</h1>
+																	<h1 class="text-dark fw-normal fs-6">Mandiri</h1>
 																</div>
 															</td>
 															<td>
-																<div class="d-flex align-items-center justify-content-end">
-																	<h1 class="text-dark fw-medium fs-6">Rp. 10.000.000</h1>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">180008765456788</h1>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">180008765456788</h1>
 																</div>
 															</td>
 														</tr>
