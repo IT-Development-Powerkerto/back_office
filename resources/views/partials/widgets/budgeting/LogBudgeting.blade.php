@@ -19,6 +19,7 @@
 													<thead>
 														<tr class="fw-bolder text-muted">
 															<th class="min-w-225px">Time</th>
+															<th class="min-w-225px">ADV Name</th>
 															<th class="min-w-225px">Pengajuan</th>
 															<th class="min-w-225px text-end">Status</th>
 														</tr>
@@ -31,6 +32,13 @@
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
 																		<h1 href="#" class="text-dark fw-medium fs-6">12-Jan-2022</h1>
+																	</div>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<div class="d-flex justify-content-start flex-column">
+																		<h1 href="#" class="text-dark fw-medium fs-6">Hanif</h1>
 																	</div>
 																</div>
 															</td>
