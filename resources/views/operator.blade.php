@@ -106,6 +106,10 @@
 								<!--begin::Body-->
 							</div>
 							<!--end::Tables Widget 11-->
+						</div>
+						<!--end::Wrapper-->
+					</div>
+					<!--end::Page-->
 					<!--begin::Footer-->
 					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
 						<!--begin::Container-->
@@ -121,10 +125,6 @@
 					</div>
 					<!--end::Footer-->
 				</div>
-				<!--end::Wrapper-->
-			</div>
-			<!--end::Page-->
-		</div>
 		<!--end::Root-->
 		<!--end::Main-->
 		<script>var hostUrl = "assets/";</script>

@@ -4,8 +4,8 @@
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Staff Budgeting Request</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Staff</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Closing Customer Service</span>
+												<span class="text-muted mt-1 fw-bold fs-7">1 Closing</span>
 											</h3>
 										</div>
 										<!--end::Header-->
@@ -18,12 +18,13 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="">Name</th>
-															<th class="">Phone</th>
-															<th class="">Division</th>
-															<th class="">Reason</th>
-															<th class="">Nominal</th>
-															<th class="text-end">Actions</th>
+															<th class="">Customer</th>
+															<th class="">Product</th>
+															<th class="">Price</th>
+															<th class="">Quantity</th>
+															<th class="">Total</th>
+															<th class="">Status</th>
+															<th class=" text-end">Action</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
@@ -33,30 +34,35 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-normal fs-6">Zall</h1>
+																		<h1 class="text-dark fw-normal fs-6">Wiwit</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-normal fs-6">081245527645</h1>
+																		<h1 class="text-dark fw-normal fs-6">Rube</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Costumer Service</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. 250.000</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Telecommunication Credits</h1>
+																	<h1 class="text-dark fw-normal fs-6">5</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp. 500.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. 1.000.000</h1>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-info fw-normal fs-6 ">Waiting</h1>
 																</div>
 															</td>
 															<td class="d-flex align-items-center justify-content-end">

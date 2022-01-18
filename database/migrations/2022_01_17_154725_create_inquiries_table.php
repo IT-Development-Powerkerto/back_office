@@ -16,7 +16,7 @@ class CreateInquiriesTable extends Migration
         Schema::create('inquiries', function (Blueprint $table) {
             $table->id();
             $table->string('bank_code');
-            $table->integer('account_number');
+            $table->string('account_number');
             $table->string('account_holder');
             $table->string('status');
             $table->timestamps();

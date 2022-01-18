@@ -29,20 +29,13 @@
 					<div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
 						<!--begin::Container-->
 						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
-							<!--begin::Page title-->
-							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
-								<!--begin::Heading-->
-								<h1 class="text-dark fw-bold my-0 fs-2">Closing Information</h1>
-								<!--end::Heading-->
+							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
+								<!--begin::Page title-->
+								@include('layout/header/_base')
+	
+	
+								@include('layout/_toolbar')
 							</div>
-							<!--end::Page title=-->
-							<!--begin::Wrapper-->
-							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
-								<!--begin::Logo-->
-								    <img alt="Logo" src="../img/logo.png" class="h-40px" />
-								<!--end::Logo-->
-							</div>
-							<!--end::Wrapper-->
 							<!--begin::User-->
 							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
 								<!--begin::Menu wrapper-->
@@ -162,6 +155,10 @@
 								<!--end::Card body-->
 							</div>
 							<!--end::details View-->
+						</div>
+						<!--end::Wrapper-->
+					</div>
+					<!--end::Page-->
 					<!--begin::Footer-->
 					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
 						<!--begin::Container-->
@@ -176,10 +173,6 @@
 						<!--end::Container-->
 					</div>
 					<!--end::Footer-->
-				</div>
-				<!--end::Wrapper-->
-			</div>
-			<!--end::Page-->
 		</div>
 		<!--end::Root-->
 		<!--end::Main-->

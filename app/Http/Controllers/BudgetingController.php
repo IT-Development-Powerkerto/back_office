@@ -125,13 +125,8 @@ class BudgetingController extends Controller
         return view('budgeting.Closing');
     }
 
-    public function Reimbursement()
+    public function Finance()
     {
-
-    }
-
-    public function budgetingADV()
-    {
-
+        return view('finance.FinanceDept');
     }
 }
