@@ -16,8 +16,12 @@ class ReimbursementController extends Controller
      */
     public function index()
     {
-
-        $reimbursement = Reimbursement::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->get();
+        if (auth()->user()->role_id == 1){
+            $reimbursement = Reimbursement::where('admin_id', auth()->user()->admin_id)->get();
+        }
+        else{
+            $reimbursement = Reimbursement::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->get();
+        }
         return view('budgeting.Reimbursement')->with('reimbursement', $reimbursement);
     }
 

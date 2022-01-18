@@ -39,7 +39,7 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium text-hover-primary fs-6">Rosi</label>
+																	<label class="text-dark fw-medium text-hover-primary fs-6">{{$reimbursement->user->name}}</label>
 																</div>
 															</td>
 															<td>
