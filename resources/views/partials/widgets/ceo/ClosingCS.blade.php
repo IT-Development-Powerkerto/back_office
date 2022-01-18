@@ -83,6 +83,12 @@
 																	<!--end::Menu item-->
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
+																		<a href="" class="menu-link px-3" >Reject</a>
+																		{{-- data-kt-customer-table-filter="delete_row" --}}
+																	</div>
+																	<!--end::Menu item-->
+																	<!--begin::Menu item-->
+																	<div class="menu-item px-3">
 																		<a href="" class="menu-link px-3" >Download File</a>
 																		{{-- data-kt-customer-table-filter="delete_row" --}}
 																	</div>
