@@ -22,6 +22,7 @@ use App\Http\Controllers\BigFlipController;
 use App\Http\Controllers\BudgetingController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\ReimbursementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -112,8 +113,10 @@ Route::get('activation/{email}', [MailController::class, 'activation'])->name('a
 
 
 Route::get('/closingcs', [BudgetingController::class, 'ClosingCS'])->name('closingcs')->middleware('auth');
-Route::get('/reimbursement', [BudgetingController::class, 'Reimbursement'])->name('reimbursement')->middleware('auth');
+Route::get('/reimbursement', [BudgetingController::class, 'Reimbursement']);
 Route::get('/budegetingadv', [BudgetingController::class, 'budgetingADV'])->name('budgetingadv')->middleware('auth');
+
+Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
 
 
 

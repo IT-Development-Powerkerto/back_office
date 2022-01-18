@@ -95,7 +95,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('reimbursement') }}" class="menu-title">Reimbursement CS</a>
+						<a href="{{route('reimbursement.index')}}" class="menu-title">Reimbursement CS</a>
 					</span>
 				</div>
 			</div>
@@ -120,7 +120,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('reimbursement') }}" class="menu-title">link</a>
+						<a href="" class="menu-title">link</a>
 					</span>
 				</div>
 			</div>

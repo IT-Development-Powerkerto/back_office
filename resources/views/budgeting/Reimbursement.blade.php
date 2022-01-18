@@ -81,15 +81,14 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form action="" method="POST" enctype="multipart/form-data">
+									<form action="{{route('reimbursement.store')}}" method="POST" enctype="multipart/form-data">
 										@csrf
-										@method('PATCH')
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
                                                 <label for="inputRole" class="col-form-label">Reason</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <textarea type="text" name="tp" id="inputtp" class="form-control" aria-describedby="tpHelpInline" ></textarea>
+                                                <textarea type="text" name="reason" id="inputtp" class="form-control" aria-describedby="tpHelpInline" ></textarea>
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
@@ -97,7 +96,7 @@
 												<label for="inputCustomer" class="col-form-label">Phone</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="name" value="" id="inputCustomer" class="form-control" aria-describedby="CustomerHelpInline">
+												<input type="text" name="phone" value="" id="inputCustomer" class="form-control" aria-describedby="CustomerHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -105,7 +104,7 @@
 												<label for="inputproduct" class="col-form-label">Nominal (Rp)</label>
 											</div>
 											<div class="col-10">
-												<input type="product" name="product" value="" id="inputproduct" class="form-control" aria-describedby="productHelpInline">
+												<input type="number" name="nominal" value="" id="inputproduct" class="form-control" aria-describedby="productHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">

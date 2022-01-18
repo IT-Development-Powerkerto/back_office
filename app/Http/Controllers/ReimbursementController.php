@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use App\Models\Reimbursement;
 
-class BudgetingController extends Controller
+class ReimbursementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,9 @@ class BudgetingController extends Controller
      */
     public function index()
     {
-        //
+
+        $reimbursement = Reimbursement::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->get();
+        return view('budgeting.Reimbursement')->with('reimbursement', $reimbursement);
     }
 
     /**
@@ -34,7 +39,33 @@ class BudgetingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'attachment-'.time().".".$extFile;
+            $path = $request->image->move('public/assets/attachment',$namaFile);
+            $attachment = $path;
+        }
+
+        if(substr(trim($request->phone), 0, 1)=='0'){
+            $phone = '62'.substr(trim($request->phone), 1);
+        } else{
+            $phone = $request->phone;
+        }
+
+        DB::table('reimbursements')->insert([
+            'admin_id'     => auth()->user()->admin_id,
+            'user_id'      => auth()->user()->id,
+            'reason'       => $request->reason,
+            'phone'        => $phone,
+            'nominal'      => $request->nominal,
+            'attachment'   => $attachment,
+            'status'       => 2,
+            'created_at'   => Carbon::now()->toDateTimeString(),
+            'updated_at'   => Carbon::now()->toDateTimeString(),
+        ]);
+
+        return redirect('/dashboard')->with('success','Successull! Product Added');
     }
 
     /**
@@ -80,20 +111,5 @@ class BudgetingController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function ClosingCS()
-    {
-        return view('budgeting.Closing');
-    }
-
-    public function Reimbursement()
-    {
-        
-    }
-
-    public function budgetingADV()
-    {
-        return view('budgeting.BudgetingADV');
     }
 }

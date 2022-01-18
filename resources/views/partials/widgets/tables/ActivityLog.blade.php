@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Activity Logs</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Activity Logs</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$reimbursement->count()}} Activity Logs</span>
 											</h3>
 										</div>
 										<!--end::Header-->
@@ -28,11 +28,12 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        @foreach ($reimbursement as $reimbursement)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<label class="text-dark fw-medium text-hover-primary fs-6">21/12/2021 11:33 WIB</label>
+																		<label class="text-dark fw-medium text-hover-primary fs-6">{{$reimbursement->created_at}} WIB</label>
 																	</div>
 																</div>
 															</td>
@@ -43,18 +44,25 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<label class="text-dark fw-medium text-hover-primary fs-6">Telecommunication Credits</label>
+																	<label class="text-dark fw-medium text-hover-primary fs-6">{{$reimbursement->reason}}</label>
 																</div>
 															</td>
 															<td>
-																<label class="text-dark fw-medium text-hover-primary d-block fs-6">Rp. 50.000</label>
+																<label class="text-dark fw-medium text-hover-primary d-block fs-6">Rp. {{$reimbursement->nominal}}</label>
 															</td>
 															<td class="text-end">
 																<div class="d-flex align-items-center">
-																	<label class="badge badge-light-success">Approved</label>
+                                                                    @if ($reimbursement->status == 1)
+                                                                        <label class="badge badge-light-success">Approved</label>
+                                                                    @elseif ($reimbursement->status == 0)
+                                                                        <label class="badge badge-light-danger">Reject</label>
+                                                                    @else
+                                                                        <label class="badge badge-light-info">Wait</label>
+                                                                    @endif
 																</div>
 															</td>
 														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>
