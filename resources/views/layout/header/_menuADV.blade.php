@@ -9,24 +9,7 @@
 		id="#kt_header_menu" data-kt-menu="true">
 		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
 			class="menu-item here show menu-lg-down-accordion me-lg-1">
-			<a class="menu-link active py-3" href="?page=index">
-				<span class="menu-title">Dashboards</span>
-				<span class="menu-arrow d-lg-none"></span>
-			</a>
-			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-				<div class="menu-item">
-					<a class="menu-link active py-3" href="{{ route('dashboard.index') }}">
-						<span class="menu-icon">
-							<i class="bi bi-archive fs-3"></i>
-						</span>
-						<span class="menu-title">Advertiser</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-			class="menu-item menu-lg-down-accordion me-lg-1">
-			<span class="menu-link py-3">
+			<span class="menu-link active py-3">
 				<span class="menu-title">Advertiser</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</span>
@@ -45,6 +28,14 @@
 							<span class="bullet bullet-dot"></span>
 						</span>
 						<a href="{{ route('operator.index') }}" class="menu-title">Operator</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route('budgetingadv') }}" class="menu-title">Budgeting</a>
 					</span>
 				</div>
 			</div>

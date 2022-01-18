@@ -18,6 +18,7 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
+															<th class="min-w-225px">Product</th>
 															<th class="min-w-225px">Leads</th>
 															<th class="min-w-225px">Total Closing</th>
 															<th class="min-w-150px">Quantity</th>
@@ -28,6 +29,13 @@
 													<!--begin::Table body-->
 													<tbody>
 														<tr>
+															<td>
+																<div class="d-flex align-items-center">
+																	<div class="d-flex justify-content-start flex-column">
+																		<h1 href="#" class="text-dark fw-medium fs-6">Generos</h1>
+																	</div>
+																</div>
+															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
