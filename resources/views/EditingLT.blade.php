@@ -90,31 +90,32 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Advertise</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-users-cog" style="font-size: 24px"></i></span></div>
 														<label type="text" class="form-control" placeholder="Full name">{{ old('advertiser') ?? $lead->implode('advertiser') }}</label>
+														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-users-cog" style="font-size: 24px"></i></span></div>
 													</div>
-													<span class="form-text text-muted">Please enter your full name</span>
+													<span class="form-text text-muted">Auto-Filled Advertise Name</span>
 										  		</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Operator</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-user" style="font-size: 24px"></i></span></div>
 														<label type="text" class="form-control" placeholder="your name">{{ old('operator') ?? $lead->implode('operator_name') }}</label>
+														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-user" style="font-size: 24px"></i></span></div>
 													</div>
-													<span class="form-text text-muted">Please enter your name</span>
+													<span class="form-text text-muted">Auto-Filled CS Name</span>
 												</div>
-										  		<label class="col-lg-1 col-form-label text-lg-right">Status</label>
-										  		<div class="col-lg-3">
-													<div class="col-lg-9 col-md-9 col-sm-12">
-														<select class="form-control" name="status_id" id="status_id">
+												<label class="col-lg-1 col-form-label text-lg-right">Status</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<select class="form-control" name="option">
 															<option value="3" {{ (old('status_id') ?? $lead->implode('status_id') ) == '3' ? 'selected': '' }} required>Waiting</option>
 															<option value="4" {{ (old('status_id') ?? $lead->implode('status_id') ) == '4' ? 'selected': '' }} required>Proccessing</option>
 															<option value="5" {{ (old('status_id') ?? $lead->implode('status_id') ) == '5' ? 'selected': '' }} required>Closing</option>
 															<option value="6" {{ (old('status_id') ?? $lead->implode('status_id') ) == '6' ? 'selected': '' }} required>Spam</option>
 															<option value="7" {{ (old('status_id') ?? $lead->implode('status_id') ) == '7' ? 'selected': '' }} required>Failed</option>
 														</select>
-														<span class="form-text text-muted">Please select an status.</span>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-angle-down" style="font-size: 24px"></i></span></div>
 													</div>
+													<span class="form-text text-muted">Please Select Status</span>
 												</div>
 										 	</div>
 
@@ -152,10 +153,10 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Product</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text"class="form-control" placeholder="Product Name"/>
+														<label type="text"class="form-control" placeholder="Product Name"></label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
 													</div>
-													<span class="form-text text-muted">Please enter product name</span>
+													<span class="form-text text-muted">Auto-Filled Product Name</span>
 										  		</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
 												<div class="col-lg-3">
@@ -191,7 +192,7 @@
 														<input type="number" class="form-control" placeholder="Total Price" disabled/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
-													<span class="form-text text-muted">Auto-filled total</span>
+													<span class="form-text text-muted">Auto-Filled Total</span>
 												</div>
 											</div>
 										 	<div class="separator separator-dashed my-10"></div>
