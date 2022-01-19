@@ -9,9 +9,11 @@
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 
-												<div class="me-2">
-													<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" placeholder="Search" aria-label="Search" style="height: 33px;">
-												</div>
+												<form action="/cs" method="GET" class="d-flex">
+													<div class="me-2">
+														<input class="form-control mt-0" name="date_filter"  id="date_filter" placeholder="{{ old('date_filter') }}" type="date" style="height: 33px;" onchange="submit()">
+													</div>
+												</form>
 
 												<form action="#" method="GET" class="d-flex">
 													<input class="form-control mt-0" name="search" id="searchlead" type="text" placeholder="Search" aria-label="Search" style="height: 33px;">
