@@ -314,6 +314,14 @@
 													</div>
 													<span class="form-text text-muted">Please select an courier.</span>
 											  	</div>
+												  <label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Price</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<input type="number" class="form-control" placeholder="Total Shipping Price" disabled/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Auto-Filled Total</span>
+												</div>
 										 	</div>
 											<div class="separator separator-dashed my-10"></div>
 											<div class="form-group row mt-3">
