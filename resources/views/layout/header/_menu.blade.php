@@ -70,7 +70,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route('budgetingadv') }}" class="menu-title">Budgeting</a>
+						<a href="{{ route('budgeting.index') }}" class="menu-title">Budgeting</a>
 					</span>
 				</div>
 			</div>
