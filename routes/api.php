@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BigFlipCallbackController;
 use App\Http\Controllers\BigFlipController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,8 @@ Route::get('omset_point', [OmsetController::class, 'omset_point'])->name('omsetP
 Route::post('upselling/{campaign}/{product}/{user}', [UpsellingController::class, 'upselling'])->name('upselling');
 Route::get('all_upselling', [UpsellingController::class, 'all_upselling'])->name('allUpselling');
 Route::get('upselling_point', [UpsellingController::class, 'upselling_point'])->name('upsellingPoint');
-Route::post('inquiry', [BigFlipController::class, 'inquiry']);
+Route::post('inquiry', [BigFlipCallbackController::class, 'inquiry']);
+Route::post('accept_payment', [BigFlipCallbackController::class, 'accept_payment']);
+Route::post('disbursement', [BigFlipCallbackController::class, 'disbursement']);
+Route::get('authentication', [BigFlipController::class, 'authentication']);
+Route::get('balance', [BigFlipController::class, 'balance']);

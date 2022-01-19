@@ -61,9 +61,12 @@
 														</div>
 													</div>
 												</div>
+												@if (auth()->user()->role_id == 1)
 												<form action="/dashboard" method="GET" class="d-flex">
+												@endif
+												<form action="/adv" method="GET" class="d-flex">
 													<div class="me-2 d-flex flex-row">
-														<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
+														<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
 														<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
 													</div>
 												</form>

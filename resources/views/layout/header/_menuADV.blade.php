@@ -14,7 +14,7 @@
 			</a>
 		</div>
 		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-			class="menu-item here show menu-lg-down-accordion me-lg-1">
+			class="menu-item menu-lg-down-accordion me-lg-1">
 			<span class="menu-link py-3">
 				<span class="menu-title">Advertiser</span>
 				<span class="menu-arrow d-lg-none"></span>
