@@ -93,7 +93,157 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
+									<form class="form" action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
+										@csrf
+										@method('PATCH')
+										<div class="card-body">
+											<h1 class="pb-5">Data CS</h1>
+										 	<div class="form-group row mt-3">
+												<label class="col-lg-1 col-form-label text-lg-right">Advertise</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-users-cog" style="font-size: 24px"></i></span></div>
+														<label type="text" class="form-control" placeholder="Full name">{{ old('advertiser') ?? $lead->implode('advertiser') }}</label>
+													</div>
+													<span class="form-text text-muted">Please enter your full name</span>
+										  		</div>
+												<label class="col-lg-1 col-form-label text-lg-right">Operator</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-user" style="font-size: 24px"></i></span></div>
+														<label type="text" class="form-control" placeholder="your name">{{ old('operator') ?? $lead->implode('operator_name') }}</label>
+													</div>
+													<span class="form-text text-muted">Please enter your name</span>
+												</div>
+										  		<label class="col-lg-1 col-form-label text-lg-right">Status</label>
+										  		<div class="col-lg-3">
+													<div class="col-lg-9 col-md-9 col-sm-12">
+														<select class="form-control" name="option">
+															<option value="3" {{ (old('status_id') ?? $lead->implode('status_id') ) == '3' ? 'selected': '' }} required>Waiting</option>
+															<option value="4" {{ (old('status_id') ?? $lead->implode('status_id') ) == '4' ? 'selected': '' }} required>Proccessing</option>
+															<option value="5" {{ (old('status_id') ?? $lead->implode('status_id') ) == '5' ? 'selected': '' }} required>Closing</option>
+															<option value="6" {{ (old('status_id') ?? $lead->implode('status_id') ) == '6' ? 'selected': '' }} required>Spam</option>
+															<option value="7" {{ (old('status_id') ?? $lead->implode('status_id') ) == '7' ? 'selected': '' }} required>Failed</option>
+														</select>
+														<span class="form-text text-muted">Please select an status.</span>
+													</div>
+												</div>
+										 	</div>
 
+											<div class="separator separator-dashed my-10"></div>
+
+											<h1 class="pb-5">Data Customer</h1>
+										 	<div class="form-group row mt-3">
+												<label class="col-lg-1 col-form-label text-lg-right">Full Name</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<input type="text" class="form-control" placeholder="Full name"/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-user-friends" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please enter your full name</span>
+										  		</div>
+												<label class="col-lg-1 col-form-label text-lg-right">Contact</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<input type="text" class="form-control" placeholder="Enter contact number"/>
+														<div class="input-group-append"><span class="input-group-text"><i class="la la-phone" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please enter Customer contact</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right">Address</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<input type="text" class="form-control" placeholder="Enter your address"/>
+														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please enter your address</span>
+												</div>
+											</div>
+										 	<div class="separator separator-dashed my-10"></div>
+											 <div class="form-group row mt-3">
+												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please enter quantity</span>
+										  		</div>
+												<label class="col-lg-1 col-form-label text-lg-right">Price</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<input type="number" placeholder="Enter price" min="0" id="price" name="price" value="{{ old('price') ?? $lead->implode('price') }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline"/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-money-bill-wave" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please enter price</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right">Total</label>
+												<div class="col-lg-3">
+													<input type="number" class="form-control" placeholder="Enter price" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->implode('total_price')}}" aria-describedby="totalHelpInline" disabled/>
+													<span class="form-text text-muted">Auto-filled total</span>
+												</div>
+											</div>
+										 	<div class="separator separator-dashed my-10"></div>
+										 	<div class="form-group row">
+												<label class="col-lg-1 col-form-label text-lg-right">Payment</label>
+												<div class="col-lg-3">
+													<div class="col-lg-9 col-md-9 col-sm-12">
+														<select class="form-control" name="option">
+															<option value="" hidden>Payment Method</option>
+															<option>COD</option>
+															<option>Transfer</option>
+														</select>
+														<span class="form-text text-muted">Select an payment method.</span>
+													</div>
+											  	</div>
+										  		<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
+												<div class="col-lg-3">
+													<div class="col-lg-9 col-md-9 col-sm-12">
+														<select class="form-control" name="option">
+															<option value="" hidden>Warehouse</option>
+															<option>Cilcap</option>
+															<option>Kosambi</option>
+															<option>Tandes.Sby</option>
+														</select>
+														<span class="form-text text-muted">Please select an status.</span>
+													</div>
+											  	</div>
+										  		<label class="col-lg-1 col-form-label text-lg-right">Courier</label>
+												<div class="col-lg-3">
+													<div class="col-lg-9 col-md-9 col-sm-12">
+														<select class="form-control" name="option">
+															<option value="" hidden>Courier Type</option>
+															<option>POS</option>
+															<option>JNE</option>
+															<option>JNT</option>
+															<option>Ninja</option>
+															<option>Sicepat</option>
+														</select>
+														<span class="form-text text-muted">Please select an status.</span>
+													</div>
+											  	</div>
+										 	</div>
+											<div class="separator separator-dashed my-10"></div>
+											<div class="form-group row mt-3">
+												<label class="col-lg-1 col-form-label text-lg-right">Upload The Proof</label>
+												<div class="col-lg">
+													<input class="form-control" value="" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+													<span class="form-text text-muted">Please upload the proof if you closing</span>
+												</div>
+											</div>
+
+										</div>
+										{{ csrf_field() }}
+										<div class="card-footer">
+										 	<div class="row">
+										  		<div class="col-lg-5"></div>
+										  		<div class="col-lg-7">
+										   			<button type="reset" class="btn btn-primary mr-2">Submit</button>
+										   			<button type="reset" class="btn btn-secondary">Cancel</button>
+										  		</div>
+										 	</div>
+										</div>
+									</form>
 									<form action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
 										@csrf
 										@method('PATCH')
