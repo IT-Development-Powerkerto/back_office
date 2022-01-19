@@ -15,7 +15,7 @@
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-				@include('ceo/layout/_contentCEO')
+				@include('ceo/layout/_contenCEO')
 
 			</div>
 			<!--end::Content-->

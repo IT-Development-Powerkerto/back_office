@@ -30,22 +30,10 @@
 						<!--begin::Container-->
 						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 							<!--begin::Page title-->
-							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
-								<!--begin::Heading-->
-								<h1 class="text-dark fw-bold my-0 fs-2">Edit Lead Tunelling</h1>
-								<!--end::Heading-->
-								<!--begin::Breadcrumb-->
-								<ul class="breadcrumb breadcrumb-line text-muted fw-bold fs-base my-1">
-									<li class="breadcrumb-item text-muted">
-										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
-									</li>
-									<li class="breadcrumb-item text-muted">
-										<a href="{{ route('lead.index') }}" class="text-muted">Lead Tunelling</a>
-									</li>
-									<li class="breadcrumb-item text-dark">Edit Lead Tunelling</li>
-								</ul>
-								<!--end::Breadcrumb-->
-							</div>
+							@include('layout/header/_base')
+
+
+							@include('layout/_toolbar')
 							<!--end::Page title=-->
 							<!--begin::Wrapper-->
 							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
@@ -132,7 +120,7 @@
 
 											<div class="separator separator-dashed my-10"></div>
 
-											<h1 class="pb-5">Data Customer</h1>
+											<h1 class="pb-5">Data Order</h1>
 										 	<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Full Name</label>
 												<div class="col-lg-3">
@@ -161,10 +149,18 @@
 											</div>
 										 	<div class="separator separator-dashed my-10"></div>
 											 <div class="form-group row mt-3">
+												<label class="col-lg-1 col-form-label text-lg-right">Product</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<input type="text"class="form-control" placeholder="Product Name"/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please enter product name</span>
+										  		</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+														<input type="number" placeholder="Quantity Product" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter quantity</span>
@@ -177,9 +173,24 @@
 													</div>
 													<span class="form-text text-muted">Please enter price</span>
 												</div>
-												<label class="col-lg-1 col-form-label text-lg-right">Total</label>
-												<div class="col-lg-3">
-													<input type="number" class="form-control" placeholder="Enter price" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->implode('total_price')}}" aria-describedby="totalHelpInline" disabled/>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<select class="form-control" name="option">
+															<option value="" hidden>Promotion Type</option>
+															<option>Promo 1</option>
+															<option>Promo 2</option>
+														</select>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please enter promotion type</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total</label>
+												<div class="col-lg-7 mt-8">
+													<div class="input-group">
+														<input type="number" class="form-control" placeholder="Total Price" disabled/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+													</div>
 													<span class="form-text text-muted">Auto-filled total</span>
 												</div>
 											</div>
@@ -244,103 +255,14 @@
 										 	</div>
 										</div>
 									</form>
-									<form action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
-										@csrf
-										@method('PATCH')
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputAdvertiser" class="col-form-label">Advertiser</label>
-											</div>
-											<div class="col-10">
-												<label class="col-form-label form-control" value="">{{ old('advertiser') ?? $lead->implode('advertiser') }}</label>
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputOperator" class="col-form-label">Operator</label>
-											</div>
-											<div class="col-10">
-												<label class="col-form-label form-control" value="">{{ old('operator') ?? $lead->implode('operator_name') }}</label>
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputProduct" class="col-form-label">Product</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-												<label class="col-form-label form-control" value="">{{ old('product') ?? $lead->implode('product_name') }}</label>
-                                            </div>
-                                        </div>
-										<div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputProduct" class="col-form-label">Costumer Name</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-												<input class="col-form-label form-control" value="{{ old('client') ?? $lead->implode('client_name') }}" name="name">
-                                            </div>
-                                        </div>
-										<div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputProduct" class="col-form-label">No Whatsapp</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-												<input class="col-form-label form-control" value="{{ old('client') ?? $lead->implode('client_wa') }}" name="whatsapp">
-                                            </div>
-                                        </div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputQuantity" class="col-form-label">Quantity</label>
-											</div>
-											<div class="col-10">
-												<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputprice" class="col-form-label">Price</label>
-											</div>
-											<div class="col-10">
-												<input type="number" min="0" id="price" name="price" value="{{ old('price') ?? $lead->implode('price') }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputTotal" class="col-form-label">Total</label>
-											</div>
-											<div class="col-10">
-												{{--  <label class="col-form-label form-control" id="total_price" name="total_price" required value="" aria-describedby="totalHelpInline">{{ old('total') ?? $lead->total_price }}</label>  --}}
-												<input class="col-form-label form-control" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->implode('total_price')}}" aria-describedby="totalHelpInline" disabled>
-											</div>
-										</div>
-										{{--  <div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputTime" class="col-form-label">Time</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="time" required value="{{ old('time') ?? $campaign->time }}" id="inputtime" class="form-control" aria-describedby="totalHelpInline">
-											</div>
-										</div>  --}}
-										<div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputProgress" class="col-form-label">Progress</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-                                                <select name="status_id" id="status_id" class="form-control">
-                                                    <option value="3" {{ (old('status_id') ?? $lead->implode('status_id') ) == '3' ? 'selected': '' }} required>Waiting</option>
-													<option value="4" {{ (old('status_id') ?? $lead->implode('status_id') ) == '4' ? 'selected': '' }} required>Proccessing</option>
-													<option value="5" {{ (old('status_id') ?? $lead->implode('status_id') ) == '5' ? 'selected': '' }} required>Closing</option>
-													<option value="6" {{ (old('status_id') ?? $lead->implode('status_id') ) == '6' ? 'selected': '' }} required>Spam</option>
-													<option value="7" {{ (old('status_id') ?? $lead->implode('status_id') ) == '7' ? 'selected': '' }} required>Failed</option>
-                                                </select>
-                                            </div>
-                                        </div>
-										{{ csrf_field() }}
-										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Lead Tenneling">
-									</form>
 								</div>
 								<!--end::Card body-->
 							</div>
 							<!--end::details View-->
+						</div>
+						<!--end::Wrapper-->
+					</div>
+					<!--end::Page-->
 					<!--begin::Footer-->
 					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
 						<!--begin::Container-->
@@ -355,10 +277,6 @@
 						<!--end::Container-->
 					</div>
 					<!--end::Footer-->
-				</div>
-				<!--end::Wrapper-->
-			</div>
-			<!--end::Page-->
 		</div>
 		<!--end::Root-->
 		<!--end::Main-->

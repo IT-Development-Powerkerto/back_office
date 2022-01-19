@@ -5,7 +5,7 @@
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
-			@include('partials/widgets/finance/_widget-5')
+			@include('partials/widgets/ceo/_widget-5')
 			
 			
 		</div>
@@ -13,14 +13,14 @@
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
-			@include('partials/widgets/finance/_widget-3')
+			@include('partials/widgets/ceo/_widget-3')
 			
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
-			@include('partials/widgets/finance/_widget-4')
+			@include('partials/widgets/ceo/_widget-4')
 
 		</div>
 		<!--end::Col-->
@@ -28,7 +28,7 @@
 	<!--end::Row-->
 	<!--begin::Row-->
 	<div class="row gy-5 mt-n20 g-xl-1">
-		@include('finance/layout/Finance')
+		@include('ceo/layout/CEOContent')
 	</div>
 	<!--end::Row-->
 
