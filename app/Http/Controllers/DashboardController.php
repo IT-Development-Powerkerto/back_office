@@ -42,36 +42,22 @@ class DashboardController extends Controller
         }
         else{
             if($request->date_filter){
-                // dd($request->date_filter);
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
-
-                // dd($day);
-                $leads = DB::table('leads as l')
-                ->join('operators as o', 'l.operator_id', '=', 'o.id')
-                ->join('products as p', 'l.product_id', '=', 'p.id' )
-                ->join('statuses as s', 'l.status_id', '=', 's.id')
-                ->join('clients as c', 'l.client_id', '=', 'c.id')
-                ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-                ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-                ->where('l.admin_id', auth()->user()->admin_id)
-                ->where('l.updated_at', $day)
-                ->orderByDesc('l.id')
-                ->paginate(5);
             } else {
                 $day = Carbon::now()->format('Y-m-d');
-                $leads = DB::table('leads as l')
-                ->join('operators as o', 'l.operator_id', '=', 'o.id')
-                ->join('products as p', 'l.product_id', '=', 'p.id' )
-                ->join('statuses as s', 'l.status_id', '=', 's.id')
-                ->join('clients as c', 'l.client_id', '=', 'c.id')
-                ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-                ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
-                ->where('l.admin_id', auth()->user()->admin_id)
-                ->where('l.updated_at', $day)
-                ->orderByDesc('l.id')
-                ->paginate(5);
-                // dd($leads);
             }
+            $leads = DB::table('leads as l')
+            ->join('operators as o', 'l.operator_id', '=', 'o.id')
+            ->join('products as p', 'l.product_id', '=', 'p.id' )
+            ->join('statuses as s', 'l.status_id', '=', 's.id')
+            ->join('clients as c', 'l.client_id', '=', 'c.id')
+            ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+            ->where('l.admin_id', auth()->user()->admin_id)
+            ->where('l.updated_at', $day)
+            ->orderByDesc('l.id')
+            ->paginate(5);
+            // dd($leads);
             $users = User::where('admin_id', auth()->user()->admin_id)->get();
             $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
             if (auth()->user()->admin_id == 1){
@@ -275,6 +261,11 @@ class DashboardController extends Controller
                 $roles = Role::all();
                 $icons = Icon::all();
                 $products = Product::where('admin_id', auth()->user()->admin_id)->get();
+                if($request->date_filter){
+                    $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+                } else {
+                    $day = Carbon::now()->format('Y-m-d');
+                }
                 $leads = DB::table('leads as l')
                     ->join('operators as o', 'l.operator_id', '=', 'o.id')
                     ->join('products as p', 'l.product_id', '=', 'p.id' )
@@ -284,6 +275,7 @@ class DashboardController extends Controller
                     ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
                     ->where('l.admin_id', auth()->user()->admin_id)
                     ->where('l.advertiser', $x->name)
+                    ->where('l.updated_at', $day)
                     ->orderByDesc('l.id')
                     ->paginate(5);
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
@@ -317,6 +309,11 @@ class DashboardController extends Controller
                 $roles = Role::all();
                 $icons = Icon::all();
                 $products = Product::where('admin_id', auth()->user()->admin_id)->get();
+                if($request->date_filter){
+                    $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+                } else {
+                    $day = Carbon::now()->format('Y-m-d');
+                }
                 $leads = DB::table('leads as l')
                     ->join('operators as o', 'l.operator_id', '=', 'o.id')
                     ->join('products as p', 'l.product_id', '=', 'p.id' )
@@ -326,6 +323,7 @@ class DashboardController extends Controller
                     ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
                     ->where('l.admin_id', auth()->user()->admin_id)
                     ->where('l.user_id', $operator)
+                    ->where('l.updated_at', $day)
                     ->orderByDesc('l.id')
                     ->paginate(5);
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
