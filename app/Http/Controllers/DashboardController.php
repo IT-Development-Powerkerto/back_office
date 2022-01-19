@@ -44,7 +44,6 @@ class DashboardController extends Controller
             if($request->date_filter){
                 // dd($request->date_filter);
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
-
                 // dd($day);
                 $leads = DB::table('leads as l')
                 ->join('operators as o', 'l.operator_id', '=', 'o.id')
@@ -57,6 +56,8 @@ class DashboardController extends Controller
                 ->where('l.updated_at', $day)
                 ->orderByDesc('l.id')
                 ->paginate(5);
+
+                dd($leads);
             } else {
                 $day = Carbon::now()->format('Y-m-d');
                 $leads = DB::table('leads as l')
@@ -70,7 +71,6 @@ class DashboardController extends Controller
                 ->where('l.updated_at', $day)
                 ->orderByDesc('l.id')
                 ->paginate(5);
-                // dd($leads);
             }
             $users = User::where('admin_id', auth()->user()->admin_id)->get();
             $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();

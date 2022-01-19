@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\LeadsExport;
 use App\Models\Client;
 use App\Models\Lead;
+use App\Models\Inputer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -73,8 +74,13 @@ class LeadController extends Controller
             ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.name as client_name', 'c.whatsapp as client_wa', 'c.created_at as client_created_at', 'c.updated_at as client_updated_at', 'cp.cs_to_customer as cs_to_customer', 's.name as status_name')
             ->where('l.id', $id)
             ->where('l.admin_id', auth()->user()->admin_id);
+        $inputer = DB::table('inputers as i')
+            ->join('leads as l', 'i.lead_id', '=', 'l.id')
+            ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image')
+            ->where('l.id', $id)
+            ->where('l.admin_id', auth()->user()->admin_id);
         // return view('EditingLT', compact('lead'));
-        return view('EditingLT')->with('lead', $lead);
+        return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer);
     }
 
     /**
@@ -107,6 +113,61 @@ class LeadController extends Controller
         ]);
         // dd($whatsapp);
 
+
+        if($request->status_id == 5){
+            if($request->hasFile('image'))
+            {
+                $extFile = $request->image->getClientOriginalExtension();
+                $namaFile = 'order-'.time().".".$extFile;
+                $path = $request->image->move('public/assets/img/order',$namaFile);
+                $image = $path;
+            }else{
+                $image = null;
+            }
+
+            $inputer = Inputer::where('lead_id', $lead)->exists();
+            $lead = Lead::findOrFail($lead);
+            if($inputer == true){
+                DB::table('inputers')->where('lead_id', $lead->id)->update([
+                    'admin_id'         => $lead->admin_id,
+                    'lead_id'          => $lead->id,
+                    'adv_name'         => $lead->advertiser,
+                    'operator_name'    => $lead->user->name,
+                    'customer_name'    => $request->name,
+                    'customer_number'  => $whatsapp,
+                    'customer_address' => $request->address,
+                    'product_name'     => $lead->product->name,
+                    'product_price'    => $request->price,
+                    'quantity'         => $request->quantity,
+                    'total_price'      => $total_price,
+                    'warehouse'        => $request->warehouse,
+                    'courier'          => $request->courier,
+                    'payment_method'   => $request->payment_method,
+                    'total_payment'    => $total_price,
+                    'payment_proof'    => $request->image,
+                ]);
+            }
+            else{
+                DB::table('inputers')->insert([
+                    'admin_id'         => $lead->admin_id,
+                    'lead_id'          => $lead->id,
+                    'adv_name'         => $lead->advertiser,
+                    'operator_name'    => $lead->user->name,
+                    'customer_name'    => $request->name,
+                    'customer_number'  => $whatsapp,
+                    'customer_address' => $request->address,
+                    'product_name'     => $lead->product->name,
+                    'product_price'    => $request->price,
+                    'quantity'         => $request->quantity,
+                    'total_price'      => $total_price,
+                    'warehouse'        => $request->warehouse,
+                    'courier'          => $request->courier,
+                    'payment_method'   => $request->payment_method,
+                    'total_payment'    => $total_price,
+                    'payment_proof'    => $request->image,
+                ]);
+            }
+        }
         return redirect('/dashboard')->with('success','Successull! Updated');
     }
 
@@ -125,7 +186,7 @@ class LeadController extends Controller
         DB::table('products')->whereid($lead->product_id)->decrement('lead');
         return redirect('/dashboard')->with('success','Successull! Lead Deleted');
     }
-    public function export(Request $request) 
+    public function export(Request $request)
     {
         $from_date=$request->from_date;
         $to_date = $request->to_date;

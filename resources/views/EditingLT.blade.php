@@ -118,7 +118,7 @@
 										  		<label class="col-lg-1 col-form-label text-lg-right">Status</label>
 										  		<div class="col-lg-3">
 													<div class="col-lg-9 col-md-9 col-sm-12">
-														<select class="form-control" name="option">
+														<select class="form-control" name="status_id" id="status_id">
 															<option value="3" {{ (old('status_id') ?? $lead->implode('status_id') ) == '3' ? 'selected': '' }} required>Waiting</option>
 															<option value="4" {{ (old('status_id') ?? $lead->implode('status_id') ) == '4' ? 'selected': '' }} required>Proccessing</option>
 															<option value="5" {{ (old('status_id') ?? $lead->implode('status_id') ) == '5' ? 'selected': '' }} required>Closing</option>
@@ -137,7 +137,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Full Name</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text" class="form-control" placeholder="Full name"/>
+														<input type="text" name="name" class="form-control" value="{{ old('client') ?? $lead->implode('client_name') }}" placeholder="Full name"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-user-friends" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter your full name</span>
@@ -145,7 +145,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Contact</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text" class="form-control" placeholder="Enter contact number"/>
+														<input type="text" name="whatsapp" class="form-control" value="{{ old('client') ?? $lead->implode('client_wa') }}" placeholder="Enter contact number"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-phone" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter Customer contact</span>
@@ -153,7 +153,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Address</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text" class="form-control" placeholder="Enter your address"/>
+														<input type="text" name="address" class="form-control" value="{{ old('address') ?? $inputer->implode('address') }}" placeholder="Enter your address"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter your address</span>
@@ -188,10 +188,10 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Payment</label>
 												<div class="col-lg-3">
 													<div class="col-lg-9 col-md-9 col-sm-12">
-														<select class="form-control" name="option">
+														<select class="form-control" name="payment_method" id="payment_method">
 															<option value="" hidden>Payment Method</option>
-															<option>COD</option>
-															<option>Transfer</option>
+															<option value="COD" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'COD' ? 'selected': '' }} required>COD</option>
+															<option value="Transfer" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'Transfer' ? 'selected': '' }} required>Transfer</option>
 														</select>
 														<span class="form-text text-muted">Select an payment method.</span>
 													</div>
@@ -199,27 +199,27 @@
 										  		<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
 												<div class="col-lg-3">
 													<div class="col-lg-9 col-md-9 col-sm-12">
-														<select class="form-control" name="option">
+														<select class="form-control" name="warehouse" id="warehouse">
 															<option value="" hidden>Warehouse</option>
-															<option>Cilcap</option>
-															<option>Kosambi</option>
-															<option>Tandes.Sby</option>
+															<option value="Cilacap" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Cilacap' ? 'selected': '' }} required>Cilcap</option>
+															<option value="Kosambi" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Kosambi' ? 'selected': '' }} required>Kosambi</option>
+															<option value="Tandes.Sby" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Tandes.Sby' ? 'selected': '' }} required>Tandes.Sby</option>
 														</select>
-														<span class="form-text text-muted">Please select an status.</span>
+														<span class="form-text text-muted">Please select an warehouse.</span>
 													</div>
 											  	</div>
 										  		<label class="col-lg-1 col-form-label text-lg-right">Courier</label>
 												<div class="col-lg-3">
 													<div class="col-lg-9 col-md-9 col-sm-12">
-														<select class="form-control" name="option">
+														<select class="form-control" name="courier" id="courier">
 															<option value="" hidden>Courier Type</option>
-															<option>POS</option>
-															<option>JNE</option>
-															<option>JNT</option>
-															<option>Ninja</option>
-															<option>Sicepat</option>
+															<option value="POS" {{ (old('courier') ?? $inputer->implode('courier') ) == 'POS' ? 'selected': '' }} required>POS</option>
+															<option value="JNE" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNE' ? 'selected': '' }} required>JNE</option>
+															<option value="JNT" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNT' ? 'selected': '' }} required>JNT</option>
+															<option value="Ninja" {{ (old('courier') ?? $inputer->implode('courier') ) == 'Ninja' ? 'selected': '' }} required>Ninja</option>
+															<option value="Sicepat" {{ (old('courier') ?? $inputer->implode('courier') ) == 'Sicepat' ? 'selected': '' }} required>Sicepat</option>
 														</select>
-														<span class="form-text text-muted">Please select an status.</span>
+														<span class="form-text text-muted">Please select an courier.</span>
 													</div>
 											  	</div>
 										 	</div>
@@ -227,7 +227,7 @@
 											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Upload The Proof</label>
 												<div class="col-lg">
-													<input class="form-control" value="" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+													<input class="form-control" value="{{ old('image') ?? $inputer->implode('image') }}" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
 													<span class="form-text text-muted">Please upload the proof if you closing</span>
 												</div>
 											</div>
@@ -238,13 +238,13 @@
 										 	<div class="row">
 										  		<div class="col-lg-5"></div>
 										  		<div class="col-lg-7">
-										   			<button type="reset" class="btn btn-primary mr-2">Submit</button>
-										   			<button type="reset" class="btn btn-secondary">Cancel</button>
+                                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                                    <input type="submit" class="btn btn-secondary" href="/dahsboard" value="Cancel">
 										  		</div>
 										 	</div>
 										</div>
 									</form>
-									<form action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
+									{{-- <form action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
 										@csrf
 										@method('PATCH')
 										<div class="row align-items-center col-12 pb-5">
@@ -308,18 +308,18 @@
 												<label for="inputTotal" class="col-form-label">Total</label>
 											</div>
 											<div class="col-10">
-												{{--  <label class="col-form-label form-control" id="total_price" name="total_price" required value="" aria-describedby="totalHelpInline">{{ old('total') ?? $lead->total_price }}</label>  --}}
+												<label class="col-form-label form-control" id="total_price" name="total_price" required value="" aria-describedby="totalHelpInline">{{ old('total') ?? $lead->total_price }}</label>
 												<input class="col-form-label form-control" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->implode('total_price')}}" aria-describedby="totalHelpInline" disabled>
 											</div>
 										</div>
-										{{--  <div class="row align-items-center col-12 pb-5">
+										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputTime" class="col-form-label">Time</label>
 											</div>
 											<div class="col-10">
 												<input type="text" name="time" required value="{{ old('time') ?? $campaign->time }}" id="inputtime" class="form-control" aria-describedby="totalHelpInline">
 											</div>
-										</div>  --}}
+										</div>
 										<div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
                                                 <label for="inputProgress" class="col-form-label">Progress</label>
@@ -336,7 +336,7 @@
                                         </div>
 										{{ csrf_field() }}
 										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Lead Tenneling">
-									</form>
+									</form> --}}
 								</div>
 								<!--end::Card body-->
 							</div>
