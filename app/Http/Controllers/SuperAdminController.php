@@ -131,6 +131,7 @@ class SuperAdminController extends Controller
         DB::table('users')->where('id', $user_id)->update([
             'admin_id' => $user_id,
         ]);
+
     }
 
     /**

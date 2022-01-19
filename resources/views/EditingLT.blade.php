@@ -30,22 +30,10 @@
 						<!--begin::Container-->
 						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 							<!--begin::Page title-->
-							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
-								<!--begin::Heading-->
-								<h1 class="text-dark fw-bold my-0 fs-2">Edit Lead Tunelling</h1>
-								<!--end::Heading-->
-								<!--begin::Breadcrumb-->
-								<ul class="breadcrumb breadcrumb-line text-muted fw-bold fs-base my-1">
-									<li class="breadcrumb-item text-muted">
-										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
-									</li>
-									<li class="breadcrumb-item text-muted">
-										<a href="{{ route('lead.index') }}" class="text-muted">Lead Tunelling</a>
-									</li>
-									<li class="breadcrumb-item text-dark">Edit Lead Tunelling</li>
-								</ul>
-								<!--end::Breadcrumb-->
-							</div>
+							@include('layout/header/_base')
+
+
+							@include('layout/_toolbar')
 							<!--end::Page title=-->
 							<!--begin::Wrapper-->
 							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
@@ -102,22 +90,22 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Advertise</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-users-cog" style="font-size: 24px"></i></span></div>
 														<label type="text" class="form-control" placeholder="Full name">{{ old('advertiser') ?? $lead->implode('advertiser') }}</label>
+														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-users-cog" style="font-size: 24px"></i></span></div>
 													</div>
-													<span class="form-text text-muted">Please enter your full name</span>
+													<span class="form-text text-muted">Auto-Filled Advertise Name</span>
 										  		</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Operator</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-user" style="font-size: 24px"></i></span></div>
 														<label type="text" class="form-control" placeholder="your name">{{ old('operator') ?? $lead->implode('operator_name') }}</label>
+														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-user" style="font-size: 24px"></i></span></div>
 													</div>
-													<span class="form-text text-muted">Please enter your name</span>
+													<span class="form-text text-muted">Auto-Filled CS Name</span>
 												</div>
-										  		<label class="col-lg-1 col-form-label text-lg-right">Status</label>
-										  		<div class="col-lg-3">
-													<div class="col-lg-9 col-md-9 col-sm-12">
+												<label class="col-lg-1 col-form-label text-lg-right">Status</label>
+												<div class="col-lg-3">
+													<div class="input-group">
 														<select class="form-control" name="option">
 															<option value="3" {{ (old('status_id') ?? $lead->implode('status_id') ) == '3' ? 'selected': '' }} required>Waiting</option>
 															<option value="4" {{ (old('status_id') ?? $lead->implode('status_id') ) == '4' ? 'selected': '' }} required>Proccessing</option>
@@ -125,19 +113,20 @@
 															<option value="6" {{ (old('status_id') ?? $lead->implode('status_id') ) == '6' ? 'selected': '' }} required>Spam</option>
 															<option value="7" {{ (old('status_id') ?? $lead->implode('status_id') ) == '7' ? 'selected': '' }} required>Failed</option>
 														</select>
-														<span class="form-text text-muted">Please select an status.</span>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-angle-down" style="font-size: 24px"></i></span></div>
 													</div>
+													<span class="form-text text-muted">Please Select Status</span>
 												</div>
 										 	</div>
 
 											<div class="separator separator-dashed my-10"></div>
 
-											<h1 class="pb-5">Data Customer</h1>
+											<h1 class="pb-5">Data Order</h1>
 										 	<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Full Name</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text" class="form-control" placeholder="Full name"/>
+														<input type="text" name="name" class="form-control" value="{{ old('client') ?? $lead->implode('client_name') }}" placeholder="Full name"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-user-friends" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter your full name</span>
@@ -145,7 +134,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Contact</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text" class="form-control" placeholder="Enter contact number"/>
+														<input type="text" name="whatsapp" class="form-control" value="{{ old('client') ?? $lead->implode('client_wa') }}" placeholder="Enter contact number"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-phone" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter Customer contact</span>
@@ -153,7 +142,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Address</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text" class="form-control" placeholder="Enter your address"/>
+														<input type="text" name="address" class="form-control" value="{{ old('address') ?? $inputer->implode('address') }}" placeholder="Enter your address"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter your address</span>
@@ -161,10 +150,18 @@
 											</div>
 										 	<div class="separator separator-dashed my-10"></div>
 											 <div class="form-group row mt-3">
+												<label class="col-lg-1 col-form-label text-lg-right">Product</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<label type="text"class="form-control" placeholder="Product Name"></label>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Auto-Filled Product Name</span>
+										  		</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+														<input type="number" placeholder="Quantity Product" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter quantity</span>
@@ -177,57 +174,159 @@
 													</div>
 													<span class="form-text text-muted">Please enter price</span>
 												</div>
-												<label class="col-lg-1 col-form-label text-lg-right">Total</label>
-												<div class="col-lg-3">
-													<input type="number" class="form-control" placeholder="Enter price" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->implode('total_price')}}" aria-describedby="totalHelpInline" disabled/>
-													<span class="form-text text-muted">Auto-filled total</span>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<select class="form-control" name="option">
+															<option value="" hidden>Promotion Type</option>
+															<option>Promo 1</option>
+															<option>Promo 2</option>
+														</select>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please enter promotion type</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
+												<div class="col-lg-7 mt-8">
+													<div class="input-group">
+														<input type="number" class="form-control" placeholder="Total Price" disabled/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Auto-Filled Total</span>
 												</div>
 											</div>
 										 	<div class="separator separator-dashed my-10"></div>
 										 	<div class="form-group row">
 												<label class="col-lg-1 col-form-label text-lg-right">Payment</label>
 												<div class="col-lg-3">
-													<div class="col-lg-9 col-md-9 col-sm-12">
-														<select class="form-control" name="option">
+													<div class="input-group">
+														<select class="form-control" name="payment_method" id="payment_method">
 															<option value="" hidden>Payment Method</option>
-															<option>COD</option>
-															<option>Transfer</option>
+															<option value="COD" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'COD' ? 'selected': '' }} required>COD</option>
+															<option value="Transfer" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'Transfer' ? 'selected': '' }} required>Transfer</option>
 														</select>
-														<span class="form-text text-muted">Select an payment method.</span>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-file-invoice-dollar" style="font-size: 24px"></i></span></div>
 													</div>
+													<span class="form-text text-muted">Select an payment method.</span>
 											  	</div>
-										  		<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
+												<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
 												<div class="col-lg-3">
-													<div class="col-lg-9 col-md-9 col-sm-12">
-														<select class="form-control" name="option">
+													<div class="input-group">
+														<select class="form-control" nname="warehouse" id="warehouse">
 															<option value="" hidden>Warehouse</option>
-															<option>Cilcap</option>
-															<option>Kosambi</option>
-															<option>Tandes.Sby</option>
+															<option value="Cilacap" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Cilacap' ? 'selected': '' }} required>Cilcap</option>
+															<option value="Kosambi" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Kosambi' ? 'selected': '' }} required>Kosambi</option>
+															<option value="Tandes.Sby" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Tandes.Sby' ? 'selected': '' }} required>Tandes.Sby</option>
 														</select>
-														<span class="form-text text-muted">Please select an status.</span>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-warehouse" style="font-size: 24px"></i></span></div>
 													</div>
-											  	</div>
-										  		<label class="col-lg-1 col-form-label text-lg-right">Courier</label>
+													<span class="form-text text-muted">Please select an warehouse</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right">Destination</label>
 												<div class="col-lg-3">
-													<div class="col-lg-9 col-md-9 col-sm-12">
-														<select class="form-control" name="option">
-															<option value="" hidden>Courier Type</option>
-															<option>POS</option>
-															<option>JNE</option>
-															<option>JNT</option>
-															<option>Ninja</option>
-															<option>Sicepat</option>
-														</select>
-														<span class="form-text text-muted">Please select an status.</span>
+													<div class="input-group">
+														<select class="form-control select2" id="kt_select2_11" multiple name="param">
+															<option label="Label"></option>
+															<optgroup label="Alaskan/Hawaiian Time Zone">
+															 <option value="AK">Alaska</option>
+															 <option value="HI">Hawaii</option>
+															</optgroup>
+															<optgroup label="Pacific Time Zone">
+															 <option value="CA">California</option>
+															 <option value="NV">Nevada</option>
+															 <option value="OR">Oregon</option>
+															 <option value="WA">Washington</option>
+															</optgroup>
+															<optgroup label="Mountain Time Zone">
+															 <option value="AZ">Arizona</option>
+															 <option value="CO">Colorado</option>
+															 <option value="ID">Idaho</option>
+															 <option value="MT">Montana</option>
+															 <option value="NE">Nebraska</option>
+															 <option value="NM">New Mexico</option>
+															 <option value="ND">North Dakota</option>
+															 <option value="UT">Utah</option>
+															 <option value="WY">Wyoming</option>
+															</optgroup>
+															<optgroup label="Central Time Zone">
+															 <option value="AL">Alabama</option>
+															 <option value="AR">Arkansas</option>
+															 <option value="IL">Illinois</option>
+															 <option value="IA">Iowa</option>
+															 <option value="KS">Kansas</option>
+															 <option value="KY">Kentucky</option>
+															 <option value="LA">Louisiana</option>
+															 <option value="MN">Minnesota</option>
+															 <option value="MS">Mississippi</option>
+															 <option value="MO">Missouri</option>
+															 <option value="OK">Oklahoma</option>
+															 <option value="SD">South Dakota</option>
+															 <option value="TX">Texas</option>
+															 <option value="TN">Tennessee</option>
+															 <option value="WI">Wisconsin</option>
+															</optgroup>
+															<optgroup label="Eastern Time Zone">
+															 <option value="CT">Connecticut</option>
+															 <option value="DE">Delaware</option>
+															 <option value="FL">Florida</option>
+															 <option value="GA">Georgia</option>
+															 <option value="IN">Indiana</option>
+															 <option value="ME">Maine</option>
+															 <option value="MD">Maryland</option>
+															 <option value="MA">Massachusetts</option>
+															 <option value="MI">Michigan</option>
+															 <option value="NH">New Hampshire</option>
+															 <option value="NJ">New Jersey</option>
+															 <option value="NY">New York</option>
+															 <option value="NC">North Carolina</option>
+															 <option value="OH">Ohio</option>
+															 <option value="PA">Pennsylvania</option>
+															 <option value="RI">Rhode Island</option>
+															 <option value="SC">South Carolina</option>
+															 <option value="VT">Vermont</option>
+															 <option value="VA">Virginia</option>
+															 <option value="WV">West Virginia</option>
+															</optgroup>
+														   </select>
 													</div>
+													<span class="form-text text-muted">Please select an warehouse</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Wight</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<input type="number" class="form-control" placeholder="Weight"/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please input the product wieght</span>
+												</div>
+										  		<label class="col-lg-1 col-form-label text-lg-right mt-8">Courier</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<select class="form-control" name="courier" id="courier">
+															<option value="" hidden>Courier Type</option>
+															<option value="POS" {{ (old('courier') ?? $inputer->implode('courier') ) == 'POS' ? 'selected': '' }} required>POS</option>
+															<option value="JNE" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNE' ? 'selected': '' }} required>JNE</option>
+															<option value="JNT" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNT' ? 'selected': '' }} required>JNT</option>
+															<option value="Ninja" {{ (old('courier') ?? $inputer->implode('courier') ) == 'Ninja' ? 'selected': '' }} required>Ninja</option>
+															<option value="Sicepat" {{ (old('courier') ?? $inputer->implode('courier') ) == 'Sicepat' ? 'selected': '' }} required>Sicepat</option>
+														</select>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-truck-moving" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please select an courier.</span>
 											  	</div>
 										 	</div>
 											<div class="separator separator-dashed my-10"></div>
 											<div class="form-group row mt-3">
+												<label class="col-lg-1 col-form-label text-lg-right">Total</label>
+												<div class="col-lg">
+													<input class="form-control" placeholder="Total Payment" disabled>
+													<span class="form-text text-muted">Total Price + Courier</span>
+												</div>
+											</div>
+											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Upload The Proof</label>
 												<div class="col-lg">
-													<input class="form-control" value="" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+													<input class="form-control" value="{{ old('image') ?? $inputer->implode('image') }}" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
 													<span class="form-text text-muted">Please upload the proof if you closing</span>
 												</div>
 											</div>
@@ -238,13 +337,13 @@
 										 	<div class="row">
 										  		<div class="col-lg-5"></div>
 										  		<div class="col-lg-7">
-										   			<button type="reset" class="btn btn-primary mr-2">Submit</button>
-										   			<button type="reset" class="btn btn-secondary">Cancel</button>
+                                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                                    <input type="submit" class="btn btn-secondary" href="/dahsboard" value="Cancel">
 										  		</div>
 										 	</div>
 										</div>
 									</form>
-									<form action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
+									{{-- <form action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
 										@csrf
 										@method('PATCH')
 										<div class="row align-items-center col-12 pb-5">
@@ -308,18 +407,18 @@
 												<label for="inputTotal" class="col-form-label">Total</label>
 											</div>
 											<div class="col-10">
-												{{--  <label class="col-form-label form-control" id="total_price" name="total_price" required value="" aria-describedby="totalHelpInline">{{ old('total') ?? $lead->total_price }}</label>  --}}
+												<label class="col-form-label form-control" id="total_price" name="total_price" required value="" aria-describedby="totalHelpInline">{{ old('total') ?? $lead->total_price }}</label>
 												<input class="col-form-label form-control" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->implode('total_price')}}" aria-describedby="totalHelpInline" disabled>
 											</div>
 										</div>
-										{{--  <div class="row align-items-center col-12 pb-5">
+										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
 												<label for="inputTime" class="col-form-label">Time</label>
 											</div>
 											<div class="col-10">
 												<input type="text" name="time" required value="{{ old('time') ?? $campaign->time }}" id="inputtime" class="form-control" aria-describedby="totalHelpInline">
 											</div>
-										</div>  --}}
+										</div>
 										<div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
                                                 <label for="inputProgress" class="col-form-label">Progress</label>
@@ -336,11 +435,15 @@
                                         </div>
 										{{ csrf_field() }}
 										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Lead Tenneling">
-									</form>
+									</form> --}}
 								</div>
 								<!--end::Card body-->
 							</div>
 							<!--end::details View-->
+						</div>
+						<!--end::Wrapper-->
+					</div>
+					<!--end::Page-->
 					<!--begin::Footer-->
 					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
 						<!--begin::Container-->
@@ -355,10 +458,6 @@
 						<!--end::Container-->
 					</div>
 					<!--end::Footer-->
-				</div>
-				<!--end::Wrapper-->
-			</div>
-			<!--end::Page-->
 		</div>
 		<!--end::Root-->
 		<!--end::Main-->
@@ -382,7 +481,7 @@
                             type: "GET",
                             data : {"_token":"{{ csrf_token() }}"},
                             dataType: "json",
-                            success:function(data)
+                            success:function(data);
                         });
                     }
                 });
@@ -398,7 +497,7 @@
                             type: "GET",
                             data : {"_token":"{{ csrf_token() }}"},
                             dataType: "json",
-                            success:function(data)
+                            success:function(data);
                         });
                     }
                 });
@@ -406,7 +505,7 @@
         </script>
 		<script type="text/javascript">
 			function calculate(qty){
-				{{--  var quantity = parseInt(document.getElementById('quantity').value);  --}}
+				var quantity = parseInt(document.getElementById('quantity').value);
 
 				var price = parseInt(document.getElementById('price').value);
 
@@ -415,6 +514,195 @@
 				var total_price = document.getElementById('total_price');
 				total_price.value = total;
 			}
+		</script>
+		<script>
+			// Class definition
+			var KTSelect2 = function() {
+			// Private functions
+			var demos = function() {
+			// basic
+			$('#kt_select2_1').select2({
+			placeholder: "Select a state"
+			});
+
+			// nested
+			$('#kt_select2_2').select2({
+			placeholder: "Select a state"
+			});
+
+			// multi select
+			$('#kt_select2_3').select2({
+			placeholder: "Select a state",
+			});
+
+			// basic
+			$('#kt_select2_4').select2({
+			placeholder: "Select a state",
+			allowClear: true
+			});
+
+			// loading data from array
+			var data = [{
+			id: 0,
+			text: 'Enhancement'
+			}, {
+			id: 1,
+			text: 'Bug'
+			}, {
+			id: 2,
+			text: 'Duplicate'
+			}, {
+			id: 3,
+			text: 'Invalid'
+			}, {
+			id: 4,
+			text: 'Wontfix'
+			}];
+
+			$('#kt_select2_5').select2({
+			placeholder: "Select a value",
+			data: data
+			});
+
+			// loading remote data
+
+			function formatRepo(repo) {
+			if (repo.loading) return repo.text;
+			var markup = "<div class='select2-result-repository clearfix'>" +
+				"<div class='select2-result-repository__meta'>" +
+				"<div class='select2-result-repository__title'>" + repo.full_name + "</div>";
+			if (repo.description) {
+				markup += "<div class='select2-result-repository__description'>" + repo.description + "</div>";
+			}
+			markup += "<div class='select2-result-repository__statistics'>" +
+				"<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.forks_count + " Forks</div>" +
+				"<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.stargazers_count + " Stars</div>" +
+				"<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> " + repo.watchers_count + " Watchers</div>" +
+				"</div>" + 
+				"</div></div>";
+			return markup;
+			}
+
+			function formatRepoSelection(repo) {
+			return repo.full_name || repo.text;
+			}
+
+			$("#kt_select2_6").select2({
+			placeholder: "Search for git repositories",
+			allowClear: true,
+			ajax: {
+				url: "https://api.github.com/search/repositories",
+				dataType: 'json',
+				delay: 250,
+				data: function(params) {
+				return {
+				q: params.term, // search term
+				page: params.page
+				};
+				},
+				processResults: function(data, params) {
+				// parse the results into the format expected by Select2
+				// since we are using custom formatting functions we do not need to
+				// alter the remote JSON data, except to indicate that infinite
+				// scrolling can be used
+				params.page = params.page || 1;
+
+				return {
+				results: data.items,
+				pagination: {
+				more: (params.page * 30) < data.total_count
+				}
+				};
+				},
+				cache: true
+			},
+			escapeMarkup: function(markup) {
+				return markup;
+			}, // let our custom formatter work
+			minimumInputLength: 1,
+			templateResult: formatRepo, // omitted for brevity, see the source of this page
+			templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+			});
+
+			// custom styles
+
+			// tagging support
+			$('#kt_select2_12_1, #kt_select2_12_2, #kt_select2_12_3, #kt_select2_12_4').select2({
+			placeholder: "Select an option",
+			});
+
+			// disabled mode
+			$('#kt_select2_7').select2({
+			placeholder: "Select an option"
+			});
+
+			// disabled results
+			$('#kt_select2_8').select2({
+			placeholder: "Select an option"
+			});
+
+			// limiting the number of selections
+			$('#kt_select2_9').select2({
+			placeholder: "Select an option",
+			maximumSelectionLength: 2
+			});
+
+			// hiding the search box
+			$('#kt_select2_10').select2({
+			placeholder: "Select an option",
+			minimumResultsForSearch: Infinity
+			});
+
+			// tagging support
+			$('#kt_select2_11').select2({
+			placeholder: "Your Destination",
+			tags: true
+			});
+
+			// disabled results
+			$('.kt-select2-general').select2({
+			placeholder: "Select an option"
+			});
+			}
+
+			var modalDemos = function() {
+			$('#kt_select2_modal').on('shown.bs.modal', function () {
+			// basic
+			$('#kt_select2_1_modal').select2({
+				placeholder: "Select a state"
+			});
+
+			// nested
+			$('#kt_select2_2_modal').select2({
+				placeholder: "Select a state"
+			});
+
+			// multi select
+			$('#kt_select2_3_modal').select2({
+				placeholder: "Select a state",
+			});
+
+			// basic
+			$('#kt_select2_4_modal').select2({
+				placeholder: "Select a state",
+				allowClear: true
+			});
+			});
+			}
+
+			// Public functions
+			return {
+			init: function() {
+			demos();
+			modalDemos();
+			}
+			};
+			}();
+
+			// Initialization
+			jQuery(document).ready(function() {
+			KTSelect2.init();
+			});
 		</script>
 		<!--end::Javascript-->
 	</body>

@@ -5,7 +5,7 @@
 <head>
 	<base href="">
 	<title>{{Auth()->user()->role->name}}</title>
-    
+
 	<link rel="icon" href="img/favicon.png">
 
 	<!--begin::Fonts-->
@@ -108,8 +108,9 @@
         function CountUpTimer(duration, display) {
             var timer = duration, hours, minutes, seconds;
             setInterval(function () {
-                hours = parseInt((timer / 3600) % 24, 10);
-                minutes = parseInt((timer / 60) % 60, 10);
+                // hours = parseInt((timer / 3600) % 24, 10);
+                // minutes = parseInt((timer / 60) % 60, 10);
+                minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
 
                 hours = hours < 10 ? "0" + hours : hours;
@@ -130,8 +131,9 @@
         function StopTimer(duration, display) {
             var timer = duration, hours, minutes, seconds;
             setInterval(function () {
-                hours = parseInt((timer / 3600) % 24, 10);
-                minutes = parseInt((timer / 60) % 60, 10);
+                // hours = parseInt((timer / 3600) % 24, 10);
+                // minutes = parseInt((timer / 60) % 60, 10);
+                minutes = parseInt(timer / 60, 10);
                 seconds = parseInt(timer % 60, 10);
 
                 hours = hours < 10 ? "0" + hours : hours;

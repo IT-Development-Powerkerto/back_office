@@ -42,5 +42,8 @@ class Lead extends Model
     public function client(){
         return $this->belongsTo(Client::class);
     }
+    public function inputer(){
+        return $this->hasOne(Inputer::class);
+    }
 
 }

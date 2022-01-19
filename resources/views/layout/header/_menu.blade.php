@@ -7,22 +7,11 @@
 	<!--begin::Menu-->
 	<div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
 		id="#kt_header_menu" data-kt-menu="true">
-		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-			class="menu-item here show menu-lg-down-accordion me-lg-1">
-			<a class="menu-link active py-3" href="?page=index">
-				<span class="menu-title">Dashboards</span>
+		<div class="menu-item here show menu-lg-down-accordion me-lg-1">
+			<a class="menu-link active py-3" href="{{ route ('dashboard.index') }}">
+				<span class="menu-title">Dashboard</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
-			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-				<div class="menu-item">
-					<a class="menu-link active py-3" href="{{ route('dashboard.index') }}">
-						<span class="menu-icon">
-							<i class="bi bi-archive fs-3"></i>
-						</span>
-						<span class="menu-title">Admin</span>
-					</a>
-				</div>
-			</div>
 		</div>
 		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
 			class="menu-item menu-lg-down-accordion me-lg-1">
@@ -38,6 +27,81 @@
 							<span class="bullet bullet-dot"></span>
 						</span>
 						<span class="menu-title">Link</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+			class="menu-item menu-lg-down-accordion me-lg-1">
+			<span class="menu-link py-3">
+				<span class="menu-title">CEO</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</span>
+			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route('ceo') }}" class="menu-title">CEO Dashboard</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="" class="menu-title">Link</a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+			class="menu-item menu-lg-down-accordion me-lg-1">
+			<span class="menu-link py-3">
+				<span class="menu-title">Manager</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</span>
+			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="#" class="menu-title">Manager Dashboard</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="" class="menu-title">Link</a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+			class="menu-item menu-lg-down-accordion me-lg-1">
+			<span class="menu-link py-3">
+				<span class="menu-title">Finance</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</span>
+			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route('finance') }}" class="menu-title">Finance Dashboard</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="" class="menu-title">Link</a>
 					</span>
 				</div>
 			</div>
@@ -82,14 +146,14 @@
 				<span class="menu-arrow d-lg-none"></span>
 			</span>
 			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-				<div class="menu-item menu-lg-down-accordion">
+				{{-- <div class="menu-item menu-lg-down-accordion">
 					<span class="menu-link py-3">
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
 						<a href="{{ route('closingcs') }}" class="menu-title">Closing</a>
 					</span>
-				</div>
+				</div> --}}
 				<div class="menu-item menu-lg-down-accordion">
 					<span class="menu-link py-3">
 						<span class="menu-bullet">
@@ -98,29 +162,12 @@
 						<a href="{{route('reimbursement.index')}}" class="menu-title">Reimbursement CS</a>
 					</span>
 				</div>
-			</div>
-		</div>
-		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-			class="menu-item menu-lg-down-accordion me-lg-1">
-			<span class="menu-link py-3">
-				<span class="menu-title">Finance</span>
-				<span class="menu-arrow d-lg-none"></span>
-			</span>
-			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
 				<div class="menu-item menu-lg-down-accordion">
 					<span class="menu-link py-3">
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route('finance') }}" class="menu-title">Finance Dashboard</a>
-					</span>
-				</div>
-				<div class="menu-item menu-lg-down-accordion">
-					<span class="menu-link py-3">
-						<span class="menu-bullet">
-							<span class="bullet bullet-dot"></span>
-						</span>
-						<a href="" class="menu-title">Link</a>
+						<a href="{{route('createpromotion')}}" class="menu-title">Create Promotion</a>
 					</span>
 				</div>
 			</div>
