@@ -140,6 +140,7 @@
                                             <button type="reset" class="btn btn-secondary">Cancel</button>
                                         </div>
                                     </form>
+                                    @include('partials/widgets/tables/_widget-4')
 								</div>
 							</div>
 							<!--end::details View-->
