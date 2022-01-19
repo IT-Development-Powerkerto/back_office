@@ -24,6 +24,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\ReimbursementController;
 use App\Http\Controllers\CeoController;
+use App\Http\Controllers\PromotionController;
 
 
 /*
@@ -82,7 +83,6 @@ Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld')->middleware('auth');
 Route::get('/adv', [DashboardController::class, 'adv'])->name('advDashboard')->middleware('auth');
 Route::get('/cs', [DashboardController::class, 'cs'])->name('csDashboard')->middleware('auth');
-Route::get('/createpromotion', [DashboardController::class, 'createPromotion'])->name('createpromotion')->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 Route::get('/myprofile',[UserController::class, 'index'])->middleware('auth');
 Route::patch('/myprofile',[UserController::class, 'changePassword'])->name('changePassword')->middleware('auth');
@@ -124,6 +124,7 @@ Route::get('/ceo', [CeoController::class, 'index'])->name('ceo')->middleware('au
 
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
 Route::resource('budgeting', BudgetingController::class)->middleware('auth');
+Route::resource('promotion', PromotionController::class)->middleware('auth');
 
 
 

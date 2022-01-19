@@ -361,8 +361,4 @@ class DashboardController extends Controller
         return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead);
     }
 
-    public function createPromotion() {
-        return view('CreatePromotion');
-    }
-
 }

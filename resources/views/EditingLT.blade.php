@@ -153,7 +153,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Product</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text"class="form-control" placeholder="Product Name"></label>
+														<label type="text"class="form-control" placeholder="Product Name">{{ old('operator') ?? $lead->implode('product_name') }}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Product Name</span>
