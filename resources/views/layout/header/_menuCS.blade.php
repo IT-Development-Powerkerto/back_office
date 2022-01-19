@@ -14,18 +14,26 @@
 			</a>
 		</div>
 		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-			class="menu-item here show menu-lg-down-accordion me-lg-1">
+			class="menu-item menu-lg-down-accordion me-lg-1">
 			<span class="menu-link py-3">
 				<span class="menu-title">Costumer Service</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</span>
 			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-				<div class="menu-item menu-lg-down-accordion">
+				{{-- <div class="menu-item menu-lg-down-accordion">
 					<span class="menu-link py-3">
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
 						<a href="{{ route('closingcs') }}" class="menu-title">Closing</a>
+					</span>
+				</div> --}}
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route ('reimbursement.index') }}" class="menu-title">Reimbursement CS</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">
@@ -33,7 +41,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('reimbursement.index') }}" class="menu-title">Reimbursement CS</a>
+						<a href="{{route('createpromotion')}}" class="menu-title">Create Promotion</a>
 					</span>
 				</div>
 			</div>

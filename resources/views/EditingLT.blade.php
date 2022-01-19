@@ -199,30 +199,109 @@
 										 	<div class="form-group row">
 												<label class="col-lg-1 col-form-label text-lg-right">Payment</label>
 												<div class="col-lg-3">
-													<div class="col-lg-9 col-md-9 col-sm-12">
+													<div class="input-group">
 														<select class="form-control" name="payment_method" id="payment_method">
 															<option value="" hidden>Payment Method</option>
 															<option value="COD" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'COD' ? 'selected': '' }} required>COD</option>
 															<option value="Transfer" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'Transfer' ? 'selected': '' }} required>Transfer</option>
 														</select>
-														<span class="form-text text-muted">Select an payment method.</span>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-file-invoice-dollar" style="font-size: 24px"></i></span></div>
 													</div>
+													<span class="form-text text-muted">Select an payment method.</span>
 											  	</div>
-										  		<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
+												<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
 												<div class="col-lg-3">
-													<div class="col-lg-9 col-md-9 col-sm-12">
-														<select class="form-control" name="warehouse" id="warehouse">
+													<div class="input-group">
+														<select class="form-control" nname="warehouse" id="warehouse">
 															<option value="" hidden>Warehouse</option>
 															<option value="Cilacap" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Cilacap' ? 'selected': '' }} required>Cilcap</option>
 															<option value="Kosambi" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Kosambi' ? 'selected': '' }} required>Kosambi</option>
 															<option value="Tandes.Sby" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Tandes.Sby' ? 'selected': '' }} required>Tandes.Sby</option>
 														</select>
-														<span class="form-text text-muted">Please select an warehouse.</span>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-warehouse" style="font-size: 24px"></i></span></div>
 													</div>
-											  	</div>
-										  		<label class="col-lg-1 col-form-label text-lg-right">Courier</label>
+													<span class="form-text text-muted">Please select an warehouse</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right">Destination</label>
 												<div class="col-lg-3">
-													<div class="col-lg-9 col-md-9 col-sm-12">
+													<div class="input-group">
+														<select class="form-control select2" id="kt_select2_11" multiple name="param">
+															<option label="Label"></option>
+															<optgroup label="Alaskan/Hawaiian Time Zone">
+															 <option value="AK">Alaska</option>
+															 <option value="HI">Hawaii</option>
+															</optgroup>
+															<optgroup label="Pacific Time Zone">
+															 <option value="CA">California</option>
+															 <option value="NV">Nevada</option>
+															 <option value="OR">Oregon</option>
+															 <option value="WA">Washington</option>
+															</optgroup>
+															<optgroup label="Mountain Time Zone">
+															 <option value="AZ">Arizona</option>
+															 <option value="CO">Colorado</option>
+															 <option value="ID">Idaho</option>
+															 <option value="MT">Montana</option>
+															 <option value="NE">Nebraska</option>
+															 <option value="NM">New Mexico</option>
+															 <option value="ND">North Dakota</option>
+															 <option value="UT">Utah</option>
+															 <option value="WY">Wyoming</option>
+															</optgroup>
+															<optgroup label="Central Time Zone">
+															 <option value="AL">Alabama</option>
+															 <option value="AR">Arkansas</option>
+															 <option value="IL">Illinois</option>
+															 <option value="IA">Iowa</option>
+															 <option value="KS">Kansas</option>
+															 <option value="KY">Kentucky</option>
+															 <option value="LA">Louisiana</option>
+															 <option value="MN">Minnesota</option>
+															 <option value="MS">Mississippi</option>
+															 <option value="MO">Missouri</option>
+															 <option value="OK">Oklahoma</option>
+															 <option value="SD">South Dakota</option>
+															 <option value="TX">Texas</option>
+															 <option value="TN">Tennessee</option>
+															 <option value="WI">Wisconsin</option>
+															</optgroup>
+															<optgroup label="Eastern Time Zone">
+															 <option value="CT">Connecticut</option>
+															 <option value="DE">Delaware</option>
+															 <option value="FL">Florida</option>
+															 <option value="GA">Georgia</option>
+															 <option value="IN">Indiana</option>
+															 <option value="ME">Maine</option>
+															 <option value="MD">Maryland</option>
+															 <option value="MA">Massachusetts</option>
+															 <option value="MI">Michigan</option>
+															 <option value="NH">New Hampshire</option>
+															 <option value="NJ">New Jersey</option>
+															 <option value="NY">New York</option>
+															 <option value="NC">North Carolina</option>
+															 <option value="OH">Ohio</option>
+															 <option value="PA">Pennsylvania</option>
+															 <option value="RI">Rhode Island</option>
+															 <option value="SC">South Carolina</option>
+															 <option value="VT">Vermont</option>
+															 <option value="VA">Virginia</option>
+															 <option value="WV">West Virginia</option>
+															</optgroup>
+														   </select>
+													</div>
+													<span class="form-text text-muted">Please select an warehouse</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Wight</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<input type="number" class="form-control" placeholder="Weight"/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please input the product wieght</span>
+												</div>
+										  		<label class="col-lg-1 col-form-label text-lg-right mt-8">Courier</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
 														<select class="form-control" name="courier" id="courier">
 															<option value="" hidden>Courier Type</option>
 															<option value="POS" {{ (old('courier') ?? $inputer->implode('courier') ) == 'POS' ? 'selected': '' }} required>POS</option>
@@ -231,8 +310,9 @@
 															<option value="Ninja" {{ (old('courier') ?? $inputer->implode('courier') ) == 'Ninja' ? 'selected': '' }} required>Ninja</option>
 															<option value="Sicepat" {{ (old('courier') ?? $inputer->implode('courier') ) == 'Sicepat' ? 'selected': '' }} required>Sicepat</option>
 														</select>
-														<span class="form-text text-muted">Please select an courier.</span>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-truck-moving" style="font-size: 24px"></i></span></div>
 													</div>
+													<span class="form-text text-muted">Please select an courier.</span>
 											  	</div>
 										 	</div>
 											<div class="separator separator-dashed my-10"></div>
@@ -401,7 +481,7 @@
                             type: "GET",
                             data : {"_token":"{{ csrf_token() }}"},
                             dataType: "json",
-                            success:function(data)
+                            success:function(data);
                         });
                     }
                 });
@@ -417,7 +497,7 @@
                             type: "GET",
                             data : {"_token":"{{ csrf_token() }}"},
                             dataType: "json",
-                            success:function(data)
+                            success:function(data);
                         });
                     }
                 });
@@ -425,7 +505,7 @@
         </script>
 		<script type="text/javascript">
 			function calculate(qty){
-				{{--  var quantity = parseInt(document.getElementById('quantity').value);  --}}
+				var quantity = parseInt(document.getElementById('quantity').value);
 
 				var price = parseInt(document.getElementById('price').value);
 
@@ -434,6 +514,195 @@
 				var total_price = document.getElementById('total_price');
 				total_price.value = total;
 			}
+		</script>
+		<script>
+			// Class definition
+			var KTSelect2 = function() {
+			// Private functions
+			var demos = function() {
+			// basic
+			$('#kt_select2_1').select2({
+			placeholder: "Select a state"
+			});
+
+			// nested
+			$('#kt_select2_2').select2({
+			placeholder: "Select a state"
+			});
+
+			// multi select
+			$('#kt_select2_3').select2({
+			placeholder: "Select a state",
+			});
+
+			// basic
+			$('#kt_select2_4').select2({
+			placeholder: "Select a state",
+			allowClear: true
+			});
+
+			// loading data from array
+			var data = [{
+			id: 0,
+			text: 'Enhancement'
+			}, {
+			id: 1,
+			text: 'Bug'
+			}, {
+			id: 2,
+			text: 'Duplicate'
+			}, {
+			id: 3,
+			text: 'Invalid'
+			}, {
+			id: 4,
+			text: 'Wontfix'
+			}];
+
+			$('#kt_select2_5').select2({
+			placeholder: "Select a value",
+			data: data
+			});
+
+			// loading remote data
+
+			function formatRepo(repo) {
+			if (repo.loading) return repo.text;
+			var markup = "<div class='select2-result-repository clearfix'>" +
+				"<div class='select2-result-repository__meta'>" +
+				"<div class='select2-result-repository__title'>" + repo.full_name + "</div>";
+			if (repo.description) {
+				markup += "<div class='select2-result-repository__description'>" + repo.description + "</div>";
+			}
+			markup += "<div class='select2-result-repository__statistics'>" +
+				"<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.forks_count + " Forks</div>" +
+				"<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.stargazers_count + " Stars</div>" +
+				"<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> " + repo.watchers_count + " Watchers</div>" +
+				"</div>" + 
+				"</div></div>";
+			return markup;
+			}
+
+			function formatRepoSelection(repo) {
+			return repo.full_name || repo.text;
+			}
+
+			$("#kt_select2_6").select2({
+			placeholder: "Search for git repositories",
+			allowClear: true,
+			ajax: {
+				url: "https://api.github.com/search/repositories",
+				dataType: 'json',
+				delay: 250,
+				data: function(params) {
+				return {
+				q: params.term, // search term
+				page: params.page
+				};
+				},
+				processResults: function(data, params) {
+				// parse the results into the format expected by Select2
+				// since we are using custom formatting functions we do not need to
+				// alter the remote JSON data, except to indicate that infinite
+				// scrolling can be used
+				params.page = params.page || 1;
+
+				return {
+				results: data.items,
+				pagination: {
+				more: (params.page * 30) < data.total_count
+				}
+				};
+				},
+				cache: true
+			},
+			escapeMarkup: function(markup) {
+				return markup;
+			}, // let our custom formatter work
+			minimumInputLength: 1,
+			templateResult: formatRepo, // omitted for brevity, see the source of this page
+			templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+			});
+
+			// custom styles
+
+			// tagging support
+			$('#kt_select2_12_1, #kt_select2_12_2, #kt_select2_12_3, #kt_select2_12_4').select2({
+			placeholder: "Select an option",
+			});
+
+			// disabled mode
+			$('#kt_select2_7').select2({
+			placeholder: "Select an option"
+			});
+
+			// disabled results
+			$('#kt_select2_8').select2({
+			placeholder: "Select an option"
+			});
+
+			// limiting the number of selections
+			$('#kt_select2_9').select2({
+			placeholder: "Select an option",
+			maximumSelectionLength: 2
+			});
+
+			// hiding the search box
+			$('#kt_select2_10').select2({
+			placeholder: "Select an option",
+			minimumResultsForSearch: Infinity
+			});
+
+			// tagging support
+			$('#kt_select2_11').select2({
+			placeholder: "Your Destination",
+			tags: true
+			});
+
+			// disabled results
+			$('.kt-select2-general').select2({
+			placeholder: "Select an option"
+			});
+			}
+
+			var modalDemos = function() {
+			$('#kt_select2_modal').on('shown.bs.modal', function () {
+			// basic
+			$('#kt_select2_1_modal').select2({
+				placeholder: "Select a state"
+			});
+
+			// nested
+			$('#kt_select2_2_modal').select2({
+				placeholder: "Select a state"
+			});
+
+			// multi select
+			$('#kt_select2_3_modal').select2({
+				placeholder: "Select a state",
+			});
+
+			// basic
+			$('#kt_select2_4_modal').select2({
+				placeholder: "Select a state",
+				allowClear: true
+			});
+			});
+			}
+
+			// Public functions
+			return {
+			init: function() {
+			demos();
+			modalDemos();
+			}
+			};
+			}();
+
+			// Initialization
+			jQuery(document).ready(function() {
+			KTSelect2.init();
+			});
 		</script>
 		<!--end::Javascript-->
 	</body>
