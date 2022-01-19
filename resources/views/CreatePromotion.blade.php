@@ -98,7 +98,7 @@
                                                 <label for="inputProgress" class="col-form-label">Product Type</label>
                                                 <div class="dropdown">
                                                     <select name="status_id" id="status_id" class="form-control">
-                                                        <option hidden>Product Type</option>
+                                                        <option hidden>Product Name</option>
                                                         <option>ALL</option>
                                                         <option>Etawaku</option>
                                                         <option>Freshmag</option>

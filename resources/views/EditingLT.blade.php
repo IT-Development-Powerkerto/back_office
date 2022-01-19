@@ -185,7 +185,7 @@
 													</div>
 													<span class="form-text text-muted">Please enter promotion type</span>
 												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total</label>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
 												<div class="col-lg-7 mt-8">
 													<div class="input-group">
 														<input type="number" class="form-control" placeholder="Total Price" disabled/>
@@ -235,6 +235,13 @@
 											  	</div>
 										 	</div>
 											<div class="separator separator-dashed my-10"></div>
+											<div class="form-group row mt-3">
+												<label class="col-lg-1 col-form-label text-lg-right">Total</label>
+												<div class="col-lg">
+													<input class="form-control" placeholder="Total Payment" disabled>
+													<span class="form-text text-muted">Total Price + Courier</span>
+												</div>
+											</div>
 											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Upload The Proof</label>
 												<div class="col-lg">
