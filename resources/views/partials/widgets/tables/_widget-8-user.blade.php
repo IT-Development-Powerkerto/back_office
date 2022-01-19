@@ -10,7 +10,7 @@
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 
 												<div class="me-2">
-													<input class="form-control mt-0" name="search" id="searchlead" type="date" placeholder="Search" aria-label="Search" style="height: 33px;">
+													<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" placeholder="Search" aria-label="Search" style="height: 33px;">
 												</div>
 
 												<form action="#" method="GET" class="d-flex">
@@ -77,7 +77,7 @@
 																<div class="d-flex align-items-center">
 																	{{--  <h1 class="text-dark fw-normal fs-6">{{$lead->client_wa}}</h1>  --}}
 																	{{--  <a class="text-dark fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->no_wa}}&text={{ $lead->text }}">{{$lead->no_wa}}</a>  --}}
-																	<a class="text-primary fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_wa}}&text={{ str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($lead->client_name, $lead->client_wa, $lead->operator_name, $lead->product_name), $lead->text) }}">{{$lead->client_wa}}</a>
+																	<a class="text-primary fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_wa}}&text={{ rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($lead->client_name, $lead->client_wa, $lead->operator_name, $lead->product_name), $lead->text)) }}">{{$lead->client_wa}}</a>
 																</div>
 															</td>
 															<td>
