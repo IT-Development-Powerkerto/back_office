@@ -30,22 +30,10 @@
 						<!--begin::Container-->
 						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 							<!--begin::Page title-->
-							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
-								<!--begin::Heading-->
-								<h1 class="text-dark fw-bold my-0 fs-2">Edit Lead Tunelling</h1>
-								<!--end::Heading-->
-								<!--begin::Breadcrumb-->
-								<ul class="breadcrumb breadcrumb-line text-muted fw-bold fs-base my-1">
-									<li class="breadcrumb-item text-muted">
-										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
-									</li>
-									<li class="breadcrumb-item text-muted">
-										<a href="{{ route('lead.index') }}" class="text-muted">Lead Tunelling</a>
-									</li>
-									<li class="breadcrumb-item text-dark">Edit Lead Tunelling</li>
-								</ul>
-								<!--end::Breadcrumb-->
-							</div>
+							@include('layout/header/_base')
+
+
+							@include('layout/_toolbar')
 							<!--end::Page title=-->
 							<!--begin::Wrapper-->
 							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
@@ -132,7 +120,7 @@
 
 											<div class="separator separator-dashed my-10"></div>
 
-											<h1 class="pb-5">Data Customer</h1>
+											<h1 class="pb-5">Data Order</h1>
 										 	<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Full Name</label>
 												<div class="col-lg-3">
@@ -161,10 +149,18 @@
 											</div>
 										 	<div class="separator separator-dashed my-10"></div>
 											 <div class="form-group row mt-3">
+												<label class="col-lg-1 col-form-label text-lg-right">Product</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<input type="text"class="form-control" placeholder="Product Name"/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please enter product name</span>
+										  		</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+														<input type="number" placeholder="Quantity Product" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter quantity</span>
@@ -177,9 +173,24 @@
 													</div>
 													<span class="form-text text-muted">Please enter price</span>
 												</div>
-												<label class="col-lg-1 col-form-label text-lg-right">Total</label>
-												<div class="col-lg-3">
-													<input type="number" class="form-control" placeholder="Enter price" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->implode('total_price')}}" aria-describedby="totalHelpInline" disabled/>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<select class="form-control" name="option">
+															<option value="" hidden>Promotion Type</option>
+															<option>Promo 1</option>
+															<option>Promo 2</option>
+														</select>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please enter promotion type</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total</label>
+												<div class="col-lg-7 mt-8">
+													<div class="input-group">
+														<input type="number" class="form-control" placeholder="Total Price" disabled/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+													</div>
 													<span class="form-text text-muted">Auto-filled total</span>
 												</div>
 											</div>
@@ -341,6 +352,10 @@
 								<!--end::Card body-->
 							</div>
 							<!--end::details View-->
+						</div>
+						<!--end::Wrapper-->
+					</div>
+					<!--end::Page-->
 					<!--begin::Footer-->
 					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
 						<!--begin::Container-->
@@ -355,10 +370,6 @@
 						<!--end::Container-->
 					</div>
 					<!--end::Footer-->
-				</div>
-				<!--end::Wrapper-->
-			</div>
-			<!--end::Page-->
 		</div>
 		<!--end::Root-->
 		<!--end::Main-->

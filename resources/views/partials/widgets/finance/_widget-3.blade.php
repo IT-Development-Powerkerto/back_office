@@ -6,12 +6,12 @@
 		<div class="px-9 pt-7 card-rounded h-275px w-100 bg-primary">
 			<!--begin::Heading-->
 			<div class="d-flex flex-stack">
-				<h3 class="m-0 text-white fw-bolder fs-3">Total Expenditure</h3>
+				<h3 class="m-0 text-white fw-bolder fs-3">Total Expense</h3>
 			</div>
 			<!--end::Heading-->
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
-				<span class="fw-bold fs-7">Expenditure</span>
+				<span class="fw-bold fs-7">Expense</span>
 				<span class="fw-bolder fs-2x pt-1">Rp. 15.500.000</span>
 			</div>
 			<!--end::Balance-->
