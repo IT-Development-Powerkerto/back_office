@@ -81,25 +81,26 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form action="" class="form">
+									<form action="{{ route('promotion.index') }}" method="post" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="card-body shadow-sm">
                                             <div class="form-group mt-5">
                                                 <label for="inputProgress" class="col-form-label">Promotion Type</label>
-                                                <div class="dropdown">
+                                                <div class="dropdown" required>
                                                     <select name="promotion_type" id="promotion_type" class="form-control">
                                                         <option hidden>Promotion Type</option>
-                                                        <option value="Product Price">Product Price</option>
-                                                        <option value="Shipping Cost" >Shipping Cost</option>
-                                                        <option value="Product Price & Shipping Cost" >Product & Shipping Cost</option>
+                                                        <option value="Product Price" required>Product Price</option>
+                                                        <option value="Shipping Cost" required>Shipping Cost</option>
+                                                        <option value="Product Price & Shipping Cost" required>Product & Shipping Cost</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="form-group mt-5">
                                                 <label for="inputProgress" class="col-form-label">Product Type</label>
-                                                <div class="dropdown">
+                                                <div class="dropdown" required>
                                                     <select name="product_name" id="product_name" class="form-control">
                                                         <option hidden>Product Name</option>
-                                                        <option value="All" >All</option>
+                                                        <option value="All" required>All</option>
                                                         @foreach ($product as $product)
 															<option value="{{$product->name}}" required>{{$product->name}}</option>
                                                         @endforeach
@@ -108,21 +109,21 @@
                                             </div>
                                             <div class="form-group mt-5">
                                                 <label class="col-form-label">Promotion Name</label>
-                                                <input type="email" class="form-control form-control" name="promotion_name" id="promotion_name" placeholder="Enter Promotion name"/>
+                                                <input type="text" class="form-control form-control" name="promotion_name" id="promotion_name" placeholder="Enter Promotion name" required/>
                                                 <span class="form-text text-muted">Please enter name promotion with the rules ex: Generos Subsidi Ongkir Min. Belanja 120rb</span>
                                             </div>
                                             <div class="form-group mt-5">
                                                 <label class="col-form-label">Promotion Product Price</label>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" name="promotion_product_price" id="promotion_product_price" onchange="calculate()" class="form-control form-control" placeholder="0"/>
+                                                    <input type="text" min="0" value="0" name="promotion_product_price" id="promotion_product_price" onchange="calculate()" class="form-control form-control" placeholder="0" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group mt-5">
                                                 <label class="col-form-label">Promotion Shippment Cost</label>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate()" class="form-control form-control" placeholder="0"/>
+                                                    <input type="text" min="0" value="0" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate()" class="form-control form-control" placeholder="0" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group mt-5">
@@ -134,8 +135,8 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="reset" class="btn btn-primary mr-2">Submit</button>
-                                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                                            <input type="submit" class="btn btn-primary" value="Submit">
+                                            <a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
                                         </div>
                                     </form>
                                     @include('partials/widgets/tables/_widget-4')
@@ -205,18 +206,6 @@
                 });
             });
         </script>
-		<script type="text/javascript">
-			function calculate(promotion){
-				{{--  var quantity = parseInt(document.getElementById('quantity').value);  --}}
-
-				var product_price = parseInt(document.getElementById('promotion_product_price').value);
-
-				var shipping_cost = product_price * qty;
-
-				var total_price = document.getElementById('total_price');
-				total_price.value = total;
-			}
-		</script>
         <script>
             $(function () {
                 var $src = $('#product_name'),

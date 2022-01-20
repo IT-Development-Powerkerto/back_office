@@ -57,7 +57,7 @@ class DashboardController extends Controller
             ->where('l.updated_at', $day)
             ->orderByDesc('l.id')
             ->paginate(5);
-            // dd($leads);
+            //dd($leads);
             $users = User::where('admin_id', auth()->user()->admin_id)->get();
             $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
             if (auth()->user()->admin_id == 1){

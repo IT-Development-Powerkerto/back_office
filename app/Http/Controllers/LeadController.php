@@ -9,6 +9,7 @@ use App\Models\Inputer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -80,7 +81,9 @@ class LeadController extends Controller
             ->where('l.id', $id)
             ->where('l.admin_id', auth()->user()->admin_id);
         // return view('EditingLT', compact('lead'));
-        return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer);
+        $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/city');
+        $city = json_decode($response, true);
+        return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer)->with('city', $city);
     }
 
     /**
