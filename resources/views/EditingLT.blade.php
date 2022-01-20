@@ -346,7 +346,7 @@
 										  		<div class="col-lg-5"></div>
 										  		<div class="col-lg-7">
                                                     <input type="submit" class="btn btn-primary" value="Submit">
-                                                    <input type="submit" class="btn btn-secondary" href="/dahsboard" value="Cancel">
+                                                    <a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
 										  		</div>
 										 	</div>
 										</div>
@@ -586,7 +586,7 @@
 				"<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.forks_count + " Forks</div>" +
 				"<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.stargazers_count + " Stars</div>" +
 				"<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> " + repo.watchers_count + " Watchers</div>" +
-				"</div>" + 
+				"</div>" +
 				"</div></div>";
 			return markup;
 			}
