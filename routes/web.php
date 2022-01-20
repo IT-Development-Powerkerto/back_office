@@ -25,7 +25,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\ReimbursementController;
 use App\Http\Controllers\CeoController;
 use App\Http\Controllers\PromotionController;
-
+use App\Http\Controllers\RajaOngkirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +110,8 @@ Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
     return response()->json($roles);
 });
+
+Route::get('ongkir', [RajaOngkirController::class, 'cek'])->name('ongkir');
 Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead')->middleware('auth');
 // Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
 Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}', [MailController::class, 'index'])->name('send');
