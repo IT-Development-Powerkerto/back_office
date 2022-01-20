@@ -212,9 +212,9 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control" nname="warehouse" id="warehouse">
+														<select class="form-control" name="warehouse" id="warehouse" onchange="rajaongkir()">
 															<option value="" hidden>Warehouse</option>
-															<option value="Cilacap" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Cilacap' ? 'selected': '' }} required>Cilcap</option>
+															<option value="Cilacap" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Cilacap' ? 'selected': '' }} required>Cilacap</option>
 															<option value="Kosambi" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Kosambi' ? 'selected': '' }} required>Kosambi</option>
 															<option value="Tandes.Sby" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Tandes.Sby' ? 'selected': '' }} required>Tandes.Sby</option>
 														</select>
@@ -225,76 +225,20 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Destination</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control select2" id="kt_select2_11" multiple name="param">
+														<select class="form-control select2" id="destination" multiple name="destination" onchange="rajaongkir()">
 															<option label="Label"></option>
-															<optgroup label="Alaskan/Hawaiian Time Zone">
-															 <option value="AK">Alaska</option>
-															 <option value="HI">Hawaii</option>
-															</optgroup>
-															<optgroup label="Pacific Time Zone">
-															 <option value="CA">California</option>
-															 <option value="NV">Nevada</option>
-															 <option value="OR">Oregon</option>
-															 <option value="WA">Washington</option>
-															</optgroup>
-															<optgroup label="Mountain Time Zone">
-															 <option value="AZ">Arizona</option>
-															 <option value="CO">Colorado</option>
-															 <option value="ID">Idaho</option>
-															 <option value="MT">Montana</option>
-															 <option value="NE">Nebraska</option>
-															 <option value="NM">New Mexico</option>
-															 <option value="ND">North Dakota</option>
-															 <option value="UT">Utah</option>
-															 <option value="WY">Wyoming</option>
-															</optgroup>
-															<optgroup label="Central Time Zone">
-															 <option value="AL">Alabama</option>
-															 <option value="AR">Arkansas</option>
-															 <option value="IL">Illinois</option>
-															 <option value="IA">Iowa</option>
-															 <option value="KS">Kansas</option>
-															 <option value="KY">Kentucky</option>
-															 <option value="LA">Louisiana</option>
-															 <option value="MN">Minnesota</option>
-															 <option value="MS">Mississippi</option>
-															 <option value="MO">Missouri</option>
-															 <option value="OK">Oklahoma</option>
-															 <option value="SD">South Dakota</option>
-															 <option value="TX">Texas</option>
-															 <option value="TN">Tennessee</option>
-															 <option value="WI">Wisconsin</option>
-															</optgroup>
-															<optgroup label="Eastern Time Zone">
-															 <option value="CT">Connecticut</option>
-															 <option value="DE">Delaware</option>
-															 <option value="FL">Florida</option>
-															 <option value="GA">Georgia</option>
-															 <option value="IN">Indiana</option>
-															 <option value="ME">Maine</option>
-															 <option value="MD">Maryland</option>
-															 <option value="MA">Massachusetts</option>
-															 <option value="MI">Michigan</option>
-															 <option value="NH">New Hampshire</option>
-															 <option value="NJ">New Jersey</option>
-															 <option value="NY">New York</option>
-															 <option value="NC">North Carolina</option>
-															 <option value="OH">Ohio</option>
-															 <option value="PA">Pennsylvania</option>
-															 <option value="RI">Rhode Island</option>
-															 <option value="SC">South Carolina</option>
-															 <option value="VT">Vermont</option>
-															 <option value="VA">Virginia</option>
-															 <option value="WV">West Virginia</option>
-															</optgroup>
-														   </select>
+															@for ($i = 0; $i < count($city['rajaongkir']['results']); $i++)
+																
+															<option value="{{ $i+1 }}">{{ $city['rajaongkir']['results'][$i]['city_name'] }}</option>
+															@endfor
+														</select>
 													</div>
-													<span class="form-text text-muted">Please select an warehouse</span>
+													<span class="form-text text-muted">Please select an destination</span>
 												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Wight</label>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Weight</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Weight"/>
+														<input type="number" min="1" class="form-control" name="weight" id="weight" placeholder="Weight"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please input the product wieght</span>
@@ -524,6 +468,33 @@
 			}
 		</script>
 		<script>
+			function rajaongkir(){
+				var weight = document.getElementById("weight").value;
+				var warehouse = document.getElementById("warehouse").value;
+				if(warehouse == 'Cilacap'){
+					var origin = 105;
+				}else if(warehouse == 'Kosambi'){
+					var origin = 455;
+				}else if(warehouse == 'Tandes.Sby'){
+					var origin = 444;
+				}else{
+					alert('Silahkan pilih warehouse!');
+				}
+				
+				var destination = document.getElementById("destination").value;  
+				{{--  var weight = 1;  --}}
+				var	courier = 'jne';
+				$.ajax({
+					type: 'GET',
+					url: "{{ route('ongkir') }}",
+					data: {'origin': origin, 'destination': destination, 'weight': weight, 'courier': courier},
+					success: function(data){
+						console.log(data)
+					}
+				});
+			}
+		</script>
+		<script>
 			// Class definition
 			var KTSelect2 = function() {
 			// Private functions
@@ -662,7 +633,7 @@
 			});
 
 			// tagging support
-			$('#kt_select2_11').select2({
+			$('#destination').select2({
 			placeholder: "Your Destination",
 			tags: true
 			});
