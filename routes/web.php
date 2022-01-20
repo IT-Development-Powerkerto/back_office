@@ -25,6 +25,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\ReimbursementController;
 use App\Http\Controllers\CeoController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\ManagerController;
 
 
 /*
@@ -121,6 +122,7 @@ Route::get('/budegetingadv', [BudgetingController::class, 'budgetingADV'])->name
 Route::get('/finance', [BudgetingController::class, 'Finance'])->name('finance')->middleware('auth');
 
 Route::get('/ceo', [CeoController::class, 'index'])->name('ceo')->middleware('auth');
+Route::get('/manager', [ManagerController::class, 'index'])->name('manager')->middleware('auth');
 
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
 Route::resource('budgeting', BudgetingController::class)->middleware('auth');

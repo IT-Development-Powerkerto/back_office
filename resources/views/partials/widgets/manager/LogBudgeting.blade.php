@@ -20,7 +20,7 @@
 														<tr class="fw-bolder text-muted">
 															<th class="min-w-150px">Timestamp</th>
 															<th class="min-w-150px">Division</th>
-															<th class="min-w-150px">reason</th>
+															<th class="min-w-150px">Reason</th>
 															<th class="min-w-150px">Nominal</th>
 															<th class="min-w-150px text-end">Submission Status</th>
 														</tr>
