@@ -200,7 +200,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Payment</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control" name="payment_method" id="payment_method">
+														<select class="form-control" name="payment_method" id="payment_method" onchange="ongkir()">
 															<option value="" hidden>Payment Method</option>
 															<option value="COD" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'COD' ? 'selected': '' }} required>COD</option>
 															<option value="Transfer" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'Transfer' ? 'selected': '' }} required>Transfer</option>
@@ -226,7 +226,7 @@
 												<div class="col-lg-3">
 													<div class="input-group">
 														<select class="form-control" id="destination" name="destination" onchange="ongkir()">
-															{{--  <option label="Label"></option>  --}}
+															<option value="" hidden>Destination</option>
 															@for ($i = 0; $i < count($city['rajaongkir']['results']); $i++)
 																
 															<option value="{{ $i+1 }}">{{ $city['rajaongkir']['results'][$i]['city_name'] }}</option>
@@ -235,7 +235,7 @@
 													</div>
 													<span class="form-text text-muted">Please select an destination</span>
 												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Weight</label>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Weight (gram)</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
 														<input type="number" min="1" class="form-control" name="weight" id="weight" placeholder="Weight" onchange="ongkir()"/>
@@ -290,7 +290,7 @@
 										  		<div class="col-lg-5"></div>
 										  		<div class="col-lg-7">
                                                     <input type="submit" class="btn btn-primary" value="Submit">
-                                                    <a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
+                                                    <input type="submit" class="btn btn-secondary" href="/dahsboard" value="Cancel">
 										  		</div>
 										 	</div>
 										</div>
@@ -469,30 +469,53 @@
 		</script>
 		<script>
 			function ongkir(){
-				var weight = document.getElementById("weight").value;
 				var warehouse = document.getElementById("warehouse").value;
-				if(warehouse == 'Cilacap'){
-					var origin = 105;
-				}else if(warehouse == 'Kosambi'){
-					var origin = 455;
-				}else(warehouse == 'Tandes.Sby'){
-					var origin = 444;
-				}
-				var destination = document.getElementById("destination").value;  
-				{{--  var weight = 1;  --}}
+				var destination = document.getElementById("destination").value; 
+				var weight = document.getElementById("weight").value;
 				var	courier = document.getElementById("courier").value;
 				var courier = courier.toLowerCase();
+				if(warehouse == 'Cilacap'){
+					document.getElementById("warehouse").setAttribute('class', 'form-control');
+					var origin = 105;
+				}else if(warehouse == 'Kosambi'){
+					document.getElementById("warehouse").setAttribute('class', 'form-control');
+					var origin = 455;
+				}else if(warehouse == 'Tandes.Sby'){
+					document.getElementById("warehouse").setAttribute('class', 'form-control');
+					var origin = 444;
+				}else{
+					document.getElementById("warehouse").setAttribute('class', 'form-control is-invalid');
+				}
 				
-				$.ajax({
-					type: 'GET',
-					url: "{{ route('ongkir') }}",
-					data: {'origin': origin, 'destination': destination, 'weight': weight, 'courier': courier},
-					success: function(data){
-						console.log(data)
-						var shipping_price = document.getElementById('shipping_price');
-						shipping_price.value = data;
-					}
-				});
+				if(destination == ""){
+					document.getElementById("destination").setAttribute('class', 'form-control is-invalid');
+				}else{
+					document.getElementById("destination").setAttribute('class', 'form-control');
+				}
+				if(weight == ""){
+					document.getElementById("weight").setAttribute('class', 'form-control is-invalid');
+				}else{
+					document.getElementById("weight").setAttribute('class', 'form-control');
+				}
+				if(courier == ""){
+					document.getElementById("courier").setAttribute('class', 'form-control is-invalid');
+				}else{
+					document.getElementById("courier").setAttribute('class', 'form-control');
+				}
+				if(warehouse != "" && destination != "" && weight != "" && courier != ""){
+
+					$.ajax({
+						type: 'GET',
+						url: "{{ route('ongkir') }}",
+						data: {'origin': origin, 'destination': destination, 'weight': weight, 'courier': courier},
+						success: function(data){
+							console.log(data)
+							var shipping_price = document.getElementById('shipping_price');
+							shipping_price.value = data;
+						}
+					});
+				}
+				
 			}
 		</script>
 		<script>
@@ -558,7 +581,7 @@
 				"<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.forks_count + " Forks</div>" +
 				"<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.stargazers_count + " Stars</div>" +
 				"<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> " + repo.watchers_count + " Watchers</div>" +
-				"</div>" +
+				"</div>" + 
 				"</div></div>";
 			return markup;
 			}
@@ -634,7 +657,7 @@
 			});
 
 			// tagging support
-			$('#destination').select2({
+			$('#kt_select2_11').select2({
 			placeholder: "Your Destination",
 			tags: true
 			});
