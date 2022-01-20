@@ -68,12 +68,19 @@
                                                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                                                         <!--begin::Menu item-->
                                                                         <div class="menu-item px-3">
-                                                                            <a href="" class="menu-link px-3">Edit</a>
+                                                                            <form action="" method="GET">
+                                                                                @csrf
+                                                                                <input type="submit" value="Edit" class="menu-link px-3"/>
+                                                                            </form>
                                                                         </div>
                                                                         <!--end::Menu item-->
                                                                         <!--begin::Menu item-->
                                                                         <div class="menu-item px-3">
-                                                                            <a href="" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
+                                                                            <form action="{{ route('promotion.destroy', ['promotion'=>$promotion->id]) }}" method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <input type="submit" value="Delete" class="menu-link px-3" data-kt-customer-table-filter="delete_row" onclick="return confirm('Jadi Delete Kah ?')"/>
+                                                                            </form>
                                                                         </div>
                                                                         <!--end::Menu item-->
                                                                     </div>
