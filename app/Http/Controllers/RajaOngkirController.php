@@ -21,7 +21,11 @@ class RajaOngkirController extends Controller
 
             ]);
         $ongkir = json_decode($response, true);
-        return $ongkir['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
+        if($request->courier == 'jne'){
+            return $ongkir['rajaongkir']['results'][0]['costs'][1]['cost'][0]['value'];
+        }else{
+            return $ongkir['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
+        }
         // return $ongkir;
     }
 }
