@@ -212,7 +212,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control" name="warehouse" id="warehouse" onchange="rajaongkir()">
+														<select class="form-control" name="warehouse" id="warehouse" onchange="ongkir()">
 															<option value="" hidden>Warehouse</option>
 															<option value="Cilacap" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Cilacap' ? 'selected': '' }} required>Cilacap</option>
 															<option value="Kosambi" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Kosambi' ? 'selected': '' }} required>Kosambi</option>
@@ -225,8 +225,8 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Destination</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control select2" id="destination" multiple name="destination" onchange="rajaongkir()">
-															<option label="Label"></option>
+														<select class="form-control" id="destination" name="destination" onchange="ongkir()">
+															{{--  <option label="Label"></option>  --}}
 															@for ($i = 0; $i < count($city['rajaongkir']['results']); $i++)
 																
 															<option value="{{ $i+1 }}">{{ $city['rajaongkir']['results'][$i]['city_name'] }}</option>
@@ -238,7 +238,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Weight</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" min="1" class="form-control" name="weight" id="weight" placeholder="Weight"/>
+														<input type="number" min="1" class="form-control" name="weight" id="weight" placeholder="Weight" onchange="ongkir()"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please input the product wieght</span>
@@ -246,7 +246,7 @@
 										  		<label class="col-lg-1 col-form-label text-lg-right mt-8">Courier</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" name="courier" id="courier">
+														<select class="form-control" name="courier" id="courier" onchange="ongkir()">
 															<option value="" hidden>Courier Type</option>
 															<option value="POS" {{ (old('courier') ?? $inputer->implode('courier') ) == 'POS' ? 'selected': '' }} required>POS</option>
 															<option value="JNE" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNE' ? 'selected': '' }} required>JNE</option>
@@ -261,7 +261,7 @@
 												  <label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Price</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Total Shipping Price" disabled/>
+														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="" disabled/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -468,28 +468,29 @@
 			}
 		</script>
 		<script>
-			function rajaongkir(){
+			function ongkir(){
 				var weight = document.getElementById("weight").value;
 				var warehouse = document.getElementById("warehouse").value;
 				if(warehouse == 'Cilacap'){
 					var origin = 105;
 				}else if(warehouse == 'Kosambi'){
 					var origin = 455;
-				}else if(warehouse == 'Tandes.Sby'){
+				}else(warehouse == 'Tandes.Sby'){
 					var origin = 444;
-				}else{
-					alert('Silahkan pilih warehouse!');
 				}
-				
 				var destination = document.getElementById("destination").value;  
 				{{--  var weight = 1;  --}}
-				var	courier = 'jne';
+				var	courier = document.getElementById("courier").value;
+				var courier = courier.toLowerCase();
+				
 				$.ajax({
 					type: 'GET',
 					url: "{{ route('ongkir') }}",
 					data: {'origin': origin, 'destination': destination, 'weight': weight, 'courier': courier},
 					success: function(data){
 						console.log(data)
+						var shipping_price = document.getElementById('shipping_price');
+						shipping_price.value = data;
 					}
 				});
 			}
