@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">List Promotion</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Promotion</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$promotion->count()}} Promotion</span>
 											</h3>
 										</div>
 										<!--end::Header-->
@@ -19,7 +19,7 @@
 													<thead>
 														<tr class="fw-bolder text-muted">
 															<th class="min-w-225px">Product</th>
-															<th class="min-w-225px">Prmotion Name</th>
+															<th class="min-w-225px">Promotion Name</th>
 															<th class="min-w-225px">Promotion Type</th>
 															<th class="min-w-225px">Nominal Promotion</th>
                                                             <th class="min-w-225px text-end">Actions</th>
@@ -28,29 +28,30 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        @foreach ($promotion as $promotion)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-normal fs-6">Generos</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">{{$promotion->product_name}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-normal fs-6">Generos Subsidi Ongkir Min. Pemelanjaan 120.000</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">{{$promotion->promotion_name}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Shipping Cost</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$promotion->promotion_type}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6 badge badget-light-dager">Rp. 7.000</h1>
+																	<h1 class="text-dark fw-normal fs-6 badge badget-light-dager">Rp. {{$promotion->total_promotion}}</h1>
 																</div>
 															</td>
                                                             <td>
@@ -73,7 +74,6 @@
                                                                         <!--begin::Menu item-->
                                                                         <div class="menu-item px-3">
                                                                             <a href="" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                                           
                                                                         </div>
                                                                         <!--end::Menu item-->
                                                                     </div>
@@ -81,6 +81,7 @@
                                                                 </div>
                                                             </td>
 														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>
