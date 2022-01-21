@@ -8,17 +8,18 @@
 			<div class="d-flex flex-stack">
 				<h3 class="m-0 text-white fw-bolder fs-3">Lead</h3>
 				<div>
-					<a href="#" class="m-0 text-white-50 fw-normal fs-9 me-3">Today</a>
-					<a href="#" class="m-0 text-white-50 fw-normal fs-9 me-3">This Week</a>
-					<a href="#" class="m-0 text-white-50 fw-normal fs-9 me-3">This Month</a>
-					<a href="#" class="m-0 text-white-50 fw-normal fs-9 ">All</a>
+					<a href="#" id="lead_day" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="lead_day()">Today</a>
+					{{--  <button id="lead_1" onclick="lead_day()">Today</button>  --}}
+					<a href="#" id="lead_week" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="lead_week()">This Week</a>
+					<a href="#" id="lead_month" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="lead_month()">This Month</a>
+					<a href="#" id="lead_all" class="m-0 text-white-50 fw-normal fs-9 " onclick="lead_all()">All</a>
 				</div>
 			</div>
 			<!--end::Heading-->
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
 				<span class="fw-bold fs-7">Total Lead</span>
-				<span class="fw-bolder fs-2x pt-1">10</span>
+				<span id="lead_count" class="fw-bolder fs-2x pt-1">{{ $lead_all->count() }}</span>
 			</div>
 			<!--end::Balance-->
 		</div>
