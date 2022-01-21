@@ -108,7 +108,7 @@
 										<!--begin::Body-->
 										<div class="card-body d-flex flex-column">
 											<!--begin::Chart-->
-											<div class="mixed-widget-5-chart card-rounded-top" data-kt-chart-color="success" style="height: 150px"></div>
+											<div class="mixed-widget-5-chart card-rounded-top" data-kt-chart-color="info" style="height: 150px"></div>
 											<!--end::Chart-->
 										</div>
 										<!--end::Body-->

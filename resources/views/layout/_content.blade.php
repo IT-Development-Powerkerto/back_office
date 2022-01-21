@@ -10,11 +10,54 @@
 		@endif
 	
 		@if(session()->has('error'))
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">
-				{{ session('error') }}
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			{{ session('error') }}
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
+
+		<!--begin::Col-->
+		<div class="col-xl-4">
+
+			@include('partials/widgets/charts/_widget-1')
+
+		</div>
+		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-4">
+
+			@include('partials/widgets/charts/_widget-2')
+
+		</div>
+		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-4">
+
+			@include('partials/widgets/charts/_widget-3')
+
+		</div>
+		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-4">
+
+			@include('partials/widgets/charts/_widget-4')
+
+		</div>
+		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-4">
+
+			@include('partials/widgets/charts/_widget-5')
+
+		</div>
+		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-4">
+
+			@include('partials/widgets/charts/_widget-6')
+
+		</div>
+		<!--end::Col-->
 		<!--begin::Col-->
 		<div class="col-xl-4">
 			
@@ -36,12 +79,15 @@
 			@include('partials/widgets/tables/_widget-6')
 
 		</div>
-		<!--end::Col-->
+
 	</div>
 	<!--end::Row-->
+
+	
+
 	<!--begin::Row-->
 	<div class="row gy-5 my-n8 g-xl-1">
-		{{-- @include('partials/widgets/charts/_widget-1') --}}
+		
 		@include('partials/widgets/tables/_widget-8')
 		@include('partials/widgets/tables/_widget-9')
 		@include('partials/widgets/tables/_widget-11')
