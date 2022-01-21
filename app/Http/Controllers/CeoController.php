@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CeoController extends Controller
 {
@@ -13,7 +14,11 @@ class CeoController extends Controller
      */
     public function index()
     {
-        return view('ceo.ceo');
+        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 2){
+            return view('ceo.CEO');
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**

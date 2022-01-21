@@ -85,11 +85,17 @@ class DashboardController extends Controller
             if($x->admin_id == 1){
                 return redirect(route('superadmin.index'));
             }
-            if($x->role_id == 4){
+            else if($x->role_id == 2){
+                return redirect(route('ceo'));
+            }
+            else if($x->role_id == 4){
                 return redirect(route('advDashboard'));
             }
-            if($x->role_id == 5){
+            else if($x->role_id == 5){
                 return redirect(route('csDashboard'));
+            }
+            else if($x->role_id == 9){
+                return redirect(route('finance'));
             }
             else{
 
