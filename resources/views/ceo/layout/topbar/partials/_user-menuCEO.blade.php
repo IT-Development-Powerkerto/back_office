@@ -27,7 +27,7 @@
 												<!--end::Menu separator-->
 												<!--begin::Menu item-->
 												<div class="menu-item px-5">
-													<a href="{{ route('superadmin.index') }}" class="menu-link px-5">Home</a>
+													<a href="{{ route('ceo') }}" class="menu-link px-5">Dashboard</a>
 												</div>
 												<!--end::Menu item-->
 												<!--begin::Menu separator-->

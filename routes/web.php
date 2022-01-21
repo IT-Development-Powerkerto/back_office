@@ -26,7 +26,7 @@ use App\Http\Controllers\ReimbursementController;
 use App\Http\Controllers\CeoController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ManagerController;
-
+use App\Http\Controllers\InputerController;
 use App\Http\Controllers\RajaOngkirController;
 
 /*
@@ -124,8 +124,11 @@ Route::get('/closingcs', [BudgetingController::class, 'ClosingCS'])->name('closi
 Route::get('/budegetingadv', [BudgetingController::class, 'budgetingADV'])->name('budgetingadv')->middleware('auth');
 Route::get('/finance', [BudgetingController::class, 'Finance'])->name('finance')->middleware('auth');
 
-Route::get('/ceo', [CeoController::class, 'index'])->name('ceo')->middleware('auth');
 Route::get('/manager', [ManagerController::class, 'index'])->name('manager')->middleware('auth');
+Route::get('/ceo', [CeoController::class, 'index'])->name('ceo')->middleware('auth');
+
+Route::get('/inputer', [InputerController::class, 'index'])->name('inputer')->middleware('auth');
+Route::get('/viewdata', [InputerController::class, 'show'])->name('viewdata')->middleware('auth');
 
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
 Route::resource('budgeting', BudgetingController::class)->middleware('auth');

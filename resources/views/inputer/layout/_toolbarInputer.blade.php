@@ -5,7 +5,7 @@
 		<!--begin::Page title-->
 		<div class="flex-grow-1 flex-shrink-0 me-5">
 
-			@include('finance/layout/_page-titleFinance')
+			@include('inputer/layout/_page-titleInputer')
 
 		</div>
 		<!--end::Page title-->

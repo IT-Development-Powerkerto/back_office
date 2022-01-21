@@ -27,7 +27,7 @@
 												<!--end::Menu separator-->
 												<!--begin::Menu item-->
 												<div class="menu-item px-5">
-													<a href="{{ route('manager') }}" class="menu-link px-5">Dashboard</a>
+													<a href="{{ route('inputer') }}" class="menu-link px-5">Dashboard</a>
 												</div>
 												<!--end::Menu item-->
 												<!--begin::Menu separator-->

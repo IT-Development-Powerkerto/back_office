@@ -172,6 +172,23 @@
 				</div>
 			</div>
 		</div>
+		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+			class="menu-item menu-lg-down-accordion me-lg-1">
+			<span class="menu-link py-3">
+				<span class="menu-title">Inputer</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</span>
+			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{route('inputer')}}" class="menu-title">Inputer</a>
+					</span>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!--end::Menu-->
 </div>

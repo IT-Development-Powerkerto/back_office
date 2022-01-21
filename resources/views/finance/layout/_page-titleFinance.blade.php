@@ -9,15 +9,15 @@
 		<!--end::Separator-->
 		<!--begin::Description-->
 		<small class="text-muted fs-7 fw-bold my-1 ms-1">{{Auth()->user()->role->name}}</small>
-		{{-- <div class="d-flex align-items-center flex-wrap">
+		<div class="d-flex align-items-center flex-wrap">
 			<div class="menu-content px-5">
 				<label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success">
 					<input type="checkbox" data-id="{{ Auth()->user()->id }}" name="status" class="form-check-input w-30px h-20px toggle-class js-switch" {{ Auth()->user()->status == 1 ? 'checked' : '' }}>
 					<span class="pulse-ring ms-n1"></span>
 				</label>
                 {{-- <input type="checkbox" data-id="{{ Auth()->user()->id }}" name="status" class="js-switch" {{ Auth()->user()->status == 1 ? 'checked' : '' }}> --}}
-			{{-- </div> --}}
-		{{-- </div> --}}
+			</div>
+		</div>
 		<!--end::Description-->
 	</h1>
 	<!--end::Title-->
