@@ -8,6 +8,7 @@ use App\Models\Lead;
 use App\Models\Inputer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Excel as ExcelExcel;
@@ -84,7 +85,14 @@ class LeadController extends Controller
         $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province');
         $response = json_decode($response, true);
         $province = $response['rajaongkir']['results'];
-        return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province);
+        if(Auth::user()->role_id == 1){
+            return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province);
+        }else if(Auth::user()->role_id == 4){
+            return view('EditingLTADV')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province);
+        }else if(Auth::user()->role_id == 5){
+            return view('EditingLTCS')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province);
+
+        }
     }
 
     /**
