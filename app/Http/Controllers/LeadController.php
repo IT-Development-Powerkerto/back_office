@@ -81,9 +81,10 @@ class LeadController extends Controller
             ->where('l.id', $id)
             ->where('l.admin_id', auth()->user()->admin_id);
         // return view('EditingLT', compact('lead'));
-        $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/city');
-        $city = json_decode($response, true);
-        return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer)->with('city', $city);
+        $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province');
+        $response = json_decode($response, true);
+        $province = $response['rajaongkir']['results'];
+        return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province);
     }
 
     /**

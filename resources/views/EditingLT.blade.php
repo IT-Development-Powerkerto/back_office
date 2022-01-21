@@ -209,6 +209,14 @@
 													</div>
 													<span class="form-text text-muted">Select an payment method.</span>
 											  	</div>
+												<label class="col-lg-1 col-form-label text-lg-right">Product Weight (gram)</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<input type="number" min="1" class="form-control" name="weight" id="weight" placeholder="Weight" onchange="ongkir()"/>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please input the product wieght</span>
+												</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
 												<div class="col-lg-3">
 													<div class="input-group">
@@ -222,26 +230,41 @@
 													</div>
 													<span class="form-text text-muted">Please select an warehouse</span>
 												</div>
-												<label class="col-lg-1 col-form-label text-lg-right">Destination</label>
-												<div class="col-lg-3">
-													<div class="input-group">
-														<select class="form-control" id="destination" name="destination" onchange="ongkir()">
-															<option value="" hidden>Destination</option>
-															@for ($i = 0; $i < count($city['rajaongkir']['results']); $i++)
-																
-															<option value="{{ $i+1 }}">{{ $city['rajaongkir']['results'][$i]['city_name'] }}</option>
-															@endfor
-														</select>
-													</div>
-													<span class="form-text text-muted">Please select an destination</span>
-												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Weight (gram)</label>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination Province</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" min="1" class="form-control" name="weight" id="weight" placeholder="Weight" onchange="ongkir()"/>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
+														<select class="form-control" id="province" name="province">
+															<option value="" hidden>Destination Province</option>
+															{{--  @for ($i = 0; $i < count($city['rajaongkir']['results']); $i++)
+																
+															<option value="{{ $i+1 }}">{{ $city['rajaongkir']['results'][$i]['city_name'] }}</option>
+															@endfor  --}}
+															@foreach ($province as $province)
+																<option value="{{ $province['province_id'] }}">{{ $province['province'] }}</option>
+															@endforeach
+														</select>
 													</div>
-													<span class="form-text text-muted">Please input the product wieght</span>
+													<span class="form-text text-muted">Please select an destination province</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination City</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<select class="form-control" id="city" name="city">
+															<option value="" hidden>Destination City</option>
+															
+														</select>
+													</div>
+													<span class="form-text text-muted">Please select an destination city</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination Subdistrict</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<select class="form-control" id="subdistrict" name="subdistrict" onchange="ongkir()">
+															<option value="" hidden>Destination Subdistrict</option>
+															
+														</select>
+													</div>
+													<span class="form-text text-muted">Please select an destination subdistrict</span>
 												</div>
 										  		<label class="col-lg-1 col-form-label text-lg-right mt-8">Courier</label>
 												<div class="col-lg-3 mt-8">
@@ -468,29 +491,74 @@
 			}
 		</script>
 		<script>
+			$(document).ready(function(){
+				$('#province').on('change', function(){
+					let province_id = $(this).val();
+					if(province_id){
+						$.ajax({
+							url: "/city/"+province_id,
+							type: 'GET',
+							dataType: 'json',
+							success: function(data){
+								$('#city').empty();
+								$.each(data, function(key, value){
+									$('#city').append('<option value="'+value.city_id+'" namakota="'+ value.type +' ' +value.city_name+ '">' + value.type + ' ' + value.city_name + '</option>');
+								});
+							}
+						});
+					}else {
+						$('#city').empty();
+					}
+				});
+			});
+			
+		</script>
+		<script>
+			$(document).ready(function(){
+				$('#city').on('change', function(){
+					let city_id = $(this).val();
+					if(city_id){
+						$.ajax({
+							url: "/subdistrict/"+city_id,
+							type: 'GET',
+							dataType: 'json',
+							success: function(data){
+								$('#subdistrict').empty();
+								$.each(data, function(key, value){
+									$('#subdistrict').append('<option value="'+value.subdistrict_id+'">' + value.subdistrict_name + '</option>');
+								});
+							}
+						});
+					}else {
+						$('#subdistrict').empty();
+					}
+				});
+			});
+		</script>
+		<script>
 			function ongkir(){
 				var warehouse = document.getElementById("warehouse").value;
-				var destination = document.getElementById("destination").value; 
+				var subdistrict = document.getElementById("subdistrict").value; 
 				var weight = document.getElementById("weight").value;
 				var	courier = document.getElementById("courier").value;
 				var courier = courier.toLowerCase();
 				if(warehouse == 'Cilacap'){
 					document.getElementById("warehouse").setAttribute('class', 'form-control');
-					var origin = 105;
+					var origin = 1442;
 				}else if(warehouse == 'Kosambi'){
 					document.getElementById("warehouse").setAttribute('class', 'form-control');
-					var origin = 455;
+					var origin = 6278;
 				}else if(warehouse == 'Tandes.Sby'){
 					document.getElementById("warehouse").setAttribute('class', 'form-control');
-					var origin = 444;
+					var origin = 6156;
 				}else{
 					document.getElementById("warehouse").setAttribute('class', 'form-control is-invalid');
 				}
 				
-				if(destination == ""){
-					document.getElementById("destination").setAttribute('class', 'form-control is-invalid');
+				if(subdistrict == ""){
+					document.getElementById("subdistrict").setAttribute('class', 'form-control is-invalid');
 				}else{
-					document.getElementById("destination").setAttribute('class', 'form-control');
+					document.getElementById("subdistrict").setAttribute('class', 'form-control');
 				}
 				if(weight == ""){
 					document.getElementById("weight").setAttribute('class', 'form-control is-invalid');
@@ -502,12 +570,13 @@
 				}else{
 					document.getElementById("courier").setAttribute('class', 'form-control');
 				}
-				if(warehouse != "" && destination != "" && weight != "" && courier != ""){
+				if(warehouse != "" && subdistrict != "" && weight != "" && courier != ""){
 
 					$.ajax({
 						type: 'GET',
 						url: "{{ route('ongkir') }}",
-						data: {'origin': origin, 'destination': destination, 'weight': weight, 'courier': courier},
+						data: {'origin': origin, 'destination': subdistrict, 'weight': weight, 'courier': courier},
+						dataType: 'json',
 						success: function(data){
 							console.log(data)
 							var shipping_price = document.getElementById('shipping_price');
