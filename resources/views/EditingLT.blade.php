@@ -209,7 +209,7 @@
 													</div>
 													<span class="form-text text-muted">Select an payment method.</span>
 											  	</div>
-												<label class="col-lg-1 col-form-label text-lg-right">Product Weight (gram)</label>
+												<label class="col-lg-1 col-form-label text-lg-right">Weight (gram)</label>
 												<div class="col-lg-3">
 													<div class="input-group">
 														<input type="number" min="1" class="form-control" name="weight" id="weight" placeholder="Weight" onchange="ongkir()"/>
@@ -272,7 +272,8 @@
 														<select class="form-control" name="courier" id="courier" onchange="ongkir()">
 															<option value="" hidden>Courier Type</option>
 															<option value="POS" {{ (old('courier') ?? $inputer->implode('courier') ) == 'POS' ? 'selected': '' }} required>POS</option>
-															<option value="JNE" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNE' ? 'selected': '' }} required>JNE</option>
+															<option value="JNE OKE" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNE OKE' ? 'selected': '' }} required>JNE OKE</option>
+															<option value="JNE REG" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNE REG' ? 'selected': '' }} required>JNE REG</option>
 															<option value="JNT" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNT' ? 'selected': '' }} required>JNT</option>
 															<option value="Ninja" {{ (old('courier') ?? $inputer->implode('courier') ) == 'Ninja' ? 'selected': '' }} required>Ninja</option>
 															<option value="Sicepat" {{ (old('courier') ?? $inputer->implode('courier') ) == 'Sicepat' ? 'selected': '' }} required>Sicepat</option>

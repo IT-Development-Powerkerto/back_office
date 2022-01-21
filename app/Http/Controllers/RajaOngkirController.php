@@ -24,7 +24,11 @@ class RajaOngkirController extends Controller
     }
     public function cek(Request $request)
     {
-        
+        if($request->courier == 'jne oke' || $request->courier == 'jne reg'){
+            $courier = 'jne';
+        }else{
+            $courier = $request->courier;
+        }
         $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])
             ->post('https://pro.rajaongkir.com/api/cost', [
                 'origin' => $request->origin,
@@ -32,12 +36,12 @@ class RajaOngkirController extends Controller
                 'destination' => $request->destination,
                 'destinationType' => 'subdistrict',
                 'weight' => $request->weight,
-                'courier' => $request->courier,
+                'courier' => $courier,
 
             ]);
         $response = json_decode($response, true);
         $ongkir = $response;
-        if($request->courier == 'jne'){
+        if($request->courier == 'jne reg'){
             return $ongkir['rajaongkir']['results'][0]['costs'][1]['cost'][0]['value'];
         }else{
             return $ongkir['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
