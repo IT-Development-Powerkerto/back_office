@@ -235,14 +235,11 @@
 													<div class="input-group">
 														<select class="form-control" id="province" name="province">
 															<option value="" hidden>Destination Province</option>
-															{{--  @for ($i = 0; $i < count($city['rajaongkir']['results']); $i++)
-																
-															<option value="{{ $i+1 }}">{{ $city['rajaongkir']['results'][$i]['city_name'] }}</option>
-															@endfor  --}}
 															@foreach ($province as $province)
 																<option value="{{ $province['province_id'] }}">{{ $province['province'] }}</option>
 															@endforeach
 														</select>
+														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please select an destination province</span>
 												</div>
@@ -253,6 +250,7 @@
 															<option value="" hidden>Destination City</option>
 															
 														</select>
+														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please select an destination city</span>
 												</div>
@@ -263,6 +261,7 @@
 															<option value="" hidden>Destination Subdistrict</option>
 															
 														</select>
+														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please select an destination subdistrict</span>
 												</div>
@@ -283,7 +282,7 @@
 													<span class="form-text text-muted">Please select an courier.</span>
 											  	</div>
 												  <label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Price</label>
-												<div class="col-lg-3 mt-8">
+												<div class="col-lg-7 mt-8">
 													<div class="input-group">
 														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="" disabled/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
