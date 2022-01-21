@@ -53,7 +53,7 @@ class PromotionController extends Controller
             'updated_at'                 => Carbon::now()->toDateTimeString(),
         ]);
 
-        return redirect('/dashboard')->with('success','Successull! Promotion Added');
+        return redirect('/promotion')->with('success','Successull! Promotion Added');
     }
 
     /**
@@ -99,6 +99,6 @@ class PromotionController extends Controller
     public function destroy(Promotion $promotion)
     {
         $promotion->delete();
-        return redirect('/dashboard')->with('success','Successull! Promotion Deleted');
+        return redirect('/promotion')->with('success','Successull! Promotion Deleted');
     }
 }
