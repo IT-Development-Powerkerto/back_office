@@ -53,7 +53,7 @@
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
 																		<a href="{{ route('viewdata') }}" class="text-dark fw-normal fs-6 text-hover-primary mb-2">
-																			Jl. Suparman Kec. Purwokerto Timur / CS Nada / ADV Isnan / JA Hanif / Inputer Putri/ Generos 1 box / Promo H+1
+																			Jl. Suparman Kec. Purwokerto Timur / CS Nada / ADV Isnan / JA Hanif / Putri/ Generos 1 box / 50000 / 25000 / Promo H+1
 																		</a>
 																	</div>
 																</div>
