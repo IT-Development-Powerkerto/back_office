@@ -30,7 +30,7 @@
 			@endif
 		</div>
 
-		@include('layout/topbar/partials/_user-menuSA')
+		@include('finance/layout/topbar/partials/_user-menuFinance')
 
 		<!--end::Menu wrapper-->
 	</div>

@@ -30,7 +30,7 @@
 			@endif
 		</div>
 
-		@include('layout/topbar/partials/_user-menuSA')
+		@include('manager/layout/topbar/partials/_user-menuManager')
 
 		<!--end::Menu wrapper-->
 	</div>

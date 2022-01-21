@@ -30,7 +30,7 @@
 			@endif
 		</div>
 
-		@include('ceo/layout/topbar/partials/_user-menuCEO')
+		@include('inputer/layout/topbar/partials/_user-menuInputer')
 
 		<!--end::Menu wrapper-->
 	</div>

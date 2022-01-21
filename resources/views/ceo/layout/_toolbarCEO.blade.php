@@ -5,7 +5,7 @@
 		<!--begin::Page title-->
 		<div class="flex-grow-1 flex-shrink-0 me-5">
 
-			@include('layout/_page-titleSA')
+			@include('ceo/layout/_page-titleCEO')
 
 		</div>
 		<!--end::Page title-->
