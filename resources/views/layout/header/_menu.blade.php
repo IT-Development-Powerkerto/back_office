@@ -68,7 +68,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Manager Dashboard</a>
+						<a href="{{ route ('manager') }}" class="menu-title">Manager Dashboard</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">

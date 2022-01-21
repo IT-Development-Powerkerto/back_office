@@ -15,14 +15,14 @@
 			<!--begin::Navbar-->
 			<div class="d-flex align-items-stretch" id="kt_header_nav">
 
-				@include('ceo/layout/header/_menuCEO')
+				@include('manager/layout/header/_menuManager')
 
 			</div>
 			<!--end::Navbar-->
 			<!--begin::Topbar-->
 			<div class="d-flex align-items-stretch flex-shrink-0">
 
-				@include('ceo/layout/topbar/_baseCEO')
+				@include('manager/layout/topbar/_baseManager')
 
 			</div>
 			<!--end::Topbar-->

@@ -15,9 +15,9 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									@include('partials/widgets/ceo/WeeklyInfoDailyADV')
-									@include('partials/widgets/ceo/BudgetingReq')
-									@include('partials/widgets/ceo/LogBudgeting')   
+									@include('partials/widgets/manager/WeeklyInfoDailyADV')
+									@include('partials/widgets/manager/BudgetingReq')
+									@include('partials/widgets/manager/LogBudgeting')   
 								</div>
 								<!--end::Card body-->
 							</div>
