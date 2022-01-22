@@ -106,7 +106,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Status</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control" name="option">
+														<select class="form-control" name="status_id">
 															<option value="3" {{ (old('status_id') ?? $lead->implode('status_id') ) == '3' ? 'selected': '' }} required>Waiting</option>
 															<option value="4" {{ (old('status_id') ?? $lead->implode('status_id') ) == '4' ? 'selected': '' }} required>Proccessing</option>
 															<option value="5" {{ (old('status_id') ?? $lead->implode('status_id') ) == '5' ? 'selected': '' }} required>Closing</option>
@@ -161,7 +161,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="number" placeholder="Quantity Product" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+														<input type="number" placeholder="Quantity Product" min="0" onchange="calculate('#promotion_name'.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter quantity</span>
@@ -177,10 +177,11 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" name="option">
-															<option value="" hidden>Promotion Type</option>
-															<option>Promo 1</option>
-															<option>Promo 2</option>
+														<select class="form-control" name="promotion_name" id="promotion_name" onchange="calculate(this.value)">
+															<option value="0">Not Have Promotion</option>
+															@foreach ($promotion as $promotion)
+																<option value="{{$promotion->total_promotion}}">{{ $promotion->promotion_name }}</option>
+															@endforeach
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
 													</div>
@@ -189,7 +190,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
 												<div class="col-lg-7 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Total Price" disabled/>
+														<input type="number" name="total_price" id="total_price" class="form-control" placeholder="Total Price"  onchange="sum(this.value)" disabled/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -200,7 +201,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Payment</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control" name="payment_method" id="payment_method" onchange="ongkir()">
+														<select class="form-control" value="{{ old('payment_method') ?? $inputer->implode('payment_method') }}" name="payment_method" id="payment_method" onchange="ongkir()">
 															<option value="" hidden>Payment Method</option>
 															<option value="COD" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'COD' ? 'selected': '' }} required>COD</option>
 															<option value="Transfer" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'Transfer' ? 'selected': '' }} required>Transfer</option>
@@ -212,7 +213,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Weight (gram)</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="number" min="1" class="form-control" name="weight" id="weight" placeholder="Weight" onchange="ongkir()"/>
+														<input type="number" min="1" class="form-control" value="{{ old('product_weight') ?? $inputer->implode('product_weight') }}" name="weight" id="weight" placeholder="Weight" onchange="ongkir()"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please input the product wieght</span>
@@ -220,7 +221,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control" name="warehouse" id="warehouse" onchange="ongkir()">
+														<select class="form-control" value="{{ old('warehouse') ?? $inputer->implode('warehouse') }}" name="warehouse" id="warehouse" onchange="ongkir()">
 															<option value="" hidden>Warehouse</option>
 															<option value="Cilacap" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Cilacap' ? 'selected': '' }} required>Cilacap</option>
 															<option value="Kosambi" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Kosambi' ? 'selected': '' }} required>Kosambi</option>
@@ -248,7 +249,7 @@
 													<div class="input-group">
 														<select class="form-control" id="city" name="city">
 															<option value="" hidden>Destination City</option>
-															
+
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
@@ -259,7 +260,7 @@
 													<div class="input-group">
 														<select class="form-control" id="subdistrict" name="subdistrict" onchange="ongkir()">
 															<option value="" hidden>Destination Subdistrict</option>
-															
+
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
@@ -268,7 +269,7 @@
 										  		<label class="col-lg-1 col-form-label text-lg-right mt-8">Courier</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" name="courier" id="courier" onchange="ongkir()">
+														<select class="form-control" value="{{ old('courier') ?? $inputer->implode('courier') }}" name="courier" id="courier" onchange="ongkir()">
 															<option value="" hidden>Courier Type</option>
 															<option value="POS" {{ (old('courier') ?? $inputer->implode('courier') ) == 'POS' ? 'selected': '' }} required>POS</option>
 															<option value="JNE OKE" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNE OKE' ? 'selected': '' }} required>JNE OKE</option>
@@ -284,7 +285,7 @@
 												  <label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Price</label>
 												<div class="col-lg-7 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="" disabled/>
+														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="">
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -294,7 +295,7 @@
 											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Total</label>
 												<div class="col-lg">
-													<input class="form-control" placeholder="Total Payment" disabled>
+													<input name="total_payment" id="total_payment" class="form-control" placeholder="Total Payment" value="" disabled>
 													<span class="form-text text-muted">Total Price + Courier</span>
 												</div>
 											</div>
@@ -479,15 +480,21 @@
             });
         </script>
 		<script type="text/javascript">
-			function calculate(qty){
+			function calculate(promotion){
 				var quantity = parseInt(document.getElementById('quantity').value);
-
 				var price = parseInt(document.getElementById('price').value);
-
-				var total = price * qty;
-
+                var promotion = parseInt(document.getElementById('promotion_name').value);
+				var total = (price * quantity) - promotion;
 				var total_price = document.getElementById('total_price');
 				total_price.value = total;
+			}
+		</script>
+        <script type="text/javascript">
+			function sum(promotion){
+				var total_price = parseInt(document.getElementById('total_price').value);
+				var total = total_price - promotion;
+				var set = document.getElementById('total_price');
+				set.value = total;
 			}
 		</script>
 		<script>
@@ -511,7 +518,7 @@
 					}
 				});
 			});
-			
+
 		</script>
 		<script>
 			$(document).ready(function(){
@@ -538,7 +545,7 @@
 		<script>
 			function ongkir(){
 				var warehouse = document.getElementById("warehouse").value;
-				var subdistrict = document.getElementById("subdistrict").value; 
+				var subdistrict = document.getElementById("subdistrict").value;
 				var weight = document.getElementById("weight").value;
 				var	courier = document.getElementById("courier").value;
 				var courier = courier.toLowerCase();
@@ -554,7 +561,7 @@
 				}else{
 					document.getElementById("warehouse").setAttribute('class', 'form-control is-invalid');
 				}
-				
+
 				if(subdistrict == ""){
 					document.getElementById("subdistrict").setAttribute('class', 'form-control is-invalid');
 				}else{
@@ -580,11 +587,14 @@
 						success: function(data){
 							console.log(data)
 							var shipping_price = document.getElementById('shipping_price');
+                            var total_payment = document.getElementById('total_payment');
+                            var total_price = parseInt(document.getElementById('total_price').value);
 							shipping_price.value = data;
+                            total_payment.value = total_price+data;
 						}
 					});
 				}
-				
+
 			}
 		</script>
 		<script>
@@ -650,7 +660,7 @@
 				"<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> " + repo.forks_count + " Forks</div>" +
 				"<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> " + repo.stargazers_count + " Stars</div>" +
 				"<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> " + repo.watchers_count + " Watchers</div>" +
-				"</div>" + 
+				"</div>" +
 				"</div></div>";
 			return markup;
 			}

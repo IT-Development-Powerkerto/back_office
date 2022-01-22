@@ -29,4 +29,7 @@ class Inputer extends Model
     public function lead() {
         return $this->belongsTo(Lead::class);
     }
+    public function promotion() {
+        return $this->hasMany(Promotion::class);
+    }
 }

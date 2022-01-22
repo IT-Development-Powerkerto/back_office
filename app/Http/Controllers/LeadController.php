@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\LeadsExport;
 use App\Models\Client;
 use App\Models\Lead;
+use App\Models\Promotion;
 use App\Models\Inputer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -77,14 +78,16 @@ class LeadController extends Controller
             ->where('l.admin_id', auth()->user()->admin_id);
         $inputer = DB::table('inputers as i')
             ->join('leads as l', 'i.lead_id', '=', 'l.id')
-            ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image')
+            ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image', 'i.product_weight as product_weight', 'i.promotion as promotion')
             ->where('l.id', $id)
             ->where('l.admin_id', auth()->user()->admin_id);
         // return view('EditingLT', compact('lead'));
         $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province');
         $response = json_decode($response, true);
         $province = $response['rajaongkir']['results'];
-        return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province);
+        $promotion = Promotion::where('admin_id', auth()->user()->admin_id)->get();
+        $all = 'All';
+        return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province)->with('promotion', $promotion)->with('all', $all);
     }
 
     /**
@@ -96,8 +99,8 @@ class LeadController extends Controller
      */
     public function update(Request $request, $lead)
     {
-        // dd($request);
-        $total_price = $request->price * $request->quantity;
+        $total_price = ($request->price * $request->quantity) - $request->promotion_name;
+        $total_payment = $total_price + $request->shipping_price;
         DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
             'quantity'        => $request->quantity,
             'price'           => $request->price,
@@ -141,13 +144,19 @@ class LeadController extends Controller
                     'customer_number'  => $whatsapp,
                     'customer_address' => $request->address,
                     'product_name'     => $lead->product->name,
+                    'product_weight'   => $request->weight,
                     'product_price'    => $request->price,
                     'quantity'         => $request->quantity,
+                    'promotion'        => $request->promotion_name,
                     'total_price'      => $total_price,
                     'warehouse'        => $request->warehouse,
+                    'province_id'      => $request->province,
+                    'city_id'          => $request->city,
+                    'subdistrict_id'   => $request->subdistrict,
                     'courier'          => $request->courier,
+                    'shipping_price'   => $request->shipping_price,
                     'payment_method'   => $request->payment_method,
-                    'total_payment'    => $total_price,
+                    'total_payment'    => $total_payment,
                     'payment_proof'    => $request->image,
                 ]);
             }
@@ -161,13 +170,19 @@ class LeadController extends Controller
                     'customer_number'  => $whatsapp,
                     'customer_address' => $request->address,
                     'product_name'     => $lead->product->name,
+                    'product_weight'   => $request->weight,
                     'product_price'    => $request->price,
                     'quantity'         => $request->quantity,
+                    'promotion'        => $request->promotion_name,
                     'total_price'      => $total_price,
                     'warehouse'        => $request->warehouse,
+                    'province_id'      => $request->province,
+                    'city_id'          => $request->city,
+                    'subdistrict_id'   => $request->subdistrict,
                     'courier'          => $request->courier,
+                    'shipping_price'   => $request->shipping_price,
                     'payment_method'   => $request->payment_method,
-                    'total_payment'    => $total_price,
+                    'total_payment'    => $total_payment,
                     'payment_proof'    => $request->image,
                 ]);
             }
