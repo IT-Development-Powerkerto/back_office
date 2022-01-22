@@ -1,6 +1,6 @@
 									
 									<!--begin::Statistics Widget 5-->
-									<a href="#" class="card hoverable card-xl-stretch mb-5 mb-xl-8" style="background-color: rgb(124, 217, 167, 0.3)">
+									<label class="card card-xl-stretch mb-5 mb-xl-8" style="background-color: rgb(124, 217, 167, 0.3)">
 										<!--begin::Body-->
 										<div class="card-body">
 											<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
@@ -17,6 +17,6 @@
 											<div class="fw-bold text-dark">Closing Per Rate</div>
 										</div>
 										<!--end::Body-->
-									</a>
+									</label>
 									<!--end::Statistics Widget 5-->
 									
