@@ -27,13 +27,19 @@
 		<!--begin::Items-->
 		<div class="bg-body shadow-sm card-rounded mx-9 mb-9 px-6 py-9 position-relative z-index-1 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 233px; margin-top: -100px">
 			<!--begin::Item-->
+			@foreach ($products as $product)
 			<div class="d-flex align-items-center mb-6">
 				<!--begin::Symbol-->
 				<div class="symbol symbol-45px w-40px me-5">
 					<span class="symbol-label bg-lighten">
 						<!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
 						<span class="svg-icon svg-icon-1">
-							<img src="assets/img/etawa.png" width="38px" alt="">
+							{{--  <img src="assets/img/etawa.png" width="38px" alt="">  --}}
+							@if(is_null($product->image))
+							<img src="assets/img/default_product.png" width="38px" alt="" />
+							@else
+							<img src="{{ $product->image }}" width="38px" alt="">
+							@endif
 						</span>
 						<!--end::Svg Icon-->
 					</span>
@@ -43,19 +49,20 @@
 				<div class="d-flex align-items-center flex-wrap w-100">
 					<!--begin::Title-->
 					<div class="mb-1 pe-3 flex-grow-1">
-						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">Etawaku</label>
+						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">{{ $product->name }}</label>
 					</div>
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">4</div>
+						<div id="product_count" class="fw-bolder fs-5 text-gray-800 pe-1">{{ $lead_all->where('product_id', $product->id)->count() }}</div>
 					</div>
 					<!--end::Label-->
 				</div>
 				<!--end::Description-->
 			</div>
+			@endforeach
 			<!--end::Item-->
-			<!--begin::Item-->
+			{{--  <!--begin::Item-->
 			<div class="d-flex align-items-center mb-6">
 				<!--begin::Symbol-->
 				<div class="symbol symbol-45px w-40px me-5">
@@ -112,7 +119,7 @@
 				</div>
 				<!--end::Description-->
 			</div>
-			<!--end::Item-->
+			<!--end::Item-->  --}}
 		</div>
 		<!--end::Items-->
 	</div>
