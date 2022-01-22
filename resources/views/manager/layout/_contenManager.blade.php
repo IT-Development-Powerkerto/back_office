@@ -24,7 +24,73 @@
 
 		</div>
 		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-6 mt-n1">
+
+			@include('partials/widgets/charts/_widget-1')
+
+		</div>
+		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-3 mt-n1">
+
+			@include('partials/widgets/charts/_widget-2')
+			<!--begin::Col-->
+			<div class="col-xl-12 mt-7">
+	
+				@include('partials/widgets/charts/_widget-4')
+	
+			</div>
+			<!--end::Col-->
+
+		</div>
+		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-3 mt-n1">
+
+			@include('partials/widgets/charts/_widget-3')
+			<!--begin::Col-->
+			<div class="col-xl-12 mt-7">
+	
+				@include('partials/widgets/charts/_widget-5')
+	
+			</div>
+			<!--end::Col-->
+
+		</div>
+		<!--end::Col-->
+
+		<!--begin::Col-->
+		<div class="col-xl-3 mt-n2">
+
+			@include('partials/widgets/charts/_widget-6')
+
+		</div>
+		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-3 mt-n2">
+
+			@include('partials/widgets/charts/_widget-7')
+
+		</div>
+		<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-3 mt-n2">
+
+			@include('partials/widgets/charts/_widget-8')
+
+		</div>
+		<!--end::Col-->
+
+		<!--begin::Col-->
+		<div class="col-xl-3 mt-n2">
+
+			@include('partials/widgets/charts/_widget-9')
+
+		</div>
+		<!--end::Col-->
 	</div>
+
 	<!--end::Row-->
 	<!--begin::Row-->
 	<div class="row gy-5 mt-n20 g-xl-1">

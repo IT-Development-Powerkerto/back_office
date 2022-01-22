@@ -1,117 +1,23 @@
 									
-									<!--begin::Mixed Widget 5-->
-									<div class="card">
-										<!--begin::Beader-->
-										<div class="card-header border-0 py-5">
-											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Trends</span>
-												<span class="text-muted fw-bold fs-7">Latest trends</span>
-											</h3>
-											<div class="card-toolbar">
-												<!--begin::Menu-->
-												<button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-													<!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-													<span class="svg-icon svg-icon-2">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-															<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-																<rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-																<rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-																<rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-																<rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-															</g>
-														</svg>
-													</span>
-													<!--end::Svg Icon-->
-												</button>
-												
-												<!--begin::Menu 3-->
-												<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
-													<!--begin::Heading-->
-													<div class="menu-item px-3">
-														<div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Payments</div>
-													</div>
-													<!--end::Heading-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="#" class="menu-link px-3">Create Invoice</a>
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="#" class="menu-link flex-stack px-3">Create Payment
-														<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i></a>
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="#" class="menu-link px-3">Generate Bill</a>
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-end">
-														<a href="#" class="menu-link px-3">
-															<span class="menu-title">Subscription</span>
-															<span class="menu-arrow"></span>
-														</a>
-														<!--begin::Menu sub-->
-														<div class="menu-sub menu-sub-dropdown w-175px py-4">
-															<!--begin::Menu item-->
-															<div class="menu-item px-3">
-																<a href="#" class="menu-link px-3">Plans</a>
-															</div>
-															<!--end::Menu item-->
-															<!--begin::Menu item-->
-															<div class="menu-item px-3">
-																<a href="#" class="menu-link px-3">Billing</a>
-															</div>
-															<!--end::Menu item-->
-															<!--begin::Menu item-->
-															<div class="menu-item px-3">
-																<a href="#" class="menu-link px-3">Statements</a>
-															</div>
-															<!--end::Menu item-->
-															<!--begin::Menu separator-->
-															<div class="separator my-2"></div>
-															<!--end::Menu separator-->
-															<!--begin::Menu item-->
-															<div class="menu-item px-3">
-																<div class="menu-content px-3">
-																	<!--begin::Switch-->
-																	<label class="form-check form-switch form-check-custom form-check-solid">
-																		<!--begin::Input-->
-																		<input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-																		<!--end::Input-->
-																		<!--end::Label-->
-																		<span class="form-check-label text-muted fs-6">Recuring</span>
-																		<!--end::Label-->
-																	</label>
-																	<!--end::Switch-->
-																</div>
-															</div>
-															<!--end::Menu item-->
-														</div>
-														<!--end::Menu sub-->
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3 my-1">
-														<a href="#" class="menu-link px-3">Settings</a>
-													</div>
-													<!--end::Menu item-->
-												</div>
-												<!--end::Menu 3-->
-												
-												<!--end::Menu-->
-											</div>
-										</div>
-										<!--end::Header-->
+									<!--begin::Statistics Widget 5-->
+									<a href="#" class="card hoverable card-xl-stretch mb-5 mb-xl-8" style="background-color: rgb(155, 89, 182, 0.3)">
 										<!--begin::Body-->
-										<div class="card-body d-flex flex-column">
-											<!--begin::Chart-->
-											<div class="mixed-widget-5-chart card-rounded-top" data-kt-chart-color="dark" style="height: 150px"></div>
-											<!--end::Chart-->
+										<div class="card-body">
+											<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
+											<span class="svg-icon svg-icon-info svg-icon-3x ms-n1">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24"/>
+														<path d="M4,9.67471899 L10.880262,13.6470401 C10.9543486,13.689814 11.0320333,13.7207107 11.1111111,13.740321 L11.1111111,21.4444444 L4.49070127,17.526473 C4.18655139,17.3464765 4,17.0193034 4,16.6658832 L4,9.67471899 Z M20,9.56911707 L20,16.6658832 C20,17.0193034 19.8134486,17.3464765 19.5092987,17.526473 L12.8888889,21.4444444 L12.8888889,13.6728275 C12.9050191,13.6647696 12.9210067,13.6561758 12.9368301,13.6470401 L20,9.56911707 Z" fill="#000000"/>
+														<path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3"/>
+													</g>
+												</svg>
+											</span>
+											<!--end::Svg Icon-->
+											<div class="text-dark fw-bolder fs-2 mb-2 mt-5">500</div>
+											<div class="fw-bold text-dark">Total Box</div>
 										</div>
 										<!--end::Body-->
-									</div>
-									<!--end::Mixed Widget 5-->
+									</a>
+									<!--end::Statistics Widget 5-->
 									
