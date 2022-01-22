@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Edit Lead Tunelling</title>
+		<title>Create Promotion</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -65,6 +65,19 @@
 					</div>
 					<!--end::Header-->
 					<!--begin::Content-->
+					@if(session()->has('success'))
+							<div class="alert alert-success alert-dismissible fade show" role="alert">
+							{{ session('success') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					@endif
+
+					@if(session()->has('error'))
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							{{ session('error') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					@endif
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 						<!--begin::Container-->
 						<div class="container-xxl" id="kt_content_container">

@@ -41,7 +41,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{route('createpromotion')}}" class="menu-title">Create Promotion</a>
+						<a href="{{route('promotion.index')}}" class="menu-title">Create Promotion</a>
 					</span>
 				</div>
 			</div>

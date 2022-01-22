@@ -9,6 +9,7 @@ use App\Models\Promotion;
 use App\Models\Inputer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Excel as ExcelExcel;
@@ -87,7 +88,14 @@ class LeadController extends Controller
         $province = $response['rajaongkir']['results'];
         $promotion = Promotion::where('admin_id', auth()->user()->admin_id)->get();
         $all = 'All';
-        return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province)->with('promotion', $promotion)->with('all', $all);
+        if(Auth::user()->role_id == 1){
+            return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province)->with('promotion', $promotion)->with('all', $all);
+        }else if(Auth::user()->role_id == 4){
+            return view('EditingLTADV')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province)->with('promotion', $promotion)->with('all', $all);
+        }else if(Auth::user()->role_id == 5){
+            return view('EditingLTCS')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province)->with('promotion', $promotion)->with('all', $all);
+
+        }
     }
 
     /**
