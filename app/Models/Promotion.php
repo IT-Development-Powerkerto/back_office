@@ -18,4 +18,8 @@ class Promotion extends Model
         'promotion_shippment_cost',
         'total_promotion',
     ];
+
+    public function inputer() {
+        return $this->belongsTo(Inputer::class);
+    }
 }
