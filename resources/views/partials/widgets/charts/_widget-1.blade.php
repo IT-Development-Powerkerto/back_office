@@ -5,6 +5,7 @@
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Turnover & Advertising Cost</span>
+												<span class="text-muted fw-bold fs-7">Monthly</span>
 											</h3>
 											<!--end::Title-->
 											<div class="card-toolbar">
