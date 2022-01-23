@@ -177,7 +177,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" name="promotion_name" id="promotion_name" onchange="calculate(this.value)">
+														<select class="form-control" name="promotion_price" id="promotion_price" onchange="calculate(this.value)">
 															<option value="0">Not Have Promotion</option>
 															@foreach ($promotion as $promotion)
 																<option value="{{$promotion->total_promotion}}">{{ $promotion->promotion_name }}</option>
@@ -190,7 +190,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Price</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" name="total_price" id="total_price" class="form-control" placeholder="Promotion Price" disabled/>
+														<input type="number" name="promotion" id="promotion" value="0" class="form-control" placeholder="Promotion Price" disabled/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Promotion Price</span>
@@ -487,11 +487,20 @@
                 });
             });
         </script>
+        <script>
+            $(function () {
+                var $promotion_price = $('#promotion_price'),
+                    $promotion = $('#promotion');
+                    $promotion_price.on('input', function () {
+                        $promotion.val($promotion_price.val());
+                    });
+            });
+        </script>
 		<script type="text/javascript">
 			function calculate(promotion){
 				var quantity = parseInt(document.getElementById('quantity').value);
 				var price = parseInt(document.getElementById('price').value);
-                var promotion = parseInt(document.getElementById('promotion_name').value);
+                var promotion = parseInt(document.getElementById('promotion_price').value);
 				var total = (price * quantity) - promotion;
 				var total_price = document.getElementById('total_price');
 				total_price.value = total;

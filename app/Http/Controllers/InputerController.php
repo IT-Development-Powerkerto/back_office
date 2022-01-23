@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Inputer;
+use App\Models\User;
 
 class InputerController extends Controller
 {
@@ -13,7 +15,11 @@ class InputerController extends Controller
      */
     public function index()
     {
-        return view('inputer.inputer');
+        $inputer = Inputer::where('admin_id', auth()->user()->admin_id);
+        $inputers = Inputer::all();
+
+        $user = User::all();
+        return view('inputer.inputer')->with('inputer', $inputer)->with('inputers', $inputers)->with('user', $user);
     }
 
     /**

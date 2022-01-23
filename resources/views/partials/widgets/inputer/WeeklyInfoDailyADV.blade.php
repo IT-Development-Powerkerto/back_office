@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Data Closing</span>
-												<span class="text-muted mt-1 fw-bold fs-7">10 Data</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$inputers->where('admin_id', auth()->user()->admin_id)->count()}} Data</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<!-- Button trigger modal -->
@@ -30,7 +30,7 @@
 											<!--begin::Table container-->
 											<div class="table-responsive">
 												<!--begin::Table-->
-												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" id="staff">
+												<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
@@ -42,10 +42,11 @@
 													<!--begin::Table body-->
 													<tbody>
 														<tr>
+                                                            @foreach ($inputers as $inputers)
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">1.</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$inputers['id']}}</h1>
 																	</div>
 																</div>
 															</td>
@@ -53,11 +54,12 @@
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
 																		<a href="{{ route('viewdata') }}" class="text-dark fw-normal fs-6 text-hover-primary mb-2">
-																			Jl. Suparman Kec. Purwokerto Timur / CS Nada / ADV Isnan / JA Hanif / Putri/ Generos 1 box / 50000 / 25000 / Promo H+1
+																			{{$inputers['customer_address']}} / CS {{$inputers->lead->user['name']}} / ADV {{$inputers->lead['advertiser']}} / JA Hanif / {{$inputers['product_name']}} {{$inputers['quantity']}} box / {{$inputers['total_price']+$inputers['shipping_price']}} / {{$inputers['promotion']}} / Promo H+1
 																		</a>
 																	</div>
 																</div>
 															</td>
+                                                            @endforeach
 														</tr>
 													</tbody>
 													<!--end::Table body-->

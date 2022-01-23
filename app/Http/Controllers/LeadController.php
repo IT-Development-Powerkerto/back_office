@@ -79,7 +79,7 @@ class LeadController extends Controller
             ->where('l.admin_id', auth()->user()->admin_id);
         $inputer = DB::table('inputers as i')
             ->join('leads as l', 'i.lead_id', '=', 'l.id')
-            ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image', 'i.product_weight as product_weight', 'i.promotion as promotion')
+            ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image', 'i.product_weight as product_weight', 'i.promotion as promotion', 'i.province_id as province')
             ->where('l.id', $id)
             ->where('l.admin_id', auth()->user()->admin_id);
         // return view('EditingLT', compact('lead'));
@@ -94,7 +94,6 @@ class LeadController extends Controller
             return view('EditingLTADV')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province)->with('promotion', $promotion)->with('all', $all);
         }else if(Auth::user()->role_id == 5){
             return view('EditingLTCS')->with('lead', $lead)->with('inputer', $inputer)->with('province', $province)->with('promotion', $promotion)->with('all', $all);
-
         }
     }
 
@@ -107,6 +106,7 @@ class LeadController extends Controller
      */
     public function update(Request $request, $lead)
     {
+        // dd($request->all());
         $total_price = ($request->price * $request->quantity) - $request->promotion_name;
         $total_payment = $total_price + $request->shipping_price;
         DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
@@ -155,7 +155,7 @@ class LeadController extends Controller
                     'product_weight'   => $request->weight,
                     'product_price'    => $request->price,
                     'quantity'         => $request->quantity,
-                    'promotion'        => $request->promotion_name,
+                    'promotion'        => $request->promotion_price,
                     'total_price'      => $total_price,
                     'warehouse'        => $request->warehouse,
                     'province_id'      => $request->province,
@@ -181,7 +181,7 @@ class LeadController extends Controller
                     'product_weight'   => $request->weight,
                     'product_price'    => $request->price,
                     'quantity'         => $request->quantity,
-                    'promotion'        => $request->promotion_name,
+                    'promotion'        => $request->promotion_price,
                     'total_price'      => $total_price,
                     'warehouse'        => $request->warehouse,
                     'province_id'      => $request->province,

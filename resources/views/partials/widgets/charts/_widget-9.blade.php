@@ -1,4 +1,4 @@
-									
+
 									<!--begin::Statistics Widget 5-->
 									<label class="card card-xl-stretch mb-5 mb-xl-8" style="background-color: rgb(241, 128, 65, 0.3)">
 										<!--begin::Body-->
@@ -14,10 +14,9 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-black fw-bolder fs-2 mb-2 mt-5">50</div>
+											<div class="text-black fw-bolder fs-2 mb-2 mt-5">{{$user_count}}</div>
 											<div class="fw-bold text-black">Total Staff</div>
 										</div>
 										<!--end::Body-->
 									</label>
 									<!--end::Statistics Widget 5-->
-									

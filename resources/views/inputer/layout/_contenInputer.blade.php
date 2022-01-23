@@ -6,15 +6,15 @@
 		<div class="col-xl-4">
 
 			@include('partials/widgets/inputer/_widget-5')
-			
-			
+
+
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
 			@include('partials/widgets/inputer/_widget-3')
-			
+
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->

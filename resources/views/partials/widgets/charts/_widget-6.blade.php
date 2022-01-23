@@ -1,4 +1,4 @@
-									
+
 									<!--begin::Statistics Widget 5-->
 									<label class="card card-xl-stretch mb-5 mb-xl-8" style="background-color: rgb(155, 89, 182, 0.3)">
 										<!--begin::Body-->
@@ -14,10 +14,9 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-dark fw-bolder fs-2 mb-2 mt-5">500</div>
+											<div class="text-dark fw-bolder fs-2 mb-2 mt-5">{{$quantity}}</div>
 											<div class="fw-bold text-dark">Total Box</div>
 										</div>
 										<!--end::Body-->
 									</label>
 									<!--end::Statistics Widget 5-->
-									
