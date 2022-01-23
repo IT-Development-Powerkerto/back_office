@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lead;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,8 @@ class CeoController extends Controller
                 Carbon::now()->endOfMonth(),
             ])->get();
             $lead_all = Lead::all();
-            return view('ceo.CEO', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all']));
+            $products = Product::all();
+            return view('ceo.CEO', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products']));
         }else{
             return redirect()->back();
         }
