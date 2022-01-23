@@ -179,7 +179,7 @@
 													<div class="input-group">
 														<select class="form-control" name="promotion_price" id="promotion_price" onchange="calculate(this.value)">
 															<option value="0">Not Have Promotion</option>
-															@foreach ($promotion as $promotion)
+															@foreach ($promotion->where('product_name', $lead->implode('product_name') as $promotion)
 																<option value="{{$promotion->total_promotion}}">{{ $promotion->promotion_name }}</option>
 															@endforeach
 														</select>
