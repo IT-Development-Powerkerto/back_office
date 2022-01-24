@@ -20,8 +20,9 @@
 														<tr class="fw-bolder text-muted">
 															<th class="min-w-150px">Timestamp</th>
 															<th class="min-w-150px">Division</th>
-															<th class="min-w-150px">reason</th>
+															<th class="min-w-150px">Reason</th>
 															<th class="min-w-150px">Nominal</th>
+															<th class="min-w-150px">Target</th>
 															<th class="min-w-150px text-end">Submission Status</th>
 														</tr>
 													</thead>
@@ -49,6 +50,11 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<h1 class="text-dark fw-normal fs-6">Rp. 450.000</h1>
+																</div>
+															</td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">Rp. 1.450.000</h1>
 																</div>
 															</td>
 															<td>
