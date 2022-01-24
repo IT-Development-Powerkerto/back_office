@@ -9,9 +9,6 @@
 
 		</div>
 		<!--end::Page title-->
-		<!--begin::Action group-->
-		
-		<!--end::Action group-->
 	</div>
 	<!--end::Container-->
 </div>

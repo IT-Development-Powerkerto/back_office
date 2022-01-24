@@ -4,22 +4,22 @@
 										<!--begin::Beader-->
 										<div class="card-header border-0 py-5">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Total Leads</span>
-												<span class="text-muted fw-bold fs-7">{{$lead_count}} Leads</span>
-                                                <input id="lead_jan" value="{{$lead_jan}}" hidden/>
-                                                <input id="lead_feb" value="{{$lead_feb}}" hidden/>
-                                                <input id="lead_mar" value="{{$lead_mar}}" hidden/>
-                                                <input id="lead_apr" value="{{$lead_apr}}" hidden/>
-                                                <input id="lead_may" value="{{$lead_may}}" hidden/>
-                                                <input id="lead_jun" value="{{$lead_jun}}" hidden/>
-                                                <input id="lead_jul" value="{{$lead_jul}}" hidden/>
-                                                <input id="lead_aug" value="{{$lead_aug}}" hidden/>
-                                                <input id="lead_sep" value="{{$lead_sep}}" hidden/>
-                                                <input id="lead_okt" value="{{$lead_okt}}" hidden/>
-                                                <input id="lead_nov" value="{{$lead_nov}}" hidden/>
-                                                <input id="lead_des" value="{{$lead_des}}" hidden/>
+												<span class="card-label fw-bolder fs-3 mb-1">Total Closing</span>
+												<span class="text-muted fw-bold fs-7">{{$closing_count}} Closing</span>
+                                                <input id="closing_jan" value="{{$closing_jan}}" hidden/>
+                                                <input id="closing_feb" value="{{$closing_feb}}" hidden/>
+                                                <input id="closing_mar" value="{{$closing_mar}}" hidden/>
+                                                <input id="closing_apr" value="{{$closing_apr}}" hidden/>
+                                                <input id="closing_may" value="{{$closing_may}}" hidden/>
+                                                <input id="closing_jun" value="{{$closing_jun}}" hidden/>
+                                                <input id="closing_jul" value="{{$closing_jul}}" hidden/>
+                                                <input id="closing_aug" value="{{$closing_aug}}" hidden/>
+                                                <input id="closing_sep" value="{{$closing_sep}}" hidden/>
+                                                <input id="closing_okt" value="{{$closing_okt}}" hidden/>
+                                                <input id="closing_nov" value="{{$closing_nov}}" hidden/>
+                                                <input id="closing_des" value="{{$closing_des}}" hidden/>
 											</h3>
-											<div class="card-toolbar">
+											{{-- <div class="card-toolbar">
 												<!--begin::Menu-->
 												<button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
 													<!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
@@ -45,30 +45,30 @@
 													<!--end::Heading-->
 													<!--begin::Menu item-->
 													<div class="menu-item px-3">
-														<label for="daily" class="menu-link px-3">Daily</label>
+														<a href="#" class="menu-link px-3">Dayly</a>
 													</div>
 													<!--end::Menu item-->
 													<!--begin::Menu item-->
 													<div class="menu-item px-3">
-														<a href="#weekly" class="menu-link flex-stack px-3">Weekly</a>
+														<a href="#" class="menu-link flex-stack px-3">Weekly</a>
 													</div>
 													<!--end::Menu item-->
 													<!--begin::Menu item-->
 													<div class="menu-item px-3">
-														<a href="#monthly" class="menu-link px-3">Monthly</a>
+														<a href="#" class="menu-link px-3">Monthly</a>
 													</div>
 													<!--end::Menu item-->
 												</div>
 												<!--end::Menu 3-->
-											</div>
+
+												<!--end::Menu-->
+											</div> --}}
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
 										<div class="card-body d-flex flex-column">
 											<!--begin::Chart-->
-											{{-- <div id="daily" class="" data-kt-chart-color="dark" style="height: 150px"></div> --}}
-                                            {{-- <div id="weekly" class="" data-kt-chart-color="dark" style="height: 150px"></div> --}}
-                                            <div id="monthly" class="mixed-widget-5-chart card-rounded-top" data-kt-chart-color="dark" style="height: 150px"></div>
+											<div class="mixed-widget-6-chart card-rounded-top" data-kt-chart-color="warning" style="height: 150px"></div>
 											<!--end::Chart-->
 										</div>
 										<!--end::Body-->

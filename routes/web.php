@@ -80,8 +80,11 @@ Route::resource('/dashboard/categories', AdminCategoryController::class)->except
 Route::resource('users', UserController::class)->middleware('auth');
 Route::get('/viewprofile/{user}', [UserController::class, 'viewProfile'])->name('viewProfile')->middleware('auth');
 Route::get('/status/update', [UserController::class, 'updateStatus'])->name('users.update.status')->middleware('auth');
-//Route::resource('/dasboard', DashboardController::class);
+
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
+Route::get('/WeeklyDashboard', [DashboardController::class, 'WeeklyDashboard'])->name('weeklydashboard')->middleware('auth');
+Route::get('/MonthlyDashboard', [DashboardController::class, 'MonthlyDashboard'])->name('monthlydashboard')->middleware('auth');
+
 Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld')->middleware('auth');
 Route::get('/adv', [DashboardController::class, 'adv'])->name('advDashboard')->middleware('auth');
 Route::get('/cs', [DashboardController::class, 'cs'])->name('csDashboard')->middleware('auth');
