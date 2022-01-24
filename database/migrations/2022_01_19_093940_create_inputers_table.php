@@ -26,7 +26,8 @@ class CreateInputersTable extends Migration
             $table->integer('product_price')->nullable();
             $table->integer('product_weight')->nullable();
             $table->integer('quantity')->nullable();
-            $table->integer('promotion')->nullable();
+            $table->foreignId('promotion_id')->nullable();
+            $table->integer('promotion_price')->nullable();
             $table->integer('total_price')->nullable();
             $table->string('warehouse')->nullable();
             $table->integer('province_id')->nullable();
