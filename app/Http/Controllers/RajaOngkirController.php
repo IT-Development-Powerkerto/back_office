@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Http;
 class RajaOngkirController extends Controller
 {
     
+    public function get_province($id)
+    {
+        $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province?id='.$id);
+        $response = json_decode($response, true);
+        $province = $response['rajaongkir']['results'];
+        return json_encode($province);
+    }
     public function get_city($id)
     {
         $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/city?&province='.$id);

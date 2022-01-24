@@ -30,6 +30,6 @@ class Inputer extends Model
         return $this->belongsTo(Lead::class);
     }
     public function promotion() {
-        return $this->hasMany(Promotion::class);
+        return $this->belongsTo(Promotion::class);
     }
 }
