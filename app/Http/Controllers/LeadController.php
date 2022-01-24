@@ -80,7 +80,7 @@ class LeadController extends Controller
             ->where('l.admin_id', auth()->user()->admin_id);
         $inputer = DB::table('inputers as i')
             ->join('leads as l', 'i.lead_id', '=', 'l.id')
-            ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image', 'i.product_weight as product_weight', 'i.promotion as promotion', 'i.province_id as province')
+            ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image', 'i.product_weight as product_weight', 'i.promotion_price as promotion', 'i.province_id as province')
             ->where('l.id', $id)
             ->where('l.admin_id', auth()->user()->admin_id);
         // return view('EditingLT', compact('lead'));
@@ -157,7 +157,7 @@ class LeadController extends Controller
                     'product_price'    => $request->price,
                     'quantity'         => $request->quantity,
                     'promotion_id'        => $request->promotion_id,
-                    'promotion'        => $request->promotion,
+                    'promotion_price'        => $request->promotion,
                     'total_price'      => $total_price,
                     'warehouse'        => $request->warehouse,
                     'province_id'      => $request->province,
@@ -192,7 +192,7 @@ class LeadController extends Controller
                     'product_price'    => $request->price,
                     'quantity'         => $request->quantity,
                     'promotion_id'        => $request->promotion_id,
-                    'promotion'        => $request->promotion,
+                    'promotion_price'        => $request->promotion,
                     'total_price'      => $total_price,
                     'warehouse'        => $request->warehouse,
                     'province_id'      => $request->province,
