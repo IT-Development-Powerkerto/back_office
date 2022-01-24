@@ -32,8 +32,8 @@
 							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 								<!--begin::Page title-->
 								@include('layout/header/_base')
-	
-	
+
+
 								@include('layout/_toolbar')
 							</div>
 							<!--end::Wrapper-->
@@ -80,22 +80,25 @@
 									@include('partials/widgets/budgeting/LastMonthBudgetADV')
 									@include('partials/widgets/budgeting/WeeklyInfoBudgetADV')
 
-									<div class="row col-12 d-flex align-items-center justify-content-center">
-										<div class="col-1">
-											<h1 class="fw-bolder ms-5">Rp</h1>
-										</div>
-										<div class="col-4">
-										  <input type="text" class="form-control" name="budget_submission" placeholder="Budget Submission" aria-label="Budget Submission">
-										</div>
-										<div class="col-4">
-										  <input type="text" class="form-control" name="target" placeholder="Target" aria-label="Target">
-										</div>
-										<div class="col-3">
-											<button type="submit" class="btn btn-primary">Apply</button>
-										</div>
-									</div>
+                                    <form action="{{route('budgeting.store')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="row col-12 d-flex align-items-center justify-content-center">
+                                            <div class="col-1">
+                                                <h1 class="fw-bolder ms-5">Rp</h1>
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="text" class="form-control" name="requirement" placeholder="Requirement" aria-label="Budget Submission">
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="text" class="form-control" name="target" placeholder="Target" aria-label="Target">
+                                            </div>
+                                            <div class="col-3">
+                                                <input type="submit" class="btn btn-primary" value="Apply">
+                                            </div>
+                                        </div>
+                                    </form>
 									@include('partials/widgets/budgeting/LogBudgeting')
-									
+
 
 								</div>
 								<!--end::Card body-->
