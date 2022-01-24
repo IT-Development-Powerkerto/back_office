@@ -20,64 +20,71 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            color: white;
+            color: black;
         }
-        .mail {
+
+        .container {
+            width: 90vh;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             border-radius: 20px;
-            background-color: rgb(38,93,112, 0.7);
             padding: 30px;
         }
 
-        .button{
-            padding: 20px;
-            background-color: #177B4C;
-            color: white;
+        h1{
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: 20px;
-            border-radius: 20px;
-        }
-        a{ 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
         }
 
-        p{
+        .mail ul {
+            list-style-type: none;
+        }
+
+        .button{
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
+        a{ 
+            padding: 20px;
+            background-color: #009EF7;
+            color: white;
+            width:200px;
+            border-radius: 20px;
+            text-decoration:none;
+            }
+
+        a:hover {
+            background-color: #000EFF;
+        }	
+
     </style>
     
 </head>
 <body>
-    <h1>{{ $details['title'] }}</h1>
-    <p>Halo,</p>
-    <p>Ada order baru nih, silahkan di follow up ya :</p>
-    <div class="mail">
-        <div class="data-konsumen">
-            <h2>Data Konsumen</h2>
-            <ul>
-                <li>Nama : {{ $details['client'] }}</li>
-                <li>No HP : {{ $details['client_number'] }}</li>
-            </ul>
+    <div class="container">
+        <h1>Pesanan Baru Diterima</h1>
+        <div class="mail">
+            <div class="data-konsumen">
+                <h2>Data Konsumen</h2>
+                <ul>
+                    <li>Order ID 	    : 1</li>	
+                    <li>Nama 	        : {{ $details['client'] }}</li>
+                    <li>No HP 	        : {{ $details['client_number'] }}</li>
+                    <li>Tanggal Order   : 22-01-2022</li>
+                </ul>
+            </div>
+            <div class="data-product">
+                <h2>Produk</h2>
+                <ul>
+                    <li>Produk	        : {{ $details['product'] }}</li>
+                </ul>
+            </div>
         </div>
-        <div class="data-product">
-            <h2>Produk</h2>
-            <ul>
-                <li>Produk: {{ $details['product'] }}</li>
-            </ul>
+        <div class="button">
+            <a href="https://api.whatsapp.com/send/?phone={{$details['client_number']}}&text={{ rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($details['client'], $details['client_number'], $details['operator'], $details['product']), $details['FU_text'])) }}" class="btn">Follow up via Whatsapp</a>
         </div>
     </div>
-    <div class="button">
-        <a href="https://api.whatsapp.com/send/?phone={{$details['client_number']}}&text={{ rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($details['client'], $details['client_number'], $details['operator'], $details['product']), $details['FU_text'])) }}" class="btn">Follow up via Whatsapp</a>
-    </div>
-
-   
-    <p>Masa Gak Closing Sih.</p>
 </body>
 </html>
