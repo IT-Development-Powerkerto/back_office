@@ -156,19 +156,26 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Price</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">{{$inputers->product_price * $inputers->quantity}}</label>
+														<label type="text" class="form-control">{{$inputers->product_price}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-money-bill-wave" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<label type="text" class="form-control">{{$inputers->promotion}}</label>
+														<label type="text" class="form-control">{{$inputers->promotion->promotion_name ?? 'Not Have Promotion'}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Price</label>
+													<div class="col-lg-3 mt-8">
+														<div class="input-group">
+															<input type="number" value="{{ $inputers->promotion_price }}" name="promotion" id="promotion"  class="form-control" placeholder="Promotion Price" onchange="calculate(this.value)" readonly/>
+															<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+														</div>
+													</div>
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
-												<div class="col-lg-7 mt-8">
+												<div class="col-lg-3 mt-8">
 													<div class="input-group">
 														<label type="text" class="form-control">{{$inputers->total_price}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
@@ -184,6 +191,13 @@
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-file-invoice-dollar" style="font-size: 24px"></i></span></div>
 													</div>
 											  	</div>
+												<label class="col-lg-1 col-form-label text-lg-right">Weight (gram)</label>
+												<div class="col-lg-3">
+													<div class="input-group">
+														<label type="text" class="form-control">{{$inputers->product_weight}}</label>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
+													</div>
+												</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
 												<div class="col-lg-3">
 													<div class="input-group">
@@ -191,18 +205,27 @@
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-warehouse" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
-												<label class="col-lg-1 col-form-label text-lg-right">Destination</label>
-												<div class="col-lg-3">
-													<div class="input-group">
-														<label type="text" class="form-control">{{$inputers->customer_address}}</label>
-													</div>
-												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Weight (gram)</label>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination Province</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<label type="text" class="form-control">{{$inputers->product_weight}}</label>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
+														<label type="text" class="form-control">{{$province}}</label>
+														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination City</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<label type="text" class="form-control">{{$city}}</label>
+														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
+													</div>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination Subdistrict</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<label type="text" class="form-control">{{$subdistrict}}</label>
+														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please select an destination subdistrict</span>
 												</div>
 										  		<label class="col-lg-1 col-form-label text-lg-right mt-8">Courier</label>
 												<div class="col-lg-3 mt-8">
@@ -212,7 +235,7 @@
 													</div>
 											  	</div>
 												  <label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Price</label>
-												<div class="col-lg-3 mt-8">
+												<div class="col-lg-7 mt-8">
 													<div class="input-group">
 														<label type="text" class="form-control">{{$inputers->shipping_price}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>

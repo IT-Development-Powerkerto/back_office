@@ -9,12 +9,48 @@
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<!-- Button trigger modal -->
-												<button type="button" class="btn btn-sm btn-outline border-primary text-primary text-active-white btn-active-secondary me-2" title="Click For Export">
+												<button type="button" class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Export" data-bs-toggle="modal" data-bs-target="#exampleModal">
 													<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 													<span class="svg-icon svg-icon-3">
-														<i class="las la-print text-primary" style="font-size: 18px"></i>
+														<i class="las la-print" style="font-size: 18px"></i>
 													</span>
 													<!--end::Svg Icon-->Export</button>
+
+												<!-- Modal -->
+												<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+													<div class="modal-dialog">
+														<div class="modal-content">
+
+															<form action="{{ route('export-inputer')}}" method="GET">
+																<div class="modal-header">
+																	<h5 class="modal-title" id="exampleModalLabel">Export To Excel</h5>
+																	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+																</div>
+																<div class="modal-body">
+																	<div class="row align-items-center col-12 pb-5">
+																		<div class="col-5">
+																			<input class="form-control mt-0" name="from_date"  id="from_date" type="date" style="height: 33px;">
+																		</div>
+																		<div class="col-2">
+																			<h3 class="text-center text-dark fw-bolder fs-6 pt-3">Until</h3>
+																		</div>
+																		<div class="col-5">
+																			<input class="form-control mt-0" name="to_date"  id="to_date" type="date" style="height: 33px;">
+																		</div>
+																	</div>
+																</div>
+																<div class="modal-footer">
+																	<button type="submit" class="btn btn-sm btn-primary btn-active-info me-2" title="Click For Export">
+																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+																	<span class="svg-icon svg-icon-3">
+																		<i class="las la-print" style="font-size: 18px"></i>
+																	</span>
+																	<!--end::Svg Icon-->Export</button>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
 												<form action="/dashboard" method="GET" class="d-flex">
 												<form action="/adv" method="GET" class="d-flex">
 													<div class="me-2 d-flex flex-row">
