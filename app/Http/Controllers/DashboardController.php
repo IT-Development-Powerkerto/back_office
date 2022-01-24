@@ -150,7 +150,7 @@ class DashboardController extends Controller
         $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
             Carbon::now()->startOfYear(),
             Carbon::now()->endOfYear(),
-        ])->value('quantity');
+        ])->sum('quantity');
 
         if($day >= $user_expired){
             $request->session()->invalidate();
