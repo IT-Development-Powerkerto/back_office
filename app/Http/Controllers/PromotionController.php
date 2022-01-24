@@ -101,4 +101,9 @@ class PromotionController extends Controller
         $promotion->delete();
         return redirect('/promotion')->with('success','Successull! Promotion Deleted');
     }
+
+    public function get_total_promotion($id){
+        $total_promotion = Promotion::where('id', $id)->value('total_promotion');
+        return json_encode($total_promotion);
+    }
 }

@@ -177,7 +177,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" name="promotion_price" id="promotion_price">
+														<select class="form-control" name="promotion_id" id="promotion_id">
 															<option value="">Not Have Promotion</option>
 															@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
 															<option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
@@ -190,7 +190,7 @@
 													<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Price</label>
 													<div class="col-lg-3 mt-8">
 														<div class="input-group">
-															<input type="number" name="promotion" id="promotion"  class="form-control" placeholder="Promotion Price" onchange="calculate(this.value)" disabled/>
+															<input type="number" value="0" name="promotion" id="promotion"  class="form-control" placeholder="Promotion Price" onchange="calculate(this.value)" readonly/>
 															<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 														</div>
 														<span class="form-text text-muted">Auto-Filled Promotion Price</span>
@@ -489,26 +489,10 @@
         </script>
 		<script>
 			$(document).ready(function(){
-				$('#promotion_price').on('change', function(){
-					var promotion_id = $(this).val();
-					if(promotion_id){
-						$.ajax({
-							url: "get_total_promotion/"+promotion_id,
-							type: "GET",
-							success: function(data){
-								$('#promotion').val(data);
-							}
-						});
-					}
-				});
-			});
-		</script>
-		<script>
-			$(document).ready(function(){
-				$('#quantity, #price, #promotion_price').on('change', function(){
+				$('#quantity, #price, #promotion_id').on('change', function(){
 					var quantity = $('#quantity').val();
 					var price = $('#price').val();
-					var promotion_id = $('#promotion_price').val();
+					var promotion_id = $('#promotion_id').val();
 					if(promotion_id){
 						$.ajax({
 							url: "get_total_promotion/"+promotion_id,
