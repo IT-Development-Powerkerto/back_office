@@ -161,7 +161,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="number" placeholder="Quantity Product" min="0" onchange="calculate('#promotion_name'.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+														<input type="number" placeholder="Quantity Product" min="0"  id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter quantity</span>
@@ -177,24 +177,24 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" name="promotion_price" id="promotion_price" onchange="calculate(this.value)">
-															<option value="0">Not Have Promotion</option>
+														<select class="form-control" name="promotion_price" id="promotion_price">
+															<option value="">Not Have Promotion</option>
 															@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
-																<option value="{{$promotion->total_promotion}}">{{ $promotion->promotion_name }}</option>
+															<option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
 															@endforeach
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter promotion type</span>
-												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Price</label>
-												<div class="col-lg-3 mt-8">
-													<div class="input-group">
-														<input type="number" name="promotion" id="promotion" value="0" class="form-control" placeholder="Promotion Price" disabled/>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
-													<span class="form-text text-muted">Auto-Filled Promotion Price</span>
-												</div>
+													<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Price</label>
+													<div class="col-lg-3 mt-8">
+														<div class="input-group">
+															<input type="number" name="promotion" id="promotion"  class="form-control" placeholder="Promotion Price" onchange="calculate(this.value)" disabled/>
+															<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+														</div>
+														<span class="form-text text-muted">Auto-Filled Promotion Price</span>
+													</div>
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
@@ -487,32 +487,45 @@
                 });
             });
         </script>
-        <script>
-            $(function () {
-                var $promotion_price = $('#promotion_price'),
-                    $promotion = $('#promotion');
-                    $promotion_price.on('input', function () {
-                        $promotion.val($promotion_price.val());
-                    });
-            });
-        </script>
-		<script type="text/javascript">
-			function calculate(promotion){
-				var quantity = parseInt(document.getElementById('quantity').value);
-				var price = parseInt(document.getElementById('price').value);
-                var promotion = parseInt(document.getElementById('promotion_price').value);
-				var total = (price * quantity) - promotion;
-				var total_price = document.getElementById('total_price');
-				total_price.value = total;
-			}
+		<script>
+			$(document).ready(function(){
+				$('#promotion_price').on('change', function(){
+					var promotion_id = $(this).val();
+					if(promotion_id){
+						$.ajax({
+							url: "get_total_promotion/"+promotion_id,
+							type: "GET",
+							success: function(data){
+								$('#promotion').val(data);
+							}
+						});
+					}
+				});
+			});
 		</script>
-        <script type="text/javascript">
-			function sum(promotion){
-				var total_price = parseInt(document.getElementById('total_price').value);
-				var total = total_price - promotion;
-				var set = document.getElementById('total_price');
-				set.value = total;
-			}
+		<script>
+			$(document).ready(function(){
+				$('#quantity, #price, #promotion_price').on('change', function(){
+					var quantity = $('#quantity').val();
+					var price = $('#price').val();
+					var promotion_id = $('#promotion_price').val();
+					if(promotion_id){
+						$.ajax({
+							url: "get_total_promotion/"+promotion_id,
+							type: "GET",
+							success: function(promotion){
+								$('#promotion').val(promotion);
+								var total = (price * quantity) - promotion;
+								$('#total_price').val(total);
+							}
+						});
+					}else{
+						$('#promotion').val(0);
+						var total = (price * quantity);
+						$('#total_price').val(total);
+					}
+				});
+			});
 		</script>
 		<script>
 			$(document).ready(function(){

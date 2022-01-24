@@ -114,6 +114,7 @@ Route::get('getRole/{id}', function ($id) {
 });
 
 Route::get('ongkir', [RajaOngkirController::class, 'cek'])->name('ongkir');
+Route::get('/province/{id}', [RajaOngkirController::class, 'get_province'])->name('get_province');
 Route::get('/city/{id}', [RajaOngkirController::class, 'get_city'])->name('get_city');
 Route::get('/subdistrict/{id}', [RajaOngkirController::class, 'get_subdistrict'])->name('get_subdistrict');
 
@@ -136,6 +137,7 @@ Route::get('/viewdata/{id}', [InputerController::class, 'view'])->name('viewdata
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
 Route::resource('budgeting', BudgetingController::class)->middleware('auth');
 Route::resource('promotion', PromotionController::class)->middleware('auth');
+Route::get('lead/get_total_promotion/{id}', [PromotionController::class, 'get_total_promotion'])->name('get_total_promotion');
 
 
 

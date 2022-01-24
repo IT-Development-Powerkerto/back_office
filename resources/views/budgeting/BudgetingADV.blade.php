@@ -75,6 +75,7 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
+									@include('partials/widgets/budgeting/DailyBudgetADV')
 									@include('partials/widgets/budgeting/LastWeekBudgetADV')
 									@include('partials/widgets/budgeting/LastMonthBudgetADV')
 									@include('partials/widgets/budgeting/WeeklyInfoBudgetADV')
