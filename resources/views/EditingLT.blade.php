@@ -198,7 +198,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" name="total_price" id="total_price" class="form-control" placeholder="Total Price"  onchange="sum(this.value)" disabled/>
+														<input type="number" name="total_price" id="total_price" class="form-control" placeholder="Total Price"  onchange="sum(this.value)" readonly/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -303,7 +303,7 @@
 											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Grand Total</label>
 												<div class="col-lg">
-													<input name="total_payment" id="total_payment" class="form-control" placeholder="Total Payment" value="" disabled>
+													<input name="total_payment" id="total_payment" class="form-control" placeholder="Total Payment" value="" readonly>
 													<span class="form-text text-muted">Total Price + Courier</span>
 												</div>
 											</div>
