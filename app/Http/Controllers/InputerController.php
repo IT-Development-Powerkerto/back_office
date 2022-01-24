@@ -6,6 +6,7 @@ use App\Exports\InputersExport;
 use Illuminate\Http\Request;
 use App\Models\Inputer;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -16,12 +17,17 @@ class InputerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
+        if($request->date_filter){
+            $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+        } else {
+            $day = Carbon::now()->format('Y-m-d');
+        }
+        $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
 
         $user = User::all();
-        return view('inputer.inputer', compact(['inputers', 'user']));
+        return view('inputer.Inputer', compact(['inputers', 'user']));
     }
 
     /**

@@ -33,7 +33,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('reimbursement.index') }}" class="menu-title">Reimbursement CS</a>
+						<a href="{{route('promotion.index')}}" class="menu-title">Create Promotion</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">
@@ -41,7 +41,15 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{route('promotion.index')}}" class="menu-title">Create Promotion</a>
+						<a href="{{route('reimbursement.index')}}" class="menu-title">Reimbursement CS</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="#" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>

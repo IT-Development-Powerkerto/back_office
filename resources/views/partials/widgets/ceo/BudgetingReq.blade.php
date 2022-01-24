@@ -130,7 +130,7 @@
 														<thead>
 															<tr class="fw text-muted">
 																<th class="">No</th>
-																<th class="">Name</th>
+																<th class="">Division</th>
 																<th class="">Request</th>
 																<th class="">Attachment</th>
 																<th class="">Status</th>
