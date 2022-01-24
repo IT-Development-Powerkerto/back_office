@@ -178,7 +178,7 @@
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
 														<select class="form-control" name="promotion_price" id="promotion_price">
-															<option value="0">Not Have Promotion</option>
+															<option value="">Not Have Promotion</option>
 															@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
 															<option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
 															@endforeach
@@ -519,6 +519,10 @@
 								$('#total_price').val(total);
 							}
 						});
+					}else{
+						$('#promotion').val(0);
+						var total = (price * quantity);
+						$('#total_price').val(total);
 					}
 				});
 			});
