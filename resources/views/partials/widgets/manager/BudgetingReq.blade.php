@@ -66,7 +66,7 @@
 																		<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
 																	</div>
 																</td>
-																<td class="d-flex align-items-center justify-content-end">
+																<td class="d-flex align-items-center justify-content-end mb-3">
 																	<a href="#" class="btn btn-sm btn-light btn-active-light-primary ms-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 																		<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 																		<span class="svg-icon svg-icon-5 m-0">
@@ -88,12 +88,6 @@
 																			{{-- data-kt-customer-table-filter="delete_row" --}}
 																		</div>
 																		<!--end::Menu item-->
-																		<!--begin::Menu item-->
-																		<div class="menu-item px-3">
-																			<a href="" class="menu-link px-3" >Download File</a>
-																			{{-- data-kt-customer-table-filter="delete_row" --}}
-																		</div>
-																		<!--end::Menu item-->
 																	</div>
 																	<!--end::Menu-->
 																</td>
@@ -108,6 +102,7 @@
 											<!--begin::Body-->
 										</div>
 										<div class="card shadow-sm">
+											<!--begin::Header-->
 											<div class="card-header border-0 pt-5">
 												<h3 class="card-title align-items-start flex-column">
 													<span class="card-label fw-bolder fs-3 mb-1">Budgeting Req nonADV</span>
@@ -124,6 +119,7 @@
 												</div>
 											</div>
 											<!--end::Header-->
+											<!--end::Header-->
 											<!--begin::Body-->
 											<div class="card-body py-3">
 												<!--begin::Table container-->
@@ -136,7 +132,7 @@
 																<th class="">No</th>
 																<th class="">Name</th>
 																<th class="">Request</th>
-																<th class="">Target</th>
+																<th class="">Attachment</th>
 																<th class="">Status</th>
 																<th class="text-end">Actions</th>
 															</tr>
@@ -160,17 +156,20 @@
 																		<h1 class="text-dark fw-normal fs-6">Rp. 5.000.000</h1>
 																	</div>
 																</td>
-																<td class="">
-																	<div class="d-flex align-items-center">
-																		<h1 class="text-dark fw-normal fs-6">Rp. 10.000.000</h1>
-																	</div>
+																<td class="d-flex align-items-start mb-4">
+																	<a href="#" class="btn-active-light-primary ms-3">
+																		<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+																		<span class="svg-icon svg-icon-5 m-0">
+																			<i class="las la-file-alt" style="font-size:18px"></i>
+																		</span>
+																		<!--end::Svg Icon-->File</a>
 																</td>
 																<td class="">
 																	<div class="d-flex align-items-center">
 																		<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
 																	</div>
 																</td>
-																<td class="d-flex align-items-center justify-content-end">
+																<td class="d-flex align-items-center justify-content-end mb-3">
 																	<a href="#" class="btn btn-sm btn-light btn-active-light-primary ms-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
 																		<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 																		<span class="svg-icon svg-icon-5 m-0">
