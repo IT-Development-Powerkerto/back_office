@@ -81,7 +81,7 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form class="form" action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
+									<form class="form" action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST" enctype="multipart/form-data">
 										@csrf
 										@method('PATCH')
 										<div class="card-body">
@@ -161,7 +161,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="number" placeholder="Quantity Product" min="0" onchange="calculate('#promotion_name'.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+														<input type="number" placeholder="Quantity Product" min="0"  id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter quantity</span>
@@ -177,28 +177,28 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" name="promotion_price" id="promotion_price" onchange="calculate(this.value)">
-															<option value="0">Not Have Promotion</option>
-															@foreach ($promotion->where('product_name', $lead->implode('product_name') as $promotion)
-																<option value="{{$promotion->total_promotion}}">{{ $promotion->promotion_name }}</option>
+														<select class="form-control" name="promotion_id" id="promotion_id">
+															<option value="">Not Have Promotion</option>
+															@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+															<option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
 															@endforeach
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter promotion type</span>
-												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Price</label>
-												<div class="col-lg-3 mt-8">
-													<div class="input-group">
-														<input type="number" name="promotion" id="promotion" value="0" class="form-control" placeholder="Promotion Price" disabled/>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
-													<span class="form-text text-muted">Auto-Filled Promotion Price</span>
-												</div>
+													<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Price</label>
+													<div class="col-lg-3 mt-8">
+														<div class="input-group">
+															<input type="number" value="0" name="promotion" id="promotion"  class="form-control" placeholder="Promotion Price" onchange="calculate(this.value)" readonly/>
+															<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+														</div>
+														<span class="form-text text-muted">Auto-Filled Promotion Price</span>
+													</div>
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" name="total_price" id="total_price" class="form-control" placeholder="Total Price"  onchange="sum(this.value)" disabled/>
+														<input type="number" name="total_price" id="total_price" class="form-control" placeholder="Total Price"  onchange="sum(this.value)" readonly/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -303,14 +303,14 @@
 											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Grand Total</label>
 												<div class="col-lg">
-													<input name="total_payment" id="total_payment" class="form-control" placeholder="Total Payment" value="" disabled>
+													<input name="total_payment" id="total_payment" class="form-control" placeholder="Total Payment" value="" readonly>
 													<span class="form-text text-muted">Total Price + Courier</span>
 												</div>
 											</div>
 											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Upload The Proof</label>
 												<div class="col-lg">
-													<input class="form-control" value="{{ old('image') ?? $inputer->implode('image') }}" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+													<input class="form-control" type="file" id="image" name="image" id="formFileMultiple" multiple id>
 													<span class="form-text text-muted">Please upload the proof if you closing</span>
 												</div>
 											</div>
@@ -487,32 +487,29 @@
                 });
             });
         </script>
-        <script>
-            $(function () {
-                var $promotion_price = $('#promotion_price'),
-                    $promotion = $('#promotion');
-                    $promotion_price.on('input', function () {
-                        $promotion.val($promotion_price.val());
-                    });
-            });
-        </script>
-		<script type="text/javascript">
-			function calculate(promotion){
-				var quantity = parseInt(document.getElementById('quantity').value);
-				var price = parseInt(document.getElementById('price').value);
-                var promotion = parseInt(document.getElementById('promotion_price').value);
-				var total = (price * quantity) - promotion;
-				var total_price = document.getElementById('total_price');
-				total_price.value = total;
-			}
-		</script>
-        <script type="text/javascript">
-			function sum(promotion){
-				var total_price = parseInt(document.getElementById('total_price').value);
-				var total = total_price - promotion;
-				var set = document.getElementById('total_price');
-				set.value = total;
-			}
+		<script>
+			$(document).ready(function(){
+				$('#quantity, #price, #promotion_id').on('change', function(){
+					var quantity = $('#quantity').val();
+					var price = $('#price').val();
+					var promotion_id = $('#promotion_id').val();
+					if(promotion_id){
+						$.ajax({
+							url: "get_total_promotion/"+promotion_id,
+							type: "GET",
+							success: function(promotion){
+								$('#promotion').val(promotion);
+								var total = (price * quantity) - promotion;
+								$('#total_price').val(total);
+							}
+						});
+					}else{
+						$('#promotion').val(0);
+						var total = (price * quantity);
+						$('#total_price').val(total);
+					}
+				});
+			});
 		</script>
 		<script>
 			$(document).ready(function(){
