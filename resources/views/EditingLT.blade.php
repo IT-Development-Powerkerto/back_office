@@ -81,7 +81,7 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form class="form" action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
+									<form class="form" action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST" enctype="multipart/form-data">
 										@csrf
 										@method('PATCH')
 										<div class="card-body">
@@ -310,7 +310,7 @@
 											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Upload The Proof</label>
 												<div class="col-lg">
-													<input class="form-control" value="{{ old('image') ?? $inputer->implode('image') }}" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+													<input class="form-control" type="file" id="image" name="image" id="formFileMultiple" multiple id>
 													<span class="form-text text-muted">Please upload the proof if you closing</span>
 												</div>
 											</div>

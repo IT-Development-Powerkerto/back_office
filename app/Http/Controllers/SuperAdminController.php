@@ -121,7 +121,7 @@ class SuperAdminController extends Controller
         if($request->hasFile('image')){
             $extFile = $request->image->getClientOriginalExtension();
             $namaFile = 'user-'.time().".".$extFile;
-            $path = $request->image->move('public/assets/img',$namaFile);
+            $path = $request->image->move('public/assets/img/user',$namaFile);
             $user->image = $path;
         } else {
             $user->image = null;

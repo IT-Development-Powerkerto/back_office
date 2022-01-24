@@ -91,21 +91,21 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Advertise</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">Zall</label>
+														<label type="text" class="form-control">{{$inputers->adv_name}}</label>
 														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-users-cog" style="font-size: 24px"></i></span></div>
 													</div>
 										  		</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Operator</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">Zall</label>
+														<label type="text" class="form-control">{{$inputers->operator_name}}</label>
 														<div class="input-group-prepend"><span class="input-group-text"><i class="la la-user" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Status</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">Closing</label>
+														<label type="text" class="form-control">{{$inputers->lead->status->name}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-angle-down" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
@@ -118,21 +118,21 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Full Name</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">Zall</label>
+														<label type="text" class="form-control">{{$inputers->customer_name}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-user-friends" style="font-size: 24px"></i></span></div>
 													</div>
 										  		</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Contact</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">081245527645</label>
+														<label type="text" class="form-control">{{$inputers->customer_number}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-phone" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Address</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">Jl. Beringin</label>
+														<label type="text" class="form-control">{{$inputers->customer_address}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
@@ -142,35 +142,35 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Product</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">Freshmag</label>
+														<label type="text" class="form-control">{{$inputers->product_name}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
 													</div>
 										  		</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">3</label>
+														<label type="text" class="form-control">{{$inputers->quantity}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
 													</div>
 										  		</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Price</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">10.000</label>
+														<label type="text" class="form-control">{{$inputers->product_price * $inputers->quantity}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-money-bill-wave" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<label type="text" class="form-control">Promo Akhir Tahun</label>
+														<label type="text" class="form-control">{{$inputers->promotion}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
 												<div class="col-lg-7 mt-8">
 													<div class="input-group">
-														<label type="text" class="form-control">30.000</label>
+														<label type="text" class="form-control">{{$inputers->total_price}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
@@ -180,41 +180,41 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Payment</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">Transfer</label>
+														<label type="text" class="form-control">{{$inputers->payment_method}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-file-invoice-dollar" style="font-size: 24px"></i></span></div>
 													</div>
 											  	</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">Cilacap</label>
+														<label type="text" class="form-control">{{$inputers->warehouse}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-warehouse" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Destination</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text" class="form-control">Makassar</label>
+														<label type="text" class="form-control">{{$inputers->customer_address}}</label>
 													</div>
 												</div>
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Weight (gram)</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<label type="text" class="form-control">100</label>
+														<label type="text" class="form-control">{{$inputers->product_weight}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
 										  		<label class="col-lg-1 col-form-label text-lg-right mt-8">Courier</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<label type="text" class="form-control">JNE OK</label>
+														<label type="text" class="form-control">{{$inputers->courier}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-truck-moving" style="font-size: 24px"></i></span></div>
 													</div>
 											  	</div>
 												  <label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Price</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<label type="text" class="form-control">40.000</label>
+														<label type="text" class="form-control">{{$inputers->shipping_price}}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 												</div>
@@ -223,7 +223,7 @@
 											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Total</label>
 												<div class="col-lg">
-													<label type="text" class="form-control">70.000</label>
+													<label type="text" class="form-control">{{$inputers->total_payment}}</label>
 												</div>
 											</div>
 											<div class="form-group row mt-3">
@@ -233,7 +233,7 @@
                                                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         Show The Proof
                                                     </button>
-    
+
                                                     <!-- Modal -->
                                                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -242,9 +242,15 @@
                                                                     <h5 class="modal-title" id="exampleModalLabel">Proof Of Payment</h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
-                                                                <div class="modal-body">
-                                                                    <img src="assets/img/default.jpg" width="450px" alt="image">
-                                                                </div>
+                                                                @if ($inputers->payment_proof == null)
+                                                                    <div class="modal-body">
+                                                                        <img src="assets/img/default.jpg" width="450px" alt="image">
+                                                                    </div>
+                                                                @else
+                                                                    <div class="modal-body">
+                                                                        <img src="{{$inputers->payment_proof}}" width="450px" alt="image">
+                                                                    </div>
+                                                                @endif
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                                 </div>
@@ -438,11 +444,11 @@
 				}else(warehouse == 'Tandes.Sby'){
 					var origin = 444;
 				}
-				var destination = document.getElementById("destination").value;  
+				var destination = document.getElementById("destination").value;
 				{{--  var weight = 1;  --}}
 				var	courier = document.getElementById("courier").value;
 				var courier = courier.toLowerCase();
-				
+
 				$.ajax({
 					type: 'GET',
 					url: "{{ route('ongkir') }}",
