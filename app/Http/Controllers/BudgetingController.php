@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lead;
 use App\Models\User;
+use App\Models\Budgeting;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,7 @@ class BudgetingController extends Controller
             ])->get();
             $month = Carbon::now()->format('M');
             $adv = User::where('admin_id', auth()->user()->id)->where('role_id', 4)->get();
+            $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->get();
             return view('budgeting.BudgetingADV')
             ->with('lead_day', $lead_day)
             ->with('day_output', $day_output)
@@ -59,7 +61,8 @@ class BudgetingController extends Controller
             ->with('lead3', $lead3)
             ->with('lead4', $lead4)
             ->with('month', $month)
-            ->with('adv', $adv);
+            ->with('adv', $adv)
+            ->with('budgeting', $budgeting);
         }else {
             return Redirect::back();
         }
@@ -83,7 +86,21 @@ class BudgetingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        DB::table('budgetings')->insert([
+            'admin_id'     => auth()->user()->admin_id,
+            'user_id'      => auth()->user()->id,
+            'user_name'    => auth()->user()->name,
+            'role_id'      => auth()->user()->role_id,
+            'reason'       => 'Biaya Iklan',
+            'requirement'  => $request->requirement,
+            'target'       => $request->target,
+            'status'       => 2,
+            'created_at'   => Carbon::now()->format('Y-m-d'),
+            'updated_at'   => Carbon::now()->format('Y-m-d'),
+        ]);
+
+        return redirect('/dashboard')->with('success','Successull! Budgeting Added');
     }
 
     /**

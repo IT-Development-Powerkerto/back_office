@@ -16,4 +16,7 @@ class Role extends Model
     public function user(){
         return $this->hasMany(User::class);
     }
+    public function budgeting(){
+        return $this->hasMany(Budgeting::class);
+    }
 }

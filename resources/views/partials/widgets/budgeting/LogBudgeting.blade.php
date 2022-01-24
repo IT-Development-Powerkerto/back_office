@@ -21,38 +21,94 @@
 															<th class="min-w-225px">Time</th>
 															<th class="min-w-225px">ADV Name</th>
 															<th class="min-w-225px">Pengajuan</th>
+                                                            <th class="min-w-225px">Target</th>
 															<th class="min-w-225px text-end">Status</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
-														<tr>
-															<td>
-																<div class="d-flex align-items-center">
-																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-normal fs-6">12-Jan-2022</h1>
-																	</div>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-normal fs-6">Hanif</h1>
-																	</div>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp. 10.000.000</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center justify-content-end">
-																	<h1 class="text-dark fw-normal fs-6 badge badget-light-dager">Rejected</h1>
-																</div>
-															</td>
-														</tr>
+                                                        @if (auth()->user()->role_id == 1)
+                                                            @foreach ($budgeting as $budgeting)
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="d-flex justify-content-start flex-column">
+                                                                            <h1 href="#" class="text-dark fw-normal fs-6">{{$budgeting->created_at}}</h1>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="d-flex justify-content-start flex-column">
+                                                                            <h1 href="#" class="text-dark fw-normal fs-6">{{$budgeting->user_name}}</h1>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->requirement}}</h1>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->target}}</h1>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center justify-content-end">
+                                                                        @if ($budgeting->status == 1)
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badget-light-success">Accept</h1>
+                                                                        @elseif ($budgeting->status == 0)
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badget-light-danger">Rejected</h1>
+                                                                        @else
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badget-light-info">Wait</h1>
+                                                                        @endif
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                        @else
+                                                            @foreach ($budgeting->where('user_id', auth()->user()->id) as $budgeting)
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="d-flex justify-content-start flex-column">
+                                                                            <h1 href="#" class="text-dark fw-normal fs-6">{{$budgeting->created_at}}</h1>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="d-flex justify-content-start flex-column">
+                                                                            <h1 href="#" class="text-dark fw-normal fs-6">{{$budgeting->user_name}}</h1>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->requirement}}</h1>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->target}}</h1>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center justify-content-end">
+                                                                        @if ($budgeting->status == 1)
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-success">Accept</h1>
+                                                                        @elseif ($budgeting->status == 0)
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
+                                                                        @else
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-info">Wait</h1>
+                                                                        @endif
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                        @endif
 													</tbody>
 													<!--end::Table body-->
 												</table>
