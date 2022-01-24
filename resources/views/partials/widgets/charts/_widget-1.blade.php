@@ -8,7 +8,7 @@
 												<span class="text-muted fw-bold fs-7">Monthly</span>
 											</h3>
 											<!--end::Title-->
-											{{-- <div class="card-toolbar">
+											<div class="card-toolbar">
 												<!--begin::Menu-->
 												<button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
 													<!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
@@ -49,7 +49,7 @@
 													<!--end::Menu item-->
 												</div>
 												<!--end::Menu 3-->
-											</div> --}}
+											</div>
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
