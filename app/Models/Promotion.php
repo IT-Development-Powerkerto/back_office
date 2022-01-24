@@ -20,6 +20,6 @@ class Promotion extends Model
     ];
 
     public function inputer() {
-        return $this->belongsTo(Inputer::class);
+        return $this->hasOne(Inputer::class);
     }
 }

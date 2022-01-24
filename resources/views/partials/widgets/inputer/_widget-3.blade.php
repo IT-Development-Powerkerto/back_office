@@ -11,8 +11,8 @@
 			<!--end::Heading-->
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
-				<span class="fw-bold fs-7">{{$inputer->where('admin_id', auth()->user()->admin_id)->count()}} Payment</span>
-				<span class="fw-bolder fs-2x pt-1">Rp. {{$inputer->where('admin_id', auth()->user()->admin_id)->sum('total_payment')}}</span>
+				<span class="fw-bold fs-7">{{$inputers->where('admin_id', auth()->user()->admin_id)->count()}} Payment</span>
+				<span class="fw-bolder fs-2x pt-1">Rp. {{$inputers->where('admin_id', auth()->user()->admin_id)->sum('total_payment')}}</span>
 			</div>
 			<!--end::Balance-->
 		</div>
@@ -34,13 +34,13 @@
 				<div class="d-flex align-items-center flex-wrap w-100">
 					<!--begin::Title-->
 					<div class="mb-1 pe-3 flex-grow-1">
-						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">{{$inputer->where('admin_id', auth()->user()->admin_id)->where('payment_method', 'Transfer')->count()}}</label>
+						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">{{$inputers->where('admin_id', auth()->user()->admin_id)->where('payment_method', 'Transfer')->count()}}</label>
 						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">Transfer</label>
 					</div>
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">Rp. {{$inputer->where('admin_id', auth()->user()->admin_id)->where('payment_method', 'Transfer')->sum('total_payment')}}</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">Rp. {{$inputers->where('admin_id', auth()->user()->admin_id)->where('payment_method', 'Transfer')->sum('total_payment')}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -62,13 +62,13 @@
 				<div class="d-flex align-items-center flex-wrap w-100">
 					<!--begin::Title-->
 					<div class="mb-1 pe-3 flex-grow-1">
-						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">{{$inputer->where('admin_id', auth()->user()->admin_id)->where('payment_method', 'COD')->count()}}</label>
+						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">{{$inputers->where('admin_id', auth()->user()->admin_id)->where('payment_method', 'COD')->count()}}</label>
 						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">COD</label>
 					</div>
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">Rp. {{$inputer->where('admin_id', auth()->user()->admin_id)->where('payment_method', 'COD')->sum('total_payment')}}</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">Rp. {{$inputers->where('admin_id', auth()->user()->admin_id)->where('payment_method', 'COD')->sum('total_payment')}}</div>
 					</div>
 					<!--end::Label-->
 				</div>

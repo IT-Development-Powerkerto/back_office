@@ -40,28 +40,28 @@
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
+													@foreach ($inputers as $inputer)
 													<tbody>
 														<tr>
-                                                            @foreach ($inputers as $inputers)
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">{{$inputers['id']}}</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$inputer['id']}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<a href="{{ route('viewdata',['id' => $inputers->id]) }}" class="text-dark fw-normal fs-6 text-hover-primary mb-2">
-																			{{$inputers['customer_address']}} / CS {{$inputers->lead->user['name']}} / ADV {{$inputers->lead['advertiser']}} / JA Hanif / {{$inputers['product_name']}} {{$inputers['quantity']}} box / {{$inputers['total_price']+$inputers['shipping_price']}} / {{$inputers['promotion']}} / Promo H+1
+																		<a href="{{ route('viewdata',['id' => $inputer->id]) }}" class="text-dark fw-normal fs-6 text-hover-primary mb-2">
+																			{{$inputer['customer_address']}} / CS {{$inputer->lead->user['name']}} / ADV {{$inputer->lead['advertiser']}} / JA Hanif / {{$inputer['product_name']}} {{$inputer['quantity']}} box / {{$inputer['total_price']+$inputer['shipping_price']}} / {{$inputer['promotion_price']}} / {{ $inputer->promotion['promotion_name'] ?? 'Not Have Promotion'}}
 																		</a>
 																	</div>
 																</div>
 															</td>
-                                                            @endforeach
 														</tr>
 													</tbody>
+													@endforeach
 													<!--end::Table body-->
 												</table>
 												<!--end::Table-->

@@ -15,11 +15,11 @@ class InputerController extends Controller
      */
     public function index()
     {
-        $inputer = Inputer::where('admin_id', auth()->user()->admin_id);
-        $inputers = Inputer::all();
+        $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
+        // $inputers = Inputer::all();
 
         $user = User::all();
-        return view('inputer.inputer')->with('inputer', $inputer)->with('inputers', $inputers)->with('user', $user);
+        return view('inputer.inputer')->with('inputers', $inputers)->with('user', $user);
     }
 
     /**
