@@ -44,14 +44,14 @@ class LeadsExport implements FromQuery, WithHeadings
     public function headings(): array
     {
         return [
-            'Adv Name',
+            'ADV Name',
             'CS Name',
             'Customer Name',
             'Customer WA',
             'Product',
             'Qty',
             'Price',
-            'Total_price',
+            'Total price',
             'Date/Time',
             'Lead Progress'
         ];
