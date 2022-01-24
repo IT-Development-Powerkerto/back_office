@@ -34,7 +34,7 @@
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
                                                                         <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$month}} Week 1</h1>
+                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$day_output}}</h1>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -47,130 +47,22 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead1->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->count()}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead_day->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->count()}}</h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead1->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->count()}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead_day->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->count()}}</h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead1->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('quantity')}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead_day->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('quantity')}}</h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead1->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('total_price')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$month}} Week 2</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$adv->name}}</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead2->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead2->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead2->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('quantity')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead2->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('total_price')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$month}} Week 3</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$adv->name}}</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead3->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead3->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead3->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('quantity')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead3->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('total_price')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$month}} Week 4</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$adv->name}}</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead4->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead4->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead4->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('quantity')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead4->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('total_price')}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead_day->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('total_price')}}</h1>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -182,7 +74,7 @@
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
                                                                         <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$month}} Week 1</h1>
+                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$day_output}}</h1>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -195,130 +87,22 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead1->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->count()}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead_day->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->count()}}</h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead1->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->count()}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead_day->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->count()}}</h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead1->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('quantity')}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead_day->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('quantity')}}</h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead1->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('total_price')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$month}} Week 2</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{auth()->user()->name}}</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead2->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead2->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead2->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('quantity')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead2->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('total_price')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$month}} Week 3</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{auth()->user()->name}}</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead3->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead3->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead3->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('quantity')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead3->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('total_price')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{$month}} Week 4</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <div class="d-flex justify-content-start flex-column">
-                                                                            <h1 href="#" class="text-dark fw-medium fs-6">{{auth()->user()->name}}</h1>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead4->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead4->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->count()}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-medium fs-6">{{$lead4->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('quantity')}}</h1>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead4->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('total_price')}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead_day->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('total_price')}}</h1>
                                                                     </div>
                                                                 </td>
                                                             </tr>

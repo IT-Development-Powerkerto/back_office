@@ -37,7 +37,8 @@ class CreateInputersTable extends Migration
             $table->string('payment_method')->nullable();
             $table->integer('total_payment')->nullable();
             $table->string('payment_proof')->nullable();
-            $table->timestamps();
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 
