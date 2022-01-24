@@ -144,7 +144,7 @@ class LeadController extends Controller
                 } else {
                     $image = null;
                 }
-                DB::table('inputers')->where('lead_id', $lead->id)->update([
+                Inputer::where('lead_id', $lead->id)->update([
                     'admin_id'         => $lead->admin_id,
                     'lead_id'          => $lead->id,
                     'adv_name'         => $lead->advertiser,
@@ -158,7 +158,7 @@ class LeadController extends Controller
                     'quantity'         => $request->quantity,
                     'promotion_id'        => $request->promotion_id,
                     'promotion_price'        => $request->promotion,
-                    'total_price'      => $total_price,
+                    'total_price'      => $request->total_price,
                     'warehouse'        => $request->warehouse,
                     'province_id'      => $request->province,
                     'city_id'          => $request->city,
@@ -166,9 +166,9 @@ class LeadController extends Controller
                     'courier'          => $request->courier,
                     'shipping_price'   => $request->shipping_price,
                     'payment_method'   => $request->payment_method,
-                    'total_payment'    => $total_payment,
+                    'total_payment'    => $request->total_payment,
                     'payment_proof'    => $image,
-                    'updated_at'       => Carbon::now()->format('Y-m-d'),
+                    // 'updated_at'       => Carbon::now()->format('Y-m-d'),
                 ]);
             }
             else{
@@ -180,7 +180,7 @@ class LeadController extends Controller
                 } else {
                     $image = null;
                 }
-                DB::table('inputers')->insert([
+                Inputer::create([
                     'admin_id'         => $lead->admin_id,
                     'lead_id'          => $lead->id,
                     'adv_name'         => $lead->advertiser,
@@ -194,7 +194,7 @@ class LeadController extends Controller
                     'quantity'         => $request->quantity,
                     'promotion_id'        => $request->promotion_id,
                     'promotion_price'        => $request->promotion,
-                    'total_price'      => $total_price,
+                    'total_price'      => $request->total_price,
                     'warehouse'        => $request->warehouse,
                     'province_id'      => $request->province,
                     'city_id'          => $request->city,
@@ -202,10 +202,10 @@ class LeadController extends Controller
                     'courier'          => $request->courier,
                     'shipping_price'   => $request->shipping_price,
                     'payment_method'   => $request->payment_method,
-                    'total_payment'    => $total_payment,
+                    'total_payment'    => $request->total_payment,
                     'payment_proof'    => $image,
-                    'created_at'       => Carbon::now()->format('Y-m-d'),
-                    'updated_at'       => Carbon::now()->format('Y-m-d'),
+                //     'created_at'       => Carbon::now()->format('Y-m-d'),
+                //     'updated_at'       => Carbon::now()->format('Y-m-d'),
                 ]);
             }
         }
@@ -232,6 +232,6 @@ class LeadController extends Controller
         $from_date=$request->from_date;
         $to_date = $request->to_date;
         // dd($from_date);
-        return Excel::download(new LeadsExport($from_date,$to_date), 'leads.xlsx', 'Xlsx', ['advertiser']);
+        return Excel::download(new LeadsExport($from_date,$to_date), 'leads.xlsx', 'Xlsx');
     }
 }
