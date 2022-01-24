@@ -5,7 +5,7 @@
 <head>
 	<base href="">
 	<title>{{Auth()->user()->role->name}}</title>
-    
+
 	<link rel="icon" href="img/favicon.png">
 
 	<!--begin::Fonts-->
@@ -54,6 +54,45 @@
     <script src="assets/js/custom/modals/upgrade-plan.js"></script>
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
+    <script>
+        function lead_day(){
+            document.getElementById("lead_count").innerHTML = "{{ $lead_day->count() }}";
+            document.getElementById("product_count").innerHTML = "{{ $lead_day->where('product_id', $products->implode('id'))->count() }}";
+        }
+        function lead_week(){
+            document.getElementById("lead_count").innerHTML = "{{ $lead_week->count() }}";
+            document.getElementById("product_count").innerHTML = "{{ $lead_week->where('product_id', $products->implode('id'))->count() }}";
+        }
+        function lead_month(){
+            document.getElementById("lead_count").innerHTML = "{{ $lead_month->count() }}";
+            document.getElementById("product_count").innerHTML = "{{ $lead_month->where('product_id', $products->implode('id'))->count() }}";
+        }
+        function lead_all(){
+            document.getElementById("lead_count").innerHTML = "{{ $lead_all->count() }}";
+            document.getElementById("product_count").innerHTML = "{{ $lead_all->where('product_id', $products->implode('id'))->count() }}";
+            //alert("{{ $lead_all->where('product_id', $products->implode('id'))->count() }}");
+        }
+    </script>
+    <script>
+        function omset_day(){
+            document.getElementById("omset").innerHTML = "Rp. {{ $omset_day }}";
+            {{--  document.getElementById("product_count").innerHTML = "{{ $lead_day->where('product_id', $product->id)->count() }}";  --}}
+        }
+        function omset_week(){
+            document.getElementById("omset").innerHTML = "Rp. {{ $omset_week }}";
+            {{--  document.getElementById("product_count").innerHTML = "{{ $lead_week->where('product_id', $product->id)->count() }}";  --}}
+        }
+        function omset_month(){
+            document.getElementById("omset").innerHTML = "Rp. {{ $omset_month }}";
+            {{--  document.getElementById("product_count").innerHTML = "{{ $lead_month->where('product_id', $product->id)->count() }}";  --}}
+        }
+        function omset_all(){
+            document.getElementById("omset").innerHTML = "Rp. {{ $omset_all->sum('total_price') }}";
+            {{--  document.getElementById("product_count").innerHTML = "{{ $lead_all->where('product_id', $product->id)->count() }}";  --}}
+            {{--  alert("{{ $lead_all->where('product_id', $product->id)->count() }}");  --}}
+
+        }
+    </script>
     <script>
         // Class definition
 

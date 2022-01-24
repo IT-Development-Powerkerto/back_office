@@ -54,7 +54,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div id="product_count" class="fw-bolder fs-5 text-gray-800 pe-1">{{ $lead_all->where('product_id', $product->id)->count() }}</div>
+						<label id="product_count" class="fw-bolder fs-5 text-gray-800 pe-1">{{ $lead_all->where('product_id', $product->id)->count() }}</label>
 					</div>
 					<!--end::Label-->
 				</div>

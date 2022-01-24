@@ -19,34 +19,39 @@ class BudgetingController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 9){
-            $lead1 = Lead::whereBetween('updated_at', [
+        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 4){
+            $day = Carbon::now()->format('Y-m-d');
+            $day_output = Carbon::now()->format('Y-M-d');
+            $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('updated_at', $day)->get();
+            $lead1 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
                 Carbon::now()->endOfMonth()->subWeek(4),
                 Carbon::now()->endOfMonth()->subWeek(3),
             ])->get();
-            $lead2 = Lead::whereBetween('updated_at', [
+            $lead2 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
                 Carbon::now()->endOfMonth()->subWeek(3),
                 Carbon::now()->endOfMonth()->subWeek(2),
             ])->get();
-            $lead3 = Lead::whereBetween('updated_at', [
+            $lead3 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
                 Carbon::now()->endOfMonth()->subWeek(2),
                 Carbon::now()->endOfMonth()->subWeek(1),
             ])->get();
-            $lead4 = Lead::whereBetween('updated_at', [
+            $lead4 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
                 Carbon::now()->endOfMonth()->subweek(1),
                 Carbon::now()->endOfMonth(),
             ])->get();
-            $lead_week = Lead::whereBetween('updated_at', [
+            $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
                 Carbon::now()->startOfWeek(),
                 Carbon::now()->endOfWeek(),
             ])->get();
-            $lead_month = Lead::whereBetween('updated_at', [
+            $lead_month = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
                 Carbon::now()->startOfMonth(),
                 Carbon::now()->endOfMonth(),
             ])->get();
             $month = Carbon::now()->format('M');
             $adv = User::where('admin_id', auth()->user()->id)->where('role_id', 4)->get();
             return view('budgeting.BudgetingADV')
+            ->with('lead_day', $lead_day)
+            ->with('day_output', $day_output)
             ->with('lead_week', $lead_week)
             ->with('lead_month', $lead_month)
             ->with('lead1', $lead1)

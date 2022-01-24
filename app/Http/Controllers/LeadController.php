@@ -168,6 +168,7 @@ class LeadController extends Controller
                     'payment_method'   => $request->payment_method,
                     'total_payment'    => $total_payment,
                     'payment_proof'    => $image,
+                    'updated_at'       => Carbon::now()->format('Y-m-d'),
                 ]);
             }
             else{
@@ -203,6 +204,8 @@ class LeadController extends Controller
                     'payment_method'   => $request->payment_method,
                     'total_payment'    => $total_payment,
                     'payment_proof'    => $image,
+                    'created_at'       => Carbon::now()->format('Y-m-d'),
+                    'updated_at'       => Carbon::now()->format('Y-m-d'),
                 ]);
             }
         }
