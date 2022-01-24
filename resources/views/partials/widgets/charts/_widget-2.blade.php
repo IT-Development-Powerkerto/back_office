@@ -19,7 +19,7 @@
                                                 <input id="lead_nov" value="{{$lead_nov}}" hidden/>
                                                 <input id="lead_des" value="{{$lead_des}}" hidden/>
 											</h3>
-											{{-- <div class="card-toolbar">
+											<div class="card-toolbar">
 												<!--begin::Menu-->
 												<button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
 													<!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
@@ -45,28 +45,30 @@
 													<!--end::Heading-->
 													<!--begin::Menu item-->
 													<div class="menu-item px-3">
-														<a href="#" class="menu-link px-3">Dayly</a>
+														<label for="daily" class="menu-link px-3">Daily</label>
 													</div>
 													<!--end::Menu item-->
 													<!--begin::Menu item-->
 													<div class="menu-item px-3">
-														<a href="#" class="menu-link flex-stack px-3">Weekly</a>
+														<a href="#weekly" class="menu-link flex-stack px-3">Weekly</a>
 													</div>
 													<!--end::Menu item-->
 													<!--begin::Menu item-->
 													<div class="menu-item px-3">
-														<a href="#" class="menu-link px-3">Monthly</a>
+														<a href="#monthly" class="menu-link px-3">Monthly</a>
 													</div>
 													<!--end::Menu item-->
 												</div>
 												<!--end::Menu 3-->
-											</div> --}}
+											</div>
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
 										<div class="card-body d-flex flex-column">
 											<!--begin::Chart-->
-											<div class="mixed-widget-5-chart card-rounded-top" data-kt-chart-color="dark" style="height: 150px"></div>
+											{{-- <div id="daily" class="" data-kt-chart-color="dark" style="height: 150px"></div> --}}
+                                            {{-- <div id="weekly" class="" data-kt-chart-color="dark" style="height: 150px"></div> --}}
+                                            <div id="monthly" class="mixed-widget-5-chart card-rounded-top" data-kt-chart-color="dark" style="height: 150px"></div>
 											<!--end::Chart-->
 										</div>
 										<!--end::Body-->
