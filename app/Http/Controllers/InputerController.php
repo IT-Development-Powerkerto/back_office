@@ -51,7 +51,7 @@ class InputerController extends Controller
      */
     public function show()
     {
-        return view('inputer.viewdata');
+
     }
 
     /**
@@ -86,5 +86,11 @@ class InputerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function view($id)
+    {
+        $inputers = Inputer::findOrFail($id);
+        return view('inputer.viewdata')->with('inputers', $inputers);
     }
 }

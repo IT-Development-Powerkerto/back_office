@@ -53,7 +53,7 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<a href="{{ route('viewdata') }}" class="text-dark fw-normal fs-6 text-hover-primary mb-2">
+																		<a href="{{ route('viewdata',['id' => $inputers->id]) }}" class="text-dark fw-normal fs-6 text-hover-primary mb-2">
 																			{{$inputers['customer_address']}} / CS {{$inputers->lead->user['name']}} / ADV {{$inputers->lead['advertiser']}} / JA Hanif / {{$inputers['product_name']}} {{$inputers['quantity']}} box / {{$inputers['total_price']+$inputers['shipping_price']}} / {{$inputers['promotion']}} / Promo H+1
 																		</a>
 																	</div>

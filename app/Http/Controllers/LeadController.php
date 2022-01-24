@@ -109,6 +109,16 @@ class LeadController extends Controller
         // dd($request->all());
         $total_price = ($request->price * $request->quantity) - $request->promotion_name;
         $total_payment = $total_price + $request->shipping_price;
+
+        if($request->hasFile('image')){
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'order-'.time().".".$extFile;
+            $path = $request->image->move('public/assets/img/order',$namaFile);
+            $image = $path;
+        } else {
+            $image = null;
+        }
+
         DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
             'quantity'        => $request->quantity,
             'price'           => $request->price,
@@ -128,18 +138,7 @@ class LeadController extends Controller
         ]);
         // dd($whatsapp);
 
-
         if($request->status_id == 5){
-            if($request->hasFile('image'))
-            {
-                $extFile = $request->image->getClientOriginalExtension();
-                $namaFile = 'order-'.time().".".$extFile;
-                $path = $request->image->move('public/assets/img/order',$namaFile);
-                $image = $path;
-            }else{
-                $image = null;
-            }
-
             $inputer = Inputer::where('lead_id', $lead)->exists();
             $lead = Lead::findOrFail($lead);
             if($inputer == true){
@@ -165,7 +164,7 @@ class LeadController extends Controller
                     'shipping_price'   => $request->shipping_price,
                     'payment_method'   => $request->payment_method,
                     'total_payment'    => $total_payment,
-                    'payment_proof'    => $request->image,
+                    'payment_proof'    => $image,
                 ]);
             }
             else{
@@ -191,7 +190,7 @@ class LeadController extends Controller
                     'shipping_price'   => $request->shipping_price,
                     'payment_method'   => $request->payment_method,
                     'total_payment'    => $total_payment,
-                    'payment_proof'    => $request->image,
+                    'payment_proof'    => $image,
                 ]);
             }
         }
