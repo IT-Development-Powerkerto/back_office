@@ -75,7 +75,9 @@ class PromotionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::where('admin_id', auth()->user()->admin_id)->get();
+        $promotion = Promotion::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
+        return view('EditingPromotion', ['promotion' => $promotion])->with('product', $product);
     }
 
     /**
