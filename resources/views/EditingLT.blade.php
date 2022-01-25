@@ -257,9 +257,12 @@
 													<div class="input-group">
 														<select class="form-control" id="city" name="city">
 															<option value="" hidden>Destination City</option>
+															@isset($all_city)
 															@foreach ($all_city as $all_city)
 															<option value="{{ $all_city['city_id'] }}" {{ $inputer->implode('city_id') == $all_city['city_id'] ? 'selected': ''}}>{{ $all_city['type'] }} {{ $all_city['city_name'] }}</option>
 															@endforeach
+
+															@endisset
 
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
@@ -271,9 +274,12 @@
 													<div class="input-group">
 														<select class="form-control" id="subdistrict" name="subdistrict" onchange="ongkir()">
 															<option value="" hidden>Destination Subdistrict</option>
-															@foreach ($all_subdistrict as $all_subdistrict)
-															<option value="{{ $all_subdistrict['subdistrict_id'] }}" {{ $inputer->implode('subdistrict_id') == $all_subdistrict['subdistrict_id'] ? 'selected': ''}}>{{ $all_subdistrict['subdistrict_name'] }}</option>
-															@endforeach
+															@isset($all_subdistrict)
+																
+																@foreach ($all_subdistrict as $all_subdistrict)
+																<option value="{{ $all_subdistrict['subdistrict_id'] }}" {{ $inputer->implode('subdistrict_id') == $all_subdistrict['subdistrict_id'] ? 'selected': ''}}>{{ $all_subdistrict['subdistrict_name'] }}</option>
+																@endforeach
+															@endisset
 
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
@@ -495,7 +501,6 @@
         </script>
 		<script>
 			$(document).ready(function(){
-				$('#promotion').val(0);
 				$('#quantity, #price, #promotion_id').on('change', function(){
 					var quantity = $('#quantity').val();
 					var price = $('#price').val();
