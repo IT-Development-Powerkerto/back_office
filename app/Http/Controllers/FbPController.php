@@ -153,17 +153,6 @@ class FbPController extends Controller
             $operator_id = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('id');
             $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
             $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
-            // $lead = new Lead();
-            // $lead->admin_id = $admin_id;
-            // $lead->advertiser = $adv_name;
-            // $lead->operator_id = $operator_id;
-            // $lead->campaign_id = $campaign_id;
-            // $lead->client_id  = $clients->id;
-            // $lead->product_id = $product_id;
-            // $lead->user_id  = $user_id;
-            // $lead->price = $product_price;
-            // $lead->status_id = 3;
-            // $lead->save();
             $lead_id = DB::table('leads')->insertGetId([
                 'admin_id'   => $admin_id,
                 'advertiser' => $adv_name,
@@ -198,8 +187,6 @@ class FbPController extends Controller
 
             $message = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('message');
             // return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
-            // return redirect('http://orderku.site/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
-            // $url = 'orderku.site/'..'/'.'/'.$message;
             $wa_text = str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text);
             $wa_number = $wa[$counter]->phone;
             $FU_text = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('cs_to_customer');
