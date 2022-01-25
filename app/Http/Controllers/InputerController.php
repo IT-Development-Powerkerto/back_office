@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\InputersExport;
+use App\Models\Campaign;
 use Illuminate\Http\Request;
 use App\Models\Inputer;
 use App\Models\User;
@@ -27,9 +28,9 @@ class InputerController extends Controller
                 $day = Carbon::now()->format('Y-m-d');
             }
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
-
+            $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $user = User::all();
-            return view('inputer.Inputer', compact(['inputers', 'user']));
+            return view('inputer.Inputer', compact(['inputers', 'user']))->with('operators', $operator);
         }else{
             return redirect()->back();
         }
