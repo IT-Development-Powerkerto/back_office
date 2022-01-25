@@ -180,7 +180,7 @@
 														<select class="form-control" name="promotion_id" id="promotion_id">
 															<option value="">Not Have Promotion</option>
 															@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
-															<option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
+															<option value="{{$promotion->id}}" {{ $inputer->implode('promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
 															@endforeach
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
@@ -190,7 +190,7 @@
 													<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Price</label>
 													<div class="col-lg-3 mt-8">
 														<div class="input-group">
-															<input type="number" value="0" name="promotion" id="promotion"  class="form-control" placeholder="Promotion Price" onchange="calculate(this.value)" readonly/>
+															<input type="number" value="{{ $inputer->implode('promotion') ?? 0 }}" name="promotion" id="promotion"  class="form-control" placeholder="Promotion Price" onchange="calculate(this.value)" readonly/>
 															<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 														</div>
 														<span class="form-text text-muted">Auto-Filled Promotion Price</span>
@@ -198,7 +198,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" name="total_price" id="total_price" class="form-control" placeholder="Total Price"  onchange="sum(this.value)" readonly/>
+														<input type="number" value="{{ $inputer->implode('total_price') }}" name="total_price" id="total_price" class="form-control" placeholder="Total Price"  onchange="sum(this.value)" readonly/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -244,8 +244,8 @@
 													<div class="input-group">
 														<select class="form-control" id="province" name="province">
 															<option value="" hidden>Destination Province</option>
-															@foreach ($province as $province)
-																<option value="{{ $province['province_id'] }}">{{ $province['province'] }}</option>
+															@foreach ($all_province as $all_province)
+																<option value="{{ $all_province['province_id'] }}" {{ $inputer->implode('province_id') == $all_province['province_id'] ? 'selected': ''}}>{{ $all_province['province'] }}</option>
 															@endforeach
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
@@ -257,6 +257,12 @@
 													<div class="input-group">
 														<select class="form-control" id="city" name="city">
 															<option value="" hidden>Destination City</option>
+															@isset($all_city)
+															@foreach ($all_city as $all_city)
+															<option value="{{ $all_city['city_id'] }}" {{ $inputer->implode('city_id') == $all_city['city_id'] ? 'selected': ''}}>{{ $all_city['type'] }} {{ $all_city['city_name'] }}</option>
+															@endforeach
+
+															@endisset
 
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
@@ -268,6 +274,12 @@
 													<div class="input-group">
 														<select class="form-control" id="subdistrict" name="subdistrict" onchange="ongkir()">
 															<option value="" hidden>Destination Subdistrict</option>
+															@isset($all_subdistrict)
+																
+																@foreach ($all_subdistrict as $all_subdistrict)
+																<option value="{{ $all_subdistrict['subdistrict_id'] }}" {{ $inputer->implode('subdistrict_id') == $all_subdistrict['subdistrict_id'] ? 'selected': ''}}>{{ $all_subdistrict['subdistrict_name'] }}</option>
+																@endforeach
+															@endisset
 
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
@@ -293,7 +305,7 @@
 												  <label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Price</label>
 												<div class="col-lg-7 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="">
+														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $inputer->implode('shipping_price') ?? '' }}">
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -303,7 +315,7 @@
 											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Grand Total</label>
 												<div class="col-lg">
-													<input name="total_payment" id="total_payment" class="form-control" placeholder="Total Payment" value="" readonly>
+													<input name="total_payment" id="total_payment" class="form-control" placeholder="Total Payment" value="{{ $inputer->implode('total_payment') ?? '' }}" readonly>
 													<span class="form-text text-muted">Total Price + Courier</span>
 												</div>
 											</div>
