@@ -375,6 +375,144 @@ class DashboardController extends Controller
 
     public function adv(Request $request){
         $day = Carbon::now()->format('Y-m-d');
+        $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
+
+        $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear(),
+            Carbon::now()->endOfYear(),
+        ])->count();
+        $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear(),
+            Carbon::now()->endOfYear(),
+        ])->count();
+
+        //count lead every month
+        $lead_jan = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear(),
+            Carbon::now()->endOfYear()->subMonth(11),
+        ])->count();
+        $lead_feb = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(1),
+            Carbon::now()->endOfYear()->subMonth(10),
+        ])->count();
+        $lead_mar = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(2),
+            Carbon::now()->endOfYear()->subMonth(9),
+        ])->count();
+        $lead_apr = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(3),
+            Carbon::now()->endOfYear()->subMonth(8),
+        ])->count();
+        $lead_may = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(4),
+            Carbon::now()->endOfYear()->subMonth(7),
+        ])->count();
+        $lead_jun = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(5),
+            Carbon::now()->endOfYear()->subMonth(6),
+        ])->count();
+        $lead_jul = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(6),
+            Carbon::now()->endOfYear()->subMonth(5),
+        ])->count();
+        $lead_aug = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(7),
+            Carbon::now()->endOfYear()->subMonth(4),
+        ])->count();
+        $lead_sep = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(8),
+            Carbon::now()->endOfYear()->subMonth(3),
+        ])->count();
+        $lead_okt = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(9),
+            Carbon::now()->endOfYear()->subMonth(2),
+        ])->count();
+        $lead_nov = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(10),
+            Carbon::now()->endOfYear()->subMonth(1),
+        ])->count();
+        $lead_des = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfYear()->addMonth(11),
+            Carbon::now()->endOfYear(),
+        ])->count();
+
+        //count lead closing every month
+        $closing_jan = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear(),
+            Carbon::now()->endOfYear()->subMonth(11),
+        ])->count();
+        $closing_feb = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(1),
+            Carbon::now()->endOfYear()->subMonth(10),
+        ])->count();
+        $closing_mar = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(2),
+            Carbon::now()->endOfYear()->subMonth(9),
+        ])->count();
+        $closing_apr = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(3),
+            Carbon::now()->endOfYear()->subMonth(8),
+        ])->count();
+        $closing_may = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(4),
+            Carbon::now()->endOfYear()->subMonth(7),
+        ])->count();
+        $closing_jun = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(5),
+            Carbon::now()->endOfYear()->subMonth(6),
+        ])->count();
+        $closing_jul = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(6),
+            Carbon::now()->endOfYear()->subMonth(5),
+        ])->count();
+        $closing_aug = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(7),
+            Carbon::now()->endOfYear()->subMonth(4),
+        ])->count();
+        $closing_sep = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(8),
+            Carbon::now()->endOfYear()->subMonth(3),
+        ])->count();
+        $closing_okt = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(9),
+            Carbon::now()->endOfYear()->subMonth(2),
+        ])->count();
+        $closing_nov = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(10),
+            Carbon::now()->endOfYear()->subMonth(1),
+        ])->count();
+        $closing_des = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear()->addMonth(11),
+            Carbon::now()->endOfYear(),
+        ])->count();
+
+        $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+            Carbon::now()->startOfYear(),
+            Carbon::now()->endOfYear(),
+        ])->value('quantity');
+
+        $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day);
+        $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
+        ])->get();
+        $lead_month = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth(),
+        ])->get();
+        $lead_all = Lead::where('admin_id', auth()->user()->admin_id)->get();
+        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('total_price');
+        $omset_week = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
+        ])->sum('total_price');
+        $omset_month = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth(),
+        ])->sum('total_price');
+        $omset_all = Inputer::where('admin_id', auth()->user()->admin_id)->get();
+        $products = Product::all();
+        $day = Carbon::now()->format('Y-m-d');
         $user_expired = auth()->user()->expired_at;
         if($day >= $user_expired){
             $request->session()->invalidate();
@@ -413,7 +551,11 @@ class DashboardController extends Controller
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('adv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
-                ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns);
+                ->with('products', $products)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+                ->with('lead_jan', $lead_jan)->with('lead_feb', $lead_feb)->with('lead_mar', $lead_mar)->with('lead_apr', $lead_apr)->with('lead_may', $lead_may)->with('lead_jun', $lead_jun)
+                ->with('lead_jul', $lead_jul)->with('lead_aug', $lead_aug)->with('lead_sep', $lead_sep)->with('lead_okt', $lead_okt)->with('lead_nov', $lead_nov)->with('lead_des', $lead_des)
+                ->with('closing_jan', $closing_jan)->with('closing_feb', $closing_feb)->with('closing_mar', $closing_mar)->with('closing_apr', $closing_apr)->with('closing_may', $closing_may)->with('closing_jun', $closing_jun)
+                ->with('closing_jul', $closing_jul)->with('closing_aug', $closing_aug)->with('closing_sep', $closing_sep)->with('closing_okt', $closing_okt)->with('closing_nov', $closing_nov)->with('closing_des', $closing_des);
             }else{
                 return Redirect::back();
             }
