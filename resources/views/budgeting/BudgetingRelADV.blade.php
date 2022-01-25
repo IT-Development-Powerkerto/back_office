@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Reimbursement</title>
+		<title>Budgeting Request</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="icon" href="img/favicon.png">
@@ -31,7 +31,7 @@
 						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 								<!--begin::Page title-->
-								@include('layout/header/_baseCS')
+								@include('layout/header/_baseADV')
 	
 	
 								@include('layout/_toolbar')
@@ -68,48 +68,47 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Data Reimbursement</h3>
+										<h3 class="fw-bolder m-0">Budget Realization</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form action="{{route('reimbursement.store')}}" method="POST" enctype="multipart/form-data">
+									<form action="#" method="POST" enctype="multipart/form-data">
 										@csrf
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
-                                                <label for="inputRole" class="col-form-label">Reason</label>
+                                                <label for="inputItem" class="col-form-label">Add Item</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <textarea type="text" name="reason" id="inputtp" class="form-control" aria-describedby="tpHelpInline" ></textarea>
+                                                <input type="text" name="item" id="inputItem" class="form-control" aria-describedby="ItemHelpInline">
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputCustomer" class="col-form-label">Phone</label>
+												<label for="inputNominal" class="col-form-label">Nominal (Rp)</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="phone" value="" id="inputCustomer" class="form-control" aria-describedby="CustomerHelpInline">
+												<input type="text" name="nominal" id="inputNominal" class="form-control" aria-describedby="NominalHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputproduct" class="col-form-label">Nominal (Rp)</label>
+												<label for="inputproof" class="col-form-label">Upload Proof</label>
 											</div>
-											<div class="col-10">
-												<input type="number" name="nominal" value="" id="inputproduct" class="form-control" aria-describedby="productHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputimage" class="col-form-label">Attachment</label>
-											</div>
-
 											<div class="dropdown col-10">
 												<div class="mb-3">
-													<input class="form-control" value="" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+													<input class="form-control" type="file" id="inputproof" name="proof" id="inputproof" multiple id>
 												</div>
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputdesc" class="col-form-label">Description</label>
+											</div>
+											<div class="col-10">
+												<textarea type="text" name="desc" id="inputdesc" class="form-control" aria-describedby="descHelpInline"></textarea>
 											</div>
 										</div>
 										{{ csrf_field() }}
@@ -119,7 +118,6 @@
 								<!--end::Card body-->
 							</div>
 							<!--end::details View-->
-                            @include('partials/widgets/tables/ActivityLog')
 						</div>
 						<!--end::Wrapper-->
 					</div>

@@ -1,10 +1,10 @@
 									
 									<!--begin::Statistics Widget 5-->
-									<label class="card card-xl-stretch mb-5 mb-xl-8" style="background-color: rgb(65, 241, 230, 0.3)">
+									<label class="card card-xl-stretch mb-5 mb-xl-8 bg-warning">
 										<!--begin::Body-->
 										<div class="card-body">
 											<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
-											<span class="svg-icon svg-icon-primary svg-icon-3x ms-n1">
+											<span class="svg-icon svg-icon-light svg-icon-3x ms-n1">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 														<rect x="0" y="0" width="24" height="24"/>
@@ -14,8 +14,8 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-dark fw-bolder fs-2 mb-2 mt-5">100</div>
-											<div class="fw-bold text-dark">Cost Acquisition</div>
+											<div class="text-light fw-bolder fs-2 mb-2 mt-5">100</div>
+											<div class="fw-bold text-light">Cost Acquisition</div>
 										</div>
 										<!--end::Body-->
 									</label>

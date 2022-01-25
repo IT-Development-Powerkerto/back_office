@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
                 'name'         => 'Generos',
                 'price'        => 375000,
                 'discount'     => null,
-                'image'        => "",
+                'image'        => null,
                 'product_link' => "",
             ],
             [
@@ -28,7 +28,7 @@ class ProductSeeder extends Seeder
                 'name'         => 'Freshmag',
                 'price'        => 140000,
                 'discount'     => null,
-                'image'        => "",
+                'image'        => null,
                 'product_link' => "",
             ],
             [
@@ -36,7 +36,7 @@ class ProductSeeder extends Seeder
                 'name'         => 'Gizidat',
                 'price'        => 68000,
                 'discount'     => null,
-                'image'        => "",
+                'image'        => null,
                 'product_link' => "",
             ],
             [
@@ -44,7 +44,7 @@ class ProductSeeder extends Seeder
                 'name'         => 'Etawaku',
                 'price'        => 75000,
                 'discount'     => null,
-                'image'        => "",
+                'image'        => null,
                 'product_link' => "",
             ],
             [
@@ -52,7 +52,7 @@ class ProductSeeder extends Seeder
                 'name'         => 'Rube',
                 'price'        => 250000,
                 'discount'     => null,
-                'image'        => "",
+                'image'        => null,
                 'product_link' => "",
             ],
         ];
