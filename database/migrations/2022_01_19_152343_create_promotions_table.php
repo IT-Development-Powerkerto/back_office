@@ -23,6 +23,7 @@ class CreatePromotionsTable extends Migration
             $table->integer('promotion_shippment_cost')->nullable();
             $table->integer('total_promotion');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
