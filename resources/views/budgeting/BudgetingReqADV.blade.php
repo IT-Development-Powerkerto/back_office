@@ -2,10 +2,10 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Budgeting ADV</title>
-		<link rel="icon" href="img/favicon.png">
+		<title>Budgeting Request</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
+		<link rel="icon" href="img/favicon.png">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
@@ -32,8 +32,8 @@
 							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 								<!--begin::Page title-->
 								@include('layout/header/_baseADV')
-
-
+	
+	
 								@include('layout/_toolbar')
 							</div>
 							<!--end::Wrapper-->
@@ -68,40 +68,131 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Data Budgeting ADV</h3>
+										<h3 class="fw-bolder m-0">Budgeting Request</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									@include('partials/widgets/budgeting/DailyBudgetADV')
-									@include('partials/widgets/budgeting/LastWeekBudgetADV')
-									@include('partials/widgets/budgeting/LastMonthBudgetADV')
-									@include('partials/widgets/budgeting/WeeklyInfoBudgetADV')
-
-                                    <form action="{{route('budgeting.store')}}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="row col-12 d-flex align-items-center justify-content-center">
-                                            <div class="col-1">
-                                                <h1 class="fw-bolder ms-5">Rp</h1>
+									<form action="#" method="POST" enctype="multipart/form-data">
+										@csrf
+                                        <div class="row align-items-center col-12 pb-5">
+                                            <div class="col-2">
+                                                <label for="inputDivision" class="col-form-label">Division</label>
                                             </div>
-                                            <div class="col-4">
-                                                <input type="text" class="form-control" name="requirement" placeholder="Requirement" aria-label="Budget Submission">
-                                            </div>
-                                            <div class="col-4">
-                                                <input type="text" class="form-control" name="target" placeholder="Target" aria-label="Target">
-                                            </div>
-                                            <div class="col-3">
-                                                <input type="submit" class="btn btn-primary" value="Apply">
-                                            </div>
+                                            <div class="dropdown col-10">
+												<select name="role_id" id="role_id" class="form-control">
+													<option hidden>Select Role</option>
+													<option>Human Resource</option>
+													<option>Finance</option>
+													<option>Customer Service</option>
+													<option>DGM</option>
+													<option>CWM</option>
+													<option>IT</option>
+												</select>
+											</div>
                                         </div>
-                                    </form>
-									@include('partials/widgets/budgeting/LogBudgeting')
-
-
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputreason" class="col-form-label">Reason</label>
+											</div>
+											<div class="col-10">
+												<textarea type="text" name="reason" id="inputreason" class="form-control" aria-describedby="reasonHelpInline"></textarea>
+											</div>
+										</div>
+                                        <div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputproduct" class="col-form-label">Nominal (Rp)</label>
+											</div>
+											<div class="col-10">
+												<input type="number" name="nominal" id="inputproduct" class="form-control" aria-describedby="productHelpInline">
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputimage" class="col-form-label">Attachment</label>
+											</div>
+											<div class="dropdown col-10">
+												<div class="mb-3">
+													<input class="form-control" value="Choose File" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+												</div>
+											</div>
+										</div>
+										{{ csrf_field() }}
+										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Submit">
+									</form>
 								</div>
 								<!--end::Card body-->
+								
+								<!--begin::Tables Widget 9-->
+								<div class="card card-l-stretch mb-5 mb-xl-8 scroll scroll-pull mt-6" data-scroll="true" data-wheel-propagation="true">
+									<!--begin::Header-->
+									<div class="card-header border-0 pt-5">
+										<h3 class="card-title align-items-start flex-column">
+											<span class="card-label fw-bolder fs-3 mb-1">Activity Logs</span>
+											<span class="text-muted mt-1 fw-bold fs-7">1 Activity</span>
+										</h3>
+									</div>
+									<!--end::Header-->
+									<!--begin::Body-->
+									<div class="card-body py-3">
+										<!--begin::Table container-->
+										<div class="table-responsive">
+											<!--begin::Table-->
+											<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" id="staff">
+												<!--begin::Table head-->
+												<thead>
+													<tr class="fw-bolder text-muted">
+														<th class="min-w-150px">Timestamp</th>
+														<th class="min-w-150px">Division</th>
+														<th class="min-w-150px">Reason</th>
+														<th class="min-w-150px">Nominal</th>
+														<th class="min-w-150px text-end">Submission Status</th>
+													</tr>
+												</thead>
+												<!--end::Table head-->
+												<!--begin::Table body-->
+												<tbody>
+													<tr>
+														<td>
+															<div class="d-flex align-items-center">
+																<div class="d-flex justify-content-start flex-column">
+																	<h1 href="#" class="text-dark fw-normal fs-6">21/12/2021 11:33 WIB</h1>
+																</div>
+															</div>
+														</td>
+														<td>
+															<div class="d-flex align-items-center">
+																<h1 class="text-dark fw-normal fs-6">IT Development</h1>
+															</div>
+														</td>
+														<td>
+															<div class="d-flex align-items-center">
+																<h1 class="text-dark fw-normal fs-6">buying A Hosting</h1>
+															</div>
+														</td>
+														<td>
+															<div class="d-flex align-items-center">
+																<h1 class="text-dark fw-normal fs-6">Rp. 450.000</h1>
+															</div>
+														</td>
+														<td>
+															<div class="d-flex align-items-center justify-content-end">
+																<h1 class="badge badge-light-success">Accepted</h1>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+												<!--end::Table body-->
+											</table>
+											<!--end::Table-->
+										</div>
+										<!--end::Table container-->
+									</div>
+									<!--begin::Body-->
+								</div>
+								<!--end::Tables Widget 9-->
 							</div>
 							<!--end::details View-->
 						</div>

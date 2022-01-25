@@ -19,7 +19,11 @@ class PromotionController extends Controller
     {
         $product = Product::where('admin_id', auth()->user()->admin_id)->get();
         $promotion = Promotion::where('admin_id', auth()->user()->admin_id)->get();
-        return view('CreatePromotion')->with('product', $product)->with('promotion', $promotion);
+        if(auth()->user()->role_id==1){
+            return view('CreatePromotion')->with('product', $product)->with('promotion', $promotion);
+        }elseif (auth()->user()->role_id==5){
+            return view('CreatePromotionCS')->with('product', $product)->with('promotion', $promotion);
+        }
     }
 
     /**

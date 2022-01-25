@@ -10,8 +10,9 @@
 	<!--begin::Activities-->
 	<div class="d-flex align-items-center ms-1 ms-lg-3">
 		<!--begin::Drawer toggle-->
+		
 		<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_activities_toggle">
-			<i class="bi bi-bell fs-2"></i>
+			<i class="bi bi-bell fs-2 "><span class="bullet bullet-dot bg-success h-6px w-6px translate-middle top-0 start-50 animation-blink"></span></i>
 		</div>
 		<!--end::Drawer toggle-->
 	</div>

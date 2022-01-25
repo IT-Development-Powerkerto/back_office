@@ -2,10 +2,10 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Budgeting ADV</title>
-		<link rel="icon" href="img/favicon.png">
+		<title>Budgeting Request</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
+		<link rel="icon" href="img/favicon.png">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
@@ -32,8 +32,8 @@
 							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 								<!--begin::Page title-->
 								@include('layout/header/_baseADV')
-
-
+	
+	
 								@include('layout/_toolbar')
 							</div>
 							<!--end::Wrapper-->
@@ -68,38 +68,52 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Data Budgeting ADV</h3>
+										<h3 class="fw-bolder m-0">Budget Realization</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									@include('partials/widgets/budgeting/DailyBudgetADV')
-									@include('partials/widgets/budgeting/LastWeekBudgetADV')
-									@include('partials/widgets/budgeting/LastMonthBudgetADV')
-									@include('partials/widgets/budgeting/WeeklyInfoBudgetADV')
-
-                                    <form action="{{route('budgeting.store')}}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="row col-12 d-flex align-items-center justify-content-center">
-                                            <div class="col-1">
-                                                <h1 class="fw-bolder ms-5">Rp</h1>
+									<form action="#" method="POST" enctype="multipart/form-data">
+										@csrf
+                                        <div class="row align-items-center col-12 pb-5">
+                                            <div class="col-2">
+                                                <label for="inputItem" class="col-form-label">Add Item</label>
                                             </div>
-                                            <div class="col-4">
-                                                <input type="text" class="form-control" name="requirement" placeholder="Requirement" aria-label="Budget Submission">
-                                            </div>
-                                            <div class="col-4">
-                                                <input type="text" class="form-control" name="target" placeholder="Target" aria-label="Target">
-                                            </div>
-                                            <div class="col-3">
-                                                <input type="submit" class="btn btn-primary" value="Apply">
+                                            <div class="dropdown col-10">
+                                                <input type="text" name="item" id="inputItem" class="form-control" aria-describedby="ItemHelpInline">
                                             </div>
                                         </div>
-                                    </form>
-									@include('partials/widgets/budgeting/LogBudgeting')
-
-
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputNominal" class="col-form-label">Nominal (Rp)</label>
+											</div>
+											<div class="col-10">
+												<input type="text" name="nominal" id="inputNominal" class="form-control" aria-describedby="NominalHelpInline">
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputproof" class="col-form-label">Upload Proof</label>
+											</div>
+											<div class="dropdown col-10">
+												<div class="mb-3">
+													<input class="form-control" type="file" id="inputproof" name="proof" id="inputproof" multiple id>
+												</div>
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputdesc" class="col-form-label">Description</label>
+											</div>
+											<div class="col-10">
+												<textarea type="text" name="desc" id="inputdesc" class="form-control" aria-describedby="descHelpInline"></textarea>
+											</div>
+										</div>
+										{{ csrf_field() }}
+										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Submit">
+									</form>
 								</div>
 								<!--end::Card body-->
 							</div>

@@ -159,12 +159,24 @@ class BudgetingController extends Controller
     }
 
     public function BudgetingReq()
-    {
-        return view('budgeting.BudgetingReq');
+    {   
+        if(auth()->user()->role_id==1){
+            return view('budgeting.BudgetingReq');
+        }elseif (auth()->user()->role_id==5){
+            return view('budgeting.BudgetingReqCS');
+        }elseif (auth()->user()->role_id==4){
+            return view('budgeting.BudgetingReqADV');
+        }
     }
 
     public function BudgetingRel()
     {
-        return view('budgeting.BudgetingRel');
+        if(auth()->user()->role_id==1){
+            return view('budgeting.BudgetingRel');
+        }elseif (auth()->user()->role_id==5){
+            return view('budgeting.BudgetingRelCS');
+        }elseif (auth()->user()->role_id==4){
+            return view('budgeting.BudgetingRelADV');
+        }
     }
 }
