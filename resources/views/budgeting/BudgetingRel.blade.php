@@ -68,7 +68,7 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Budget Realization nonADV</h3>
+										<h3 class="fw-bolder m-0">Budget Realization</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
@@ -79,7 +79,7 @@
 										@csrf
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
-                                                <label for="inputItem" class="col-form-label">Item Name</label>
+                                                <label for="inputItem" class="col-form-label">Add Item</label>
                                             </div>
                                             <div class="dropdown col-10">
                                                 <input type="text" name="item" id="inputItem" class="form-control" aria-describedby="ItemHelpInline">
@@ -95,21 +95,20 @@
 										</div>
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputdesc" class="col-form-label">Description</label>
+												<label for="inputproof" class="col-form-label">Upload Proof</label>
 											</div>
-
 											<div class="dropdown col-10">
 												<div class="mb-3">
-													<input class="form-control" type="file" id="inputdesc" name="desc" id="inputdesc" multiple id>
+													<input class="form-control" type="file" id="inputproof" name="proof" id="inputproof" multiple id>
 												</div>
 											</div>
 										</div>
-                                        <div class="row align-items-center col-12 pb-5">
+										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputproduct" class="col-form-label">Nominal (Rp)</label>
+												<label for="inputdesc" class="col-form-label">Description</label>
 											</div>
 											<div class="col-10">
-												<input type="number" name="nominal" id="inputproduct" class="form-control" aria-describedby="productHelpInline">
+												<textarea type="text" name="desc" id="inputdesc" class="form-control" aria-describedby="descHelpInline"></textarea>
 											</div>
 										</div>
 										{{ csrf_field() }}

@@ -162,4 +162,9 @@ class BudgetingController extends Controller
     {
         return view('budgeting.BudgetingReq');
     }
+
+    public function BudgetingRel()
+    {
+        return view('budgeting.BudgetingRel');
+    }
 }
