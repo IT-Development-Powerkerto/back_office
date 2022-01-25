@@ -27,13 +27,14 @@ class CreateInputersTable extends Migration
             $table->integer('product_weight')->nullable();
             $table->integer('quantity')->nullable();
             $table->foreignId('promotion_id')->nullable();
-            $table->integer('promotion_price')->nullable();
+            $table->integer('product_promotion')->nullable();
             $table->integer('total_price')->nullable();
             $table->string('warehouse')->nullable();
             $table->integer('province_id')->nullable();
             $table->integer('city_id')->nullable();
             $table->integer('subdistrict_id')->nullable();
             $table->string('courier')->nullable();
+            $table->integer('shipping_promotion')->nullable();
             $table->integer('shipping_price')->nullable();
             $table->string('payment_method')->nullable();
             $table->integer('total_payment')->nullable();
