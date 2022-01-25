@@ -108,8 +108,13 @@ class PromotionController extends Controller
         return redirect('/promotion')->with('success','Successull! Promotion Deleted');
     }
 
-    public function get_total_promotion($id){
-        $total_promotion = Promotion::where('id', $id)->value('total_promotion');
-        return json_encode($total_promotion);
+    public function get_promotion($id){
+        $product_promotion = Promotion::where('id', $id)->value('promotion_product_price');
+        $shipping_promotion = Promotion::where('id', $id)->value('promotion_shippment_cost');
+        $promotion = [
+            'product_promotion' => $product_promotion, 
+            'shipping_promotion' => $shipping_promotion
+        ];
+        return json_encode($promotion);
     }
 }

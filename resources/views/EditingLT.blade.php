@@ -190,7 +190,7 @@
 													<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Promotion</label>
 													<div class="col-lg-3 mt-8">
 														<div class="input-group">
-															<input type="number" value="{{ $inputer->implode('promotion') ?? 0 }}" name="promotion" id="promotion"  class="form-control" placeholder="Promotion Price" onchange="calculate(this.value)" readonly/>
+															<input type="number" value="{{ $inputer->implode('product_promotion') ?? 0 }}" name="product_promotion" id="product_promotion"  class="form-control" placeholder="Promotion Price" onchange="calculate(this.value)" readonly/>
 															<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 														</div>
 														<span class="form-text text-muted">Auto-Filled Promotion Price</span>
@@ -242,7 +242,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination Province</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" id="province" name="province">
+														<select class="form-control" id="province" name="province" onchange="ongkir()">
 															<option value="" hidden>Destination Province</option>
 															@foreach ($all_province as $all_province)
 																<option value="{{ $all_province['province_id'] }}" {{ $inputer->implode('province_id') == $all_province['province_id'] ? 'selected': ''}}>{{ $all_province['province'] }}</option>
@@ -255,7 +255,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination City</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" id="city" name="city">
+														<select class="form-control" id="city" name="city" onchange="ongkir()">
 															<option value="" hidden>Destination City</option>
 															@isset($all_city)
 															@foreach ($all_city as $all_city)
@@ -305,7 +305,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $inputer->implode('shipping_price') ?? '' }}">
+														<input type="number" class="form-control" placeholder="Shipping Promotion" id="shipping_promotion" name="shipping_promotion" value="{{ $inputer->implode('shipping_promotion') ?? '' }}">
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -516,18 +516,23 @@
 					var promotion_id = $('#promotion_id').val();
 					if(promotion_id){
 						$.ajax({
-							url: "get_total_promotion/"+promotion_id,
+							url: "get_promotion/"+promotion_id,
 							type: "GET",
+							dataType: "json",
 							success: function(promotion){
-								$('#promotion').val(promotion);
-								var total = (price * quantity) - promotion;
+								console.log(parseInt(promotion.product_promotion));
+								$('#product_promotion').val(parseInt(promotion.product_promotion));
+								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
+								var total = (price * quantity) - parseInt(promotion.product_promotion);
 								$('#total_price').val(total);
+								$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
 							}
 						});
 					}else{
-						$('#promotion').val(0);
+						$('#product_promotion').val(0);
 						var total = (price * quantity);
 						$('#total_price').val(total);
+						$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
 					}
 				});
 			});
@@ -624,8 +629,14 @@
 							var shipping_price = document.getElementById('shipping_price');
                             var total_payment = document.getElementById('total_payment');
                             var total_price = parseInt(document.getElementById('total_price').value);
-							shipping_price.value = data;
-                            total_payment.value = total_price+data;
+							var shipping_promotion = $('#shipping_promotion').val();
+							var total_shipping_price = data-shipping_promotion;
+							if(total_shipping_price <= 0){
+								shipping_price.value = 0;
+							}else{
+								shipping_price.value = total_shipping_price;
+							}
+                            total_payment.value = total_price+total_shipping_price;
 						}
 					});
 				}
