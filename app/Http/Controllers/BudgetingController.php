@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lead;
+use App\Models\Inputer;
 use App\Models\User;
 use App\Models\Budgeting;
 use Illuminate\Support\Facades\DB;
@@ -48,18 +49,53 @@ class BudgetingController extends Controller
                 Carbon::now()->startOfMonth(),
                 Carbon::now()->endOfMonth(),
             ])->get();
+
+            $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
+            $omset1 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+                Carbon::now()->endOfMonth()->subWeek(4),
+                Carbon::now()->endOfMonth()->subWeek(3),
+            ])->get();
+            $omset2 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+                Carbon::now()->endOfMonth()->subWeek(3),
+                Carbon::now()->endOfMonth()->subWeek(2),
+            ])->get();
+            $omset3 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+                Carbon::now()->endOfMonth()->subWeek(2),
+                Carbon::now()->endOfMonth()->subWeek(1),
+            ])->get();
+            $omset4 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+                Carbon::now()->endOfMonth()->subweek(1),
+                Carbon::now()->endOfMonth(),
+            ])->get();
+            $omset_week = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+                Carbon::now()->startOfWeek(),
+                Carbon::now()->endOfWeek(),
+            ])->get();
+            $omset_month = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+                Carbon::now()->startOfMonth(),
+                Carbon::now()->endOfMonth(),
+            ])->get();
+
             $month = Carbon::now()->format('M');
             $adv = User::where('admin_id', auth()->user()->id)->where('role_id', 4)->get();
             $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->get();
             return view('budgeting.BudgetingADV')
-            ->with('lead_day', $lead_day)
             ->with('day_output', $day_output)
+            ->with('lead_day', $lead_day)
             ->with('lead_week', $lead_week)
             ->with('lead_month', $lead_month)
             ->with('lead1', $lead1)
             ->with('lead2', $lead2)
             ->with('lead3', $lead3)
             ->with('lead4', $lead4)
+            ->with('month', $month)
+            ->with('omset_day', $omset_day)
+            ->with('omset_week', $omset_week)
+            ->with('omset_month', $omset_month)
+            ->with('omset1', $omset1)
+            ->with('omset2', $omset2)
+            ->with('omset3', $omset3)
+            ->with('omset4', $omset4)
             ->with('month', $month)
             ->with('adv', $adv)
             ->with('budgeting', $budgeting);
@@ -96,11 +132,11 @@ class BudgetingController extends Controller
             'requirement'  => $request->requirement,
             'target'       => $request->target,
             'status'       => 2,
-            'created_at'   => Carbon::now()->format('Y-m-d'),
-            'updated_at'   => Carbon::now()->format('Y-m-d'),
+            'created_at'   => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at'   => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
 
-        return redirect('/dashboard')->with('success','Successull! Budgeting Added');
+        return redirect('/budgeting')->with('success','Successull! Budgeting Added');
     }
 
     /**

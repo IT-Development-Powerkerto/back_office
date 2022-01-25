@@ -357,7 +357,7 @@
 												<label for="inputRole" class="col-form-label">Role</label>
 											</div>
 											<div class="dropdown col-10">
-												@if (auth()->user()->role_id === 1 || auth()->user()->role_id === 2 || auth()->user()->role_id === 3)
+												@if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2 || auth()->user()->role_id == 3)
 													<select name="role_id" id="role_id1" class="form-control">
 														<option selected value="{{ $user->role_id }}" hidden>{{$user->role->name}}</option>
 														@foreach ($roles as $role)

@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">ADV Activity Budgeting</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Activity</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->count()}} Activity</span>
 											</h3>
 										</div>
 										<!--end::Header-->
@@ -18,7 +18,7 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="min-w-225px">Time</th>
+															<th class="min-w-225px">Date</th>
 															<th class="min-w-225px">ADV Name</th>
 															<th class="min-w-225px">Pengajuan</th>
                                                             <th class="min-w-225px">Target</th>
@@ -58,11 +58,11 @@
                                                                 <td>
                                                                     <div class="d-flex align-items-center justify-content-end">
                                                                         @if ($budgeting->status == 1)
-                                                                            <h1 class="text-dark fw-normal fs-6 badge badget-light-success">Accept</h1>
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-success">Accept</h1>
                                                                         @elseif ($budgeting->status == 0)
-                                                                            <h1 class="text-dark fw-normal fs-6 badge badget-light-danger">Rejected</h1>
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
                                                                         @else
-                                                                            <h1 class="text-dark fw-normal fs-6 badge badget-light-info">Wait</h1>
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-info">Wait</h1>
                                                                         @endif
                                                                     </div>
                                                                 </td>
@@ -98,7 +98,7 @@
                                                                 <td>
                                                                     <div class="d-flex align-items-center justify-content-end">
                                                                         @if ($budgeting->status == 1)
-                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-success">Accept</h1>
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-success">Approve</h1>
                                                                         @elseif ($budgeting->status == 0)
                                                                             <h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
                                                                         @else
