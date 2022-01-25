@@ -90,7 +90,7 @@
 																<td class="pb25" style="color:#c1cddc; font-family:'Muli', Arial,sans-serif; font-size:16px; line-height:30px; padding-bottom:25px;">
 																	<div mc:edit="text_3">
                                                                         <ul style="list-style-type: none;">
-                                                                            <li style="padding-bottom: 10px"><span style="font-weight: bold">Order ID</span> 	    : 1</li>	
+                                                                            <li style="padding-bottom: 10px"><span style="font-weight: bold">Order ID</span> 	    : {{ $details['lead_id'] }}</li>	
                                                                             
                                                                             <li style="padding-bottom: 10px"><span style="font-weight: bold">Nama</span> 	        : {{ $details['client'] }}</li>
                                                                             

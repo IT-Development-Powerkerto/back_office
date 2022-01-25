@@ -124,7 +124,7 @@ Route::get('/subdistrict/{id}', [RajaOngkirController::class, 'get_subdistrict']
 Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead')->middleware('auth');
 Route::get('inputer/export', [InputerController::class, 'export'])->name('export-inputer')->middleware('auth');
 // Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
-Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}', [MailController::class, 'index'])->name('send');
+Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}/{lead_id}', [MailController::class, 'index'])->name('send');
 Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation');
 
 

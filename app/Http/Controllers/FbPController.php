@@ -153,17 +153,30 @@ class FbPController extends Controller
             $operator_id = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('id');
             $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
             $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
-            $lead = new Lead();
-            $lead->admin_id = $admin_id;
-            $lead->advertiser = $adv_name;
-            $lead->operator_id = $operator_id;
-            $lead->campaign_id = $campaign_id;
-            $lead->client_id  = $clients->id;
-            $lead->product_id = $product_id;
-            $lead->user_id  = $user_id;
-            $lead->price = $product_price;
-            $lead->status_id = 3;
-            $lead->save();
+            // $lead = new Lead();
+            // $lead->admin_id = $admin_id;
+            // $lead->advertiser = $adv_name;
+            // $lead->operator_id = $operator_id;
+            // $lead->campaign_id = $campaign_id;
+            // $lead->client_id  = $clients->id;
+            // $lead->product_id = $product_id;
+            // $lead->user_id  = $user_id;
+            // $lead->price = $product_price;
+            // $lead->status_id = 3;
+            // $lead->save();
+            $lead_id = DB::table('leads')->insertGetId([
+                'admin_id'   => $admin_id,
+                'advertiser' => $adv_name,
+                'campaign_id' => $campaign_id,
+                'operator_id'   => $operator_id,
+                'product_id' => $product_id,
+                'client_id'    => $clients->id,
+                'user_id'    => $user_id,
+                'price'      => $product_price,
+                'status_id'  => 3,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
 
             DB::table('products')->whereid($product_id)->where('deleted_at', null)->increment('lead');
             $day = Carbon::now()->format('Y-m-d');
@@ -198,6 +211,7 @@ class FbPController extends Controller
                 'campaign_id' => $campaign_id,
                 'product_id' => $product_id,
                 'client_id' => $clients->id,
+                'lead_id' => $lead_id
             ]);
         }
     }
@@ -251,7 +265,7 @@ class FbPController extends Controller
         $operator_id = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('id');
         $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
         $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
-        DB::table('leads')->insert([
+        $lead_id = DB::table('leads')->insertGetId([
             'admin_id'   => $admin_id,
             'advertiser' => $adv_name,
             'campaign_id' => $campaign_id,
@@ -283,6 +297,6 @@ class FbPController extends Controller
         $pusher->trigger('message-channel', 'App\\Events\\MessageCreated', $data);
 
         // return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
-        return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.'Kode Order: ord-'.$clients->id.'%0A'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text));
+        return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.'Kode Order: ord-'.$lead_id.'%0A'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text));
     }
 }
