@@ -206,6 +206,9 @@ class DashboardController extends Controller
             else if($x->role_id == 2){
                 return redirect(route('ceo'));
             }
+            else if($x->role_id == 3){
+                return redirect(route('manager'));
+            }
             else if($x->role_id == 4){
                 return redirect(route('advDashboard'));
             }

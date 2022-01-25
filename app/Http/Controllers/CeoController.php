@@ -181,6 +181,7 @@ class CeoController extends Controller
             $omset_all = Inputer::where('admin_id', auth()->user()->admin_id)->get();
             $products = Product::all();
             $adv = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
+            $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->get();
             $budgeting_adv = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
             $budgeting_nonadv = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
             return view('ceo.CEO', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
@@ -188,7 +189,8 @@ class CeoController extends Controller
             ->with('lead_jul', $lead_jul)->with('lead_aug', $lead_aug)->with('lead_sep', $lead_sep)->with('lead_okt', $lead_okt)->with('lead_nov', $lead_nov)->with('lead_des', $lead_des)
             ->with('closing_jan', $closing_jan)->with('closing_feb', $closing_feb)->with('closing_mar', $closing_mar)->with('closing_apr', $closing_apr)->with('closing_may', $closing_may)->with('closing_jun', $closing_jun)
             ->with('closing_jul', $closing_jul)->with('closing_aug', $closing_aug)->with('closing_sep', $closing_sep)->with('closing_okt', $closing_okt)->with('closing_nov', $closing_nov)->with('closing_des', $closing_des)
-            ->with('adv', $adv)->with('omset1', $omset1)->with('omset2', $omset2)->with('omset3', $omset3)->with('omset4', $omset4)->with('omset_permonth', $omset_permonth)->with('budgeting_adv', $budgeting_adv)->with('budgeting_nonadv', $budgeting_nonadv);
+            ->with('adv', $adv)->with('omset1', $omset1)->with('omset2', $omset2)->with('omset3', $omset3)->with('omset4', $omset4)->with('omset_permonth', $omset_permonth)->with('budgeting', $budgeting)
+            ->with('budgeting_adv', $budgeting_adv)->with('budgeting_nonadv', $budgeting_nonadv);
         }else{
             return redirect()->back();
         }

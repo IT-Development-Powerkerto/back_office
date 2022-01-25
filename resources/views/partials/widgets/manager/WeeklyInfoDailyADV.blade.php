@@ -4,8 +4,8 @@
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Weekly Info Daily ADV</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Advertise</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Weekly Info ADV</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$adv->count()}} Advertise</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<!-- Button trigger modal -->
@@ -46,47 +46,52 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        <?php
+                                                            $n=0;
+                                                        ?>
+                                                        @foreach ($adv as $adv)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">1</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">Hanif</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$adv->name}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp 5.000.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. {{$omset1->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp 10.000.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. {{$omset2->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp 10.000.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. {{$omset3->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6 ">Rp 10.000.000</h1>
+																	<h1 class="text-dark fw-normal fs-6 ">Rp. {{$omset4->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center justify-content-end">
-																	<h1 class="text-info fw-bolder fs-6 ">Rp 35.000.000</h1>
+																	<h1 class="text-info fw-bolder fs-6 ">Rp. {{$omset_permonth->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
 																</div>
 															</td>
 														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>

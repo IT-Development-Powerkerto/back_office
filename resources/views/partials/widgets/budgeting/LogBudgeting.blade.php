@@ -5,7 +5,11 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">ADV Activity Budgeting</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->count()}} Activity</span>
+                                                @if (auth()->user()->role_id == 1)
+                                                    <span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->count()}} Activity</span>
+                                                @else
+												    <span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('user_id', auth()->user()->id)->count()}} Activity</span>
+                                                @endif
 											</h3>
 										</div>
 										<!--end::Header-->
@@ -29,7 +33,7 @@
 													<!--begin::Table body-->
 													<tbody>
                                                         @if (auth()->user()->role_id == 1)
-                                                            @foreach ($budgeting as $budgeting)
+                                                            @foreach ($budgeting->where('admin_id', auth()->user()->admin_id)->where('role_id', 4) as $budgeting)
                                                             <tr>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
@@ -69,7 +73,7 @@
                                                             </tr>
                                                             @endforeach
                                                         @else
-                                                            @foreach ($budgeting->where('user_id', auth()->user()->id) as $budgeting)
+                                                            @foreach ($budgeting->where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('user_id', auth()->user()->id) as $budgeting)
                                                             <tr>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">

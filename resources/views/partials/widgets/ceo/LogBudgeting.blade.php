@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Activity Logs</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Activity</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('status', '!=', 2)->count()}} Activity</span>
 											</h3>
 										</div>
 										<!--end::Header-->
@@ -19,50 +19,56 @@
 													<thead>
 														<tr class="fw-bolder text-muted">
 															<th class="min-w-150px">Timestamp</th>
+															<th class="min-w-150px">Name</th>
 															<th class="min-w-150px">Division</th>
 															<th class="min-w-150px">Reason</th>
-															<th class="min-w-150px">Nominal</th>
-															<th class="min-w-150px">Target</th>
+															<th class="min-w-150px">Request</th>
 															<th class="min-w-150px text-end">Submission Status</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        @foreach ($budgeting->where('status', '!=', 2) as $budgeting)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-normal fs-6">21/12/2021 11:33 WIB</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">{{$budgeting->updated_at}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">IT Development</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$budgeting->user_name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">buying A Hosting</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$budgeting->role->name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp. 450.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$budgeting->reason}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp. 1.450.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->requirement}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center justify-content-end">
-																	<h1 class="badge badge-light-success">Accepted</h1>
+																	@if ($budgeting->status == 1)
+                                                                        <h1 class="text-dark fw-normal fs-6 badge badge-light-success">Approve</h1>
+                                                                    @else
+                                                                        <h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
+                                                                    @endif
 																</div>
 															</td>
 														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>
