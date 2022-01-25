@@ -6,7 +6,7 @@
 											<div class="card-header border-0 pt-5">
 												<h3 class="card-title align-items-start flex-column">
 													<span class="card-label fw-bolder fs-3 mb-1">Budgeting Req ADV</span>
-													<span class="text-muted mt-1 fw-bold fs-7">1 Advertise</span>
+													<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting_adv->where('admin_id', auth()->user()->admin_id)->where('requirement', '>', 1000000)->count()}} Request</span>
 												</h3>
 												<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 													<form action="/dashboard" method="GET" class="d-flex">
@@ -40,30 +40,40 @@
 														<!--end::Table head-->
 														<!--begin::Table body-->
 														<tbody>
+                                                            <?php
+                                                                $n=0;
+                                                            ?>
+                                                            @foreach ($budgeting_adv->where('admin_id', auth()->user()->admin_id)->where('requirement', '>', 1000000) as $budgeting_adv)
 															<tr>
 																<td class="text-end">
 																	<div class="d-flex align-items-center">
-																		<h1 class="text-dark fw-normal fs-6">1</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
 																	</div>
 																</td>
 																<td>
 																	<div class="d-flex align-items-center">
-																		<h1 class="text-dark fw-normal fs-6">Hanif</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$budgeting_adv->user_name}}</h1>
 																	</div>
 																</td>
 																<td>
 																	<div class="d-flex align-items-center">
-																		<h1 class="text-dark fw-normal fs-6">Rp. 5.000.000</h1>
+																		<h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting_adv->requirement}}</h1>
 																	</div>
 																</td>
 																<td class="">
 																	<div class="d-flex align-items-center">
-																		<h1 class="text-dark fw-normal fs-6">Rp. 10.000.000</h1>
+																		<h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting_adv->target}}</h1>
 																	</div>
 																</td>
 																<td class="">
 																	<div class="d-flex align-items-center">
-																		<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
+                                                                        @if ($budgeting_adv->status == 1)
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-success">Approve</h1>
+                                                                        @elseif ($budgeting_adv->status == 0)
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
+                                                                        @else
+																		    <h1 class="text-dark fw-normal fs-6 badge badge-light-info">Wait</h1>
+                                                                        @endif
 																	</div>
 																</td>
 																<td class="d-flex align-items-center justify-content-end mb-3">
@@ -79,12 +89,12 @@
 																	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																		<!--begin::Menu item-->
 																		<div class="menu-item px-3">
-																			<a href="" class="menu-link px-3">Approved</a>
+																			<a href="{{route('ceo.approve', ['id' => $budgeting_adv->id])}}" class="menu-link px-3">Approve</a>
 																		</div>
 																		<!--end::Menu item-->
 																		<!--begin::Menu item-->
 																		<div class="menu-item px-3">
-																			<a href="" class="menu-link px-3" >Reject</a>
+																			<a href="{{route('ceo.reject', ['id' => $budgeting_adv->id])}}" class="menu-link px-3" >Reject</a>
 																			{{-- data-kt-customer-table-filter="delete_row" --}}
 																		</div>
 																		<!--end::Menu item-->
@@ -92,6 +102,7 @@
 																	<!--end::Menu-->
 																</td>
 															</tr>
+                                                            @endforeach
 														</tbody>
 														<!--end::Table body-->
 													</table>
@@ -106,7 +117,7 @@
 											<div class="card-header border-0 pt-5">
 												<h3 class="card-title align-items-start flex-column">
 													<span class="card-label fw-bolder fs-3 mb-1">Budgeting Req nonADV</span>
-													<span class="text-muted mt-1 fw-bold fs-7">1 Advertise</span>
+													<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting_nonadv->where('admin_id', auth()->user()->admin_id)->where('requirement', '>', 1000000)->count()}} Request</span>
 												</h3>
 												<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 													<form action="/dashboard" method="GET" class="d-flex">
@@ -140,20 +151,24 @@
 														<!--end::Table head-->
 														<!--begin::Table body-->
 														<tbody>
+                                                            <?php
+                                                                $n=0;
+                                                            ?>
+                                                            @foreach ($budgeting_nonadv->where('admin_id', auth()->user()->admin_id)->where('requirement', '>', 1000000) as $budgeting_nonadv)
 															<tr>
 																<td class="text-end">
 																	<div class="d-flex align-items-center">
-																		<h1 class="text-dark fw-normal fs-6">1</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
 																	</div>
 																</td>
 																<td>
 																	<div class="d-flex align-items-center">
-																		<h1 class="text-dark fw-normal fs-6">IT</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$budgeting_nonadv->role->name}}</h1>
 																	</div>
 																</td>
 																<td>
 																	<div class="d-flex align-items-center">
-																		<h1 class="text-dark fw-normal fs-6">Rp. 5.000.000</h1>
+																		<h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting_nonadv->requirement}}</h1>
 																	</div>
 																</td>
 																<td class="d-flex align-items-start mb-4">
@@ -166,7 +181,13 @@
 																</td>
 																<td class="">
 																	<div class="d-flex align-items-center">
-																		<h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
+																		@if ($budgeting_nonadv->status == 1)
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-success">Approve</h1>
+                                                                        @elseif ($budgeting_nonadv->status == 0)
+                                                                            <h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
+                                                                        @else
+																		    <h1 class="text-dark fw-normal fs-6 badge badge-light-info">Wait</h1>
+                                                                        @endif
 																	</div>
 																</td>
 																<td class="d-flex align-items-center justify-content-end mb-3">
@@ -182,12 +203,12 @@
 																	<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																		<!--begin::Menu item-->
 																		<div class="menu-item px-3">
-																			<a href="" class="menu-link px-3">Approved</a>
+																			<a href="{{route('ceo.approve', ['id' => $budgeting_nonadv->id])}}" class="menu-link px-3">Approve</a>
 																		</div>
 																		<!--end::Menu item-->
 																		<!--begin::Menu item-->
 																		<div class="menu-item px-3">
-																			<a href="" class="menu-link px-3" >Reject</a>
+																			<a href="{{route('ceo.reject', ['id' => $budgeting_nonadv->id])}}" class="menu-link px-3" >Reject</a>
 																			{{-- data-kt-customer-table-filter="delete_row" --}}
 																		</div>
 																		<!--end::Menu item-->
@@ -201,6 +222,7 @@
 																	<!--end::Menu-->
 																</td>
 															</tr>
+                                                            @endforeach
 														</tbody>
 														<!--end::Table body-->
 													</table>

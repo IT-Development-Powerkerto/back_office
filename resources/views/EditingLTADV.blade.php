@@ -509,6 +509,7 @@
 						$.ajax({
 							url: "get_total_promotion/"+promotion_id,
 							type: "GET",
+							dataType: "json",
 							success: function(promotion){
 								$('#promotion').val(promotion);
 								var total = (price * quantity) - promotion;

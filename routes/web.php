@@ -145,6 +145,8 @@ Route::get('/budgetingrel', [BudgetingController::class, 'BudgetingRel'])->name(
 
 Route::resource('promotion', PromotionController::class)->middleware('auth');
 Route::get('lead/get_total_promotion/{id}', [PromotionController::class, 'get_total_promotion'])->name('get_total_promotion');
+Route::get('ceo/approve/{id}', [CeoController::class, 'approve'])->name('ceo.approve')->middleware('auth');
+Route::get('ceo/reject/{id}', [CeoController::class, 'reject'])->name('ceo.reject')->middleware('auth');
 
 
 

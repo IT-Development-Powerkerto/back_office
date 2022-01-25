@@ -499,6 +499,7 @@
                         $.ajax({
                             url: '/getProduct/'+productId,
                             type: "GET",
+							dataType: "json",
                             data : {"_token":"{{ csrf_token() }}"},
                             dataType: "json",
                             success:function(data);

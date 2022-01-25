@@ -135,8 +135,8 @@ class LeadController extends Controller
     public function update(Request $request, $lead)
     {
         // dd($request->all());
-        $total_price = ($request->price * $request->quantity) - $request->promotion_name;
-        $total_payment = $total_price + $request->shipping_price;
+        //$total_price = ($request->price * $request->quantity) - $request->promotion_name;
+        //$total_payment = $total_price + $request->shipping_price;
 
         DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
             'quantity'        => $request->quantity,

@@ -56,7 +56,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead_month->where('admin_id', auth()->user()->admin_id)->where('advertiser', $adv->name)->where('status_id', 5)->sum('total_price')}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$omset_month->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -91,7 +91,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$lead_month->where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->sum('total_price')}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$omset_month->where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->sum('total_price')}}</h1>
                                                                     </div>
                                                                 </td>
                                                             </tr>

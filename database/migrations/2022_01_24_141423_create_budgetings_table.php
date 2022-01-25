@@ -21,10 +21,10 @@ class CreateBudgetingsTable extends Migration
             $table->foreignId('role_id');
             $table->string('reason');
             $table->integer('requirement');
-            $table->integer('target');
+            $table->integer('target')->nullable();
+            $table->string('attachment')->nullable();
             $table->boolean('status')->default('2');
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->timestamps();
         });
     }
 

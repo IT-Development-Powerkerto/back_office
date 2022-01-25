@@ -87,7 +87,7 @@
                                                 <h1 class="fw-bolder ms-5">Rp</h1>
                                             </div>
                                             <div class="col-4">
-                                                <input type="text" class="form-control" name="requirement" placeholder="Requirement" aria-label="Budget Submission">
+                                                <input type="text" class="form-control" name="requirement" placeholder="Request" aria-label="Budget Submission">
                                             </div>
                                             <div class="col-4">
                                                 <input type="text" class="form-control" name="target" placeholder="Target" aria-label="Target">
