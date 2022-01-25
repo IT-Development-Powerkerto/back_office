@@ -83,7 +83,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Budgeting Request</a>
+						<a href="{{ route ('budgetingreq') }}" class="menu-title">Budgeting Request</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">
@@ -91,7 +91,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
@@ -116,7 +116,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Budgeting Request</a>
+						<a href="{{ route ('budgetingreq') }}" class="menu-title">Budgeting Request</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">
@@ -124,7 +124,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
@@ -158,6 +158,14 @@
 							<span class="bullet bullet-dot"></span>
 						</span>
 						<a href="{{ route('budgeting.index') }}" class="menu-title">Budgeting Advertising</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
@@ -198,7 +206,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
@@ -223,7 +231,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Budgeting Request</a>
+						<a href="{{ route ('budgetingreq') }}" class="menu-title">Budgeting Request</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">
@@ -231,7 +239,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
@@ -256,7 +264,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Budgeting Request</a>
+						<a href="{{ route ('budgetingreq') }}" class="menu-title">Budgeting Request</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">
@@ -264,7 +272,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>

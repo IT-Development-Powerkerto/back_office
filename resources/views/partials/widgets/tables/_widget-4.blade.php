@@ -70,7 +70,7 @@
                                                                         <div class="menu-item px-3">
                                                                             <form action="{{ route('promotion.edit', ['promotion' => $promotion->id]) }}" method="GET">
                                                                                 @csrf
-                                                                                <input type="submit" value="Edit" class="menu-link px-3"/>
+                                                                                <button type="submit" class="btn btn-link ms-3">Edit</button>
                                                                             </form>
                                                                         </div>
                                                                         <!--end::Menu item-->
@@ -79,7 +79,7 @@
                                                                             <form action="{{ route('promotion.destroy', ['promotion'=>$promotion->id]) }}" method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')
-                                                                                <input type="submit" value="Delete" class="menu-link px-3" data-kt-customer-table-filter="delete_row" onclick="return confirm('Jadi Delete Kah ?')"/>
+                                                                                <button type="submit" class="text-danger btn btn-link ms-3 mt-3" onclick="return confirm('Are u sure ?')">Delete</button>
                                                                             </form>
                                                                         </div>
                                                                         <!--end::Menu item-->

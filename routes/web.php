@@ -124,7 +124,7 @@ Route::get('/subdistrict/{id}', [RajaOngkirController::class, 'get_subdistrict']
 Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead')->middleware('auth');
 Route::get('inputer/export', [InputerController::class, 'export'])->name('export-inputer')->middleware('auth');
 // Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
-Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}', [MailController::class, 'index'])->name('send');
+Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}/{lead_id}', [MailController::class, 'index'])->name('send');
 Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation');
 
 
@@ -140,6 +140,9 @@ Route::get('/viewdata/{id}', [InputerController::class, 'view'])->name('viewdata
 
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
 Route::resource('budgeting', BudgetingController::class)->middleware('auth');
+Route::get('/budgetingreq', [BudgetingController::class, 'BudgetingReq'])->name('budgetingreq');
+Route::get('/budgetingrel', [BudgetingController::class, 'BudgetingRel'])->name('budgetingrel');
+
 Route::resource('promotion', PromotionController::class)->middleware('auth');
 Route::get('lead/get_total_promotion/{id}', [PromotionController::class, 'get_total_promotion'])->name('get_total_promotion');
 Route::get('ceo/approve/{id}', [CeoController::class, 'approve'])->name('ceo.approve')->middleware('auth');

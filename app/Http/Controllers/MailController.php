@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class MailController extends Controller
 {
-    public function index($email, $number, $campaign_id, $product_id, $client_id)
+    public function index($email, $number, $campaign_id, $product_id, $client_id, $lead_id)
     {
         $FU_text = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('cs_to_customer');
         $client_name = Client::where('id', $client_id)->where('deleted_at', null)->value('name');
@@ -27,35 +27,22 @@ class MailController extends Controller
         $text = Campaign::where('id', $campaign_id)->value('customer_to_cs');
         $product_name = Product::where('id', $product_id)->where('deleted_at', null)->value('name');
         $thanks = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('message');
-        $wa_text = 'Kode Order: ord-'.$client_id.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($client_name, $client_number, $operator_name, $product_name), $text);
+        $wa_text = 'Kode Order: ord-'.$lead_id.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($client_name, $client_number, $operator_name, $product_name), $text);
         $details = [
             'title' => 'New Order',
             'product' => $product_name,
             'client' => $client_name,
             'client_number' => $client_number,
             'FU_text' => $FU_text,
-            'operator' => $operator_name
+            'operator' => $operator_name,
+            'lead_id' => $lead_id
         ];
-        // Mail::to('habibalihabsyi123@gmail.com')->send(new NotificationMail($details));
-        Mail::to($email)->send(new NotificationMail($details));
+        Mail::to('habibalihabsyi123@gmail.com')->send(new NotificationMail($details));
+        // Mail::to($email)->send(new NotificationMail($details));
         return Redirect::away('http://orderku.site/'.$number.'/'.$wa_text.'/'.$thanks);
-        // dd("Email sudah terkirim.");
+        // return Redirect::away('http://127.0.0.1:8080/'.$number.'/'.$wa_text.'/'.$thanks);
     }
-    // public function index($email, $number, $text, $thanks, $product, $client, $client_number, $FU_text, $operator)
-    // {
-    //     $details = [
-    //         'title' => 'New Order',
-    //         'product' => $product,
-    //         'client' => $client,
-    //         'client_number' => $client_number,
-    //         'FU_text' => $FU_text,
-    //         'operator' => $operator
-    //     ];
-    //     // Mail::to('habibalihabsyi123@gmail.com')->send(new NotificationMail($details));
-    //     Mail::to($email)->send(new NotificationMail($details));
-    //     return Redirect::away('http://orderku.site/'.$number.'/'.$text.'/'.$thanks);
-    //     // dd("Email sudah terkirim.");
-    // }
+
     public function activation($email)
     {
         $email = $email;

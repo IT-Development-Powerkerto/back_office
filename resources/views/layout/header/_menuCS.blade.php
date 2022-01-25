@@ -49,7 +49,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
