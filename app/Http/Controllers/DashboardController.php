@@ -215,6 +215,9 @@ class DashboardController extends Controller
             else if($x->role_id == 9){
                 return redirect(route('finance'));
             }
+            else if($x->role_id == 10){
+                return redirect(route('inputer'));
+            }
             else{
 
                 return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)

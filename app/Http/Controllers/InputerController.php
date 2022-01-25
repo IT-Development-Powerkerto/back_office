@@ -9,6 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 
 class InputerController extends Controller
 {
@@ -19,15 +20,19 @@ class InputerController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->date_filter){
-            $day = Carbon::parse($request->date_filter)->format('Y-m-d');
-        } else {
-            $day = Carbon::now()->format('Y-m-d');
-        }
-        $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
+        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 10){
+            if($request->date_filter){
+                $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+            } else {
+                $day = Carbon::now()->format('Y-m-d');
+            }
+            $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
 
-        $user = User::all();
-        return view('inputer.Inputer', compact(['inputers', 'user']));
+            $user = User::all();
+            return view('inputer.Inputer', compact(['inputers', 'user']));
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
