@@ -15,26 +15,28 @@
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
-			<!--begin::Action group-->
-		<div class="d-flex align-items-center justify-content-end flex-wrap">
-			<!--begin::Wrapper-->
-			<div class="flex-shrink-0 me-2">
-				<ul class="nav">
-					<li class="nav-item">
-						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4 me-1"
-							href="#">Daily</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-							href="{{ route ('weeklydashboard') }}">Weekly</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
-							href="{{ route ('monthlydashboard') }}">Monthly</a>
-					</li>
-				</ul>
-			</div>
-			<!--end::Wrapper-->
+		<!--begin::Action group-->
+		<div class="d-flex align-items-center justify-content-between">
+			<ul class="nav">
+				<li class="nav-item">
+					<h1 class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
+						>Filter Dashboard</h1>
+				</li>
+			</ul>
+			<ul class="nav">
+				<li class="nav-item">
+					<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4 me-1"
+						href="#">Daily</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
+						href="{{ route ('weeklydashboard') }}">Weekly</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
+						href="{{ route ('monthlydashboard') }}">Monthly</a>
+				</li>
+			</ul>
 		</div>
 		<!--end::Action group-->
 		<!--begin::Col-->

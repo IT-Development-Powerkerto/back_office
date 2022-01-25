@@ -23,6 +23,28 @@
 			@include('partials/widgets/ceo/_widget-4')
 
 		</div>
+		<div class="d-flex align-items-center justify-content-between mt-n3 pb-1">
+			<ul class="nav">
+				<li class="nav-item">
+					<h1 class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
+						>Filter Dashboard</h1>
+				</li>
+			</ul>
+			<ul class="nav">
+				<li class="nav-item">
+					<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4 me-1"
+						href="#">Daily</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
+						href="{{ route ('weeklydashboard') }}">Weekly</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
+						href="{{ route ('monthlydashboard') }}">Monthly</a>
+				</li>
+			</ul>
+		</div>
 		<!--begin::Col-->
 		<div class="col-xl-6 mt-n1">
 

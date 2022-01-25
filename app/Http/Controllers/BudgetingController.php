@@ -157,4 +157,9 @@ class BudgetingController extends Controller
     {
         return view('finance.FinanceDept');
     }
+
+    public function BudgetingReq()
+    {
+        return view('budgeting.BudgetingReq');
+    }
 }

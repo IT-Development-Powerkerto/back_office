@@ -140,6 +140,7 @@ Route::get('/viewdata/{id}', [InputerController::class, 'view'])->name('viewdata
 
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
 Route::resource('budgeting', BudgetingController::class)->middleware('auth');
+Route::get('/budgetingreq', [BudgetingController::class, 'BudgetingReq'])->name('budgetingreq');
 Route::resource('promotion', PromotionController::class)->middleware('auth');
 Route::get('lead/get_total_promotion/{id}', [PromotionController::class, 'get_total_promotion'])->name('get_total_promotion');
 
