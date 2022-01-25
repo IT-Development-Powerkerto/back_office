@@ -15,7 +15,7 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									@include('partials/widgets/inputer/WeeklyInfoDailyADV')
+									@include('partials/widgets/inputer/DataClosing')
 								</div>
 								<!--end::Card body-->
 							</div>
