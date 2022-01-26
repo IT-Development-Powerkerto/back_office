@@ -23,7 +23,8 @@ class CreateBudgetingRealizationsTable extends Migration
             $table->integer('requirement');
             $table->string('attachment');
             $table->string('description');
-            $table->timestamps();
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 
