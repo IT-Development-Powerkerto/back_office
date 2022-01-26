@@ -106,15 +106,21 @@ class InputerController extends Controller
     {
         $inputers = Inputer::findOrFail($id);
         $province_id = $inputers->value('province_id');
-        $city_id = $inputers->value('city_id');
-        $subdistrict_id = $inputers->value('subdistrict_id');
-        $province = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province?id='.$province_id);
-        $province = $province['rajaongkir']['results']['province'];
-        $city = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/city?id='.$city_id.'&province='.$province_id);
-        $city = $city['rajaongkir']['results']['city_name'];
-        $subdistrict = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/subdistrict?id='.$subdistrict_id.'&city='.$city_id);
-        $subdistrict = $subdistrict['rajaongkir']['results']['subdistrict_name'];
-        return view('inputer.viewdata', compact(['inputers', 'province', 'city', 'subdistrict']));
+        
+        if(isset($province_id)){
+            $city_id = $inputers->value('city_id');
+            $subdistrict_id = $inputers->value('subdistrict_id');
+            $province = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province?id='.$province_id);
+            $province = $province['rajaongkir']['results']['province'];
+            $city = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/city?id='.$city_id.'&province='.$province_id);
+            $city = $city['rajaongkir']['results']['city_name'];
+            $subdistrict = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/subdistrict?id='.$subdistrict_id.'&city='.$city_id);
+            $subdistrict = $subdistrict['rajaongkir']['results']['subdistrict_name'];
+            return view('inputer.viewdata', compact(['inputers', 'province', 'city', 'subdistrict']));
+        }
+        else{
+            return view('inputer.viewdata', compact(['inputers']));
+        }
     }
     public function export(Request $request)
     {
