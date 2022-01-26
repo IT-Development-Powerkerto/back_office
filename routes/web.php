@@ -147,6 +147,8 @@ Route::resource('promotion', PromotionController::class)->middleware('auth');
 Route::get('lead/get_promotion/{id}', [PromotionController::class, 'get_promotion'])->name('get_promotion');
 Route::get('ceo/approve/{id}', [CeoController::class, 'approve'])->name('ceo.approve')->middleware('auth');
 Route::get('ceo/reject/{id}', [CeoController::class, 'reject'])->name('ceo.reject')->middleware('auth');
+Route::get('manager/approve/{id}', [ManagerController::class, 'approve'])->name('manager.approve')->middleware('auth');
+Route::get('manager/reject/{id}', [ManagerController::class, 'reject'])->name('manager.reject')->middleware('auth');
 
 
 

@@ -106,7 +106,7 @@ class LeadController extends Controller
             $all_subdistrict = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/subdistrict?city='.$city_id);
             $all_subdistrict = json_decode($all_subdistrict, true);
             $all_subdistrict = $all_subdistrict['rajaongkir']['results'];
-            
+
             if(Auth::user()->role_id == 1){
                 return view('EditingLT')->with('lead', $lead)->with('inputer', $inputer)->with('all_province', $all_province)->with('promotion', $promotion)->with('all_city', $all_city)->with('all_subdistrict', $all_subdistrict);
             }else if(Auth::user()->role_id == 4){
