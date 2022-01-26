@@ -91,7 +91,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgeting_realization.index') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
@@ -124,7 +124,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgeting_realization.index') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
@@ -165,7 +165,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgeting_realization.index') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
@@ -206,7 +206,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgeting_realization.index') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
@@ -239,7 +239,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgeting_realization.index') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
@@ -272,7 +272,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('budgetingrel') }}" class="menu-title">Budgeting Realization</a>
+						<a href="{{ route ('budgeting_realization.index') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>

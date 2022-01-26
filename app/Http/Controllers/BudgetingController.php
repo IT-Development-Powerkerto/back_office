@@ -213,15 +213,4 @@ class BudgetingController extends Controller
             return view('budgeting.BudgetingReqADV')->with('role', $role)->with('budgeting', $budgeting);
         }
     }
-
-    public function BudgetingRel()
-    {
-        if(auth()->user()->role_id==1){
-            return view('budgeting.BudgetingRel');
-        }elseif (auth()->user()->role_id==5){
-            return view('budgeting.BudgetingRelCS');
-        }elseif (auth()->user()->role_id==4){
-            return view('budgeting.BudgetingRelADV');
-        }
-    }
 }
