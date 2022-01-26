@@ -141,6 +141,7 @@ Route::get('/viewdata/{id}', [InputerController::class, 'view'])->name('viewdata
 
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
 Route::resource('budgeting', BudgetingController::class)->middleware('auth');
+Route::get('/downloaded/{file}', [BudgetingController::class, 'downloaded'])->name('downloaded');
 Route::get('/budgetingreq', [BudgetingController::class, 'BudgetingReq'])->name('budgetingreq')->middleware('auth');
 // Route::get('/budgetingrel', [BudgetingController::class, 'BudgetingRel'])->name('budgetingrel');
 Route::resource('budgeting_realization', BudgetingRealizationController::class)->middleware('auth');

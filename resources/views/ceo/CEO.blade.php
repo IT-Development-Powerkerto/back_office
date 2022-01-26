@@ -89,7 +89,25 @@
             document.getElementById("omset").innerHTML = "Rp. {{ $omset_all->sum('total_price') }}";
             {{--  document.getElementById("product_count").innerHTML = "{{ $lead_all->where('product_id', $product->id)->count() }}";  --}}
             {{--  alert("{{ $lead_all->where('product_id', $product->id)->count() }}");  --}}
-
+        }
+    </script>
+    <script>
+        function budgeting_day(){
+            document.getElementById("budgeting").innerHTML = "Rp. {{ $budgeting_day }}";
+            {{--  document.getElementById("product_count").innerHTML = "{{ $lead_day->where('product_id', $product->id)->count() }}";  --}}
+        }
+        function budgeting_week(){
+            document.getElementById("budgeting").innerHTML = "Rp. {{ $budgeting_week }}";
+            {{--  document.getElementById("product_count").innerHTML = "{{ $lead_week->where('product_id', $product->id)->count() }}";  --}}
+        }
+        function budgeting_month(){
+            document.getElementById("budgeting").innerHTML = "Rp. {{ $budgeting_month }}";
+            {{--  document.getElementById("product_count").innerHTML = "{{ $lead_month->where('product_id', $product->id)->count() }}";  --}}
+        }
+        function budgeting_all(){
+            document.getElementById("budgeting").innerHTML = "Rp. {{ $budgeting_all->sum('requirement') }}";
+            {{--  document.getElementById("product_count").innerHTML = "{{ $lead_all->where('product_id', $product->id)->count() }}";  --}}
+            {{--  alert("{{ $lead_all->where('product_id', $product->id)->count() }}");  --}}
         }
     </script>
     <!--end::Page Custom Javascript-->

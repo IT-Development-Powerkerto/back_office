@@ -8,17 +8,17 @@
 			<div class="d-flex flex-stack">
 				<h3 class="m-0 text-white fw-bolder fs-3">Expense</h3>
 				<div>
-					<a href="#" class="m-0 text-white-50 fw-normal fs-9 me-3">Today</a>
-					<a href="#" class="m-0 text-white-50 fw-normal fs-9 me-3">This Week</a>
-					<a href="#" class="m-0 text-white-50 fw-normal fs-9 me-3">This Month</a>
-					<a href="#" class="m-0 text-white-50 fw-normal fs-9 ">All</a>
+					<a href="#" id="budgeting_day" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="budgeting_day()">Today</a>
+					<a href="#" id="budgeting_week" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="budgeting_week()">This Week</a>
+					<a href="#" id="budgeting_month" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="budgeting_month()">This Month</a>
+					<a href="#" id="budgeting_all" class="m-0 text-white-50 fw-normal fs-9 " onclick="budgeting_all()">All</a>
 				</div>
 			</div>
 			<!--end::Heading-->
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
 				<span class="fw-bold fs-7">Expense</span>
-				<span class="fw-bolder fs-2x pt-1">0</span>
+				<span id="budgeting" class="fw-bolder fs-2x pt-1">Rp. {{$budgeting->where('status', 1)->sum('requirement')}}</span>
 			</div>
 			<!--end::Balance-->
 		</div>
@@ -26,25 +26,27 @@
 		<!--begin::Items-->
 		<div class="bg-body shadow-sm card-rounded mx-9 mb-9 px-6 py-9 position-relative z-index-1 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 233px; margin-top: -100px">
 			<!--begin::Item-->
+            @foreach ($budgeting->where('status', 1) as $budgeting)
 			<div class="d-flex align-items-center mb-6">
 				<!--begin::Description-->
 				<div class="d-flex align-items-center flex-wrap w-100">
 					<!--begin::Title-->
 					<div class="mb-1 pe-3 flex-grow-1">
-						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">IT Development</label>
+						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">{{$budgeting->user_name}}</label>
 					</div>
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">Rp 20.000.000</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">Rp. {{$budgeting->requirement}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
 				<!--end::Description-->
 			</div>
+            @endforeach
 			<!--end::Item-->
 			<!--begin::Item-->
-			<div class="d-flex align-items-center mb-6">
+			{{-- <div class="d-flex align-items-center mb-6">
 				<!--begin::Description-->
 				<div class="d-flex align-items-center flex-wrap w-100">
 					<!--begin::Title-->
@@ -77,7 +79,7 @@
 					<!--end::Label-->
 				</div>
 				<!--end::Description-->
-			</div>
+			</div> --}}
 			<!--end::Item-->
 		</div>
 		<!--end::Items-->

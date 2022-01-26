@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Activity Logs</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('status', '!=', 2)->count()}} Activity</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('status', '!=', 2)->where('requirement', '<', 1000000)->count()}} Activity</span>
 											</h3>
 										</div>
 										<!--end::Header-->
@@ -29,7 +29,7 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
-                                                        @foreach ($budgeting->where('status', '!=', 2) as $budgeting)
+                                                        @foreach ($budgeting->where('status', '!=', 2)->where('requirement', '<', 1000000) as $budgeting)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">

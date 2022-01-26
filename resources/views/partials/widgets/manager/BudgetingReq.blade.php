@@ -172,7 +172,7 @@
 																	</div>
 																</td>
 																<td class="d-flex align-items-start mb-4">
-																	<a href="#" class="btn-active-light-primary ms-3">
+																	<a href="{{ route('downloaded', $budgeting_nonadv->id) }}" class="btn-active-light-primary ms-3">
 																		<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
 																		<span class="svg-icon svg-icon-5 m-0">
 																			<i class="las la-file-alt" style="font-size:18px"></i>
@@ -214,7 +214,7 @@
 																		<!--end::Menu item-->
 																		<!--begin::Menu item-->
 																		<div class="menu-item px-3">
-																			<a href="" class="menu-link px-3" >Download File</a>
+																			<a href="{{ route('downloaded', $budgeting_nonadv->id) }}" class="menu-link px-3" >Download File</a>
 																			{{-- data-kt-customer-table-filter="delete_row" --}}
 																		</div>
 																		<!--end::Menu item-->

@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class CeoController extends Controller
 {
@@ -138,7 +139,7 @@ class CeoController extends Controller
             $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
                 Carbon::now()->startOfYear(),
                 Carbon::now()->endOfYear(),
-            ])->value('quantity');
+            ])->sum('quantity');
 
             $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day);
             $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
@@ -183,11 +184,21 @@ class CeoController extends Controller
             $products = Product::all();
             $adv = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
             $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->get();
+            $budgeting_day = Budgeting::where('admin_id', auth()->user()->admin_id)->where('status', 1)->where('created_at', $day)->sum('requirement');
+            $budgeting_week = Budgeting::where('admin_id', auth()->user()->admin_id)->where('status', 1)->whereBetween('created_at', [
+                Carbon::now()->startOfWeek(),
+                Carbon::now()->endOfWeek(),
+            ])->sum('requirement');
+            $budgeting_month = Budgeting::where('admin_id', auth()->user()->admin_id)->where('status', 1)->whereBetween('created_at', [
+                Carbon::now()->startOfMonth(),
+                Carbon::now()->endOfMonth(),
+            ])->sum('requirement');
+            $budgeting_all = Budgeting::where('admin_id', auth()->user()->admin_id)->where('status', 1)->get();
             $budgeting_adv = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
             $budgeting_nonadv = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
             $budgeting_realization_adv = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
             $budgeting_realization_nonadv = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
-            return view('ceo.CEO', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+            return view('ceo.CEO', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
             ->with('lead_jan', $lead_jan)->with('lead_feb', $lead_feb)->with('lead_mar', $lead_mar)->with('lead_apr', $lead_apr)->with('lead_may', $lead_may)->with('lead_jun', $lead_jun)
             ->with('lead_jul', $lead_jul)->with('lead_aug', $lead_aug)->with('lead_sep', $lead_sep)->with('lead_okt', $lead_okt)->with('lead_nov', $lead_nov)->with('lead_des', $lead_des)
             ->with('closing_jan', $closing_jan)->with('closing_feb', $closing_feb)->with('closing_mar', $closing_mar)->with('closing_apr', $closing_apr)->with('closing_may', $closing_may)->with('closing_jun', $closing_jun)
@@ -270,7 +281,7 @@ class CeoController extends Controller
             'status' => 1,
             'updated_at'   => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
-        return redirect('/ceo');
+        return Redirect::back();
     }
 
     public function reject($id){
@@ -278,6 +289,6 @@ class CeoController extends Controller
             'status' => 0,
             'updated_at'   => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
-        return redirect('/ceo');
+        return Redirect::back();
     }
 }
