@@ -305,7 +305,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Shipping Promotion" id="shipping_promotion" name="shipping_promotion" value="{{ $inputer->implode('shipping_promotion') ?? '' }}">
+														<input type="number" class="form-control" placeholder="Shipping Promotion" id="shipping_promotion" name="shipping_promotion" value="{{ $inputer->implode('shipping_promotion') ?? 0 }}" onchange="ongkir()" readonly>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -313,7 +313,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Price</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $inputer->implode('shipping_price') ?? '' }}">
+														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $inputer->implode('shipping_price') ?? '' }}" readonly>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -510,35 +510,6 @@
         </script>
 		<script>
 			$(document).ready(function(){
-				$('#quantity, #price, #promotion_id').on('change', function(){
-					var quantity = $('#quantity').val();
-					var price = $('#price').val();
-					var promotion_id = $('#promotion_id').val();
-					if(promotion_id){
-						$.ajax({
-							url: "get_promotion/"+promotion_id,
-							type: "GET",
-							dataType: "json",
-							success: function(promotion){
-								console.log(parseInt(promotion.product_promotion));
-								$('#product_promotion').val(parseInt(promotion.product_promotion));
-								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
-								var total = (price * quantity) - parseInt(promotion.product_promotion);
-								$('#total_price').val(total);
-								$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
-							}
-						});
-					}else{
-						$('#product_promotion').val(0);
-						var total = (price * quantity);
-						$('#total_price').val(total);
-						$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
-					}
-				});
-			});
-		</script>
-		<script>
-			$(document).ready(function(){
 				$('#province').on('change', function(){
 					let province_id = $(this).val();
 					if(province_id){
@@ -583,65 +554,125 @@
 			});
 		</script>
 		<script>
-			function ongkir(){
-				var warehouse = document.getElementById("warehouse").value;
-				var subdistrict = document.getElementById("subdistrict").value;
-				var weight = document.getElementById("weight").value;
-				var	courier = document.getElementById("courier").value;
-				var courier = courier.toLowerCase();
-				if(warehouse == 'Cilacap'){
-					document.getElementById("warehouse").setAttribute('class', 'form-control');
-					var origin = 1442;
-				}else if(warehouse == 'Kosambi'){
-					document.getElementById("warehouse").setAttribute('class', 'form-control');
-					var origin = 6278;
-				}else if(warehouse == 'Tandes.Sby'){
-					document.getElementById("warehouse").setAttribute('class', 'form-control');
-					var origin = 6156;
-				}else{
-					document.getElementById("warehouse").setAttribute('class', 'form-control is-invalid');
-				}
+			$(document).ready(function(){
+				$('#quantity, #price, #promotion_id').on('change', function(){
+					var quantity = $('#quantity').val();
+					var price = $('#price').val();
+					var promotion_id = $('#promotion_id').val();
+					if(promotion_id){
+						$.ajax({
+							url: "get_promotion/"+promotion_id,
+							type: "GET",
+							dataType: "json",
+							success: function(promotion){
+								$('#product_promotion').val(parseInt(promotion.product_promotion));
+								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
+								var total = (price * quantity) - parseInt(promotion.product_promotion);
+								$('#total_price').val(total);
+								$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
+							}
+						});
+					}else{
+						$('#product_promotion').val(0);
+						$('#shipping_promotion').val(0);
+						var total = (price * quantity);
+						$('#total_price').val(total);
+						$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
+					}
+				});
+			});
+		</script>
+		<script>
+			$(document).ready(function(){
+				$('#weight, #warehouse, #province, #city, #subdistrict, #courier, #shipping_promotion').on('change', function(){
+					var weight = $("#weight").val();
+					var warehouse = $("#warehouse").val();
+					var province = $("#province").val();
+					var city = $("#city").val();
+					var subdistrict = $("#subdistrict").val();
+					var	courier = $("#courier").val();
+					var courier = courier.toLowerCase();
+					var shipping_promotion = $("#shipping_promotion").val();
+					if(warehouse == 'Cilacap'){
+						document.getElementById("warehouse").setAttribute('class', 'form-control');
+						var origin = 1442;
+					}else if(warehouse == 'Kosambi'){
+						document.getElementById("warehouse").setAttribute('class', 'form-control');
+						var origin = 6278;
+					}else if(warehouse == 'Tandes.Sby'){
+						document.getElementById("warehouse").setAttribute('class', 'form-control');
+						var origin = 6156;
+					}else{
+						document.getElementById("warehouse").setAttribute('class', 'form-control is-invalid');
+					}
+	
+					if(subdistrict == ""){
+						document.getElementById("subdistrict").setAttribute('class', 'form-control is-invalid');
+					}else{
+						document.getElementById("subdistrict").setAttribute('class', 'form-control');
+					}
+					if(weight == ""){
+						document.getElementById("weight").setAttribute('class', 'form-control is-invalid');
+					}else{
+						document.getElementById("weight").setAttribute('class', 'form-control');
+					}
+					if(courier == ""){
+						document.getElementById("courier").setAttribute('class', 'form-control is-invalid');
+					}else{
+						document.getElementById("courier").setAttribute('class', 'form-control');
+					}
+					if(warehouse != "" && subdistrict != "" && weight != "" && courier != ""){
 
-				if(subdistrict == ""){
-					document.getElementById("subdistrict").setAttribute('class', 'form-control is-invalid');
-				}else{
-					document.getElementById("subdistrict").setAttribute('class', 'form-control');
-				}
-				if(weight == ""){
-					document.getElementById("weight").setAttribute('class', 'form-control is-invalid');
-				}else{
-					document.getElementById("weight").setAttribute('class', 'form-control');
-				}
-				if(courier == ""){
-					document.getElementById("courier").setAttribute('class', 'form-control is-invalid');
-				}else{
-					document.getElementById("courier").setAttribute('class', 'form-control');
-				}
-				if(warehouse != "" && subdistrict != "" && weight != "" && courier != ""){
-
+						$.ajax({
+							type: 'GET',
+							url: "{{ route('ongkir') }}",
+							data: {'origin': origin, 'destination': subdistrict, 'weight': weight, 'courier': courier},
+							dataType: 'json',
+							success: function(data){
+								var total_shipping_price = data-shipping_promotion;
+								if(total_shipping_price <= 0){
+									shipping_price.value = 0;
+								}else{
+									shipping_price.value = total_shipping_price;
+								}
+							}
+						});
+					}
+				});
+			});
+		</script>
+		<script>
+			$(document).ready(function(){
+				var weight = $("#weight").val();
+					var warehouse = $("#warehouse").val();
+					var province = $("#province").val();
+					var city = $("#city").val();
+					var subdistrict = $("#subdistrict").val();
+					var	courier = $("#courier").val();
+					var courier = courier.toLowerCase();
+					var shipping_promotion = $('#shipping_promotion').val();
+				$('#total_price, #shipping_promotion, #shipping_price, #promotion_id').on('change', function(){
+					var total_price = $('#total_price').val();
+					var shipping_price = $('#shipping_price').val();
+					
 					$.ajax({
 						type: 'GET',
 						url: "{{ route('ongkir') }}",
 						data: {'origin': origin, 'destination': subdistrict, 'weight': weight, 'courier': courier},
 						dataType: 'json',
 						success: function(data){
-							console.log(data)
-							var shipping_price = document.getElementById('shipping_price');
-                            var total_payment = document.getElementById('total_payment');
-                            var total_price = parseInt(document.getElementById('total_price').value);
-							var shipping_promotion = $('#shipping_promotion').val();
 							var total_shipping_price = data-shipping_promotion;
 							if(total_shipping_price <= 0){
 								shipping_price.value = 0;
 							}else{
 								shipping_price.value = total_shipping_price;
 							}
-                            total_payment.value = total_price+total_shipping_price;
 						}
 					});
-				}
-
-			}
+					var total_payment = parseInt(total_price) + parseInt(shipping_price);
+					$('#total_payment').val(total_payment);
+				});
+			});
 		</script>
 		<script>
 			// Class definition
