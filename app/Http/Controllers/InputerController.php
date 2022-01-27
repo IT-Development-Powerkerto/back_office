@@ -21,7 +21,7 @@ class InputerController extends Controller
      */
     public function index(Request $request)
     {
-        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 10){
+        if(Auth::user()->role_id == 10){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
             } else {
@@ -31,6 +31,16 @@ class InputerController extends Controller
             $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $user = User::all();
             return view('inputer.Inputer', compact(['inputers', 'user']))->with('operators', $operator);
+        }elseif(Auth::user()->role_id == 1){
+            if($request->date_filter){
+                $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+            } else {
+                $day = Carbon::now()->format('Y-m-d');
+            }
+            $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
+            $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+            $user = User::all();
+            return view('inputer.Dashboard', compact(['inputers', 'user']))->with('operators', $operator);
         }else{
             return redirect()->back();
         }

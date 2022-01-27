@@ -169,7 +169,7 @@
 																		@endif
 																	</div>
 																	<div class="d-flex justify-content-start flex-column">
-																		<a href="#" class="text-dark fw-medium text-hover-primary fs-6">{{$user->name}}</a>
+																		<a href="{{ route('users.edit',['user' => $user->id]) }}" class="text-dark fw-medium text-hover-primary fs-6">{{$user->name}}</a>
 																	</div>
 																</div>
 															</td>
@@ -179,7 +179,7 @@
 																</div>
 															</td>
 															<td>
-																<a href="#" class="text-dark fw-medium text-hover-primary d-block fs-6">{{$user->role->name}}</a>
+																<label class="text-dark fw-medium d-block fs-6">{{$user->role->name}}</label>
 															</td>
 															<td class="text-end">
 																<div class="d-flex flex-column w-100 me-2">

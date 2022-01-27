@@ -224,7 +224,13 @@ class BudgetingController extends Controller
 
     public function Finance()
     {
-        return view('finance.FinanceDept');
+        $role = Role::all();
+        $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
+        if(auth()->user()->role_id==9){
+            return view('finance.FinanceDept')->with('role', $role)->with('budgeting', $budgeting);
+        }elseif (auth()->user()->role_id==1){
+            return view('finance.Dashboard')->with('role', $role)->with('budgeting', $budgeting);
+        }
     }
 
     public function BudgetingReq()
