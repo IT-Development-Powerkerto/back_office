@@ -13,7 +13,7 @@ class Budgeting extends Model
         'user_name',
         'role_id',
         'reason',
-        'request',
+        'requirement',
         'target',
         'status',
     ];

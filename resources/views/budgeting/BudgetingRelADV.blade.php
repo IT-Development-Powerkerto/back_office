@@ -32,8 +32,8 @@
 							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 								<!--begin::Page title-->
 								@include('layout/header/_baseADV')
-	
-	
+
+
 								@include('layout/_toolbar')
 							</div>
 							<!--end::Wrapper-->
@@ -75,14 +75,14 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form action="#" method="POST" enctype="multipart/form-data">
+									<form action="{{route('budgeting_realization.store')}}" method="POST" enctype="multipart/form-data">
 										@csrf
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
                                                 <label for="inputItem" class="col-form-label">Add Item</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <input type="text" name="item" id="inputItem" class="form-control" aria-describedby="ItemHelpInline">
+                                                <input type="text" name="item" id="item" class="form-control" aria-describedby="ItemHelpInline">
                                             </div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
@@ -90,7 +90,7 @@
 												<label for="inputNominal" class="col-form-label">Nominal (Rp)</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="nominal" id="inputNominal" class="form-control" aria-describedby="NominalHelpInline">
+												<input type="text" name="requirement" id="requirement" class="form-control" aria-describedby="NominalHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -99,7 +99,7 @@
 											</div>
 											<div class="dropdown col-10">
 												<div class="mb-3">
-													<input class="form-control" type="file" id="inputproof" name="proof" id="inputproof" multiple id>
+													<input class="form-control" type="file" id="attachment" name="attachment" id="attachment" multiple id>
 												</div>
 											</div>
 										</div>
@@ -108,7 +108,7 @@
 												<label for="inputdesc" class="col-form-label">Description</label>
 											</div>
 											<div class="col-10">
-												<textarea type="text" name="desc" id="inputdesc" class="form-control" aria-describedby="descHelpInline"></textarea>
+												<textarea type="text" name="description" id="description" class="form-control" aria-describedby="descHelpInline"></textarea>
 											</div>
 										</div>
 										{{ csrf_field() }}
@@ -116,6 +116,129 @@
 									</form>
 								</div>
 								<!--end::Card body-->
+                                <!--begin::Tables Widget 9-->
+								<div class="card card-l-stretch mb-5 mb-xl-8 scroll scroll-pull mt-6" data-scroll="true" data-wheel-propagation="true">
+									<!--begin::Header-->
+									<div class="card-header border-0 pt-5">
+										<h3 class="card-title align-items-start flex-column">
+											<span class="card-label fw-bolder fs-3 mb-1">Activity Logs</span>
+                                            @if (auth()->user()->role_id == 1)
+											    <span class="text-muted mt-1 fw-bold fs-7">{{$budgeting_realization->where('admin_id', auth()->user()->admin_id)->count()}} Activity</span>
+                                            @else
+											    <span class="text-muted mt-1 fw-bold fs-7">{{$budgeting_realization->where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->count()}} Activity</span>
+                                            @endif
+										</h3>
+									</div>
+									<!--end::Header-->
+									<!--begin::Body-->
+									<div class="card-body py-3">
+										<!--begin::Table container-->
+										<div class="table-responsive">
+											<!--begin::Table-->
+											<table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4" id="staff">
+												<!--begin::Table head-->
+												<thead>
+													<tr class="fw-bolder text-muted">
+														<th class="min-w-150px">Timestamp</th>
+														<th class="min-w-150px">Item</th>
+														<th class="min-w-150px">Division</th>
+														<th class="min-w-150px">Nominal</th>
+														<th class="min-w-150px">Description</th>
+														<th class="min-w-150px text-end">Attachment</th>
+													</tr>
+												</thead>
+												<!--end::Table head-->
+												<!--begin::Table body-->
+												<tbody>
+                                                    @if (auth()->user()->role_id == 1)
+                                                        @foreach ($budgeting_realization->where('admin_id', auth()->user()->admin_id)->where('role_id', 4) as $budgeting_realization)
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="d-flex justify-content-start flex-column">
+                                                                        <h1 href="#" class="text-dark fw-normal fs-6">{{$budgeting_realization->created_at}}</h1>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->item_name}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->role->name}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting_realization->requirement}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->description}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center justify-content-end">
+                                                                    <a href="{{ route('download', $budgeting_realization->id) }}">
+                                                                        <button type="button" class="btn btn-primary">Download</button>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    @else
+                                                        @foreach ($budgeting_realization->where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id) as $budgeting_realization)
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="d-flex justify-content-start flex-column">
+                                                                        <h1 href="#" class="text-dark fw-normal fs-6">{{$budgeting_realization->created_at}}</h1>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->item_name}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->role->name}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting_realization->requirement}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->description}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center justify-content-end">
+                                                                    <a href="{{ route('download', $budgeting_realization->id) }}">
+                                                                        <button type="button" class="btn btn-primary">Download</button>
+                                                                    </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    @endif
+												</tbody>
+												<!--end::Table body-->
+											</table>
+											<!--end::Table-->
+										</div>
+										<!--end::Table container-->
+									</div>
+									<!--begin::Body-->
+								</div>
+								<!--end::Tables Widget 9-->
 							</div>
 							<!--end::details View-->
 						</div>

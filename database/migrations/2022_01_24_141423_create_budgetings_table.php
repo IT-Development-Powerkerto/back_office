@@ -24,7 +24,8 @@ class CreateBudgetingsTable extends Migration
             $table->integer('target')->nullable();
             $table->string('attachment')->nullable();
             $table->boolean('status')->default('2');
-            $table->timestamps();
+            $table->date('created_at');
+            $table->date('updated_at');
         });
     }
 

@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Realization ADV</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Proofment</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting_realization_adv->where('admin_id', auth()->user()->admin_id)->count()}} Proofment</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<!-- Button trigger modal -->
@@ -34,56 +34,58 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="min-w-150px">No</th>
+															<th class="min-w-50px">No</th>
 															<th class="min-w-150px">Name</th>
 															<th class="min-w-150px">Item</th>
 															<th class="min-w-150px">Nominal</th>
 															<th class="min-w-150px">Description</th>
-															<th class="min-w-150px text-end">Proof</th>
+															<th class="min-w-150px text-end">Attachment</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        <?php
+                                                            $n=0;
+                                                        ?>
+                                                        @foreach ($budgeting_realization_adv->where('admin_id', auth()->user()->admin_id) as $budgeting_realization)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">1</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">Hanif</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->user_name}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Advertising Cost</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->item_name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp 10.000.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting_realization->requirement}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Advertising Cost Proof</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->description}}</h1>
 																</div>
 															</td>
-															<td class="d-flex align-items-center justify-content-end mb-3">
-																<a href="#" class="badge badge-secondary ms-3">
-																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-																	<span class="svg-icon svg-icon-5 m-0">
-																		<i class="las la-file-alt" style="font-size:18px"></i>
-																	</span>
-																	<!--end::Svg Icon-->File</a>
+															<td class="d-flex align-items-center justify-content-end ">
+																<a href="{{ route('download', $budgeting_realization->id) }}">
+                                                                    <button type="button" class="btn btn-sm btn-light btn-active-primary" style="width: 120px; height: 40px">Download</button>
+                                                                </a>
 															</td>
 														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>
@@ -100,7 +102,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Realization nonADV</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Proofment</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting_realization_nonadv->where('admin_id', auth()->user()->admin_id)->count()}} Proofment</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<!-- Button trigger modal -->
@@ -129,56 +131,58 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="min-w-150px">No</th>
+															<th class="min-w-50px">No</th>
 															<th class="min-w-150px">Division</th>
 															<th class="min-w-150px">Item</th>
 															<th class="min-w-150px">Nominal</th>
 															<th class="min-w-150px">Description</th>
-															<th class="min-w-150px text-end">Proof</th>
+															<th class="min-w-150px text-end">Attachment</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        <?php
+                                                            $n = 0;
+                                                        ?>
+                                                        @foreach ($budgeting_realization_nonadv->where('admin_id', auth()->user()->admin_id) as $budgeting_realization)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">1</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">IT Dev.</h1>
+																		<h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->role->name}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Hosting</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->item_name}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp 450.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting_realization->requirement}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Hosting Cilafornia</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->description}}</h1>
 																</div>
 															</td>
-															<td class="d-flex align-items-center justify-content-end mb-3">
-																<a href="#" class="badge badge-secondary ms-3">
-																	<!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-																	<span class="svg-icon svg-icon-5 m-0">
-																		<i class="las la-file-alt" style="font-size:18px"></i>
-																	</span>
-																	<!--end::Svg Icon-->File</a>
+															<td class="d-flex align-items-center justify-content-end">
+																<a href="{{ route('download', $budgeting_realization->id) }}">
+                                                                    <button type="button" class="btn btn-sm btn-light btn-active-primary" style="width: 120px; height: 40px">Download</button>
+                                                                </a>
 															</td>
 														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>

@@ -107,7 +107,7 @@
 											</div>
 											<div class="dropdown col-10">
 												<div class="mb-3">
-													<input class="form-control" value="Choose File" type="file" id="image" name="image" id="formFileMultiple" multiple id>
+													<input class="form-control" value="Choose File" type="file" name="attachment" id="formFileMultiple" multiple id>
 												</div>
 											</div>
 										</div>

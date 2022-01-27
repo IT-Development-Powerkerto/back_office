@@ -129,21 +129,47 @@ class BudgetingController extends Controller
         }else {
             $reason = $request->reason;
         }
-        DB::table('budgetings')->insert([
-            'admin_id'     => auth()->user()->admin_id,
-            'user_id'      => auth()->user()->id,
-            'user_name'    => auth()->user()->name,
-            'role_id'      => auth()->user()->role_id,
-            'reason'       => $reason,
-            'requirement'  => $request->requirement,
-            'target'       => $request->target,
-            'attachment'   => $request->image,
-            'status'       => 2,
-            'created_at'   => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at'   => Carbon::now()->format('Y-m-d H:i:s'),
-        ]);
-
-        return Redirect::back();
+        if($request->hasFile('attachment'))
+        {
+            $extFile = $request->attachment->getClientOriginalExtension();
+            $namaFile = 'budgeting-'.time().".".$extFile;
+            $request->attachment->move('public/assets/file/budgeting',$namaFile);
+            $attachment = $namaFile;
+        }else{
+            $attachment = null;
+        }
+        if(auth()->user()->role_id == 4){
+            DB::table('budgetings')->insert([
+                'admin_id'     => auth()->user()->admin_id,
+                'user_id'      => auth()->user()->id,
+                'user_name'    => auth()->user()->name,
+                'role_id'      => auth()->user()->role_id,
+                'reason'       => $reason,
+                'requirement'  => $request->requirement,
+                'target'       => $request->target,
+                'attachment'   => $attachment,
+                'status'       => 2,
+                'created_at'   => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'   => Carbon::now()->format('Y-m-d H:i:s'),
+            ]);
+            return Redirect::back();
+        }
+        else{
+            DB::table('budgetings')->insert([
+                'admin_id'     => auth()->user()->admin_id,
+                'user_id'      => auth()->user()->id,
+                'user_name'    => auth()->user()->role->name,
+                'role_id'      => auth()->user()->role_id,
+                'reason'       => $reason,
+                'requirement'  => $request->requirement,
+                'target'       => $request->target,
+                'attachment'   => $attachment,
+                'status'       => 2,
+                'created_at'   => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at'   => Carbon::now()->format('Y-m-d H:i:s'),
+            ]);
+            return Redirect::back();
+        }
     }
 
     /**
@@ -198,7 +224,13 @@ class BudgetingController extends Controller
 
     public function Finance()
     {
-        return view('finance.FinanceDept');
+        $role = Role::all();
+        $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
+        if(auth()->user()->role_id==9){
+            return view('finance.FinanceDept')->with('role', $role)->with('budgeting', $budgeting);
+        }elseif (auth()->user()->role_id==1){
+            return view('finance.Dashboard')->with('role', $role)->with('budgeting', $budgeting);
+        }
     }
 
     public function BudgetingReq()
@@ -214,14 +246,10 @@ class BudgetingController extends Controller
         }
     }
 
-    public function BudgetingRel()
+    public function downloaded($id)
     {
-        if(auth()->user()->role_id==1){
-            return view('budgeting.BudgetingRel');
-        }elseif (auth()->user()->role_id==5){
-            return view('budgeting.BudgetingRelCS');
-        }elseif (auth()->user()->role_id==4){
-            return view('budgeting.BudgetingRelADV');
-        }
+        $budgeting = Budgeting::where('id', $id)->firstOrFail();
+        $pathToFile = public_path().'\public\assets\file\budgeting/' . $budgeting->attachment;
+        return response()->download($pathToFile);
     }
 }

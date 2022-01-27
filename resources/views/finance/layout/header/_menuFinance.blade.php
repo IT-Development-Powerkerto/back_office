@@ -25,7 +25,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route('finance') }}" class="menu-title">Finance Dashboard</a>
+						<a href="#" class="menu-title">Link</a>
 					</span>
 				</div>
 			</div>

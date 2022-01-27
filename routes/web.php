@@ -20,6 +20,7 @@ use App\Http\Controllers\ProductController;
 use App\Events\MessageCreated;
 use App\Http\Controllers\BigFlipController;
 use App\Http\Controllers\BudgetingController;
+use App\Http\Controllers\BudgetingRealizationController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\ReimbursementController;
@@ -140,8 +141,11 @@ Route::get('/viewdata/{id}', [InputerController::class, 'view'])->name('viewdata
 
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
 Route::resource('budgeting', BudgetingController::class)->middleware('auth');
-Route::get('/budgetingreq', [BudgetingController::class, 'BudgetingReq'])->name('budgetingreq');
-Route::get('/budgetingrel', [BudgetingController::class, 'BudgetingRel'])->name('budgetingrel');
+Route::get('/downloaded/{file}', [BudgetingController::class, 'downloaded'])->name('downloaded');
+Route::get('/budgetingreq', [BudgetingController::class, 'BudgetingReq'])->name('budgetingreq')->middleware('auth');
+// Route::get('/budgetingrel', [BudgetingController::class, 'BudgetingRel'])->name('budgetingrel');
+Route::resource('budgeting_realization', BudgetingRealizationController::class)->middleware('auth');
+Route::get('/download/{file}', [BudgetingRealizationController::class, 'download'])->name('download');
 
 Route::resource('promotion', PromotionController::class)->middleware('auth');
 Route::get('lead/get_promotion/{id}', [PromotionController::class, 'get_promotion'])->name('get_promotion');

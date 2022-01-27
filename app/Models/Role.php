@@ -19,4 +19,7 @@ class Role extends Model
     public function budgeting(){
         return $this->hasMany(Budgeting::class);
     }
+    public function budgeting_realization(){
+        return $this->hasMany(BudgetingRealization::class);
+    }
 }

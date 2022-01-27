@@ -32,8 +32,8 @@
 							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 								<!--begin::Page title-->
 								@include('layout/header/_baseCS')
-	
-	
+
+
 								@include('layout/_toolbar')
 							</div>
 							<!--end::Wrapper-->
@@ -75,22 +75,14 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form action="#" method="POST" enctype="multipart/form-data">
+									<form action="{{route('budgeting.store')}}" method="POST" enctype="multipart/form-data">
 										@csrf
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
                                                 <label for="inputDivision" class="col-form-label">Division</label>
                                             </div>
                                             <div class="dropdown col-10">
-												<select name="role_id" id="role_id" class="form-control">
-													<option hidden>Select Role</option>
-													<option>Human Resource</option>
-													<option>Finance</option>
-													<option>Customer Service</option>
-													<option>DGM</option>
-													<option>CWM</option>
-													<option>IT</option>
-												</select>
+                                                <input value="{{auth()->user()->role->name}}" name="role_id" id="role_id" class="form-control" disabled/>
 											</div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
@@ -98,7 +90,7 @@
 												<label for="inputreason" class="col-form-label">Reason</label>
 											</div>
 											<div class="col-10">
-												<textarea type="text" name="reason" id="inputreason" class="form-control" aria-describedby="reasonHelpInline"></textarea>
+												<textarea type="text" name="reason" id="reason" class="form-control" aria-describedby="reasonHelpInline"></textarea>
 											</div>
 										</div>
                                         <div class="row align-items-center col-12 pb-5">
@@ -106,7 +98,7 @@
 												<label for="inputproduct" class="col-form-label">Nominal (Rp)</label>
 											</div>
 											<div class="col-10">
-												<input type="number" name="nominal" id="inputproduct" class="form-control" aria-describedby="productHelpInline">
+												<input type="number" name="requirement" id="requirement" class="form-control" aria-describedby="productHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -115,7 +107,7 @@
 											</div>
 											<div class="dropdown col-10">
 												<div class="mb-3">
-													<input class="form-control" value="Choose File" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
+													<input class="form-control" value="Choose File" type="file" name="attachment" id="formFileMultiple" multiple id>
 												</div>
 											</div>
 										</div>
@@ -124,14 +116,18 @@
 									</form>
 								</div>
 								<!--end::Card body-->
-								
+
 								<!--begin::Tables Widget 9-->
 								<div class="card card-l-stretch mb-5 mb-xl-8 scroll scroll-pull mt-6" data-scroll="true" data-wheel-propagation="true">
 									<!--begin::Header-->
 									<div class="card-header border-0 pt-5">
 										<h3 class="card-title align-items-start flex-column">
 											<span class="card-label fw-bolder fs-3 mb-1">Activity Logs</span>
-											<span class="text-muted mt-1 fw-bold fs-7">1 Activity</span>
+                                            @if (auth()->user()->role_id == 1)
+											    <span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->count()}} Activity</span>
+                                            @else
+											    <span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('user_id', auth()->user()->id)->count()}} Activity</span>
+                                            @endif
 										</h3>
 									</div>
 									<!--end::Header-->
@@ -154,35 +150,83 @@
 												<!--end::Table head-->
 												<!--begin::Table body-->
 												<tbody>
-													<tr>
-														<td>
-															<div class="d-flex align-items-center">
-																<div class="d-flex justify-content-start flex-column">
-																	<h1 href="#" class="text-dark fw-normal fs-6">21/12/2021 11:33 WIB</h1>
-																</div>
-															</div>
-														</td>
-														<td>
-															<div class="d-flex align-items-center">
-																<h1 class="text-dark fw-normal fs-6">IT Development</h1>
-															</div>
-														</td>
-														<td>
-															<div class="d-flex align-items-center">
-																<h1 class="text-dark fw-normal fs-6">buying A Hosting</h1>
-															</div>
-														</td>
-														<td>
-															<div class="d-flex align-items-center">
-																<h1 class="text-dark fw-normal fs-6">Rp. 450.000</h1>
-															</div>
-														</td>
-														<td>
-															<div class="d-flex align-items-center justify-content-end">
-																<h1 class="badge badge-light-success">Accepted</h1>
-															</div>
-														</td>
-													</tr>
+                                                    @if (auth()->user()->role_id == 1)
+                                                        @foreach ($budgeting as $budgeting)
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="d-flex justify-content-start flex-column">
+                                                                        <h1 href="#" class="text-dark fw-normal fs-6">{{$budgeting->updated_at}}</h1>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$budgeting->role->name}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$budgeting->reason}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->requirement}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center justify-content-end">
+                                                                    @if ($budgeting->status == 1)
+                                                                        <h1 class="text-dark fw-normal fs-6 badge badge-light-success">Approve</h1>
+                                                                    @elseif ($budgeting->status == 0)
+                                                                        <h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
+                                                                    @else
+                                                                        <h1 class="text-dark fw-normal fs-6 badge badge-light-info">Wait</h1>
+                                                                    @endif
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    @else
+                                                        @foreach ($budgeting->where('user_id', auth()->user()->id) as $budgeting)
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="d-flex justify-content-start flex-column">
+                                                                        <h1 href="#" class="text-dark fw-normal fs-6">{{$budgeting->updated_at}}</h1>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$budgeting->role->name}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$budgeting->reason}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->requirement}}</h1>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center justify-content-end">
+                                                                    @if ($budgeting->status == 1)
+                                                                        <h1 class="text-dark fw-normal fs-6 badge badge-light-success">Approve</h1>
+                                                                    @elseif ($budgeting->status == 0)
+                                                                        <h1 class="text-dark fw-normal fs-6 badge badge-light-danger">Rejected</h1>
+                                                                    @else
+                                                                        <h1 class="text-dark fw-normal fs-6 badge badge-light-info">Wait</h1>
+                                                                    @endif
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    @endif
 												</tbody>
 												<!--end::Table body-->
 											</table>
