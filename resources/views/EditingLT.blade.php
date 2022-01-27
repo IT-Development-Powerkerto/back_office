@@ -117,12 +117,12 @@
 													</div>
 													<span class="form-text text-muted">Please Select Status</span>
 												</div>
-										 	</div>
+											</div>
 
 											<div class="separator separator-dashed my-10"></div>
 
 											<h1 class="pb-5">Data Order</h1>
-										 	<div class="form-group row mt-3">
+											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Full Name</label>
 												<div class="col-lg-3">
 													<div class="input-group">
@@ -130,7 +130,7 @@
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-user-friends" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter your full name</span>
-										  		</div>
+												</div>
 												<label class="col-lg-1 col-form-label text-lg-right">Contact</label>
 												<div class="col-lg-3">
 													<div class="input-group">
@@ -338,13 +338,13 @@
 										</div>
 										{{ csrf_field() }}
 										<div class="card-footer">
-										 	<div class="row">
-										  		<div class="col-lg-5"></div>
-										  		<div class="col-lg-7">
-                                                    <input type="submit" class="btn btn-primary" value="Save">
+											<div class="row">
+												<div class="col-lg-5"></div>
+												<div class="col-lg-7">
+													<input type="submit" class="btn btn-primary" value="Save">
                                                     <a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
-										  		</div>
-										 	</div>
+												</div>
+											</div>
 										</div>
 									</form>
 									{{-- <form action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
