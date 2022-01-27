@@ -22,9 +22,8 @@ class ManagerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 3){
-            $day = Carbon::now()->format('Y-m-d');
+    {   
+        $day = Carbon::now()->format('Y-m-d');
             $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
 
             $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
@@ -198,7 +197,16 @@ class ManagerController extends Controller
             $budgeting_nonadv = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
             $budgeting_realization_adv = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
             $budgeting_realization_nonadv = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
+        if(Auth::user()->role_id == 3){
             return view('manager.Manager', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+            ->with('lead_jan', $lead_jan)->with('lead_feb', $lead_feb)->with('lead_mar', $lead_mar)->with('lead_apr', $lead_apr)->with('lead_may', $lead_may)->with('lead_jun', $lead_jun)
+            ->with('lead_jul', $lead_jul)->with('lead_aug', $lead_aug)->with('lead_sep', $lead_sep)->with('lead_okt', $lead_okt)->with('lead_nov', $lead_nov)->with('lead_des', $lead_des)
+            ->with('closing_jan', $closing_jan)->with('closing_feb', $closing_feb)->with('closing_mar', $closing_mar)->with('closing_apr', $closing_apr)->with('closing_may', $closing_may)->with('closing_jun', $closing_jun)
+            ->with('closing_jul', $closing_jul)->with('closing_aug', $closing_aug)->with('closing_sep', $closing_sep)->with('closing_okt', $closing_okt)->with('closing_nov', $closing_nov)->with('closing_des', $closing_des)
+            ->with('adv', $adv)->with('omset1', $omset1)->with('omset2', $omset2)->with('omset3', $omset3)->with('omset4', $omset4)->with('omset_permonth', $omset_permonth)->with('budgeting', $budgeting)
+            ->with('budgeting_adv', $budgeting_adv)->with('budgeting_nonadv', $budgeting_nonadv)->with('budgeting_realization_adv', $budgeting_realization_adv)->with('budgeting_realization_nonadv', $budgeting_realization_nonadv);
+        }elseif(Auth::user()->role_id == 1){
+            return view('manager.Dashboard', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
             ->with('lead_jan', $lead_jan)->with('lead_feb', $lead_feb)->with('lead_mar', $lead_mar)->with('lead_apr', $lead_apr)->with('lead_may', $lead_may)->with('lead_jun', $lead_jun)
             ->with('lead_jul', $lead_jul)->with('lead_aug', $lead_aug)->with('lead_sep', $lead_sep)->with('lead_okt', $lead_okt)->with('lead_nov', $lead_nov)->with('lead_des', $lead_des)
             ->with('closing_jan', $closing_jan)->with('closing_feb', $closing_feb)->with('closing_mar', $closing_mar)->with('closing_apr', $closing_apr)->with('closing_may', $closing_may)->with('closing_jun', $closing_jun)

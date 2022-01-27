@@ -79,9 +79,9 @@
                                                                     <h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->description}}</h1>
                                                                 </div>
                                                             </td>
-                                                            <td class="d-flex align-items-center justify-content-end mb-3">
+                                                            <td class="d-flex align-items-center justify-content-end">
                                                                 <a href="{{ route('download', $budgeting_realization->id) }}">
-                                                                    <button type="button" class="btn btn-primary">Download</button>
+                                                                    <button type="button" class="btn btn-sm btn-light btn-active-primary" style="width: 120px; height: 40px">Download</button>
                                                                 </a>
                                                             </td>
                                                         </tr>
@@ -176,9 +176,9 @@
                                                                     <h1 class="text-dark fw-normal fs-6">{{$budgeting_realization->description}}</h1>
                                                                 </div>
                                                             </td>
-                                                            <td class="d-flex align-items-center justify-content-end mb-3">
+                                                            <td class="d-flex align-items-center justify-content-end">
                                                                 <a href="{{ route('download', $budgeting_realization->id) }}">
-                                                                    <button type="button" class="btn btn-primary">Download</button>
+                                                                    <button type="button" class="btn btn-sm btn-light btn-active-primary" style="width: 120px; height: 40px">Download</button>
                                                                 </a>
                                                             </td>
                                                         </tr>
