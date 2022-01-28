@@ -1,11 +1,24 @@
 
 									<!--begin::Tables Widget 9-->
+									@if(session()->has('success'))
+										<div class="alert alert-success alert-dismissible fade show" role="alert">
+											{{ session('success') }}
+											<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+										</div>
+									@endif
+
+									@if(session()->has('error'))
+										<div class="alert alert-danger alert-dismissible fade show" role="alert">
+											{{ session('error') }}
+											<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+										</div>
+									@endif
 									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Customer Service</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 CS</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{ $cs_inputers->count() }} CS</span>
 											</h3>
 											<div class="card-toolbar" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Operator">
 												<a href="" data-bs-toggle="modal" data-bs-target="#add-operator" class="btn btn-sm btn-light btn-active-primary me-2">
@@ -27,7 +40,7 @@
 														</div>
 														<div class="modal-body">
 															{{--  <form action="{{route('addOperator.store')}}" method="POST">  --}}
-															<form action="#" method="POST">
+															<form action="{{ route('inputer.addCS') }}" method="POST">
 																@csrf
 		
 																<div class="row align-items-center col-12 pb-5">
@@ -37,11 +50,11 @@
 																	<div class="col-10">
 		
 																		{{--  <input type="text" name="campaign_id" value="{{ $campaigns->id }}" required class="form-control">  --}}
-																		<select class="form-control" name="operator_id">
-																			<option>Select Operator</option>
-																			@foreach ($operators as $operator)
-																				<option value="{{ $operator->id }}">
-																					{{ $operator->name }}
+																		<select class="form-control" name="cs_id">
+																			<option>Select Customer Service</option>
+																			@foreach ($cs as $cs)
+																				<option value="{{ $cs->id }}">
+																					{{ $cs->name }}
 																				</option>
 																			@endforeach
 																		</select>
@@ -67,55 +80,44 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
+															<th class="">No</th>
 															<th class="">Name CS</th>
-															<th class="">Phone</th>
 															<th class="">Email</th>
+															<th class="">Phone</th>
                                                             <th class="text-end">Actions</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
-                                                        @foreach ($users as $user)
+                                                        <?php $n=0; ?>
+														@foreach ($cs_inputers as $cs_inputer)
 														<tr>
 															<td>
-																<div class="d-flex align-items-center">
-																	<div class="symbol symbol-45px me-5 image-size">
-																		@if(is_null($user->image))
-																		<img src="/assets/img/default.jpg" width="100px" alt="" />
-																		@else
-
-																		<img src="{{$user->image}}" width="100px" alt="" />
-																		@endif
-																	</div>
-																	<div class="d-flex justify-content-start flex-column">
-																		<label class="text-dark fw-medium text-hover-primary fs-6">Zall</label>
-																	</div>
-																</div>
+																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>
 															</td>
 															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="badge badge-light-info">081245527645</h1>
-																</div>
+																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $cs_inputer->name}}</label>
 															</td>
 															<td>
-																<label class="text-dark fw-medium d-block fs-6">zall@zall.com</label>
+																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $cs_inputer->email }}</label>
 															</td>
 															<td>
-																<div class="d-flex justify-content-end flex-shrink-0" aria-label="Basic outlined example">
-                                                                    <form action="{{ route('dashboard.destroy', ['dashboard'=>$user->id]) }}" method="POST">
-                                                                        @csrf
-                                                                        @method('DELETE')
-																		<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-																			<div class="btn-group" role="group" aria-label="First group">
-																				<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
-																			</div>
+																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $cs_inputer->phone }}</label>
+															</td>
+															{{--  <td>
+																<form action="{{route('addOperator.destroy',['campaign' => $operatorCampaign->campaign_id, 'operator' => $operatorCampaign->id])}}" method="POST">
+																	@csrf
+																	@method('DELETE')
+																	<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+																		<div class="btn-group" role="group" aria-label="First group">
+																			<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
 																		</div>
-                                                                    </form>
-																</div>
-															</td>
+																	</div>
+																</form>
+															</td>  --}}
 														</tr>
-                                                        @endforeach
+														@endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>
