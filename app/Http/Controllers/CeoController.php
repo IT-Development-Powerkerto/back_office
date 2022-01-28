@@ -301,4 +301,11 @@ class CeoController extends Controller
         ]);
         return Redirect::back();
     }
+
+    public function WeeklyDashboard() {
+        return view('ceo.WeeklyDashboard');
+    }
+    public function MonthlyDashboard() {
+        return view('ceo.MonthlyDashboard');
+    }
 }

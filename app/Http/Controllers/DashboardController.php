@@ -525,6 +525,13 @@ class DashboardController extends Controller
         }
     }
 
+    public function WeeklyADV() {
+        return view('Weeklyadv');
+    }
+    public function MonthlyADV() {
+        return view('Monthlyadv');
+    }
+
     public function cs(Request $request){
         $day = Carbon::now()->format('Y-m-d');
         $user_expired = auth()->user()->expired_at;
@@ -949,5 +956,4 @@ class DashboardController extends Controller
             return redirect()->back();
         }
     }
-
 }

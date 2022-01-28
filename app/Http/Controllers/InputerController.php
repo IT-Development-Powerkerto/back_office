@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\InputersExport;
 use App\Models\Campaign;
+use App\Models\CsInputer;
 use Illuminate\Http\Request;
 use App\Models\Inputer;
 use App\Models\User;
@@ -11,6 +12,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class InputerController extends Controller
 {
@@ -29,18 +31,20 @@ class InputerController extends Controller
             }
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
-            $user = User::all();
-            return view('inputer.Inputer', compact(['inputers', 'user']))->with('operators', $operator);
-        }elseif(Auth::user()->role_id == 1){
+            $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+            $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
+            return view('inputer.Inputer', compact(['inputers', 'cs', 'cs_inputers']))->with('operators', $operator);
+        }else if(Auth::user()->role_id == 1){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
             } else {
                 $day = Carbon::now()->format('Y-m-d');
             }
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
-            $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
-            $users = User::all();
-            return view('inputer.Dashboard', compact(['inputers', 'users']))->with('operators', $operator);
+            $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+            $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
+            // dd($cs_inputers);
+            return view('inputer.Dashboard', compact(['inputers', 'cs', 'cs_inputers']));
         }else{
             return redirect()->back();
         }
@@ -138,5 +142,17 @@ class InputerController extends Controller
         $to_date = $request->to_date;
         // dd($from_date);
         return Excel::download(new InputersExport($from_date,$to_date), 'inputer.xlsx', 'Xlsx');
+    }
+    public function addCS(Request $request){
+        CsInputer::create([
+            'inputer_id' => Auth::user()->id,
+            'cs_id' => $request->cs_id
+        ]);
+        return back()->with('success','Successull! Customer Service Added');
+    }
+    public function CS_destroy($id){
+        $cs_inputer = CsInputer::find($id);
+        $cs_inputer->delete();
+        return back()->with('success','Successull! Customer Service Deleted');
     }
 }
