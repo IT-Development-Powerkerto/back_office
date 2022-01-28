@@ -151,6 +151,8 @@ Route::get('/CEOWeeklyDashboard', [CeoController::class, 'WeeklyDashboard'])->na
 Route::get('/CEOMonthlyDashboard', [CeoController::class, 'MonthlyDashboard'])->name('CEOmonthlydashboard')->middleware('auth');
 
 Route::get('/inputer', [InputerController::class, 'index'])->name('inputer')->middleware('auth');
+Route::post('/inputer', [InputerController::class, 'addCS'])->name('inputer.addCS')->middleware('auth');
+Route::delete('/inputer/{id}', [InputerController::class, 'CS_destroy'])->name('inputer.CS_destroy')->middleware('auth');
 Route::get('/viewdata/{id}', [InputerController::class, 'view'])->name('viewdata')->middleware('auth');
 
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
