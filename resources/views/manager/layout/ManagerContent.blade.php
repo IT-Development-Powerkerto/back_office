@@ -18,6 +18,7 @@
 									@include('partials/widgets/manager/WeeklyInfoDailyADV')
 									@include('partials/widgets/manager/BudgetingReq')
 									@include('partials/widgets/manager/BudgetingRel')
+									@include('partials/widgets/manager/ActivityEvaluation')
 									@include('partials/widgets/manager/LogBudgeting')   
 								</div>
 								<!--end::Card body-->

@@ -61,77 +61,76 @@
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 						<!--begin::Container-->
-						<div class="container-xxl" id="kt_content_container">
+						<div class="container-xxl " id="kt_content_container">
 							<!--begin::details View-->
-							<div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
-								<!--begin::Card header-->
-								<div class="card-header">
-									<!--begin::Card title-->
-									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Routine Evaluation</h3>
+							<div class="card card-l-stretch mb-5 p-10 mb-xl-10" id="kt_profile_details_view">
+                                <!--begin::Card body-->
+								<div class="card shadow-sm  p-9">
+                                    <!--begin::Card header-->
+                                    <div class="card-header border-0 pt-5">
+										<h3 class="card-title align-items-start flex-column">
+											<span class="card-label fw-bolder fs-3 mb-1 ">Routine Evaluation</span>
+										</h3>
 									</div>
-									<!--end::Card title-->
-								</div>
-								<!--begin::Card header-->
-								<!--begin::Card body-->
-								<div class="card-body p-9">
-									<form action="" method="POST">
-										@csrf
-                                        
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputProduct" class="col-form-label">Product Name</label>
+                                    <!--begin::Card header-->
+                                    <div class="card-body py-3">
+                                        <form action="" method="POST" class="mt-5">
+                                            @csrf
+                                            <div class="row align-items-center col-12 pb-5">
+                                                <div class="col-2">
+                                                    <label for="inputProduct" class="col-form-label">Product Name</label>
+                                                </div>
+                                                <div class="dropdown col-10">
+                                                    <select name="product_name" id="product_name" class="form-control text-muted select2">
+                                                        <option hidden>Select Product</option>
+                                                        <option value="All" required>All</option>
+                                                        @foreach ($product as $product)
+                                                            <option value="{{$product->name}}" required>{{$product->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="dropdown col-10">
-                                                <select name="product_name" id="product_name" class="form-control form-control-solid text-muted">
-                                                    <option hidden>Select Product</option>
-                                                    <option value="All" required>All</option>
-                                                    @foreach ($product as $product)
-                                                        <option value="{{$product->name}}" required>{{$product->name}}</option>
-                                                    @endforeach
-                                                </select>
-											</div>
-                                        </div>
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputDate" class="col-form-label">Date</label>
+                                            <div class="row align-items-center col-12 pb-5">
+                                                <div class="col-2">
+                                                    <label for="inputDate" class="col-form-label">Date</label>
+                                                </div>
+                                                <div class="col-10">
+                                                    <input class="form-control text-muted" name="date_filter" id="date_filter" type="date" onchange="submit()">
+                                                </div>
                                             </div>
-                                            <div class="col-10">
-                                                <input class="form-control form-control-solid text-muted" name="date_filter" id="date_filter" type="date" onchange="submit()">
-											</div>
-                                        </div>
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputtime" class="col-form-label">Time</label>
+                                            <div class="row align-items-center col-12 pb-5">
+                                                <div class="col-2">
+                                                    <label for="inputtime" class="col-form-label">Time</label>
+                                                </div>
+                                                <div class="col-10">
+                                                    <input class="form-control text-muted" name="date_filter"  id="date_filter" type="time" onchange="submit()">
+                                                </div>
                                             </div>
-                                            <div class="col-10">
-                                                <input class="form-control form-control-solid text-muted" name="date_filter"  id="date_filter" type="time" onchange="submit()">
-											</div>
-                                        </div>
-                                        <div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputResistance" class="col-form-label">Resistance</label>
+                                            <div class="row align-items-center col-12 pb-5">
+                                                <div class="col-2">
+                                                    <label for="inputResistance" class="col-form-label">Resistance</label>
+                                                </div>
+                                                <div class="col-10">
+                                                    <textarea value="" name="resistance" id="resistance" class="form-control"></textarea>
+                                                </div>
                                             </div>
-                                            <div class="col-10">
-                                                <textarea value="" name="resistance" id="resistance" class="form-control form-control-solid"></textarea>
-											</div>
-                                        </div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputSolution" class="col-form-label">Solution</label>
-											</div>
-											<div class="col-10">
-												<textarea value="" name="solution" id="solution" class="form-control form-control-solid"></textarea>
-											</div>
-										</div>
-										{{ csrf_field() }}
-										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Save">
-									</form>
+                                            <div class="row align-items-center col-12 pb-5">
+                                                <div class="col-2">
+                                                    <label for="inputSolution" class="col-form-label">Solution</label>
+                                                </div>
+                                                <div class="col-10">
+                                                    <textarea value="" name="solution" id="solution" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            {{ csrf_field() }}
+                                            <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Save">
+                                        </form>
+                                    </div>
 								</div>
 								<!--end::Card body-->
 
 								<!--begin::Tables Widget 9-->
-								<div class="card card-l-stretch mb-5 mb-xl-8 scroll scroll-pull mt-6" data-scroll="true" data-wheel-propagation="true">
+								<div class="card shadow-sm card-l-stretch mb-5 mb-xl-8 scroll scroll-pull mt-6" data-scroll="true" data-wheel-propagation="true">
 									<!--begin::Header-->
 									<div class="card-header border-0 pt-5">
 										<h3 class="card-title align-items-start flex-column">

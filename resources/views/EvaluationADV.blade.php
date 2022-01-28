@@ -83,7 +83,7 @@
                                                 <label for="inputProduct" class="col-form-label">Product Name</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <select name="product_name" id="product_name" class="form-control form-control-solid text-muted">
+                                                <select name="product_name" id="product_name" class="form-control text-muted">
                                                     <option hidden>Select Product</option>
                                                     <option value="All" required>All</option>
                                                     @foreach ($product as $product)
@@ -97,7 +97,7 @@
                                                 <label for="inputDate" class="col-form-label">Date</label>
                                             </div>
                                             <div class="col-10">
-                                                <input class="form-control form-control-solid text-muted" name="date_filter" id="date_filter" type="date" onchange="submit()">
+                                                <input class="form-control text-muted" name="date_filter" id="date_filter" type="date" onchange="submit()">
 											</div>
                                         </div>
                                         <div class="row align-items-center col-12 pb-5">
@@ -105,7 +105,7 @@
                                                 <label for="inputtime" class="col-form-label">Time</label>
                                             </div>
                                             <div class="col-10">
-                                                <input class="form-control form-control-solid text-muted" name="date_filter"  id="date_filter" type="time" onchange="submit()">
+                                                <input class="form-control text-muted" name="date_filter"  id="date_filter" type="time" onchange="submit()">
 											</div>
                                         </div>
                                         <div class="row align-items-center col-12 pb-5">
@@ -113,7 +113,7 @@
                                                 <label for="inputResistance" class="col-form-label">Resistance</label>
                                             </div>
                                             <div class="col-10">
-                                                <textarea value="" name="resistance" id="resistance" class="form-control form-control-solid"></textarea>
+                                                <textarea value="" name="resistance" id="resistance" class="form-control"></textarea>
 											</div>
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
@@ -121,7 +121,7 @@
 												<label for="inputSolution" class="col-form-label">Solution</label>
 											</div>
 											<div class="col-10">
-												<textarea value="" name="solution" id="solution" class="form-control form-control-solid"></textarea>
+												<textarea value="" name="solution" id="solution" class="form-control"></textarea>
 											</div>
 										</div>
 										{{ csrf_field() }}
