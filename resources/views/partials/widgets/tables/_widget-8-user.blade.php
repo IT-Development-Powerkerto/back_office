@@ -57,8 +57,11 @@
 												</div>
 												@if (auth()->user()->role_id == 1)
 												<form action="/dashboard" method="GET" class="d-flex">
-												@endif
+												@elseif (auth()->user()->role_id == 4)
 												<form action="/adv" method="GET" class="d-flex">
+												@else
+												<form action="/cs" method="GET" class="d-flex">
+												@endif
 													<div class="me-2 d-flex flex-row">
 														<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
 														<button type="button" class="btn btn-sm btn-light btn-active-primary ms-2" title="Click For Export">GO</button>

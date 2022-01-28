@@ -25,6 +25,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\ReimbursementController;
 use App\Http\Controllers\CeoController;
+use App\Http\Controllers\HumanResourceController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\InputerController;
@@ -86,9 +87,12 @@ Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 Route::get('/WeeklyDashboard', [DashboardController::class, 'WeeklyDashboard'])->name('weeklydashboard')->middleware('auth');
 Route::get('/MonthlyDashboard', [DashboardController::class, 'MonthlyDashboard'])->name('monthlydashboard')->middleware('auth');
 
+Route::resource('/HumanResource', HumanResourceController::class)->middleware('auth');
+
 Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld')->middleware('auth');
 Route::get('/adv', [DashboardController::class, 'adv'])->name('advDashboard')->middleware('auth');
 Route::get('/cs', [DashboardController::class, 'cs'])->name('csDashboard')->middleware('auth');
+Route::get('/evaluation', [DashboardController::class, 'Evaluation'])->name('evaluation')->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 Route::get('/myprofile',[UserController::class, 'index'])->middleware('auth');
 Route::patch('/myprofile',[UserController::class, 'changePassword'])->name('changePassword')->middleware('auth');
