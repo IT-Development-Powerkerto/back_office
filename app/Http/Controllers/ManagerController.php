@@ -299,4 +299,11 @@ class ManagerController extends Controller
         ]);
         return Redirect::back();
     }
+
+    public function WeeklyDashboard() {
+        return view('manager.WeeklyDashboard');
+    }
+    public function MonthlyDashboard() {
+        return view('manager.MonthlyDashboard');
+    }
 }

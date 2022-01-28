@@ -138,7 +138,12 @@ Route::get('/budegetingadv', [BudgetingController::class, 'budgetingADV'])->name
 Route::get('/finance', [BudgetingController::class, 'Finance'])->name('finance')->middleware('auth');
 
 Route::get('/manager', [ManagerController::class, 'index'])->name('manager')->middleware('auth');
+Route::get('/ManagerWeeklyDashboard', [ManagerController::class, 'WeeklyDashboard'])->name('Managerweeklydashboard')->middleware('auth');
+Route::get('/ManagerMonthlyDashboard', [ManagerController::class, 'MonthlyDashboard'])->name('Managermonthlydashboard')->middleware('auth');
+
 Route::get('/ceo', [CeoController::class, 'index'])->name('ceo')->middleware('auth');
+Route::get('/CEOWeeklyDashboard', [CeoController::class, 'WeeklyDashboard'])->name('CEOweeklydashboard')->middleware('auth');
+Route::get('/CEOMonthlyDashboard', [CeoController::class, 'MonthlyDashboard'])->name('CEOmonthlydashboard')->middleware('auth');
 
 Route::get('/inputer', [InputerController::class, 'index'])->name('inputer')->middleware('auth');
 Route::get('/viewdata/{id}', [InputerController::class, 'view'])->name('viewdata')->middleware('auth');
