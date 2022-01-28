@@ -106,12 +106,12 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Status</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control" name="status_id">
-															<option value="3" {{ (old('status_id') ?? $lead->implode('status_id') ) == '3' ? 'selected': '' }} required>Waiting</option>
-															<option value="4" {{ (old('status_id') ?? $lead->implode('status_id') ) == '4' ? 'selected': '' }} required>Proccessing</option>
-															<option value="5" {{ (old('status_id') ?? $lead->implode('status_id') ) == '5' ? 'selected': '' }} required>Closing</option>
-															<option value="6" {{ (old('status_id') ?? $lead->implode('status_id') ) == '6' ? 'selected': '' }} required>Spam</option>
-															<option value="7" {{ (old('status_id') ?? $lead->implode('status_id') ) == '7' ? 'selected': '' }} required>Failed</option>
+														<select class="form-control" name="status_id" id='status_id'>
+															<option value="3" {{ $lead->implode('status_id')  == '3' ? 'selected': '' }} required>Waiting</option>
+															<option value="4" {{ $lead->implode('status_id')  == '4' ? 'selected': '' }} required>Proccessing</option>
+															<option value="5" {{ $lead->implode('status_id')  == '5' ? 'selected': '' }} required>Closing</option>
+															<option value="6" {{ $lead->implode('status_id')  == '6' ? 'selected': '' }} required>Spam</option>
+															<option value="7" {{ $lead->implode('status_id')  == '7' ? 'selected': '' }} required>Failed</option>
 														</select>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-angle-down" style="font-size: 24px"></i></span></div>
 													</div>
@@ -126,7 +126,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Full Name</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text" name="name" class="form-control" value="{{ old('client') ?? $lead->implode('client_name') }}" placeholder="Full name"/>
+														<input type="text" name="name" id="name" class="form-control" value="{{ old('client') ?? $lead->implode('client_name') }}" placeholder="Full name"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-user-friends" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter your full name</span>
@@ -134,7 +134,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Contact</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text" name="whatsapp" class="form-control" value="{{ old('client') ?? $lead->implode('client_wa') }}" placeholder="Enter contact number"/>
+														<input type="text" name="whatsapp" id="whatsapp" class="form-control" value="{{ old('client') ?? $lead->implode('client_wa') }}" placeholder="Enter contact number"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-phone" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter Customer contact</span>
@@ -142,7 +142,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Address</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text" name="address" class="form-control" value="{{ old('address') ?? $inputer->implode('address') }}" placeholder="Enter your address"/>
+														<input type="text" name="address" id="address" class="form-control" value="{{ old('address') ?? $inputer->implode('address') }}" placeholder="Enter your address"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter your address</span>
@@ -633,20 +633,26 @@
 								$('#product_promotion').val(parseInt(promotion.product_promotion));
 								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
 								if(courier === 'Ninja' && payment_method === 'COD'){
-                                    var ongkir = parseInt(shipping_price);
-                                    if (ongkir > 50000){
+                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
+                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
+                                        ongkir = 0;
+                                    }
+                                    else if (ongkir > 50000){
                                         ongkir -= 25000;
                                     }
                                     else{
                                         ongkir -= ongkir*0.5;
                                     }
 									var total_price = (price * quantity);
-                                    var admin = (total_price + parseInt(shipping_price))*0.025;
-									$('#total_payment').val((total_price + ongkir + admin) - (parseInt(promotion.product_promotion) + parseInt(promotion.shipping_promotion)));
+                                    var admin = total_price * 0.025;
+									$('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
 								}
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
-                                    var ongkir = parseInt(shipping_price);
-                                    if (ongkir > 50000){
+                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
+                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
+                                        ongkir = 0;
+                                    }
+                                    else if (ongkir > 50000){
                                         ongkir -= 25000;
                                     }
                                     else{
@@ -657,11 +663,14 @@
                                     if(admin < 2000){
                                         admin = 2000;
                                     }
-                                    $('#total_payment').val((total_price + ongkir + admin) - (parseInt(promotion.product_promotion) + parseInt(promotion.shipping_promotion)));
+                                    $('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
                                 }
                                 else if(courier === 'JNT' && payment_method === 'COD'){
-                                    var ongkir = parseInt(shipping_price);
-                                    if (ongkir > 50000){
+                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
+                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
+                                        ongkir = 0;
+                                    }
+                                    else if (ongkir > 50000){
                                         ongkir -= 25000;
                                     }
                                     else{
@@ -672,7 +681,21 @@
                                     if(admin < 5000){
                                         admin = 5000;
                                     }
-                                    $('#total_payment').val((total_price + ongkir + admin) - (parseInt(promotion.product_promotion) + parseInt(promotion.shipping_promotion)));
+                                    $('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
+                                }
+                                else{
+                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
+                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
+                                        ongkir = 0;
+                                    }
+                                    else if (ongkir > 50000){
+                                        ongkir -= 25000;
+                                    }
+                                    else{
+                                        ongkir -= ongkir*0.5;
+                                    }
+                                    var total_price = (price * quantity);
+                                    $('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
                                 }
 							}
 						});
@@ -720,6 +743,17 @@
                             }
                             $('#total_payment').val(total_price + ongkir + admin);
 						}
+                        else{
+                            var ongkir = parseInt(shipping_price);
+                            if (ongkir > 50000){
+                                ongkir -= 25000;
+                            }
+                            else{
+                                ongkir -= ongkir*0.5;
+                            }
+                            var total_price = (price * quantity);
+                            $('#total_payment').val(total_price + ongkir);
+                        }
 					}
 
 					// var promotion_id = $('#promotion_id').val();
@@ -806,6 +840,39 @@
 				});
 			});
 		</script>
+        <script>
+            $(document).ready(function(){
+                $('#status_id, #address, #name, #whatsapp, #quantity, #weight').on('change', function(){
+                    if($('#status_id').val() == 5){
+                        if($('#address').val() == ""){
+                            document.getElementById("address").setAttribute('class', 'form-control is-invalid');
+                        }else {
+                            document.getElementById("address").setAttribute('class', 'form-control');
+                        }
+                        if($('#name').val() == ""){
+                            document.getElementById("name").setAttribute('class', 'form-control is-invalid');
+                        }else {
+                            document.getElementById("name").setAttribute('class', 'form-control');
+                        }
+                        if($('#whatsapp').val() == ""){
+                            document.getElementById("whatsapp").setAttribute('class', 'form-control is-invalid');
+                        }else {
+                            document.getElementById("whatsapp").setAttribute('class', 'form-control');
+                        }
+                        if($('#quantity').val() == ""){
+                            document.getElementById("quantity").setAttribute('class', 'form-control is-invalid');
+                        }else {
+                            document.getElementById("quantity").setAttribute('class', 'form-control');
+                        }
+                        if($('#weight').val() == ""){
+                            document.getElementById("weight").setAttribute('class', 'form-control is-invalid');
+                        }else {
+                            document.getElementById("weight").setAttribute('class', 'form-control');
+                        }
+                    }
+                });
+            });
+        </script>
 		<script>
 			$(document).ready(function(){
 				var weight = $("#weight").val();

@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 use File;
@@ -138,105 +140,147 @@ class LeadController extends Controller
         //$total_price = ($request->price * $request->quantity) - $request->promotion_name;
         //$total_payment = $total_price + $request->shipping_price;
 
-        DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
-            'quantity'        => $request->quantity,
-            'price'           => $request->price,
-            'total_price'     => $request->total_price,
-            'status_id'       => $request->status_id,
-            'updated_at'      => Carbon::now()->toDateTimeString(),
-        ]);
+
         if(substr(trim($request->whatsapp), 0, 1)=='0'){
             $whatsapp = '62'.substr(trim($request->whatsapp), 1);
         } else{
             $whatsapp = $request->whatsapp;
         }
-        DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
-            'name'         => $request->name,
-            'whatsapp'     => $whatsapp,
-            'updated_at'   => Carbon::now()->toDateTimeString(),
-        ]);
+
         // dd($whatsapp);
 
         if($request->status_id == 5){
-            $inputer = Inputer::where('lead_id', $lead)->exists();
-            $lead = Lead::findOrFail($lead);
-            if($inputer == true){
-                $order_image = Inputer::where('lead_id', $lead->id)->get();
-                if($request->hasFile('image')){
-                    $extFile = $request->image->getClientOriginalExtension();
-                    $namaFile = 'order-'.time().".".$extFile;
-                    File::delete($order_image->implode('payment_proof'));
-                    $path = $request->image->move('public/assets/img/order',$namaFile);
-                    $image = $path;
-                } else {
-                    $image = null;
-                }
-                Inputer::where('lead_id', $lead->id)->update([
-                    'admin_id'         => $lead->admin_id,
-                    'lead_id'          => $lead->id,
-                    'adv_name'         => $lead->advertiser,
-                    'operator_name'    => $lead->user->name,
-                    'customer_name'    => $request->name,
-                    'customer_number'  => $whatsapp,
-                    'customer_address' => $request->address,
-                    'product_name'     => $lead->product->name,
-                    'product_weight'   => $request->weight,
-                    'product_price'    => $request->price,
-                    'quantity'         => $request->quantity,
-                    'promotion_id'        => $request->promotion_id,
-                    'product_promotion'        => $request->product_promotion,
-                    'shipping_promotion'        => $request->shipping_promotion,
-                    'total_price'      => $request->total_price,
-                    'warehouse'        => $request->warehouse,
-                    'province_id'      => $request->province,
-                    'city_id'          => $request->city,
-                    'subdistrict_id'   => $request->subdistrict,
-                    'courier'          => $request->courier,
-                    'shipping_price'   => $request->shipping_price,
-                    'payment_method'   => $request->payment_method,
-                    'total_payment'    => $request->total_payment,
-                    'payment_proof'    => $image,
-                    // 'updated_at'       => Carbon::now()->format('Y-m-d'),
-                ]);
+            $validator = Validator::make($request->all(), [
+                'status_id'         => 'required',
+                'name'              => 'required',
+                'whatsapp'          => 'required',
+                'address'           => 'required',
+                'quantity'          => 'required',
+                'price'             => 'required',
+                'product_promotion' => 'required',
+                'total_price'       => 'required',
+                'weight'            => 'required',
+                'warehouse'         => 'required',
+                'province'          => 'required',
+                'city'              => 'required',
+                'subdistrict'       => 'required',
+                'courier'           => 'required',
+                'shipping_promotion'=> 'required',
+                'shipping_price'    => 'required',
+                'payment_method'    => 'required',
+                'total_payment'     => 'required',
+            ]);
+            if($validator->fails()){
+                // return back()->with('error','Error! User not been Added')->withInput()->withErrors($validator);
+                return redirect()->back()->withInput();
             }
             else{
-                if($request->hasFile('image')){
-                    $extFile = $request->image->getClientOriginalExtension();
-                    $namaFile = 'order-'.time().".".$extFile;
-                    $path = $request->image->move('public/assets/img/order',$namaFile);
-                    $image = $path;
-                } else {
-                    $image = null;
-                }
-                Inputer::create([
-                    'admin_id'         => $lead->admin_id,
-                    'lead_id'          => $lead->id,
-                    'adv_name'         => $lead->advertiser,
-                    'operator_name'    => $lead->user->name,
-                    'customer_name'    => $request->name,
-                    'customer_number'  => $whatsapp,
-                    'customer_address' => $request->address,
-                    'product_name'     => $lead->product->name,
-                    'product_weight'   => $request->weight,
-                    'product_price'    => $request->price,
-                    'quantity'         => $request->quantity,
-                    'promotion_id'     => $request->promotion_id,
-                    'product_promotion'        => $request->product_promotion,
-                    'shipping_promotion'        => $request->shipping_promotion,
-                    'total_price'      => $request->total_price,
-                    'warehouse'        => $request->warehouse,
-                    'province_id'      => $request->province,
-                    'city_id'          => $request->city,
-                    'subdistrict_id'   => $request->subdistrict,
-                    'courier'          => $request->courier,
-                    'shipping_price'   => $request->shipping_price,
-                    'payment_method'   => $request->payment_method,
-                    'total_payment'    => $request->total_payment,
-                    'payment_proof'    => $image,
-                //     'created_at'       => Carbon::now()->format('Y-m-d'),
-                //     'updated_at'       => Carbon::now()->format('Y-m-d'),
+                DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                    'quantity'        => $request->quantity,
+                    'price'           => $request->price,
+                    'total_price'     => $request->total_price,
+                    'status_id'       => $request->status_id,
+                    'updated_at'      => Carbon::now()->toDateTimeString(),
                 ]);
+                DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                    'name'         => $request->name,
+                    'whatsapp'     => $whatsapp,
+                    'updated_at'   => Carbon::now()->toDateTimeString(),
+                ]);
+                $inputer = Inputer::where('lead_id', $lead)->exists();
+                $lead = Lead::findOrFail($lead);
+                if($inputer == true){
+                    $order_image = Inputer::where('lead_id', $lead->id)->get();
+                    if($request->hasFile('image')){
+                        $extFile = $request->image->getClientOriginalExtension();
+                        $namaFile = 'order-'.time().".".$extFile;
+                        File::delete($order_image->implode('payment_proof'));
+                        $path = $request->image->move('public/assets/img/order',$namaFile);
+                        $image = $path;
+                    } else {
+                        $image = null;
+                    }
+                    Inputer::where('lead_id', $lead->id)->update([
+                        'admin_id'         => $lead->admin_id,
+                        'lead_id'          => $lead->id,
+                        'adv_name'         => $lead->advertiser,
+                        'operator_name'    => $lead->user->name,
+                        'customer_name'    => $request->name,
+                        'customer_number'  => $whatsapp,
+                        'customer_address' => $request->address,
+                        'product_name'     => $lead->product->name,
+                        'product_weight'   => $request->weight,
+                        'product_price'    => $request->price,
+                        'quantity'         => $request->quantity,
+                        'promotion_id'        => $request->promotion_id,
+                        'product_promotion'        => $request->product_promotion,
+                        'shipping_promotion'        => $request->shipping_promotion,
+                        'total_price'      => $request->total_price,
+                        'warehouse'        => $request->warehouse,
+                        'province_id'      => $request->province,
+                        'city_id'          => $request->city,
+                        'subdistrict_id'   => $request->subdistrict,
+                        'courier'          => $request->courier,
+                        'shipping_price'   => $request->shipping_price,
+                        'payment_method'   => $request->payment_method,
+                        'total_payment'    => $request->total_payment,
+                        'payment_proof'    => $image,
+                        // 'updated_at'       => Carbon::now()->format('Y-m-d'),
+                    ]);
+                }
+                else{
+                    if($request->hasFile('image')){
+                        $extFile = $request->image->getClientOriginalExtension();
+                        $namaFile = 'order-'.time().".".$extFile;
+                        $path = $request->image->move('public/assets/img/order',$namaFile);
+                        $image = $path;
+                    } else {
+                        $image = null;
+                    }
+                    Inputer::create([
+                        'admin_id'         => $lead->admin_id,
+                        'lead_id'          => $lead->id,
+                        'adv_name'         => $lead->advertiser,
+                        'operator_name'    => $lead->user->name,
+                        'customer_name'    => $request->name,
+                        'customer_number'  => $whatsapp,
+                        'customer_address' => $request->address,
+                        'product_name'     => $lead->product->name,
+                        'product_weight'   => $request->weight,
+                        'product_price'    => $request->price,
+                        'quantity'         => $request->quantity,
+                        'promotion_id'     => $request->promotion_id,
+                        'product_promotion'        => $request->product_promotion,
+                        'shipping_promotion'        => $request->shipping_promotion,
+                        'total_price'      => $request->total_price,
+                        'warehouse'        => $request->warehouse,
+                        'province_id'      => $request->province,
+                        'city_id'          => $request->city,
+                        'subdistrict_id'   => $request->subdistrict,
+                        'courier'          => $request->courier,
+                        'shipping_price'   => $request->shipping_price,
+                        'payment_method'   => $request->payment_method,
+                        'total_payment'    => $request->total_payment,
+                        'payment_proof'    => $image,
+                    //     'created_at'       => Carbon::now()->format('Y-m-d'),
+                    //     'updated_at'       => Carbon::now()->format('Y-m-d'),
+                    ]);
+                }
             }
+        }
+        else{
+            DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                'quantity'        => $request->quantity,
+                'price'           => $request->price,
+                'total_price'     => $request->total_price,
+                'status_id'       => $request->status_id,
+                'updated_at'      => Carbon::now()->toDateTimeString(),
+            ]);
+            DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                'name'         => $request->name,
+                'whatsapp'     => $whatsapp,
+                'updated_at'   => Carbon::now()->toDateTimeString(),
+            ]);
         }
         return redirect('/dashboard')->with('success','Successull! Updated');
     }
