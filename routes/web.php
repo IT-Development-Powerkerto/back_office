@@ -30,6 +30,7 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\InputerController;
 use App\Http\Controllers\RajaOngkirController;
+use App\Http\Controllers\EvaluationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +93,8 @@ Route::resource('/HumanResource', HumanResourceController::class)->middleware('a
 Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld')->middleware('auth');
 Route::get('/adv', [DashboardController::class, 'adv'])->name('advDashboard')->middleware('auth');
 Route::get('/cs', [DashboardController::class, 'cs'])->name('csDashboard')->middleware('auth');
-Route::get('/evaluation', [DashboardController::class, 'Evaluation'])->name('evaluation')->middleware('auth');
+Route::resource('/evaluation', EvaluationController::class)->middleware('auth');
+// Route::get('/evaluation', [DashboardController::class, 'Evaluation'])->name('evaluation')->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 Route::get('/myprofile',[UserController::class, 'index'])->middleware('auth');
 Route::patch('/myprofile',[UserController::class, 'changePassword'])->name('changePassword')->middleware('auth');

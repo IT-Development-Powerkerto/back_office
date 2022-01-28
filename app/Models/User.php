@@ -95,4 +95,7 @@ class User extends Authenticatable
     public function budgeting_realization(){
         return $this->hasMany(BudgetingRealization::class);
     }
+    public function evaluation(){
+        return $this->hasMany(Evaluation::class);
+    }
 }

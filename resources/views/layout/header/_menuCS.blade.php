@@ -57,7 +57,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route ('evaluation') }}" class="menu-title">Routine Evaluation</a>
+						<a href="{{ route ('evaluation.index') }}" class="menu-title">Routine Evaluation</a>
 					</span>
 				</div>
 			</div>

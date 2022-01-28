@@ -33,4 +33,7 @@ class Product extends Model
     public function upselling(){
         return $this->hasOne(Upselling::class);
     }
+    public function evaluation(){
+        return $this->hasMany(Evaluation::class);
+    }
 }
