@@ -5,19 +5,14 @@
 										<div class="card-header border-0 py-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Total Leads</span>
-												<span class="text-muted fw-bold fs-7">{{$lead_count}} Leads</span>
-                                                <input id="lead_jan" value="{{$lead_jan}}" hidden/>
-                                                <input id="lead_feb" value="{{$lead_feb}}" hidden/>
-                                                <input id="lead_mar" value="{{$lead_mar}}" hidden/>
-                                                <input id="lead_apr" value="{{$lead_apr}}" hidden/>
-                                                <input id="lead_may" value="{{$lead_may}}" hidden/>
-                                                <input id="lead_jun" value="{{$lead_jun}}" hidden/>
-                                                <input id="lead_jul" value="{{$lead_jul}}" hidden/>
-                                                <input id="lead_aug" value="{{$lead_aug}}" hidden/>
-                                                <input id="lead_sep" value="{{$lead_sep}}" hidden/>
-                                                <input id="lead_okt" value="{{$lead_okt}}" hidden/>
-                                                <input id="lead_nov" value="{{$lead_nov}}" hidden/>
-                                                <input id="lead_des" value="{{$lead_des}}" hidden/>
+												<span class="text-muted fw-bold fs-7">{{$lead_count}} Leads @ Daily</span>
+                                                <input id="lead_su" value="{{$lead_su}}" hidden/>
+                                                <input id="lead_mo" value="{{$lead_mo}}" hidden/>
+                                                <input id="lead_tu" value="{{$lead_tu}}" hidden/>
+                                                <input id="lead_we" value="{{$lead_we}}" hidden/>
+                                                <input id="lead_th" value="{{$lead_th}}" hidden/>
+                                                <input id="lead_fr" value="{{$lead_fr}}" hidden/>
+                                                <input id="lead_sa" value="{{$lead_sa}}" hidden/>
 											</h3>
 											<div class="card-toolbar">
 												<!--begin::Menu-->

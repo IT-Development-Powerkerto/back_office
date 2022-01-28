@@ -5,7 +5,7 @@
 										<div class="card-header border-0 py-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Total Closing</span>
-												<span class="text-muted fw-bold fs-7">{{$closing_count}} Closing</span>
+												<span class="text-muted fw-bold fs-7">{{$closing_count}} Closing @ Month</span>
                                                 <input id="closing_jan" value="{{$closing_jan}}" hidden/>
                                                 <input id="closing_feb" value="{{$closing_feb}}" hidden/>
                                                 <input id="closing_mar" value="{{$closing_mar}}" hidden/>

@@ -5,19 +5,11 @@
 										<div class="card-header border-0 py-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Total Closing</span>
-												<span class="text-muted fw-bold fs-7">{{$closing_count}} Closing</span>
-                                                <input id="closing_jan" value="{{$closing_jan}}" hidden/>
-                                                <input id="closing_feb" value="{{$closing_feb}}" hidden/>
-                                                <input id="closing_mar" value="{{$closing_mar}}" hidden/>
-                                                <input id="closing_apr" value="{{$closing_apr}}" hidden/>
-                                                <input id="closing_may" value="{{$closing_may}}" hidden/>
-                                                <input id="closing_jun" value="{{$closing_jun}}" hidden/>
-                                                <input id="closing_jul" value="{{$closing_jul}}" hidden/>
-                                                <input id="closing_aug" value="{{$closing_aug}}" hidden/>
-                                                <input id="closing_sep" value="{{$closing_sep}}" hidden/>
-                                                <input id="closing_okt" value="{{$closing_okt}}" hidden/>
-                                                <input id="closing_nov" value="{{$closing_nov}}" hidden/>
-                                                <input id="closing_des" value="{{$closing_des}}" hidden/>
+												<span class="text-muted fw-bold fs-7">{{$closing_count}} Closing @ Week</span>
+                                                <input id="closing_week1" value="{{$closing_week1}}" hidden/>
+                                                <input id="closing_week2" value="{{$closing_week2}}" hidden/>
+                                                <input id="closing_week3" value="{{$closing_week3}}" hidden/>
+                                                <input id="closing_week4" value="{{$closing_week4}}" hidden/>
 											</h3>
 											{{-- <div class="card-toolbar">
 												<!--begin::Menu-->
