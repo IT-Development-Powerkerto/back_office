@@ -32,7 +32,7 @@ class InputerController extends Controller
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
-            $cs_inputers = DB::table('cs_inputers')->where('inputer_id', Auth::user()->id)->join('users', 'users.id', '=', 'cs_inputers.cs_id')->get();
+            $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
             return view('inputer.Inputer', compact(['inputers', 'cs', 'cs_inputers']))->with('operators', $operator);
         }else if(Auth::user()->role_id == 1){
             if($request->date_filter){
@@ -42,7 +42,7 @@ class InputerController extends Controller
             }
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
-            $cs_inputers = DB::table('cs_inputers')->where('inputer_id', Auth::user()->id)->join('users', 'users.id', '=', 'cs_inputers.cs_id')->get();
+            $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
             // dd($cs_inputers);
             return view('inputer.Dashboard', compact(['inputers', 'cs', 'cs_inputers']));
         }else{
@@ -149,5 +149,10 @@ class InputerController extends Controller
             'cs_id' => $request->cs_id
         ]);
         return back()->with('success','Successull! Customer Service Added');
+    }
+    public function CS_destroy($id){
+        $cs_inputer = CsInputer::find($id);
+        $cs_inputer->delete();
+        return back()->with('success','Successull! Customer Service Deleted');
     }
 }
