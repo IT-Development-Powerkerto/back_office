@@ -39,8 +39,8 @@ class InputerController extends Controller
             }
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
-            $user = User::all();
-            return view('inputer.Dashboard', compact(['inputers', 'user']))->with('operators', $operator);
+            $users = User::all();
+            return view('inputer.Dashboard', compact(['inputers', 'users']))->with('operators', $operator);
         }else{
             return redirect()->back();
         }
