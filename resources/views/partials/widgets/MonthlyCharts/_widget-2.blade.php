@@ -5,7 +5,7 @@
 										<div class="card-header border-0 py-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Total Leads</span>
-												<span class="text-muted fw-bold fs-7">{{$lead_count}} Leads</span>
+												<span class="text-muted fw-bold fs-7">{{$lead_count}} Leads @ Month</span>
                                                 <input id="lead_jan" value="{{$lead_jan}}" hidden/>
                                                 <input id="lead_feb" value="{{$lead_feb}}" hidden/>
                                                 <input id="lead_mar" value="{{$lead_mar}}" hidden/>

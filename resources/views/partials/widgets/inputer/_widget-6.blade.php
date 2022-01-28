@@ -13,7 +13,7 @@
 											<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 										</div>
 									@endif
-									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
+									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull shadow-sm" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">

@@ -5,19 +5,14 @@
 										<div class="card-header border-0 py-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Total Closing</span>
-												<span class="text-muted fw-bold fs-7">{{$closing_count}} Closing</span>
-                                                <input id="closing_jan" value="{{$closing_jan}}" hidden/>
-                                                <input id="closing_feb" value="{{$closing_feb}}" hidden/>
-                                                <input id="closing_mar" value="{{$closing_mar}}" hidden/>
-                                                <input id="closing_apr" value="{{$closing_apr}}" hidden/>
-                                                <input id="closing_may" value="{{$closing_may}}" hidden/>
-                                                <input id="closing_jun" value="{{$closing_jun}}" hidden/>
-                                                <input id="closing_jul" value="{{$closing_jul}}" hidden/>
-                                                <input id="closing_aug" value="{{$closing_aug}}" hidden/>
-                                                <input id="closing_sep" value="{{$closing_sep}}" hidden/>
-                                                <input id="closing_okt" value="{{$closing_okt}}" hidden/>
-                                                <input id="closing_nov" value="{{$closing_nov}}" hidden/>
-                                                <input id="closing_des" value="{{$closing_des}}" hidden/>
+												<span class="text-muted fw-bold fs-7">{{$closing_count}} Closing @ daily</span>
+                                                <input id="closing_su" value="{{$closing_su}}" hidden/>
+                                                <input id="closing_mo" value="{{$closing_mo}}" hidden/>
+                                                <input id="closing_tu" value="{{$closing_tu}}" hidden/>
+                                                <input id="closing_we" value="{{$closing_we}}" hidden/>
+                                                <input id="closing_th" value="{{$closing_th}}" hidden/>
+                                                <input id="closing_fr" value="{{$closing_fr}}" hidden/>
+                                                <input id="closing_sa" value="{{$closing_sa}}" hidden/>
 											</h3>
 											{{-- <div class="card-toolbar">
 												<!--begin::Menu-->

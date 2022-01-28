@@ -40,11 +40,11 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-						href="{{ route ('weeklydashboard') }}">Weekly</a>
+						href="{{ route ('Managerweeklydashboard') }}">Weekly</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
-						href="{{ route ('monthlydashboard') }}">Monthly</a>
+						href="{{ route ('Managermonthlydashboard') }}">Monthly</a>
 				</li>
 			</ul>
 		</div>

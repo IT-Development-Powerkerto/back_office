@@ -92,6 +92,7 @@ Route::resource('/HumanResource', HumanResourceController::class)->middleware('a
 Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld')->middleware('auth');
 Route::get('/adv', [DashboardController::class, 'adv'])->name('advDashboard')->middleware('auth');
 Route::get('/cs', [DashboardController::class, 'cs'])->name('csDashboard')->middleware('auth');
+Route::get('/evaluation', [DashboardController::class, 'Evaluation'])->name('evaluation')->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
 Route::get('/myprofile',[UserController::class, 'index'])->middleware('auth');
 Route::patch('/myprofile',[UserController::class, 'changePassword'])->name('changePassword')->middleware('auth');
@@ -137,7 +138,12 @@ Route::get('/budegetingadv', [BudgetingController::class, 'budgetingADV'])->name
 Route::get('/finance', [BudgetingController::class, 'Finance'])->name('finance')->middleware('auth');
 
 Route::get('/manager', [ManagerController::class, 'index'])->name('manager')->middleware('auth');
+Route::get('/ManagerWeeklyDashboard', [ManagerController::class, 'WeeklyDashboard'])->name('Managerweeklydashboard')->middleware('auth');
+Route::get('/ManagerMonthlyDashboard', [ManagerController::class, 'MonthlyDashboard'])->name('Managermonthlydashboard')->middleware('auth');
+
 Route::get('/ceo', [CeoController::class, 'index'])->name('ceo')->middleware('auth');
+Route::get('/CEOWeeklyDashboard', [CeoController::class, 'WeeklyDashboard'])->name('CEOweeklydashboard')->middleware('auth');
+Route::get('/CEOMonthlyDashboard', [CeoController::class, 'MonthlyDashboard'])->name('CEOmonthlydashboard')->middleware('auth');
 
 Route::get('/inputer', [InputerController::class, 'index'])->name('inputer')->middleware('auth');
 Route::post('/inputer', [InputerController::class, 'addCS'])->name('inputer.addCS')->middleware('auth');
