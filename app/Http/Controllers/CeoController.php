@@ -140,7 +140,7 @@ class CeoController extends Controller
                 Carbon::now()->endOfYear(),
             ])->sum('quantity');
 
-            $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day);
+            $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
             $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
                 Carbon::now()->startOfWeek(),
                 Carbon::now()->endOfWeek(),
@@ -181,6 +181,7 @@ class CeoController extends Controller
             ])->sum('total_price');
             $omset_all = Inputer::where('admin_id', auth()->user()->admin_id)->get();
             $products = Product::all();
+            // dd($lead_all);
             $adv = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
             $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->get();
             $budgeting_day = Budgeting::where('admin_id', auth()->user()->admin_id)->where('status', 1)->where('created_at', $day)->sum('requirement');
