@@ -75,7 +75,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">HR Dashboard</a>
+						<a href="{{ route ('HumanResource.index') }}" class="menu-title">HR Dashboard</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">

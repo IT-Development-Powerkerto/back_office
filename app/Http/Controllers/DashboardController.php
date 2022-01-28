@@ -220,6 +220,8 @@ class DashboardController extends Controller
             }
             else if($x->role_id == 10){
                 return redirect(route('inputer'));
+            }else if($x->role_id == 11){
+                return redirect(route('HumanResource.index'));
             }
             else{
 
