@@ -645,4 +645,17 @@ class DashboardController extends Controller
         return view('MonthlyDashboard');
     }
 
+    public function Evaluation() {
+        $products = Product::where('admin_id', auth()->user()->admin_id)->get();
+        if(auth()->user()->role_id==4){
+            return view('evaluationADV')->with('product', $products);
+        }elseif (auth()->user()->role_id==5){
+            return view('evaluationCS')->with('product', $products);
+        }elseif (auth()->user()->role_id==1){
+            return view('evaluation')->with('product', $products);
+        }else {
+            return redirect()->back();
+        }
+    }
+
 }

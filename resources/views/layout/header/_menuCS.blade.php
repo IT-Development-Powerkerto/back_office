@@ -52,6 +52,14 @@
 						<a href="{{ route ('budgeting_realization.index') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route ('evaluation') }}" class="menu-title">Routine Evaluation</a>
+					</span>
+				</div>
 			</div>
 		</div>
 		<!-- <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
