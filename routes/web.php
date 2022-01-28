@@ -90,7 +90,12 @@ Route::get('/MonthlyDashboard', [DashboardController::class, 'MonthlyDashboard']
 Route::resource('/HumanResource', HumanResourceController::class)->middleware('auth');
 
 Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld')->middleware('auth');
+
 Route::get('/adv', [DashboardController::class, 'adv'])->name('advDashboard')->middleware('auth');
+Route::get('/WeeklyADV', [DashboardController::class, 'WeeklyADV'])->name('WeeklyADV')->middleware('auth');
+Route::get('/MonthlyADV', [DashboardController::class, 'MonthlyADV'])->name('MonthlyADV')->middleware('auth');
+
+
 Route::get('/cs', [DashboardController::class, 'cs'])->name('csDashboard')->middleware('auth');
 Route::get('/evaluation', [DashboardController::class, 'Evaluation'])->name('evaluation')->middleware('auth');
 //Route::get('/dashboard',[UserController::class, 'index'])->middleware('auth');
