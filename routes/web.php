@@ -140,6 +140,7 @@ Route::get('/manager', [ManagerController::class, 'index'])->name('manager')->mi
 Route::get('/ceo', [CeoController::class, 'index'])->name('ceo')->middleware('auth');
 
 Route::get('/inputer', [InputerController::class, 'index'])->name('inputer')->middleware('auth');
+Route::post('/inputer', [InputerController::class, 'addCS'])->name('inputer.addCS')->middleware('auth');
 Route::get('/viewdata/{id}', [InputerController::class, 'view'])->name('viewdata')->middleware('auth');
 
 Route::resource('reimbursement', ReimbursementController::class)->middleware('auth');
