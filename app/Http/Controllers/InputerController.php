@@ -43,7 +43,7 @@ class InputerController extends Controller
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             // $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
-            $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->get();
+            $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             // dd($cs_inputers);
             return view('inputer.Dashboard', compact(['inputers', 'cs', 'cs_inputers']));
         }else{
