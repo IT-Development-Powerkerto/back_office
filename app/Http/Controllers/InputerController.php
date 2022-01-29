@@ -144,7 +144,13 @@ class InputerController extends Controller
         return Excel::download(new InputersExport($from_date,$to_date), 'inputer.xlsx', 'Xlsx');
     }
     public function addCS(Request $request){
+        $CsExists = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->where('cs_id', $request->cs_id)->exists();
+        // dd($CsExists);
+        if($CsExists){
+            return back()->with('error','Error!, Customer Service already exists');
+        }
         CsInputer::create([
+            'admin_id' => Auth::user()->admin_id,
             'inputer_id' => Auth::user()->id,
             'cs_id' => $request->cs_id
         ]);
