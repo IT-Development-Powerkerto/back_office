@@ -21,8 +21,8 @@ class CreateCsInputersTable extends Migration
             // $table->unsignedBigInteger('cs_id');
             // $table->foreign('inputer_id')->references('id')->on('users');
             // $table->foreign('cs_id')->references('id')->on('users');
-            $table->foreignIdFor(User::class, 'inputer_id');
-            $table->foreignIdFor(User::class, 'cs_id');
+            $table->foreignId('inputer_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('cs_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });
