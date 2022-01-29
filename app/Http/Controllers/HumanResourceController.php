@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Models\User;
 
 class HumanResourceController extends Controller
 {
@@ -14,11 +15,12 @@ class HumanResourceController extends Controller
      */
     public function index()
     {
+        $users = User::all();
         $role = Role::all();
         if(auth()->user()->role_id==11){
-            return view('hr.hrDept')->with('role', $role);
+            return view('hr.hrDept')->with('role', $role)->with('user', $users);
         }elseif (auth()->user()->role_id==1){
-            return view('hr.Dashboard')->with('role', $role);
+            return view('hr.Dashboard')->with('role', $role)->with('user', $users);
         }
     }
 
@@ -87,4 +89,16 @@ class HumanResourceController extends Controller
     {
         //
     }
+
+    public function DailyCheckin()
+    {
+        $users = User::all();
+        if(auth()->user()->role_id==11){
+            return view('hr.DailyCheck-in')->with('user', $users);
+        }elseif (auth()->user()->role_id==1){
+            return view('hr.AdminDailyCheck-in')->with('user', $users);
+        }
+    }
+
+    
 }

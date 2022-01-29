@@ -1,12 +1,21 @@
 
 									<!--begin::Tables Widget 9-->
-									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull shadow-sm border" data-scroll="true" data-wheel-propagation="true">
+									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull shadow-sm border mt-6" data-scroll="true" data-wheel-propagation="true">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Closing Customer Service</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Closing</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Employees Payroll</span>
+												<span class="text-muted mt-1 fw-bold fs-7">1 Data</span>
 											</h3>
+											@if (auth()->user()->role_id == 1)
+											<form action="/dashboard" method="GET" class="d-flex">
+											@endif
+											<form action="/adv" method="GET" class="d-flex">
+												<div class="me-2 d-flex flex-row">
+													<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+													<button type="button" class="btn btn-sm btn-light btn-active-primary ms-2" style="height: 33px;" title="Click For Export">GO</button>
+												</div>
+											</form>
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
@@ -18,12 +27,9 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="">Customer</th>
-															<th class="">Product</th>
-															<th class="">Price</th>
-															<th class="">Quantity</th>
-															<th class="">Total</th>
-															<th class="">Status</th>
+															<th class="">No</th>
+															<th class="">Name</th>
+															<th class="">Preview Payroll</th>
 															<th class=" text-end">Action</th>
 														</tr>
 													</thead>
@@ -34,35 +40,18 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">Wiwit</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">1</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">Rube</h1>
-																	</div>
+																	<h1 class="text-dark fw-normal fs-6">Zall</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp. 250.000</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">5</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp. 1.000.000</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-info fw-normal fs-6 ">Waiting</h1>
+																	<a href="" class="text-primary fw-normal fs-6">Detail</a>
 																</div>
 															</td>
 															<td class="d-flex align-items-center justify-content-end">
@@ -78,12 +67,12 @@
 																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a href="" class="menu-link px-3">Approved</a>
+																		<a href="" class="menu-link px-3">Edit</a>
 																	</div>
 																	<!--end::Menu item-->
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a href="" class="menu-link px-3" >Download File</a>
+																		<a href="" class="menu-link px-3" >Delete</a>
 																		{{-- data-kt-customer-table-filter="delete_row" --}}
 																	</div>
 																	<!--end::Menu item-->

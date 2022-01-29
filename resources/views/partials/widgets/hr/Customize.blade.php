@@ -4,9 +4,18 @@
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Staff Budgeting Request</span>
-												<span class="text-muted mt-1 fw-bold fs-7">1 Staff</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Customize Employees Data</span>
+												<span class="text-muted mt-1 fw-bold fs-7">1 Data</span>
 											</h3>
+											@if (auth()->user()->role_id == 1)
+											<form action="/dashboard" method="GET" class="d-flex">
+											@endif
+											<form action="/adv" method="GET" class="d-flex">
+												<div class="me-2 d-flex flex-row">
+													<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+													<button type="button" class="btn btn-sm btn-light btn-active-primary ms-2" style="height: 33px;" title="Click For Export">GO</button>
+												</div>
+											</form>
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
@@ -18,18 +27,26 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
+															<th class="">No</th>
 															<th class="">Name</th>
-															<th class="">Phone</th>
-															<th class="">Division</th>
-															<th class="">Reason</th>
-															<th class="">Nominal</th>
-															<th class="text-end">Actions</th>
+															<th class="">Divison</th>
+															<th class="">Kind</th>
+															<th class="">Existing</th>
+															<th class="">Description</th>
+															<th class="text-end">Action</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
 														<tr>
+															<td>
+																<div class="d-flex align-items-center">
+																	<div class="d-flex justify-content-start flex-column">
+																		<h1 href="#" class="text-dark fw-normal fs-6">1</h1>
+																	</div>
+																</div>
+															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
@@ -40,23 +57,23 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-normal fs-6">081245527645</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">IT Dev.</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Costumer Service</h1>
+																	<h1 class="text-dark fw-normal fs-6">Level Grade</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Telecommunication Credits</h1>
+																	<h1 class="text-dark fw-normal fs-6">Manager</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp. 500.000</h1>
+																	<h1 class="text-dark fw-normal fs-6">Lorem ipsum dolor sit amet, consectetur ...</h1>
 																</div>
 															</td>
 															<td class="d-flex align-items-center justify-content-end">
@@ -72,18 +89,12 @@
 																<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a href="" class="menu-link px-3">Approved</a>
+																		<a href="" class="menu-link px-3">Edit</a>
 																	</div>
 																	<!--end::Menu item-->
 																	<!--begin::Menu item-->
 																	<div class="menu-item px-3">
-																		<a href="" class="menu-link px-3" >Reject</a>
-																		{{-- data-kt-customer-table-filter="delete_row" --}}
-																	</div>
-																	<!--end::Menu item-->
-																	<!--begin::Menu item-->
-																	<div class="menu-item px-3">
-																		<a href="" class="menu-link px-3" >Download File</a>
+																		<a href="" class="menu-link px-3" >Delete</a>
 																		{{-- data-kt-customer-table-filter="delete_row" --}}
 																	</div>
 																	<!--end::Menu item-->
