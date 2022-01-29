@@ -293,6 +293,22 @@ var KTWidgets = function () {
         var baseColor = KTUtil.getCssVariableValue('--bs-primary');
         var secondaryColor = KTUtil.getCssVariableValue('--bs-gray-300');
 
+        var omset_su = parseInt(document.getElementById('omset_su').value)/1000;
+        var omset_mo = parseInt(document.getElementById('omset_mo').value)/1000;
+        var omset_tu = parseInt(document.getElementById('omset_tu').value)/1000;
+        var omset_we = parseInt(document.getElementById('omset_we').value)/1000;
+        var omset_th = parseInt(document.getElementById('omset_th').value)/1000;
+        var omset_fr = parseInt(document.getElementById('omset_fr').value)/1000;
+        var omset_sa = parseInt(document.getElementById('omset_sa').value)/1000;
+
+        var advertising_su = parseInt(document.getElementById('advertising_su').value)/1000;
+        var advertising_mo = parseInt(document.getElementById('advertising_mo').value)/1000;
+        var advertising_tu = parseInt(document.getElementById('advertising_tu').value)/1000;
+        var advertising_we = parseInt(document.getElementById('advertising_we').value)/1000;
+        var advertising_th = parseInt(document.getElementById('advertising_th').value)/1000;
+        var advertising_fr = parseInt(document.getElementById('advertising_fr').value)/1000;
+        var advertising_sa = parseInt(document.getElementById('advertising_sa').value)/1000;
+
         if (!element) {
             return;
         }
@@ -300,10 +316,10 @@ var KTWidgets = function () {
         var options = {
             series: [{
                 name: 'Net Profit',
-                data: [44, 55, 57, 56, 61, 58]
+                data: [omset_su, omset_mo, omset_tu, omset_we, omset_th, omset_fr, omset_sa]
             }, {
                 name: 'Revenue',
-                data: [76, 85, 101, 98, 87, 105]
+                data: [advertising_su, advertising_mo, advertising_tu, advertising_we, advertising_th, advertising_fr, advertising_sa]
             }],
             chart: {
                 fontFamily: 'inherit',
@@ -332,7 +348,7 @@ var KTWidgets = function () {
                 colors: ['transparent']
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                categories: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
                 axisBorder: {
                     show: false,
                 },
@@ -384,7 +400,7 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return "$" + val + " thousands"
+                        return  val + " thousands"
                     }
                 }
             },

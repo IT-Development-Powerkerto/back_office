@@ -4,8 +4,17 @@
 										<div class="card-header border-0 pt-5">
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Turnover & Advertising Cost</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Income & Advertising Cost</span>
 												<span class="text-muted fw-bold fs-7">Monthly</span>
+                                                <input id="omset_week1" value="{{$omset_week1}}" hidden/>
+                                                <input id="omset_week2" value="{{$omset_week2}}" hidden/>
+                                                <input id="omset_week3" value="{{$omset_week3}}" hidden/>
+                                                <input id="omset_week4" value="{{$omset_week4}}" hidden/>
+
+                                                <input id="advertising_week1" value="{{$advertising_week1}}" hidden/>
+                                                <input id="advertising_week2" value="{{$advertising_week2}}" hidden/>
+                                                <input id="advertising_week3" value="{{$advertising_week3}}" hidden/>
+                                                <input id="advertising_week4" value="{{$advertising_week4}}" hidden/>
 											</h3>
 											<!--end::Title-->
 											{{-- <div class="card-toolbar">
@@ -62,7 +71,7 @@
 													<rect x="14" y="9" width="6" height="6" rx="3" fill="black"/>
 													{{-- <rect x="3" y="9" width="6" height="6" rx="3" fill="black" fill-opacity="0.7"/> --}}
 												</g>
-											</svg><!--end::Svg Icon--></span>Turnover
+											</svg><!--end::Svg Icon--></span>Income
 											<span class="svg-icon svg-icon-secondary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Text/Dots.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 												<g stroke="none" stroke-width="1">
 													<rect x="14" y="9" width="6" height="6" rx="3" fill="black"/>

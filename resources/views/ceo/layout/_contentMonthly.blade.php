@@ -43,7 +43,7 @@
 				<ul class="nav">
 					<li class="nav-item">
 						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-							href="#">Daily</a>
+							href="{{route('ceo')}}">Daily</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"

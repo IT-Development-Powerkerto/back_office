@@ -4,8 +4,33 @@
 										<div class="card-header border-0 pt-5">
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Turnover & Advertising Cost</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Income & Advertising Cost</span>
 												<span class="text-muted fw-bold fs-7">Monthly</span>
+                                                <input id="omset_jan" value="{{$omset_jan}}" hidden/>
+                                                <input id="omset_feb" value="{{$omset_feb}}" hidden/>
+                                                <input id="omset_mar" value="{{$omset_mar}}" hidden/>
+                                                <input id="omset_apr" value="{{$omset_apr}}" hidden/>
+                                                <input id="omset_may" value="{{$omset_may}}" hidden/>
+                                                <input id="omset_jun" value="{{$omset_jun}}" hidden/>
+                                                <input id="omset_jul" value="{{$omset_jul}}" hidden/>
+                                                <input id="omset_aug" value="{{$omset_aug}}" hidden/>
+                                                <input id="omset_sep" value="{{$omset_sep}}" hidden/>
+                                                <input id="omset_okt" value="{{$omset_okt}}" hidden/>
+                                                <input id="omset_nov" value="{{$omset_nov}}" hidden/>
+                                                <input id="omset_des" value="{{$omset_des}}" hidden/>
+
+                                                <input id="advertising_jan" value="{{$advertising_jan}}" hidden/>
+                                                <input id="advertising_feb" value="{{$advertising_feb}}" hidden/>
+                                                <input id="advertising_mar" value="{{$advertising_mar}}" hidden/>
+                                                <input id="advertising_apr" value="{{$advertising_apr}}" hidden/>
+                                                <input id="advertising_may" value="{{$advertising_may}}" hidden/>
+                                                <input id="advertising_jun" value="{{$advertising_jun}}" hidden/>
+                                                <input id="advertising_jul" value="{{$advertising_jul}}" hidden/>
+                                                <input id="advertising_aug" value="{{$advertising_aug}}" hidden/>
+                                                <input id="advertising_sep" value="{{$advertising_sep}}" hidden/>
+                                                <input id="advertising_okt" value="{{$advertising_okt}}" hidden/>
+                                                <input id="advertising_nov" value="{{$advertising_nov}}" hidden/>
+                                                <input id="advertising_des" value="{{$advertising_des}}" hidden/>
 											</h3>
 											<!--end::Title-->
 											{{-- <div class="card-toolbar">
@@ -62,7 +87,7 @@
 													<rect x="14" y="9" width="6" height="6" rx="3" fill="black"/>
 													{{-- <rect x="3" y="9" width="6" height="6" rx="3" fill="black" fill-opacity="0.7"/> --}}
 												</g>
-											</svg><!--end::Svg Icon--></span>Turnover
+											</svg><!--end::Svg Icon--></span>Income
 											<span class="svg-icon svg-icon-secondary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Text/Dots.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 												<g stroke="none" stroke-width="1">
 													<rect x="14" y="9" width="6" height="6" rx="3" fill="black"/>
