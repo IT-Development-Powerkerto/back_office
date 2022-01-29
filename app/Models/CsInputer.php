@@ -10,5 +10,9 @@ class CsInputer extends Model
 {
     use HasFactory, SoftDeletes;
     protected $table = 'cs_inputers';
-    protected $guarded = [];
+    protected $guarded = ['id'];
+
+    public function cs(){
+        return $this->belongsTo(User::class);
+    }
 }

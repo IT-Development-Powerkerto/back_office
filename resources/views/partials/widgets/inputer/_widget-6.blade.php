@@ -97,13 +97,13 @@
 																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>
 															</td>
 															<td>
-																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $cs_inputer->name}}</label>
+																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $cs_inputer->cs->name}}</label>
 															</td>
 															<td>
-																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $cs_inputer->email }}</label>
+																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $cs_inputer->cs->email }}</label>
 															</td>
 															<td>
-																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $cs_inputer->phone }}</label>
+																<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $cs_inputer->cs->phone }}</label>
 															</td>
 															<td>
 																<form action="{{route('inputer.CS_destroy',['id' => $cs_inputer->id])}}" method="POST">
