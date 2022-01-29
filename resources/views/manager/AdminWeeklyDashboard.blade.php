@@ -30,7 +30,7 @@
 <body id="kt_body"
 	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed">
 
-	@include('ceo/layout/masterAdminWeekly')
+	@include('manager/layout/masterAdminWeekly')
 
 	<script>
 		var hostUrl = "assets/";

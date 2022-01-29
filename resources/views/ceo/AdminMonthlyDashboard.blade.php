@@ -30,7 +30,7 @@
 <body id="kt_body"
 	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed">
 
-	@include('ceo/layout/masterMonthly')
+	@include('ceo/layout/masterAdminMonthly')
 
 	<script>
 		var hostUrl = "assets/";
