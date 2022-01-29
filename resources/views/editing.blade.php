@@ -360,13 +360,13 @@
 												@if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2 || auth()->user()->role_id == 3)
 													<select name="role_id" id="role_id1" class="form-control">
 														<option selected value="{{ $user->role_id }}" hidden>{{$user->role->name}}</option>
-														@foreach ($roles as $role)
-                                                            @if (auth()->user()->admin_id != 1)
-                                                                <option value={{$role->id == 1}} hidden>{{$role->name}}</option>
-                                                            @else
-                                                                <option value={{$role->id}}>{{$role->name}}</option>
-                                                            @endif
-														@endforeach
+														@if (auth()->user()->admin_id != 1)
+															@foreach ($roles->skip(1) as $role)
+                                                                <option value="{{$role->id}}">{{$role->name}}</option>
+															@endforeach
+														@else
+															<option value={{$role->id}}>{{$role->name}}</option>
+														@endif
 													</select>
 												@else
 													<label class="form-control">{{$user->role->name}}</label>
