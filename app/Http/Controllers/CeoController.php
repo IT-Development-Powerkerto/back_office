@@ -21,7 +21,7 @@ class CeoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $day = Carbon::now()->format('Y-m-d');
         $user_expired = auth()->user()->expired_at;
@@ -265,7 +265,7 @@ class CeoController extends Controller
         return Redirect::back();
     }
 
-    public function WeeklyDashboard() {
+    public function WeeklyDashboard(Request $request) {
         $day = Carbon::now()->format('Y-m-d');
         $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
@@ -401,7 +401,7 @@ class CeoController extends Controller
             }
         }
     }
-    public function MonthlyDashboard() {
+    public function MonthlyDashboard(Request $request) {
         $day = Carbon::now()->format('Y-m-d');
         $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();

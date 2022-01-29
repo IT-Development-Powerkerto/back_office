@@ -4,8 +4,23 @@
 										<div class="card-header border-0 pt-5">
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Turnover & Advertising Cost</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Income & Advertising Cost</span>
 												<span class="text-muted fw-bold fs-7">Monthly</span>
+                                                <input id="omset_su" value="{{$omset_su}}" hidden/>
+                                                <input id="omset_mo" value="{{$omset_mo}}" hidden/>
+                                                <input id="omset_tu" value="{{$omset_tu}}" hidden/>
+                                                <input id="omset_we" value="{{$omset_we}}" hidden/>
+                                                <input id="omset_th" value="{{$omset_th}}" hidden/>
+                                                <input id="omset_fr" value="{{$omset_fr}}" hidden/>
+                                                <input id="omset_sa" value="{{$omset_sa}}" hidden/>
+
+                                                <input id="advertising_su" value="{{$advertising_su}}" hidden/>
+                                                <input id="advertising_mo" value="{{$advertising_mo}}" hidden/>
+                                                <input id="advertising_tu" value="{{$advertising_tu}}" hidden/>
+                                                <input id="advertising_we" value="{{$advertising_we}}" hidden/>
+                                                <input id="advertising_th" value="{{$advertising_th}}" hidden/>
+                                                <input id="advertising_fr" value="{{$advertising_fr}}" hidden/>
+                                                <input id="advertising_sa" value="{{$advertising_sa}}" hidden/>
 											</h3>
 											<!--end::Title-->
 											<div class="card-toolbar">
@@ -62,7 +77,7 @@
 													<rect x="14" y="9" width="6" height="6" rx="3" fill="black"/>
 													{{-- <rect x="3" y="9" width="6" height="6" rx="3" fill="black" fill-opacity="0.7"/> --}}
 												</g>
-											</svg><!--end::Svg Icon--></span>Turnover
+											</svg><!--end::Svg Icon--></span>Income
 											<span class="svg-icon svg-icon-secondary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Text/Dots.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 												<g stroke="none" stroke-width="1">
 													<rect x="14" y="9" width="6" height="6" rx="3" fill="black"/>

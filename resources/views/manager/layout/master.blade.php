@@ -15,7 +15,7 @@
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-				@include('manager/layout/_contenManager')
+				@include('manager/layout/_contentManager')
 
 			</div>
 			<!--end::Content-->

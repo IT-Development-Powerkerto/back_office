@@ -293,6 +293,32 @@ var KTWidgets = function () {
         var baseColor = KTUtil.getCssVariableValue('--bs-primary');
         var secondaryColor = KTUtil.getCssVariableValue('--bs-gray-300');
 
+        var omset_jan = parseInt(document.getElementById('omset_jan').value)/1000;
+        var omset_feb = parseInt(document.getElementById('omset_feb').value)/1000;
+        var omset_mar = parseInt(document.getElementById('omset_mar').value)/1000;
+        var omset_apr = parseInt(document.getElementById('omset_apr').value)/1000;
+        var omset_may = parseInt(document.getElementById('omset_may').value)/1000;
+        var omset_jun = parseInt(document.getElementById('omset_jun').value)/1000;
+        var omset_jul = parseInt(document.getElementById('omset_jul').value)/1000;
+        var omset_aug = parseInt(document.getElementById('omset_aug').value)/1000;
+        var omset_sep = parseInt(document.getElementById('omset_sep').value)/1000;
+        var omset_okt = parseInt(document.getElementById('omset_okt').value)/1000;
+        var omset_nov = parseInt(document.getElementById('omset_nov').value)/1000;
+        var omset_des = parseInt(document.getElementById('omset_des').value)/1000;
+
+        var advertising_jan = parseInt(document.getElementById('advertising_jan').value)/1000;
+        var advertising_feb = parseInt(document.getElementById('advertising_feb').value)/1000;
+        var advertising_mar = parseInt(document.getElementById('advertising_mar').value)/1000;
+        var advertising_apr = parseInt(document.getElementById('advertising_apr').value)/1000;
+        var advertising_may = parseInt(document.getElementById('advertising_may').value)/1000;
+        var advertising_jun = parseInt(document.getElementById('advertising_jun').value)/1000;
+        var advertising_jul = parseInt(document.getElementById('advertising_jul').value)/1000;
+        var advertising_aug = parseInt(document.getElementById('advertising_aug').value)/1000;
+        var advertising_sep = parseInt(document.getElementById('advertising_sep').value)/1000;
+        var advertising_okt = parseInt(document.getElementById('advertising_okt').value)/1000;
+        var advertising_nov = parseInt(document.getElementById('advertising_nov').value)/1000;
+        var advertising_des = parseInt(document.getElementById('advertising_des').value)/1000;
+
         if (!element) {
             return;
         }
@@ -300,10 +326,10 @@ var KTWidgets = function () {
         var options = {
             series: [{
                 name: 'Net Profit',
-                data: [44, 55, 57, 56, 61, 58]
+                data: [omset_jan, omset_feb, omset_mar, omset_apr, omset_may, omset_jun, omset_jul, omset_aug, omset_sep, omset_okt, omset_nov, omset_des]
             }, {
                 name: 'Revenue',
-                data: [76, 85, 101, 98, 87, 105]
+                data: [advertising_jan, advertising_feb, advertising_mar, advertising_apr, advertising_may, advertising_jun, advertising_jul, advertising_aug, advertising_sep, advertising_okt, advertising_nov, advertising_des]
             }],
             chart: {
                 fontFamily: 'inherit',
@@ -332,7 +358,7 @@ var KTWidgets = function () {
                 colors: ['transparent']
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
                 axisBorder: {
                     show: false,
                 },
@@ -384,7 +410,7 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return "$" + val + " thousands"
+                        return  val + " thousands"
                     }
                 }
             },

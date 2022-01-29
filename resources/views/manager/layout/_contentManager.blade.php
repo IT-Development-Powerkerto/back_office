@@ -1,21 +1,21 @@
 <!--begin::Container-->
 <div id="kt_content_container" class="container-xxl" >
-	
+
 	<!--begin::Row-->
 	<div class="row gy-5 g-xl-12 my-5">
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
 			@include('partials/widgets/manager/_widget-5')
-			
-			
+
+
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
 			@include('partials/widgets/manager/_widget-3')
-			
+
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
@@ -62,9 +62,9 @@
 			@include('partials/widgets/charts/_widget-2')
 			<!--begin::Col-->
 			<div class="col-xl-12 mt-7">
-	
+
 				@include('partials/widgets/charts/_widget-4')
-	
+
 			</div>
 			<!--end::Col-->
 
@@ -76,9 +76,9 @@
 			@include('partials/widgets/charts/_widget-3')
 			<!--begin::Col-->
 			<div class="col-xl-12 mt-7">
-	
+
 				@include('partials/widgets/charts/_widget-5')
-	
+
 			</div>
 			<!--end::Col-->
 

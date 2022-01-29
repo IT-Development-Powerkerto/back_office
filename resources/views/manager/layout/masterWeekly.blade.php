@@ -15,7 +15,7 @@
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-				@include('manager/layout/_contenWeekly')
+				@include('manager/layout/_contentWeekly')
 
 			</div>
 			<!--end::Content-->

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes, CascadeSoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +21,7 @@ class User extends Authenticatable
 
     protected $table = 'users';
     protected $primaryKey = 'id';
+    protected $cascadeDeletes = ['cs_inputer', 'inputer'];
 
     // protected $fillable = [
     //     'name',
@@ -97,5 +99,11 @@ class User extends Authenticatable
     }
     public function evaluation(){
         return $this->hasMany(Evaluation::class);
+    }
+    public function cs_inputer(){
+        return $this->hasMany(CsInputer::class, 'cs_id');
+    }
+    public function inputer(){
+        return $this->hasMany(CsInputer::class, 'inputer_id');
     }
 }
