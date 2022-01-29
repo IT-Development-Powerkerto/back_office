@@ -13,6 +13,10 @@
 		<link href="{{ URL::asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ URL::asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<!-- <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" /> -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 		<!--end::Global Stylesheets Bundle-->
 	</head>
 	<!--end::Head-->
@@ -68,7 +72,7 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Daily Check-in</h3>
+										<h3 class="fw-bolder m-0">Customize Employees Data</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
@@ -92,16 +96,24 @@
                                         </div>
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
-												<label for="inputreason" class="col-form-label">Reason</label>
+												<label for="inputkind" class="col-form-label">Kind</label>
 											</div>
 											<div class="dropdown col-10">
-												<select name="reason" id="reason" class="form-control select2">
-													<option hidden>Select Reason</option>
-													<option value="" required>Leave Permit</option>
-													<option value="" required>Absence</option>
-													<option value="" required>Late on Work</option>
-													<option value="" required>Work From Home</option>
+												<select name="kind" id="kind" class="form-control select2">
+													<option hidden>Select Kind</option>
+													<option value="" required>Level Grade</option>
+													<option value="" required>Meal Allowance</option>
+													<option value="" required>Boarding House Allowance</option>
+													<option value="" required>Transportation Allowance</option>
 												</select>
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputexisting" class="col-form-label">Existing</label>
+											</div>
+											<div class="col-10">
+												<input type="text" class="form-control text-muted" name="existing" value="Details... (e.g Manager or Rp 1 Mio)" />
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -155,6 +167,18 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<!--end::Javascript-->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+		<script>
+			$(function() {
+			  $('input[name="daterange"]').daterangepicker({
+				opens: 'left'
+			  }, function(start, end, label) {
+				console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+			  });
+			});
+		</script>
 	</body>
 	<!--end::Body-->
 </html>

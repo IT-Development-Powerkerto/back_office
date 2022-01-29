@@ -13,6 +13,10 @@
 		<link href="{{ URL::asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ URL::asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<!-- <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" /> -->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 		<!--end::Global Stylesheets Bundle-->
 	</head>
 	<!--end::Head-->
@@ -68,7 +72,7 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Daily Check-in</h3>
+										<h3 class="fw-bolder m-0">Leave Application</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
@@ -82,7 +86,7 @@
                                                 <label for="inputDivision" class="col-form-label">Name</label>
                                             </div>
                                             <div class="dropdown col-10">
-												<select name="user" id="user" class="form-control text-muted select2">
+												<select name="user" id="user" class="form-control select2">
 													<option hidden>Select Staff</option>
 													@foreach ($user as $user)
 														<option value="{{$user->name}}" required>{{$user->name}}</option>
@@ -95,11 +99,32 @@
 												<label for="inputreason" class="col-form-label">Reason</label>
 											</div>
 											<div class="dropdown col-10">
-												<select name="reason" id="reason" class="form-control text-muted select2">
+												<select name="reason" id="reason" class="form-control select2">
 													<option hidden>Select Reason</option>
 													<option value="" required>Leave Permit</option>
 													<option value="" required>Leave Permit Bonus</option>
 												</select>
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputdays" class="col-form-label">Days</label>
+											</div>
+											<div class="col-10">
+												<input type="text" class="form-control" name="days" value="Days" />
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
+												<label for="inputdate" class="col-form-label">Date</label>
+											</div>
+											<div class="col-10">
+												<div class='input-group' id='kt_daterangepicker_2'>
+													<input type="text" class="form-control" name="daterange" value="Pick Date Range" />
+													<div class="input-group-append ">
+														<span class="input-group-text"><i class="la la-calendar-check-o" style="font-size: 24px"></i></span>
+													</div>
+												</div>
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">
@@ -128,7 +153,7 @@
 							<!--begin::Copyright-->
 							<div class="text-dark order-2 order-md-1">
 								<span class="text-gray-400 fw-bold me-1">Created by</span>
-								<a href="https://powerkerto.com" target="_blank" class="text-muted text-hover-primary fw-bold me-2 fs-6">Powerkerto</a>
+								<a href="https://powerkerto.com" target="_blank" class= text-hover-primary fw-bold me-2 fs-6">Powerkerto</a>
 							</div>
 							<!--end::Copyright-->
 						</div>
@@ -153,6 +178,18 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<!--end::Javascript-->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+		<script>
+			$(function() {
+			  $('input[name="daterange"]').daterangepicker({
+				opens: 'left'
+			  }, function(start, end, label) {
+				console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+			  });
+			});
+		</script>
 	</body>
 	<!--end::Body-->
 </html>

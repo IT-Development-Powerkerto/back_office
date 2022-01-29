@@ -91,7 +91,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Leave Application</a>
+						<a href="{{ route ('LeaveApplication') }}" class="menu-title">Leave Application</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">
@@ -99,7 +99,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Employees Data</a>
+						<a href="{{ route ('Customize') }}" class="menu-title">Employees Data</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">

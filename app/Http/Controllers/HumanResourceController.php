@@ -100,5 +100,25 @@ class HumanResourceController extends Controller
         }
     }
 
+    public function LeaveApplication()
+    {
+        $users = User::all();
+        if(auth()->user()->role_id==11){
+            return view('hr.LeaveApplication')->with('user', $users);
+        }elseif (auth()->user()->role_id==1){
+            return view('hr.AdminLeaveApplication')->with('user', $users);
+        }
+    }
+
+    public function Customize()
+    {
+        $users = User::all();
+        if(auth()->user()->role_id==11){
+            return view('hr.Customize')->with('user', $users);
+        }elseif (auth()->user()->role_id==1){
+            return view('hr.AdminCustomize')->with('user', $users);
+        }
+    }
+
     
 }

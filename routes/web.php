@@ -90,7 +90,8 @@ Route::get('/MonthlyDashboard', [DashboardController::class, 'MonthlyDashboard']
 
 Route::resource('/HumanResource', HumanResourceController::class)->middleware('auth');
 Route::get('/DailyCheckin', [HumanResourceController::class, 'DailyCheckin'])->name('DailyCheckin')->middleware('auth');
-
+Route::get('/LeaveApplication', [HumanResourceController::class, 'LeaveApplication'])->name('LeaveApplication')->middleware('auth');
+Route::get('/CustomizeEmployeesData', [HumanResourceController::class, 'Customize'])->name('Customize')->middleware('auth');
 
 Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld')->middleware('auth');
 

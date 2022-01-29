@@ -82,7 +82,7 @@
                                                 <label for="inputDivision" class="col-form-label">Name</label>
                                             </div>
                                             <div class="dropdown col-10">
-												<select name="user" id="user" class="form-control text-muted select2">
+												<select name="user" id="user" class="form-control select2">
 													<option hidden>Select Staff</option>
 													@foreach ($user as $user)
 														<option value="{{$user->name}}" required>{{$user->name}}</option>
@@ -95,7 +95,7 @@
 												<label for="inputreason" class="col-form-label">Reason</label>
 											</div>
 											<div class="dropdown col-10">
-												<select name="reason" id="reason" class="form-control text-muted select2">
+												<select name="reason" id="reason" class="form-control select2">
 													<option hidden>Select Reason</option>
 													<option value="" required>Leave Permit</option>
 													<option value="" required>Absence</option>
@@ -130,7 +130,7 @@
 							<!--begin::Copyright-->
 							<div class="text-dark order-2 order-md-1">
 								<span class="text-gray-400 fw-bold me-1">Created by</span>
-								<a href="https://powerkerto.com" target="_blank" class="text-muted text-hover-primary fw-bold me-2 fs-6">Powerkerto</a>
+								<a href="https://powerkerto.com" target="_blank" class= text-hover-primary fw-bold me-2 fs-6">Powerkerto</a>
 							</div>
 							<!--end::Copyright-->
 						</div>
