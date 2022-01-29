@@ -8,7 +8,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
-	
+
 		@if(session()->has('error'))
 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
 				{{ session('error') }}
@@ -30,11 +30,11 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-						href="{{ route ('weeklydashboard') }}">Weekly</a>
+						href="{{ route ('WeeklyADV') }}">Weekly</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
-						href="{{ route ('monthlydashboard') }}">Monthly</a>
+						href="{{ route ('MonthlyADV') }}">Monthly</a>
 				</li>
 			</ul>
 		</div>
@@ -52,9 +52,9 @@
 			@include('partials/widgets/charts/_widget-2')
 			<!--begin::Col-->
 			<div class="col-xl-12 mt-7">
-	
+
 				@include('partials/widgets/charts/_widget-4')
-	
+
 			</div>
 			<!--end::Col-->
 
@@ -66,9 +66,9 @@
 			@include('partials/widgets/charts/_widget-3')
 			<!--begin::Col-->
 			<div class="col-xl-12 mt-7">
-	
+
 				@include('partials/widgets/charts/_widget-5')
-	
+
 			</div>
 			<!--end::Col-->
 
@@ -106,17 +106,17 @@
 		<!--end::Col-->
 		<!--begin::Col-->
 		<div class="col-xl-4">
-			
+
 			@include('partials/widgets/lists/_widget-5')
-			
-			
+
+
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
 			@include('partials/widgets/tables/_widget-7')
-			
+
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
