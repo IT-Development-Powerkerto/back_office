@@ -13,7 +13,47 @@
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
-		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="{{ route ('DailyCheckin') }}">
+				<span class="menu-title">Daily Check-in</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="{{ route ('LeaveApplication') }}">
+				<span class="menu-title">Leave Application</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="{{ route ('Customize') }}">
+				<span class="menu-title">Employees Data</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="#">
+				<span class="menu-title">Employees Payroll</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="{{ route ('budgetingreq') }}">
+				<span class="menu-title">Budgeting Request</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="{{ route ('budgeting_realization.index') }}">
+				<span class="menu-title">Budgeting Realization</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+	</div> 
+
+
+
+		{{-- <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
 			class="menu-item menu-lg-down-accordion me-lg-1">
 			<span class="menu-link py-3">
 				<span class="menu-title">Human Resource</span>
@@ -25,24 +65,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Link</a>
-					</span>
-				</div>
-			</div>
-		</div>
-		{{-- <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-			class="menu-item menu-lg-down-accordion me-lg-1">
-			<span class="menu-link py-3">
-				<span class="menu-title">Advertiser</span>
-				<span class="menu-arrow d-lg-none"></span>
-			</span>
-			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-				<div class="menu-item menu-lg-down-accordion">
-					<span class="menu-link py-3">
-						<span class="menu-bullet">
-							<span class="bullet bullet-dot"></span>
-						</span>
-						<a href="{{ route('campaign.index') }}" class="menu-title">Campaign</a>
+						<a href="{{ route ('HumanResource.index') }}" class="menu-title">HR Dashboard</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">
@@ -50,30 +73,53 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="{{ route('operator.index') }}" class="menu-title">Operator</a>
+						<a href="{{ route ('DailyCheckin') }}" class="menu-title">Daily Check-in</a>
 					</span>
 				</div>
-			</div>
-		</div>
-		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
-			class="menu-item menu-lg-down-accordion me-lg-1">
-			<span class="menu-link py-3">
-				<span class="menu-title">Costumer Service</span>
-				<span class="menu-arrow d-lg-none"></span>
-			</span>
-			<div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-rounded-0 py-lg-4 w-lg-225px">
-				<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start"
-					class="menu-item menu-lg-down-accordion">
+				<div class="menu-item menu-lg-down-accordion">
 					<span class="menu-link py-3">
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<span class="menu-title">Link</span>
+						<a href="{{ route ('LeaveApplication') }}" class="menu-title">Leave Application</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route ('Customize') }}" class="menu-title">Employees Data</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="#" class="menu-title">Employees Payroll</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route ('budgetingreq') }}" class="menu-title">Budgeting Request</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="{{ route ('budgeting_realization.index') }}" class="menu-title">Budgeting Realization</a>
 					</span>
 				</div>
 			</div>
-		</div> --}}
-	</div>
+		</div>
+		
+	</div> --}}
 	<!--end::Menu-->
 </div>
 <!--end::Menu wrapper-->

@@ -64,9 +64,11 @@
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" name="password" class="form-control rounded-pill" id="exampleInputPassword1" required>
                     </div>
-                    <div class="d-flex flex-row justify-content-between align-items-center px-3">
-                        <button type="submit" class="btn btn-primary rounded-pill text-end">Login</button>
-                        <a href="/register" class="text-primary" style="text-decoration: none">Create Your Account</a>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        
+                        <button type="submit" class="btn btn-primary rounded-pill" style="width: 100%">Login</button>
+                        <a href="#" class="text-primary py-3" style="text-decoration: none">Forget Your Password ?</a>
+                        <label class="text-dark" style="font-size: 12px">don't have an account? Click Right <a href="/register" class="text-primary" style="text-decoration: none"> Here</a></label>
                     </div>
                 </form>
             </div>

@@ -13,7 +13,42 @@
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
-		<div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="{{ route('campaign.index') }}">
+				<span class="menu-title">Campaign</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="{{ route('operator.index') }}">
+				<span class="menu-title">Operator</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="{{ route('budgeting.index') }}">
+				<span class="menu-title">Budgeting Advertising</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="{{ route ('budgeting_realization.index') }}">
+				<span class="menu-title">Budgeting Realization</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3" href="{{ route ('evaluation.index') }}">
+				<span class="menu-title">Routine Evaluation</span>
+				<span class="menu-arrow d-lg-none"></span>
+			</a>
+		</div>
+	</div>
+
+
+
+
+		{{-- <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start"
 			class="menu-item menu-lg-down-accordion me-lg-1">
 			<span class="menu-link py-3">
 				<span class="menu-title">Advertiser</span>
@@ -61,8 +96,9 @@
 					</span>
 				</div>
 			</div>
-		</div>
-	</div>
+		</div> 
+	</div>--}}
+	
 	<!--end::Menu-->
 </div>
 <!--end::Menu wrapper-->
