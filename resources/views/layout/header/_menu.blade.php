@@ -83,6 +83,38 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
+						<a href="{{ route ('DailyCheckin') }}" class="menu-title">Daily Check-in</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="#" class="menu-title">Leave Application</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="#" class="menu-title">Employees Data</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
+						<a href="#" class="menu-title">Employees Payroll</a>
+					</span>
+				</div>
+				<div class="menu-item menu-lg-down-accordion">
+					<span class="menu-link py-3">
+						<span class="menu-bullet">
+							<span class="bullet bullet-dot"></span>
+						</span>
 						<a href="{{ route ('budgetingreq') }}" class="menu-title">Budgeting Request</a>
 					</span>
 				</div>

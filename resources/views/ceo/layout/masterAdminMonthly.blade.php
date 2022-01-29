@@ -7,7 +7,7 @@
 		<!--begin::Wrapper-->
 		<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 
-			@include('ceo/layout/header/_baseCEO')
+			@include('layout/header/_base')
 
 
 			@include('ceo/layout/_toolbarCEO')

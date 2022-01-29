@@ -15,10 +15,10 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									@include('partials/widgets/hr/ClosingCS')
-									@include('partials/widgets/hr/BudgetingReq')
-									@include('partials/widgets/hr/StaffBudgetingInfo')
-									@include('partials/widgets/hr/LogBudgeting')   
+									@include('partials/widgets/hr/Check-in')
+									@include('partials/widgets/hr/LeaveApplication')
+									@include('partials/widgets/hr/Customize')
+									@include('partials/widgets/hr/EmployeesPayroll')   
 								</div>
 								<!--end::Card body-->
 							</div>

@@ -7,7 +7,7 @@
 		<!--begin::Wrapper-->
 		<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 
-			@include('ceo/layout/header/_baseCEO')
+			@include('layout/header/_base')
 
 
 			@include('ceo/layout/_toolbarCEO')
@@ -15,7 +15,7 @@
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-				@include('ceo/layout/_contentMonthly')
+				@include('ceo/layout/_contentWeekly')
 
 			</div>
 			<!--end::Content-->

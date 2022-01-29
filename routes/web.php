@@ -89,6 +89,8 @@ Route::get('/WeeklyDashboard', [DashboardController::class, 'WeeklyDashboard'])-
 Route::get('/MonthlyDashboard', [DashboardController::class, 'MonthlyDashboard'])->name('monthlydashboard')->middleware('auth');
 
 Route::resource('/HumanResource', HumanResourceController::class)->middleware('auth');
+Route::get('/DailyCheckin', [HumanResourceController::class, 'DailyCheckin'])->name('DailyCheckin')->middleware('auth');
+
 
 Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld')->middleware('auth');
 
