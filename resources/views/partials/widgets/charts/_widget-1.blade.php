@@ -5,7 +5,7 @@
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Income & Advertising Cost</span>
-												<span class="text-muted fw-bold fs-7">Monthly</span>
+												<span class="text-muted fw-bold fs-7">Daily</span>
                                                 <input id="omset_su" value="{{$omset_su}}" hidden/>
                                                 <input id="omset_mo" value="{{$omset_mo}}" hidden/>
                                                 <input id="omset_tu" value="{{$omset_tu}}" hidden/>

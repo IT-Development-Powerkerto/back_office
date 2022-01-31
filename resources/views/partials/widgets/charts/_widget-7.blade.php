@@ -14,7 +14,7 @@
 											</span>
 											<!--end::Svg Icon-->
                                             <div class="text-light fw-bolder fs-2 mb-2 mt-5">Rp. {{($lead_day_count == 0) ? 0 : $advertising_day_count / $lead_day_count}}</div>
-											<div class="fw-bold text-light">Closing Per Rate</div>
+											<div class="fw-bold text-light">Cost Per Result</div>
 										</div>
 										<!--end::Body-->
 									</label>
