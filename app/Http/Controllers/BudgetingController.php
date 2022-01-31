@@ -243,6 +243,10 @@ class BudgetingController extends Controller
             return view('budgeting.BudgetingReqCS')->with('role', $role)->with('budgeting', $budgeting);
         }elseif (auth()->user()->role_id==4){
             return view('budgeting.BudgetingReqADV')->with('role', $role)->with('budgeting', $budgeting);
+        }elseif (auth()->user()->role_id==10){
+            return view('budgeting.BudgetingReqInputer')->with('role', $role)->with('budgeting', $budgeting);
+        }elseif (auth()->user()->role_id==9){
+            return view('budgeting.BudgetingReqFinance')->with('role', $role)->with('budgeting', $budgeting);
         }
     }
 
