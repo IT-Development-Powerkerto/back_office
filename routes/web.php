@@ -31,6 +31,7 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\InputerController;
 use App\Http\Controllers\RajaOngkirController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\ErrorPagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -175,5 +176,4 @@ Route::get('ceo/reject/{id}', [CeoController::class, 'reject'])->name('ceo.rejec
 Route::get('manager/approve/{id}', [ManagerController::class, 'approve'])->name('manager.approve')->middleware('auth');
 Route::get('manager/reject/{id}', [ManagerController::class, 'reject'])->name('manager.reject')->middleware('auth');
 
-
-
+Route::get('/404', [ErrorPagesController::class, 'abort'])->name('error-404');

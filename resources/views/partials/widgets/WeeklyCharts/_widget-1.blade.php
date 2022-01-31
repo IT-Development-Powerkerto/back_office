@@ -5,7 +5,7 @@
 											<!--begin::Title-->
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Income & Advertising Cost</span>
-												<span class="text-muted fw-bold fs-7">Monthly</span>
+												<span class="text-muted fw-bold fs-7">Weekly</span>
                                                 <input id="omset_week1" value="{{$omset_week1}}" hidden/>
                                                 <input id="omset_week2" value="{{$omset_week2}}" hidden/>
                                                 <input id="omset_week3" value="{{$omset_week3}}" hidden/>
