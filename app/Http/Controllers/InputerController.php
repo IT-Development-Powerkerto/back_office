@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Exports\InputersExport;
+use App\Models\Announcement;
 use App\Models\Campaign;
 use App\Models\CsInputer;
 use Illuminate\Http\Request;
 use App\Models\Inputer;
+use App\Models\Lead;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
@@ -29,23 +31,27 @@ class InputerController extends Controller
             } else {
                 $day = Carbon::now()->format('Y-m-d');
             }
+            $leads = Lead::all();
+            $announcements = Announcement::all();
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
-            return view('inputer.Inputer', compact(['inputers', 'cs', 'cs_inputers']))->with('operators', $operator);
+            return view('inputer.Inputer', compact(['inputers', 'cs', 'cs_inputers', 'leads', 'announcements']))->with('operators', $operator);
         }else if(Auth::user()->role_id == 1){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
             } else {
                 $day = Carbon::now()->format('Y-m-d');
             }
+            $leads = Lead::all();
+            $announcements = Announcement::all();
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             // $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             // dd($cs_inputers);
-            return view('inputer.Dashboard', compact(['inputers', 'cs', 'cs_inputers']));
+            return view('inputer.Dashboard', compact(['inputers', 'cs', 'cs_inputers', 'leads', 'announcements']));
         }else{
             return redirect()->back();
         }
