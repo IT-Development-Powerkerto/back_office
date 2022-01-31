@@ -1,10 +1,10 @@
 
 									<!--begin::Statistics Widget 5-->
-									<label class="card card-xl-stretch mb-5 mb-xl-8" style="background-color: rgb(124, 217, 167, 0.3)">
+									<label class="card card-xl-stretch mb-5 mb-xl-8 bg-success">
 										<!--begin::Body-->
 										<div class="card-body">
 											<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
-											<span class="svg-icon svg-icon-success svg-icon-3x ms-n1">
+											<span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 														<polygon points="0 0 24 0 24 24 0 24"/>
@@ -13,8 +13,8 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-light fw-bolder fs-2 mb-2 mt-5">{{($lead_month_count == 0) ? 0 : $advertising_month_count / $lead_month_count}} %</div>
-											<div class="fw-bold text-dark">Cost Per Result</div>
+											<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{($lead_month_count == 0) ? 0 : $advertising_month_count / $lead_month_count}} %</div>
+											<div class="fw-bold text-white">Cost Per Result</div>
 										</div>
 										<!--end::Body-->
 									</label>

@@ -1,10 +1,10 @@
 
 									<!--begin::Statistics Widget 5-->
-									<label class="card card-xl-stretch mb-5 mb-xl-8" style="background-color: rgb(241, 128, 65, 0.3)">
+									<label class="card card-xl-stretch mb-5 mb-xl-8" style="background-color:rgb(231, 65, 231);">
 										<!--begin::Body-->
 										<div class="card-body">
 											<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
-											<span class="svg-icon svg-icon-danger svg-icon-3x ms-n1">
+											<span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 														<polygon points="0 0 24 0 24 24 0 24"/>
@@ -14,8 +14,8 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-black fw-bolder fs-2 mb-2 mt-5">{{$user_count}}</div>
-											<div class="fw-bold text-black">Total Staff</div>
+											<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{$user_count}}</div>
+											<div class="fw-bold text-white">Total Staff</div>
 										</div>
 										<!--end::Body-->
 									</label>
