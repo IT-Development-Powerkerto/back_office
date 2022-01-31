@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Activity Evaluation</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('status', '!=', 2)->where('requirement', '>=', 1000000)->count()}} Activity</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$evaluation->where('admin_id', auth()->user()->admin_id)->count()}} Activity</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<form action="/dashboard" method="GET" class="d-flex">
@@ -39,45 +39,54 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
+                                                        <?php
+                                                            $n = 0;
+                                                        ?>
+                                                        @foreach ($evaluation as $evaluation)
 														<tr>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<h1 href="#" class="text-dark fw-normal fs-6">1</h1>
+																		<h1 href="#" class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
 																	</div>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Diska</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$evaluation->user->name}}</h1>
+																</div>
+															</td>
+															<td>
+                                                                <div class="d-flex align-items-center">
+                                                                    @if ($evaluation->product_id == 0)
+                                                                        <h1 class="text-dark fw-normal fs-6">All</h1>
+                                                                    @else
+                                                                        <h1 class="text-dark fw-normal fs-6">{{$evaluation->product->name}}</h1>
+                                                                    @endif
+                                                                </div>
+                                                            </td>
+															<td>
+																<div class="d-flex align-items-center">
+																	<h1 class="text-dark fw-normal fs-6">{{$evaluation->date}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Generos</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$evaluation->time}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">20-02-2022</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$evaluation->resistance}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">10:00</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores itaque ea saepe soluta odio dolores reiciendis odit tenetur hic fugiat.</h1>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores itaque ea saepe soluta odio dolores reiciendis odit tenetur hic fugiat.</h1>
+																	<h1 class="text-dark fw-normal fs-6">{{$evaluation->solution}}</h1>
 																</div>
 															</td>
 														</tr>
+                                                        @endforeach
 													</tbody>
 													<!--end::Table body-->
 												</table>

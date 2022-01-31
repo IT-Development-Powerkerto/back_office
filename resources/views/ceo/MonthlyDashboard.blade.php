@@ -45,7 +45,7 @@
 	<!--end::Page Vendors Javascript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<!--begin::Page Custom Javascript(used by this page)-->
-	<script src="assets/js/custom/widgets.js"></script>
+	<script src="assets/js/custom/monthly-widgets.js"></script>
 	<script src="assets/js/custom/apps/chat/chat.js"></script>
 	<script src="assets/js/custom/modals/create-app.js"></script>
 	<script src="assets/js/custom/modals/upgrade-plan.js"></script>
