@@ -598,7 +598,7 @@
 							success: function(promotion){
 								$('#product_promotion').val(parseInt(promotion.product_promotion));
 								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
-								var total = (price * quantity) - parseInt(promotion.product_promotion);
+								var total = (price * quantity);
 								$('#total_price').val(total);
 								//$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
 							}
@@ -633,96 +633,111 @@
 								$('#product_promotion').val(parseInt(promotion.product_promotion));
 								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
 								if(courier === 'Ninja' && payment_method === 'COD'){
-                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
-                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
-                                        ongkir = 0;
-                                    }
-                                    else if (ongkir > 50000){
-                                        ongkir -= 25000;
-                                    }
-                                    else{
-                                        ongkir -= ongkir*0.5;
-                                    }
-									var total_price = (price * quantity);
-                                    var admin = total_price * 0.025;
-									$('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
+                                    var ongkir = parseInt(shipping_price);
+									if (ongkir > 50000){
+										ongkir = 25000;
+									}
+									else{
+										ongkir = ongkir*0.5;
+									}
+									var total_price = (parseInt(price) * parseInt(quantity));
+									var admin = (total_price + ongkir) * 0.025;
+									if (ongkir <= parseInt(promotion.shipping_promotion)){
+										var total_ongkir = 0;
+									}
+									else{
+										var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
+									}
+									var total_payment = total_price + total_ongkir + admin - parseInt(promotion.product_promotion);
+									$('#total_payment').val(total_payment);
 								}
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
-                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
-                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
-                                        ongkir = 0;
-                                    }
-                                    else if (ongkir > 50000){
-                                        ongkir -= 25000;
-                                    }
-                                    else{
-                                        ongkir -= ongkir*0.5;
-                                    }
-                                    var total_price = price * quantity;
-                                    var admin = (total_price + parseInt(shipping_price))*0.030;
-                                    if(admin < 2000){
-                                        admin = 2000;
-                                    }
-                                    $('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
+                                    var ongkir = parseInt(shipping_price);
+							
+									if (ongkir > 50000){
+										ongkir = 25000;
+									}
+									else{
+										ongkir = ongkir*0.5;
+									}
+									var total_price = (parseInt(price) * parseInt(quantity));
+									var admin = (total_price + ongkir)*0.030;
+									if(admin < 2000){
+										admin = 2000;
+									}
+									if (ongkir <= parseInt(shipping_promotion)){
+										var total_ongkir = 0;
+									}
+									else{
+										var total_ongkir = ongkir - parseInt(shipping_promotion);
+									}
+									$('#total_payment').val(total_price + total_ongkir + admin - parseInt(product_promotion));
                                 }
                                 else if(courier === 'JNT' && payment_method === 'COD'){
-                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
-                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
-                                        ongkir = 0;
-                                    }
-                                    else if (ongkir > 50000){
-                                        ongkir -= 25000;
-                                    }
-                                    else{
-                                        ongkir -= ongkir*0.5;
-                                    }
-                                    var total_price = price * quantity;
-                                    var admin = (total_price + parseInt(shipping_price))*0.030;
-                                    if(admin < 5000){
-                                        admin = 5000;
-                                    }
-                                    $('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
+                                    var ongkir = parseInt(shipping_price);
+									if (ongkir > 50000){
+										ongkir = 25000;
+									}
+									else{
+										ongkir = ongkir*0.5;
+									}
+									var total_price = parseInt(price) * parseInt(quantity));
+									var admin = (total_price + ongkir)*0.030;
+									if(admin < 5000){
+										admin = 5000;
+									}
+									if (ongkir <= parseInt(shipping_promotion)){
+										var total_ongkir = 0;
+									}
+									else{
+										var total_ongkir = ongkir - parseInt(shipping_promotion);
+									}
+									$('#total_payment').val(total_price + total_ongkir + admin - parseInt(product_promotion));
                                 }
-                                else{
-                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
-                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
-                                        ongkir = 0;
-                                    }
-                                    else if (ongkir > 50000){
-                                        ongkir -= 25000;
-                                    }
-                                    else{
-                                        ongkir -= ongkir*0.5;
-                                    }
-                                    var total_price = (price * quantity);
-                                    $('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
-                                }
+                                else if(payment_method == "Transfer"){
+									var ongkir = parseInt(shipping_price);
+									
+									if (ongkir > 50000){
+										ongkir = 25000;
+									}
+									else{
+										ongkir = ongkir*0.5;
+									}
+									if (ongkir <= parseInt(shipping_promotion)){
+										var total_ongkir = 0;
+									}
+									else{
+										var total_ongkir = ongkir - parseInt(shipping_promotion);
+									}
+									var total_price = (parseInt(price) * parseInt(quantity));
+									$('#total_payment').val(total_price + total_ongkir - parseInt(product_promotion));
+								}
 							}
 						});
 					}
                     else{
 						if(courier === 'Ninja' && payment_method === 'COD'){
-                            var ongkir = parseInt(shipping_price);
+							var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir -= 25000;
+                                ongkir = 25000;
                             }
                             else{
-                                ongkir -= ongkir*0.5;
+                                ongkir = ongkir*0.5;
                             }
-                            var total_price = (price * quantity);
-                            var admin = (total_price + parseInt(shipping_price))*0.025;
+                            var total_price = (parseInt(price) * parseInt(quantity));
+                            var admin = (total_price + ongkir)*0.025;
                             $('#total_payment').val(total_price + ongkir + admin);
 						}
                         else if(courier === 'Sicepat' && payment_method === 'COD'){
                             var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir -= 25000;
+                                ongkir = 25000;
                             }
                             else{
-                                ongkir -= ongkir*0.5;
+                                ongkir = ongkir*0.5;
                             }
-                            var total_price = (price * quantity);
-                            var admin = (total_price + parseInt(shipping_price))*0.030;
+                            var total_price = (parseInt(price) * parseInt(quantity));
+                            var admin = (total_price + ongkir)*0.030;
                             if(admin < 2000){
                                 admin = 2000;
                             }
@@ -731,27 +746,27 @@
                         else if(courier === 'JNT' && payment_method === 'COD'){
                             var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir -= 25000;
+                                ongkir = 25000;
                             }
                             else{
-                                ongkir -= ongkir*0.5;
+                                ongkir = ongkir*0.5;
                             }
-                            var total_price = (price * quantity);
-                            var admin = (total_price + parseInt(shipping_price))*0.030;
+                            var total_price = (parseInt(price) * parseInt(quantity));
+                            var admin = (total_price + ongkir)*0.030;
                             if(admin < 5000){
                                 admin = 5000;
                             }
                             $('#total_payment').val(total_price + ongkir + admin);
 						}
-                        else{
+                        else if(payment_method == "Transfer"){
                             var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir -= 25000;
+                                ongkir = 25000;
                             }
                             else{
-                                ongkir -= ongkir*0.5;
+                                ongkir = ongkir*0.5;
                             }
-                            var total_price = (price * quantity);
+                            var total_price = (parseInt(price) * parseInt(quantity));
                             $('#total_payment').val(total_price + ongkir);
                         }
 					}
@@ -873,7 +888,7 @@
                 });
             });
         </script>
-		<script>
+		{{--  <script>
 			$(document).ready(function(){
 				var weight = $("#weight").val();
 					var warehouse = $("#warehouse").val();
@@ -905,7 +920,7 @@
 					$('#total_payment').val(total_payment);
 				});
 			});
-		</script>
+		</script>  --}}
 		<script>
 			// Class definition
 			var KTSelect2 = function() {
