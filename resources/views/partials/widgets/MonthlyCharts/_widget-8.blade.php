@@ -14,7 +14,7 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-light fw-bolder fs-2 mb-2 mt-5">{{($omset_month_count == 0) ? 0 : $advertising_month_count / $omset_month_count}}</div>
+											<div class="text-light fw-bolder fs-2 mb-2 mt-5">{{($omset_month_count == 0) ? 0 : ($advertising_month_count / $omset_month_count)*100}} %</div>
 											<div class="fw-bold text-dark">Cost Acquisition</div>
 										</div>
 										<!--end::Body-->

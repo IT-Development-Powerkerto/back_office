@@ -13,7 +13,7 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-light fw-bolder fs-2 mb-2 mt-5">{{($lead_week_count == 0) ? 0 : $advertising_week_count / $lead_week_count}} %</div>
+											<div class="text-light fw-bolder fs-2 mb-2 mt-5">Rp. {{($lead_week_count == 0) ? 0 : $advertising_week_count / $lead_week_count}}</div>
 											<div class="fw-bold text-dark">Closing Per Rate</div>
 										</div>
 										<!--end::Body-->
