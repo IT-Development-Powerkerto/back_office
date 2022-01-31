@@ -27,14 +27,8 @@ class CeoController extends Controller
         $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
 
-        $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
-            Carbon::now()->startOfWeek(),
-            Carbon::now()->endOfWeek(),
-        ])->count();
-        $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
-            Carbon::now()->startOfWeek(),
-            Carbon::now()->endOfWeek(),
-        ])->count();
+        $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->count();
+        $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->where('created_at', $day)->count();
 
         //lead this day
         $lead_day_count = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->count();
@@ -162,10 +156,7 @@ class CeoController extends Controller
             Carbon::now()->endOfWeek(),
         ])->sum('requirement');
 
-        $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
-            Carbon::now()->startOfWeek(),
-            Carbon::now()->endOfWeek(),
-        ])->sum('quantity');
+        $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->where('created_at', $day)->sum('quantity');
 
         $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
         $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
@@ -343,12 +334,12 @@ class CeoController extends Controller
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
 
         $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
-            Carbon::now()->startOfMonth(),
-            Carbon::now()->endOfMonth(),
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
         ])->count();
         $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
-            Carbon::now()->startOfMonth(),
-            Carbon::now()->endOfMonth(),
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
         ])->count();
 
         //lead this week
@@ -439,8 +430,8 @@ class CeoController extends Controller
         ])->sum('requirement');
 
         $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
-            Carbon::now()->startOfMonth(),
-            Carbon::now()->endOfMonth(),
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
         ])->sum('quantity');
 
         $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
@@ -536,12 +527,12 @@ class CeoController extends Controller
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
 
         $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
-            Carbon::now()->startOfYear(),
-            Carbon::now()->endOfYear(),
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth(),
         ])->count();
         $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
-            Carbon::now()->startOfYear(),
-            Carbon::now()->endOfYear(),
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth(),
         ])->count();
 
         //lead this mount
@@ -760,8 +751,8 @@ class CeoController extends Controller
         ])->sum('requirement');
 
         $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
-            Carbon::now()->startOfYear(),
-            Carbon::now()->endOfYear(),
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth(),
         ])->sum('quantity');
 
         $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
