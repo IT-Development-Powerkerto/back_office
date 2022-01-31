@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Evaluation;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class EvaluationController extends Controller
 {
@@ -15,12 +18,13 @@ class EvaluationController extends Controller
     public function index()
     {
         $products = Product::where('admin_id', auth()->user()->admin_id)->get();
+        $evaluation = Evaluation::where('admin_id', auth()->user()->admin_id)->get();
         if(auth()->user()->role_id==4){
-            return view('evaluationADV')->with('product', $products);
+            return view('evaluationADV')->with('product', $products)->with('evaluation', $evaluation);
         }elseif (auth()->user()->role_id==5){
-            return view('evaluationCS')->with('product', $products);
+            return view('evaluationCS')->with('product', $products)->with('evaluation', $evaluation);
         }elseif (auth()->user()->role_id==1){
-            return view('evaluation')->with('product', $products);
+            return view('evaluation')->with('product', $products)->with('evaluation', $evaluation);
         }else {
             return redirect()->back();
         }
@@ -44,7 +48,20 @@ class EvaluationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        DB::table('evaluations')->insert([
+            'admin_id'     => auth()->user()->admin_id,
+            'user_id'      => auth()->user()->id,
+            'product_id'   => $request->product_id,
+            'date'         => $request->date,
+            'time'         => $request->time,
+            'resistance'   => $request->resistance,
+            'solution'     => $request->solution,
+            'created_at'   => Carbon::now()->format('Y-m-d'),
+            'updated_at'   => Carbon::now()->format('Y-m-d'),
+        ]);
+
+        return redirect('/evaluation')->with('success','Successull! Evaluation Added');
     }
 
     /**

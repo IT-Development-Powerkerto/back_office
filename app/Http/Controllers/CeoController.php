@@ -7,6 +7,7 @@ use App\Models\Inputer;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Budgeting;
+use App\Models\Evaluation;
 use App\Models\BudgetingRealization;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -216,7 +217,7 @@ class CeoController extends Controller
         $budgeting_nonadv = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
         $budgeting_realization_adv = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
         $budgeting_realization_nonadv = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
-
+        $evaluation = Evaluation::where('admin_id', auth()->user()->admin_id)->get();
         if($day >= $user_expired){
             $request->session()->invalidate();
             $request->session()->regenerateToken();
@@ -230,7 +231,8 @@ class CeoController extends Controller
                 ->with('budgeting_adv', $budgeting_adv)->with('budgeting_nonadv', $budgeting_nonadv)->with('budgeting_realization_adv', $budgeting_realization_adv)->with('budgeting_realization_nonadv', $budgeting_realization_nonadv)
                 ->with('omset_su', $omset_su)->with('omset_mo', $omset_mo)->with('omset_tu', $omset_tu)->with('omset_we', $omset_we)->with('omset_th', $omset_th)->with('omset_fr', $omset_fr)->with('omset_sa', $omset_sa)
                 ->with('advertising_su', $advertising_su)->with('advertising_mo', $advertising_mo)->with('advertising_tu', $advertising_tu)->with('advertising_we', $advertising_we)->with('advertising_th', $advertising_th)->with('advertising_fr', $advertising_fr)->with('advertising_sa', $advertising_sa)
-                ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count);
+                ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)
+                ->with('evaluation', $evaluation);
             }elseif(Auth::user()->role_id == 1){
                 return view('ceo.Dashboard', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_su', $lead_su)->with('lead_mo', $lead_mo)->with('lead_tu', $lead_tu)->with('lead_we', $lead_we)->with('lead_th', $lead_th)->with('lead_fr', $lead_fr)->with('lead_sa', $lead_sa)
@@ -239,7 +241,8 @@ class CeoController extends Controller
                 ->with('budgeting_adv', $budgeting_adv)->with('budgeting_nonadv', $budgeting_nonadv)->with('budgeting_realization_adv', $budgeting_realization_adv)->with('budgeting_realization_nonadv', $budgeting_realization_nonadv)
                 ->with('omset_su', $omset_su)->with('omset_mo', $omset_mo)->with('omset_tu', $omset_tu)->with('omset_we', $omset_we)->with('omset_th', $omset_th)->with('omset_fr', $omset_fr)->with('omset_sa', $omset_sa)
                 ->with('advertising_su', $advertising_su)->with('advertising_mo', $advertising_mo)->with('advertising_tu', $advertising_tu)->with('advertising_we', $advertising_we)->with('advertising_th', $advertising_th)->with('advertising_fr', $advertising_fr)->with('advertising_sa', $advertising_sa)
-                ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count);
+                ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)
+                ->with('evaluation', $evaluation);
             }else {
                 return redirect()->back();
             }
@@ -492,6 +495,7 @@ class CeoController extends Controller
         $budgeting_nonadv = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
         $budgeting_realization_adv = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
         $budgeting_realization_nonadv = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
+        $evaluation = Evaluation::where('admin_id', auth()->user()->admin_id)->get();
 
         if($day >= $user_expired){
             $request->session()->invalidate();
@@ -506,7 +510,8 @@ class CeoController extends Controller
                 ->with('budgeting_adv', $budgeting_adv)->with('budgeting_nonadv', $budgeting_nonadv)->with('budgeting_realization_adv', $budgeting_realization_adv)->with('budgeting_realization_nonadv', $budgeting_realization_nonadv)
                 ->with('omset_week1', $omset_week1)->with('omset_week2', $omset_week2)->with('omset_week3', $omset_week3)->with('omset_week4', $omset_week4)
                 ->with('advertising_week1', $advertising_week1)->with('advertising_week2', $advertising_week2)->with('advertising_week3', $advertising_week3)->with('advertising_week4', $advertising_week4)
-                ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count);
+                ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count)
+                ->with('evaluation', $evaluation);
             }elseif(Auth::user()->role_id == 1){
                 return view('ceo.AdminWeeklyDashboard', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_week1', $lead_week1)->with('lead_week2', $lead_week2)->with('lead_week3', $lead_week3)->with('lead_week4', $lead_week4)
@@ -515,7 +520,8 @@ class CeoController extends Controller
                 ->with('budgeting_adv', $budgeting_adv)->with('budgeting_nonadv', $budgeting_nonadv)->with('budgeting_realization_adv', $budgeting_realization_adv)->with('budgeting_realization_nonadv', $budgeting_realization_nonadv)
                 ->with('omset_week1', $omset_week1)->with('omset_week2', $omset_week2)->with('omset_week3', $omset_week3)->with('omset_week4', $omset_week4)
                 ->with('advertising_week1', $advertising_week1)->with('advertising_week2', $advertising_week2)->with('advertising_week3', $advertising_week3)->with('advertising_week4', $advertising_week4)
-                ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count);
+                ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count)
+                ->with('evaluation', $evaluation);
             }else {
                 return redirect()->back();
             }
@@ -813,6 +819,7 @@ class CeoController extends Controller
         $budgeting_nonadv = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
         $budgeting_realization_adv = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
         $budgeting_realization_nonadv = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
+        $evaluation = Evaluation::where('admin_id', auth()->user()->admin_id)->get();
 
         if($day >= $user_expired){
             $request->session()->invalidate();
@@ -831,7 +838,8 @@ class CeoController extends Controller
                 ->with('omset_jul', $omset_jul)->with('omset_aug', $omset_aug)->with('omset_sep', $omset_sep)->with('omset_okt', $omset_okt)->with('omset_nov', $omset_nov)->with('omset_des', $omset_des)
                 ->with('advertising_jan', $advertising_jan)->with('advertising_feb', $advertising_feb)->with('advertising_mar', $advertising_mar)->with('advertising_apr', $advertising_apr)->with('advertising_may', $advertising_may)->with('advertising_jun', $advertising_jun)
                 ->with('advertising_jul', $advertising_jul)->with('advertising_aug', $advertising_aug)->with('advertising_sep', $advertising_sep)->with('advertising_okt', $advertising_okt)->with('advertising_nov', $advertising_nov)->with('advertising_des', $advertising_des)
-                ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count);
+                ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count)
+                ->with('evaluation', $evaluation);
             }elseif(Auth::user()->role_id == 1){
                 return view('ceo.AdminMonthlyDashboard', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_jan', $lead_jan)->with('lead_feb', $lead_feb)->with('lead_mar', $lead_mar)->with('lead_apr', $lead_apr)->with('lead_may', $lead_may)->with('lead_jun', $lead_jun)
@@ -844,7 +852,8 @@ class CeoController extends Controller
                 ->with('omset_jul', $omset_jul)->with('omset_aug', $omset_aug)->with('omset_sep', $omset_sep)->with('omset_okt', $omset_okt)->with('omset_nov', $omset_nov)->with('omset_des', $omset_des)
                 ->with('advertising_jan', $advertising_jan)->with('advertising_feb', $advertising_feb)->with('advertising_mar', $advertising_mar)->with('advertising_apr', $advertising_apr)->with('advertising_may', $advertising_may)->with('advertising_jun', $advertising_jun)
                 ->with('advertising_jul', $advertising_jul)->with('advertising_aug', $advertising_aug)->with('advertising_sep', $advertising_sep)->with('advertising_okt', $advertising_okt)->with('advertising_nov', $advertising_nov)->with('advertising_des', $advertising_des)
-                ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count);
+                ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count)
+                ->with('evaluation', $evaluation);
             }else {
                 return redirect()->back();
             }

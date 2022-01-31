@@ -77,35 +77,35 @@
 								<div class="card-body p-9">
 									<form action="" method="POST">
 										@csrf
-                                        
+
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
                                                 <label for="inputProduct" class="col-form-label">Product Name</label>
                                             </div>
                                             <div class="dropdown col-10">
-                                                <select name="product_name" id="product_name" class="form-control text-muted">
+                                                <select name="product_id" id="product_id" class="form-control text-muted">
                                                     <option hidden>Select Product</option>
-                                                    <option value="All" required>All</option>
+                                                    <option value="0" required>All</option>
                                                     @foreach ($product as $product)
-                                                        <option value="{{$product->name}}" required>{{$product->name}}</option>
+                                                        <option value="{{$product->id}}" required>{{$product->name}}</option>
                                                     @endforeach
                                                 </select>
 											</div>
                                         </div>
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
-                                                <label for="inputDate" class="col-form-label">Date</label>
+                                                <label for="date" class="col-form-label">Date</label>
                                             </div>
                                             <div class="col-10">
-                                                <input class="form-control text-muted" name="date_filter" id="date_filter" type="date" onchange="submit()">
+                                                <input class="form-control text-muted" name="date" id="date" type="date">
 											</div>
                                         </div>
                                         <div class="row align-items-center col-12 pb-5">
                                             <div class="col-2">
-                                                <label for="inputtime" class="col-form-label">Time</label>
+                                                <label for="time" class="col-form-label">Time</label>
                                             </div>
                                             <div class="col-10">
-                                                <input class="form-control text-muted" name="date_filter"  id="date_filter" type="time" onchange="submit()">
+                                                <input class="form-control text-muted" name="time"  id="time" type="time">
 											</div>
                                         </div>
                                         <div class="row align-items-center col-12 pb-5">
@@ -136,7 +136,7 @@
 									<div class="card-header border-0 pt-5">
 										<h3 class="card-title align-items-start flex-column">
 											<span class="card-label fw-bolder fs-3 mb-1">Routine Evaluation Log</span>
-											    <span class="text-muted mt-1 fw-bold fs-7">1 Data</span>
+											    <span class="text-muted mt-1 fw-bold fs-7">{{$evaluation->where('user_id', auth()->user()->id)->count()}} Data</span>
 										</h3>
 									</div>
 									<!--end::Header-->
@@ -160,40 +160,49 @@
 												<!--end::Table head-->
 												<!--begin::Table body-->
 												<tbody>
+                                                    <?php
+                                                        $n = 0;
+                                                    ?>
+                                                    @foreach ($evaluation->where('user_id', auth()->user()->id) as $evaluation)
                                                     <tr>
                                                         <td>
                                                             <div class="d-flex align-items-center">
                                                                 <div class="d-flex justify-content-start flex-column">
-                                                                    <h1 class="text-dark fw-normal fs-6">1</h1>
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center">
-                                                                <h1 class="text-dark fw-normal fs-6">Generos</h1>
+                                                                @if ($evaluation->product_id == 0)
+                                                                    <h1 class="text-dark fw-normal fs-6">All</h1>
+                                                                @else
+                                                                    <h1 class="text-dark fw-normal fs-6">{{$evaluation->product->name}}</h1>
+                                                                @endif
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center">
-                                                                <h1 class="text-dark fw-normal fs-6">26/01/2022</h1>
+                                                                <h1 class="text-dark fw-normal fs-6">{{$evaluation->date}}</h1>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center">
-                                                                <h1 class="text-dark fw-normal fs-6">09:50</h1>
+                                                                <h1 class="text-dark fw-normal fs-6">{{$evaluation->time}}</h1>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center">
-                                                                <h1 class="text-dark fw-normal fs-6">Lorem ipsum dolor sit amet, consectetur adipiscing</h1>
+                                                                <h1 class="text-dark fw-normal fs-6">{{$evaluation->resistance}}</h1>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="d-flex align-items-center">
-                                                                <h1 class="text-dark fw-normal fs-6">Lorem ipsum dolor sit amet, consectetur adipiscing</h1>
+                                                                <h1 class="text-dark fw-normal fs-6">{{$evaluation->solution}}</h1>
                                                             </div>
                                                         </td>
                                                     </tr>
+                                                    @endforeach
 												</tbody>
 												<!--end::Table body-->
 											</table>
