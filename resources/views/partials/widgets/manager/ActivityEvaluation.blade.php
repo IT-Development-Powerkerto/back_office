@@ -7,6 +7,15 @@
 												<span class="card-label fw-bolder fs-3 mb-1">Activity Evaluation</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('status', '!=', 2)->where('requirement', '>=', 1000000)->count()}} Activity</span>
 											</h3>
+											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
+												<form action="/dashboard" method="GET" class="d-flex">
+												<form action="/adv" method="GET" class="d-flex">
+													<div class="me-2 d-flex flex-row">
+														<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+														<button type="button" class="btn btn-sm btn-light btn-active-primary ms-2" title="Click For Export">GO</button>
+													</div>
+												</form>
+											</div>
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
