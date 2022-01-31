@@ -16,27 +16,20 @@
 			</div>
 		@endif
 		<!--begin::Col-->
-		<div class="col-xl-4">
-			
-			@include('partials/widgets/lists/_widget-5')
-			
-			
-		</div>
-		<!--end::Col-->
-		<!--begin::Col-->
-		<div class="col-xl-4">
+		<div class="col-xl-6">
 
 			@include('partials/widgets/tables/_widget-7')
 			
 		</div>
 		<!--end::Col-->
+
 		<!--begin::Col-->
-		<div class="col-xl-4">
+		<div class="col-xl-6">
 
 			@include('partials/widgets/tables/_widget-6')
 
 		</div>
-		<!--end::Col-->
+
 	</div>
 	<!--end::Row-->
 	<!--begin::Row-->

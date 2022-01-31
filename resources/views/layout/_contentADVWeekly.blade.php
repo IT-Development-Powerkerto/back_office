@@ -112,23 +112,15 @@
 		<!--end::Col-->
 
 		<!--begin::Col-->
-		<div class="col-xl-4 mt-n1">
-
-			@include('partials/widgets/lists/_widget-5')
-
-		</div>
-		<!--end::Col-->
-
-		<!--begin::Col-->
-		<div class="col-xl-4 mt-n1">
+		<div class="col-xl-6 mt-n1">
 
 			@include('partials/widgets/tables/_widget-7')
-
+			
 		</div>
 		<!--end::Col-->
 
 		<!--begin::Col-->
-		<div class="col-xl-4 mt-n1">
+		<div class="col-xl-6 mt-n1">
 
 			@include('partials/widgets/tables/_widget-6')
 
