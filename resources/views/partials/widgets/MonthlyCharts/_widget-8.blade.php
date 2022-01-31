@@ -1,4 +1,4 @@
-									
+
 									<!--begin::Statistics Widget 5-->
 									<label class="card card-xl-stretch mb-5 mb-xl-8" style="background-color: rgb(65, 241, 230, 0.3)">
 										<!--begin::Body-->
@@ -14,10 +14,9 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-dark fw-bolder fs-2 mb-2 mt-5">100</div>
+											<div class="text-light fw-bolder fs-2 mb-2 mt-5">{{($omset_month_count == 0) ? 0 : $advertising_month_count / $omset_month_count}}</div>
 											<div class="fw-bold text-dark">Cost Acquisition</div>
 										</div>
 										<!--end::Body-->
 									</label>
 									<!--end::Statistics Widget 5-->
-									
