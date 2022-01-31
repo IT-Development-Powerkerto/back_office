@@ -591,7 +591,6 @@
 
 					if(promotion_id)
                     {
-						alert('test');
 						$.ajax({
 							url: "get_promotion/"+promotion_id,
 							type: "GET",
