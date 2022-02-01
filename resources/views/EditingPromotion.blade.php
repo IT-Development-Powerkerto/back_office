@@ -94,10 +94,12 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form action="{{ route('promotion.index') }}" method="post" enctype="multipart/form-data">
+									@foreach ($promotion as $promotion)
+									<form action="{{ route('promotion.update', ['promotion' => $promotion->id]) }}" method="post" enctype="multipart/form-data">
                                         @csrf
+										@method('PATCH')
                                         <div class="card-body shadow-sm">
-											@foreach ($promotion as $promotion)
+												
                                             <div class="form-group mt-5">
                                                 <label for="inputProgress" class="col-form-label">Promotion Type</label>
                                                 <div class="dropdown" required>
@@ -149,13 +151,13 @@
                                                     <input type="text" min="0" value="{{ $promotion->total_promotion }}" name="total_promotion" id="total_promotion" class="form-control form-control" placeholder="0" disabled/>
                                                 </div>
                                             </div>
-											@endforeach
                                         </div>
                                         <div class="card-footer">
-                                            <input type="submit" class="btn btn-primary" value="save">
+											<input type="submit" class="btn btn-primary" value="save">
                                             <a type="button" class="btn btn-secondary" href="{{ route ('promotion.index') }}">Cancel</a>
                                         </div>
                                     </form>
+									@endforeach
 								</div>
 							</div>
 							<!--end::details View-->
