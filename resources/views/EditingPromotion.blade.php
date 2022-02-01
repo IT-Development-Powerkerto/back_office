@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Create Promotion</title>
+		<title>Edit Promotion</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -87,7 +87,7 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Create Promotion</h3>
+										<h3 class="fw-bolder m-0">Edit Promotion</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
@@ -97,14 +97,15 @@
 									<form action="{{ route('promotion.index') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-body shadow-sm">
+											@foreach ($promotion as $promotion)
                                             <div class="form-group mt-5">
                                                 <label for="inputProgress" class="col-form-label">Promotion Type</label>
                                                 <div class="dropdown" required>
                                                     <select name="promotion_type" id="promotion_type" class="form-control">
                                                         <option hidden>Promotion Type</option>
-                                                        <option value="Product Price" required>Product Price</option>
-                                                        <option value="Shipping Cost" required>Shipping Cost</option>
-                                                        <option value="Product Price & Shipping Cost" required>Product & Shipping Cost</option>
+                                                        <option value="Product Price" {{ (old('promotion_type') ?? $promotion->promotion_type) == 'Product Price' ? 'selected':'' }} required>Product Price</option>
+                                                        <option value="Shipping Cost" {{ (old('promotion_type') ?? $promotion->promotion_type) == 'Shipping Cost' ? 'selected':'' }} required>Shipping Cost</option>
+                                                        <option value="Product Price & Shipping Cost" {{ (old('promotion_type') ?? $promotion->promotion_type) == 'Product Price & Shipping Cost' ? 'selected':'' }} required>Product & Shipping Cost</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -115,37 +116,40 @@
                                                         <option hidden>Product Name</option>
                                                         <option value="All" required>All</option>
                                                         @foreach ($product as $product)
-															<option value="{{$product->name}}" required>{{$product->name}}</option>
+															<option value="{{$product->name}}" {{ $promotion->product_name == $product->name ? 'selected':'' }} required>{{$product->name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
+											
+												
                                             <div class="form-group mt-5">
                                                 <label class="col-form-label">Promotion Name</label>
-                                                <input type="text" class="form-control form-control" name="promotion_name" id="promotion_name" placeholder="Enter Promotion name" required/>
+                                                <input type="text" class="form-control form-control" value="{{ $promotion->promotion_name }}" name="promotion_name" id="promotion_name" placeholder="Enter Promotion name" required/>
                                                 <span class="form-text text-muted">Please enter name promotion with the rules ex: Generos Subsidi Ongkir Min. Belanja 120rb</span>
                                             </div>
                                             <div class="form-group mt-5">
                                                 <label class="col-form-label">Promotion Product Price</label>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" value="0" name="promotion_product_price" id="promotion_product_price" onchange="calculate()" class="form-control form-control" placeholder="0" required/>
+                                                    <input type="text" min="0" value="{{ $promotion->promotion_product_price }}" name="promotion_product_price" id="promotion_product_price" onchange="calculate()" class="form-control form-control" placeholder="0" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group mt-5">
                                                 <label class="col-form-label">Promotion Shippment Cost</label>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" value="0" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate()" class="form-control form-control" placeholder="0" required/>
+                                                    <input type="text" min="0" value="{{ $promotion->promotion_shippment_cost }}" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate()" class="form-control form-control" placeholder="0" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group mt-5">
                                                 <label class="col-form-label">Total Promotion</label>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" name="total_promotion" id="total_promotion" class="form-control form-control" placeholder="0" disabled/>
+                                                    <input type="text" min="0" value="{{ $promotion->total_promotion }}" name="total_promotion" id="total_promotion" class="form-control form-control" placeholder="0" disabled/>
                                                 </div>
                                             </div>
+											@endforeach
                                         </div>
                                         <div class="card-footer">
                                             <input type="submit" class="btn btn-primary" value="save">
