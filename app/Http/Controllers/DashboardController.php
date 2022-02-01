@@ -1156,8 +1156,9 @@ class DashboardController extends Controller
         //     ->where('c.updated_at', $day);
         //$lead = Lead::where('updated_at', $day)->orderByDesc('id')->get();
         $lead = Lead::where('admin_id', auth()->user()->admin_id)->orderByDesc('id')->get();
-
-        return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead);
+        $leads = Lead::all();
+        $announcements = Announcement::all();
+        return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);
     }
 
     public function WeeklyDashboard(Request $request) {
