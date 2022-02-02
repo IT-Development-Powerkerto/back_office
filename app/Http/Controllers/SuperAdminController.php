@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Paket;
 use App\Models\Lead;
+use App\Models\Announcement;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\ProofOfPayment;
@@ -58,6 +59,9 @@ class SuperAdminController extends Controller
         $user = User::where('role_id', 1)->get();
         $count_flexible = User::where('role_id', 1)->where('paket_id', 2)->value('admin_id');
         $paket = Paket::all();
+        $lead = Lead::all();
+        $announcement = Announcement::all();
+        $paket = Paket::all();
         $all_lead = Lead::where('admin_id', $count_flexible);
         $user_expired = User::where('role_id', 1)->value('expired_at');
         if($day >= $user_expired){
@@ -67,7 +71,7 @@ class SuperAdminController extends Controller
             ]);
         }
         if (auth()->user()->admin_id == 1){
-            return view('SuperAdmin')->with('user', $user)->with('paket', $paket)->with('all_lead', $all_lead);
+            return view('SuperAdmin')->with('user', $user)->with('paket', $paket)->with('all_lead', $all_lead)->with('leads', $lead)->with('announcements', $announcement);
         }else{
             return Redirect::back();
         }
