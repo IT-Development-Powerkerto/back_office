@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Budgeting;
 use App\Models\Evaluation;
 use App\Models\BudgetingRealization;
+use App\Models\Announcement;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,19 @@ class ManagerController extends Controller
     public function index(Request $request)
     {
         $day = Carbon::now()->format('Y-m-d');
+        $leads = DB::table('leads as l')
+            ->join('operators as o', 'l.operator_id', '=', 'o.id')
+            ->join('products as p', 'l.product_id', '=', 'p.id' )
+            ->join('statuses as s', 'l.status_id', '=', 's.id')
+            ->join('clients as c', 'l.client_id', '=', 'c.id')
+            ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+            ->where('l.admin_id', auth()->user()->admin_id)
+            ->where('l.updated_at', $day)
+            ->orderByDesc('l.id')
+            ->paginate(5);
+            //dd($leads);
+        $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
         $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
 
@@ -34,61 +48,61 @@ class ManagerController extends Controller
         //lead this day
         $lead_day_count = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->count();
         //count lead every day
-        $lead_su = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+        $lead_mo = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek()->subDay(6),
         ])->count();
-        $lead_mo = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+        $lead_tu = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek()->addDay(1),
             Carbon::now()->endOfWeek()->subDay(5),
         ])->count();
-        $lead_tu = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+        $lead_we = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek()->addDay(2),
             Carbon::now()->endOfWeek()->subDay(4),
         ])->count();
-        $lead_we = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+        $lead_th = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek()->addDay(3),
             Carbon::now()->endOfWeek()->subDay(3),
         ])->count();
-        $lead_th = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+        $lead_fr = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek()->addDay(4),
             Carbon::now()->endOfWeek()->subDay(2),
         ])->count();
-        $lead_fr = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+        $lead_sa = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek()->addDay(5),
             Carbon::now()->endOfWeek()->subDay(1),
         ])->count();
-        $lead_sa = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+        $lead_su = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek()->addDay(6),
             Carbon::now()->endOfWeek(),
         ])->count();
 
         //count lead closing every month
-        $closing_su = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+        $closing_mo = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek()->subDay(6),
         ])->count();
-        $closing_mo = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+        $closing_tu = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(1),
             Carbon::now()->endOfWeek()->subDay(5),
         ])->count();
-        $closing_tu = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+        $closing_we = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(2),
             Carbon::now()->endOfWeek()->subDay(4),
         ])->count();
-        $closing_we = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+        $closing_th = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(3),
             Carbon::now()->endOfWeek()->subDay(3),
         ])->count();
-        $closing_th = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+        $closing_fr = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(4),
             Carbon::now()->endOfWeek()->subDay(2),
         ])->count();
-        $closing_fr = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+        $closing_sa = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(5),
             Carbon::now()->endOfWeek()->subDay(1),
         ])->count();
-        $closing_sa = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
+        $closing_su = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(6),
             Carbon::now()->endOfWeek(),
         ])->count();
@@ -96,31 +110,31 @@ class ManagerController extends Controller
         //omset this day
         $omset_day_count = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('total_price');
         //count omset every month
-        $omset_su = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
+        $omset_mo = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek()->subDay(6),
         ])->sum('total_price');
-        $omset_mo = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
+        $omset_tu = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(1),
             Carbon::now()->endOfWeek()->subDay(5),
         ])->sum('total_price');
-        $omset_tu = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
+        $omset_we = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(2),
             Carbon::now()->endOfWeek()->subDay(4),
         ])->sum('total_price');
-        $omset_we = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
+        $omset_th = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(3),
             Carbon::now()->endOfWeek()->subDay(3),
         ])->sum('total_price');
-        $omset_th = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
+        $omset_fr = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(4),
             Carbon::now()->endOfWeek()->subDay(2),
         ])->sum('total_price');
-        $omset_fr = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
+        $omset_sa = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(5),
             Carbon::now()->endOfWeek()->subDay(1),
         ])->sum('total_price');
-        $omset_sa = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
+        $omset_su = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(6),
             Carbon::now()->endOfWeek(),
         ])->sum('total_price');
@@ -128,31 +142,31 @@ class ManagerController extends Controller
         //advertising cost this day
         $advertising_day_count = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->where('updated_at', $day)->sum('requirement');
         //count advertising cost every month
-        $advertising_su = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_mo = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek()->subDay(6),
         ])->sum('requirement');
-        $advertising_mo = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_tu = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(1),
             Carbon::now()->endOfWeek()->subDay(5),
         ])->sum('requirement');
-        $advertising_tu = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_we = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(2),
             Carbon::now()->endOfWeek()->subDay(4),
         ])->sum('requirement');
-        $advertising_we = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_th = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(3),
             Carbon::now()->endOfWeek()->subDay(3),
         ])->sum('requirement');
-        $advertising_th = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_fr = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(4),
             Carbon::now()->endOfWeek()->subDay(2),
         ])->sum('requirement');
-        $advertising_fr = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_sa = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(5),
             Carbon::now()->endOfWeek()->subDay(1),
         ])->sum('requirement');
-        $advertising_sa = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_su = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek()->addDay(6),
             Carbon::now()->endOfWeek(),
         ])->sum('requirement');
@@ -223,7 +237,7 @@ class ManagerController extends Controller
             return redirect('/');
         }else{
             if(Auth::user()->role_id == 3){
-                return view('manager.Manager', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+                return view('manager.Manager', compact(['leads', 'announcements', 'lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_su', $lead_su)->with('lead_mo', $lead_mo)->with('lead_tu', $lead_tu)->with('lead_we', $lead_we)->with('lead_th', $lead_th)->with('lead_fr', $lead_fr)->with('lead_sa', $lead_sa)
                 ->with('closing_su', $closing_su)->with('closing_mo', $closing_mo)->with('closing_tu', $closing_tu)->with('closing_we', $closing_we)->with('closing_th', $closing_th)->with('closing_fr', $closing_fr)->with('closing_sa', $closing_sa)
                 ->with('adv', $adv)->with('omset1', $omset1)->with('omset2', $omset2)->with('omset3', $omset3)->with('omset4', $omset4)->with('omset_permonth', $omset_permonth)->with('budgeting', $budgeting)
@@ -233,7 +247,7 @@ class ManagerController extends Controller
                 ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)
                 ->with('evaluation', $evaluation);
             }elseif(Auth::user()->role_id == 1){
-                return view('manager.Dashboard', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+                return view('manager.Dashboard', compact(['leads', 'announcements', 'lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_su', $lead_su)->with('lead_mo', $lead_mo)->with('lead_tu', $lead_tu)->with('lead_we', $lead_we)->with('lead_th', $lead_th)->with('lead_fr', $lead_fr)->with('lead_sa', $lead_sa)
                 ->with('closing_su', $closing_su)->with('closing_mo', $closing_mo)->with('closing_tu', $closing_tu)->with('closing_we', $closing_we)->with('closing_th', $closing_th)->with('closing_fr', $closing_fr)->with('closing_sa', $closing_sa)
                 ->with('adv', $adv)->with('omset1', $omset1)->with('omset2', $omset2)->with('omset3', $omset3)->with('omset4', $omset4)->with('omset_permonth', $omset_permonth)->with('budgeting', $budgeting)
@@ -332,6 +346,19 @@ class ManagerController extends Controller
 
     public function WeeklyDashboard(Request $request) {
         $day = Carbon::now()->format('Y-m-d');
+        $leads = DB::table('leads as l')
+            ->join('operators as o', 'l.operator_id', '=', 'o.id')
+            ->join('products as p', 'l.product_id', '=', 'p.id' )
+            ->join('statuses as s', 'l.status_id', '=', 's.id')
+            ->join('clients as c', 'l.client_id', '=', 'c.id')
+            ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+            ->where('l.admin_id', auth()->user()->admin_id)
+            ->where('l.updated_at', $day)
+            ->orderByDesc('l.id')
+            ->paginate(5);
+            //dd($leads);
+        $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
         $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
 
@@ -502,7 +529,7 @@ class ManagerController extends Controller
             return redirect('/');
         }else{
             if(Auth::user()->role_id == 3){
-                return view('manager.WeeklyDashboard', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+                return view('manager.WeeklyDashboard', compact(['leads', 'announcements', 'lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_week1', $lead_week1)->with('lead_week2', $lead_week2)->with('lead_week3', $lead_week3)->with('lead_week4', $lead_week4)
                 ->with('closing_week1', $closing_week1)->with('closing_week2', $closing_week2)->with('closing_week3', $closing_week3)->with('closing_week4', $closing_week4)
                 ->with('adv', $adv)->with('omset1', $omset1)->with('omset2', $omset2)->with('omset3', $omset3)->with('omset4', $omset4)->with('omset_permonth', $omset_permonth)->with('budgeting', $budgeting)
@@ -512,7 +539,7 @@ class ManagerController extends Controller
                 ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count)
                 ->with('evaluation', $evaluation);
             }elseif(Auth::user()->role_id == 1){
-                return view('manager.AdminWeeklyDashboard', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+                return view('manager.AdminWeeklyDashboard', compact(['leads', 'announcements', 'lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_week1', $lead_week1)->with('lead_week2', $lead_week2)->with('lead_week3', $lead_week3)->with('lead_week4', $lead_week4)
                 ->with('closing_week1', $closing_week1)->with('closing_week2', $closing_week2)->with('closing_week3', $closing_week3)->with('closing_week4', $closing_week4)
                 ->with('adv', $adv)->with('omset1', $omset1)->with('omset2', $omset2)->with('omset3', $omset3)->with('omset4', $omset4)->with('omset_permonth', $omset_permonth)->with('budgeting', $budgeting)
@@ -528,6 +555,19 @@ class ManagerController extends Controller
     }
     public function MonthlyDashboard(Request $request) {
         $day = Carbon::now()->format('Y-m-d');
+        $leads = DB::table('leads as l')
+            ->join('operators as o', 'l.operator_id', '=', 'o.id')
+            ->join('products as p', 'l.product_id', '=', 'p.id' )
+            ->join('statuses as s', 'l.status_id', '=', 's.id')
+            ->join('clients as c', 'l.client_id', '=', 'c.id')
+            ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+            ->where('l.admin_id', auth()->user()->admin_id)
+            ->where('l.updated_at', $day)
+            ->orderByDesc('l.id')
+            ->paginate(5);
+            //dd($leads);
+        $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
         $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
 
@@ -826,7 +866,7 @@ class ManagerController extends Controller
             return redirect('/');
         }else{
             if(Auth::user()->role_id == 3){
-                return view('manager.MonthlyDashboard', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+                return view('manager.MonthlyDashboard', compact(['leads', 'announcements', 'lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_jan', $lead_jan)->with('lead_feb', $lead_feb)->with('lead_mar', $lead_mar)->with('lead_apr', $lead_apr)->with('lead_may', $lead_may)->with('lead_jun', $lead_jun)
                 ->with('lead_jul', $lead_jul)->with('lead_aug', $lead_aug)->with('lead_sep', $lead_sep)->with('lead_okt', $lead_okt)->with('lead_nov', $lead_nov)->with('lead_des', $lead_des)
                 ->with('closing_jan', $closing_jan)->with('closing_feb', $closing_feb)->with('closing_mar', $closing_mar)->with('closing_apr', $closing_apr)->with('closing_may', $closing_may)->with('closing_jun', $closing_jun)
@@ -840,7 +880,7 @@ class ManagerController extends Controller
                 ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count)
                 ->with('evaluation', $evaluation);
             }elseif(Auth::user()->role_id == 1){
-                return view('manager.AdminMonthlyDashboard', compact(['lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+                return view('manager.AdminMonthlyDashboard', compact(['leads', 'announcements', 'lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_jan', $lead_jan)->with('lead_feb', $lead_feb)->with('lead_mar', $lead_mar)->with('lead_apr', $lead_apr)->with('lead_may', $lead_may)->with('lead_jun', $lead_jun)
                 ->with('lead_jul', $lead_jul)->with('lead_aug', $lead_aug)->with('lead_sep', $lead_sep)->with('lead_okt', $lead_okt)->with('lead_nov', $lead_nov)->with('lead_des', $lead_des)
                 ->with('closing_jan', $closing_jan)->with('closing_feb', $closing_feb)->with('closing_mar', $closing_mar)->with('closing_apr', $closing_apr)->with('closing_may', $closing_may)->with('closing_jun', $closing_jun)

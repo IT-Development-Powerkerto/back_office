@@ -1,4 +1,4 @@
-											
+
 											<!--begin::Menu-->
 											<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
 												<!--begin::Menu item-->
@@ -9,7 +9,7 @@
 															@if(is_null(Auth()->user()->image))
 															<img src="/assets/img/default.jpg" alt="" />
 															@else
-															<img src="{{ url('') }}/{{ Auth()->user()->image }}" alt="image" />
+															<img src="{{ Auth()->user()->image }}" alt="image" />
 															@endif
 														</div>
 														<!--end::Avatar-->
@@ -47,4 +47,3 @@
 												<!--end::Menu separator-->
 											</div>
 											<!--end::Menu-->
-											

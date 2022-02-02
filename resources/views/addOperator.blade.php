@@ -151,8 +151,11 @@
                                                     <td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
                                                             <span class="fw-mormal text-gray-800">{{$operatorCampaign->user->operator->count()}} Campaigns</span>
-                                                            <p class="fw-bolder pb-2">
-                                                                {{$operatorCampaign->lead->count()}} Leads
+                                                            <p class="fw-bolder">
+                                                                {{$operatorCampaign->lead->where('cretaed_at', $day)->count()}} Daily Leads
+                                                            </p>
+                                                            <p class="fw-bolder mt-n4">
+                                                                {{$operatorCampaign->lead->count()}} Total Leads
                                                             </p>
                                                         </div>
 													</td>

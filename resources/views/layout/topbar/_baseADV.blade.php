@@ -26,7 +26,7 @@
 			@if(is_null(Auth()->user()->image))
 			<img src="/assets/img/default.jpg" alt="" />
 			@else
-			<img src={{ Auth()->user()->image }} alt="image" />
+			<img src="{{ Auth()->user()->image }}" alt="image" />
 			@endif
 		</div>
 
