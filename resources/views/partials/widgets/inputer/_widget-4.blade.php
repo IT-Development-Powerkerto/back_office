@@ -12,7 +12,7 @@
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
 				<span class="fw-bold fs-7">Courier</span>
-				<span class="fw-bolder fs-2x pt-1">{{$inputers->count()}}</span>
+				<span class="fw-bolder fs-2x pt-1">{{$all_inputers->count()}}</span>
 			</div>
 			<!--end::Balance-->
 		</div>
@@ -41,7 +41,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$inputers->where('courier', 'JNE OK')->count()}}</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$all_inputers->where('courier', 'JNE OK')->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -70,7 +70,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$inputers->where('courier', 'JNE REG')->count()}}</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$all_inputers->where('courier', 'JNE REG')->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -99,7 +99,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$inputers->where('courier', 'JNT')->count()}}</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$all_inputers->where('courier', 'JNT')->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -128,7 +128,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$inputers->where('courier', 'POS')->count()}}</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$all_inputers->where('courier', 'POS')->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -157,7 +157,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$inputers->where('courier', 'Ninja')->count()}}</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$all_inputers->where('courier', 'Ninja')->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -186,7 +186,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$inputers->where('courier', 'Sicepat')->count()}}</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$all_inputers->where('courier', 'Sicepat')->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>

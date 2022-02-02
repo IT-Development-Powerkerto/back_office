@@ -12,7 +12,7 @@
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
 				<span class="fw-bold fs-7">Warehouse</span>
-				<span class="fw-bolder fs-2x pt-1">3</span>
+				<span class="fw-bolder fs-2x pt-1">{{$all_inputers->count()}}</span>
 			</div>
 			<!--end::Balance-->
 		</div>
@@ -39,7 +39,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">1</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$all_inputers->where('warehouse', 'Cilacap')->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -66,7 +66,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">1</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$all_inputers->where('warehouse', 'Kosambi')->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>
@@ -93,7 +93,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">1</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">{{$all_inputers->where('warehouse', 'Tandes.Sby')->count()}}</div>
 					</div>
 					<!--end::Label-->
 				</div>

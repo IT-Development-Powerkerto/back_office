@@ -20,11 +20,11 @@ class EvaluationController extends Controller
         $products = Product::where('admin_id', auth()->user()->admin_id)->get();
         $evaluation = Evaluation::where('admin_id', auth()->user()->admin_id)->get();
         if(auth()->user()->role_id==4){
-            return view('evaluationADV')->with('product', $products)->with('evaluation', $evaluation);
+            return view('EvaluationADV')->with('product', $products)->with('evaluation', $evaluation);
         }elseif (auth()->user()->role_id==5){
-            return view('evaluationCS')->with('product', $products)->with('evaluation', $evaluation);
+            return view('EvaluationCS')->with('product', $products)->with('evaluation', $evaluation);
         }elseif (auth()->user()->role_id==1){
-            return view('evaluation')->with('product', $products)->with('evaluation', $evaluation);
+            return view('Evaluation')->with('product', $products)->with('evaluation', $evaluation);
         }else {
             return redirect()->back();
         }

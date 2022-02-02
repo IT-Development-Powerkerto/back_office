@@ -6,9 +6,9 @@
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Lead Tunneling</span>
                                             @if (auth()->user()->role_id == 1)
-                                                <span class="text-muted mt-1 fw-bold fs-7">{{$leads->total()}} Lead</span>
+                                                <span class="text-muted mt-1 fw-bold fs-7">{{$all_leads->count()}} Lead {{$all_spam->count()}} Spam</span>
                                             @else
-                                                <span class="text-muted mt-1 fw-bold fs-7">{{$leads->where('advertiser', auth()->user()->name)->count()}} Lead</span>
+                                                <span class="text-muted mt-1 fw-bold fs-7">{{$all_leads->where('advertiser', auth()->user()->name)->count()}} Lead {{$all_spam->where('advertiser', auth()->user()->name)->count()}} Spam</span>
                                             @endif
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
