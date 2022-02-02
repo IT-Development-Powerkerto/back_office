@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\Models\Inputer;
 use App\Models\Lead;
 use App\Models\User;
-use App\Models\Announcement;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
