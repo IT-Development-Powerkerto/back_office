@@ -80,7 +80,7 @@ class PromotionController extends Controller
     public function edit($id)
     {
         $product = Product::where('admin_id', auth()->user()->admin_id)->get();
-        $promotion = Promotion::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
+        $promotion = Promotion::where('admin_id', auth()->user()->admin_id)->whereId($id)->get();
         return view('EditingPromotion', ['promotion' => $promotion])->with('product', $product);
     }
 
@@ -93,7 +93,20 @@ class PromotionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $total_promotion = $request->promotion_product_price + $request->promotion_shippment_cost;
+        DB::table('promotions')->where('id', $id)->update([
+            'admin_id'                   => auth()->user()->admin_id,
+            'promotion_type'             => $request->promotion_type,
+            'product_name'               => $request->product_name,
+            'promotion_name'             => $request->promotion_name,
+            'promotion_product_price'    => $request->promotion_product_price,
+            'promotion_shippment_cost'   => $request->promotion_shippment_cost,
+            'total_promotion'            => $total_promotion,
+            'created_at'                 => Carbon::now()->toDateTimeString(),
+            'updated_at'                 => Carbon::now()->toDateTimeString(),
+        ]);
+
+        return redirect('/promotion')->with('success','Successull! Promotion has been Edited!');
     }
 
     /**

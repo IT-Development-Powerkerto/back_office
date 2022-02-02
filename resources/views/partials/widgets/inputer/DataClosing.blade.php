@@ -73,27 +73,30 @@
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
-													@foreach ($inputers as $inputer)
-													<tbody>
-														<tr>
-															<td>
-																<div class="d-flex align-items-center">
-																	<div class="d-flex justify-content-start flex-column">
-																		<h1 class="text-dark fw-normal fs-6">{{$inputer['id']}}</h1>
+													@foreach ($cs_inputers as $cs_inputer)
+														
+														@foreach ($inputers->where('operator_name', $cs_inputer->cs->name) as $inputer)
+														<tbody>
+															<tr>
+																<td>
+																	<div class="d-flex align-items-center">
+																		<div class="d-flex justify-content-start flex-column">
+																			<h1 class="text-dark fw-normal fs-6">{{$inputer['id']}}</h1>
+																		</div>
 																	</div>
-																</div>
-															</td>
-															<td>
-																<div class="d-flex align-items-center">
-																	<div class="d-flex justify-content-start flex-column">
-																		<a href="{{ route('viewdata',['id' => $inputer->id]) }}" class="text-dark fw-normal fs-6 text-hover-primary mb-2">
-																			{{$inputer['customer_address']}} / CS {{$inputer->lead->user['name']}} / ADV {{$inputer->lead['advertiser']}} / JA Hanif / {{$inputer['product_name']}} {{$inputer['quantity']}} box / {{$inputer['total_price']+$inputer['shipping_price']}} / {{$inputer['product_promotion'] + $inputer['shipping_promotion']}} / {{ $inputer->promotion['promotion_name'] ?? 'Not Have Promotion'}}
-																		</a>
+																</td>
+																<td>
+																	<div class="d-flex align-items-center">
+																		<div class="d-flex justify-content-start flex-column">
+																			<a href="{{ route('viewdata',['id' => $inputer->id]) }}" class="text-dark fw-normal fs-6 text-hover-primary mb-2">
+																				{{$inputer['customer_address']}} / CS {{$inputer->lead->user['name']}} / ADV {{$inputer->lead['advertiser']}} / JA Hanif / {{$inputer['product_name']}} {{$inputer['quantity']}} box / {{$inputer['total_price']+$inputer['shipping_price']}} / {{$inputer['product_promotion'] + $inputer['shipping_promotion']}} / {{ $inputer->promotion['promotion_name'] ?? 'Not Have Promotion'}}
+																			</a>
+																		</div>
 																	</div>
-																</div>
-															</td>
-														</tr>
-													</tbody>
+																</td>
+															</tr>
+														</tbody>
+														@endforeach
 													@endforeach
 													<!--end::Table body-->
 												</table>

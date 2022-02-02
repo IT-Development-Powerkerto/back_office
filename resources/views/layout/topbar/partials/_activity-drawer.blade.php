@@ -6,7 +6,17 @@
 	<div class="card shadow-none rounded-0">
 		<!--begin::Header-->
 		<div class="card-header" id="kt_activities_header">
-			<h3 class="card-title fw-bolder text-dark">Notifications</h3>
+			<div class="d-flex flex-row">
+				<h3 class="card-title fw-bolder text-dark">Notifications</h3>
+				@if (auth()->user()->role_id == 1)
+				<form action="/dashboard" method="GET" class="d-flex">
+				@endif
+				<form action="/adv" method="GET" class="d-flex">
+					<div class="card-title fw-bolder text-dark">
+						<input class="form-control text-muted mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+					</div>
+				</form>
+			</div>
 			<div class="card-toolbar">
 				<button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n5"
 					id="kt_activities_close">
@@ -33,7 +43,7 @@
 				data-kt-scroll-dependencies="#kt_activities_header, #kt_activities_footer" data-kt-scroll-offset="5px">
 				<!--begin::Timeline items-->
 				<div class="timeline">
-
+					@foreach ($leads as $lead)
 					<!--begin::Timeline item-->
 					<div class="timeline-item">
 						<!--begin::Timeline line-->
@@ -68,7 +78,7 @@
 								<!--begin::Description-->
 								<div class="d-flex align-items-center mt-1 fs-6">
 									<!--begin::Info-->
-									<div class="text-muted me-2 fs-7">4:23 PM</div>
+									<div class="text-muted me-2 fs-7">{{$lead->client_created_at}}</div>
 									<!--end::Info-->
 								</div>
 								<!--end::Description-->
@@ -81,22 +91,22 @@
 									class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-750px px-7 py-3 mb-5">
 									<!--begin::Label-->
 									<div class="min-w-75px pe-2">
-										<span class="fs-7 text-dark text-hover-primary fw-bold">Ord-1</span>
+										<span class="fs-7 text-dark text-hover-primary fw-bold">Ord-{{ $lead->id }}</span>
 									</div>
 									<!--end::Label-->
 									<!--begin::Title-->
 									<label
 										class="fs-7 text-dark text-hover-primary fw-bold min-w-200px">
-										Customer</label>
+										{{$lead->client_name}}</label>
 									<!--end::Title-->
 									<!--begin::Label-->
 									<div class="min-w-175px pe-2">
-										<span class="badge badge-light text-muted">Generos</span>
+										<span class="badge badge-light text-muted">{{$lead->product_name}}</span>
 									</div>
 									<!--end::Label-->
 									<!--begin::Progress-->
 									<div class="min-w-175px pe-2">
-										<span class="badge badge-light-primary">Waiting</span>
+										<span class="badge badge-light-primary">{{ $lead->status }}</span>
 									</div>
 									<!--end::Progress-->
 									<!--begin::Action-->
@@ -109,9 +119,10 @@
 						</div>
 						<!--end::Timeline content-->
 					</div>
+					@endforeach
 					<!--end::Timeline item-->
 					
-
+					@foreach ($announcements->reverse() as $announcement)
 					<div class="timeline-item">
 						<!--begin::Timeline line-->
 						<div class="timeline-line w-40px"></div>
@@ -145,7 +156,7 @@
 								<!--begin::Description-->
 								<div class="d-flex align-items-center mt-1 fs-6">
 									<!--begin::Info-->
-									<div class="text-muted me-2 fs-7">5:05 AM</div>
+									<div class="text-muted me-2 fs-7">{{$announcement->created_at}}</div>
 									<!--end::Info-->
 								</div>
 								<!--end::Description-->
@@ -157,7 +168,7 @@
 								<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed min-w-lg-600px flex-shrink-0 p-6">
 									<!--begin::Icon-->
 									<!--begin::Svg Icon | path: icons/duotune/coding/cod004.svg-->
-									<span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
+									<span class="svg-icon svg-icon-2tx svg-icon-{{$announcement->icon->name}} me-4">
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 											<path opacity="0.3" d="M19.0687 17.9688H11.0687C10.4687 17.9688 10.0687 18.3687 10.0687 18.9688V19.9688C10.0687 20.5687 10.4687 20.9688 11.0687 20.9688H19.0687C19.6687 20.9688 20.0687 20.5687 20.0687 19.9688V18.9688C20.0687 18.3687 19.6687 17.9688 19.0687 17.9688Z" fill="black" />
 											<path d="M4.06875 17.9688C3.86875 17.9688 3.66874 17.8688 3.46874 17.7688C2.96874 17.4688 2.86875 16.8688 3.16875 16.3688L6.76874 10.9688L3.16875 5.56876C2.86875 5.06876 2.96874 4.46873 3.46874 4.16873C3.96874 3.86873 4.56875 3.96878 4.86875 4.46878L8.86875 10.4688C9.06875 10.7688 9.06875 11.2688 8.86875 11.5688L4.86875 17.5688C4.66875 17.7688 4.36875 17.9688 4.06875 17.9688Z" fill="black" />
@@ -169,12 +180,9 @@
 									<div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
 										<!--begin::Content-->
 										<div class="mb-3 mb-md-0 fw-bold">
-											<div class="fs-6 text-gray-700 pe-7">Dibalik kesabaran tersimpan benih-benih kebijaksanaan. Mari jadikan kesabaran sebagai awal memulai tahun yang baru yang indah ini. Selamat Tahun Baru Imlek 2022. Gong Xi Fa Cai!</div>
+											<div class="fs-6 text-gray-700 pe-7">{{$announcement->announcement}}</div>
 										</div>
 										<!--end::Content-->
-										<!--begin::Action-->
-										<a href="#" class="btn btn-primary px-6 align-self-center text-nowrap">Proceed</a>
-										<!--end::Action-->
 									</div>
 									<!--end::Wrapper-->
 								</div>
@@ -185,6 +193,7 @@
 						<!--end::Timeline content-->
 					</div>
 					<!--end::Timeline item-->
+					@endforeach
 
 					{{-- <!--begin::Timeline item-->
 					<div class="timeline-item">

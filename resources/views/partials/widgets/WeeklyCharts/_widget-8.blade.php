@@ -1,10 +1,10 @@
 
 									<!--begin::Statistics Widget 5-->
-									<label class="card card-xl-stretch mb-5 mb-xl-8" style="background-color: rgb(65, 241, 230, 0.3)">
+									<label class="card card-xl-stretch mb-5 mb-xl-8 bg-warning">
 										<!--begin::Body-->
 										<div class="card-body">
 											<!--begin::Svg Icon | path: icons/duotune/graphs/gra005.svg-->
-											<span class="svg-icon svg-icon-primary svg-icon-3x ms-n1">
+											<span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
 												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 														<rect x="0" y="0" width="24" height="24"/>
@@ -14,8 +14,8 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-light fw-bolder fs-2 mb-2 mt-5">{{($omset_week_count == 0) ? 0 : ($advertising_week_count / $omset_week_count)*100}} %</div>
-											<div class="fw-bold text-dark">Cost Acquisition</div>
+											<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{($omset_week_count == 0) ? 0 : $advertising_week_count / $omset_week_count}}</div>
+											<div class="fw-bold text-white">Cost Acquisition</div>
 										</div>
 										<!--end::Body-->
 									</label>

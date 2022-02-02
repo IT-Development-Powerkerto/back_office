@@ -191,7 +191,7 @@
 													<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Promotion</label>
 													<div class="col-lg-3 mt-8">
 														<div class="input-group">
-															<input type="number" value="{{ $inputer->implode('product_promotion') ?? 0 }}" name="product_promotion" id="product_promotion"  class="form-control" placeholder="Promotion Price" onchange="calculate(this.value)" readonly/>
+															<input type="number" value="{{ $inputer->implode('product_promotion') ?? 0 }}" name="product_promotion" id="product_promotion"  class="form-control" placeholder="Promotion Price" readonly/>
 															<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 														</div>
 														<span class="form-text text-muted">Auto-Filled Promotion Price</span>
@@ -199,7 +199,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" value="{{ $inputer->implode('total_price') }}" name="total_price" id="total_price" class="form-control" placeholder="Total Price"  onchange="sum(this.value)" readonly/>
+														<input type="number" value="{{ $inputer->implode('total_price') }}" name="total_price" id="total_price" class="form-control" placeholder="Total Price" readonly/>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -211,7 +211,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Weight (gram)</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="number" min="1" class="form-control" value="{{ old('product_weight') ?? $inputer->implode('product_weight') }}" name="weight" id="weight" placeholder="Weight" onchange="ongkir()"/>
+														<input type="number" min="1" class="form-control" value="{{ old('product_weight') ?? $inputer->implode('product_weight') }}" name="weight" id="weight" placeholder="Weight" />
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-weight-hanging" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please input the product wieght</span>
@@ -219,7 +219,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Warehouse</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control" value="{{ old('warehouse') ?? $inputer->implode('warehouse') }}" name="warehouse" id="warehouse" onchange="ongkir()">
+														<select class="form-control" value="{{ old('warehouse') ?? $inputer->implode('warehouse') }}" name="warehouse" id="warehouse" >
 															<option value="" hidden>Warehouse</option>
 															<option value="Cilacap" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Cilacap' ? 'selected': '' }} required>Cilacap</option>
 															<option value="Kosambi" {{ (old('warehouse') ?? $inputer->implode('warehouse') ) == 'Kosambi' ? 'selected': '' }} required>Kosambi</option>
@@ -232,7 +232,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Destination Province</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control" id="province" name="province" onchange="ongkir()">
+														<select class="form-control" id="province" name="province" >
 															<option value="" hidden>Destination Province</option>
 															@foreach ($all_province as $all_province)
 																<option value="{{ $all_province['province_id'] }}" {{ $inputer->implode('province_id') == $all_province['province_id'] ? 'selected': ''}}>{{ $all_province['province'] }}</option>
@@ -245,7 +245,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination City</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" id="city" name="city" onchange="ongkir()">
+														<select class="form-control" id="city" name="city" >
 															<option value="" hidden>Destination City</option>
 															@isset($all_city)
 															@foreach ($all_city as $all_city)
@@ -262,7 +262,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination Subdistrict</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" id="subdistrict" name="subdistrict" onchange="ongkir()">
+														<select class="form-control" id="subdistrict" name="subdistrict">
 															<option value="" hidden>Destination Subdistrict</option>
 															@isset($all_subdistrict)
 
@@ -279,7 +279,7 @@
 										  		<label class="col-lg-1 col-form-label text-lg-right mt-8">Courier</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" value="{{ old('courier') ?? $inputer->implode('courier') }}" name="courier" id="courier" onchange="ongkir()">
+														<select class="form-control" value="{{ old('courier') ?? $inputer->implode('courier') }}" name="courier" id="courier">
 															<option value="" hidden>Courier Type</option>
 															<option value="POS" {{ (old('courier') ?? $inputer->implode('courier') ) == 'POS' ? 'selected': '' }} required>POS</option>
 															<option value="JNE OKE" {{ (old('courier') ?? $inputer->implode('courier') ) == 'JNE OKE' ? 'selected': '' }} required>JNE OKE</option>
@@ -295,7 +295,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Shipping Promotion" id="shipping_promotion" name="shipping_promotion" value="{{ $inputer->implode('shipping_promotion') ?? 0 }}" onchange="ongkir()" readonly>
+														<input type="number" class="form-control" placeholder="Shipping Promotion" id="shipping_promotion" name="shipping_promotion" value="{{ $inputer->implode('shipping_promotion') ?? 0 }}" readonly>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -311,7 +311,7 @@
                                                 <label class="col-lg-1 col-form-label text-lg-right mt-8">Payment</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" value="{{ old('payment_method') ?? $inputer->implode('payment_method') }}" name="payment_method" id="payment_method" onchange="ongkir()">
+														<select class="form-control" value="{{ old('payment_method') ?? $inputer->implode('payment_method') }}" name="payment_method" id="payment_method">
 															<option value="" hidden>Payment Method</option>
 															<option value="COD" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'COD' ? 'selected': '' }} required>COD</option>
 															<option value="Transfer" {{ (old('payment_method') ?? $inputer->implode('payment_method') ) == 'Transfer' ? 'selected': '' }} required>Transfer</option>
@@ -349,99 +349,6 @@
 											</div>
 										</div>
 									</form>
-									{{-- <form action="{{ route('lead.update',['lead' => $lead->implode('id')]) }}" method="POST">
-										@csrf
-										@method('PATCH')
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputAdvertiser" class="col-form-label">Advertiser</label>
-											</div>
-											<div class="col-10">
-												<label class="col-form-label form-control" value="">{{ old('advertiser') ?? $lead->implode('advertiser') }}</label>
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputOperator" class="col-form-label">Operator</label>
-											</div>
-											<div class="col-10">
-												<label class="col-form-label form-control" value="">{{ old('operator') ?? $lead->implode('operator_name') }}</label>
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputProduct" class="col-form-label">Product</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-												<label class="col-form-label form-control" value="">{{ old('product') ?? $lead->implode('product_name') }}</label>
-                                            </div>
-                                        </div>
-										<div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputProduct" class="col-form-label">Costumer Name</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-												<input class="col-form-label form-control" value="{{ old('client') ?? $lead->implode('client_name') }}" name="name">
-                                            </div>
-                                        </div>
-										<div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputProduct" class="col-form-label">No Whatsapp</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-												<input class="col-form-label form-control" value="{{ old('client') ?? $lead->implode('client_wa') }}" name="whatsapp">
-                                            </div>
-                                        </div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputQuantity" class="col-form-label">Quantity</label>
-											</div>
-											<div class="col-10">
-												<input type="number" min="0" onchange="calculate(this.value)" id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputprice" class="col-form-label">Price</label>
-											</div>
-											<div class="col-10">
-												<input type="number" min="0" id="price" name="price" value="{{ old('price') ?? $lead->implode('price') }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputTotal" class="col-form-label">Total</label>
-											</div>
-											<div class="col-10">
-												<label class="col-form-label form-control" id="total_price" name="total_price" required value="" aria-describedby="totalHelpInline">{{ old('total') ?? $lead->total_price }}</label>
-												<input class="col-form-label form-control" id="total_price" name="total_price" required value="{{ old('total') ?? $lead->implode('total_price')}}" aria-describedby="totalHelpInline" disabled>
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputTime" class="col-form-label">Time</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="time" required value="{{ old('time') ?? $campaign->time }}" id="inputtime" class="form-control" aria-describedby="totalHelpInline">
-											</div>
-										</div>
-										<div class="row align-items-center col-12 pb-5">
-                                            <div class="col-2">
-                                                <label for="inputProgress" class="col-form-label">Progress</label>
-                                            </div>
-                                            <div class="dropdown col-10">
-                                                <select name="status_id" id="status_id" class="form-control">
-                                                    <option value="3" {{ (old('status_id') ?? $lead->implode('status_id') ) == '3' ? 'selected': '' }} required>Waiting</option>
-													<option value="4" {{ (old('status_id') ?? $lead->implode('status_id') ) == '4' ? 'selected': '' }} required>Proccessing</option>
-													<option value="5" {{ (old('status_id') ?? $lead->implode('status_id') ) == '5' ? 'selected': '' }} required>Closing</option>
-													<option value="6" {{ (old('status_id') ?? $lead->implode('status_id') ) == '6' ? 'selected': '' }} required>Spam</option>
-													<option value="7" {{ (old('status_id') ?? $lead->implode('status_id') ) == '7' ? 'selected': '' }} required>Failed</option>
-                                                </select>
-                                            </div>
-                                        </div>
-										{{ csrf_field() }}
-										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit Lead Tenneling">
-									</form> --}}
 								</div>
 								<!--end::Card body-->
 							</div>
@@ -476,40 +383,6 @@
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="../assets/js/custom/widgets.js"></script>
 		<!--end::Page Custom Javascript-->
-
-        <script>
-            $(document).ready(function() {
-                $('#event_id').on('change', function() {
-                    var eventId = $(this).val();
-                    if(eventId) {
-                        $.ajax({
-                            url: '/getEvent/'+eventId,
-                            type: "GET",
-                            data : {"_token":"{{ csrf_token() }}"},
-                            dataType: "json",
-                            success:function(data);
-                        });
-                    }
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $('#product_id').on('change', function() {
-                    var productId = $(this).val();
-                    if(productId) {
-                        $.ajax({
-                            url: '/getProduct/'+productId,
-                            type: "GET",
-							dataType: "json",
-                            data : {"_token":"{{ csrf_token() }}"},
-                            dataType: "json",
-                            success:function(data);
-                        });
-                    }
-                });
-            });
-        </script>
 		<script>
 			$(document).ready(function(){
 				$('#province').on('change', function(){
@@ -598,7 +471,7 @@
 							success: function(promotion){
 								$('#product_promotion').val(parseInt(promotion.product_promotion));
 								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
-								var total = (price * quantity) - parseInt(promotion.product_promotion);
+								var total = (price * quantity);
 								$('#total_price').val(total);
 								//$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
 							}
@@ -633,126 +506,147 @@
 								$('#product_promotion').val(parseInt(promotion.product_promotion));
 								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
 								if(courier === 'Ninja' && payment_method === 'COD'){
-                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
-                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
-                                        ongkir = 0;
-                                    }
-                                    else if (ongkir > 50000){
-                                        ongkir -= 25000;
-                                    }
-                                    else{
-                                        ongkir -= ongkir*0.5;
-                                    }
-									var total_price = (price * quantity);
-                                    var admin = total_price * 0.025;
-									$('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
+                                    var ongkir = parseInt(shipping_price);
+									if (ongkir > 50000){
+										ongkir = 25000;
+									}
+									else{
+										ongkir = ongkir*0.5;
+									}
+									var total_price = (parseInt(price) * parseInt(quantity));
+									var admin = (total_price + ongkir) * 0.025;
+									if (ongkir <= parseInt(promotion.shipping_promotion)){
+										var total_ongkir = 0;
+									}
+									else{
+										var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
+									}
+									var total_payment = total_price + total_ongkir + admin - parseInt(promotion.product_promotion);
+									$('#total_payment').val(parseInt(total_payment));
 								}
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
-                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
-                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
-                                        ongkir = 0;
-                                    }
-                                    else if (ongkir > 50000){
-                                        ongkir -= 25000;
-                                    }
-                                    else{
-                                        ongkir -= ongkir*0.5;
-                                    }
-                                    var total_price = price * quantity;
-                                    var admin = (total_price + parseInt(shipping_price))*0.030;
-                                    if(admin < 2000){
-                                        admin = 2000;
-                                    }
-                                    $('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
+                                    var ongkir = parseInt(shipping_price);
+									if (ongkir > 50000){
+										ongkir = 25000;
+									}
+									else{
+										ongkir = ongkir*0.5;
+									}
+									var total_price = (parseInt(price) * parseInt(quantity));
+									var admin = (total_price + ongkir)*0.030;
+									if(admin < 2000){
+										admin = 2000;
+									}
+									if (ongkir <= parseInt(promotion.shipping_promotion)){
+										var total_ongkir = 0;
+									}
+									else{
+										var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
+									}
+									var total_payment = total_price + total_ongkir + admin - parseInt(promotion.product_promotion);
+									$('#total_payment').val(parseInt(total_payment));
                                 }
                                 else if(courier === 'JNT' && payment_method === 'COD'){
-                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
-                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
-                                        ongkir = 0;
-                                    }
-                                    else if (ongkir > 50000){
-                                        ongkir -= 25000;
-                                    }
-                                    else{
-                                        ongkir -= ongkir*0.5;
-                                    }
-                                    var total_price = price * quantity;
-                                    var admin = (total_price + parseInt(shipping_price))*0.030;
-                                    if(admin < 5000){
-                                        admin = 5000;
-                                    }
-                                    $('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
+                                    var ongkir = parseInt(shipping_price);
+									if (ongkir > 50000){
+										ongkir = 25000;
+									}
+									else{
+										ongkir = ongkir*0.5;
+									}
+									var total_price = (parseInt(price) * parseInt(quantity));
+									var admin = (total_price + ongkir)*0.030;
+									if(admin < 5000){
+										admin = 5000;
+									}
+									if (ongkir <= parseInt(promotion.shipping_promotion)){
+										var total_ongkir = 0;
+									}
+									else{
+										var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
+									}
+									var total_payment = total_price + total_ongkir + admin - parseInt(promotion.product_promotion);
+									$('#total_payment').val(parseInt(total_payment));
                                 }
-                                else{
-                                    var ongkir = parseInt(shipping_price)-parseInt(promotion.shipping_promotion);
-                                    if (ongkir <= parseInt(promotion.shipping_promotion)){
-                                        ongkir = 0;
-                                    }
-                                    else if (ongkir > 50000){
-                                        ongkir -= 25000;
-                                    }
-                                    else{
-                                        ongkir -= ongkir*0.5;
-                                    }
-                                    var total_price = (price * quantity);
-                                    $('#total_payment').val(total_price + ongkir + admin - parseInt(promotion.product_promotion));
-                                }
+                                else if(payment_method == "Transfer"){
+									var ongkir = parseInt(shipping_price);
+									
+									if (ongkir > 50000){
+										ongkir = 25000;
+									}
+									else{
+										ongkir = ongkir*0.5;
+									}
+									if (ongkir <= parseInt(promotion.shipping_promotion)){
+										var total_ongkir = 0;
+									}
+									else{
+										var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
+									}
+									var total_price = (parseInt(price) * parseInt(quantity));
+									var total_payment = total_price + total_ongkir - parseInt(promotion.product_promotion);
+									$('#total_payment').val(parseInt(total_payment));
+								}
 							}
 						});
 					}
                     else{
 						if(courier === 'Ninja' && payment_method === 'COD'){
-                            var ongkir = parseInt(shipping_price);
+							var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir -= 25000;
+                                ongkir = 25000;
                             }
                             else{
-                                ongkir -= ongkir*0.5;
+                                ongkir = ongkir*0.5;
                             }
-                            var total_price = (price * quantity);
-                            var admin = (total_price + parseInt(shipping_price))*0.025;
-                            $('#total_payment').val(total_price + ongkir + admin);
+                            var total_price = (parseInt(price) * parseInt(quantity));
+                            var admin = (total_price + ongkir)*0.025;
+							var total_payment = total_price + ongkir + admin;
+                            $('#total_payment').val(parseInt(total_payment));
 						}
                         else if(courier === 'Sicepat' && payment_method === 'COD'){
                             var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir -= 25000;
+                                ongkir = 25000;
                             }
                             else{
-                                ongkir -= ongkir*0.5;
+                                ongkir = ongkir*0.5;
                             }
-                            var total_price = (price * quantity);
-                            var admin = (total_price + parseInt(shipping_price))*0.030;
+                            var total_price = (parseInt(price) * parseInt(quantity));
+                            var admin = (total_price + ongkir)*0.030;
                             if(admin < 2000){
                                 admin = 2000;
                             }
-                            $('#total_payment').val(total_price + ongkir + admin);
+                            var total_payment = total_price + ongkir + admin;
+                            $('#total_payment').val(parseInt(total_payment));
 						}
                         else if(courier === 'JNT' && payment_method === 'COD'){
                             var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir -= 25000;
+                                ongkir = 25000;
                             }
                             else{
-                                ongkir -= ongkir*0.5;
+                                ongkir = ongkir*0.5;
                             }
-                            var total_price = (price * quantity);
-                            var admin = (total_price + parseInt(shipping_price))*0.030;
+                            var total_price = (parseInt(price) * parseInt(quantity));
+                            var admin = (total_price + ongkir)*0.030;
                             if(admin < 5000){
                                 admin = 5000;
                             }
-                            $('#total_payment').val(total_price + ongkir + admin);
+                            var total_payment = total_price + ongkir + admin;
+                            $('#total_payment').val(parseInt(total_payment));
 						}
-                        else{
+                        else if(payment_method == "Transfer"){
                             var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir -= 25000;
+                                ongkir = 25000;
                             }
                             else{
-                                ongkir -= ongkir*0.5;
+                                ongkir = ongkir*0.5;
                             }
-                            var total_price = (price * quantity);
-                            $('#total_payment').val(total_price + ongkir);
+                            var total_price = (parseInt(price) * parseInt(quantity));
+                            var total_payment = total_price + ongkir;
+                            $('#total_payment').val(parseInt(total_payment));
                         }
 					}
 
@@ -873,7 +767,7 @@
                 });
             });
         </script>
-		<script>
+		{{--  <script>
 			$(document).ready(function(){
 				var weight = $("#weight").val();
 					var warehouse = $("#warehouse").val();
@@ -905,7 +799,7 @@
 					$('#total_payment').val(total_payment);
 				});
 			});
-		</script>
+		</script>  --}}
 		<script>
 			// Class definition
 			var KTSelect2 = function() {

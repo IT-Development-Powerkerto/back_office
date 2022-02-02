@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Exports\InputersExport;
+use App\Models\Announcement;
 use App\Models\Campaign;
 use App\Models\CsInputer;
 use Illuminate\Http\Request;
 use App\Models\Inputer;
+use App\Models\Lead;
 use App\Models\User;
 use App\Models\Announcement;
 use Carbon\Carbon;
