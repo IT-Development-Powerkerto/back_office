@@ -50,7 +50,7 @@ class InputerController extends Controller
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             return view('inputer.Inputer', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers']))->with('operators', $operator);
-        }else if(Auth::user()->role_id == 1){
+        }else if(Auth::user()->role_id == 1 || Auth::user()->role_id == 12){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
             } else {
