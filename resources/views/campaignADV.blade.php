@@ -112,7 +112,7 @@
 																<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
 															</div>
 															<div class="col-10">
-																<input type="text" name="fbp" value="" required id="inputfbp" class="form-control" aria-describedby="fbpHelpInline">
+																<textarea type="text" name="fbp" value="" required id="inputfbp" class="form-control" aria-describedby="fbpHelpInline"></textarea>
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
