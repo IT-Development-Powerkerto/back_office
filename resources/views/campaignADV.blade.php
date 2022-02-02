@@ -236,7 +236,9 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '{{$campaign->facebook_pixel}}');
+        @foreach (explode(',',$campaign->facebook_pixel) as $fp)
+        fbq('init', '{{$fp}}');
+        @endforeach
         fbq('track', 'PageView');
         </script>
         <noscript>
@@ -368,7 +370,9 @@
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '{{$campaign->facebook_pixel}}');
+        @foreach (explode(',',$campaign->facebook_pixel) as $fp)
+        fbq('init', '{{$fp}}');
+        @endforeach
         fbq('track', 'PageView');
         </script>
         <noscript>
