@@ -72,25 +72,25 @@
 											<!--begin::Table body-->
 											<tbody>
                                                 <?php $n=0; ?>
-												@foreach ($operators as $operator)
+												@foreach ($operatorCampaigns as $operator)
 												<tr>
 													<td>
 														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->name }}</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->user->name }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->email }}</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->user->email }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->phone }}</label>
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->user->phone }}</label>
 													</td>
                                                     <td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
-                                                            <span class="fw-mormal text-gray-800">{{ $campaign_count->where('user_id', $operator->id)->count() }} Campaigns</span>
+                                                            <span class="fw-mormal text-gray-800">{{ $campaign_count->where('user_id', $operator->user->id)->count() }} Campaigns</span>
                                                             <p class="fw-bolder pb-2">
-                                                                {{ $lead_count->where('user_id', $operator->id)->count() }} Lead
+                                                                {{ $lead_count->where('user_id', $operator->user->id)->count() }} Lead
                                                             </p>
                                                         </div>
 													</td>

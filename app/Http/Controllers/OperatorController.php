@@ -20,7 +20,7 @@ class OperatorController extends Controller
      */
     public function index()
     {
-        $all_operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+        $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
         $lead_count = DB::table('leads')
             ->join('operators', 'leads.operator_id', '=', 'operators.id')
             ->where('leads.admin_id', auth()->user()->admin_id)
@@ -28,8 +28,6 @@ class OperatorController extends Controller
         $campaign_count = Operator::where('admin_id', auth()->user()->admin_id)->get();
         $campaign_id = Campaign::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->value('id');
         $operatorCampaigns = Operator::where('admin_id', auth()->user()->admin_id)->where('campaign_id', $campaign_id)->get();
-        $id_operatorCampaigns = Operator::where('admin_id', auth()->user()->admin_id)->where('campaign_id', $campaign_id)->value('user_id');
-        $operators = User::where('admin_id', auth()->user()->admin_id)->where('id', $id_operatorCampaigns)->get();
         $x = auth()->user();
         if($x->role_id == 4){
             return view('operatorADV', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns);
@@ -37,7 +35,7 @@ class OperatorController extends Controller
         if($x->role_id == 5){
             return view('operatorCS', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns);
         }
-        return view('operator', ['all_operators'=>$all_operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns);
+        return view('operator', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns);
     }
 
     /**
