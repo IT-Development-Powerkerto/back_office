@@ -47,7 +47,7 @@
 								<div class="card-header border-0 pt-5">
 									<h3 class="card-title align-items-start flex-column">
 										<span class="card-label fw-bolder fs-3 mb-1">Operator</span>
-										<span class="text-muted mt-1 fw-bold fs-7">{{ $operators->count() }} Operator</span>
+										<span class="text-muted mt-1 fw-bold fs-7">{{ $all_operators->count() }} Operator</span>
 									</h3>
 								</div>
 								<!--end::Header-->
@@ -72,19 +72,19 @@
 											<!--begin::Table body-->
 											<tbody>
                                                 <?php $n=0; ?>
-												@foreach ($operators as $operator)
+												@foreach ($all_operators as $operator)
 												<tr>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->name }}</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->name }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->email }}</label> 
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->email }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->phone }}</label>                                               
+														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->phone }}</label>
 													</td>
                                                     <td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
