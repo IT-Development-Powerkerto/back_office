@@ -241,8 +241,12 @@ class DashboardController extends Controller
             }
             else if($x->role_id == 10){
                 return redirect(route('inputer'));
-            }else if($x->role_id == 11){
+            }
+            else if($x->role_id == 11){
                 return redirect(route('HumanResource.index'));
+            }
+            else if($x->role_id == 12){
+                return redirect(route('JA-adv.index'));
             }
             else{
                 return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)

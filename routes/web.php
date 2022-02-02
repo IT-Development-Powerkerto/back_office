@@ -101,7 +101,7 @@ Route::get('/adv', [DashboardController::class, 'adv'])->name('advDashboard')->m
 Route::get('/WeeklyADV', [DashboardController::class, 'WeeklyADV'])->name('WeeklyADV')->middleware('auth');
 Route::get('/MonthlyADV', [DashboardController::class, 'MonthlyADV'])->name('MonthlyADV')->middleware('auth');
 
-Route::get('/JA-adv', [JuniorAdvController::class, 'index'])->name('JADashboard')->middleware('auth');
+Route::resource('/JA-adv', JuniorAdvController::class)->middleware('auth');
 Route::get('/JA-WeeklyADV', [JuniorAdvController::class, 'WeeklyJAADV'])->name('WeeklyJAADV')->middleware('auth');
 Route::get('/JA-MonthlyADV', [JuniorAdvController::class, 'MonthlyJAADV'])->name('MonthlyJAADV')->middleware('auth');
 

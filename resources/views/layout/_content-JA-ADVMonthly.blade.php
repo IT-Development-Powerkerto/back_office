@@ -22,11 +22,11 @@
 				<ul class="nav">
 					<li class="nav-item">
 						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-							href="{{route('advDashboard')}}">Daily</a>
+							href="{{route('JA-adv.index')}}">Daily</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-							href="{{ route ('WeeklyADV') }}">Weekly</a>
+							href="{{ route ('WeeklyJAADV') }}">Weekly</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4"
@@ -115,7 +115,7 @@
 		<div class="col-xl-6 mt-n1">
 
 			@include('partials/widgets/tables/_widget-7')
-			
+
 		</div>
 		<!--end::Col-->
 

@@ -44,7 +44,7 @@
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
-			<a class="menu-link py-3" href="{{ route ('#') }}">
+			<a class="menu-link py-3" href="{{ route ('inputer') }}">
 				<span class="menu-title">Inputer</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
@@ -102,9 +102,9 @@
 					</span>
 				</div>
 			</div>
-		</div> 
+		</div>
 	</div>--}}
-	
+
 	<!--end::Menu-->
 </div>
 <!--end::Menu wrapper-->
