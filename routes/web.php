@@ -32,6 +32,7 @@ use App\Http\Controllers\InputerController;
 use App\Http\Controllers\RajaOngkirController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\ErrorPagesController;
+use App\Http\Controllers\JuniorAdvController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,6 +101,9 @@ Route::get('/adv', [DashboardController::class, 'adv'])->name('advDashboard')->m
 Route::get('/WeeklyADV', [DashboardController::class, 'WeeklyADV'])->name('WeeklyADV')->middleware('auth');
 Route::get('/MonthlyADV', [DashboardController::class, 'MonthlyADV'])->name('MonthlyADV')->middleware('auth');
 
+Route::get('/JA-adv', [JuniorAdvController::class, 'index'])->name('JADashboard')->middleware('auth');
+Route::get('/JA-WeeklyADV', [JuniorAdvController::class, 'WeeklyJAADV'])->name('WeeklyJAADV')->middleware('auth');
+Route::get('/JA-MonthlyADV', [JuniorAdvController::class, 'MonthlyJAADV'])->name('MonthlyJAADV')->middleware('auth');
 
 Route::get('/cs', [DashboardController::class, 'cs'])->name('csDashboard')->middleware('auth');
 Route::resource('/evaluation', EvaluationController::class)->middleware('auth');
