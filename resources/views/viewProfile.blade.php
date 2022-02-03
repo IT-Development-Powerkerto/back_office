@@ -147,55 +147,6 @@
 													<!--end::Info-->
 												</div>
 												<!--end::User-->
-												<!--begin::Actions-->
-												<div class="d-flex my-2">
-													<a href="#" class="btn btn-light me-3" data-bs-toggle="modal" data-bs-target="#changepwd">Change Password</a>
-													<a href="#" class="btn btn-primary me-3" data-kt-drawer-show="true" data-kt-drawer-target="#kt_drawer_chat">Send Message</a>
-												</div>
-												{{-- Begin-Modal Change Password --}}
-												<div class="modal fade" tabindex="-1" id="changepwd">
-													<div class="modal-dialog">
-														<div class="modal-content">
-															<div class="modal-header">
-																<h5 class="modal-title">Change Password</h5>
-																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-															</div>
-															<div class="modal-body">
-																<form action="{{ route('changePassword') }}" method="POST">
-																	@method('PATCH')
-																	@csrf
-																	<div class="row align-items-center col-12 pb-5">
-																		<div class="col-4">
-																			<label for="inputPassword6" class="col-form-label">Current Password</label>
-																		</div>
-																		<div class="col-8">
-																			<div class="input-group">
-																				<input type="password" name="cpassword" id="current" class="form-control" aria-describedby="passwordHelpInline" required>
-																				<span class="input-group-text" id="basic-addon1" onclick="currentPwd()"><i class="las la-eye"></i></span>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="row align-items-center col-12 pb-5">
-																		<div class="col-4">
-																			<label for="inputPassword6" class="col-form-label">New Password</label>
-																		</div>
-																		<div class="col-8">
-																			<div class="input-group">
-																				<input type="password" name="password" id="new" class="form-control" aria-describedby="passwordHelpInline" required>
-																				<span class="input-group-text" id="basic-addon1" onclick="newpwd()"><i class="las la-eye"></i></span>
-																			</div>
-																		</div>
-																	</div>
-
-																	{{ csrf_field() }}
-																	<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Change Password">
-																</form>
-															</div>
-														</div>
-													</div>
-												</div>
-												{{-- End-Modal Change Password --}}
-												<!--end::Actions-->
 											</div>
 											<!--end::Title-->
 											<!--begin::Stats-->
