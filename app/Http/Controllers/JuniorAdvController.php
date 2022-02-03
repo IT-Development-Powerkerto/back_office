@@ -216,7 +216,7 @@ class JuniorAdvController extends Controller
                 }
                 $leads = DB::table('leads as l')
                     ->join('operators as o', 'l.operator_id', '=', 'o.id')
-                    ->join('products as p', 'l.product_id', '=', 'p.id' )
+                    ->join('products as p', 'l.product_id', '=', 'p.id')
                     ->join('statuses as s', 'l.status_id', '=', 's.id')
                     ->join('clients as c', 'l.client_id', '=', 'c.id')
                     ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
@@ -225,8 +225,8 @@ class JuniorAdvController extends Controller
                     ->where('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->paginate(5);
-                    $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
-                    $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('updated_at', $day)->get();
+                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
+                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('updated_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('adv-JA',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
@@ -244,6 +244,7 @@ class JuniorAdvController extends Controller
 
     public function WeeklyJAADV(Request $request) {
         $day = Carbon::now()->format('Y-m-d');
+        $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
 
         $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
@@ -260,7 +261,7 @@ class JuniorAdvController extends Controller
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
         ])->count();
-        //count lead every wonth
+        //count lead every week
         $lead_week1 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfMonth(),
             Carbon::now()->endOfMonth()->subWeek(3),
@@ -297,47 +298,47 @@ class JuniorAdvController extends Controller
         ])->count();
 
         //omset this week
-        $omset_week_count = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('updated_at', [
+        $omset_week_count = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
         ])->sum('total_price');
-        //count omset every month
-        $omset_week1 = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('updated_at', [
+        //count omset every week
+        $omset_week1 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfMonth(),
             Carbon::now()->endOfMonth()->subWeek(3),
         ])->sum('total_price');
-        $omset_week2 = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('updated_at', [
+        $omset_week2 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfMonth()->addWeek(1),
             Carbon::now()->endOfMonth()->subWeek(2),
         ])->sum('total_price');
-        $omset_week3 = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('updated_at', [
+        $omset_week3 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfMonth()->addWeek(2),
             Carbon::now()->endOfMonth()->subWeek(1),
         ])->sum('total_price');
-        $omset_week4 = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('updated_at', [
+        $omset_week4 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfMonth()->addWeek(3),
             Carbon::now()->endOfMonth(),
         ])->sum('total_price');
 
         //advertising cost this week
-        $advertising_week_count = Budgeting::where('admin_id', auth()->user()->admin_id)->where('user_name', auth()->user()->name)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_week_count = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
         ])->sum('requirement');
-        //count advertising cost every month
-        $advertising_week1 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('user_name', auth()->user()->name)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        //count advertising cost every week
+        $advertising_week1 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfMonth(),
             Carbon::now()->endOfMonth()->subWeek(3),
         ])->sum('requirement');
-        $advertising_week2 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('user_name', auth()->user()->name)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_week2 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfMonth()->addWeek(1),
             Carbon::now()->endOfMonth()->subWeek(2),
         ])->sum('requirement');
-        $advertising_week3 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('user_name', auth()->user()->name)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_week3 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfMonth()->addWeek(2),
             Carbon::now()->endOfMonth()->subWeek(1),
         ])->sum('requirement');
-        $advertising_week4 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('user_name', auth()->user()->name)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+        $advertising_week4 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfMonth()->addWeek(3),
             Carbon::now()->endOfMonth(),
         ])->sum('requirement');
@@ -345,7 +346,7 @@ class JuniorAdvController extends Controller
         $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
-        ])->value('quantity');
+        ])->sum('quantity');
 
         $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day);
         $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
