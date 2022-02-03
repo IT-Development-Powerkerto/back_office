@@ -50,7 +50,7 @@ class InputerController extends Controller
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             return view('inputer.Inputer', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers']))->with('operators', $operator);
-        }else if(Auth::user()->role_id == 1){
+        }else if(Auth::user()->role_id == 1 || Auth::user()->role_id == 12){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
             } else {
@@ -76,6 +76,32 @@ class InputerController extends Controller
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             // dd($cs_inputers);
             return view('inputer.Dashboard', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers']));
+        }else if(Auth::user()->role_id == 12){
+            if($request->date_filter){
+                $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+            } else {
+                $day = Carbon::now()->format('Y-m-d');
+            }
+            $leads = DB::table('leads as l')
+            ->join('operators as o', 'l.operator_id', '=', 'o.id')
+            ->join('products as p', 'l.product_id', '=', 'p.id' )
+            ->join('statuses as s', 'l.status_id', '=', 's.id')
+            ->join('clients as c', 'l.client_id', '=', 'c.id')
+            ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+            ->where('l.admin_id', auth()->user()->admin_id)
+            ->where('l.updated_at', $day)
+            ->orderByDesc('l.id')
+            ->paginate(5);
+            //dd($leads);
+            $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
+            $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
+            $all_inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
+            $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+            // $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
+            $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
+            // dd($cs_inputers);
+            return view('inputer.inputerJA', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers']));
         }else{
             return redirect()->back();
         }

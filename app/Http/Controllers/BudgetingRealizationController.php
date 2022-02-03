@@ -20,6 +20,8 @@ class BudgetingRealizationController extends Controller
         $budgeting_realization = BudgetingRealization::where('admin_id', auth()->user()->admin_id)->get();
         if(auth()->user()->role_id==4){
             return view('budgeting.BudgetingRelADV')->with('budgeting_realization', $budgeting_realization);
+        }elseif (auth()->user()->role_id==12){
+            return view('budgeting.BudgetingRel-JA-ADV')->with('budgeting_realization', $budgeting_realization);
         }elseif (auth()->user()->role_id==5){
             return view('budgeting.BudgetingRelCS')->with('budgeting_realization', $budgeting_realization);
         }elseif (auth()->user()->role_id==10){

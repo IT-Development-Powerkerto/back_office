@@ -28,7 +28,7 @@
 						<!--begin::Container-->
 						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 							<!--begin::Page title-->
-							@include('layout/header/_base')
+							@include('layout/header/_base-Ja-ADV')
 
 
 							@include('layout/_toolbar')
@@ -112,7 +112,7 @@
 																<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
 															</div>
 															<div class="col-10">
-																<textarea type="text" name="fbp" required id="inputfbp" class="form-control" aria-describedby="fbpHelpInline"></textarea>
+																<textarea type="text" name="fbp" value="" required id="inputfbp" class="form-control" aria-describedby="fbpHelpInline"></textarea>
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
