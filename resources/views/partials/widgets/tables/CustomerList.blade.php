@@ -156,7 +156,6 @@
 												</th>
 												<th class="">Admin Name</th>
 												<th class="">Admin ID</th>
-												<th class="">Email</th>
 												<th class="">Whatsapp</th>
                                                 <th class="">Packet</th>
 												<th class="">Expired Date</th>
@@ -195,11 +194,6 @@
                                                 <td>
                                                     <div class="d-flex align-items-center">
                                                         <label class="text-gray-600 text-hover-primary mb-1">adm-{{$user->admin_id}}</label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <label class="text-gray-600 text-hover-primary mb-1">{{$user->email}}</label>
                                                     </div>
                                                 </td>
                                                 <td>

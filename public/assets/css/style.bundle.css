@@ -47531,7 +47531,7 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 28px 0 rgba(82, 63, 105, 0.05);
-  background-color: #1e1e2d;
+  background-color: #fff;
   padding: 0;
 }
 
@@ -47543,7 +47543,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1B1B28;
+    background-color: #fff;
     height: 120px;
     padding: 0 25px;
     flex-shrink: 0;
@@ -47686,7 +47686,7 @@ body {
   color: #ffffff;
 }
 .aside-menu .menu > .menu-item.hover > .menu-link:not(.disabled):not(.active) .menu-title, .aside-menu .menu > .menu-item > .menu-link:hover:not(.disabled):not(.active) .menu-title {
-  color: #ffffff;
+  color: black;
 }
 .aside-menu .menu > .menu-item.hover > .menu-link:not(.disabled):not(.active) .menu-icon i, .aside-menu .menu > .menu-item > .menu-link:hover:not(.disabled):not(.active) .menu-icon i {
   color: #009EF7;

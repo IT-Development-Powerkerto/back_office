@@ -4,18 +4,20 @@
 	<!--begin::Page-->
 	<div class="page d-flex flex-row flex-column-fluid">
 
+		@include('superadmin/layout/aside/_base')
+
 		<!--begin::Wrapper-->
 		<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 
-			@include('layout/header/_baseSA')
+			@include('superadmin/layout/header/_baseSA')
 
 
-			@include('layout/_toolbarSA')
+			@include('superadmin/layout/_toolbarSA')
 
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-				@include('layout/_contentSA')
+				@include('superadmin/layout/_contentSA')
 
 			</div>
 			<!--end::Content-->
