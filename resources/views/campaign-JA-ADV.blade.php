@@ -304,7 +304,7 @@
                                                                     @csrf
                                                                     <div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
                                                                         <div class="btn-group" role="group" aria-label="First group">
-                                                                            <button type="submit" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
+                                                                            <button type="submit" title="Click to edit campaign" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </form>
@@ -312,7 +312,7 @@
                                                                     @csrf
                                                                     <div class="btn-toolbar justify-content-between px-2 " role="toolbar" aria-label="Toolbar with button groups">
                                                                         <div class="btn-group" role="group" aria-label="First group">
-                                                                            <button type="submit" class="btn btn-success  btn-icon"><i class="la la-users"></i></button>
+                                                                            <button type="submit" title="Click to add operator" class="btn btn-success  btn-icon"><i class="la la-users"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </form>
@@ -321,7 +321,7 @@
                                                                     @method('DELETE')
                                                                     <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                                                                         <div class="btn-group" role="group" aria-label="First group">
-                                                                            <button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
+                                                                            <button type="submit" title="Click to delete campaign" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </form>
@@ -438,7 +438,7 @@
                                                                     @csrf
                                                                     <div class="btn-toolbar justify-content-between " role="toolbar" aria-label="Toolbar with button groups">
                                                                         <div class="btn-group" role="group" aria-label="First group">
-                                                                            <button type="submit" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
+                                                                            <button type="submit" title="Click to edit campaign" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </form>
@@ -446,7 +446,7 @@
                                                                     @csrf
                                                                     <div class="btn-toolbar justify-content-between px-2 " role="toolbar" aria-label="Toolbar with button groups">
                                                                         <div class="btn-group" role="group" aria-label="First group">
-                                                                            <button type="submit" class="btn btn-success  btn-icon"><i class="la la-users"></i></button>
+                                                                            <button type="submit" title="Click to add operator" class="btn btn-success  btn-icon"><i class="la la-users"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </form>
@@ -455,7 +455,7 @@
                                                                     @method('DELETE')
                                                                     <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                                                                         <div class="btn-group" role="group" aria-label="First group">
-                                                                            <button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
+                                                                            <button type="submit" title="Click to delete campaign" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
                                                                         </div>
                                                                     </div>
                                                                 </form>

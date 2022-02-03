@@ -198,7 +198,7 @@
                                                                         @csrf
 																		<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																			<div class="btn-group" role="group" aria-label="First group">
-																				<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
+																				<button type="submit" data-bs-toggle="modal" data-bs-target="#edit-user" title="Click to edit user" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
 																			</div>
 																		</div>
                                                                     </form>
@@ -207,7 +207,7 @@
                                                                         @method('DELETE')
 																		<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
 																			<div class="btn-group" role="group" aria-label="First group">
-																				<button type="submit" class="btn btn-danger btn-icon" onclick="return confirm('Jadi Delete Kah ?')"><i class="la la-trash"></i></button>
+																				<button type="submit" class="btn btn-danger btn-icon" title="Click to delete" onclick="return confirm('Are u sure ?')"><i class="la la-trash"></i></button>
 																			</div>
 																		</div>
                                                                     </form>

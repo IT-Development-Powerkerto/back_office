@@ -7,12 +7,6 @@
 			<!--begin::Heading-->
 			<div class="d-flex flex-stack">
 				<h3 class="m-0 text-white fw-bolder fs-3">Omzet</h3>
-				<div>
-					<a href="#" id="omset_day" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="omset_day()">Today</a>
-					<a href="#" id="omset_week" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="omset_week()">This Week</a>
-					<a href="#" id="omset_month" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="omset_month()">This Month</a>
-					<a href="#" id="omset_all" class="m-0 text-white-50 fw-normal fs-9 " onclick="omset_all()">All</a>
-				</div>
 			</div>
 			<!--end::Heading-->
 			<!--begin::Balance-->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Models\Lead;
 use App\Models\Inputer;
@@ -381,12 +382,14 @@ class BudgetingController extends Controller
 
     public function Finance()
     {
+        $lead = Lead::all();
+        $announcement = Announcement::all();
         $role = Role::all();
         $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
         if(auth()->user()->role_id==9){
-            return view('finance.FinanceDept')->with('role', $role)->with('budgeting', $budgeting);
+            return view('finance.FinanceDept')->with('role', $role)->with('budgeting', $budgeting)->with('leads', $lead)->with('announcements', $announcement);
         }elseif (auth()->user()->role_id==1){
-            return view('finance.Dashboard')->with('role', $role)->with('budgeting', $budgeting);
+            return view('finance.Dashboard')->with('role', $role)->with('budgeting', $budgeting)->with('leads', $lead)->with('announcements', $announcement);
         }
     }
 

@@ -7,13 +7,6 @@
 			<!--begin::Heading-->
 			<div class="d-flex flex-stack">
 				<h3 class="m-0 text-white fw-bolder fs-3">Lead</h3>
-				<div>
-					<a href="#" id="lead_day" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="lead_day()">Today</a>
-					{{--  <button id="lead_1" onclick="lead_day()">Today</button>  --}}
-					<a href="#" id="lead_week" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="lead_week()">This Week</a>
-					<a href="#" id="lead_month" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="lead_month()">This Month</a>
-					<a href="#" id="lead_all" class="m-0 text-white-50 fw-normal fs-9 " onclick="lead_all()">All</a>
-				</div>
 			</div>
 			<!--end::Heading-->
 			<!--begin::Balance-->
