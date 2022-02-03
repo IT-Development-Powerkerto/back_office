@@ -264,7 +264,7 @@ class ManagerController extends Controller
             $request->session()->regenerateToken();
             return redirect('/');
         }else{
-            if(Auth::user()->role_id == 2){
+            if(Auth::user()->role_id == 3){
                 return view('manager.Manager', compact(['leads', 'announcements','lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_su', $lead_su)->with('lead_mo', $lead_mo)->with('lead_tu', $lead_tu)->with('lead_we', $lead_we)->with('lead_th', $lead_th)->with('lead_fr', $lead_fr)->with('lead_sa', $lead_sa)
                 ->with('closing_su', $closing_su)->with('closing_mo', $closing_mo)->with('closing_tu', $closing_tu)->with('closing_we', $closing_we)->with('closing_th', $closing_th)->with('closing_fr', $closing_fr)->with('closing_sa', $closing_sa)
@@ -577,7 +577,7 @@ class ManagerController extends Controller
             $request->session()->regenerateToken();
             return redirect('/');
         }else{
-            if(Auth::user()->role_id == 2){
+            if(Auth::user()->role_id == 3){
                 return view('manager.WeeklyDashboard', compact(['leads', 'announcements','lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_week1', $lead_week1)->with('lead_week2', $lead_week2)->with('lead_week3', $lead_week3)->with('lead_week4', $lead_week4)
                 ->with('closing_week1', $closing_week1)->with('closing_week2', $closing_week2)->with('closing_week3', $closing_week3)->with('closing_week4', $closing_week4)
@@ -959,7 +959,7 @@ class ManagerController extends Controller
             $request->session()->regenerateToken();
             return redirect('/');
         }else{
-            if(Auth::user()->role_id == 2){
+            if(Auth::user()->role_id == 3){
                 return view('manager.MonthlyDashboard', compact(['leads', 'announcements','lead_day', 'lead_week', 'lead_month', 'lead_all', 'products', 'omset_day', 'omset_week', 'omset_month', 'omset_all', 'budgeting_day', 'budgeting_week', 'budgeting_month', 'budgeting_all']))->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_jan', $lead_jan)->with('lead_feb', $lead_feb)->with('lead_mar', $lead_mar)->with('lead_apr', $lead_apr)->with('lead_may', $lead_may)->with('lead_jun', $lead_jun)
                 ->with('lead_jul', $lead_jul)->with('lead_aug', $lead_aug)->with('lead_sep', $lead_sep)->with('lead_okt', $lead_okt)->with('lead_nov', $lead_nov)->with('lead_des', $lead_des)
