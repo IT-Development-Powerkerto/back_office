@@ -150,7 +150,7 @@
 												<!--end::Table head-->
 												<!--begin::Table body-->
 												<tbody>
-                                                    @if (auth()->user()->role_id == 1)
+                                                    @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 12)
                                                         @foreach ($budgeting_realization->where('admin_id', auth()->user()->admin_id) as $budgeting_realization)
                                                         <tr>
                                                             <td>

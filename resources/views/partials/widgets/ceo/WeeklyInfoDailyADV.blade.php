@@ -67,27 +67,27 @@
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp. {{$omset1->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. {{$omset1->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price') - $omset1->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('product_promotion')}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp. {{$omset2->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. {{$omset2->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price') - $omset2->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('product_promotion')}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6">Rp. {{$omset3->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
+																	<h1 class="text-dark fw-normal fs-6">Rp. {{$omset3->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price') - $omset3->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('product_promotion')}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center">
-																	<h1 class="text-dark fw-normal fs-6 ">Rp. {{$omset4->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
+																	<h1 class="text-dark fw-normal fs-6 ">Rp. {{$omset4->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price') - $omset4->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('product_promotion')}}</h1>
 																</div>
 															</td>
 															<td>
 																<div class="d-flex align-items-center justify-content-end">
-																	<h1 class="text-info fw-bolder fs-6 ">Rp. {{$omset_permonth->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
+																	<h1 class="text-info fw-bolder fs-6 ">Rp. {{$omset_permonth->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price') - $omset_permonth->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('product_promotion')}}</h1>
 																</div>
 															</td>
 														</tr>
