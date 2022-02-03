@@ -12,7 +12,7 @@
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
 				<span class="fw-bold fs-7">Your Balance</span>
-				<span id="omset" class="fw-bolder fs-2x pt-1">Rp. {{$omset_all->sum('total_price')}}</span>
+				<span id="omset" class="fw-bolder fs-2x pt-1">Rp. {{$omset_all->sum('total_price') - $omset_all->sum('product_promotion')}}</span>
 			</div>
 			<!--end::Balance-->
 		</div>
@@ -46,7 +46,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<label id="product_count" class="fw-bolder fs-5 text-gray-800 pe-1">Rp. {{ $omset_all->where('product_name', $product->name)->sum('total_price') }}</label>
+						<label id="product_count" class="fw-bolder fs-5 text-gray-800 pe-1">Rp. {{ $omset_all->where('product_name', $product->name)->sum('total_price') - $omset_all->where('product_name', $product->name)->sum('product_promotion') }}</label>
 					</div>
 					<!--end::Label-->
 				</div>

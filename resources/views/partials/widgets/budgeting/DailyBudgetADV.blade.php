@@ -27,7 +27,7 @@
 													</thead>
 													<!--end::Table head-->
 													<!--begin::Table body-->
-                                                    @if (auth()->user()->role_id == 1)
+                                                    @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 12)
                                                         <tbody>
                                                             @foreach ($adv as $adv)
                                                             <tr>
@@ -62,7 +62,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$omset_day->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price')}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$omset_day->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('total_price') - $omset_day->where('admin_id', auth()->user()->admin_id)->where('adv_name', $adv->name)->sum('product_promotion')}}</h1>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -102,7 +102,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center justify-content-end">
-                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$omset_day->where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->sum('total_price')}}</h1>
+                                                                        <h1 class="text-dark fw-medium fs-6">Rp. {{$omset_day->where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->sum('total_price') - $omset_day->where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->sum('product_promotion')}}</h1>
                                                                     </div>
                                                                 </td>
                                                             </tr>

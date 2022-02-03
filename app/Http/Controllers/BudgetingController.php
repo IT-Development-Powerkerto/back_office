@@ -79,7 +79,7 @@ class BudgetingController extends Controller
             ])->get();
 
             $month = Carbon::now()->format('M');
-            $adv = User::where('admin_id', auth()->user()->id)->where('role_id', 4)->get();
+            $adv = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
             $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->get();
             return view('budgeting.Budgeting')
             ->with('day_output', $day_output)
@@ -158,7 +158,7 @@ class BudgetingController extends Controller
             ])->get();
 
             $month = Carbon::now()->format('M');
-            $adv = User::where('admin_id', auth()->user()->id)->where('role_id', 4)->get();
+            $adv = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
             $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->get();
             return view('budgeting.BudgetingADV')
             ->with('day_output', $day_output)
@@ -236,9 +236,9 @@ class BudgetingController extends Controller
             ])->get();
 
             $month = Carbon::now()->format('M');
-            $adv = User::where('admin_id', auth()->user()->id)->where('role_id', 4)->get();
+            $adv = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->get();
             $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->get();
-            return view('budgeting.Budgeting-JA-ADV')
+            return view('budgeting.Budgeting-JA-ADv')
             ->with('day_output', $day_output)
             ->with('lead_day', $lead_day)
             ->with('lead_week', $lead_week)
@@ -262,7 +262,7 @@ class BudgetingController extends Controller
             return Redirect::back();
         }
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *

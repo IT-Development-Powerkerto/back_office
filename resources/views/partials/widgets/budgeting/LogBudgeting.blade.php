@@ -32,7 +32,7 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													<tbody>
-                                                        @if (auth()->user()->role_id == 1)
+                                                        @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 12)
                                                             @foreach ($budgeting->where('admin_id', auth()->user()->admin_id)->where('role_id', 4) as $budgeting)
                                                             <tr>
                                                                 <td>
