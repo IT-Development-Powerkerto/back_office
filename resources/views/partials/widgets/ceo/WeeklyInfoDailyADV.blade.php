@@ -15,8 +15,7 @@
 														<i class="las la-print text-primary" style="font-size: 18px"></i>
 													</span>
 													<!--end::Svg Icon-->Export</button>
-												<form action="/dashboard" method="GET" class="d-flex">
-												<form action="/adv" method="GET" class="d-flex">
+												<form action="/ceo" method="GET" class="d-flex">
 													<div class="me-2 d-flex flex-row">
 														<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
 														<button type="button" class="btn btn-sm btn-light btn-active-primary ms-2" title="Click For Export">GO</button>

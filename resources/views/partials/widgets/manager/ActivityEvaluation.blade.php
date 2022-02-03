@@ -8,8 +8,8 @@
 												<span class="text-muted mt-1 fw-bold fs-7">{{$evaluation->where('admin_id', auth()->user()->admin_id)->count()}} Activity</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
-												<form action="/dashboard" method="GET" class="d-flex">
-												<form action="/adv" method="GET" class="d-flex">
+
+												<form action="/manager" method="GET" class="d-flex">
 													<div class="me-2 d-flex flex-row">
 														<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
 														<button type="button" class="btn btn-sm btn-light btn-active-primary ms-2" title="Click For Export">GO</button>
