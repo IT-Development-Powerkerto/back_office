@@ -18,6 +18,7 @@ use App\Http\Controllers\LeadController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\ProductController;
 use App\Events\MessageCreated;
+use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\BigFlipController;
 use App\Http\Controllers\BudgetingController;
 use App\Http\Controllers\BudgetingRealizationController;
@@ -62,6 +63,8 @@ Route::get('/about', function () {
 Route::get('/blog', [PostController::class, 'index'])->name('blog');
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
 Route::get('/categories',[CategoryController::class,'index']);
+Route::post('/resetPassword', [AccountsController::class, 'resetPassword']);
+Route::get('/resetPassword', [MailController::class, 'resetPassword'])->name('resetPassword');
 
 Route::get('/login',[LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class, 'authenticate']);
