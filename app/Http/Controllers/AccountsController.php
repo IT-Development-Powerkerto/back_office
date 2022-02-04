@@ -11,6 +11,9 @@ use Nette\Utils\Random;
 
 class AccountsController extends Controller
 {
+    public function index(){
+        return view('resetpwd');
+    }
     public function resetPassword(Request $request){
         $user_exists = DB::table('users')->where('email', $request->email)->exists();
         if(!$user_exists){

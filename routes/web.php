@@ -64,13 +64,14 @@ Route::get('/blog', [PostController::class, 'index'])->name('blog');
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
 Route::get('/categories',[CategoryController::class,'index']);
 Route::post('/resetPassword', [AccountsController::class, 'resetPassword']);
-Route::get('/resetPassword', [MailController::class, 'resetPassword'])->name('resetPassword');
+Route::post('/resetPassword', [AccountsController::class, 'resetPassword']);
+Route::get('/ResetPwd', [AccountsController::class, 'index'])->name('resetpwd');
+
 
 Route::get('/login',[LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class, 'authenticate']);
 
 Route::post('/logout',[LoginController::class, 'logout']);
-
 
 Route::resource('/register', RegisterController::class)->middleware('guest');
 

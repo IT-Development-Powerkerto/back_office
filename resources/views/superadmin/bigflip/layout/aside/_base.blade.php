@@ -15,7 +15,7 @@
 	<!--begin::Aside menu-->
 	<div class="aside-menu flex-column-fluid" id="kt_aside_menu">
 
-		@include('superadmin/layout/aside/_menu')
+		@include('superadmin/bigflip/layout/aside/_menu')
 
 	</div>
 	<!--end::Aside menu-->
