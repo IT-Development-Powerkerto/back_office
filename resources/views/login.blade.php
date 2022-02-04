@@ -67,7 +67,7 @@
                     <div class="d-flex flex-column justify-content-center align-items-center">
                         
                         <button type="submit" class="btn btn-primary rounded-pill" style="width: 100%">Login</button>
-                        <a href="#" class="text-primary py-3" style="text-decoration: none" data-bs-toggle="modal" data-bs-target="#exampleModal">Forget Your Password ?</a>
+                        <a href="#" class="text-primary py-3" style="text-decoration: none" data-bs-toggle="modal" data-bs-target="#forgetPassword">Forget Your Password ?</a>
                         <label class="text-dark" style="font-size: 12px">don't have an account? Click Right <a href="#" data-bs-toggle="modal" data-bs-target="#kt_modal_create_account" class="text-primary" style="text-decoration: none"> Here</a></label>
                     </div>
                 </form>
@@ -86,24 +86,31 @@
 
     <!-- Modal -->
     <!--begin::Modal - Forget Password-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="forgetPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Forget Password</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="m-4">
+            <form class="m-4" action="{{ url('/resetPassword') }}" method="POST">
+                @csrf
+                @if(session()->has('email'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('email') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
                 <div class="modal-body">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text">We never share your email with anyone else.</div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
           </div>
@@ -463,7 +470,7 @@
     @if(!empty(Session::get('error_code')) && Session::get('error_code') == 5)
     <script>
     $(function() {
-        $('#kt_modal_create_account').modal('show');
+        $('#forgetPassword').modal('show');
     });
     </script>
     @endif
