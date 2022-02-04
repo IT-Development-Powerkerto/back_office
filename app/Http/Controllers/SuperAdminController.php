@@ -71,7 +71,7 @@ class SuperAdminController extends Controller
             ]);
         }
         if (auth()->user()->admin_id == 1){
-            return view('SuperAdmin')->with('user', $user)->with('paket', $paket)->with('all_lead', $all_lead)->with('leads', $lead)->with('announcements', $announcement);
+            return view('superadmin.SuperAdmin')->with('user', $user)->with('paket', $paket)->with('all_lead', $all_lead)->with('leads', $lead)->with('announcements', $announcement);
         }else{
             return Redirect::back();
         }

@@ -3,6 +3,7 @@
 	<!--begin::Head-->
 	<head><base href="../">
 		<title>Campaign</title>
+		<link rel="icon" href="img/favicon.png">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -120,14 +121,16 @@
 											<!--begin::Table head-->
 											<thead>
 												<tr class="fw-bolder text-muted">
-													<th class="min-w-100px">No</th>
+													<th class="">No</th>
 													<!-- <th class="min-w-30px">Status</th> -->
-													<th class="min-w-200px">Name</th>
-													<th class="min-w-200px">Email</th>
-													<th class="min-w-200px">Whatsapp</th>
-													<th class="min-w-200px">Assign To</th>
+													<th class="">Name</th>
+													<th class="">Email</th>
+													<th class="">Whatsapp</th>
+													<th class="">Assign To</th>
+													<th class="">Leads</th>
+													<th class="">Closing</th>
 													{{-- <th class="min-w-200px">Closing Rate</th> --}}
-													<th class="min-w-100px">Actions</th>
+													<th class="">Actions</th>
 												</tr>
 											</thead>
 											<!--end::Table head-->
@@ -137,25 +140,33 @@
 												@foreach ($operatorCampaigns as $operatorCampaign)
 												<tr>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>
+														<label class="text-dark fw-normal text-hover-primary d-block fs-6">{{ $n+=1 }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->name }}</label>
+														<label class="text-dark fw-normal text-hover-primary d-block fs-6">{{ $operatorCampaign->user->name }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->email }}</label>
+														<label class="text-dark fw-normal text-hover-primary d-block fs-6">{{ $operatorCampaign->user->email }}</label>
 													</td>
 													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operatorCampaign->user->phone }}</label>
+														<label class="text-dark fw-normal text-hover-primary d-block fs-6">{{ $operatorCampaign->user->phone }}</label>
 													</td>
-                                                    <td>
+													<td>
+														<label class="text-dark fw-normal text-hover-primary d-block fs-6">{{$operatorCampaign->user->operator->count()}} Campaigns</label>
+													</td>
+													<td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
-                                                            <span class="fw-mormal text-gray-800">{{$operatorCampaign->user->operator->count()}} Campaigns</span>
+                                                            <span class="fw-mormal text-gray-800">{{$operatorCampaign->lead->where('cretaed_at', $day)->count()}} Daily Leads</span>
                                                             <p class="fw-bolder">
-                                                                {{$operatorCampaign->lead->where('cretaed_at', $day)->count()}} Daily Leads
-                                                            </p>
-                                                            <p class="fw-bolder mt-n4">
                                                                 {{$operatorCampaign->lead->count()}} Total Leads
+                                                            </p>
+                                                        </div>
+													</td>
+													<td>
+                                                        <div class="timeline-desc timeline-desc-light-primary">
+                                                            <span class="fw-mormal text-gray-800">{{$operatorCampaign->lead->where('status_id', 5)->where('cretaed_at', $day)->count()}} Daily Closing</span>
+                                                            <p class="fw-bolder">
+                                                                {{$operatorCampaign->lead->where('status_id', 5)->count()}} Total Closing
                                                             </p>
                                                         </div>
 													</td>

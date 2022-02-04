@@ -7,15 +7,15 @@
 		<!--begin::Wrapper-->
 		<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 
-			@include('layout/header/_baseSA')
+			@include('layout/header/_base-JA-ADV')
 
 
-			@include('layout/_toolbarSA')
+			@include('inputer/layout/_toolbarInputer')
 
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-				@include('layout/_contentSA')
+				@include('inputer/layout/_contenInputer')
 
 			</div>
 			<!--end::Content-->

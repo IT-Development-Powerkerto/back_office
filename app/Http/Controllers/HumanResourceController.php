@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Lead;
+use App\Models\Announcement;
 
 class HumanResourceController extends Controller
 {
@@ -16,11 +18,13 @@ class HumanResourceController extends Controller
     public function index()
     {
         $users = User::all();
+        $lead = Lead::all();
         $role = Role::all();
+        $announcement = Announcement::all();
         if(auth()->user()->role_id==11){
-            return view('hr.hrDept')->with('role', $role)->with('user', $users);
+            return view('hr.hrDept')->with('role', $role)->with('user', $users)->with('leads', $lead)->with('announcements', $announcement);
         }elseif (auth()->user()->role_id==1){
-            return view('hr.Dashboard')->with('role', $role)->with('user', $users);
+            return view('hr.Dashboard')->with('role', $role)->with('user', $users)->with('leads', $lead)->with('announcements', $announcement);
         }
     }
 

@@ -2,7 +2,7 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Budgeting Realization</title>
+		<title>Budgeting Request</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
 		<link rel="icon" href="img/favicon.png">
@@ -31,7 +31,7 @@
 						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 								<!--begin::Page title-->
-								@include('layout/header/_base')
+								@include('layout/header/_base-JA-ADV')
 
 
 								@include('layout/_toolbar')
@@ -151,7 +151,7 @@
 												<!--begin::Table body-->
 												<tbody>
                                                     @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 12)
-                                                        @foreach ($budgeting_realization->where('admin_id', auth()->user()->admin_id) as $budgeting_realization)
+                                                        @foreach ($budgeting_realization->where('admin_id', auth()->user()->admin_id)->where('role_id', 4) as $budgeting_realization)
                                                         <tr>
                                                             <td>
                                                                 <div class="d-flex align-items-center">

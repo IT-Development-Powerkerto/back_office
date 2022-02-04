@@ -7,12 +7,6 @@
 			<!--begin::Heading-->
 			<div class="d-flex flex-stack">
 				<h3 class="m-0 text-white fw-bolder fs-3">Expense</h3>
-				<div>
-					<a href="#" id="budgeting_day" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="budgeting_day()">Today</a>
-					<a href="#" id="budgeting_week" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="budgeting_week()">This Week</a>
-					<a href="#" id="budgeting_month" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="budgeting_month()">This Month</a>
-					<a href="#" id="budgeting_all" class="m-0 text-white-50 fw-normal fs-9 " onclick="budgeting_all()">All</a>
-				</div>
 			</div>
 			<!--end::Heading-->
 			<!--begin::Balance-->

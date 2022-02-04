@@ -7,18 +7,12 @@
 			<!--begin::Heading-->
 			<div class="d-flex flex-stack">
 				<h3 class="m-0 text-white fw-bolder fs-3">Omzet</h3>
-				<div>
-					<a href="#" id="omset_day" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="omset_day()">Today</a>
-					<a href="#" id="omset_week" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="omset_week()">This Week</a>
-					<a href="#" id="omset_month" class="m-0 text-white-50 fw-normal fs-9 me-3" onclick="omset_month()">This Month</a>
-					<a href="#" id="omset_all" class="m-0 text-white-50 fw-normal fs-9 " onclick="omset_all()">All</a>
-				</div>
 			</div>
 			<!--end::Heading-->
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
 				<span class="fw-bold fs-7">Your Balance</span>
-				<span id="omset" class="fw-bolder fs-2x pt-1">Rp. {{$omset_all->sum('total_price')}}</span>
+				<span id="omset" class="fw-bolder fs-2x pt-1">Rp. {{$omset_all->sum('total_price') - $omset_all->sum('product_promotion')}}</span>
 			</div>
 			<!--end::Balance-->
 		</div>
@@ -52,7 +46,7 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<label id="product_count" class="fw-bolder fs-5 text-gray-800 pe-1">Rp. {{ $omset_all->where('product_name', $product->name)->sum('total_price') }}</label>
+						<label id="product_count" class="fw-bolder fs-5 text-gray-800 pe-1">Rp. {{ $omset_all->where('product_name', $product->name)->sum('total_price') - $omset_all->where('product_name', $product->name)->sum('product_promotion') }}</label>
 					</div>
 					<!--end::Label-->
 				</div>

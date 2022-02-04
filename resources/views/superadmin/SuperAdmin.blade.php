@@ -29,9 +29,9 @@
 <!--begin::Body-->
 
 <body id="kt_body"
-	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed">
+class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
 
-	@include('layout/masterSA')
+	@include('superadmin/layout/masterSA')
 
 	<script>
 		var hostUrl = "assets/";

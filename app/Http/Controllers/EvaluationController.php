@@ -25,6 +25,8 @@ class EvaluationController extends Controller
             return view('EvaluationCS')->with('product', $products)->with('evaluation', $evaluation);
         }elseif (auth()->user()->role_id==1){
             return view('Evaluation')->with('product', $products)->with('evaluation', $evaluation);
+        }elseif (auth()->user()->role_id==12){
+            return view('Evaluation-JA-ADV')->with('product', $products)->with('evaluation', $evaluation);
         }else {
             return redirect()->back();
         }
