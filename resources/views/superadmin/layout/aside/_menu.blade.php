@@ -20,7 +20,7 @@
 				<span class="menu-icon me-0">
 					<i class="la la-money-bill"></i>
 				</span>
-				<span class="menu-title">BigFlip</span>
+				<span class="menu-title">Flip</span>
 			</a>
 		</div>
 	</div>

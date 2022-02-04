@@ -5,49 +5,52 @@
 	<!--begin::Menu-->
 	<div class="menu menu-column menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-bold"
 		id="#kt_aside_menu" data-kt-menu="true">
-		<div class="menu-item py-2">
-			<a class="menu-link menu-center" href="{{ route ('superadmin.index') }}" data-bs-trigger="hover" data-bs-dismiss="click"
-				data-bs-placement="right">
-				<span class="menu-icon me-0">
-					<i class="bi bi-house fs-2"></i>
-				</span>
-				<span class="menu-title">Dashboard</span>
+		<div class="menu-item py-8 px-3">
+			<a class="text-hover-primary menu-center" href="{{ route ('superadmin.index') }}" data-bs-trigger="hover">
+				<i class="bi bi-house fs-1 me-1"></i>
+				<span class="menu-title text-center text-muted text-hover-primary text-muted text-hover-primary">Dashboard</span>
 			</a>
 		</div>
-		<div class="menu-item py-2">
-			<a class="menu-link menu-center" href="{{ route ('flip') }}" data-bs-trigger="hover" data-bs-dismiss="click"
-				data-bs-placement="right">
-				<span class="menu-icon me-0">
-					<i class="la la-money-bill"></i>
-				</span>
-				<span class="menu-title">BigFlip</span> 
+		<div class="menu-item py-8 px-3">
+			<a class="text-hover-primary menu-center" href="{{ route ('flip') }}" data-bs-trigger="hover">
+				<i class="bi bi-currency-dollar fs-1 me-1"></i>
+				<span class="menu-title text-center text-muted text-hover-primary">Big Flip</span>
 			</a>
 		</div>
-		<div class="menu-item py-2">
-			<a class="menu-link menu-center" href="#" data-bs-trigger="hover" data-bs-dismiss="click"
-				data-bs-placement="right">
-				<span class="menu-icon me-0">
-					<i class="la la-money-bill"></i>
-				</span>
-				<span class="menu-title">BigFlip</span>
+		<div class="menu-item py-8 px-3">
+			<a class="text-hover-primary menu-center" href="#" data-bs-trigger="hover">
+				<i class="bi bi-bag-check fs-1 me-1"></i>
+				<span class="menu-title text-center text-muted text-hover-primary">Payment</span> 
 			</a>
 		</div>
-		<div class="menu-item py-2">
-			<a class="menu-link menu-center" href="#" data-bs-trigger="hover" data-bs-dismiss="click"
-				data-bs-placement="right">
-				<span class="menu-icon me-0">
-					<i class="la la-money-bill"></i>
-				</span>
-				<span class="menu-title">BigFlip</span>
+		<div class="menu-item py-8 px-3">
+			<a class="text-hover-primary menu-center" href="#" data-bs-trigger="hover">
+				<i class="bi bi-clock-history fs-1 me-1"></i>
+				<span class="menu-title text-center text-muted text-hover-primary">History</span> 
 			</a>
 		</div>
-		<div class="menu-item py-2">
-			<a class="menu-link menu-center" href="#" data-bs-trigger="hover" data-bs-dismiss="click"
-				data-bs-placement="right">
-				<span class="menu-icon me-0">
-					<i class="la la-money-bill"></i>
-				</span>
-				<span class="menu-title">BigFlip</span>
+		<div class="menu-item py-8 px-3">
+			<a class="text-hover-primary menu-center" href="#" data-bs-trigger="hover">
+				<i class="bi bi-wallet fs-1 me-1"></i>
+				<span class="menu-title text-center text-muted text-hover-primary">Deposit</span> 
+			</a>
+		</div>
+		<div class="menu-item py-8 px-3">
+			<a class="text-hover-primary menu-center" href="#" data-bs-trigger="hover">
+				<i class="bi bi-clipboard-check fs-1 me-1"></i>
+				<span class="menu-title text-center text-muted text-hover-primary">Beneficiary</span> 
+			</a>
+		</div>
+		<div class="menu-item py-8 px-3">
+			<a class="text-hover-primary menu-center" href="#" data-bs-trigger="hover">
+				<i class="bi bi-arrow-counterclockwise fs-1 me-1"></i>
+				<span class="menu-title text-center text-muted text-hover-primary">Refund</span> 
+			</a>
+		</div>
+		<div class="menu-item py-8 px-3">
+			<a class="text-hover-primary menu-center" href="#" data-bs-trigger="hover">
+				<i class="bi bi-gear fs-1 me-1"></i>
+				<span class="menu-title text-center text-muted text-hover-primary">Settings</span> 
 			</a>
 		</div>
 	</div>

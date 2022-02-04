@@ -6,9 +6,13 @@
 	<!--begin::Brand-->
 	<div class="aside-logo py-8" id="kt_aside_logo">
 		<!--begin::Logo-->
-		<a href="?page=index" class="d-flex align-items-center">
-			<img alt="Logo" src="img/favicon.png" class="h-75px logo" />
-		</a>
+		<div class="d-flex flex-column">
+			<a href="#" class="d-flex align-items-center">
+				<img alt="Logo" src="img/favicon.png" class="h-75px logo" />
+			</a>
+			<span class="text-muted fw-bolder fs-9">Current Deposit</span>
+			<span class="text-dark fw-bolder">Rp</span>
+		</div>
 		<!--end::Logo-->
 	</div>
 	<!--end::Brand-->
