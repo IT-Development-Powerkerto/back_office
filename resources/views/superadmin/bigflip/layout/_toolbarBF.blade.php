@@ -5,7 +5,7 @@
 		<!--begin::Page title-->
 		<div class="flex-grow-1 flex-shrink-0 me-5">
 
-			@include('superadmin/layout/_page-titleSA')
+			@include('superadmin/bigflip/layout/_page-titleBF')
 
 		</div>
 		<!--end::Page title-->

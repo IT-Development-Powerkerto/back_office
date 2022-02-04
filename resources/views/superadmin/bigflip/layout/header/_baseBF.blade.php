@@ -15,14 +15,14 @@
 			<!--begin::Navbar-->
 			<div class="d-flex align-items-stretch" id="kt_header_nav">
 
-				@include('superadmin/layout/header/_menuSA')
+				@include('superadmin/bigflip/layout/header/_menuBF')
 
 			</div>
 			<!--end::Navbar-->
 			<!--begin::Topbar-->
 			<div class="d-flex align-items-stretch flex-shrink-0">
 
-				@include('superadmin/layout/topbar/_baseSA')
+				@include('superadmin/bigflip/layout/topbar/_baseBF')
 
 			</div>
 			<!--end::Topbar-->

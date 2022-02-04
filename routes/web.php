@@ -129,7 +129,7 @@ Route::delete('campaign/{campaign}/{operator}', [OperatorController::class, 'des
 //Route::post("/campaign", [CampaignController::class, 'addMorePost']);
 
 Route::resource('operator', OperatorController::class)->middleware('auth');
-Route::get('bigflip', [BigFlipController::class, 'index'])->middleware('auth');
+Route::get('/bigflip', [BigFlipController::class, 'index'])->middleware('auth')->name('flip');
 
 Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
