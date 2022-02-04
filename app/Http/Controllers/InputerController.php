@@ -49,7 +49,8 @@ class InputerController extends Controller
             $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
-            return view('inputer.Inputer', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers']))->with('operators', $operator);
+            $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
+            return view('inputer.Inputer', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers']))->with('operators', $operator);
         }else if(Auth::user()->role_id == 1){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
@@ -74,8 +75,9 @@ class InputerController extends Controller
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             // $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
+            $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
             // dd($cs_inputers);
-            return view('inputer.Dashboard', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers']));
+            return view('inputer.Dashboard', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers']));
         }else if(Auth::user()->role_id == 12){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
@@ -100,8 +102,9 @@ class InputerController extends Controller
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             // $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
+            $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
             // dd($cs_inputers);
-            return view('inputer.inputerJA', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers']));
+            return view('inputer.inputerJA', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers']));
         }else{
             return redirect()->back();
         }

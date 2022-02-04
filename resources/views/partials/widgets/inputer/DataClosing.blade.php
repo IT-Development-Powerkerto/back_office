@@ -5,7 +5,7 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Data Closing</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$inputers->where('admin_id', auth()->user()->admin_id)->count()}} Data</span>
+												<span class="text-muted mt-1 fw-bold fs-7">{{$inputers->where('admin_id', auth()->user()->admin_id)->where('operator_name', $name_cs_inputers)->count()}} Data</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<!-- Button trigger modal -->
@@ -74,7 +74,7 @@
 													<!--end::Table head-->
 													<!--begin::Table body-->
 													@foreach ($cs_inputers as $cs_inputer)
-														
+
 														@foreach ($inputers->where('operator_name', $cs_inputer->cs->name) as $inputer)
 														<tbody>
 															<tr>
