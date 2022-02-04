@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\AdminMail;
 use App\Mail\BigFlipMail;
 use App\Mail\NotificationMail;
+use App\Mail\ResetPasswordMail;
 use App\Models\Campaign;
 use App\Models\Client;
 use App\Models\Operator;
@@ -58,5 +59,11 @@ class MailController extends Controller
             'title' => 'ada inquiry',
         ];
         Mail::to('habibalihabsyi123@gmail.com')->send(new BigFlipMail($details));
+    }
+    public function resetPassword($email, $link){
+        $details = [
+            'link' => $link
+        ];
+        Mail::to($email)->send(new ResetPasswordMail($details));
     }
 }

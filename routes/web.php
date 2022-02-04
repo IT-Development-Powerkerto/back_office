@@ -64,6 +64,7 @@ Route::get('/blog', [PostController::class, 'index'])->name('blog');
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
 Route::get('/categories',[CategoryController::class,'index']);
 Route::post('/resetPassword', [AccountsController::class, 'resetPassword']);
+Route::get('/resetPassword', [MailController::class, 'resetPassword'])->name('resetPassword');
 
 Route::get('/login',[LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login',[LoginController::class, 'authenticate']);
