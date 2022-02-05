@@ -179,11 +179,11 @@ class InputerController extends Controller
     public function view($id)
     {
         $inputers = Inputer::findOrFail($id);
-        $province_id = $inputers->value('province_id');
+        $province_id = $inputers->province_id;
 
         if(isset($province_id)){
-            $city_id = $inputers->value('city_id');
-            $subdistrict_id = $inputers->value('subdistrict_id');
+            $city_id = $inputers->city_id;
+            $subdistrict_id = $inputers->subdistrict_id;
             $province = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province?id='.$province_id);
             $province = $province['rajaongkir']['results']['province'];
             $city = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/city?id='.$city_id.'&province='.$province_id);
