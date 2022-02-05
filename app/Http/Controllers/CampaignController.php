@@ -129,9 +129,9 @@ class CampaignController extends Controller
                 'facebook_pixel'    => $request->fbp,
                 'event_pixel_id'    => $request->event_id,
                 'event_wa_id'       => $request->event_wa,
-                'cs_to_customer'  => $request->cs_to_customer,
-                'customer_to_cs'  => $request->customer_to_cs,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'cs_to_customer'    => $request->cs_to_customer,
+                'customer_to_cs'    => $request->customer_to_cs,
+                'updated_at'        => Carbon::now()->toDateTimeString(),
             ]);
         }
         else{
@@ -144,9 +144,9 @@ class CampaignController extends Controller
                 'facebook_pixel'    => $request->fbp,
                 'event_pixel_id'    => $request->event_id,
                 'event_wa_id'       => $request->event_wa,
-                'cs_to_customer'  => $request->cs_to_customer,
-                'customer_to_cs'  => $request->customer_to_cs,
-                'updated_at' => Carbon::now()->toDateTimeString(),
+                'cs_to_customer'    => $request->cs_to_customer,
+                'customer_to_cs'    => $request->customer_to_cs,
+                'updated_at'        => Carbon::now()->toDateTimeString(),
             ]);
         }
         return redirect('/campaign')->with('success','Successull! Campaign Updated');

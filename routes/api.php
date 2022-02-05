@@ -9,6 +9,7 @@ use App\Http\Controllers\ClosingRateController;
 use App\Http\Controllers\OmsetController;
 use App\Http\Controllers\UpsellingController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\LeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,5 @@ Route::post('accept_payment', [BigFlipCallbackController::class, 'accept_payment
 Route::post('disbursement', [BigFlipCallbackController::class, 'disbursement']);
 Route::get('authentication', [BigFlipController::class, 'authentication']);
 Route::get('balance', [BigFlipController::class, 'balance']);
+
+Route::get('leads', [LeadController::class, 'index']);
