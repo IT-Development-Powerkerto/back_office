@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 use File;
+use App\Http\Resources\LeadResource;
 
 class LeadController extends Controller
 {
@@ -25,9 +26,23 @@ class LeadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if($request->date_filter){
+            $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+        } else {
+            $day = Carbon::now()->format('Y-m-d');
+        }
+        $data = Lead::orderByDesc('id')->get();
+        // $data = DB::table('leads as l')
+        //     ->join('operators as o', 'l.operator_id', '=', 'o.id')
+        //     ->join('products as p', 'l.product_id', '=', 'p.id' )
+        //     ->join('statuses as s', 'l.status_id', '=', 's.id')
+        //     ->join('clients as c', 'l.client_id', '=', 'c.id')
+        //     ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
+        //     ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at');
+
+        return response()->json([LeadResource::collection($data), 'Leads fetched.']);
     }
 
     /**
