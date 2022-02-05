@@ -120,20 +120,35 @@ class CampaignController extends Controller
      */
     public function update(Request $request, $campaign)
     {
-        DB::table('campaigns')->where('id', $campaign)->where('admin_id', auth()->user()->admin_id)->update([
-            'user_id'           => Auth()->user()->id,
-            'admin_id'          => auth()->user()->admin_id,
-            'title'             => $request->title,
-            'product_id'        => $request->product_id,
-            'message'           => $request->tp,
-            'facebook_pixel'    => $request->fbp,
-            'event_pixel_id'    => $request->event_id,
-            'event_wa_id'       => $request->event_wa,
-            'cs_to_customer'  => $request->cs_to_customer,
-            'customer_to_cs'  => $request->customer_to_cs,
-            'updated_at' => Carbon::now()->toDateTimeString(),
-        ]);
-
+        if (auth()->user()->role_id == 1){
+            DB::table('campaigns')->where('id', $campaign)->where('admin_id', auth()->user()->admin_id)->update([
+                'admin_id'          => auth()->user()->admin_id,
+                'title'             => $request->title,
+                'product_id'        => $request->product_id,
+                'message'           => $request->tp,
+                'facebook_pixel'    => $request->fbp,
+                'event_pixel_id'    => $request->event_id,
+                'event_wa_id'       => $request->event_wa,
+                'cs_to_customer'  => $request->cs_to_customer,
+                'customer_to_cs'  => $request->customer_to_cs,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
+        else{
+            DB::table('campaigns')->where('id', $campaign)->where('admin_id', auth()->user()->admin_id)->update([
+                'user_id'           => Auth()->user()->id,
+                'admin_id'          => auth()->user()->admin_id,
+                'title'             => $request->title,
+                'product_id'        => $request->product_id,
+                'message'           => $request->tp,
+                'facebook_pixel'    => $request->fbp,
+                'event_pixel_id'    => $request->event_id,
+                'event_wa_id'       => $request->event_wa,
+                'cs_to_customer'  => $request->cs_to_customer,
+                'customer_to_cs'  => $request->customer_to_cs,
+                'updated_at' => Carbon::now()->toDateTimeString(),
+            ]);
+        }
         return redirect('/campaign')->with('success','Successull! Campaign Updated');
     }
 
