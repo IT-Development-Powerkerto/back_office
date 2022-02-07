@@ -61,7 +61,6 @@ class MailController extends Controller
         Mail::to('habibalihabsyi123@gmail.com')->send(new BigFlipMail($details));
     }
     public function resetPassword($email, $token){
-        $email = 'habibalihabsyi123@gmail.com';
         $details = [
             'token' => $token
         ];

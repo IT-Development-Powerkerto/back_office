@@ -8,6 +8,6 @@
 </head>
 <body>
     Klik tombol dibawah untuk reset password
-    <a href="{{ $details['link'] }}">Reset Password</a>
+    <a href="{{ route('sendResetPassword', $details['token']) }}">Reset Password</a>
 </body>
 </html>

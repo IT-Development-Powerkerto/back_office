@@ -33,14 +33,31 @@
     <div class="loginlp">
         <div class="lp">
             <h1><span>POWER</span>KERTO</h1>
+            @if(session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if(session()->has('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <h2>Reset Password</h2>
             <p>Enter your new password</p>
             <div class="contents">
-                <form action="#" method="POST">
+                <form action="{{ route('submitResetPassword', $token) }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">New Password</label>
-                        <input type="password" name="password" class="form-control rounded-pill" id="exampleInputPassword1" required>
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control rounded-pill" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">New Password</label>
+                        <input type="password" name="password" class="form-control rounded-pill" id="password" required>
                     </div>
                     <div class="mb-3">
                         <label for="confirm-password" class="form-label">Confirm Password</label>
