@@ -488,7 +488,7 @@
 		</script>
 		<script>
 			$(document).ready(function(){
-				$('#payment_method, #courier').on('change', function(){
+				$('#payment_method, #courier, #promotion_id').on('change', function(){
 					var quantity = $('#quantity').val();
 					var price = $('#price').val();
 					var promotion_id = $('#promotion_id').val();
@@ -508,7 +508,7 @@
 								if(courier === 'Ninja' && payment_method === 'COD'){
                                     var ongkir = parseInt(shipping_price);
 									if (ongkir > 50000){
-										ongkir = 25000;
+										ongkir -= 25000;
 									}
 									else{
 										ongkir = ongkir*0.5;
@@ -527,7 +527,7 @@
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
                                     var ongkir = parseInt(shipping_price);
 									if (ongkir > 50000){
-										ongkir = 25000;
+										ongkir -= 25000;
 									}
 									else{
 										ongkir = ongkir*0.5;
@@ -549,7 +549,7 @@
                                 else if(courier === 'JNT' && payment_method === 'COD'){
                                     var ongkir = parseInt(shipping_price);
 									if (ongkir > 50000){
-										ongkir = 25000;
+										ongkir -= 25000;
 									}
 									else{
 										ongkir = ongkir*0.5;
@@ -572,7 +572,7 @@
 									var ongkir = parseInt(shipping_price);
 									
 									if (ongkir > 50000){
-										ongkir = 25000;
+										ongkir -= 25000;
 									}
 									else{
 										ongkir = ongkir*0.5;
@@ -594,7 +594,7 @@
 						if(courier === 'Ninja' && payment_method === 'COD'){
 							var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir = 25000;
+                                ongkir -= 25000;
                             }
                             else{
                                 ongkir = ongkir*0.5;
@@ -607,7 +607,7 @@
                         else if(courier === 'Sicepat' && payment_method === 'COD'){
                             var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir = 25000;
+                                ongkir -= 25000;
                             }
                             else{
                                 ongkir = ongkir*0.5;
@@ -623,7 +623,7 @@
                         else if(courier === 'JNT' && payment_method === 'COD'){
                             var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir = 25000;
+                                ongkir -= 25000;
                             }
                             else{
                                 ongkir = ongkir*0.5;
@@ -639,7 +639,7 @@
                         else if(payment_method == "Transfer"){
                             var ongkir = parseInt(shipping_price);
                             if (ongkir > 50000){
-                                ongkir = 25000;
+                                ongkir -= 25000;
                             }
                             else{
                                 ongkir = ongkir*0.5;
