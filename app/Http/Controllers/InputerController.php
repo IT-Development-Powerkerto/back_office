@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\InputersExport;
+use App\Exports\OneInputerExport;
 use App\Models\Announcement;
 use App\Models\Campaign;
 use App\Models\CsInputer;
@@ -202,6 +203,10 @@ class InputerController extends Controller
         $to_date = $request->to_date;
         // dd($from_date);
         return Excel::download(new InputersExport($from_date,$to_date), 'inputer.xlsx', 'Xlsx');
+    }
+    public function exportOne($id)
+    {
+        return Excel::download(new OneInputerExport($id), 'inputerOneData.xlsx', 'Xlsx');
     }
     public function addCS(Request $request){
         $CsExists = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->where('cs_id', $request->cs_id)->exists();

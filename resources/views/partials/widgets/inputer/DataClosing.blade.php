@@ -94,6 +94,20 @@
 																		</div>
 																	</div>
 																</td>
+																<td>
+																	<div class="d-flex align-items-center">
+																		<div class="d-flex justify-content-start flex-column">
+																			<a href="{{ route('export-one-inputer', ['id' => $inputer->id])}}" class="text-dark fw-normal fs-6 text-hover-primary mb-2">
+																				<button type="button" class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Export">
+																					<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+																					<span class="svg-icon svg-icon-3">
+																						<i class="las la-print" style="font-size: 18px"></i>
+																					</span>
+																				<!--end::Svg Icon-->Export</button>
+																			</a>
+																		</div>
+																	</div>
+																</td>
 															</tr>
 														</tbody>
 														@endforeach
