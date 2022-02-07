@@ -153,7 +153,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Product</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<label type="text"class="form-control" placeholder="Product Name">{{ old('operator') ?? $lead->implode('product_name') }}</label>
+														<label type="text"class="form-control" id="product" placeholder="Product Name">{{ old('product_name') ?? $lead->implode('product_name') }}</label>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Product Name</span>
@@ -349,6 +349,7 @@
 											</div>
 										</div>
 									</form>
+									
 								</div>
 								<!--end::Card body-->
 							</div>
@@ -425,6 +426,34 @@
 					}else {
 						$('#subdistrict').empty();
 					}
+				});
+			});
+		</script>
+		<script>
+			$(function(){
+				$("#clipboard").hide();
+				$('#copy').click(function(){
+					var name = $('#name').val();
+					var address = $('#address').val();
+					var province = $('#province').find(":selected").text();
+					var city = $('#city').find(":selected").text();
+					var subdistrict = $('#subdistrict').find(":selected").text();
+					var whatsapp = $('#whatsapp').val();
+					var product = $('#product').text();
+					var quantity = $('#quantity').val();
+					var courier =  $('#courier').val();
+					var method = $('#payment_method').val();
+					var promotion = $('#promotion_id').find(":selected").text();
+					var confirm_shipping_promotion =  $('#shipping_promotion').val();
+					var confirm_shipping_price =  $('#shipping_price').val();
+					var confirm_total_payment =  $('#total_payment').val();
+					var warehouse = $('#warehouse').val();
+					var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${method}`;
+					$("#clipboard").val(text).show().select();
+					document.execCommand("copy");
+					$("#clipboard").hide();
+					alert('copied to clipboard');
+					return false
 				});
 			});
 		</script>
@@ -507,13 +536,16 @@
 								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
 								if(courier === 'Ninja' && payment_method === 'COD'){
                                     var ongkir = parseInt(shipping_price);
-									if (ongkir > 50000){
-										ongkir -= 25000;
-									}
-									else{
-										ongkir = ongkir*0.5;
-									}
 									var total_price = (parseInt(price) * parseInt(quantity));
+									if (total_price >= 120000){
+										if (ongkir > 50000){
+											ongkir -= 25000;
+										}
+										else{
+											ongkir = ongkir*0.5;
+										}
+									}
+									
 									var admin = (total_price + ongkir) * 0.025;
 									if (ongkir <= parseInt(promotion.shipping_promotion)){
 										var total_ongkir = 0;
@@ -526,13 +558,15 @@
 								}
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
                                     var ongkir = parseInt(shipping_price);
-									if (ongkir > 50000){
-										ongkir -= 25000;
-									}
-									else{
-										ongkir = ongkir*0.5;
-									}
 									var total_price = (parseInt(price) * parseInt(quantity));
+									if (total_price >= 120000){
+										if (ongkir > 50000){
+											ongkir -= 25000;
+										}
+										else{
+											ongkir = ongkir*0.5;
+										}
+									}
 									var admin = (total_price + ongkir)*0.030;
 									if(admin < 2000){
 										admin = 2000;
@@ -548,13 +582,15 @@
                                 }
                                 else if(courier === 'JNT' && payment_method === 'COD'){
                                     var ongkir = parseInt(shipping_price);
-									if (ongkir > 50000){
-										ongkir -= 25000;
-									}
-									else{
-										ongkir = ongkir*0.5;
-									}
 									var total_price = (parseInt(price) * parseInt(quantity));
+									if (total_price >= 120000){
+										if (ongkir > 50000){
+											ongkir -= 25000;
+										}
+										else{
+											ongkir = ongkir*0.5;
+										}
+									}
 									var admin = (total_price + ongkir)*0.030;
 									if(admin < 5000){
 										admin = 5000;
@@ -571,11 +607,14 @@
                                 else if(payment_method == "Transfer"){
 									var ongkir = parseInt(shipping_price);
 									
-									if (ongkir > 50000){
-										ongkir -= 25000;
-									}
-									else{
-										ongkir = ongkir*0.5;
+									var total_price = (parseInt(price) * parseInt(quantity));
+									if (total_price >= 120000){
+										if (ongkir > 50000){
+											ongkir -= 25000;
+										}
+										else{
+											ongkir = ongkir*0.5;
+										}
 									}
 									if (ongkir <= parseInt(promotion.shipping_promotion)){
 										var total_ongkir = 0;
@@ -583,7 +622,6 @@
 									else{
 										var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
 									}
-									var total_price = (parseInt(price) * parseInt(quantity));
 									var total_payment = total_price + total_ongkir - parseInt(promotion.product_promotion);
 									$('#total_payment').val(parseInt(total_payment));
 								}
@@ -593,26 +631,30 @@
                     else{
 						if(courier === 'Ninja' && payment_method === 'COD'){
 							var ongkir = parseInt(shipping_price);
-                            if (ongkir > 50000){
-                                ongkir -= 25000;
-                            }
-                            else{
-                                ongkir = ongkir*0.5;
-                            }
                             var total_price = (parseInt(price) * parseInt(quantity));
+							if (total_price >= 120000){
+								if (ongkir > 50000){
+									ongkir -= 25000;
+								}
+								else{
+									ongkir = ongkir*0.5;
+								}
+							}
                             var admin = (total_price + ongkir)*0.025;
 							var total_payment = total_price + ongkir + admin;
                             $('#total_payment').val(parseInt(total_payment));
 						}
                         else if(courier === 'Sicepat' && payment_method === 'COD'){
                             var ongkir = parseInt(shipping_price);
-                            if (ongkir > 50000){
-                                ongkir -= 25000;
-                            }
-                            else{
-                                ongkir = ongkir*0.5;
-                            }
                             var total_price = (parseInt(price) * parseInt(quantity));
+							if (total_price >= 120000){
+								if (ongkir > 50000){
+									ongkir -= 25000;
+								}
+								else{
+									ongkir = ongkir*0.5;
+								}
+							}
                             var admin = (total_price + ongkir)*0.030;
                             if(admin < 2000){
                                 admin = 2000;
@@ -622,13 +664,15 @@
 						}
                         else if(courier === 'JNT' && payment_method === 'COD'){
                             var ongkir = parseInt(shipping_price);
-                            if (ongkir > 50000){
-                                ongkir -= 25000;
-                            }
-                            else{
-                                ongkir = ongkir*0.5;
-                            }
                             var total_price = (parseInt(price) * parseInt(quantity));
+							if (total_price >= 120000){
+								if (ongkir > 50000){
+									ongkir -= 25000;
+								}
+								else{
+									ongkir = ongkir*0.5;
+								}
+							}
                             var admin = (total_price + ongkir)*0.030;
                             if(admin < 5000){
                                 admin = 5000;
@@ -638,13 +682,15 @@
 						}
                         else if(payment_method == "Transfer"){
                             var ongkir = parseInt(shipping_price);
-                            if (ongkir > 50000){
-                                ongkir -= 25000;
-                            }
-                            else{
-                                ongkir = ongkir*0.5;
-                            }
                             var total_price = (parseInt(price) * parseInt(quantity));
+							if (total_price >= 120000){
+								if (ongkir > 50000){
+									ongkir -= 25000;
+								}
+								else{
+									ongkir = ongkir*0.5;
+								}
+							}
                             var total_payment = total_price + ongkir;
                             $('#total_payment').val(parseInt(total_payment));
                         }
