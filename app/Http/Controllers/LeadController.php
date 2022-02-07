@@ -190,17 +190,18 @@ class LeadController extends Controller
                 return redirect()->back()->withInput();
             }
             else{
+                DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                    'name'         => $request->name,
+                    'whatsapp'     => $whatsapp,
+                    'updated_at'   => Carbon::now()->toDateTimeString(),
+                ]);
                 DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                    'client_id'       => $lead,
                     'quantity'        => $request->quantity,
                     'price'           => $request->price,
                     'total_price'     => $request->total_price,
                     'status_id'       => $request->status_id,
                     'updated_at'      => Carbon::now()->toDateTimeString(),
-                ]);
-                DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
-                    'name'         => $request->name,
-                    'whatsapp'     => $whatsapp,
-                    'updated_at'   => Carbon::now()->toDateTimeString(),
                 ]);
                 $inputer = Inputer::where('lead_id', $lead)->exists();
                 $lead = Lead::findOrFail($lead);
@@ -284,17 +285,18 @@ class LeadController extends Controller
             }
         }
         else{
+            DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                'name'         => $request->name,
+                'whatsapp'     => $whatsapp,
+                'updated_at'   => Carbon::now()->toDateTimeString(),
+            ]);
             DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                'client_id'       => $lead,
                 'quantity'        => $request->quantity,
                 'price'           => $request->price,
                 'total_price'     => $request->total_price,
                 'status_id'       => $request->status_id,
                 'updated_at'      => Carbon::now()->toDateTimeString(),
-            ]);
-            DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
-                'name'         => $request->name,
-                'whatsapp'     => $whatsapp,
-                'updated_at'   => Carbon::now()->toDateTimeString(),
             ]);
         }
         return redirect('/dashboard')->with('success','Successull! Updated');

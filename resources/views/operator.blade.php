@@ -65,7 +65,9 @@
 													<th class="min-w-200px">Name</th>
 													<th class="min-w-200px">Email</th>
 													<th class="min-w-200px">Whatsapp</th>
-													<th class="min-w-200px">Assign To</th>
+													<th class="min-w-150px">Assign To</th>
+													<th class="min-w-150px">Leads</th>
+													<th class="min-w-150px">Closing</th>
 												</tr>
 											</thead>
 											<!--end::Table head-->
@@ -89,8 +91,21 @@
                                                     <td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
                                                             <span class="fw-mormal text-gray-800">{{ $campaign_count->where('user_id', $operator->id)->count() }} Campaigns</span>
+                                                        </div>
+													</td>
+                                                    <td>
+                                                        <div class="timeline-desc timeline-desc-light-primary">
+                                                            <span class="fw-mormal text-gray-800">{{ $lead_count->where('user_id', $operator->id)->where('created_at', $day)->count() }} Daily Lead</span>
                                                             <p class="fw-bolder pb-2">
                                                                 {{ $lead_count->where('user_id', $operator->id)->count() }} Lead
+                                                            </p>
+                                                        </div>
+													</td>
+                                                    <td>
+                                                        <div class="timeline-desc timeline-desc-light-primary">
+                                                            <span class="fw-mormal text-gray-800">{{ $lead_count->where('user_id', $operator->id)->where('status_id', 5)->where('created_at', $day)->count() }} Daily Closing</span>
+                                                            <p class="fw-bolder pb-2">
+                                                                {{ $lead_count->where('user_id', $operator->id)->where('status_id', 5)->count() }} Closing
                                                             </p>
                                                         </div>
 													</td>

@@ -154,6 +154,7 @@ class FbPController extends Controller
             $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
             $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
             $lead_id = DB::table('leads')->insertGetId([
+                'id'         => $clients->id,
                 'admin_id'   => $admin_id,
                 'advertiser' => $adv_name,
                 'campaign_id' => $campaign_id,
@@ -253,6 +254,7 @@ class FbPController extends Controller
         $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
         $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
         $lead_id = DB::table('leads')->insertGetId([
+            'id'         => $clients->id,
             'admin_id'   => $admin_id,
             'advertiser' => $adv_name,
             'campaign_id' => $campaign_id,

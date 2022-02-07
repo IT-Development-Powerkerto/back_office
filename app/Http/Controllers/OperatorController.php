@@ -20,25 +20,26 @@ class OperatorController extends Controller
      */
     public function index()
     {
+        $day = Carbon::now()->format('Y-m-d');
         $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
         $lead_count = DB::table('leads')
             ->join('operators', 'leads.operator_id', '=', 'operators.id')
             ->where('leads.admin_id', auth()->user()->admin_id)
             ->get();
         $campaign_count = Operator::where('admin_id', auth()->user()->admin_id)->get();
-        $campaign_id = Campaign::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->value('id');
-        $operatorCampaigns = Operator::where('admin_id', auth()->user()->admin_id)->where('campaign_id', $campaign_id)->get();
+        $campaign_id = Campaign::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->get();
+        $operatorCampaigns = Operator::where('admin_id', auth()->user()->admin_id)->get();
         $x = auth()->user();
         if($x->role_id == 4){
-            return view('operatorADV', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns);
+            return view('operatorADV', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns)->with('campaign_id', $campaign_id)->with('day', $day);
         }
         if($x->role_id == 12){
-            return view('operator-JA-ADV', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns);
+            return view('operator-JA-ADV', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns)->with('day', $day);
         }
         if($x->role_id == 5){
-            return view('operatorCS', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns);
+            return view('operatorCS', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns)->with('day', $day);
         }
-        return view('operator', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns);
+        return view('operator', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns)->with('day', $day);
     }
 
     /**
