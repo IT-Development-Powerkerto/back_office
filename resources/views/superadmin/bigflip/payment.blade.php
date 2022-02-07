@@ -31,7 +31,7 @@
 <body id="kt_body"
 class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed">
 
-	@include('superadmin/bigflip/layout/masterBF')
+	@include('superadmin/bigflip/layout/masterPayment')
 
 	<script>
 		var hostUrl = "assets/";

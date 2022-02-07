@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\ToArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class InputersExport implements FromQuery, WithHeadings
+class InputersExport implements WithHeadings, FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -22,17 +23,30 @@ class InputersExport implements FromQuery, WithHeadings
         $this->from_date = $from_date;
         $this->to_date = $to_date;
     }
-    public function query()
+    
+    // public function query()
+    // {
+    //     $data = DB::table('inputers')
+    //         ->where('admin_id', auth()->user()->admin_id)
+    //         ->whereBetween('updated_at',[ $this->from_date,$this->to_date])
+    //         // ->where('l.updated_at', $day)
+    //         ->select('adv_name', 'operator_name', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion','payment_method', 'total_payment', 'updated_at')
+    //         ->orderByDesc('id');
+        
+    //     return $data;
+    // }
+    public function collection()
     {
         $data = DB::table('inputers')
             ->where('admin_id', auth()->user()->admin_id)
             ->whereBetween('updated_at',[ $this->from_date,$this->to_date])
             // ->where('l.updated_at', $day)
             ->select('adv_name', 'operator_name', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion','payment_method', 'total_payment', 'updated_at')
-            ->orderByDesc('id');
-
-
-        return $data;
+            ->whereId(1)->get();
+        // $data.array_push(['test']);
+        $dataInputer[] = array($data[0]->adv_name , 'bebel');
+        // return $data;
+        return collect($dataInputer);
     }
     
     public function headings(): array
@@ -54,7 +68,8 @@ class InputersExport implements FromQuery, WithHeadings
             'Shipping Promotion',
             'Payment Method',
             'Total Payment',
-            'Date/Time'
+            'Date/Time',
+            'Province'
         ];
     }
 }

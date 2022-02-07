@@ -3,8 +3,8 @@
 									<label class="card card-xl-stretch mb-5 mb-xl-8 bg-white border">
 										<!--begin::Body-->
 										<div class="card-body">
-											<div class="fw-bolder text-dark">Waiting</div>
-											<div class="text-primary fw-bolder fs-2 mb-2 mt-5">10</div>
+											<div class="fw-bolder text-dark">ID</div>
+											<div class="text-primary fw-bolder fs-5 mb-2 mt-5">flip.id/$yourcompanyid</div>
 										</div>
 										<!--end::Body-->
 									</label>

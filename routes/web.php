@@ -65,7 +65,8 @@ Route::get('/post/{post:slug}', [PostController::class, 'show']);
 Route::get('/categories',[CategoryController::class,'index']);
 Route::post('/resetPassword', [AccountsController::class, 'resetPassword']);
 Route::post('/resetPassword', [AccountsController::class, 'resetPassword']);
-Route::get('/ResetPwd', [AccountsController::class, 'index'])->name('resetpwd');
+Route::get('/ResetPwd/{token}', [AccountsController::class, 'resetPasswordForm'])->name('sendResetPassword');
+Route::post('/ResetPwd/{token}', [AccountsController::class, 'submitResetPassword'])->name('submitResetPassword');
 
 
 Route::get('/login',[LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -134,6 +135,7 @@ Route::delete('campaign/{campaign}/{operator}', [OperatorController::class, 'des
 
 Route::resource('operator', OperatorController::class)->middleware('auth');
 Route::get('/bigflip', [BigFlipController::class, 'index'])->middleware('auth')->name('flip');
+Route::get('/AcceptPayment', [BigFlipController::class, 'AcceptPayment'])->middleware('auth')->name('bigflip.acceptpayment');
 
 Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();
@@ -147,6 +149,7 @@ Route::get('/subdistrict/{id}', [RajaOngkirController::class, 'get_subdistrict']
 
 Route::get('leads/export', [LeadController::class, 'export'])->name('export-lead')->middleware('auth');
 Route::get('inputer/export', [InputerController::class, 'export'])->name('export-inputer')->middleware('auth');
+Route::get('inputer/export/{id}', [InputerController::class, 'exportOne'])->name('export-one-inputer')->middleware('auth');
 // Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
 Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}/{lead_id}', [MailController::class, 'index'])->name('send');
 Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation');

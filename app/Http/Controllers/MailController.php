@@ -40,8 +40,8 @@ class MailController extends Controller
         ];
         Mail::to('habibalihabsyi123@gmail.com')->send(new NotificationMail($details));
         // Mail::to($email)->send(new NotificationMail($details));
-        return Redirect::away('http://orderku.site/'.$number.'/'.$wa_text.'/'.$thanks);
-        // return Redirect::away('http://127.0.0.1:8080/'.$number.'/'.$wa_text.'/'.$thanks);
+        return Redirect::away('http://orderku.site/'.$number.'/'.rawurlencode($wa_text).'/'.$thanks);
+        // return Redirect::away('http://127.0.0.1:8080/'.$number.'/'.rawurlencode($wa_text).'/'.$thanks);
     }
 
     public function activation($email)
@@ -60,9 +60,9 @@ class MailController extends Controller
         ];
         Mail::to('habibalihabsyi123@gmail.com')->send(new BigFlipMail($details));
     }
-    public function resetPassword($email, $link){
+    public function resetPassword($email, $token){
         $details = [
-            'link' => $link
+            'token' => $token
         ];
         Mail::to($email)->send(new ResetPasswordMail($details));
     }
