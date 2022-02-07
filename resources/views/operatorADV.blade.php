@@ -72,29 +72,31 @@
 											<!--begin::Table body-->
 											<tbody>
                                                 <?php $n=0; ?>
-												@foreach ($operatorCampaigns as $operator)
-												<tr>
-													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>
-													</td>
-													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->user->name }}</label>
-													</td>
-													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->user->email }}</label>
-													</td>
-													<td>
-														<label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->user->phone }}</label>
-													</td>
-                                                    <td>
-                                                        <div class="timeline-desc timeline-desc-light-primary">
-                                                            <span class="fw-mormal text-gray-800">{{ $campaign_count->where('user_id', $operator->user->id)->count() }} Campaigns</span>
-                                                            <p class="fw-bolder pb-2">
-                                                                {{ $lead_count->where('user_id', $operator->user->id)->count() }} Lead
-                                                            </p>
-                                                        </div>
-													</td>
-												</tr>
+												@foreach ($campaign_id as $campaign_id)
+                                                    @foreach ($operatorCampaigns->where('campaign_id', $campaign_id->id) as $operator)
+                                                    <tr>
+                                                        <td>
+                                                            <label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $n+=1 }}</label>
+                                                        </td>
+                                                        <td>
+                                                            <label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->user->name }}</label>
+                                                        </td>
+                                                        <td>
+                                                            <label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->user->email }}</label>
+                                                        </td>
+                                                        <td>
+                                                            <label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->user->phone }}</label>
+                                                        </td>
+                                                        <td>
+                                                            <div class="timeline-desc timeline-desc-light-primary">
+                                                                <span class="fw-mormal text-gray-800">{{ $campaign_count->where('user_id', $operator->user->id)->count() }} Campaigns</span>
+                                                                <p class="fw-bolder pb-2">
+                                                                    {{ $lead_count->where('user_id', $operator->user->id)->count() }} Lead
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
 												@endforeach
 											</tbody>
 											<!--end::Table body-->
