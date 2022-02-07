@@ -134,6 +134,7 @@ Route::delete('campaign/{campaign}/{operator}', [OperatorController::class, 'des
 
 Route::resource('operator', OperatorController::class)->middleware('auth');
 Route::get('/bigflip', [BigFlipController::class, 'index'])->middleware('auth')->name('flip');
+Route::get('/AcceptPayment', [BigFlipController::class, 'AcceptPayment'])->middleware('auth')->name('bigflip.acceptpayment');
 
 Route::get('getRole/{id}', function ($id) {
     $roles = App\Models\User::where('role_id',$id)->get();

@@ -69,6 +69,14 @@ class BigFlipController extends Controller
     //     var_dump($response);
     // }
 
+    public function AcceptPayment(){
+        $users = User::all();
+        $pakets = Paket::all();
+        $announcement = Announcement::all();
+        $lead = Lead::all();
+        $count_flexible = User::where('role_id', 1)->where('paket_id', 2)->value('admin_id');
+        $all_lead = Lead::where('admin_id', $count_flexible);
+        return view('superadmin.bigflip.payment')->with('user', $users)->with('paket', $pakets)->with('leads', $lead)->with('all_lead', $all_lead)->with('announcements', $announcement);
+    }
 
-    
 }

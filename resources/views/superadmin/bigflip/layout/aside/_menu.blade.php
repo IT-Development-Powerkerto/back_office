@@ -18,7 +18,7 @@
 			</a>
 		</div>
 		<div class="menu-item py-8 px-3">
-			<a class="text-hover-primary menu-center" href="#" data-bs-trigger="hover">
+			<a class="text-hover-primary menu-center" href="{{ route ('bigflip.acceptpayment') }}" data-bs-trigger="hover">
 				<i class="bi bi-bag-check fs-1 me-1"></i>
 				<span class="menu-title text-center text-muted text-hover-primary">Payment</span> 
 			</a>
