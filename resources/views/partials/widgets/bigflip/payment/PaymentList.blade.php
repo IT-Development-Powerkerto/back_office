@@ -149,128 +149,64 @@
 										<thead>
 											<!--begin::Table row-->
 											<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
-												<th class="w-10px pe-2">
-													<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-														<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1" />
-													</div>
-												</th>
-												<th class="">Admin Name</th>
-												<th class="">Admin ID</th>
-												<th class="">Whatsapp</th>
-                                                <th class="">Packet</th>
+												<th class="">#</th>
+												<th class="">Payment Link</th>
+												<th class="">Status</th>
+                                                <th class="">Title</th>
+												<th class="">Amount (Rp)</th>
+                                                <th class="">Type</th>
+												<th class="">Redirect Link</th>
 												<th class="">Expired Date</th>
-                                                <th class="">Status</th>
-												<th class="text-end min-w-70px">Actions</th>
 											</tr>
 											<!--end::Table row-->
 										</thead>
 										<!--end::Table head-->
 										<!--begin::Table body-->
 										<tbody class="fw-bold text-gray-600">
-                                            @foreach ($user as $user)
 											<tr>
-												<!--begin::Checkbox-->
-												<td>
-													<div class="form-check form-check-sm form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="1" />
-													</div>
-												</td>
-												<!--end::Checkbox-->
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <label class="text-gray-600 mb-1">1</label>
+                                                    </div>
+                                                </td>
 												<td>
                                                     <div class="d-flex align-items-center">
-                                                        <div class="symbol symbol-45px me-5 image-size">
-                                                            @if(is_null($user->image))
-                                                            <img src="/assets/img/default.jpg" width="100px" alt="" />
-                                                            @else
-
-                                                            <img src="{{$user->image}}" width="100px" alt="" />
-                                                            @endif
-                                                        </div>
-                                                        <div class="d-flex justify-content-start flex-column">
-                                                            <a href="{{ route('superadmin.show',['superadmin' => $user->id]) }}" class="text-gray-800 text-hover-primary mb-1">{{$user->name}}</a>
-                                                        </div>
+														<label class="text-gray-600 mb-1" id="kt_clipboard_4">Google.com</label>
+														<a href="#" data-clipboard="true" data-clipboard-target="#kt_clipboard_4"><i class="bi bi-clipboard text-primary text-hover-success ms-1 fs-5"></i></a>
                                                     </div>
                                                 </td>
-                                                <td>
+												<td>
                                                     <div class="d-flex align-items-center">
-                                                        <label class="text-gray-600 mb-1">adm-{{$user->admin_id}}</label>
+                                                        <label class="mb-1 badge badge-success">Terpakai</label>
                                                     </div>
                                                 </td>
-                                                <td>
+												<td>
                                                     <div class="d-flex align-items-center">
-                                                        <label class="text-gray-600 mb-1">{{$user->phone}}</label>
+                                                        <label class="text-gray-600 mb-1">Corpprate</label>
                                                     </div>
                                                 </td>
-                                                <td>
+												<td>
                                                     <div class="d-flex align-items-center">
-                                                        <label class="text-gray-600 mb-1">{{$user->paket->name}}</label>
+                                                        <label class="text-gray-600 mb-1">299.000</label>
                                                     </div>
                                                 </td>
-                                                <td>
+												<td>
                                                     <div class="d-flex align-items-center">
-                                                        <label class="text-gray-600 mb-1">{{$user->expired_at}}</label>
+                                                        <label class="badge badge-dark rounded-pill">1x</label>
                                                     </div>
                                                 </td>
-                                                <td class="text-end">
-                                                    <div class="d-flex flex-column w-100 me-2">
-                                                        <div class="d-flex flex-stack">
-                                                            @if ($user->exp == 1)
-                                                                <span class="badge badge-light-success">Active</span>
-                                                            @else
-                                                                <span class="badge badge-light-danger">Non-Active</span>
-                                                            @endif
-                                                        </div>
+												<td>
+                                                    <div class="d-flex align-items-center">
+                                                        <label class="text-gray-600 mb-1">-</label>
                                                     </div>
                                                 </td>
-												<td class="text-end">
-                                                    <div class="d-flex flex-row">
-                                                        @if ($user->exp == 0)
-                                                            <form action="{{ route('updateAktive', ['user'=>$user->id]) }}" method="POST">
-                                                                @csrf
-                                                                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-                                                                    <div class="btn-group" role="group" aria-label="First group">
-                                                                        <button type="submit" class="btn btn-sm btn-light btn-active-light-primary btn-icon"><i class="lar la-check-circle"></i></button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        @else
-                                                            <form action="{{ route('updateNonAktive', ['user'=>$user->id]) }}" method="POST">
-                                                                @csrf
-                                                                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-                                                                    <div class="btn-group" role="group" aria-label="First group">
-                                                                        <button type="submit" class="btn btn-sm btn-light btn-active-light-primary btn-icon"><i class="las la-times"></i></button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        @endif
-                                                        <a href="#" class="btn btn-sm btn-light btn-active-light-primary ms-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                        <span class="svg-icon svg-icon-5 m-0">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon--></a>
-                                                        <!--begin::Menu-->
-                                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="{{ route('superadmin.show',['superadmin' => $user->id]) }}" class="menu-link px-3">View</a>
-                                                            </div>
-                                                            <!--end::Menu item-->
-                                                            <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
-                                                                <a href="{{ route('superadmin.edit',['superadmin' => $user->id]) }}" class="menu-link px-3" >Edit</a>
-                                                                {{-- data-kt-customer-table-filter="delete_row" --}}
-                                                            </div>
-                                                            <!--end::Menu item-->
-                                                        </div>
-                                                        <!--end::Menu-->
+												<td>
+                                                    <div class="d-flex align-items-center">
+                                                        <label class="text-gray-600 mb-1">-</label>
                                                     </div>
-												</td>
+                                                </td>
 												<!--end::Action=-->
 											</tr>
-                                            @endforeach
 										</tbody>
 										<!--end::Table body-->
 									</table>
