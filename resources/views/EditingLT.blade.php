@@ -554,6 +554,7 @@
 										var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
 									}
 									var total_payment = total_price + total_ongkir + admin - parseInt(promotion.product_promotion);
+									total_payment = Math.round(total_payment / 1000) * 1000;
 									$('#total_payment').val(parseInt(total_payment));
 								}
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
@@ -578,6 +579,7 @@
 										var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
 									}
 									var total_payment = total_price + total_ongkir + admin - parseInt(promotion.product_promotion);
+									total_payment = Math.round(total_payment / 1000) * 1000;
 									$('#total_payment').val(parseInt(total_payment));
                                 }
                                 else if(courier === 'JNT' && payment_method === 'COD'){
@@ -602,6 +604,7 @@
 										var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
 									}
 									var total_payment = total_price + total_ongkir + admin - parseInt(promotion.product_promotion);
+									total_payment = Math.round(total_payment / 1000) * 1000;
 									$('#total_payment').val(parseInt(total_payment));
                                 }
                                 else if(payment_method == "Transfer"){
@@ -623,6 +626,7 @@
 										var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
 									}
 									var total_payment = total_price + total_ongkir - parseInt(promotion.product_promotion);
+									total_payment = Math.round(total_payment / 1000) * 1000;
 									$('#total_payment').val(parseInt(total_payment));
 								}
 							}
@@ -642,6 +646,7 @@
 							}
                             var admin = (total_price + ongkir)*0.025;
 							var total_payment = total_price + ongkir + admin;
+							total_payment = Math.round(total_payment / 1000) * 1000;
                             $('#total_payment').val(parseInt(total_payment));
 						}
                         else if(courier === 'Sicepat' && payment_method === 'COD'){
@@ -660,6 +665,7 @@
                                 admin = 2000;
                             }
                             var total_payment = total_price + ongkir + admin;
+							total_payment = Math.round(total_payment / 1000) * 1000;
                             $('#total_payment').val(parseInt(total_payment));
 						}
                         else if(courier === 'JNT' && payment_method === 'COD'){
@@ -678,6 +684,7 @@
                                 admin = 5000;
                             }
                             var total_payment = total_price + ongkir + admin;
+							total_payment = Math.round(total_payment / 1000) * 1000;
                             $('#total_payment').val(parseInt(total_payment));
 						}
                         else if(payment_method == "Transfer"){
@@ -692,6 +699,7 @@
 								}
 							}
                             var total_payment = total_price + ongkir;
+							total_payment = Math.round(total_payment / 1000) * 1000;
                             $('#total_payment').val(parseInt(total_payment));
                         }
 					}
