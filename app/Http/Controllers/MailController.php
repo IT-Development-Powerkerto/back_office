@@ -38,8 +38,7 @@ class MailController extends Controller
             'operator' => $operator_name,
             'lead_id' => $lead_id
         ];
-        Mail::to('habibalihabsyi123@gmail.com')->send(new NotificationMail($details));
-        // Mail::to($email)->send(new NotificationMail($details));
+        Mail::to($email)->send(new NotificationMail($details));
         return Redirect::away('http://orderku.site/'.$number.'/'.rawurlencode($wa_text).'/'.$thanks);
         // return Redirect::away('http://127.0.0.1:8080/'.$number.'/'.rawurlencode($wa_text).'/'.$thanks);
     }
@@ -58,7 +57,7 @@ class MailController extends Controller
         $details = [
             'title' => 'ada inquiry',
         ];
-        Mail::to('habibalihabsyi123@gmail.com')->send(new BigFlipMail($details));
+        Mail::to('itdevelopmentpwk@gmail.com')->send(new BigFlipMail($details));
     }
     public function resetPassword($email, $token){
         $details = [
