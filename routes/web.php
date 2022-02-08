@@ -34,6 +34,7 @@ use App\Http\Controllers\RajaOngkirController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\ErrorPagesController;
 use App\Http\Controllers\JuniorAdvController;
+use App\Http\Controllers\ReportingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -188,3 +189,5 @@ Route::get('manager/approve/{id}', [ManagerController::class, 'approve'])->name(
 Route::get('manager/reject/{id}', [ManagerController::class, 'reject'])->name('manager.reject')->middleware('auth');
 
 Route::get('/404', [ErrorPagesController::class, 'abort'])->name('error-404');
+
+Route::get('/live-reporting',[ReportingController::class, 'index'])->middleware('auth')->name('reporting');
