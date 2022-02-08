@@ -3,7 +3,7 @@
 	<div class="card card-custom card-stretch gutter-b">
         <!--begin::Header-->
         <div class="card-header border-0 bg-white py-5">
-            <h3 class="card-title fw-bolder text-dark">Customer Service Ranking</h3>
+            <h3 class="card-title fw-bolder text-dark">CS Ranking</h3>
         </div>
         <!--end::Header-->
         <!--begin::Body-->
@@ -26,7 +26,7 @@
 						<span class="text-dark fw-medium">Jihad</span>
 						<!--end::Username-->
 						<!--begin::Info-->
-						<div class="fw-medium text-muted font-size-sm pb-6">IDR 30.000.000</div>
+						<div class="fw-medium text-muted font-size-sm pb-6">100 Leads, 90 Closing</div>
 						<!--end::Info-->
 					</div>
 					<!--end::Header-->
@@ -44,12 +44,10 @@
 							<!--begin::Text-->
 							<div class="d-flex flex-column flex-grow-1">
 								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 2</label>
-								<span class="text-dark fw-medium">Aldo</span>	
+								<span class="text-dark fw-medium">Aldo</span>
+                                <span class="text-muted fw-medium">100 Leads, 90 Closing</span>		
 							</div>
 							<!--end::Text-->
-							<!--begin::label-->
-							<span class="fw-medium text-muted label label-xl label-light-success label-inline px-3 py-5 min-w-45px">IDR 25.000.000</span>
-							<!--end::label-->
 						</div>
 						<!--end::Item-->
 						<!--begin::Item-->
@@ -64,12 +62,10 @@
 							<!--begin::Text-->
 							<div class="d-flex flex-column flex-grow-1">
 								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 3</label>
-								<span class="text-dark fw-medium">Isnan/span>	
+								<span class="text-dark fw-medium">Isnan</span>
+                                <span class="text-muted fw-medium">100 Leads, 90 Closing</span>			
 							</div>
 							<!--end::Text-->
-							<!--begin::label-->
-							<span class="fw-medium text-muted label label-xl label-light-success label-inline px-3 py-5 min-w-45px">IDR 25.000.000</span>
-							<!--end::label-->
 						</div>
 						<!--end::Item-->
 						<!--begin::Item-->
@@ -85,11 +81,9 @@
 							<div class="d-flex flex-column flex-grow-1">
 								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 4</label>
 								<span class="text-dark fw-medium">Awal</span>
+                                <span class="text-muted fw-medium">100 Leads, 90 Closing</span>		
 							</div>
 							<!--end::Text-->
-							<!--begin::label-->
-							<span class="fw-medium text-muted label label-xl label-light-success label-inline px-3 py-5 min-w-45px">IDR 25.000.000</span>
-							<!--end::label-->
 						</div>
 						<!--end::Item-->	
 						<!--begin::Item-->
@@ -105,11 +99,9 @@
 							<div class="d-flex flex-column flex-grow-1">
 								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 5</label>
 								<span class="text-dark fw-medium">Rifan</span>
+                                <span class="text-muted fw-medium">100 Leads, 90 Closing</span>		
 							</div>
 							<!--end::Text-->
-							<!--begin::label-->
-							<span class="fw-medium text-muted label label-xl label-light-success label-inline px-3 py-5 min-w-45px">IDR 25.000.000</span>
-							<!--end::label-->
 						</div>
 						<!--end::Item-->
 					</div>
