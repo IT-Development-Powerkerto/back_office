@@ -670,7 +670,7 @@
 					$("#clipboard").val(text).show().select();
 					document.execCommand("copy");
 					$("#clipboard").hide();
-					alert('copied to clipboard');
+					alert('Copied to clipboard');
 					return false;
 				});
 			});
