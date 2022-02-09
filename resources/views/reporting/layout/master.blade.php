@@ -24,8 +24,8 @@
 		<!--end::Wrapper-->
 	</div>
 	<!--end::Page-->
+	@include('layout/_footer')
 </div>
-@include('layout/_footer')
 <!--end::Root-->
 <!--begin::Drawers-->
 

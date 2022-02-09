@@ -1,16 +1,170 @@
 <!--begin::Container-->
 <div id="kt_content_container" class="container-xxl" >
+	<div class="d-flex align-items-center justify-content-between mt-10">
+		<div class="card-toolbar">
+			<!--begin::Menu-->
+			<button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-primary btn-active-color- border-0  mb-5" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" style="width: 160px">
+				<!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
+				<span class="svg-icon svg-icon-primary svg-icon-2x">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<rect x="0" y="0" width="24" height="24"/>
+							<rect fill="#000000" opacity="0.3" x="17" y="4" width="3" height="13" rx="1.5"/>
+							<rect fill="#000000" opacity="0.3" x="12" y="9" width="3" height="8" rx="1.5"/>
+							<path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z" fill="#000000" fill-rule="nonzero"/>
+							<rect fill="#000000" opacity="0.3" x="7" y="11" width="3" height="6" rx="1.5"/>
+						</g>
+					</svg>
+					<span>Choose Your Data</span>
+				</span>
+				<!--end::Svg Icon-->
+			</button>
+			
+			<!--begin::Menu 3-->
+			<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
+				<!--begin::Heading-->
+				<div class="menu-item px-3">
+					<div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Data</div>
+				</div>
+				<!--end::Heading-->
+				<!--begin::Option-->
+				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
+					<!--begin::Input-->
+					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<!--end::Input-->
+					<!--begin::Label-->
+					<span class="form-check-label d-flex flex-column align-items-start">
+						<span class="fw-medium fs-6 mb-0 mt-0">Total Omset</span>
+					</span>
+					<!--end::Label-->
+				</label>
+				<!--end::Option-->
+				<!--begin::Option-->
+				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
+					<!--begin::Input-->
+					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<!--end::Input-->
+					<!--begin::Label-->
+					<span class="form-check-label d-flex flex-column align-items-start">
+						<span class="fw-medium fs-6 mb-0 mt-0">Total Bottle</span>
+					</span>
+					<!--end::Label-->
+				</label>
+				<!--end::Option-->
+				<!--begin::Option-->
+				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
+					<!--begin::Input-->
+					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<!--end::Input-->
+					<!--begin::Label-->
+					<span class="form-check-label d-flex flex-column align-items-start">
+						<span class="fw-medium fs-6 mb-0 mt-0">Total Lead</span>
+					</span>
+					<!--end::Label-->
+				</label>
+				<!--end::Option-->
+				<!--begin::Option-->
+				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
+					<!--begin::Input-->
+					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<!--end::Input-->
+					<!--begin::Label-->
+					<span class="form-check-label d-flex flex-column align-items-start">
+						<span class="fw-medium fs-6 mb-0 mt-0">Total Closing</span>
+					</span>
+					<!--end::Label-->
+				</label>
+				<!--end::Option-->
+				<!--begin::Option-->
+				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
+					<!--begin::Input-->
+					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<!--end::Input-->
+					<!--begin::Label-->
+					<span class="form-check-label d-flex flex-column align-items-start">
+						<span class="fw-medium fs-6 mb-0 mt-0">CR & CAQ</span>
+					</span>
+					<!--end::Label-->
+				</label>
+				<!--end::Option-->
+				<!--begin::Option-->
+				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
+					<!--begin::Input-->
+					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<!--end::Input-->
+					<!--begin::Label-->
+					<span class="form-check-label d-flex flex-column align-items-start">
+						<span class="fw-medium fs-6 mb-0 mt-0">ADV Rank</span>
+					</span>
+					<!--end::Label-->
+				</label>
+				<!--end::Option-->
+				<!--begin::Option-->
+				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
+					<!--begin::Input-->
+					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<!--end::Input-->
+					<!--begin::Label-->
+					<span class="form-check-label d-flex flex-column align-items-start">
+						<span class="fw-medium fs-6 mb-0 mt-0">CS Rank</span>
+					</span>
+					<!--end::Label-->
+				</label>
+				<!--end::Option-->
+				<!--begin::Option-->
+				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
+					<!--begin::Input-->
+					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<!--end::Input-->
+					<!--begin::Label-->
+					<span class="form-check-label d-flex flex-column align-items-start">
+						<span class="fw-medium fs-6 mb-0 mt-0">Product Rank</span>
+					</span>
+					<!--end::Label-->
+				</label>
+				<!--end::Option-->
+			</div>
+			<!--end::Menu 3-->
+			
+			<!--end::Menu-->
+		</div>
+	</div>
 	<!--begin::Row-->
-	<div class="row gy-5 g-xl-12 my-5"><div class="row gy-5 g-xl-12 my-5">
+	<div class="row gy-5 g-xl-12">
 		<!--begin::Col-->
-		<div class="col-xl-8">
+		<div class="col-xl-6">
 
 			@include('partials/widgets/reporting/_widget-1')
 			
 		</div>
 		<!--end::Col-->
+
 		<!--begin::Col-->
-		<div class="col-xl-4">
+		<div class="col-xl-6">
+
+			@include('partials/widgets/reporting/_widget-7')
+			
+		</div>
+		<!--end::Col-->
+
+		<!--begin::Col-->
+		<div class="col-xl-6">
+
+			@include('partials/widgets/reporting/_widget-8')
+			
+		</div>
+		<!--end::Col-->
+
+		<!--begin::Col-->
+		<div class="col-xl-6">
+
+			@include('partials/widgets/reporting/_widget-9')
+			
+		</div>
+		<!--end::Col-->
+
+		<!--begin::Col-->
+		<div class="col-xl-12">
 
 			<div class="row g-xl-12">
 				<div class="col-xl-12">
@@ -27,6 +181,7 @@
 			
 		</div>
 		<!--end::Col-->
+
 		<!--begin::Col-->
 		<div class="col-xl-3">
 

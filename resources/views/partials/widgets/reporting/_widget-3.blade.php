@@ -1,5 +1,5 @@
 						<!--begin::Statistics Widget 3-->
-						<div class="card card-xl-stretch mt-n6 mb-xl-8">
+						<div class="card shadow-sm card-xl-stretch mt-n5 mb-xl-8">
 							<!--begin::Body-->
 							<div class="card-body d-flex flex-column p-0">
 								<div class="d-flex flex-stack flex-grow-1 card-p">
