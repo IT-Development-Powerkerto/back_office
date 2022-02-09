@@ -24,6 +24,7 @@
 								</div>
 								<div>
 									<div class="font-size-sm fw-bold text-primary">Generos</div>
+                                    <span class="font-size-sm fw-bold text-muted">105</span>
 								</div>
 							</div>
 							<!--end::Item-->
@@ -36,6 +37,7 @@
 								</div>
 								<div>
 									<div class="font-size-sm fw-bold text-info">Etawaku</div>
+                                    <span class="font-size-sm fw-bold text-muted">105</span>
 								</div>
 							</div>
 							<!--end::Item-->
@@ -48,6 +50,7 @@
 								</div>
 								<div>
 									<div class="font-size-sm fw-bold text-success">Gizidat</div>
+                                    <span class="font-size-sm fw-bold text-muted">105</span>
 								</div>
 							</div>
 							<!--end::Item-->
@@ -60,6 +63,7 @@
 								</div>
 								<div>
 									<div class="font-size-sm fw-bold text-danger">Freshmag</div>
+                                    <span class="font-size-sm fw-bold text-muted">105</span>
 								</div>
 							</div>
 							<!--end::Item-->
@@ -72,6 +76,7 @@
 								</div>
 								<div>
 									<div class="font-size-sm fw-bold text-warning">Rube</div>
+                                    <span class="font-size-sm fw-bold text-muted">105</span>
 								</div>
 							</div>
 							<!--end::Item-->

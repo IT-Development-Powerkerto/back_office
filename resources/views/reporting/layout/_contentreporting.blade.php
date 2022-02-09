@@ -1,7 +1,7 @@
 <!--begin::Container-->
 <div id="kt_content_container" class="container-xxl" >
 	<div class="d-flex align-items-center justify-content-between mt-10">
-		<div class="card-toolbar">
+		<div>
 			<!--begin::Menu-->
 			<button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-primary btn-active-color- border-0  mb-5" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" style="width: 160px">
 				<!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
@@ -19,7 +19,6 @@
 				</span>
 				<!--end::Svg Icon-->
 			</button>
-			
 			<!--begin::Menu 3-->
 			<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
 				<!--begin::Heading-->
@@ -128,6 +127,20 @@
 			
 			<!--end::Menu-->
 		</div>
+		<ul class="nav">
+			<li class="nav-item">
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4 me-1"
+					href="#">Daily</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
+					href="#">Weekly</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
+					href="#">Monthly</a>
+			</li>
+		</ul>
 	</div>
 	<!--begin::Row-->
 	<div class="row gy-5 g-xl-12">
