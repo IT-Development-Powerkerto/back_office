@@ -3,9 +3,9 @@
 		<div class="card shadow-sm">
 			<!--begin::Header-->
 			<div class="card-header border-0 bg-white py-5">
-				<h3 class="card-title fw-bolder text-dark">Total Closing</h3>
+				<h3 class="card-title fw-bolder text-dark">Total Lead</h3>
 				<span class="symbol symbol-50px">
-					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">1999</span>
+					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">2000</span>
 				</span>
 			</div>
 			<!--end::Header-->
@@ -24,6 +24,7 @@
 								</div>
 								<div>
 									<div class="font-size-sm fw-bold text-primary">Generos</div>
+                                    <span class="font-size-sm fw-bold text-muted">150</span>
 								</div>
 							</div>
 							<!--end::Item-->
@@ -36,6 +37,7 @@
 								</div>
 								<div>
 									<div class="font-size-sm fw-bold text-info">Etawaku</div>
+                                    <span class="font-size-sm fw-bold text-muted">150</span>
 								</div>
 							</div>
 							<!--end::Item-->
@@ -48,6 +50,7 @@
 								</div>
 								<div>
 									<div class="font-size-sm fw-bold text-success">Gizidat</div>
+                                    <span class="font-size-sm fw-bold text-muted">150</span>
 								</div>
 							</div>
 							<!--end::Item-->
@@ -60,6 +63,7 @@
 								</div>
 								<div>
 									<div class="font-size-sm fw-bold text-danger">Freshmag</div>
+                                    <span class="font-size-sm fw-bold text-muted">150</span>
 								</div>
 							</div>
 							<!--end::Item-->
@@ -72,6 +76,7 @@
 								</div>
 								<div>
 									<div class="font-size-sm fw-bold text-warning">Rube</div>
+                                    <span class="font-size-sm fw-bold text-muted">150</span>
 								</div>
 							</div>
 							<!--end::Item-->
@@ -80,7 +85,7 @@
 					</div>
 					<div class="col-8">
 					<!--begin::Chart-->
-					<div class="card-rounded" id="kt_charts_widget_12_chart" style="height: 100%"></div>
+					<div class="card-rounded" id="kt_charts_widget_11_chart" style="height: 100%"></div>
 					<!--end::Chart-->
 				</div>
 			</div>

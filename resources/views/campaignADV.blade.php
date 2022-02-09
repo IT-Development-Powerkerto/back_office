@@ -266,7 +266,7 @@
             </div>
             <i style="opacity: 50%">Banyumax.id</i>
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary rounded-pill" onclick="{{$campaign->event_pixel->event_pixel}}">Submit</button>
+                <button type="submit" class="btn btn-primary rounded-pill" onclick="{{$campaign->event_pixel->event_pixel}} alert('klik OK Dan Tunggu #NB: Jangan Klik Tombol Pesanan Lagi, Terima Kasih :)')">Submit</button>
             </div>
             </form>
         </div>
