@@ -5,7 +5,7 @@
 			<div class="card-header border-0 bg-white py-5">
 				<h3 class="card-title fw-bolder text-dark">Total Omset</h3>
 				<span class="symbol symbol-50px">
-					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">10JT</span>
+					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{($inputer->sum('total_price') - $inputer->sum('product_promotion'))/ 1000000}} JT</span>
 				</span>
 			</div>
 			<!--end::Header-->
@@ -15,66 +15,24 @@
 					<div class="col-4 d-flex flex-column">
 						<!--begin::Block-->
 						<div class="shadow-sm p-8 rounded rounded-xl flex-grow-1">
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 77.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-primary">Generos</div>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 80.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-info">Etawaku</div>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 78.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-success">Gizidat</div>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 76.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-danger">Freshmag</div>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 79.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-warning">Rube</div>
-								</div>
-							</div>
-							<!--end::Item-->
+                            {{-- <input id="total_omset" value="{{$total_omset}}" hidden/> --}}
+                            <input id="product_count" value="{{$product->count()}}" hidden/>
+                            @foreach ($product as $product)
+                                {{-- <input id="{{$product->name}}" value="{{$inputer->where('product_name', $product->name)->sum('total_price') - $inputer->where('product_name', $product->name)->sum('product_promotion')}}" hidden/> --}}
+                                <input id="{{$product->name}}" value="{{$product->name}}" hidden/>
+                                <!--begin::Item-->
+                                <div class="d-flex align-items-center mb-5">
+                                    <div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
+                                        <span class="symbol-label">
+                                            <img src="{{$product->image}}" class="h-100 align-self-end" alt="image">
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <div class="font-size-sm fw-bold text-primary">{{$product->name}}</div>
+                                    </div>
+                                </div>
+                                <!--end::Item-->
+                            @endforeach
 						</div>
 						<!--end::Block-->
 					</div>
