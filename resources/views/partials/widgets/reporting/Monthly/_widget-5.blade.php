@@ -1,13 +1,16 @@
 
 	<!--begin::Nav Panel Widget 2-->
-	<div class="card card-custom card-stretch gutter-b">
+	<div class="card card-custom shadow-sm card-stretch gutter-b" style="height: 515px">
         <!--begin::Header-->
         <div class="card-header border-0 bg-white py-5">
-            <h3 class="card-title fw-bolder text-dark">Advertiser Ranking</h3>
+            <h3 class="card-title fw-bolder text-dark">CS Ranking</h3>
+			<button type="button" class="btn btn-sm btn-light btn-active-primary">
+				<i class="las la-print" style="font-size: 18px"></i>
+			</button>
         </div>
         <!--end::Header-->
         <!--begin::Body-->
-        <div class="card-body">
+        <div class="card-body ">
             <!--begin::Wrapper-->
             <div class="d-flex justify-content-between flex-column pt-4 h-100">
 				<!--begin::Container-->
@@ -26,14 +29,14 @@
 						<span class="text-dark fw-medium">Jihad</span>
 						<!--end::Username-->
 						<!--begin::Info-->
-						<div class="fw-medium text-muted font-size-sm pb-6">IDR 30.000.000</div>
+						<div class="fw-medium text-muted font-size-sm pb-6">100 Leads, 90 Closing</div>
 						<!--end::Info-->
 					</div>
 					<!--end::Header-->
 					<!--begin::Body-->
 					<div class="pt-1">
 						<!--begin::Item-->
-						<div class="d-flex align-items-center pb-9">
+						<div class="d-flex align-items-center pb-6">
 							<!--begin::Symbol-->
 							<div class="symbol symbol-circle symbol-success overflow-hidden me-5">
 								<span class="symbol-label">
@@ -44,14 +47,14 @@
 							<!--begin::Text-->
 							<div class="d-flex flex-column flex-grow-1">
 								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 2</label>
-								<span class="text-dark fw-medium">Aldo</span>	
-                                <span class="text-muted fw-medium">IDR 25.000.000</span>	    
+								<span class="text-dark fw-medium">Aldo</span>
+                                <span class="text-muted fw-medium">100 Leads, 90 Closing</span>		
 							</div>
 							<!--end::Text-->
 						</div>
 						<!--end::Item-->
 						<!--begin::Item-->
-						<div class="d-flex align-items-center pb-9">
+						<div class="d-flex align-items-center pb-6">
 							<!--begin::Symbol-->
 							<div class="symbol symbol-circle symbol-success overflow-hidden me-5">
 								<span class="symbol-label">
@@ -62,14 +65,14 @@
 							<!--begin::Text-->
 							<div class="d-flex flex-column flex-grow-1">
 								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 3</label>
-								<span class="text-dark fw-medium">Isnan</span>	
-                                <span class="text-muted fw-medium">IDR 25.000.000</span>	
+								<span class="text-dark fw-medium">Isnan</span>
+                                <span class="text-muted fw-medium">100 Leads, 90 Closing</span>			
 							</div>
 							<!--end::Text-->
 						</div>
 						<!--end::Item-->
 						<!--begin::Item-->
-						<div class="d-flex align-items-center pb-9">
+						<div class="d-flex align-items-center pb-6">
 							<!--begin::Symbol-->
 							<div class="symbol symbol-circle symbol-success overflow-hidden me-5">
 								<span class="symbol-label">
@@ -81,25 +84,7 @@
 							<div class="d-flex flex-column flex-grow-1">
 								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 4</label>
 								<span class="text-dark fw-medium">Awal</span>
-                                <span class="text-muted fw-medium">IDR 25.000.000</span>	
-							</div>
-							<!--end::Text-->
-						</div>
-						<!--end::Item-->	
-						<!--begin::Item-->
-						<div class="d-flex align-items-center pb-9">
-							<!--begin::Symbol-->
-							<div class="symbol symbol-circle symbol-success overflow-hidden me-5">
-								<span class="symbol-label">
-								<img src="img/back.png" class="h-100 align-self-end" alt="image">
-								</span>
-							</div>
-							<!--end::Symbol-->
-							<!--begin::Text-->
-							<div class="d-flex flex-column flex-grow-1">
-								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 5</label>
-								<span class="text-dark fw-medium">Rifan</span>
-                                <span class="text-muted fw-medium">IDR 25.000.000</span>	
+                                <span class="text-muted fw-medium">100 Leads, 90 Closing</span>		
 							</div>
 							<!--end::Text-->
 						</div>
@@ -108,11 +93,6 @@
 					<!--end::Body-->
 				</div>
 				<!--eng::Container-->
-				<!--begin::Footer-->
-				<div class="d-flex flex-center" id="kt_sticky_toolbar_chat_toggler_1" data-toggle="tooltip" title="" data-placement="right" data-original-title="Chat Example">
-					<button class="btn btn-link font-weight-bolder font-size-sm py-3 px-14" data-toggle="modal" data-target="#kt_chat_modal">View All Rank</button>
-				</div>
-				<!--end::Footer-->
             </div>
             <!--end::Wrapper-->
         </div>

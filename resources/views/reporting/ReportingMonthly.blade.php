@@ -31,7 +31,7 @@
 <body id="kt_body"
 	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed">
 
-	@include('reporting/layout/masterReporting')
+	@include('reporting/layout/masterReportingMonthly')
 
 	<script>
 		var hostUrl = "assets/";
@@ -48,7 +48,7 @@
     <script src="assets/js/custom/apps/customers/list/export.js"></script>
     <script src="assets/js/custom/apps/customers/list/list.js"></script>
     <script src="assets/js/custom/apps/customers/add.js"></script>
-    <script src="assets/js/custom/daily-widgets.js"></script>
+    <script src="assets/js/custom/monthly-widgets.js"></script>
     <script src="assets/js/custom/apps/chat/chat.js"></script>
     <script src="assets/js/custom/modals/create-app.js"></script>
     <script src="assets/js/custom/modals/upgrade-plan.js"></script>

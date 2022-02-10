@@ -7,7 +7,7 @@
 		<!--begin::Wrapper-->
 		<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 
-			@include('layout/header/_base')
+			@include('layout/header/_base-JA-ADV')
 
 
 			@include('reporting/layout/_toolbarreporting')
@@ -15,16 +15,17 @@
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-				@include('reporting/layout/_contentreporting')
+				@include('reporting/layout/_contentreportingWeekly')
 
 			</div>
 			<!--end::Content-->
-			
+
+			@include('layout/_footer')
+
 		</div>
 		<!--end::Wrapper-->
 	</div>
 	<!--end::Page-->
-	@include('layout/_footer')
 </div>
 <!--end::Root-->
 <!--begin::Drawers-->

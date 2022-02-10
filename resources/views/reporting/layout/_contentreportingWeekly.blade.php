@@ -147,7 +147,7 @@
 		<!--begin::Col-->
 		<div class="col-xl-6">
 
-			@include('partials/widgets/reporting/Daily/_widget-1')
+			@include('partials/widgets/reporting/Weekly/_widget-1')
 			
 		</div>
 		<!--end::Col-->
@@ -155,7 +155,7 @@
 		<!--begin::Col-->
 		<div class="col-xl-6">
 
-			@include('partials/widgets/reporting/Daily/_widget-7')
+			@include('partials/widgets/reporting/Weekly/_widget-7')
 			
 		</div>
 		<!--end::Col-->
@@ -163,7 +163,7 @@
 		<!--begin::Col-->
 		<div class="col-xl-6">
 
-			@include('partials/widgets/reporting/Daily/_widget-8')
+			@include('partials/widgets/reporting/Weekly/_widget-8')
 			
 		</div>
 		<!--end::Col-->
@@ -171,7 +171,7 @@
 		<!--begin::Col-->
 		<div class="col-xl-6">
 
-			@include('partials/widgets/reporting/Daily/_widget-9')
+			@include('partials/widgets/reporting/Weekly/_widget-9')
 			
 		</div>
 		<!--end::Col-->
@@ -182,12 +182,12 @@
 			<div class="row g-xl-12">
 				<div class="col-xl-12">
 
-					@include('partials/widgets/reporting/Daily/_widget-2')
+					@include('partials/widgets/reporting/Weekly/_widget-2')
 		
 				</div>
 				<div class="col-xl-12">
 
-					@include('partials/widgets/reporting/Daily/_widget-3')
+					@include('partials/widgets/reporting/Weekly/_widget-3')
 		
 				</div>
 			</div>
@@ -198,21 +198,21 @@
 		<!--begin::Col-->
 		<div class="col-xl-3">
 
-			@include('partials/widgets/reporting/Daily/_widget-4')
+			@include('partials/widgets/reporting/Weekly/_widget-4')
 
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
 		<div class="col-xl-3">
 
-			@include('partials/widgets/reporting/Daily/_widget-5')
+			@include('partials/widgets/reporting/Weekly/_widget-5')
 
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
 		<div class="col-xl-6">
 
-			@include('partials/widgets/reporting/Daily/_widget-6')
+			@include('partials/widgets/reporting/Weekly/_widget-6')
 
 		</div>
 		<!--end::Col-->
