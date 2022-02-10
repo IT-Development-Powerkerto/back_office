@@ -101,17 +101,24 @@ class FbPController extends Controller
         if ($validateData->fails()) {
             return response($validateData->errors(), 400);
         }else{
-            $clients = new Client();
-            $clients->admin_id = $admin_id;
-            $clients->campaign_id = $campaign_id;
-            $clients->name = $request->name;
             if(substr(trim($request->whatsapp), 0, 1)=='0'){
                 $whatsapp = '62'.substr(trim($request->whatsapp), 1);
             } else{
                 $whatsapp = $request->whatsapp;
             }
-            $clients->whatsapp = $whatsapp;
-            $clients->save();
+            $client_id = DB::table('clients')->insertGetId([
+                'admin_id' => $admin_id,
+                'campaign_id' => $campaign_id,
+                'name' => $request->name,
+                'whatsapp' => $whatsapp
+            ]);
+            // $clients = new Client();
+            // $clients->admin_id = $admin_id;
+            // $clients->campaign_id = $campaign_id;
+            // $clients->name = $request->name;
+            
+            // $clients->whatsapp = $whatsapp;
+            // $clients->save();
 
             $adv_id = DB::table('campaigns')->where('id', $campaign_id)->value('user_id');
             $adv_name = DB::table('users')->where('id', $adv_id)->value('name');
@@ -123,11 +130,11 @@ class FbPController extends Controller
             // ambil nomer WA CS
             $wa = DB::table('operators as o')
                 ->leftJoin('users', 'o.user_id', '=', 'users.id')
-                ->leftJoin('closing_rates as cr', 'cr.user_id', '=', 'users.id')
+                // ->leftJoin('closing_rates as cr', 'cr.user_id', '=', 'users.id')
                 ->where('campaign_id', $campaign_id)
                 ->where('o.deleted_at', null)
                 ->select('users.phone')
-                ->orderByDesc('month_closing_rate')
+                // ->orderByDesc('month_closing_rate')
                 ->get();
             // menghitung jumlah operator tiap campaign
             $operator_count = DB::table('operators')
@@ -151,16 +158,13 @@ class FbPController extends Controller
             }
             $user_id = DB::table('users')->where('phone', $wa[$counter]->phone)->where('deleted_at', null)->value('id');
             $operator_id = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('id');
-            $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
-            $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
             $lead_id = DB::table('leads')->insertGetId([
-                'id'         => $clients->id,
                 'admin_id'   => $admin_id,
                 'advertiser' => $adv_name,
                 'campaign_id' => $campaign_id,
                 'operator_id'   => $operator_id,
                 'product_id' => $product_id,
-                'client_id'    => $clients->id,
+                'client_id'    => $client_id,
                 'user_id'    => $user_id,
                 'price'      => $product_price,
                 'status_id'  => 3,
@@ -186,11 +190,8 @@ class FbPController extends Controller
             $data['message'] = $data_lead;
             $pusher->trigger('message-channel', 'App\\Events\\MessageCreated', $data);
 
-            $message = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('message');
-            // return redirect('http://127.0.0.1:8080/'.$wa[$counter]->phone.'/'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text).'/'.$message);
-            $wa_text = str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text);
             $wa_number = $wa[$counter]->phone;
-            $FU_text = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('cs_to_customer');
+            
 
             $cs_email = DB::table('users')->where('phone', $wa[$counter]->phone)->where('deleted_at', null)->value('email');
             return Redirect::route('send', [
@@ -198,7 +199,7 @@ class FbPController extends Controller
                 'number' => $wa_number,
                 'campaign_id' => $campaign_id,
                 'product_id' => $product_id,
-                'client_id' => $clients->id,
+                'client_id' => $client_id,
                 'lead_id' => $lead_id
             ]);
         }
@@ -206,22 +207,28 @@ class FbPController extends Controller
 
     public function lead_wa($campaign_id, $product_id){
         $admin_id = DB::table('campaigns')->where('id', $campaign_id)->value('admin_id');
-        $clients = new Client();
-        $clients->admin_id = $admin_id;
-        $clients->campaign_id = $campaign_id;
-        $clients->save();
+        $client_id = DB::table('clients')->insertGetId([
+            'admin_id' => $admin_id,
+            'campaign_id' => $campaign_id,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+        // $clients = new Client();
+        // $clients->admin_id = $admin_id;
+        // $clients->campaign_id = $campaign_id;
+        // $clients->save();
 
         // ambil text untuk dikirim ke WA
         $text = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('customer_to_cs');
         // ambil nomer WA CS
         $wa = DB::table('operators as o')
             ->leftJoin('users', 'o.user_id', '=', 'users.id')
-            ->leftJoin('closing_rates as cr', 'cr.user_id', '=', 'users.id')
+            // ->leftJoin('closing_rates as cr', 'cr.user_id', '=', 'users.id')
             ->where('campaign_id', $campaign_id)
             ->where('users.status', 1)
             ->where('o.deleted_at', null)
             ->select('users.phone')
-            ->orderByDesc('month_closing_rate')
+            // ->orderByDesc('month_closing_rate')
             ->get();
 
         $adv_id = DB::table('campaigns')->where('id', $campaign_id)->where('deleted_at', null)->value('user_id');
@@ -254,13 +261,12 @@ class FbPController extends Controller
         $operator_name = DB::table('operators')->where('admin_id', $admin_id)->where('user_id', $user_id)->where('campaign_id', $campaign_id)->where('deleted_at', null)->value('name');
         $product_name = DB::table('products')->where('admin_id', $admin_id)->where('id', $product_id)->where('deleted_at', null)->value('name');
         $lead_id = DB::table('leads')->insertGetId([
-            'id'         => $clients->id,
             'admin_id'   => $admin_id,
             'advertiser' => $adv_name,
             'campaign_id' => $campaign_id,
             'operator_id'   => $operator_id,
             'product_id' => $product_id,
-            'client_id'    => $clients->id,
+            'client_id'    => $client_id,
             'user_id'    => $user_id,
             'price'      => $product_price,
             'status_id'  => 3,
@@ -286,6 +292,7 @@ class FbPController extends Controller
         $pusher->trigger('message-channel', 'App\\Events\\MessageCreated', $data);
 
         // return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
-        return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.'Kode Order: ord-'.$lead_id.'%0A'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($clients->name, $clients->whatsapp, $operator_name, $product_name), $text));
+        $client = DB::table('clients')->where('admin_id', $admin_id)->where('id', $client_id)->get();
+        return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.'Kode Order: ord-'.$lead_id.'%0A'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($client['name'] ?? 'From WA', $client['whatsapp'] ?? 'From WA', $operator_name, $product_name), $text));
     }
 }

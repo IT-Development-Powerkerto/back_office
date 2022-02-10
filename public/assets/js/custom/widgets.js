@@ -665,7 +665,7 @@ var KTWidgets = function () {
         var height = parseInt(KTUtil.css(element, 'height'));
         var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
         var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
-        
+
         var baseColor = KTUtil.getCssVariableValue('--bs-primary');
         var baseLightColor = KTUtil.getCssVariableValue('--bs-light-primary');
 
@@ -681,12 +681,15 @@ var KTWidgets = function () {
         var fiveColor = KTUtil.getCssVariableValue('--bs-warning');
         var fiveLightColor = KTUtil.getCssVariableValue('--bs-light-warning');
 
+        var product_count = parseInt(document.getElementById('product_count').value);
+
         if (!element) {
             return;
         }
 
         var options = {
-            series: [{
+            series: [
+            {
                 name: 'Generos',
                 data: [30, 45, 32, 75, 40, 32, 90]
             },{
@@ -698,9 +701,6 @@ var KTWidgets = function () {
             },{
                 name: 'Freshmag',
                 data: [45, 75, 62, 45, 23, 120, 123]
-            },{
-                name: 'Rube',
-                data: [78, 85, 72, 12, 46, 70, 130]
             }],
             chart: {
                 fontFamily: 'inherit',
@@ -727,7 +727,7 @@ var KTWidgets = function () {
                 curve: 'smooth',
                 show: true,
                 width: 3,
-                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
+                colors: [baseColor]
             },
             xaxis: {
                 categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
@@ -746,7 +746,7 @@ var KTWidgets = function () {
                 crosshairs: {
                     position: 'front',
                     stroke: {
-                        color: baseColor, 
+                        color: baseColor,
                         width: 1,
                         dashArray: 3
                     }
@@ -799,7 +799,7 @@ var KTWidgets = function () {
                     }
                 }
             },
-            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
+            colors: [baseLightColor],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -810,7 +810,7 @@ var KTWidgets = function () {
                 }
             },
             markers: {
-                strokeColor: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
+                strokeColor: baseColor,
                 strokeWidth: 3
             }
         };
@@ -825,7 +825,7 @@ var KTWidgets = function () {
         var height = parseInt(KTUtil.css(element, 'height'));
         var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
         var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
-        
+
         var baseColor = KTUtil.getCssVariableValue('--bs-primary');
         var baseLightColor = KTUtil.getCssVariableValue('--bs-light-primary');
 
@@ -906,7 +906,7 @@ var KTWidgets = function () {
                 crosshairs: {
                     position: 'front',
                     stroke: {
-                        color: baseColor, 
+                        color: baseColor,
                         width: 1,
                         dashArray: 3
                     }
@@ -985,7 +985,7 @@ var KTWidgets = function () {
         var height = parseInt(KTUtil.css(element, 'height'));
         var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
         var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
-        
+
         var baseColor = KTUtil.getCssVariableValue('--bs-primary');
         var baseLightColor = KTUtil.getCssVariableValue('--bs-light-primary');
 
@@ -1066,7 +1066,7 @@ var KTWidgets = function () {
                 crosshairs: {
                     position: 'front',
                     stroke: {
-                        color: baseColor, 
+                        color: baseColor,
                         width: 1,
                         dashArray: 3
                     }
@@ -1145,7 +1145,7 @@ var KTWidgets = function () {
         var height = parseInt(KTUtil.css(element, 'height'));
         var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
         var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
-        
+
         var baseColor = KTUtil.getCssVariableValue('--bs-primary');
         var baseLightColor = KTUtil.getCssVariableValue('--bs-light-primary');
 
@@ -1226,7 +1226,7 @@ var KTWidgets = function () {
                 crosshairs: {
                     position: 'front',
                     stroke: {
-                        color: baseColor, 
+                        color: baseColor,
                         width: 1,
                         dashArray: 3
                     }

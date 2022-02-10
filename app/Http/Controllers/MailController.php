@@ -28,7 +28,7 @@ class MailController extends Controller
         $text = Campaign::where('id', $campaign_id)->value('customer_to_cs');
         $product_name = Product::where('id', $product_id)->where('deleted_at', null)->value('name');
         $thanks = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('message');
-        $wa_text = 'Kode Order: ord-'.$lead_id.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($client_name, $client_number, $operator_name, $product_name), $text);
+        $wa_text = 'Kode Order: ord-'.$lead_id.'%0A'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($client_name, $client_number, $operator_name, $product_name), $text);
         $details = [
             'title' => 'New Order',
             'product' => $product_name,
