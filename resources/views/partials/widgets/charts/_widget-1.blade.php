@@ -21,7 +21,6 @@
                                                 <input id="advertising_th" value="{{$advertising_th}}" hidden/>
                                                 <input id="advertising_fr" value="{{$advertising_fr}}" hidden/>
                                                 <input id="advertising_sa" value="{{$advertising_sa}}" hidden/>
-
 											</h3>
 											<!--end::Title-->
 											<div class="card-toolbar">

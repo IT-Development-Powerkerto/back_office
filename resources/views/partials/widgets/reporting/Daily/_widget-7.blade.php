@@ -5,7 +5,7 @@
 			<div class="card-header border-0 bg-white py-5">
 				<h3 class="card-title fw-bolder text-dark">Total Bottle</h3>
 				<span class="symbol symbol-50px">
-					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{$inputer->sum('quantity')}}</span>
+					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{$inputer->sum('quantity')}} Bottle</span>
 				</span>
 			</div>
 			<!--end::Header-->
@@ -28,13 +28,13 @@
                             ?>
                             @foreach ($product as $product)
                                 {{-- <input id="{{$product->name}}" value="{{$inputer->where('product_name', $product->name)->sum('total_price') - $inputer->where('product_name', $product->name)->sum('product_promotion')}}" hidden/> --}}
-                                <input id="{{$su+=1}} bottle_su" value="{{$omset_su->where('product_name', $product->name)->sum('total_price') - $omset_su->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
-                                <input id="{{$mo+=1}} bottle_mo" value="{{$omset_mo->where('product_name', $product->name)->sum('total_price') - $omset_mo->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
-                                <input id="{{$tu+=1}} bootle_tu" value="{{$omset_tu->where('product_name', $product->name)->sum('total_price') - $omset_tu->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
-                                <input id="{{$we+=1}} bottle_we" value="{{$omset_we->where('product_name', $product->name)->sum('total_price') - $omset_we->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
-                                <input id="{{$th+=1}} bottle_th" value="{{$omset_th->where('product_name', $product->name)->sum('total_price') - $omset_th->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
-                                <input id="{{$fr+=1}} bottle_fr" value="{{$omset_fr->where('product_name', $product->name)->sum('total_price') - $omset_fr->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
-                                <input id="{{$sa+=1}} bootle_sa" value="{{$omset_sa->where('product_name', $product->name)->sum('total_price') - $omset_sa->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
+                                <input id="{{$su+=1}} bottle_su" value="{{$omset_su->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                <input id="{{$mo+=1}} bottle_mo" value="{{$omset_mo->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                <input id="{{$tu+=1}} bottle_tu" value="{{$omset_tu->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                <input id="{{$we+=1}} bottle_we" value="{{$omset_we->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                <input id="{{$th+=1}} bottle_th" value="{{$omset_th->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                <input id="{{$fr+=1}} bottle_fr" value="{{$omset_fr->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                <input id="{{$sa+=1}} bottle_sa" value="{{$omset_sa->where('product_name', $product->name)->sum('quantity')}}" hidden/>
                                 <input id="product {{$n+=1}}" value="{{$product->name}}" hidden/>
                                 <!--begin::Item-->
                                 <div class="d-flex align-items-center mb-5">
