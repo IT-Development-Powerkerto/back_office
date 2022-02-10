@@ -491,13 +491,97 @@
 		</script>
 		<script>
 			$(document).ready(function(){
-				$('#payment_method, #courier, #promotion_id').on('change', function(){
+				$('#weight, #warehouse, #province, #city, #subdistrict, #courier, #shipping_promotion').on('change', function(){
+					var weight = $("#weight").val();
+					var warehouse = $("#warehouse").val();
+					var province = $("#province").val();
+					var city = $("#city").val();
+					var subdistrict = $("#subdistrict").val();
+					var	courier = $("#courier").val();
+					var courier = courier.toLowerCase();
+					var shipping_promotion = $("#shipping_promotion").val();
+					if(warehouse == 'Cilacap'){
+						document.getElementById("warehouse").setAttribute('class', 'form-control');
+						var origin = 1442;
+					}else if(warehouse == 'Kosambi'){
+						document.getElementById("warehouse").setAttribute('class', 'form-control');
+						var origin = 6278;
+					}else if(warehouse == 'Tandes.Sby'){
+						document.getElementById("warehouse").setAttribute('class', 'form-control');
+						var origin = 6156;
+					}else{
+						document.getElementById("warehouse").setAttribute('class', 'form-control is-invalid');
+					}
+
+					if(subdistrict == ""){
+						document.getElementById("subdistrict").setAttribute('class', 'form-control is-invalid');
+					}else{
+						document.getElementById("subdistrict").setAttribute('class', 'form-control');
+					}
+					if(weight == ""){
+						document.getElementById("weight").setAttribute('class', 'form-control is-invalid');
+					}else{
+						document.getElementById("weight").setAttribute('class', 'form-control');
+					}
+					if(courier == ""){
+						document.getElementById("courier").setAttribute('class', 'form-control is-invalid');
+					}else{
+						document.getElementById("courier").setAttribute('class', 'form-control');
+					}
+					if(warehouse != "" && subdistrict != "" && weight != "" && courier != ""){
+
+						$.ajax({
+							type: 'GET',
+							url: "{{ route('ongkir') }}",
+							data: {'origin': origin, 'destination': subdistrict, 'weight': weight, 'courier': courier},
+							dataType: 'json',
+							success: function(data){
+								data = Math.ceil(data / 1000) * 1000;
+                                shipping_price.value = data;
+								// var total_shipping_price = data-shipping_promotion;
+								// if(total_shipping_price <= 0){
+								// 	shipping_price.value = 0;
+								// }else{
+								// 	shipping_price.value = total_shipping_price;
+								// }
+							}
+						});
+					}
+				});
+			});
+		</script>
+		<script>
+			$(document).ready(function(){
+				$('#payment_method, #courier, #promotion_id, #province').on('change', function(){
 					var quantity = $('#quantity').val();
 					var price = $('#price').val();
 					var promotion_id = $('#promotion_id').val();
 					var shipping_price = $('#shipping_price').val();
 					var payment_method = $('#payment_method').val();
 					var courier = $('#courier').val();
+					var product = $('#product').text();
+					var province_id = $('#province').find(":selected").val();
+					var ongkir = parseInt(shipping_price);
+					var total_price = (parseInt(price) * parseInt(quantity));
+					if (product == 'Generos'){
+						if(province_id == 3 || province_id == 5 || province_id == 6 || province_id == 9 || province_id == 10 || province_id == 11){
+							ongkir <= 20000 ? ongkir = 0 : ongkir -= 20000;
+						}else{
+							ongkir <= 35000 ? ongkir = 0 : ongkir -= 35000;
+						}
+					}
+					else if (product != 'Generos' && total_price >= 120000){
+						if (ongkir > 50000){
+							ongkir -= 25000;
+						}
+						else{
+							ongkir = ongkir*0.5;
+						}
+					}
+					else
+					{
+						ongkir = ongkir;
+					}
 
 					if(promotion_id)
                     {
@@ -508,16 +592,8 @@
 							success: function(promotion){
 								$('#product_promotion').val(parseInt(promotion.product_promotion));
 								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
-								var ongkir = parseInt(shipping_price);
-								var total_price = (parseInt(price) * parseInt(quantity));
-								if (total_price >= 120000){
-									if (ongkir > 50000){
-										ongkir -= 25000;
-									}
-									else{
-										ongkir = ongkir*0.5;
-									}
-								}
+								
+								
 								if (ongkir <= parseInt(promotion.shipping_promotion)){
 									var total_ongkir = 0;
 								}
@@ -553,16 +629,6 @@
 						});
 					}
                     else{
-						var ongkir = parseInt(shipping_price);
-						var total_price = (parseInt(price) * parseInt(quantity));
-						if (total_price >= 120000){
-							if (ongkir > 50000){
-								ongkir -= 25000;
-							}
-							else{
-								ongkir = ongkir*0.5;
-							}
-						}
 						if(courier === 'Ninja' && payment_method === 'COD'){
                             var admin = (total_price + ongkir)*0.025;
 							admin = Math.ceil(admin / 1000) * 1000;
@@ -672,66 +738,6 @@
 					$("#clipboard").hide();
 					alert('Copied to clipboard');
 					return false;
-				});
-			});
-		</script>
-		<script>
-			$(document).ready(function(){
-				$('#weight, #warehouse, #province, #city, #subdistrict, #courier, #shipping_promotion').on('change', function(){
-					var weight = $("#weight").val();
-					var warehouse = $("#warehouse").val();
-					var province = $("#province").val();
-					var city = $("#city").val();
-					var subdistrict = $("#subdistrict").val();
-					var	courier = $("#courier").val();
-					var courier = courier.toLowerCase();
-					var shipping_promotion = $("#shipping_promotion").val();
-					if(warehouse == 'Cilacap'){
-						document.getElementById("warehouse").setAttribute('class', 'form-control');
-						var origin = 1442;
-					}else if(warehouse == 'Kosambi'){
-						document.getElementById("warehouse").setAttribute('class', 'form-control');
-						var origin = 6278;
-					}else if(warehouse == 'Tandes.Sby'){
-						document.getElementById("warehouse").setAttribute('class', 'form-control');
-						var origin = 6156;
-					}else{
-						document.getElementById("warehouse").setAttribute('class', 'form-control is-invalid');
-					}
-
-					if(subdistrict == ""){
-						document.getElementById("subdistrict").setAttribute('class', 'form-control is-invalid');
-					}else{
-						document.getElementById("subdistrict").setAttribute('class', 'form-control');
-					}
-					if(weight == ""){
-						document.getElementById("weight").setAttribute('class', 'form-control is-invalid');
-					}else{
-						document.getElementById("weight").setAttribute('class', 'form-control');
-					}
-					if(courier == ""){
-						document.getElementById("courier").setAttribute('class', 'form-control is-invalid');
-					}else{
-						document.getElementById("courier").setAttribute('class', 'form-control');
-					}
-					if(warehouse != "" && subdistrict != "" && weight != "" && courier != ""){
-
-						$.ajax({
-							type: 'GET',
-							url: "{{ route('ongkir') }}",
-							data: {'origin': origin, 'destination': subdistrict, 'weight': weight, 'courier': courier},
-							dataType: 'json',
-							success: function(data){
-                                shipping_price.value = data;
-								// var total_shipping_price = data-shipping_promotion;
-								// if(total_shipping_price <= 0){
-								// 	shipping_price.value = 0;
-								// }else{
-								// 	shipping_price.value = total_shipping_price;
-								// }
-							}
-						});
-					}
 				});
 			});
 		</script>
