@@ -52,6 +52,67 @@
     <script src="../assets/js/custom/apps/chat/chat.js"></script>
     <script src="../assets/js/custom/modals/create-app.js"></script>
     <script src="../assets/js/custom/modals/upgrade-plan.js"></script>
+    <script>
+        $(function(){
+
+            $("#omsetCB").change(function() {
+                if(this.checked) {
+                    $('#totalOmset').removeAttr('hidden', false);
+                }else{
+                    $('#totalOmset').attr('hidden', true);
+                }
+            });
+            $("#bottleCB").change(function() {
+                if(this.checked) {
+                    $('#totalBottle').removeAttr('hidden', false);
+                }else{
+                    $('#totalBottle').attr('hidden', true);
+                }
+            });
+            $("#leadCB").change(function() {
+                if(this.checked) {
+                    $('#totalLead').removeAttr('hidden', false);
+                }else{
+                    $('#totalLead').attr('hidden', true);
+                }
+            });
+            $("#closingCB").change(function() {
+                if(this.checked) {
+                    $('#totalClosing').removeAttr('hidden', false);
+                }else{
+                    $('#totalClosing').attr('hidden', true);
+                }
+            });
+            $("#CRCB").change(function() {
+                if(this.checked) {
+                    $('#CR').removeAttr('hidden', false);
+                }else{
+                    $('#CR').attr('hidden', true);
+                }
+            });
+            $("#ADVCB").change(function() {
+                if(this.checked) {
+                    $('#ADVRank').removeAttr('hidden', false);
+                }else{
+                    $('#ADVRank').attr('hidden', true);
+                }
+            });
+            $("#CSCB").change(function() {
+                if(this.checked) {
+                    $('#CSRank').removeAttr('hidden', false);
+                }else{
+                    $('#CSRank').attr('hidden', true);
+                }
+            });
+            $("#productCB").change(function() {
+                if(this.checked) {
+                    $('#productRank').removeAttr('hidden', false);
+                }else{
+                    $('#productRank').attr('hidden', true);
+                }
+            });
+        });
+    </script>
     <!--end::Page Custom Javascript-->
     <!--end::Javascript-->
 </body>

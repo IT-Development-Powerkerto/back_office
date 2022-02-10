@@ -266,12 +266,19 @@
             </div>
             <i style="opacity: 50%">Banyumax.id</i>
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary rounded-pill" onclick="{{$campaign->event_pixel->event_pixel}} alert('klik OK Dan Tunggu #NB: Jangan Klik Tombol Pesanan Lagi, Terima Kasih :)')">Submit</button>
+                <button id="submitForm" type="submit" class="btn btn-primary rounded-pill" onclick="{{$campaign->event_pixel->event_pixel}}">Submit</button>
             </div>
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+		$(function(){
+			$('#submitForm').click(function(){
+                $('#submitForm').attr('class', 'btn btn-primary rounded-pill disabled');
+			});
+		});
+		</script>
     </body>
     </html>
                                                             </textarea>
@@ -289,11 +296,18 @@
     <body>
 
         <form action="https://api.pwkbackoffice.com/public/api/lead_wa/{{$campaign->id}}/{{$campaign->product_id}}" method="POST" class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-success d-flex justify-content-center rounded-pill" onclick="{{$campaign->event_wa->event_pixel}}"><i class="lab la-whatsapp pe-2" style="font-size: 24px;"></i>Pemesanan Via Whatsapp</button>
+            <button id="submit-wa" type="submit" class="btn btn-success d-flex justify-content-center rounded-pill" onclick="{{$campaign->event_wa->event_pixel}}"><i class="lab la-whatsapp pe-2" style="font-size: 24px;"></i>Pemesanan Via Whatsapp</button>
         </form>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+		$(function(){
+			$('#submit-wa').click(function(){
+                $('#submit-wa').attr('class', 'btn btn-success d-flex justify-content-center rounded-pill disabled');
+			});
+		});
+		</script>
     </body>
     </html>
                                                             </textarea>
@@ -400,19 +414,26 @@
             </div>
             <i style="opacity: 50%">Banyumax.id</i>
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary rounded-pill" onclick="{{$campaign->event_pixel->event_pixel}}">Submit</button>
+                <button id="submitForm" type="submit" class="btn btn-primary rounded-pill" onclick="{{$campaign->event_pixel->event_pixel}}">Submit</button>
             </div>
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+		$(function(){
+			$('#submitForm').click(function(){
+                $('#submitForm').attr('class', 'btn btn-primary rounded-pill disabled');
+			});
+		});
+		</script>
     </body>
     </html>
                                                             </textarea>
                                                         </td>
                                                         <td>
                                                             <textarea type="text" name="wp" id="inputwp" class="form-control" aria-describedby="wpHelpInline" >
-    <!doctype html>
+   <!doctype html>
     <html lang="en">
     <head>
 
@@ -423,11 +444,18 @@
     <body>
 
         <form action="https://api.pwkbackoffice.com/public/api/lead_wa/{{$campaign->id}}/{{$campaign->product_id}}" method="POST" class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-success d-flex justify-content-center rounded-pill" onclick="{{$campaign->event_wa->event_pixel}}"><i class="lab la-whatsapp pe-2" style="font-size: 24px;"></i>Pemesanan Via Whatsapp</button>
+            <button id="submit-wa" type="submit" class="btn btn-success d-flex justify-content-center rounded-pill" onclick="{{$campaign->event_wa->event_pixel}}"><i class="lab la-whatsapp pe-2" style="font-size: 24px;"></i>Pemesanan Via Whatsapp</button>
         </form>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script>
+		$(function(){
+			$('#submit-wa').click(function(){
+                $('#submit-wa').attr('class', 'btn btn-success d-flex justify-content-center rounded-pill disabled');
+			});
+		});
+		</script>
     </body>
     </html>
                                                             </textarea>

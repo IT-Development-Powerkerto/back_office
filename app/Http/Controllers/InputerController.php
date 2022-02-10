@@ -202,7 +202,7 @@ class InputerController extends Controller
         $from_date=$request->from_date;
         $to_date = $request->to_date;
         // dd($from_date);
-        return Excel::download(new InputersExport($from_date,$to_date), 'inputer.xlsx', 'Xlsx');
+        return Excel::download(new InputersExport($from_date,$to_date), 'Data Inputer '.date("d F Y", strtotime($from_date)).' - '.date("d F Y", strtotime($to_date)).'.xlsx', 'Xlsx');
     }
     public function exportOne($id)
     {

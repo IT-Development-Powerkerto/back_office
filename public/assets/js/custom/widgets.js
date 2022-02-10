@@ -681,15 +681,12 @@ var KTWidgets = function () {
         var fiveColor = KTUtil.getCssVariableValue('--bs-warning');
         var fiveLightColor = KTUtil.getCssVariableValue('--bs-light-warning');
 
-        var product_count = parseInt(document.getElementById('product_count').value);
-
         if (!element) {
             return;
         }
 
         var options = {
-            series: [
-            {
+            series: [{
                 name: 'Generos',
                 data: [30, 45, 32, 75, 40, 32, 90]
             },{
@@ -701,6 +698,9 @@ var KTWidgets = function () {
             },{
                 name: 'Freshmag',
                 data: [45, 75, 62, 45, 23, 120, 123]
+            },{
+                name: 'Rube',
+                data: [78, 85, 72, 12, 46, 70, 130]
             }],
             chart: {
                 fontFamily: 'inherit',
@@ -727,7 +727,7 @@ var KTWidgets = function () {
                 curve: 'smooth',
                 show: true,
                 width: 3,
-                colors: [baseColor]
+                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
             },
             xaxis: {
                 categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
@@ -795,11 +795,11 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val + "Jt"
+                        return val + " Closing"
                     }
                 }
             },
-            colors: [baseLightColor],
+            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -810,7 +810,7 @@ var KTWidgets = function () {
                 }
             },
             markers: {
-                strokeColor: baseColor,
+                strokeColor: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
                 strokeWidth: 3
             }
         };

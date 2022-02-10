@@ -29,7 +29,8 @@ class NotificationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('New Order')
+        // dd($this->details);
+        return $this->subject('[PWK] Ada Orderan '.$this->details['product'].' dari '.$this->details['client'].' - '.$this->details['date'])
                     ->view('mails.notifMail');
     }
 }
