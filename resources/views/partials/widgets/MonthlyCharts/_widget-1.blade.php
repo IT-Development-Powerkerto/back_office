@@ -6,18 +6,18 @@
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Income & Advertising Cost</span>
 												<span class="text-muted fw-bold fs-7">Monthly</span>
-                                                <input id="omset_jan" value="{{$omset_jan}}" hidden/>
-                                                <input id="omset_feb" value="{{$omset_feb}}" hidden/>
-                                                <input id="omset_mar" value="{{$omset_mar}}" hidden/>
-                                                <input id="omset_apr" value="{{$omset_apr}}" hidden/>
-                                                <input id="omset_may" value="{{$omset_may}}" hidden/>
-                                                <input id="omset_jun" value="{{$omset_jun}}" hidden/>
-                                                <input id="omset_jul" value="{{$omset_jul}}" hidden/>
-                                                <input id="omset_aug" value="{{$omset_aug}}" hidden/>
-                                                <input id="omset_sep" value="{{$omset_sep}}" hidden/>
-                                                <input id="omset_okt" value="{{$omset_okt}}" hidden/>
-                                                <input id="omset_nov" value="{{$omset_nov}}" hidden/>
-                                                <input id="omset_des" value="{{$omset_des}}" hidden/>
+                                                <input id="omset_jan" value="{{$omset_jan->sum('total_price') - $omset_jan->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_feb" value="{{$omset_feb->sum('total_price') - $omset_feb->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_mar" value="{{$omset_mar->sum('total_price') - $omset_mar->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_apr" value="{{$omset_apr->sum('total_price') - $omset_apr->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_may" value="{{$omset_may->sum('total_price') - $omset_may->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_jun" value="{{$omset_jun->sum('total_price') - $omset_jun->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_jul" value="{{$omset_jul->sum('total_price') - $omset_jul->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_aug" value="{{$omset_aug->sum('total_price') - $omset_aug->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_sep" value="{{$omset_sep->sum('total_price') - $omset_sep->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_okt" value="{{$omset_okt->sum('total_price') - $omset_okt->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_nov" value="{{$omset_nov->sum('total_price') - $omset_nov->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_des" value="{{$omset_des->sum('total_price') - $omset_des->sum('product_promotion')}}" hidden/>
 
                                                 <input id="advertising_jan" value="{{$advertising_jan}}" hidden/>
                                                 <input id="advertising_feb" value="{{$advertising_feb}}" hidden/>
@@ -31,6 +31,8 @@
                                                 <input id="advertising_okt" value="{{$advertising_okt}}" hidden/>
                                                 <input id="advertising_nov" value="{{$advertising_nov}}" hidden/>
                                                 <input id="advertising_des" value="{{$advertising_des}}" hidden/>
+
+                                                <input id="product_count" value="{{$products->count()}}" hidden/>
 											</h3>
 											<!--end::Title-->
 											{{-- <div class="card-toolbar">

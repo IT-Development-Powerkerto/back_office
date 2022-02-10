@@ -1407,6 +1407,782 @@ var KTWidgets = function () {
         chart.render();
     }
 
+    var initChartsWidget9 = function() {
+        var element = document.getElementById("kt_charts_widget_9_chart");
+
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
+
+        var baseColor = KTUtil.getCssVariableValue('--bs-primary');
+        var baseLightColor = KTUtil.getCssVariableValue('--bs-light-primary');
+
+        var secondaryColor = KTUtil.getCssVariableValue('--bs-info');
+        var secondaryLightColor = KTUtil.getCssVariableValue('--bs-light-info');
+
+        var thirdColor = KTUtil.getCssVariableValue('--bs-success');
+        var thirdLightColor = KTUtil.getCssVariableValue('--bs-light-success');
+
+        var fourtColor = KTUtil.getCssVariableValue('--bs-danger');
+        var fourtLightColor = KTUtil.getCssVariableValue('--bs-light-danger');
+
+        var fiveColor = KTUtil.getCssVariableValue('--bs-warning');
+        var fiveLightColor = KTUtil.getCssVariableValue('--bs-light-warning');
+
+        var product_count = parseInt(document.getElementById('product_count').value);
+
+        var x = 1;
+        var matchedData = [];
+
+        for(let i=0; i<product_count; i++){
+            // chart.appendSeries({
+            //     name: document.getElementById('product ' + i).value,
+            //     data: [30, 45, 32, 75, 40, 32, 90]
+            // });
+            matchedData[i] = {
+                // name: 'Generos',
+                name: document.getElementById('product ' + x).value,
+                data: [
+                    parseInt(document.getElementById(x + ' omset_su').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_mo').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_tu').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_we').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_th').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_fr').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_sa').value)/1000000
+                ]
+            };
+            x+=1;
+        }
+
+        if (!element) {
+            return;
+        }
+
+        var options = {
+            series: matchedData,
+            chart: {
+                fontFamily: 'inherit',
+                type: 'area',
+                height: 350,
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+
+            },
+            legend: {
+                show: false
+            },
+            dataLabels: {
+                enabled: false
+            },
+            fill: {
+                type: 'solid',
+                opacity: 1
+            },
+            stroke: {
+                curve: 'smooth',
+                show: true,
+                width: 3,
+                colors: [baseColor]
+            },
+            xaxis: {
+                categories: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                axisBorder: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                },
+                crosshairs: {
+                    position: 'front',
+                    stroke: {
+                        color: baseColor,
+                        width: 1,
+                        dashArray: 3
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    formatter: undefined,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '12px'
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                }
+            },
+            states: {
+                normal: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                hover: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                active: {
+                    allowMultipleDataPointsSelection: false,
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                }
+            },
+            tooltip: {
+                style: {
+                    fontSize: '12px'
+                },
+                y: {
+                    formatter: function (val) {
+                        return val + "Jt"
+                    }
+                }
+            },
+            colors: [baseLightColor],
+            grid: {
+                borderColor: borderColor,
+                strokeDashArray: 4,
+                yaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            markers: {
+                strokeColor: baseColor,
+                strokeWidth: 3
+            }
+        };
+
+        var chart = new ApexCharts(element, options);
+        chart.render();
+
+        // var options = {
+        //     series: [
+        //     {
+        //         name: product[0],
+        //         data: [30, 45, 32, 75, 40, 32, 90]
+        //     },{
+        //         name: product,
+        //         data: [30, 45, 32, 75, 40, 32, 90]
+        //     }],
+        //     chart: {
+        //         fontFamily: 'inherit',
+        //         type: 'area',
+        //         height: 350,
+        //         toolbar: {
+        //             show: false
+        //         }
+        //     },
+        //     plotOptions: {
+
+        //     },
+        //     legend: {
+        //         show: false
+        //     },
+        //     dataLabels: {
+        //         enabled: false
+        //     },
+        //     fill: {
+        //         type: 'solid',
+        //         opacity: 1
+        //     },
+        //     stroke: {
+        //         curve: 'smooth',
+        //         show: true,
+        //         width: 3,
+        //         colors: [baseColor]
+        //     },
+        //     xaxis: {
+        //         categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+        //         axisBorder: {
+        //             show: false,
+        //         },
+        //         axisTicks: {
+        //             show: false
+        //         },
+        //         labels: {
+        //             style: {
+        //                 colors: labelColor,
+        //                 fontSize: '12px'
+        //             }
+        //         },
+        //         crosshairs: {
+        //             position: 'front',
+        //             stroke: {
+        //                 color: baseColor,
+        //                 width: 1,
+        //                 dashArray: 3
+        //             }
+        //         },
+        //         tooltip: {
+        //             enabled: true,
+        //             formatter: undefined,
+        //             offsetY: 0,
+        //             style: {
+        //                 fontSize: '12px'
+        //             }
+        //         }
+        //     },
+        //     yaxis: {
+        //         labels: {
+        //             style: {
+        //                 colors: labelColor,
+        //                 fontSize: '12px'
+        //             }
+        //         }
+        //     },
+        //     states: {
+        //         normal: {
+        //             filter: {
+        //                 type: 'none',
+        //                 value: 0
+        //             }
+        //         },
+        //         hover: {
+        //             filter: {
+        //                 type: 'none',
+        //                 value: 0
+        //             }
+        //         },
+        //         active: {
+        //             allowMultipleDataPointsSelection: false,
+        //             filter: {
+        //                 type: 'none',
+        //                 value: 0
+        //             }
+        //         }
+        //     },
+        //     tooltip: {
+        //         style: {
+        //             fontSize: '12px'
+        //         },
+        //         y: {
+        //             formatter: function (val) {
+        //                 return val + "Jt"
+        //             }
+        //         }
+        //     },
+        //     colors: [baseLightColor],
+        //     grid: {
+        //         borderColor: borderColor,
+        //         strokeDashArray: 4,
+        //         yaxis: {
+        //             lines: {
+        //                 show: true
+        //             }
+        //         }
+        //     },
+        //     markers: {
+        //         strokeColor: baseColor,
+        //         strokeWidth: 3
+        //     }
+        // };
+
+        // var chart = new ApexCharts(element, options);
+        // chart.render();
+    }
+
+    var initChartsWidget10 = function() {
+        var element = document.getElementById("kt_charts_widget_10_chart");
+
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
+
+        var baseColor = KTUtil.getCssVariableValue('--bs-primary');
+        var baseLightColor = KTUtil.getCssVariableValue('--bs-light-primary');
+
+        var secondaryColor = KTUtil.getCssVariableValue('--bs-info');
+        var secondaryLightColor = KTUtil.getCssVariableValue('--bs-light-info');
+
+        var thirdColor = KTUtil.getCssVariableValue('--bs-success');
+        var thirdLightColor = KTUtil.getCssVariableValue('--bs-light-success');
+
+        var fourtColor = KTUtil.getCssVariableValue('--bs-danger');
+        var fourtLightColor = KTUtil.getCssVariableValue('--bs-light-danger');
+
+        var fiveColor = KTUtil.getCssVariableValue('--bs-warning');
+        var fiveLightColor = KTUtil.getCssVariableValue('--bs-light-warning');
+
+        if (!element) {
+            return;
+        }
+
+        var options = {
+            series: [{
+                name: 'Generos',
+                data: [30, 45, 32, 75, 40, 32, 90]
+            },{
+                name: 'Etawaku',
+                data: [12, 65, 52, 23, 33, 90, 115]
+            },{
+                name: 'Gizidat',
+                data: [40, 55, 42, 80, 52, 78, 120]
+            },{
+                name: 'Freshmag',
+                data: [45, 75, 62, 45, 23, 120, 123]
+            },{
+                name: 'Rube',
+                data: [78, 85, 72, 12, 46, 70, 130]
+            }],
+            chart: {
+                fontFamily: 'inherit',
+                type: 'area',
+                height: 350,
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+
+            },
+            legend: {
+                show: false
+            },
+            dataLabels: {
+                enabled: false
+            },
+            fill: {
+                type: 'solid',
+                opacity: 1
+            },
+            stroke: {
+                curve: 'smooth',
+                show: true,
+                width: 3,
+                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
+            },
+            xaxis: {
+                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                axisBorder: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                },
+                crosshairs: {
+                    position: 'front',
+                    stroke: {
+                        color: baseColor,
+                        width: 1,
+                        dashArray: 3
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    formatter: undefined,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '12px'
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                }
+            },
+            states: {
+                normal: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                hover: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                active: {
+                    allowMultipleDataPointsSelection: false,
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                }
+            },
+            tooltip: {
+                style: {
+                    fontSize: '12px'
+                },
+                y: {
+                    formatter: function (val) {
+                        return val + " Closing"
+                    }
+                }
+            },
+            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
+            grid: {
+                borderColor: borderColor,
+                strokeDashArray: 4,
+                yaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            markers: {
+                strokeColor: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
+                strokeWidth: 3
+            }
+        };
+
+        var chart = new ApexCharts(element, options);
+        chart.render();
+    }
+
+    var initChartsWidget11 = function() {
+        var element = document.getElementById("kt_charts_widget_11_chart");
+
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
+
+        var baseColor = KTUtil.getCssVariableValue('--bs-primary');
+        var baseLightColor = KTUtil.getCssVariableValue('--bs-light-primary');
+
+        var secondaryColor = KTUtil.getCssVariableValue('--bs-info');
+        var secondaryLightColor = KTUtil.getCssVariableValue('--bs-light-info');
+
+        var thirdColor = KTUtil.getCssVariableValue('--bs-success');
+        var thirdLightColor = KTUtil.getCssVariableValue('--bs-light-success');
+
+        var fourtColor = KTUtil.getCssVariableValue('--bs-danger');
+        var fourtLightColor = KTUtil.getCssVariableValue('--bs-light-danger');
+
+        var fiveColor = KTUtil.getCssVariableValue('--bs-warning');
+        var fiveLightColor = KTUtil.getCssVariableValue('--bs-light-warning');
+
+        if (!element) {
+            return;
+        }
+
+        var options = {
+            series: [{
+                name: 'Generos',
+                data: [30, 45, 32, 75, 40, 32, 90]
+            },{
+                name: 'Etawaku',
+                data: [12, 65, 52, 23, 33, 90, 115]
+            },{
+                name: 'Gizidat',
+                data: [40, 55, 42, 80, 52, 78, 120]
+            },{
+                name: 'Freshmag',
+                data: [45, 75, 62, 45, 23, 120, 123]
+            },{
+                name: 'Rube',
+                data: [78, 85, 72, 12, 46, 70, 130]
+            }],
+            chart: {
+                fontFamily: 'inherit',
+                type: 'area',
+                height: 350,
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+
+            },
+            legend: {
+                show: false
+            },
+            dataLabels: {
+                enabled: false
+            },
+            fill: {
+                type: 'solid',
+                opacity: 1
+            },
+            stroke: {
+                curve: 'smooth',
+                show: true,
+                width: 3,
+                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
+            },
+            xaxis: {
+                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                axisBorder: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                },
+                crosshairs: {
+                    position: 'front',
+                    stroke: {
+                        color: baseColor,
+                        width: 1,
+                        dashArray: 3
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    formatter: undefined,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '12px'
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                }
+            },
+            states: {
+                normal: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                hover: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                active: {
+                    allowMultipleDataPointsSelection: false,
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                }
+            },
+            tooltip: {
+                style: {
+                    fontSize: '12px'
+                },
+                y: {
+                    formatter: function (val) {
+                        return val + " Closing"
+                    }
+                }
+            },
+            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
+            grid: {
+                borderColor: borderColor,
+                strokeDashArray: 4,
+                yaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            markers: {
+                strokeColor: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
+                strokeWidth: 3
+            }
+        };
+
+        var chart = new ApexCharts(element, options);
+        chart.render();
+    }
+
+    var initChartsWidget12 = function() {
+        var element = document.getElementById("kt_charts_widget_12_chart");
+
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-gray-200');
+
+        var baseColor = KTUtil.getCssVariableValue('--bs-primary');
+        var baseLightColor = KTUtil.getCssVariableValue('--bs-light-primary');
+
+        var secondaryColor = KTUtil.getCssVariableValue('--bs-info');
+        var secondaryLightColor = KTUtil.getCssVariableValue('--bs-light-info');
+
+        var thirdColor = KTUtil.getCssVariableValue('--bs-success');
+        var thirdLightColor = KTUtil.getCssVariableValue('--bs-light-success');
+
+        var fourtColor = KTUtil.getCssVariableValue('--bs-danger');
+        var fourtLightColor = KTUtil.getCssVariableValue('--bs-light-danger');
+
+        var fiveColor = KTUtil.getCssVariableValue('--bs-warning');
+        var fiveLightColor = KTUtil.getCssVariableValue('--bs-light-warning');
+
+        if (!element) {
+            return;
+        }
+
+        var options = {
+            series: [{
+                name: 'Generos',
+                data: [30, 45, 32, 75, 40, 32, 90]
+            },{
+                name: 'Etawaku',
+                data: [12, 65, 52, 23, 33, 90, 115]
+            },{
+                name: 'Gizidat',
+                data: [40, 55, 42, 80, 52, 78, 120]
+            },{
+                name: 'Freshmag',
+                data: [45, 75, 62, 45, 23, 120, 123]
+            },{
+                name: 'Rube',
+                data: [78, 85, 72, 12, 46, 70, 130]
+            }],
+            chart: {
+                fontFamily: 'inherit',
+                type: 'area',
+                height: 350,
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+
+            },
+            legend: {
+                show: false
+            },
+            dataLabels: {
+                enabled: false
+            },
+            fill: {
+                type: 'solid',
+                opacity: 1
+            },
+            stroke: {
+                curve: 'smooth',
+                show: true,
+                width: 3,
+                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
+            },
+            xaxis: {
+                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                axisBorder: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false
+                },
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                },
+                crosshairs: {
+                    position: 'front',
+                    stroke: {
+                        color: baseColor,
+                        width: 1,
+                        dashArray: 3
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    formatter: undefined,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '12px'
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                }
+            },
+            states: {
+                normal: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                hover: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                active: {
+                    allowMultipleDataPointsSelection: false,
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                }
+            },
+            tooltip: {
+                style: {
+                    fontSize: '12px'
+                },
+                y: {
+                    formatter: function (val) {
+                        return val + " Closing"
+                    }
+                }
+            },
+            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
+            grid: {
+                borderColor: borderColor,
+                strokeDashArray: 4,
+                yaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            markers: {
+                strokeColor: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
+                strokeWidth: 3
+            }
+        };
+
+        var chart = new ApexCharts(element, options);
+        chart.render();
+    }
+
     // Mixed widgets
     var initMixedWidget2 = function() {
         var charts = document.querySelectorAll('.mixed-widget-2-chart');
@@ -3293,6 +4069,10 @@ var KTWidgets = function () {
             initChartsWidget6();
             initChartsWidget7();
             initChartsWidget8();
+            initChartsWidget9();
+            initChartsWidget10();
+            initChartsWidget11();
+            initChartsWidget12();
 
             // Mixed widgets
             initMixedWidget2();

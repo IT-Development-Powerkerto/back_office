@@ -134,11 +134,11 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-					href="#">Weekly</a>
+					href="{{route('reporting-weekly')}}">Weekly</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
-					href="#">Monthly</a>
+					href="{{route('reporting-monthly')}}">Monthly</a>
 			</li>
 		</ul>
 	</div>

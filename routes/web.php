@@ -190,4 +190,6 @@ Route::get('manager/reject/{id}', [ManagerController::class, 'reject'])->name('m
 
 Route::get('/404', [ErrorPagesController::class, 'abort'])->name('error-404');
 
-Route::get('/live-reporting',[ReportingController::class, 'index'])->middleware('auth')->name('reporting');
+Route::get('/live-reporting',[ReportingController::class, 'index'])->name('reporting')->middleware('auth');
+Route::get('/live-reporting/weekly',[ReportingController::class, 'weeklyReporting'])->name('reporting-weekly')->middleware('auth');
+Route::get('/live-reporting/monthly',[ReportingController::class, 'monthlyReporting'])->name('reporting-monthly')->middleware('auth');

@@ -6,15 +6,17 @@
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Income & Advertising Cost</span>
 												<span class="text-muted fw-bold fs-7">Weekly</span>
-                                                <input id="omset_week1" value="{{$omset_week1}}" hidden/>
-                                                <input id="omset_week2" value="{{$omset_week2}}" hidden/>
-                                                <input id="omset_week3" value="{{$omset_week3}}" hidden/>
-                                                <input id="omset_week4" value="{{$omset_week4}}" hidden/>
+                                                <input id="omset_week1" value="{{$omset_week1->sum('total_price') - $omset_week1->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_week2" value="{{$omset_week2->sum('total_price') - $omset_week2->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_week3" value="{{$omset_week3->sum('total_price') - $omset_week3->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_week4" value="{{$omset_week4->sum('total_price') - $omset_week4->sum('product_promotion')}}" hidden/>
 
                                                 <input id="advertising_week1" value="{{$advertising_week1}}" hidden/>
                                                 <input id="advertising_week2" value="{{$advertising_week2}}" hidden/>
                                                 <input id="advertising_week3" value="{{$advertising_week3}}" hidden/>
                                                 <input id="advertising_week4" value="{{$advertising_week4}}" hidden/>
+
+                                                <input id="product_count" value="{{$products->count()}}" hidden/>
 											</h3>
 											<!--end::Title-->
 											{{-- <div class="card-toolbar">
