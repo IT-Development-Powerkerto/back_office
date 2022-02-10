@@ -96,7 +96,7 @@
                                                                             
                                                                             <li style="padding-bottom: 10px"><span style="font-weight: bold">No HP</span> 	        : {{ $details['client_number'] }}</li>
                                                                             
-                                                                            <li style="padding-bottom: 10px"><span style="font-weight: bold">Tanggal Order</span>   : 22-01-2022</li>
+                                                                            
                                                                         </ul>
 																	</div>
 																</td>
