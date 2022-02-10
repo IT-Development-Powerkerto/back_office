@@ -11,6 +11,9 @@
                                                 <span class="text-muted mt-1 fw-bold fs-7">{{$all_leads->where('advertiser', auth()->user()->name)->count()}} Lead {{$all_spam->where('advertiser', auth()->user()->name)->count()}} Spam</span>
                                             @endif
 											</h3>
+											<audio controls autoplay>
+												<source src="assets/notif/notif.mp3" type="audio/mpeg">
+											</audio>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 												<a href=/ld class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Detail">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
@@ -25,7 +28,7 @@
 														<i class="las la-print" style="font-size: 18px"></i>
 													</span>
 													<!--end::Svg Icon-->Export</button>
-
+												
 												<!-- Modal -->
 												<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 													<div class="modal-dialog">
@@ -73,7 +76,7 @@
 														<button type="button" class="btn btn-sm btn-light btn-active-primary ms-2" title="Click For Export">GO</button>
 													</div>
 												</form>
-
+												
 												{{-- <form action="#" method="GET" class="d-flex">
 													<input class="form-control mt-0" name="search" id="searchlead" type="text" placeholder="Search" aria-label="Search" style="height: 33px;">
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
