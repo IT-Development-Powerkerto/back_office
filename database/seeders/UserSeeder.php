@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
                 'name'      => "Admin",
                 'role_id'   => 1,
                 'username'  => "admin",
-                'email'     => "admin@pwk.com",
+                'email'     => "itdevelopmentpwk@gmail.com",
                 'phone'     => "6289987987987",
                 'paket_id'  => 1,
                 'exp'       => 1,
