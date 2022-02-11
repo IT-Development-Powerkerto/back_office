@@ -6,13 +6,13 @@
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Total Closing</span>
 												<span class="text-muted fw-bold fs-7">{{$closing_count}} Closing @ Daily</span>
-                                                <input id="closing_su" value="{{$closing_su}}" hidden/>
-                                                <input id="closing_mo" value="{{$closing_mo}}" hidden/>
-                                                <input id="closing_tu" value="{{$closing_tu}}" hidden/>
-                                                <input id="closing_we" value="{{$closing_we}}" hidden/>
-                                                <input id="closing_th" value="{{$closing_th}}" hidden/>
-                                                <input id="closing_fr" value="{{$closing_fr}}" hidden/>
-                                                <input id="closing_sa" value="{{$closing_sa}}" hidden/>
+                                                <input id="closing_su" value="{{$closing_su->count()}}" hidden/>
+                                                <input id="closing_mo" value="{{$closing_mo->count()}}" hidden/>
+                                                <input id="closing_tu" value="{{$closing_tu->count()}}" hidden/>
+                                                <input id="closing_we" value="{{$closing_we->count()}}" hidden/>
+                                                <input id="closing_th" value="{{$closing_th->count()}}" hidden/>
+                                                <input id="closing_fr" value="{{$closing_fr->count()}}" hidden/>
+                                                <input id="closing_sa" value="{{$closing_sa->count()}}" hidden/>
                                                 <input id="closing_max" value="{{$closing_max}}" hidden/>
 
                                                 <input id="product_count" value="{{$products->count()}}" hidden/>
