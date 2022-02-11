@@ -10,6 +10,8 @@
                                                 <input id="lead_week2" value="{{$lead_week2}}" hidden/>
                                                 <input id="lead_week3" value="{{$lead_week3}}" hidden/>
                                                 <input id="lead_week4" value="{{$lead_week4}}" hidden/>
+												<input id="lead_week4" value="{{$lead_week4}}" hidden/>
+												<input id="lead_week_max" value="{{$lead_week_max}}" hidden/>
 											</h3>
 											{{-- <div class="card-toolbar">
 												<!--begin::Menu-->

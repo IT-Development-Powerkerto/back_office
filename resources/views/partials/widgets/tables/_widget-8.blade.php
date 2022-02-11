@@ -11,7 +11,7 @@
                                                 <span class="text-muted mt-1 fw-bold fs-7">{{$all_leads->where('advertiser', auth()->user()->name)->count()}} Lead {{$all_spam->where('advertiser', auth()->user()->name)->count()}} Spam</span>
                                             @endif
 											</h3>
-											<audio controls autoplay>
+											<audio controls autoplay hidden>
 												<source src="assets/notif/notif.mp3" type="audio/mpeg">
 											</audio>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">

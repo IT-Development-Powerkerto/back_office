@@ -13,6 +13,8 @@
                                                 <input id="closing_th" value="{{$closing_th}}" hidden/>
                                                 <input id="closing_fr" value="{{$closing_fr}}" hidden/>
                                                 <input id="closing_sa" value="{{$closing_sa}}" hidden/>
+                                                <input id="closing_max" value="{{$closing_max}}" hidden/>
+
                                                 <input id="product_count" value="{{$products->count()}}" hidden/>
 
                                                 <?php

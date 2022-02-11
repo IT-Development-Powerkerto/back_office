@@ -2454,6 +2454,7 @@ var KTWidgets = function () {
             var lead_th = parseInt(document.getElementById('lead_th').value);
             var lead_fr = parseInt(document.getElementById('lead_fr').value);
             var lead_sa = parseInt(document.getElementById('lead_sa').value);
+            var lead_max = parseInt(document.getElementById('lead_max').value);
 
             var options = {
                 series: [{
@@ -2540,7 +2541,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 65,
+                    max: lead_max,
                     labels: {
                         show: false,
                         style: {
@@ -2617,6 +2618,7 @@ var KTWidgets = function () {
             var closing_th = parseInt(document.getElementById('closing_th').value);
             var closing_fr = parseInt(document.getElementById('closing_fr').value);
             var closing_sa = parseInt(document.getElementById('closing_sa').value);
+            var closing_max = parseInt(document.getElementById('closing_max').value);
 
             var options = {
                 series: [{
@@ -2689,7 +2691,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 60,
+                    max: closing_max,
                     labels: {
                         show: false,
                         style: {

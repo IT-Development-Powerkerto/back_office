@@ -18,6 +18,7 @@
                                                 <input id="lead_okt" value="{{$lead_okt}}" hidden/>
                                                 <input id="lead_nov" value="{{$lead_nov}}" hidden/>
                                                 <input id="lead_des" value="{{$lead_des}}" hidden/>
+												<input id="lead_month_max" value="{{$lead_month_max}}" hidden/>
 											</h3>
 											{{-- <div class="card-toolbar">
 												<!--begin::Menu-->

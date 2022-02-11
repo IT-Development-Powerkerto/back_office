@@ -2436,6 +2436,7 @@ var KTWidgets = function () {
             var lead_okt = parseInt(document.getElementById('lead_okt').value);
             var lead_nov = parseInt(document.getElementById('lead_nov').value);
             var lead_des = parseInt(document.getElementById('lead_des').value);
+            var lead_month_max = parseInt(document.getElementById('lead_month_max').value);
 
             var options = {
                 series: [{
@@ -2522,7 +2523,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 65,
+                    max: lead_month_max,
                     labels: {
                         show: false,
                         style: {
@@ -2604,6 +2605,8 @@ var KTWidgets = function () {
             var closing_okt = parseInt(document.getElementById('closing_okt').value);
             var closing_nov = parseInt(document.getElementById('closing_nov').value);
             var closing_des = parseInt(document.getElementById('closing_des').value);
+            var closing_month_max = parseInt(document.getElementById('closing_month_max').value);
+
 
             var options = {
                 series: [{
@@ -2676,7 +2679,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 60,
+                    max: closing_month_max,
                     labels: {
                         show: false,
                         style: {

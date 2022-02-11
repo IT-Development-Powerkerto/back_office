@@ -13,6 +13,7 @@
                                                 <input id="lead_th" value="{{$lead_th->count()}}" hidden/>
                                                 <input id="lead_fr" value="{{$lead_fr->count()}}" hidden/>
                                                 <input id="lead_sa" value="{{$lead_sa->count()}}" hidden/>
+                                                <input id="lead_max" value="{{$lead_max}}" hidden/>
                                                 <input id="product_count" value="{{$products->count()}}" hidden/>
                                                 <?php
                                                     $n=0;

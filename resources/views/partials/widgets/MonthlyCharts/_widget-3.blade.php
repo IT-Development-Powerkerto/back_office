@@ -18,6 +18,7 @@
                                                 <input id="closing_okt" value="{{$closing_okt}}" hidden/>
                                                 <input id="closing_nov" value="{{$closing_nov}}" hidden/>
                                                 <input id="closing_des" value="{{$closing_des}}" hidden/>
+												<input id="closing_month_max" value="{{$closing_month_max}}" hidden/>
 											</h3>
 											{{-- <div class="card-toolbar">
 												<!--begin::Menu-->

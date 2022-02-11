@@ -10,6 +10,7 @@
                                                 <input id="closing_week2" value="{{$closing_week2}}" hidden/>
                                                 <input id="closing_week3" value="{{$closing_week3}}" hidden/>
                                                 <input id="closing_week4" value="{{$closing_week4}}" hidden/>
+												<input id="closing_week_max" value="{{$closing_week_max}}" hidden/>
 											</h3>
 											{{-- <div class="card-toolbar">
 												<!--begin::Menu-->
