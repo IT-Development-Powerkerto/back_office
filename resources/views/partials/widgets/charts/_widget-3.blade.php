@@ -15,6 +15,30 @@
                                                 <input id="closing_sa" value="{{$closing_sa}}" hidden/>
                                                 <input id="closing_max" value="{{$closing_max}}" hidden/>
 
+                                                <input id="product_count" value="{{$products->count()}}" hidden/>
+
+                                                <?php
+                                                    $n=0;
+                                                    $su=0;
+                                                    $mo=0;
+                                                    $tu=0;
+                                                    $we=0;
+                                                    $th=0;
+                                                    $fr=0;
+                                                    $sa=0;
+                                                ?>
+                                                @foreach ($products as $product)
+                                                    {{-- <input id="{{$product->name}}" value="{{$inputer->where('product_name', $product->name)->sum('total_price') - $inputer->where('product_name', $product->name)->sum('product_promotion')}}" hidden/> --}}
+                                                    <input id="{{$su+=1}} omset_su" value="{{$omset_su->where('product_name', $product->name)->sum('total_price') - $omset_su->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
+                                                    <input id="{{$mo+=1}} omset_mo" value="{{$omset_mo->where('product_name', $product->name)->sum('total_price') - $omset_mo->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
+                                                    <input id="{{$tu+=1}} omset_tu" value="{{$omset_tu->where('product_name', $product->name)->sum('total_price') - $omset_tu->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
+                                                    <input id="{{$we+=1}} omset_we" value="{{$omset_we->where('product_name', $product->name)->sum('total_price') - $omset_we->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
+                                                    <input id="{{$th+=1}} omset_th" value="{{$omset_th->where('product_name', $product->name)->sum('total_price') - $omset_th->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
+                                                    <input id="{{$fr+=1}} omset_fr" value="{{$omset_fr->where('product_name', $product->name)->sum('total_price') - $omset_fr->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
+                                                    <input id="{{$sa+=1}} omset_sa" value="{{$omset_sa->where('product_name', $product->name)->sum('total_price') - $omset_sa->where('product_name', $product->name)->sum('product_promotion')}}" hidden/>
+
+                                                    <input id="product {{$n+=1}}" value="{{$product->name}}" hidden/>
+                                                @endforeach
 											</h3>
 											{{-- <div class="card-toolbar">
 												<!--begin::Menu-->

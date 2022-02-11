@@ -129,16 +129,16 @@
 		</div>
 		<ul class="nav">
 			<li class="nav-item">
-				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4 me-1"
-					href="#">Daily</a>
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
+					href="{{route('reporting')}}">Daily</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4 me-1"
 					href="#">Weekly</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
-					href="#">Monthly</a>
+					href="{{route('reporting-monthly')}}">Monthly</a>
 			</li>
 		</ul>
 	</div>

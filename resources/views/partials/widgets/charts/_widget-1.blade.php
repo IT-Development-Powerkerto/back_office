@@ -6,13 +6,13 @@
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Income & Advertising Cost</span>
 												<span class="text-muted fw-bold fs-7">Daily</span>
-                                                <input id="omset_su" value="{{$omset_su}}" hidden/>
-                                                <input id="omset_mo" value="{{$omset_mo}}" hidden/>
-                                                <input id="omset_tu" value="{{$omset_tu}}" hidden/>
-                                                <input id="omset_we" value="{{$omset_we}}" hidden/>
-                                                <input id="omset_th" value="{{$omset_th}}" hidden/>
-                                                <input id="omset_fr" value="{{$omset_fr}}" hidden/>
-                                                <input id="omset_sa" value="{{$omset_sa}}" hidden/>
+                                                <input id="omset_su" value="{{$omset_su->sum('total_price') - $omset_su->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_mo" value="{{$omset_mo->sum('total_price') - $omset_mo->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_tu" value="{{$omset_tu->sum('total_price') - $omset_tu->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_we" value="{{$omset_we->sum('total_price') - $omset_we->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_th" value="{{$omset_th->sum('total_price') - $omset_th->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_fr" value="{{$omset_fr->sum('total_price') - $omset_fr->sum('product_promotion')}}" hidden/>
+                                                <input id="omset_sa" value="{{$omset_sa->sum('total_price') - $omset_sa->sum('product_promotion')}}" hidden/>
 
                                                 <input id="advertising_su" value="{{$advertising_su}}" hidden/>
                                                 <input id="advertising_mo" value="{{$advertising_mo}}" hidden/>

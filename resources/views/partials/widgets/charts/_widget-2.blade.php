@@ -14,6 +14,30 @@
                                                 <input id="lead_fr" value="{{$lead_fr}}" hidden/>
                                                 <input id="lead_sa" value="{{$lead_sa}}" hidden/>
 												<input id="lead_max" value="{{$lead_max}}" hidden/>
+                                                <input id="product_count" value="{{$products->count()}}" hidden/>
+                                                <?php
+                                                    $n=0;
+                                                    $su=0;
+                                                    $mo=0;
+                                                    $tu=0;
+                                                    $we=0;
+                                                    $th=0;
+                                                    $fr=0;
+                                                    $sa=0;
+                                                ?>
+                                                @foreach ($products as $product)
+                                                    {{-- <input id="{{$product->name}}" value="{{$inputer->where('product_name', $product->name)->sum('total_price') - $inputer->where('product_name', $product->name)->sum('product_promotion')}}" hidden/> --}}
+
+                                                    <input id="{{$su+=1}} bottle_su" value="{{$omset_su->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                                    <input id="{{$mo+=1}} bottle_mo" value="{{$omset_mo->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                                    <input id="{{$tu+=1}} bottle_tu" value="{{$omset_tu->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                                    <input id="{{$we+=1}} bottle_we" value="{{$omset_we->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                                    <input id="{{$th+=1}} bottle_th" value="{{$omset_th->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                                    <input id="{{$fr+=1}} bottle_fr" value="{{$omset_fr->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                                    <input id="{{$sa+=1}} bottle_sa" value="{{$omset_sa->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+
+                                                    <input id="product {{$n+=1}}" value="{{$product->name}}" hidden/>
+                                                @endforeach
 											</h3>
 											<div class="card-toolbar">
 												<!--begin::Menu-->

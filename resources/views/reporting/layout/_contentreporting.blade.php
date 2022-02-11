@@ -29,7 +29,7 @@
 				<!--begin::Option-->
 				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
 					<!--begin::Input-->
-					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<input id="omsetCB" class="form-check-input" type="checkbox" name="" checked="checked" />
 					<!--end::Input-->
 					<!--begin::Label-->
 					<span class="form-check-label d-flex flex-column align-items-start">
@@ -41,7 +41,7 @@
 				<!--begin::Option-->
 				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
 					<!--begin::Input-->
-					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<input id="bottleCB" class="form-check-input" type="checkbox" name="" checked="checked" />
 					<!--end::Input-->
 					<!--begin::Label-->
 					<span class="form-check-label d-flex flex-column align-items-start">
@@ -53,7 +53,7 @@
 				<!--begin::Option-->
 				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
 					<!--begin::Input-->
-					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<input id="leadCB" class="form-check-input" type="checkbox" name="" checked="checked" />
 					<!--end::Input-->
 					<!--begin::Label-->
 					<span class="form-check-label d-flex flex-column align-items-start">
@@ -65,7 +65,7 @@
 				<!--begin::Option-->
 				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
 					<!--begin::Input-->
-					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<input id="closingCB" class="form-check-input" type="checkbox" name="" checked="checked" />
 					<!--end::Input-->
 					<!--begin::Label-->
 					<span class="form-check-label d-flex flex-column align-items-start">
@@ -77,7 +77,7 @@
 				<!--begin::Option-->
 				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
 					<!--begin::Input-->
-					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<input id="CRCB" class="form-check-input" type="checkbox" name="" checked="checked" />
 					<!--end::Input-->
 					<!--begin::Label-->
 					<span class="form-check-label d-flex flex-column align-items-start">
@@ -89,7 +89,7 @@
 				<!--begin::Option-->
 				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
 					<!--begin::Input-->
-					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<input id="ADVCB" class="form-check-input" type="checkbox" name="" checked="checked" />
 					<!--end::Input-->
 					<!--begin::Label-->
 					<span class="form-check-label d-flex flex-column align-items-start">
@@ -101,7 +101,7 @@
 				<!--begin::Option-->
 				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
 					<!--begin::Input-->
-					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<input id="CSCB" class="form-check-input" type="checkbox" name="" checked="checked" />
 					<!--end::Input-->
 					<!--begin::Label-->
 					<span class="form-check-label d-flex flex-column align-items-start">
@@ -113,7 +113,7 @@
 				<!--begin::Option-->
 				<label class="form-check form-check-custom form-check-outline align-items-start ms-6 mt-5">
 					<!--begin::Input-->
-					<input class="form-check-input" type="checkbox" name="" checked="checked" />
+					<input id="productCB" class="form-check-input" type="checkbox" name="" checked="checked" />
 					<!--end::Input-->
 					<!--begin::Label-->
 					<span class="form-check-label d-flex flex-column align-items-start">
@@ -134,18 +134,18 @@
 			</li>
 			<li class="nav-item">
 				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-					href="#">Weekly</a>
+					href="{{route('reporting-weekly')}}">Weekly</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
-					href="#">Monthly</a>
+					href="{{route('reporting-monthly')}}">Monthly</a>
 			</li>
 		</ul>
 	</div>
 	<!--begin::Row-->
 	<div class="row gy-5 g-xl-12">
 		<!--begin::Col-->
-		<div class="col-xl-6">
+		<div id="totalOmset" class="col-xl-6">
 
 			@include('partials/widgets/reporting/Daily/_widget-1')
 			
@@ -153,7 +153,7 @@
 		<!--end::Col-->
 
 		<!--begin::Col-->
-		<div class="col-xl-6">
+		<div id="totalBottle" class="col-xl-6">
 
 			@include('partials/widgets/reporting/Daily/_widget-7')
 			
@@ -161,7 +161,7 @@
 		<!--end::Col-->
 
 		<!--begin::Col-->
-		<div class="col-xl-6">
+		<div id="totalLead" class="col-xl-6">
 
 			@include('partials/widgets/reporting/Daily/_widget-8')
 			
@@ -169,7 +169,7 @@
 		<!--end::Col-->
 
 		<!--begin::Col-->
-		<div class="col-xl-6">
+		<div id="totalClosing" class="col-xl-6">
 
 			@include('partials/widgets/reporting/Daily/_widget-9')
 			
@@ -177,7 +177,7 @@
 		<!--end::Col-->
 
 		<!--begin::Col-->
-		<div class="col-xl-12">
+		<div id="CR" class="col-xl-12">
 
 			<div class="row g-xl-12">
 				<div class="col-xl-12">
@@ -196,21 +196,21 @@
 		<!--end::Col-->
 
 		<!--begin::Col-->
-		<div class="col-xl-3">
+		<div id="ADVRank" class="col-xl-3">
 
 			@include('partials/widgets/reporting/Daily/_widget-4')
 
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
-		<div class="col-xl-3">
+		<div id="CSRank" class="col-xl-3">
 
 			@include('partials/widgets/reporting/Daily/_widget-5')
 
 		</div>
 		<!--end::Col-->
 		<!--begin::Col-->
-		<div class="col-xl-6">
+		<div id="productRank" class="col-xl-6">
 
 			@include('partials/widgets/reporting/Daily/_widget-6')
 
