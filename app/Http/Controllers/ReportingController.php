@@ -164,8 +164,8 @@ class ReportingController extends Controller
 
         $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->where('created_at', $day)->sum('quantity');
         $lead = Lead::where('admin_id', auth()->user()->admin_id)->get();
-        $announcement = Announcement::all();
-        $inputer = Inputer::where('admin_id', auth()->user()->admin_id)->get();
+        $announcement = Announcement::where('admin_id', auth()->user()->admin_id)->get();
+        $inputer = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
         $product = Product::where('admin_id', auth()->user()->admin_id)->get();
 
         if(auth()->user()->role_id==1){

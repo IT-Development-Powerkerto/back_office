@@ -110,13 +110,15 @@ class FbPController extends Controller
                 'admin_id' => $admin_id,
                 'campaign_id' => $campaign_id,
                 'name' => $request->name,
-                'whatsapp' => $whatsapp
+                'whatsapp' => $whatsapp,
+                'created_at'      => Carbon::now()->toDateTimeString(),
+                'updated_at'      => Carbon::now()->toDateTimeString()
             ]);
             // $clients = new Client();
             // $clients->admin_id = $admin_id;
             // $clients->campaign_id = $campaign_id;
             // $clients->name = $request->name;
-            
+
             // $clients->whatsapp = $whatsapp;
             // $clients->save();
 
@@ -191,7 +193,7 @@ class FbPController extends Controller
             $pusher->trigger('message-channel', 'App\\Events\\MessageCreated', $data);
 
             $wa_number = $wa[$counter]->phone;
-            
+
 
             $cs_email = DB::table('users')->where('phone', $wa[$counter]->phone)->where('deleted_at', null)->value('email');
             return Redirect::route('send', [
@@ -210,8 +212,8 @@ class FbPController extends Controller
         $client_id = DB::table('clients')->insertGetId([
             'admin_id' => $admin_id,
             'campaign_id' => $campaign_id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
+            'created_at'      => Carbon::now()->toDateTimeString(),
+            'updated_at'      => Carbon::now()->toDateTimeString()
         ]);
         // $clients = new Client();
         // $clients->admin_id = $admin_id;
