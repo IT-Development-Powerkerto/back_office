@@ -6,14 +6,14 @@
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Total Leads</span>
 												<span class="text-muted fw-bold fs-7">{{$lead_count}} Leads @ Daily</span>
-                                                <input id="lead_su" value="{{$lead_su}}" hidden/>
-                                                <input id="lead_mo" value="{{$lead_mo}}" hidden/>
-                                                <input id="lead_tu" value="{{$lead_tu}}" hidden/>
-                                                <input id="lead_we" value="{{$lead_we}}" hidden/>
-                                                <input id="lead_th" value="{{$lead_th}}" hidden/>
-                                                <input id="lead_fr" value="{{$lead_fr}}" hidden/>
-                                                <input id="lead_sa" value="{{$lead_sa}}" hidden/>
-												<input id="lead_max" value="{{$lead_max}}" hidden/>
+                                                <input id="lead_su" value="{{$lead_su->count()}}" hidden/>
+                                                <input id="lead_mo" value="{{$lead_mo->count()}}" hidden/>
+                                                <input id="lead_tu" value="{{$lead_tu->count()}}" hidden/>
+                                                <input id="lead_we" value="{{$lead_we->count()}}" hidden/>
+                                                <input id="lead_th" value="{{$lead_th->count()}}" hidden/>
+                                                <input id="lead_fr" value="{{$lead_fr->count()}}" hidden/>
+                                                <input id="lead_sa" value="{{$lead_sa->count()}}" hidden/>
+                                                <input id="lead_max" value="{{$lead_max}}" hidden/>
                                                 <input id="product_count" value="{{$products->count()}}" hidden/>
                                                 <?php
                                                     $n=0;

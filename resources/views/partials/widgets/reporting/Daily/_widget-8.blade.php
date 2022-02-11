@@ -5,7 +5,7 @@
 			<div class="card-header border-0 bg-white py-5">
 				<h3 class="card-title fw-bolder text-dark">Total Lead</h3>
 				<span class="symbol symbol-50px">
-					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">2000</span>
+					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{$lead_day_count}}</span>
 				</span>
 			</div>
 			<!--end::Header-->
@@ -15,71 +15,40 @@
 					<div class="col-4 d-flex flex-column">
 						<!--begin::Block-->
 						<div class="shadow-sm p-8 rounded rounded-xl flex-grow-1">
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 77.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-primary">Generos</div>
-                                    <span class="font-size-sm fw-bold text-muted">150</span>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 80.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-info">Etawaku</div>
-                                    <span class="font-size-sm fw-bold text-muted">150</span>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 78.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-success">Gizidat</div>
-                                    <span class="font-size-sm fw-bold text-muted">150</span>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 76.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-danger">Freshmag</div>
-                                    <span class="font-size-sm fw-bold text-muted">150</span>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 79.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-warning">Rube</div>
-                                    <span class="font-size-sm fw-bold text-muted">150</span>
-								</div>
-							</div>
-							<!--end::Item-->
+							<input id="product_count" value="{{$product->count()}}" hidden/>
+							<?php
+                                $n=0;
+                                $su=0;
+                                $mo=0;
+                                $tu=0;
+                                $we=0;
+                                $th=0;
+                                $fr=0;
+                                $sa=0;
+                            ?>
+                            @foreach ($product as $product)
+                                {{-- <input id="{{$product->name}}" value="{{$inputer->where('product_name', $product->name)->sum('total_price') - $inputer->where('product_name', $product->name)->sum('product_promotion')}}" hidden/> --}}
+                                <input id="{{$su+=1}} lead_su" value="{{$lead_su->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="{{$mo+=1}} lead_mo" value="{{$lead_mo->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="{{$tu+=1}} lead_tu" value="{{$lead_tu->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="{{$we+=1}} lead_we" value="{{$lead_we->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="{{$th+=1}} lead_th" value="{{$lead_th->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="{{$fr+=1}} lead_fr" value="{{$lead_fr->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="{{$sa+=1}} lead_sa" value="{{$lead_sa->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="product {{$n+=1}}" value="{{$product->name}}" hidden/>
+                                <!--begin::Item-->
+                                <div class="d-flex align-items-center mb-5">
+                                    <div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
+                                        <span class="symbol-label">
+                                            <img src="{{$product->image}}" class="h-100 align-self-end" alt="image">
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <div class="font-size-sm fw-bold text-primary">{{$product->name}}</div>
+                                    </div>
+                                </div>
+                                <!--end::Item-->
+                            @endforeach
 						</div>
 						<!--end::Block-->
 					</div>
