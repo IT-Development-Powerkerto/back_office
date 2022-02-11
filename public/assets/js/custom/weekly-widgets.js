@@ -1772,6 +1772,7 @@ var KTWidgets = function () {
             var lead_week2 = parseInt(document.getElementById('lead_week2').value);
             var lead_week3 = parseInt(document.getElementById('lead_week3').value);
             var lead_week4 = parseInt(document.getElementById('lead_week4').value);
+            var lead_week_max = parseInt(document.getElementById('lead_week_max').value);
 
             var options = {
                 series: [{
@@ -1858,7 +1859,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 65,
+                    max: lead_week_max,
                     labels: {
                         show: false,
                         style: {
@@ -1932,6 +1933,7 @@ var KTWidgets = function () {
             var closing_week2 = parseInt(document.getElementById('closing_week2').value);
             var closing_week3 = parseInt(document.getElementById('closing_week3').value);
             var closing_week4 = parseInt(document.getElementById('closing_week4').value);
+            var closing_week_max = parseInt(document.getElementById('closing_week_max').value);
 
             var options = {
                 series: [{
@@ -2004,7 +2006,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 60,
+                    max: closing_week_max,
                     labels: {
                         show: false,
                         style: {

@@ -13,6 +13,7 @@
                                                 <input id="lead_th" value="{{$lead_th}}" hidden/>
                                                 <input id="lead_fr" value="{{$lead_fr}}" hidden/>
                                                 <input id="lead_sa" value="{{$lead_sa}}" hidden/>
+												<input id="lead_max" value="{{$lead_max}}" hidden/>
 											</h3>
 											<div class="card-toolbar">
 												<!--begin::Menu-->

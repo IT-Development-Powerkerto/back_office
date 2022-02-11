@@ -73,6 +73,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfWeek()->addDay(6),
             Carbon::now()->endOfWeek(),
         ])->count();
+        $lead_max = max($lead_mo, $lead_tu, $lead_we, $lead_th, $lead_fr, $lead_sa, $lead_su);
 
         //count lead closing every month
         $closing_mo = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
@@ -103,6 +104,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfWeek()->addDay(6),
             Carbon::now()->endOfWeek(),
         ])->count();
+        $closing_max = max($closing_mo, $closing_tu, $closing_we, $closing_th, $closing_fr, $closing_sa, $closing_su);
 
         //omset this day
         $omset_day_count = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('product_promotion');
@@ -270,7 +272,7 @@ class DashboardController extends Controller
                 return redirect(route('JA-adv.index'));
             }
             else{
-                return view('dashboard', compact('users'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
+                return view('dashboard', compact('users', 'lead_max', 'closing_max'),['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
                 ->with('products', $products)->with('all_leads', $all_leads)->with('all_spam', $all_spam)->with('leads', $leads)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('client', $client)->with('day', $day)
                 ->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
                 ->with('lead_su', $lead_su)->with('lead_mo', $lead_mo)->with('lead_tu', $lead_tu)->with('lead_we', $lead_we)->with('lead_th', $lead_th)->with('lead_fr', $lead_fr)->with('lead_sa', $lead_sa)
@@ -463,6 +465,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfWeek()->addDay(6),
             Carbon::now()->endOfWeek(),
         ])->count();
+        $lead_max = max($lead_mo, $lead_tu, $lead_we, $lead_th, $lead_fr, $lead_sa, $lead_su);
 
         //count lead closing every month
         $closing_mo = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->whereBetween('updated_at', [
@@ -493,6 +496,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfWeek()->addDay(6),
             Carbon::now()->endOfWeek(),
         ])->count();
+        $closing_max = max($closing_mo, $closing_tu, $closing_we, $closing_th, $closing_fr, $closing_sa, $closing_su);
 
         //omset this day
         $omset_day_count = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->where('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->where('created_at', $day)->sum('product_promotion');
@@ -654,7 +658,7 @@ class DashboardController extends Controller
                 ->with('closing_su', $closing_su)->with('closing_mo', $closing_mo)->with('closing_tu', $closing_tu)->with('closing_we', $closing_we)->with('closing_th', $closing_th)->with('closing_fr', $closing_fr)->with('closing_sa', $closing_sa)
                 ->with('omset_su', $omset_su)->with('omset_mo', $omset_mo)->with('omset_tu', $omset_tu)->with('omset_we', $omset_we)->with('omset_th', $omset_th)->with('omset_fr', $omset_fr)->with('omset_sa', $omset_sa)
                 ->with('advertising_su', $advertising_su)->with('advertising_mo', $advertising_mo)->with('advertising_tu', $advertising_tu)->with('advertising_we', $advertising_we)->with('advertising_th', $advertising_th)->with('advertising_fr', $advertising_fr)->with('advertising_sa', $advertising_sa)
-                ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count);
+                ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)->with('lead_max', $lead_max)->with('closing_max', $closing_max);
             }else{
                 return Redirect::back();
             }
@@ -696,6 +700,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfMonth()->addWeek(3),
             Carbon::now()->endOfMonth(),
         ])->count();
+        $lead_week_max = max($lead_week1, $lead_week2, $lead_week3, $lead_week4);
 
         //count lead closing every week
         $closing_week1 = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->whereBetween('updated_at', [
@@ -714,6 +719,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfMonth()->addWeek(3),
             Carbon::now()->endOfMonth(),
         ])->count();
+        $closing_week_max = max($closing_week1, $closing_week2, $closing_week3, $closing_week4);
 
         //omset this week
         $omset_week_count = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('updated_at', [
@@ -853,7 +859,8 @@ class DashboardController extends Controller
                 ->with('closing_week1', $closing_week1)->with('closing_week2', $closing_week2)->with('closing_week3', $closing_week3)->with('closing_week4', $closing_week4)
                 ->with('omset_week1', $omset_week1)->with('omset_week2', $omset_week2)->with('omset_week3', $omset_week3)->with('omset_week4', $omset_week4)
                 ->with('advertising_week1', $advertising_week1)->with('advertising_week2', $advertising_week2)->with('advertising_week3', $advertising_week3)->with('advertising_week4', $advertising_week4)
-                ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count);
+                ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count)
+                ->with('closing_week_max', $closing_week_max)->with('lead_week_max', $lead_week_max);
             }else{
                 return Redirect::back();
             }
@@ -926,6 +933,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfYear()->addMonth(11),
             Carbon::now()->endOfYear(),
         ])->count();
+        $lead_month_max = max($lead_jan, $lead_feb, $lead_mar, $lead_mar, $lead_apr, $lead_jun, $lead_jul, $lead_aug, $lead_sep, $lead_okt, $lead_nov, $lead_des);
 
         //count lead closing every month
         $closing_jan = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->whereBetween('updated_at', [
@@ -976,6 +984,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfYear()->addMonth(11),
             Carbon::now()->endOfYear(),
         ])->count();
+        $closing_month_max = max($closing_jan, $closing_feb, $closing_mar, $closing_mar, $closing_apr, $closing_jun, $closing_jul, $closing_aug, $closing_sep, $closing_okt, $closing_nov, $closing_des);
 
         //omset this month
         $omset_month_count = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('updated_at', [
@@ -1208,7 +1217,7 @@ class DashboardController extends Controller
                 ->with('omset_jul', $omset_jul)->with('omset_aug', $omset_aug)->with('omset_sep', $omset_sep)->with('omset_okt', $omset_okt)->with('omset_nov', $omset_nov)->with('omset_des', $omset_des)
                 ->with('advertising_jan', $advertising_jan)->with('advertising_feb', $advertising_feb)->with('advertising_mar', $advertising_mar)->with('advertising_apr', $advertising_apr)->with('advertising_may', $advertising_may)->with('advertising_jun', $advertising_jun)
                 ->with('advertising_jul', $advertising_jul)->with('advertising_aug', $advertising_aug)->with('advertising_sep', $advertising_sep)->with('advertising_okt', $advertising_okt)->with('advertising_nov', $advertising_nov)->with('advertising_des', $advertising_des)
-                ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count);
+                ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count)->with('lead_month_max', $lead_month_max)->with('closing_month_max', $closing_month_max);
             }else{
                 return Redirect::back();
             }
@@ -1325,6 +1334,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfMonth()->addWeek(3),
             Carbon::now()->endOfMonth(),
         ])->count();
+        $lead_week_max = max($lead_week1, $lead_week2, $lead_week3, $lead_week4);
 
         //count lead closing every week
         $closing_week1 = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
@@ -1343,6 +1353,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfMonth()->addWeek(3),
             Carbon::now()->endOfMonth(),
         ])->count();
+        $closing_week_max = max($closing_week1, $closing_week2, $closing_week3, $closing_week4);
 
         //omset this week
         $omset_week_count = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
@@ -1489,7 +1500,8 @@ class DashboardController extends Controller
                 ->with('closing_week1', $closing_week1)->with('closing_week2', $closing_week2)->with('closing_week3', $closing_week3)->with('closing_week4', $closing_week4)
                 ->with('omset_week1', $omset_week1)->with('omset_week2', $omset_week2)->with('omset_week3', $omset_week3)->with('omset_week4', $omset_week4)
                 ->with('advertising_week1', $advertising_week1)->with('advertising_week2', $advertising_week2)->with('advertising_week3', $advertising_week3)->with('advertising_week4', $advertising_week4)
-                ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count);
+                ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count)
+                ->with('closing_week_max', $closing_week_max)->with('lead_week_max', $lead_week_max);
                 // ->with('countdown', $countdown);
             }
         }
@@ -1562,6 +1574,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfYear()->addMonth(11),
             Carbon::now()->endOfYear(),
         ])->count();
+        $lead_month_max = max($lead_jan, $lead_feb, $lead_mar, $lead_mar, $lead_apr, $lead_jun, $lead_jul, $lead_aug, $lead_sep, $lead_okt, $lead_nov, $lead_des);
 
         //count lead closing every month
         $closing_jan = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('updated_at', [
@@ -1612,6 +1625,7 @@ class DashboardController extends Controller
             Carbon::now()->startOfYear()->addMonth(11),
             Carbon::now()->endOfYear(),
         ])->count();
+        $closing_month_max = max($closing_jan, $closing_feb, $closing_mar, $closing_mar, $closing_apr, $closing_jun, $closing_jul, $closing_aug, $closing_sep, $closing_okt, $closing_nov, $closing_des);
 
         //omset this month
         $omset_month_count = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
@@ -1850,7 +1864,8 @@ class DashboardController extends Controller
                 ->with('omset_jul', $omset_jul)->with('omset_aug', $omset_aug)->with('omset_sep', $omset_sep)->with('omset_okt', $omset_okt)->with('omset_nov', $omset_nov)->with('omset_des', $omset_des)
                 ->with('advertising_jan', $advertising_jan)->with('advertising_feb', $advertising_feb)->with('advertising_mar', $advertising_mar)->with('advertising_apr', $advertising_apr)->with('advertising_may', $advertising_may)->with('advertising_jun', $advertising_jun)
                 ->with('advertising_jul', $advertising_jul)->with('advertising_aug', $advertising_aug)->with('advertising_sep', $advertising_sep)->with('advertising_okt', $advertising_okt)->with('advertising_nov', $advertising_nov)->with('advertising_des', $advertising_des)
-                ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count);
+                ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count)
+                ->with('lead_month_max', $lead_month_max)->with('closing_month_max', $closing_month_max);
                 // ->with('countdown', $countdown);
             }
         }
