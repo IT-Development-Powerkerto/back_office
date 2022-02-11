@@ -5,47 +5,20 @@
 								<div class="d-flex flex-stack flex-grow-1 card-p">
 									<div class="d-flex flex-column me-2">
 										<label class="text-dark fw-bolder fs-3">Closing Rate</label>
-										<div class="card-toolbar">
-											<!--begin::Menu-->
-											<button type="button" class="badge badge-secondary border-0" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-												Filter
-												<i class="las la-angle-down ms-3"></i>
-											</button>
-											
-											<!--begin::Menu 3-->
-											<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
-												<!--begin::Heading-->
-												<div class="menu-item px-3">
-													<div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Filter</div>
-												</div>
-												<!--end::Heading-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Daily</a>
-												</div>
-												<!--end::Menu item-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Weekly</a>
-												</div>
-												<!--end::Menu item-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Monthly</a>
-												</div>
-												<!--end::Menu item-->
-											</div>
-											<!--end::Menu 3-->
-											
-											<!--end::Menu-->
-										</div>
 									</div>
 									<span class="symbol symbol-50px">
-										<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">10%</span>
+										<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{($lead_count == 0) ? 0 : ($closing_count / $lead_day_count)*100}} %</span>
 									</span>
 								</div>
 								<div class="statistics-widget-3-chart card-rounded-bottom" data-kt-chart-color="success" style="height: 150px"></div>
 							</div>
+                            <input id="CR_su" value="{{($lead_su->count() == 0) ? 0 : ($closing_su->count() / $lead_su->count())*100}}" hidden/>
+                            <input id="CR_mo" value="{{($lead_mo->count() == 0) ? 0 : ($closing_mo->count() / $lead_mo->count())*100}}" hidden/>
+                            <input id="CR_tu" value="{{($lead_tu->count() == 0) ? 0 : ($closing_tu->count() / $lead_tu->count())*100}}" hidden/>
+                            <input id="CR_we" value="{{($lead_we->count() == 0) ? 0 : ($closing_we->count() / $lead_we->count())*100}}" hidden/>
+                            <input id="CR_th" value="{{($lead_th->count() == 0) ? 0 : ($closing_th->count() / $lead_th->count())*100}}" hidden/>
+                            <input id="CR_fr" value="{{($lead_fr->count() == 0) ? 0 : ($closing_fr->count() / $lead_fr->count())*100}}" hidden/>
+                            <input id="CR_sa" value="{{($lead_sa->count() == 0) ? 0 : ($closing_sa->count() / $lead_sa->count())*100}}" hidden/>
 							<!--end::Body-->
 						</div>
 						<!--end::Statistics Widget 3-->

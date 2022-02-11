@@ -5,47 +5,20 @@
 								<div class="d-flex flex-stack flex-grow-1 card-p">
 									<div class="d-flex flex-column me-2">
 										<label class="text-dark fw-bolder fs-3">Cost Aquisition</label>
-										<div class="card-toolbar">
-											<!--begin::Menu-->
-											<button type="button" class="badge badge-secondary border-0" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-												Filter
-												<i class="las la-angle-down ms-3"></i>
-											</button>
-											
-											<!--begin::Menu 3-->
-											<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
-												<!--begin::Heading-->
-												<div class="menu-item px-3">
-													<div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Filter</div>
-												</div>
-												<!--end::Heading-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Daily</a>
-												</div>
-												<!--end::Menu item-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Weekly</a>
-												</div>
-												<!--end::Menu item-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Monthly</a>
-												</div>
-												<!--end::Menu item-->
-											</div>
-											<!--end::Menu 3-->
-											
-											<!--end::Menu-->
-										</div>
 									</div>
 									<span class="symbol symbol-50px">
-										<span class="symbol-label fs-5 fw-bolder bg-light-primary text-primary">10Jt</span>
+										<span class="symbol-label fs-5 fw-bolder bg-light-primary text-primary">{{($omset_day_count == 0) ? 0 : ($advertising_day_count / $omset_day_count)*100}} %</span>
 									</span>
 								</div>
-								<div class="statistics-widget-3-chart card-rounded-bottom" data-kt-chart-color="primary" style="height: 150px"></div>
+								<div class="statistics-widget-4-chart card-rounded-bottom" data-kt-chart-color="primary" style="height: 150px"></div>
 							</div>
+                            <input id="CA_su" value="{{($omset_su->count() == 0) ? 0 : ($advertising_su / $omset_su->count())*100}}" hidden/>
+                            <input id="CA_mo" value="{{($omset_mo->count() == 0) ? 0 : ($advertising_mo / $omset_mo->count())*100}}" hidden/>
+                            <input id="CA_tu" value="{{($omset_tu->count() == 0) ? 0 : ($advertising_tu / $omset_tu->count())*100}}" hidden/>
+                            <input id="CA_we" value="{{($omset_we->count() == 0) ? 0 : ($advertising_we / $omset_we->count())*100}}" hidden/>
+                            <input id="CA_th" value="{{($omset_th->count() == 0) ? 0 : ($advertising_th / $omset_th->count())*100}}" hidden/>
+                            <input id="CA_fr" value="{{($omset_fr->count() == 0) ? 0 : ($advertising_fr / $omset_fr->count())*100}}" hidden/>
+                            <input id="CA_sa" value="{{($omset_sa->count() == 0) ? 0 : ($advertising_sa / $omset_sa->count())*100}}" hidden/>
 							<!--end::Body-->
 						</div>
 						<!--end::Statistics Widget 3-->

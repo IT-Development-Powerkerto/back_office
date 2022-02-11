@@ -19,10 +19,18 @@ var KTWidgets = function () {
             var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
             var lightColor = KTUtil.getCssVariableValue('--bs-light-' + color );
 
+            var CR_su = parseInt(document.getElementById('CR_su').value);
+            var CR_mo = parseInt(document.getElementById('CR_mo').value);
+            var CR_tu = parseInt(document.getElementById('CR_tu').value);
+            var CR_we = parseInt(document.getElementById('CR_we').value);
+            var CR_th = parseInt(document.getElementById('CR_th').value);
+            var CR_fr = parseInt(document.getElementById('CR_fr').value);
+            var CR_sa = parseInt(document.getElementById('CR_sa').value);
+
             var options = {
                 series: [{
-                    name: 'Net Profit',
-                    data: [30, 45, 32, 70, 40]
+                    name: 'Closing Rate',
+                    data: [CR_su, CR_mo, CR_tu, CR_we, CR_th, CR_fr, CR_sa]
                 }],
                 chart: {
                     fontFamily: 'inherit',
@@ -56,7 +64,7 @@ var KTWidgets = function () {
                     colors: [baseColor]
                 },
                 xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    categories: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
                     axisBorder: {
                         show: false,
                     },
@@ -90,7 +98,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 80,
+                    max: 100,
                     labels: {
                         show: false,
                         style: {
@@ -126,7 +134,7 @@ var KTWidgets = function () {
                     },
                     y: {
                         formatter: function(val) {
-                            return "$" + val + " thousands"
+                            return val + " %"
                         }
                     }
                 },
@@ -159,10 +167,18 @@ var KTWidgets = function () {
             var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
             var lightColor = KTUtil.getCssVariableValue('--bs-light-' + color );
 
+            var CA_su = parseInt(document.getElementById('CA_su').value);
+            var CA_mo = parseInt(document.getElementById('CA_mo').value);
+            var CA_tu = parseInt(document.getElementById('CA_tu').value);
+            var CA_we = parseInt(document.getElementById('CA_we').value);
+            var CA_th = parseInt(document.getElementById('CA_th').value);
+            var CA_fr = parseInt(document.getElementById('CA_fr').value);
+            var CA_sa = parseInt(document.getElementById('CA_sa').value);
+
             var options = {
                 series: [{
-                    name: 'Net Profit',
-                    data: [40, 40, 30, 30, 35, 35, 50]
+                    name: 'Cost Aquisition',
+                    data: [CA_su, CA_mo, CA_tu, CA_we, CA_th, CA_fr, CA_sa]
                 }],
                 chart: {
                     fontFamily: 'inherit',
@@ -196,7 +212,7 @@ var KTWidgets = function () {
                     colors: [baseColor]
                 },
                 xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                    categories: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
                     axisBorder: {
                         show: false,
                     },
@@ -230,7 +246,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 60,
+                    max: 100,
                     labels: {
                         show: false,
                         style: {
@@ -266,7 +282,7 @@ var KTWidgets = function () {
                     },
                     y: {
                         formatter: function(val) {
-                            return "$" + val + " thousands"
+                            return val + " %"
                         }
                     }
                 },
