@@ -47,6 +47,7 @@ class PromotionController extends Controller
         $total_promotion = $request->promotion_product_price + $request->promotion_shippment_cost;
         DB::table('promotions')->insert([
             'admin_id'                   => auth()->user()->admin_id,
+            'user_id'                   => auth()->user()->id,
             'promotion_type'             => $request->promotion_type,
             'product_name'               => $request->product_name,
             'promotion_name'             => $request->promotion_name,

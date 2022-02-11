@@ -18,11 +18,12 @@
 													<!--begin::Table head-->
 													<thead>
 														<tr class="fw-bolder text-muted">
-															<th class="min-w-225px">Product</th>
-															<th class="min-w-225px">Promotion Name</th>
-															<th class="min-w-225px">Promotion Type</th>
-															<th class="min-w-225px">Nominal Promotion</th>
-                                                            <th class="min-w-225px text-end">Actions</th>
+															<th class="min-w-150px">Creator</th>
+															<th class="min-w-150px">Product</th>
+															<th class="min-w-150px">Promotion Name</th>
+															<th class="min-w-150px">Promotion Type</th>
+															<th class="min-w-150px">Nominal Promotion</th>
+                                                            <th class="min-w-150px text-end">Actions</th>
 														</tr>
 													</thead>
 													<!--end::Table head-->
@@ -30,6 +31,13 @@
 													<tbody>
                                                         @foreach ($promotion as $promotion)
 														<tr>
+															<td>
+																<div class="d-flex align-items-center">
+																	<div class="d-flex justify-content-start flex-column">
+																		<h1 href="#" class="text-dark fw-normal fs-6">{{$promotion->user->name}}</h1>
+																	</div>
+																</div>
+															</td>
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">

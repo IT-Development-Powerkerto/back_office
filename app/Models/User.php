@@ -70,6 +70,9 @@ class User extends Authenticatable
     public function operator(){
         return $this->hasMany(Operator::class);
     }
+    public function promotion(){
+        return $this->hasMany(Promotion::class);
+    }
     public function lead(){
         return $this->hasMany(Lead::class);
     }
