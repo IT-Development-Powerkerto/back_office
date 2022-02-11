@@ -1771,31 +1771,42 @@ var KTWidgets = function () {
         var fiveColor = KTUtil.getCssVariableValue('--bs-warning');
         var fiveLightColor = KTUtil.getCssVariableValue('--bs-light-warning');
 
+        var product_count = parseInt(document.getElementById('product_count').value);
+
+        var x = 1;
+        var matchedData = [];
+
+        for(let i=0; i<product_count; i++){
+            // chart.appendSeries({
+            //     name: document.getElementById('product ' + i).value,
+            //     data: [30, 45, 32, 75, 40, 32, 90]
+            // });
+            matchedData[i] = {
+                // name: 'Generos',
+                name: document.getElementById('product ' + x).value,
+                data: [
+                    parseInt(document.getElementById(x + ' lead_su').value),
+                    parseInt(document.getElementById(x + ' lead_mo').value),
+                    parseInt(document.getElementById(x + ' lead_tu').value),
+                    parseInt(document.getElementById(x + ' lead_we').value),
+                    parseInt(document.getElementById(x + ' lead_th').value),
+                    parseInt(document.getElementById(x + ' lead_fr').value),
+                    parseInt(document.getElementById(x + ' lead_sa').value)
+                ]
+            };
+            x+=1;
+        }
+
         if (!element) {
             return;
         }
 
         var options = {
-            series: [{
-                name: 'Generos',
-                data: [30, 45, 32, 75, 40, 32, 90]
-            },{
-                name: 'Etawaku',
-                data: [12, 65, 52, 23, 33, 90, 115]
-            },{
-                name: 'Gizidat',
-                data: [40, 55, 42, 80, 52, 78, 120]
-            },{
-                name: 'Freshmag',
-                data: [45, 75, 62, 45, 23, 120, 123]
-            },{
-                name: 'Rube',
-                data: [78, 85, 72, 12, 46, 70, 130]
-            }],
+            series: matchedData,
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
-                height: 350,
+                height: product_count*70,
                 toolbar: {
                     show: false
                 }
@@ -1817,10 +1828,10 @@ var KTWidgets = function () {
                 curve: 'smooth',
                 show: true,
                 width: 3,
-                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
+                colors: [baseColor]
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                categories: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
                 axisBorder: {
                     show: false,
                 },
@@ -1836,7 +1847,7 @@ var KTWidgets = function () {
                 crosshairs: {
                     position: 'front',
                     stroke: {
-                        color: baseColor,
+                        color: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
                         width: 1,
                         dashArray: 3
                     }
@@ -1885,7 +1896,7 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val + " Closing"
+                        return val + " Lead"
                     }
                 }
             },
