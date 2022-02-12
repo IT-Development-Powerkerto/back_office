@@ -44,12 +44,39 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             ->where('admin_id', auth()->user()->admin_id)
             ->whereBetween('updated_at',[ $this->from_date,$this->to_date])
             // ->where('l.updated_at', $day)
-            ->select('lead_id','adv_name', 'operator_name', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion','payment_method', 'total_payment', 'updated_at')
+            ->select('lead_id','adv_name', 'operator_name', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion','payment_method', 'total_payment', 'updated_at', 'warehouse')
             ->get();
+        
         // return $data;
         // dd($data);
         $dataInputer[] = array();
         foreach($data as $data){
+            if($data->warehouse == 'Cilacap'){
+                $wh = 'WHC';
+            }else{
+                $wh = 'belum';
+            }
+            $date = $data->updated_at;
+            $year = date('y', strtotime($date));
+            $month = date('n', strtotime($date));
+            $n = intval($month);
+            $res = '';
+
+            $roman_numerals = array(
+                'X'  => 10,
+                'IX' => 9,
+                'V'  => 5,
+                'IV' => 4,
+                'I'  => 1
+            );
+
+            foreach ($roman_numerals as $roman => $numeral) 
+            {
+            $matches = intval($n / $numeral);
+            $res .= str_repeat($roman, $matches);
+            $n = $n % $numeral;
+            }
+            
             $dataInputer[] = array(
                 'Order ID' => $data->lead_id,
                 'ADV Name' => $data->adv_name,
@@ -69,7 +96,8 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
                 'Payment Method' => $data->payment_method,
                 'Total Payment' => $data->total_payment,
                 'Date/Time' => date('d-m-Y', strtotime($data->updated_at)),
-                'Shipping Instruction' => $data->product_name.' '.$data->quantity.' '.$data->operator_name
+                'Shipping Instruction' => $data->product_name.' '.$data->quantity.' '.$data->operator_name,
+                'Invoice' => 'PWK/'.$wh.'/'.$year.'/'.$res.'/'.$data->lead_id
             );
         }
         // return $data;
@@ -98,7 +126,8 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'Payment Method',
             'Total Payment',
             'Date Closing',
-            'Shipping Instruction'
+            'Shipping Instruction',
+            'Invoice'
         ];
     }
     public function columnFormats(): array
@@ -128,7 +157,8 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'P' => 16,            
             'Q' => 14,            
             'R' => 14,            
-            'S' => 25,            
+            'S' => 25,
+            'T' => 20            
         ];
     }
 }
