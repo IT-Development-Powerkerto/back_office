@@ -1502,7 +1502,7 @@ var KTWidgets = function () {
                 curve: 'smooth',
                 show: true,
                 width: 3,
-                colors: [baseColor]
+                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
             },
             xaxis: {
                 categories: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
@@ -1673,7 +1673,7 @@ var KTWidgets = function () {
                 curve: 'smooth',
                 show: true,
                 width: 3,
-                colors: [baseColor]
+                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
             },
             xaxis: {
                 categories: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
@@ -1844,7 +1844,7 @@ var KTWidgets = function () {
                 curve: 'smooth',
                 show: true,
                 width: 3,
-                colors: [baseColor]
+                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
             },
             xaxis: {
                 categories: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
@@ -2015,7 +2015,7 @@ var KTWidgets = function () {
                 curve: 'smooth',
                 show: true,
                 width: 3,
-                colors: [baseColor]
+                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
             },
             xaxis: {
                 categories: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
