@@ -9,6 +9,12 @@
 			</button>
         </div>
         <!--end::Header-->
+        <?php
+            $x = 0;
+        ?>
+        @foreach ($user->where('role_id', 4) as $adv)
+            {{$inputer->where('adv_name', $adv->name)->sum('total_price')}}
+        @endforeach
         <!--begin::Body-->
         <div class="card-body">
             <!--begin::Wrapper-->
