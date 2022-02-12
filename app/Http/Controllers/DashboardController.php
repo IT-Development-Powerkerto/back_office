@@ -194,7 +194,7 @@ class DashboardController extends Controller
             ->where('l.admin_id', auth()->user()->admin_id)
             ->where('l.created_at', $day)
             ->orderByDesc('l.id')
-            ->paginate(5);
+            ->get();
 
             $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
             $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
@@ -627,7 +627,7 @@ class DashboardController extends Controller
                     ->where('l.advertiser', $x->name)
                     ->where('l.created_at', $day)
                     ->orderByDesc('l.id')
-                    ->paginate(5);
+                    ->paginate();
                 $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
                 $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
