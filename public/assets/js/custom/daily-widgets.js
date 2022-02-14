@@ -2083,7 +2083,7 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val + " Lead"
+                        return val + " Closing"
                     }
                 }
             },
