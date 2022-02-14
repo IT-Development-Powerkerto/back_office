@@ -13,7 +13,7 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{($lead_week_count == 0) ? 0 : $advertising_week_count / $lead_week_count}} %</div>
+											<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{($lead_count == 0) ? 0 : $advertising_week_count / $lead_count}} %</div>
 											<div class="fw-bold text-white">Cost Per Result</div>
 										</div>
 										<!--end::Body-->

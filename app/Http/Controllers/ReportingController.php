@@ -309,8 +309,8 @@ class ReportingController extends Controller
         $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
         $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
         $inputer = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
-            Carbon::now()->startOfMonth(),
-            Carbon::now()->endOfMonth(),
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
         ])->get();
         $announcement = Announcement::where('admin_id', auth()->user()->admin_id)->get();
         $leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
