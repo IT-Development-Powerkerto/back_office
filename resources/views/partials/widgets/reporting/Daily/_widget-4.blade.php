@@ -10,11 +10,16 @@
         </div>
         <!--end::Header-->
         <?php
-            $x = 0;
+            $i = -1;
+            $x[] = 0;
         ?>
-        @foreach ($user->where('role_id', 4) as $adv)
-            {{$inputer->where('adv_name', $adv->name)->sum('total_price')}}
-        @endforeach
+        {{-- @foreach ($user->where('role_id', 4) as $adv)
+            {{$x[$i+=1] = [
+                    'adv' => $adv->name, $inputer->where('adv_name', $adv->name)->sum('total_price')
+                ]
+            }}
+        @endforeach --}}
+        {{-- {{dd($x)}} --}}
         <!--begin::Body-->
         <div class="card-body">
             <!--begin::Wrapper-->
@@ -42,7 +47,7 @@
 					</div> --}}
 					<!--end::Header-->
 					<!--begin::Body-->
-					<div class="pt-1">
+					{{-- <div class="pt-1">
                         @foreach ($user->where('role_id', 4) as $adv)
 						<!--begin::Item-->
 						<div class="d-flex align-items-center pb-6">
@@ -63,7 +68,7 @@
 						</div>
 						<!--end::Item-->
                         @endforeach
-					</div>
+					</div> --}}
 					<!--end::Body-->
 				</div>
 				<!--eng::Container-->

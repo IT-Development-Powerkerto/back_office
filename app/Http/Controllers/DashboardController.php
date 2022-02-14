@@ -171,7 +171,7 @@ class DashboardController extends Controller
             Carbon::now()->endOfWeek(),
         ])->sum('requirement');
 
-        $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->where('created_at', $day)->sum('quantity');
+        $quantity = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('quantity');
 
         if($day >= $user_expired){
             $request->session()->invalidate();
@@ -542,7 +542,7 @@ class DashboardController extends Controller
             Carbon::now()->endOfWeek(),
         ])->sum('requirement');
 
-        $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->where('created_at', $day)->sum('quantity');
+        $quantity = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->where('created_at', $day)->sum('quantity');
 
         $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day);
         $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
@@ -692,31 +692,19 @@ class DashboardController extends Controller
         $omset_week1 = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfMonth(),
             Carbon::now()->endOfMonth()->subWeek(3),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfMonth(),
-            Carbon::now()->endOfMonth()->subWeek(3),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_week2 = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfMonth()->addWeek(1),
             Carbon::now()->endOfMonth()->subWeek(2),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfMonth()->addWeek(1),
-            Carbon::now()->endOfMonth()->subWeek(2),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_week3 = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfMonth()->addWeek(2),
             Carbon::now()->endOfMonth()->subWeek(1),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfMonth()->addWeek(2),
-            Carbon::now()->endOfMonth()->subWeek(1),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_week4 = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfMonth()->addWeek(3),
             Carbon::now()->endOfMonth(),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfMonth()->addWeek(3),
-            Carbon::now()->endOfMonth(),
-        ])->sum('product_promotion');
+        ])->get();
 
         //advertising cost this week
         $advertising_week_count = Budgeting::where('admin_id', auth()->user()->admin_id)->where('user_name', auth()->user()->name)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
@@ -741,10 +729,10 @@ class DashboardController extends Controller
             Carbon::now()->endOfMonth(),
         ])->sum('requirement');
 
-        $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->whereBetween('created_at', [
+        $quantity = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
-        ])->value('quantity');
+        ])->sum('quantity');
 
         $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day);
         $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
@@ -957,87 +945,51 @@ class DashboardController extends Controller
         $omset_jan = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear(),
             Carbon::now()->endOfYear()->subMonth(11),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear(),
-            Carbon::now()->endOfYear()->subMonth(11),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_feb = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(1),
             Carbon::now()->endOfYear()->subMonth(10),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(1),
-            Carbon::now()->endOfYear()->subMonth(10),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_mar = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(2),
             Carbon::now()->endOfYear()->subMonth(9),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(2),
-            Carbon::now()->endOfYear()->subMonth(9),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_apr = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(3),
             Carbon::now()->endOfYear()->subMonth(8),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(3),
-            Carbon::now()->endOfYear()->subMonth(8),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_may = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(4),
             Carbon::now()->endOfYear()->subMonth(7),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(4),
-            Carbon::now()->endOfYear()->subMonth(7),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_jun = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(5),
             Carbon::now()->endOfYear()->subMonth(6),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(5),
-            Carbon::now()->endOfYear()->subMonth(6),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_jul = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(6),
             Carbon::now()->endOfYear()->subMonth(5),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(6),
-            Carbon::now()->endOfYear()->subMonth(5),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_aug = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(7),
             Carbon::now()->endOfYear()->subMonth(4),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(7),
-            Carbon::now()->endOfYear()->subMonth(4),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_sep = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(8),
             Carbon::now()->endOfYear()->subMonth(3),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(8),
-            Carbon::now()->endOfYear()->subMonth(3),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_okt = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(9),
             Carbon::now()->endOfYear()->subMonth(2),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(9),
-            Carbon::now()->endOfYear()->subMonth(2),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_nov = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(10),
             Carbon::now()->endOfYear()->subMonth(1),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(10),
-            Carbon::now()->endOfYear()->subMonth(1),
-        ])->sum('product_promotion');
+        ])->get();
         $omset_des = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfYear()->addMonth(11),
             Carbon::now()->endOfYear(),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
-            Carbon::now()->startOfYear()->addMonth(11),
-            Carbon::now()->endOfYear(),
-        ])->sum('product_promotion');
+        ])->get();
 
         //advertising this month
         $advertising_month_count = Budgeting::where('admin_id', auth()->user()->admin_id)->where('user_name', auth()->user()->name)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
@@ -1094,10 +1046,10 @@ class DashboardController extends Controller
             Carbon::now()->endOfYear(),
         ])->sum('requirement');
 
-        $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->whereBetween('created_at', [
+        $quantity = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfMonth(),
             Carbon::now()->endOfMonth(),
-        ])->value('quantity');
+        ])->sum('quantity');
 
         $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day);
         $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
@@ -1363,7 +1315,7 @@ class DashboardController extends Controller
             Carbon::now()->endOfMonth(),
         ])->sum('requirement');
 
-        $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
+        $quantity = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
         ])->sum('quantity');

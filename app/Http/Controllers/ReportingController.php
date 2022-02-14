@@ -189,27 +189,150 @@ class ReportingController extends Controller
     }
 
     public function weeklyReporting(){
-        $lead = Lead::all();
-        $announcement = Announcement::all();
-        $inputer = Inputer::where('admin_id', auth()->user()->admin_id)->get();
+        $day = Carbon::now()->format('Y-m-d');
+        $user_expired = auth()->user()->expired_at;
+        $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
+
+        $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
+        ])->count();
+        $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
+        ])->count();
+
+        //lead this week
+        $lead_week_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
+        ])->count();
+        //count lead every week
+        $lead_week1 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth()->subWeek(3),
+        ])->count();
+        $lead_week2 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->addWeek(1),
+            Carbon::now()->endOfMonth()->subWeek(2),
+        ])->count();
+        $lead_week3 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->addWeek(2),
+            Carbon::now()->endOfMonth()->subWeek(1),
+        ])->count();
+        $lead_week4 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->addWeek(3),
+            Carbon::now()->endOfMonth(),
+        ])->count();
+        $lead_week_max = max($lead_week1, $lead_week2, $lead_week3, $lead_week4);
+
+        //count lead closing every week
+        $closing_week1 = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth()->subWeek(3),
+        ])->count();
+        $closing_week2 = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->addWeek(1),
+            Carbon::now()->endOfMonth()->subWeek(2),
+        ])->count();
+        $closing_week3 = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->addWeek(2),
+            Carbon::now()->endOfMonth()->subWeek(1),
+        ])->count();
+        $closing_week4 = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->addWeek(3),
+            Carbon::now()->endOfMonth(),
+        ])->count();
+        $closing_week_max = max($closing_week1, $closing_week2, $closing_week3, $closing_week4);
+
+        //omset this week
+        $omset_week_count = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
+        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
+        ])->sum('product_promotion');
+        //count omset every week
+        $omset_week1 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth()->subWeek(3),
+        ])->get();
+        $omset_week2 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->addWeek(1),
+            Carbon::now()->endOfMonth()->subWeek(2),
+        ])->get();
+        $omset_week3 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->addWeek(2),
+            Carbon::now()->endOfMonth()->subWeek(1),
+        ])->get();
+        $omset_week4 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth()->addWeek(3),
+            Carbon::now()->endOfMonth(),
+        ])->get();
+
+        //advertising cost this week
+        $advertising_week_count = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
+        ])->sum('requirement');
+        //count advertising cost every week
+        $advertising_week1 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth()->subWeek(3),
+        ])->sum('requirement');
+        $advertising_week2 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+            Carbon::now()->startOfMonth()->addWeek(1),
+            Carbon::now()->endOfMonth()->subWeek(2),
+        ])->sum('requirement');
+        $advertising_week3 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+            Carbon::now()->startOfMonth()->addWeek(2),
+            Carbon::now()->endOfMonth()->subWeek(1),
+        ])->sum('requirement');
+        $advertising_week4 = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
+            Carbon::now()->startOfMonth()->addWeek(3),
+            Carbon::now()->endOfMonth(),
+        ])->sum('requirement');
+
+        $quantity = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
+        ])->sum('quantity');
+
+        $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
+        $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
+
+        $icons = Icon::all();
         $product = Product::where('admin_id', auth()->user()->admin_id)->get();
 
+        $client = Client::where('admin_id', auth()->user()->admin_id)->get();
+        $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
+        $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
+        $inputer = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
+            Carbon::now()->startOfMonth(),
+            Carbon::now()->endOfMonth(),
+        ])->get();
+        $announcement = Announcement::where('admin_id', auth()->user()->admin_id)->get();
+        $leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
+
         if(auth()->user()->role_id==1){
-            return view('reporting.AdminReportingWeekly')->with('leads', $lead)->with('announcements', $announcement)
+            return view('reporting.AdminReportingWeekly')->with('announcements', $announcement)->with('leads', $leads)
             ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
-            ->with('lead_su', $lead_su)->with('lead_mo', $lead_mo)->with('lead_tu', $lead_tu)->with('lead_we', $lead_we)->with('lead_th', $lead_th)->with('lead_fr', $lead_fr)->with('lead_sa', $lead_sa)
-            ->with('closing_su', $closing_su)->with('closing_mo', $closing_mo)->with('closing_tu', $closing_tu)->with('closing_we', $closing_we)->with('closing_th', $closing_th)->with('closing_fr', $closing_fr)->with('closing_sa', $closing_sa)
-            ->with('omset_su', $omset_su)->with('omset_mo', $omset_mo)->with('omset_tu', $omset_tu)->with('omset_we', $omset_we)->with('omset_th', $omset_th)->with('omset_fr', $omset_fr)->with('omset_sa', $omset_sa)
-            ->with('advertising_su', $advertising_su)->with('advertising_mo', $advertising_mo)->with('advertising_tu', $advertising_tu)->with('advertising_we', $advertising_we)->with('advertising_th', $advertising_th)->with('advertising_fr', $advertising_fr)->with('advertising_sa', $advertising_sa)
-            ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count);
+            ->with('lead_week1', $lead_week1)->with('lead_week2', $lead_week2)->with('lead_week3', $lead_week3)->with('lead_week4', $lead_week4)
+            ->with('closing_week1', $closing_week1)->with('closing_week2', $closing_week2)->with('closing_week3', $closing_week3)->with('closing_week4', $closing_week4)
+            ->with('omset_week1', $omset_week1)->with('omset_week2', $omset_week2)->with('omset_week3', $omset_week3)->with('omset_week4', $omset_week4)
+            ->with('advertising_week1', $advertising_week1)->with('advertising_week2', $advertising_week2)->with('advertising_week3', $advertising_week3)->with('advertising_week4', $advertising_week4)
+            ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count)
+            ->with('closing_week_max', $closing_week_max)->with('lead_week_max', $lead_week_max);
         }elseif (auth()->user()->role_id==12){
-            return view('reporting.ReportingWeekly')->with('leads', $lead)->with('announcements', $announcement)
+            return view('reporting.ReportingWeekly')->with('announcements', $announcement)->with('leads', $leads)
             ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
-            ->with('lead_su', $lead_su)->with('lead_mo', $lead_mo)->with('lead_tu', $lead_tu)->with('lead_we', $lead_we)->with('lead_th', $lead_th)->with('lead_fr', $lead_fr)->with('lead_sa', $lead_sa)
-            ->with('closing_su', $closing_su)->with('closing_mo', $closing_mo)->with('closing_tu', $closing_tu)->with('closing_we', $closing_we)->with('closing_th', $closing_th)->with('closing_fr', $closing_fr)->with('closing_sa', $closing_sa)
-            ->with('omset_su', $omset_su)->with('omset_mo', $omset_mo)->with('omset_tu', $omset_tu)->with('omset_we', $omset_we)->with('omset_th', $omset_th)->with('omset_fr', $omset_fr)->with('omset_sa', $omset_sa)
-            ->with('advertising_su', $advertising_su)->with('advertising_mo', $advertising_mo)->with('advertising_tu', $advertising_tu)->with('advertising_we', $advertising_we)->with('advertising_th', $advertising_th)->with('advertising_fr', $advertising_fr)->with('advertising_sa', $advertising_sa)
-            ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count);
+            ->with('lead_week1', $lead_week1)->with('lead_week2', $lead_week2)->with('lead_week3', $lead_week3)->with('lead_week4', $lead_week4)
+            ->with('closing_week1', $closing_week1)->with('closing_week2', $closing_week2)->with('closing_week3', $closing_week3)->with('closing_week4', $closing_week4)
+            ->with('omset_week1', $omset_week1)->with('omset_week2', $omset_week2)->with('omset_week3', $omset_week3)->with('omset_week4', $omset_week4)
+            ->with('advertising_week1', $advertising_week1)->with('advertising_week2', $advertising_week2)->with('advertising_week3', $advertising_week3)->with('advertising_week4', $advertising_week4)
+            ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count)
+            ->with('closing_week_max', $closing_week_max)->with('lead_week_max', $lead_week_max);
         }
     }
 
