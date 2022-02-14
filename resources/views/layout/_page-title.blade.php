@@ -3,7 +3,7 @@
 	data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
 	class="page-title d-flex align-items-center flex-wrap me-3 mx-3  mb-5 mb-lg-0">
 	<!--begin::Title-->
-	<h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">Dashboard
+	<h1 class="d-flex align-items-center fw-bolder my-1 fs-3" style="color: darkblue">Dashboard
 		<!--begin::Separator-->
 		<span class="h-20px border-gray-200 border-start ms-3 mx-2"></span>
 		<!--end::Separator-->

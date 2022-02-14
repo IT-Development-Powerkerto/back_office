@@ -1,5 +1,5 @@
 <!--begin::Header-->
-<div id="kt_header" style="" class="header align-items-stretch">
+<div id="kt_header" style="background-color: #00509d;" class="header align-items-stretch">
 	<!--begin::Container-->
 	<div class="container-fluid d-flex align-items-stretch justify-content-between">
 		

@@ -1,31 +1,31 @@
 
 							<!--begin::Card-->
-							<div class="card card-xxl-stretch mb-5 mb-xl-8">
+							<div class="card card-xxl-stretch mb-5 mb-xl-8 p-0">
 								<!--begin::Header-->
-								<div class="card-header border-0 pt-5">
+								<div class="card-header border-0" style="background-color: #00509d;">
 									<h3 class="card-title align-items-start flex-column">
-										<span class="card-label fw-bolder fs-3 mb-1">Lead Tunneling</span>
+										<span class="card-label fw-bolder fs-3 mb-1 text-white">Lead Tunneling</span>
 									@if (auth()->user()->role_id == 1)
-										<span class="text-muted mt-1 fw-bold fs-7">{{$all_leads->count()}} Lead {{$all_spam->count()}} Spam</span>
+										<span class="text-white mt-1 fw-bold fs-7">{{$all_leads->count()}} Lead {{$all_spam->count()}} Spam</span>
 									@else
-										<span class="text-muted mt-1 fw-bold fs-7">{{$all_leads->where('advertiser', auth()->user()->name)->count()}} Lead {{$all_spam->where('advertiser', auth()->user()->name)->count()}} Spam</span>
+										<span class="text-white mt-1 fw-bold fs-7">{{$all_leads->where('advertiser', auth()->user()->name)->count()}} Lead {{$all_spam->where('advertiser', auth()->user()->name)->count()}} Spam</span>
 									@endif
 									</h3>
 									<audio controls autoplay hidden>
 										<source src="assets/notif/notif.mp3" type="audio/mpeg">
 									</audio>
 									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
-										<a href=/ld class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Detail">
+										<a href=/ld class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Detail" style="color: #00509d;">
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 										<span class="svg-icon svg-icon-3">
-											<i class="fas fa-chart-line"></i>
+											<i class="fas fa-chart-line" style="color: #00509d;"></i>
 										</span>
 										<!--end::Svg Icon-->Detail</a>
 										<!-- Button trigger modal -->
-										<button type="button" class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Export" data-bs-toggle="modal" data-bs-target="#exampleModal">
+										<button type="button" class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Export" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #00509d;">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 											<span class="svg-icon svg-icon-3">
-												<i class="las la-print" style="font-size: 18px"></i>
+												<i class="las la-print" style="font-size: 18px; color: #00509d;"></i>
 											</span>
 											<!--end::Svg Icon-->Export</button>
 										
@@ -200,7 +200,7 @@
 															@csrf
 															<div class="btn-toolbar justify-content-between px-2" role="toolbar" aria-label="Toolbar with button groups">
 																<div class="btn-group" role="group" aria-label="First group">
-																	<button type="submit" title="Click to edit data customer" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-primary  btn-icon"><i class="la la-user-edit"></i></button>
+																	<button type="submit" title="Click to edit data customer" data-bs-toggle="modal" data-bs-target="#edit-user" class="btn btn-icon" style="background-color: #1696e0;"><i class="la la-user-edit text-white"></i></button>
 																</div>
 															</div>
 														</form>

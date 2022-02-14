@@ -2,34 +2,34 @@
 							<!--begin::Card-->
 							<div class="card card-xxl-stretch mb-5 mb-xl-8">
 								<!--begin::Header-->
-								<div class="card-header border-0 pt-5">
-									<h3 class="card-title align-items-start flex-column">
-										<span class="card-label fw-bolder fs-3 mb-1">Lead Tunneling</span>
+								<div class="card-header border-0 pt-5" style="background-color: #00509d;">
+									<h3 class="card-title align-items-start flex-column mt-n3">
+										<span class="card-label text-white fw-bolder fs-3 mb-1">Lead Tunneling</span>
 									@if (auth()->user()->role_id == 1)
-										<span class="text-muted mt-1 fw-bold fs-7">{{$all_leads->count()}} Lead {{$all_spam->count()}} Spam</span>
+										<span class="text-white mt-1 fw-bold fs-7">{{$all_leads->count()}} Lead {{$all_spam->count()}} Spam</span>
 									@else
-										<span class="text-muted mt-1 fw-bold fs-7">{{$all_leads->where('advertiser', auth()->user()->name)->count()}} Lead {{$all_spam->where('advertiser', auth()->user()->name)->count()}} Spam</span>
+										<span class="text-white mt-1 fw-bold fs-7">{{$all_leads->where('advertiser', auth()->user()->name)->count()}} Lead {{$all_spam->where('advertiser', auth()->user()->name)->count()}} Spam</span>
 									@endif
 									</h3>
 									<audio controls autoplay hidden>
 										<source src="assets/notif/notif.mp3" type="audio/mpeg">
 									</audio>
-									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
-										<a href=/ld class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Detail">
-										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-										<span class="svg-icon svg-icon-3">
-											<i class="fas fa-chart-line"></i>
-										</span>
-										<!--end::Svg Icon-->Detail</a>
-										<!-- Button trigger modal -->
-										<button type="button" class="btn btn-sm btn-light btn-active-primary me-2" title="Click For Export" data-bs-toggle="modal" data-bs-target="#exampleModal">
+									<div class="card-toolbar mt-n3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
+										<a href=/ld class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Detail" style="color: #00509d;">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 											<span class="svg-icon svg-icon-3">
-												<i class="las la-print" style="font-size: 18px"></i>
+												<i class="fas fa-chart-line" style="color: #00509d;"></i>
 											</span>
-											<!--end::Svg Icon-->Export</button>
-										
-										<!-- Modal -->
+											<!--end::Svg Icon-->Detail</a>
+											<!-- Button trigger modal -->
+											<button type="button" class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Export" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #00509d;">
+												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+												<span class="svg-icon svg-icon-3">
+													<i class="las la-print" style="font-size: 18px; color: #00509d;"></i>
+												</span>
+												<!--end::Svg Icon-->Export</button>
+											
+											<!-- Modal -->
 										<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<div class="modal-content">
