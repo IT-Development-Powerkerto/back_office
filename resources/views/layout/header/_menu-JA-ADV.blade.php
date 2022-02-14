@@ -9,49 +9,49 @@
 		id="#kt_header_menu" data-kt-menu="true">
 		<div class="menu-item here show menu-lg-down-accordion me-lg-1">
 			<a class="menu-link active py-3" href="{{ route ('dashboard.index') }}">
-				<span class="menu-title">Dashboard</span>
+				<span class="menu-title" style="color: darkblue">Dashboard</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route('campaign.index') }}">
-				<span class="menu-title">Campaign</span>
+				<span class="menu-title text-white">Campaign</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route('operator.index') }}">
-				<span class="menu-title">Operator</span>
+				<span class="menu-titl text-white">Operator</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route('budgeting.index') }}">
-				<span class="menu-title">Budgeting Advertising</span>
+				<span class="menu-title text-white">Budgeting Advertising</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('budgeting_realization.index') }}">
-				<span class="menu-title">Budgeting Realization</span>
+				<span class="menu-title text-white">Budgeting Realization</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('evaluation.index') }}">
-				<span class="menu-title">Routine Evaluation</span>
+				<span class="menu-title text-white">Routine Evaluation</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('inputer') }}">
-				<span class="menu-title">Inputer</span>
+				<span class="menu-title text-white">Inputer</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('reporting') }}">
-				<span class="menu-title">Live Reporting</span>
+				<span class="menu-title text-white">Live Reporting</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
