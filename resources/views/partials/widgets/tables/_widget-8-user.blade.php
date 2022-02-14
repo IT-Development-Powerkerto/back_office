@@ -68,6 +68,8 @@
 										<form action="/dashboard" method="GET" class="d-flex">
 										@elseif (auth()->user()->role_id == 4)
 										<form action="/adv" method="GET" class="d-flex">
+										@elseif (auth()->user()->role_id == 5)
+										<form action="/cs" method="GET" class="d-flex">
 										@else
 										<form action="/JA-adv" method="GET" class="d-flex">
 											@endif
