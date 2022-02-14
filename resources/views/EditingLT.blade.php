@@ -544,6 +544,10 @@
 								// }else{
 								// 	shipping_price.value = total_shipping_price;
 								// }
+							},
+							error: function(){
+								alert('Courier is not available, please choose another courier!');
+								shipping_price.value = 0;
 							}
 						});
 					}
