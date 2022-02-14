@@ -29,7 +29,7 @@
 <!--begin::Body-->
 
 <body id="kt_body"
-	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed">
+	class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed"  style="background-color: #e2e2e2;">
 
 	@include('layout/master-JA-ADV')
 

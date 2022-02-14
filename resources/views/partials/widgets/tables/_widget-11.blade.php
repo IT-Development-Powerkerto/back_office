@@ -2,19 +2,16 @@
 									<!--begin::Tables Widget 9-->
 									<div class="card card-xxl-stretch mb-5 mb-xl-8">
 										<!--begin::Header-->
-										<div class="card-header border-0 pt-5">
-											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Announcements</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$announcements->count()}} Announcements</span>
+										<div class="card-header border-0 pt-5" style="background-color: #00509d;">
+											<h3 class="card-title align-items-start flex-column mt-n3">
+												<span class="text-white card-label fw-bolder fs-3 mb-1">Announcements</span>
+												<span class="text-white mt-1 fw-bold fs-7">{{$announcements->count()}} Announcements</span>
 											</h3>
-											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
-												<a href="#" data-bs-toggle="modal" data-bs-target="#add-announcement" class="btn btn-sm btn-light btn-active-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends">
+											<div class="card-toolbar mt-n3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Announcement">
+												<a href="#" data-bs-toggle="modal" data-bs-target="#add-announcement" class="btn btn-sm btn-light btn-active-primary text-hover-white mt-n3" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends" style="color: #00509d;">
 												<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 												<span class="svg-icon svg-icon-3">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-														<rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-														<rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-													</svg>
+													<i class="las la-plus" style="color: #00509d;"></i>
 												</span>
 												<!--end::Svg Icon-->Create Announcement</a>
 											</div>

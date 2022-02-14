@@ -2,9 +2,9 @@
 									<!--begin::Tables Widget 9-->
 									<div class="card card-l-stretch mb-5 mb-xl-8 pb-4 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 315px">
 										<!--begin::Header-->
-										<div class="card-header border-0 pt-5">
+										<div class="card-header border-0 pt-5" style="background-color: #00509d;">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Information</span>
+												<span class="card-label fw-bolder text-white fs-3 mt-n3">Information</span>
 											</h3>
 											<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a user">
 

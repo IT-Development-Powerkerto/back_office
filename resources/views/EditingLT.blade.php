@@ -345,7 +345,7 @@
 												<div class="col-lg-7">
 													<button class="btn btn-info" id="copy">Copy to Clipboard</button>
 													<input type="submit" class="btn btn-primary" value="Save">
-                                                    <a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
+                                                    <a type="button" class="btn btn-secondary" href="{{ url()->previous() }}">Cancel</a>
 												</div>
 											</div>
 										</div>

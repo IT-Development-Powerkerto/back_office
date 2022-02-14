@@ -52,9 +52,13 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
         $dataInputer[] = array();
         foreach($data as $data){
             if($data->warehouse == 'Cilacap'){
-                $wh = 'WHC';
+                $wh = 'C';
+            }else if($data->warehouse == 'Kosambi'){
+                $wh = 'K';
+            }else if($data->warehouse == 'Tandes.Sby'){
+                $wh = 'S';
             }else{
-                $wh = 'belum';
+                $wh = 'Not Yet';
             }
             $date = $data->updated_at;
             $year = date('y', strtotime($date));
@@ -97,7 +101,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
                 'Total Payment' => $data->total_payment,
                 'Date/Time' => date('d-m-Y', strtotime($data->updated_at)),
                 'Shipping Instruction' => $data->product_name.' '.$data->quantity.' '.$data->operator_name,
-                'Invoice' => 'PWK/'.$wh.'/'.$year.'/'.$res.'/'.$data->lead_id
+                'Invoice' => 'PWK.WP.'.$wh.'/'.$year.'/'.$res.'-'.$data->lead_id
             );
         }
         // return $data;
