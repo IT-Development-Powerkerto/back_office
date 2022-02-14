@@ -142,7 +142,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Address</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<input type="text" name="address" id="address" class="form-control" value="{{ old('address') ?? $inputer->implode('address') }}" placeholder="Enter your address"/>
+														<input type="text" name="address" maxlength="250" id="address" class="form-control" value="{{ old('address') ?? $inputer->implode('address') }}" placeholder="Enter your address"/>
 														<div class="input-group-append"><span class="input-group-text"><i class="la la-map-marker" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please enter your address</span>
