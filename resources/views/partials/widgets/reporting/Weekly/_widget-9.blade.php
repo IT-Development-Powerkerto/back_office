@@ -5,7 +5,7 @@
 			<div class="card-header border-0 bg-white py-5">
 				<h3 class="card-title fw-bolder text-dark">Total Closing</h3>
 				<span class="symbol symbol-50px">
-					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">1999</span>
+					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{$closing_count}} Closing</span>
 				</span>
 			</div>
 			<!--end::Header-->
@@ -16,69 +16,34 @@
 						<!--begin::Block-->
 						<div class="shadow-sm p-8 rounded rounded-xl flex-grow-1">
 							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 77.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-primary">Generos</div>
-                                    <span class="font-size-sm fw-bold text-muted">105</span>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 80.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-info">Etawaku</div>
-                                    <span class="font-size-sm fw-bold text-muted">105</span>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 78.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-success">Gizidat</div>
-                                    <span class="font-size-sm fw-bold text-muted">105</span>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 76.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-danger">Freshmag</div>
-                                    <span class="font-size-sm fw-bold text-muted">105</span>
-								</div>
-							</div>
-							<!--end::Item-->
-							<!--begin::Item-->
-							<div class="d-flex align-items-center mb-5">
-								<div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
-									<span class="symbol-label">
-										<img src="img/frame 79.png" class="h-100 align-self-end" alt="image">
-									</span>
-								</div>
-								<div>
-									<div class="font-size-sm fw-bold text-warning">Rube</div>
-                                    <span class="font-size-sm fw-bold text-muted">105</span>
-								</div>
-							</div>
+							<input id="product_count" value="{{$product->count()}}" hidden/>
+							<?php
+                                $n=0;
+                                $week1=0;
+                                $week2=0;
+                                $week3=0;
+                                $week4=0;
+                            ?>
+                            @foreach ($product as $product)
+                                {{-- <input id="{{$product->name}}" value="{{$inputer->where('product_name', $product->name)->sum('total_price') - $inputer->where('product_name', $product->name)->sum('product_promotion')}}" hidden/> --}}
+                                <input id="{{$week1+=1}} closing_week1" value="{{$closing_week1->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="{{$week2+=1}} closing_week2" value="{{$closing_week2->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="{{$week3+=1}} closing_week3" value="{{$closing_week3->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="{{$week4+=1}} closing_week4" value="{{$closing_week4->where('product_id', $product->id)->count()}}" hidden/>
+                                <input id="product {{$n+=1}}" value="{{$product->name}}" hidden/>
+                                <!--begin::Item-->
+                                <div class="d-flex align-items-center mb-5">
+                                    <div class="symbol symbol-circle symbol-white overflow-hidden flex-shrink-0 me-3">
+                                        <span class="symbol-label">
+                                            <img src="{{$product->image}}" class="h-100 align-self-end" alt="image">
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <div class="font-size-sm fw-bold text-primary">{{$product->name}}</div>
+                                    </div>
+                                </div>
+                                <!--end::Item-->
+                            @endforeach
 							<!--end::Item-->
 						</div>
 						<!--end::Block-->
