@@ -73,6 +73,15 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
                 'IV' => 4,
                 'I'  => 1
             );
+            if($data->warehouse == 'Cilacap'){
+                $warehouse = 'Cilacap';
+            }else if($data->warehouse == 'Kosambi'){
+                $warehouse = 'Kosambi';
+            }else if($data->warehouse == 'Tandes.Sby'){
+                $warehouse = 'Surabaya';
+            }else{
+                $warehouse = 'Not Yet';
+            }
 
             foreach ($roman_numerals as $roman => $numeral) 
             {
@@ -86,6 +95,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
                 'ADV Name' => $data->adv_name,
                 'CS Name' => $data->operator_name,
                 'Customer Name' => $data->customer_name,
+                'Warehouse' => $warehouse,
                 'Customer WA' => $data->customer_number,
                 'Address' => $data->customer_address,
                 'Product' => $data->product_name,
@@ -116,6 +126,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'ADV Name',
             'CS Name',
             'Customer Name',
+            'Warehouse',
             'Customer WA',
             'Address',
             'Product',
@@ -137,7 +148,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
     public function columnFormats(): array
     {
         return [
-            'E' => NumberFormat::FORMAT_NUMBER,
+            'F' => NumberFormat::FORMAT_NUMBER,
         ];
     }
     public function columnWidths(): array
@@ -148,21 +159,22 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'C' => 15,            
             'D' => 15,            
             'E' => 15,            
-            'F' => 20,            
-            'G' => 9,            
+            'F' => 15,            
+            'G' => 20,            
             'H' => 9,            
             'I' => 9,            
             'J' => 9,            
-            'K' => 18,            
-            'L' => 10,            
-            'M' => 9,            
-            'N' => 13,            
-            'O' => 19,            
-            'P' => 16,            
-            'Q' => 14,            
+            'K' => 9,            
+            'L' => 18,            
+            'M' => 10,            
+            'N' => 9,            
+            'O' => 13,            
+            'P' => 19,            
+            'Q' => 16,            
             'R' => 14,            
-            'S' => 25,
-            'T' => 20            
+            'S' => 14,
+            'T' => 25,
+            'U' => 20            
         ];
     }
 }
