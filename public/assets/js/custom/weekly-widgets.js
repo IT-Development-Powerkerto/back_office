@@ -19,10 +19,15 @@ var KTWidgets = function () {
             var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
             var lightColor = KTUtil.getCssVariableValue('--bs-light-' + color );
 
+            var CR_week1 = parseInt(document.getElementById('CR_week1').value);
+            var CR_week2 = parseInt(document.getElementById('CR_week2').value);
+            var CR_week3 = parseInt(document.getElementById('CR_week3').value);
+            var CR_week4 = parseInt(document.getElementById('CR_week4').value);
+
             var options = {
                 series: [{
-                    name: 'Net Profit',
-                    data: [30, 45, 32, 70, 40]
+                    name: 'Closing Rate',
+                    data: [CR_week1, CR_week2, CR_week3, CR_week4]
                 }],
                 chart: {
                     fontFamily: 'inherit',
@@ -56,7 +61,7 @@ var KTWidgets = function () {
                     colors: [baseColor]
                 },
                 xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
                     axisBorder: {
                         show: false,
                     },
@@ -90,7 +95,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 80,
+                    max: 100,
                     labels: {
                         show: false,
                         style: {
@@ -126,7 +131,7 @@ var KTWidgets = function () {
                     },
                     y: {
                         formatter: function(val) {
-                            return "$" + val + " thousands"
+                            return val + " %"
                         }
                     }
                 },
@@ -159,10 +164,15 @@ var KTWidgets = function () {
             var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
             var lightColor = KTUtil.getCssVariableValue('--bs-light-' + color );
 
+            var CA_week1 = parseInt(document.getElementById('CA_week1').value);
+            var CA_week2 = parseInt(document.getElementById('CA_week2').value);
+            var CA_week3 = parseInt(document.getElementById('CA_week3').value);
+            var CA_week4 = parseInt(document.getElementById('CA_week4').value);
+
             var options = {
                 series: [{
-                    name: 'Net Profit',
-                    data: [40, 40, 30, 30, 35, 35, 50]
+                    name: 'Cost Aquisition',
+                    data: [CA_week1, CA_week2, CA_week3, CA_week4]
                 }],
                 chart: {
                     fontFamily: 'inherit',
@@ -196,7 +206,7 @@ var KTWidgets = function () {
                     colors: [baseColor]
                 },
                 xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                    categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
                     axisBorder: {
                         show: false,
                     },
@@ -230,7 +240,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 60,
+                    max: 100,
                     labels: {
                         show: false,
                         style: {
@@ -266,7 +276,7 @@ var KTWidgets = function () {
                     },
                     y: {
                         formatter: function(val) {
-                            return "$" + val + " thousands"
+                            return val + " %"
                         }
                     }
                 },
