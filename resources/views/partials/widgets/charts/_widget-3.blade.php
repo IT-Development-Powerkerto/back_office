@@ -2,10 +2,10 @@
 									<!--begin::Mixed Widget 5-->
 									<div class="card">
 										<!--begin::Beader-->
-										<div class="card-header border-0 py-5">
+										<div class="card-header border-0 py-3" style="background-color: #00509d;">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Total Closing</span>
-												<span class="text-muted fw-bold fs-7">{{$closing_count}} Closing @ Daily</span>
+												<span class="card-label fw-bolder fs-3 mb-1 text-white">Total Closing</span>
+												<span class="text-white fw-bold fs-7">{{$closing_count}} Closing @ Daily</span>
                                                 <input id="closing_su" value="{{$closing_su->count()}}" hidden/>
                                                 <input id="closing_mo" value="{{$closing_mo->count()}}" hidden/>
                                                 <input id="closing_tu" value="{{$closing_tu->count()}}" hidden/>
@@ -89,7 +89,7 @@
 										<!--begin::Body-->
 										<div class="card-body d-flex flex-column">
 											<!--begin::Chart-->
-											<div class="mixed-widget-6-chart card-rounded-top" data-kt-chart-color="danger" style="height: 150px"></div>
+											<div class="mixed-widget-6-chart card-rounded-top" data-kt-chart-color="danger" style="height: 165px"></div>
 											<!--end::Chart-->
 										</div>
 										<!--end::Body-->
