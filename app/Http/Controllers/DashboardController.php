@@ -1184,7 +1184,7 @@ class DashboardController extends Controller
         }
     }
 
-    public function ld() {
+    public function ld(Request $request) {
         if(auth()->user()->role_id == 1){
             $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
         }else{
@@ -1192,7 +1192,6 @@ class DashboardController extends Controller
         }
         $client = Client::where('admin_id', auth()->user()->admin_id)->get();
         $operator = Operator::where('admin_id', auth()->user()->admin_id)->get();
-        $day = Carbon::now()->format('Y-m-d');
         // $lead = DB::table('leads as l')
         //     ->join('operators as o', 'l.operator_id', '=', 'o.id')
         //     ->join('products as p', 'l.product_id', '=', 'p.id' )
@@ -1202,9 +1201,14 @@ class DashboardController extends Controller
         //     ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.name as client_name', 'c.whatsapp as client_wa', 'c.created_at as client_created_at', 'c.updated_at as client_updated_at', 'cp.cs_to_customer as cs_to_customer', 'cp.id as campaign_id')
         //     ->where('c.updated_at', $day);
         //$lead = Lead::where('updated_at', $day)->orderByDesc('id')->get();
-        $lead = Lead::where('admin_id', auth()->user()->admin_id)->orderByDesc('id')->get();
-        $leads = Lead::all();
-        $announcements = Announcement::all();
+        if($request->date_filter){
+            $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+        } else {
+            $day = Carbon::now()->format('Y-m-d');
+        }
+        $lead = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->orderByDesc('id')->get();
+        $leads = Lead::where('admin_id', auth()->user()->admin_id)->get();
+        $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
         $x = auth()->user();
         if($x->role_id == 1){
             return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);

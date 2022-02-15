@@ -7,9 +7,14 @@
 												<span class="card-label fw-bolder fs-3 mb-1">Campaign {{$campaign->title}}</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$lead->where('campaign_id', $campaign->id)->count()}} Leads</span>
 											</h3>
-											<div class="me-2">
+                                            <form action="/ld" method="GET" class="d-flex">
+                                                <div class="me-2 d-flex flex-row">
+                                                    <input class="form-control mt-0 form-control-solid" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+                                                </div>
+                                            </form>
+											{{-- <div class="me-2">
                                                 <input class="form-control mt-0" name="search" id="searchlead" type="date" placeholder="Search" aria-label="Search" style="height: 33px;">
-                                            </div>
+                                            </div> --}}
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->

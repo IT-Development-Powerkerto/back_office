@@ -70,7 +70,7 @@
 										<form action="/adv" method="GET" class="d-flex">
 										@else
 										<form action="/JA-adv" method="GET" class="d-flex">
-											@endif
+										@endif
 											<div class="me-2 d-flex flex-row">
 												<input class="form-control mt-0 form-control-solid" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
 											</div>
