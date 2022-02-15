@@ -15,12 +15,6 @@
 										<source src="assets/notif/notif.mp3" type="audio/mpeg">
 									</audio>
 									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
-										<a href=/ld class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Detail" style="color: #00509d;">
-										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-										<span class="svg-icon svg-icon-3">
-											<i class="fas fa-chart-line" style="color: #00509d;"></i>
-										</span>
-										<!--end::Svg Icon-->Detail</a>
 										<!-- Button trigger modal -->
 										<button type="button" class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Export" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #00509d;">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->

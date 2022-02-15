@@ -1,7 +1,31 @@
 <!--begin::Container-->
 <div id="kt_content_container" class="container-xxl" >
+	<!--begin::Action group-->
+	<div class="d-flex align-items-center justify-content-between rounded mt-10 py-3" style="background-color: #00509d;">
+		<ul class="nav">
+			<li class="nav-item">
+				<h1 class="text-white fw-bold fs-7 px-4 ms-2 mt-2"
+					>Filter Dashboard</h1>
+			</li>
+		</ul>
+		<ul class="nav me-2">
+			<li class="nav-item">
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
+					href="{{route('dashboard.index')}}">Daily</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
+					href="{{ route ('weeklydashboard') }}">Weekly</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4"
+					href="{{ route ('monthlydashboard') }}">Monthly</a>
+			</li>
+		</ul>
+	</div>
+	<!--end::Action group-->
 	<!--begin::Row-->
-	<div class="row gy-5 g-xl-12 my-5">
+	<div class="row gy-5 g-xl-12 my-1">
 		@if(session()->has('success'))
 			<div class="alert alert-success alert-dismissible fade show" role="alert">
 				{{ session('success') }}
@@ -15,28 +39,6 @@
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
-			<!--begin::Action group-->
-		<div class="d-flex align-items-center justify-content-end flex-wrap">
-			<!--begin::Wrapper-->
-			<div class="flex-shrink-0 me-2">
-				<ul class="nav">
-					<li class="nav-item">
-						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-							href="{{route('dashboard.index')}}">Daily</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-							href="{{ route ('weeklydashboard') }}">Weekly</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4"
-							href="#">Monthly</a>
-					</li>
-				</ul>
-			</div>
-			<!--end::Wrapper-->
-		</div>
-		<!--end::Action group-->
 		<!--begin::Col-->
 		<div class="col-xl-6">
 
@@ -104,7 +106,7 @@
 		<!--end::Col-->
 
 		<!--begin::Col-->
-		<div class="col-xl-12">
+		<div class="col-xl-12 mt-n1">
 
 			@include('partials/widgets/tables/_widget-8')
 
@@ -112,7 +114,7 @@
 		<!--end::Col-->
 
 		<!--begin::Col-->
-		<div class="col-xl-6 mt-n1">
+		<div class="col-xl-6 mt-n2">
 
 			@include('partials/widgets/tables/_widget-7')
 			
@@ -120,7 +122,7 @@
 		<!--end::Col-->
 
 		<!--begin::Col-->
-		<div class="col-xl-6 mt-n1">
+		<div class="col-xl-6 mt-n2">
 
 			@include('partials/widgets/tables/_widget-6')
 
@@ -132,7 +134,7 @@
 
 
 	<!--begin::Row-->
-	<div class="row gy-5 my-n8 g-xl-1">
+	<div class="row gy-5 g-xl-1 mt-n3">
 		@include('partials/widgets/tables/_widget-9')
 		@include('partials/widgets/tables/_widget-11')
 	</div>
