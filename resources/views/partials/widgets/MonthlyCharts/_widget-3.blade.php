@@ -6,18 +6,18 @@
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1 text-white">Total Closing</span>
 												<span class="text-white fw-bold fs-7">{{$closing_count}} Closing @ Month</span>
-                                                <input id="closing_jan" value="{{$closing_jan}}" hidden/>
-                                                <input id="closing_feb" value="{{$closing_feb}}" hidden/>
-                                                <input id="closing_mar" value="{{$closing_mar}}" hidden/>
-                                                <input id="closing_apr" value="{{$closing_apr}}" hidden/>
-                                                <input id="closing_may" value="{{$closing_may}}" hidden/>
-                                                <input id="closing_jun" value="{{$closing_jun}}" hidden/>
-                                                <input id="closing_jul" value="{{$closing_jul}}" hidden/>
-                                                <input id="closing_aug" value="{{$closing_aug}}" hidden/>
-                                                <input id="closing_sep" value="{{$closing_sep}}" hidden/>
-                                                <input id="closing_okt" value="{{$closing_okt}}" hidden/>
-                                                <input id="closing_nov" value="{{$closing_nov}}" hidden/>
-                                                <input id="closing_des" value="{{$closing_des}}" hidden/>
+                                                <input id="closing_jan" value="{{$closing_jan->count()}}" hidden/>
+                                                <input id="closing_feb" value="{{$closing_feb->count()}}" hidden/>
+                                                <input id="closing_mar" value="{{$closing_mar->count()}}" hidden/>
+                                                <input id="closing_apr" value="{{$closing_apr->count()}}" hidden/>
+                                                <input id="closing_may" value="{{$closing_may->count()}}" hidden/>
+                                                <input id="closing_jun" value="{{$closing_jun->count()}}" hidden/>
+                                                <input id="closing_jul" value="{{$closing_jul->count()}}" hidden/>
+                                                <input id="closing_aug" value="{{$closing_aug->count()}}" hidden/>
+                                                <input id="closing_sep" value="{{$closing_sep->count()}}" hidden/>
+                                                <input id="closing_okt" value="{{$closing_okt->count()}}" hidden/>
+                                                <input id="closing_nov" value="{{$closing_nov->count()}}" hidden/>
+                                                <input id="closing_des" value="{{$closing_des->count()}}" hidden/>
 												<input id="closing_month_max" value="{{$closing_month_max}}" hidden/>
 
                                                 <?php
