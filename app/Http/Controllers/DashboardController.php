@@ -1206,7 +1206,14 @@ class DashboardController extends Controller
         $lead = Lead::where('admin_id', auth()->user()->admin_id)->orderByDesc('id')->get();
         $leads = Lead::all();
         $announcements = Announcement::all();
-        return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);
+        $x = auth()->user();
+        if($x->role_id == 1){
+            return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);
+        }elseif($x->role_id == 4){
+            return view('DetailLeadADV')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);
+        }elseif($x->role_id == 12){
+            return view('DetailLeadJA-ADV')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);
+        }
     }
 
     public function WeeklyDashboard(Request $request) {

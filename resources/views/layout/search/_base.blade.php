@@ -5,7 +5,7 @@
 	<!--begin::Search toggle-->
 	<div class="d-flex align-items-center" data-kt-search-element="toggle" id="kt_header_search_toggle">
 		<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px">
-			<i class="bi bi-search fs-2"></i>
+			<i class="bi bi-search fs-2 text-white"></i>
 		</div>
 	</div>
 	<!--end::Search toggle-->
