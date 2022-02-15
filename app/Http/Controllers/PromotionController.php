@@ -45,6 +45,7 @@ class PromotionController extends Controller
     public function store(Request $request)
     {
         $total_promotion = $request->promotion_product_price + $request->promotion_shippment_cost;
+        // dd($request->all());
         DB::table('promotions')->insert([
             'admin_id'                   => auth()->user()->admin_id,
             'user_id'                   => auth()->user()->id,
@@ -52,7 +53,9 @@ class PromotionController extends Controller
             'product_name'               => $request->product_name,
             'promotion_name'             => $request->promotion_name,
             'promotion_product_price'    => $request->promotion_product_price,
+            'promotion_product_percent'    => $request->promotion_product_percent,
             'promotion_shippment_cost'   => $request->promotion_shippment_cost,
+            'promotion_shippment_percent'   => $request->promotion_shippment_percent,
             'total_promotion'            => $total_promotion,
             'created_at'                 => Carbon::now()->toDateTimeString(),
             'updated_at'                 => Carbon::now()->toDateTimeString(),
@@ -124,10 +127,14 @@ class PromotionController extends Controller
 
     public function get_promotion($id){
         $product_promotion = Promotion::where('id', $id)->value('promotion_product_price');
+        $product_promotion_percent = Promotion::where('id', $id)->value('promotion_product_percent');
         $shipping_promotion = Promotion::where('id', $id)->value('promotion_shippment_cost');
+        $shipping_promotion_percent = Promotion::where('id', $id)->value('promotion_shippment_percent');
         $promotion = [
             'product_promotion' => $product_promotion, 
-            'shipping_promotion' => $shipping_promotion
+            'product_promotion_percent' => $product_promotion_percent, 
+            'shipping_promotion' => $shipping_promotion,
+            'shipping_promotion_percent' => $shipping_promotion_percent
         ];
         return json_encode($promotion);
     }
