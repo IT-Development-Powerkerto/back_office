@@ -46,7 +46,6 @@
                                             <input id="{{$okt+=1}} lead_okt" value="{{$lead_okt->where('product_id', $product->id)->count()}}" hidden/>
                                             <input id="{{$nov+=1}} lead_nov" value="{{$lead_nov->where('product_id', $product->id)->count()}}" hidden/>
                                             <input id="{{$des+=1}} lead_des" value="{{$lead_des->where('product_id', $product->id)->count()}}" hidden/>
-
                                             <input id="product {{$n+=1}}" value="{{$product->name}}" hidden/>
                                         @endforeach
 										<!--end::Body-->

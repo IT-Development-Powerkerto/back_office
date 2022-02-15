@@ -5,47 +5,25 @@
 								<div class="d-flex flex-stack flex-grow-1 card-p">
 									<div class="d-flex flex-column me-2">
 										<label class="text-dark fw-bolder fs-3">Cost Aquisition</label>
-										<div class="card-toolbar">
-											<!--begin::Menu-->
-											<button type="button" class="badge badge-secondary border-0" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-												Filter
-												<i class="las la-angle-down ms-3"></i>
-											</button>
-											
-											<!--begin::Menu 3-->
-											<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
-												<!--begin::Heading-->
-												<div class="menu-item px-3">
-													<div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Filter</div>
-												</div>
-												<!--end::Heading-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Daily</a>
-												</div>
-												<!--end::Menu item-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Weekly</a>
-												</div>
-												<!--end::Menu item-->
-												<!--begin::Menu item-->
-												<div class="menu-item px-3">
-													<a href="#" class="menu-link px-3">Monthly</a>
-												</div>
-												<!--end::Menu item-->
-											</div>
-											<!--end::Menu 3-->
-											
-											<!--end::Menu-->
-										</div>
 									</div>
 									<span class="symbol symbol-50px">
-										<span class="symbol-label fs-5 fw-bolder bg-light-primary text-primary">10Jt</span>
+										<span class="symbol-label fs-5 fw-bolder bg-light-primary text-primary">{{($omset_month_count == 0) ? 0 : ($advertising_month_count / $omset_month_count)*100}} %</span>
 									</span>
 								</div>
-								<div class="statistics-widget-3-chart card-rounded-bottom" data-kt-chart-color="primary" style="height: 150px"></div>
+								<div class="statistics-widget-4-chart card-rounded-bottom" data-kt-chart-color="primary" style="height: 150px"></div>
 							</div>
+                            <input id="CA_jan" value="{{($omset_jan->count() == 0) ? 0 : ($advertising_jan / $omset_jan->count())*100}}" hidden/>
+                            <input id="CA_feb" value="{{($omset_feb->count() == 0) ? 0 : ($advertising_feb / $omset_feb->count())*100}}" hidden/>
+                            <input id="CA_mar" value="{{($omset_mar->count() == 0) ? 0 : ($advertising_mar / $omset_mar->count())*100}}" hidden/>
+                            <input id="CA_apr" value="{{($omset_apr->count() == 0) ? 0 : ($advertising_apr / $omset_apr->count())*100}}" hidden/>
+                            <input id="CA_may" value="{{($omset_may->count() == 0) ? 0 : ($advertising_may / $omset_may->count())*100}}" hidden/>
+                            <input id="CA_jun" value="{{($omset_jun->count() == 0) ? 0 : ($advertising_jun / $omset_jun->count())*100}}" hidden/>
+                            <input id="CA_jul" value="{{($omset_jul->count() == 0) ? 0 : ($advertising_jul / $omset_jul->count())*100}}" hidden/>
+                            <input id="CA_aug" value="{{($omset_aug->count() == 0) ? 0 : ($advertising_aug / $omset_aug->count())*100}}" hidden/>
+                            <input id="CA_sep" value="{{($omset_sep->count() == 0) ? 0 : ($advertising_sep / $omset_sep->count())*100}}" hidden/>
+                            <input id="CA_okt" value="{{($omset_okt->count() == 0) ? 0 : ($advertising_okt / $omset_okt->count())*100}}" hidden/>
+                            <input id="CA_nov" value="{{($omset_nov->count() == 0) ? 0 : ($advertising_nov / $omset_nov->count())*100}}" hidden/>
+                            <input id="CA_des" value="{{($omset_des->count() == 0) ? 0 : ($advertising_des / $omset_des->count())*100}}" hidden/>
 							<!--end::Body-->
 						</div>
 						<!--end::Statistics Widget 3-->

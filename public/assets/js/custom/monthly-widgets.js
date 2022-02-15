@@ -19,10 +19,23 @@ var KTWidgets = function () {
             var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
             var lightColor = KTUtil.getCssVariableValue('--bs-light-' + color );
 
+            var CR_jan = parseInt(document.getElementById('CR_jan').value);
+            var CR_feb = parseInt(document.getElementById('CR_feb').value);
+            var CR_mar = parseInt(document.getElementById('CR_mar').value);
+            var CR_apr = parseInt(document.getElementById('CR_apr').value);
+            var CR_may = parseInt(document.getElementById('CR_may').value);
+            var CR_jun = parseInt(document.getElementById('CR_jun').value);
+            var CR_jul = parseInt(document.getElementById('CR_jul').value);
+            var CR_aug = parseInt(document.getElementById('CR_aug').value);
+            var CR_sep = parseInt(document.getElementById('CR_sep').value);
+            var CR_okt = parseInt(document.getElementById('CR_okt').value);
+            var CR_nov = parseInt(document.getElementById('CR_nov').value);
+            var CR_des = parseInt(document.getElementById('CR_des').value);
+
             var options = {
                 series: [{
-                    name: 'Net Profit',
-                    data: [30, 45, 32, 70, 40]
+                    name: 'Closing Rate',
+                    data: [CR_jan, CR_feb, CR_mar, CR_apr, CR_may, CR_jun, CR_jul, CR_aug, CR_sep, CR_okt, CR_nov, CR_des]
                 }],
                 chart: {
                     fontFamily: 'inherit',
@@ -56,7 +69,7 @@ var KTWidgets = function () {
                     colors: [baseColor]
                 },
                 xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
                     axisBorder: {
                         show: false,
                     },
@@ -90,7 +103,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 80,
+                    max: 100,
                     labels: {
                         show: false,
                         style: {
@@ -126,7 +139,7 @@ var KTWidgets = function () {
                     },
                     y: {
                         formatter: function(val) {
-                            return "$" + val + " thousands"
+                            return val + " %"
                         }
                     }
                 },
@@ -159,10 +172,23 @@ var KTWidgets = function () {
             var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
             var lightColor = KTUtil.getCssVariableValue('--bs-light-' + color );
 
+            var CA_jan = parseInt(document.getElementById('CA_jan').value);
+            var CA_feb = parseInt(document.getElementById('CA_feb').value);
+            var CA_mar = parseInt(document.getElementById('CA_mar').value);
+            var CA_apr = parseInt(document.getElementById('CA_apr').value);
+            var CA_may = parseInt(document.getElementById('CA_may').value);
+            var CA_jun = parseInt(document.getElementById('CA_jun').value);
+            var CA_jul = parseInt(document.getElementById('CA_jul').value);
+            var CA_aug = parseInt(document.getElementById('CA_aug').value);
+            var CA_sep = parseInt(document.getElementById('CA_sep').value);
+            var CA_okt = parseInt(document.getElementById('CA_okt').value);
+            var CA_nov = parseInt(document.getElementById('CA_nov').value);
+            var CA_des = parseInt(document.getElementById('CA_des').value);
+
             var options = {
                 series: [{
-                    name: 'Net Profit',
-                    data: [40, 40, 30, 30, 35, 35, 50]
+                    name: 'Cost Aquisition',
+                    data: [CA_jan, CA_feb, CA_mar, CA_apr, CA_may, CA_jun, CA_jul, CA_aug, CA_sep, CA_okt, CA_nov, CA_des]
                 }],
                 chart: {
                     fontFamily: 'inherit',
@@ -196,7 +222,7 @@ var KTWidgets = function () {
                     colors: [baseColor]
                 },
                 xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
                     axisBorder: {
                         show: false,
                     },
@@ -230,7 +256,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 60,
+                    max: 100,
                     labels: {
                         show: false,
                         style: {
@@ -266,7 +292,7 @@ var KTWidgets = function () {
                     },
                     y: {
                         formatter: function(val) {
-                            return "$" + val + " thousands"
+                            return val + " %"
                         }
                     }
                 },
