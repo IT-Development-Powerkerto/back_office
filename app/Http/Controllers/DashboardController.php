@@ -606,9 +606,9 @@ class DashboardController extends Controller
                     ->where('l.advertiser', $x->name)
                     ->where('l.created_at', $day)
                     ->orderByDesc('l.id')
-                    ->paginate();
-                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
-                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
+                    ->get();
+                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('created_at', $day)->get();
+                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 6)->where('created_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('adv',['role'=>$roles])->with('day', $day)->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
@@ -796,8 +796,8 @@ class DashboardController extends Controller
                     ->where('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
-                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
-                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
+                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('created_at', $day)->get();
+                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 6)->where('created_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('Weeklyadv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
@@ -1114,8 +1114,8 @@ class DashboardController extends Controller
                     ->where('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
-                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
-                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
+                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('created_at', $day)->get();
+                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 6)->where('created_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('Monthlyadv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)

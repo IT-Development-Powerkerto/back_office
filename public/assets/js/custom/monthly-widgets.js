@@ -1441,29 +1441,45 @@ var KTWidgets = function () {
 
         var product_count = parseInt(document.getElementById('product_count').value);
 
+        var x = 1;
+        var matchedData = [];
+
+        for(let i=0; i<product_count; i++){
+            // chart.appendSeries({
+            //     name: document.getElementById('product ' + i).value,
+            //     data: [30, 45, 32, 75, 40, 32, 90]
+            // });
+            matchedData[i] = {
+                // name: 'Generos',
+                name: document.getElementById('product ' + x).value,
+                data: [
+                    parseInt(document.getElementById(x + ' omset_jan').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_feb').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_mar').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_apr').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_may').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_jun').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_jul').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_aug').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_sep').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_okt').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_nov').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_des').value)/1000000,
+                ]
+            };
+            x+=1;
+        }
+
         if (!element) {
             return;
         }
 
         var options = {
-            series: [
-            {
-                name: 'Generos',
-                data: [30, 45, 32, 75, 40, 32, 90]
-            },{
-                name: 'Etawaku',
-                data: [12, 65, 52, 23, 33, 90, 115]
-            },{
-                name: 'Gizidat',
-                data: [40, 55, 42, 80, 52, 78, 120]
-            },{
-                name: 'Freshmag',
-                data: [45, 75, 62, 45, 23, 120, 123]
-            }],
+            series: matchedData,
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
-                height: 350,
+                height: product_count*70,
                 toolbar: {
                     show: false
                 }
@@ -1485,10 +1501,10 @@ var KTWidgets = function () {
                 curve: 'smooth',
                 show: true,
                 width: 3,
-                colors: [baseColor]
+                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
                 axisBorder: {
                     show: false,
                 },
@@ -1504,7 +1520,7 @@ var KTWidgets = function () {
                 crosshairs: {
                     position: 'front',
                     stroke: {
-                        color: baseColor,
+                        color: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
                         width: 1,
                         dashArray: 3
                     }
@@ -1553,11 +1569,11 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val + "Jt"
+                        return val + " Jt"
                     }
                 }
             },
-            colors: [baseLightColor],
+            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -1568,7 +1584,7 @@ var KTWidgets = function () {
                 }
             },
             markers: {
-                strokeColor: baseColor,
+                strokeColor: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
                 strokeWidth: 3
             }
         };
