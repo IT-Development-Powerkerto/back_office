@@ -1,11 +1,11 @@
 									<!--begin::Charts Widget 1-->
 									<div class="card card-l-stretch">
 										<!--begin::Header-->
-										<div class="card-header border-0 pt-5">
+										<div class="card-header border-0 pt-5" style="background-color: #00509d;">
 											<!--begin::Title-->
-											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Income & Advertising Cost</span>
-												<span class="text-muted fw-bold fs-7">Monthly</span>
+											<h3 class="card-title align-items-start flex-column mt-n3">
+												<span class="card-label fw-bolder fs-3 mb-1 text-white">Income & Advertising Cost</span>
+												<span class="text-white fw-bold fs-7">Monthly</span>
                                                 <input id="omset_jan" value="{{$omset_jan->sum('total_price') - $omset_jan->sum('product_promotion')}}" hidden/>
                                                 <input id="omset_feb" value="{{$omset_feb->sum('total_price') - $omset_feb->sum('product_promotion')}}" hidden/>
                                                 <input id="omset_mar" value="{{$omset_mar->sum('total_price') - $omset_mar->sum('product_promotion')}}" hidden/>

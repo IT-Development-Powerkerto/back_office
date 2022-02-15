@@ -174,14 +174,15 @@ class CampaignController extends Controller
         // untuk menampilkan operator berdasarkan campaign
         $operatorCampaigns = Operator::where('admin_id', auth()->user()->admin_id)->where('campaign_id', $id)->get();
         $lead = Lead::where('admin_id', auth()->user()->admin_id)->get();
+        $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
 
         if(auth()->user()->role_id == 1){
             return view('addOperator', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns)->with('lead', $lead)
-            ->with('day', $day);
+            ->with('lead_day', $lead_day);
         }
         else{
             return view('addOperatorADV', ['campaigns'=>$campaigns])->with('operators', $operators)->with('operatorCampaigns', $operatorCampaigns)->with('lead', $lead)
-            ->with('day', $day);
+            ->with('lead_day', $lead_day);
         }
     }
 }

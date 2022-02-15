@@ -19,10 +19,23 @@ var KTWidgets = function () {
             var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
             var lightColor = KTUtil.getCssVariableValue('--bs-light-' + color );
 
+            var CR_jan = parseInt(document.getElementById('CR_jan').value);
+            var CR_feb = parseInt(document.getElementById('CR_feb').value);
+            var CR_mar = parseInt(document.getElementById('CR_mar').value);
+            var CR_apr = parseInt(document.getElementById('CR_apr').value);
+            var CR_may = parseInt(document.getElementById('CR_may').value);
+            var CR_jun = parseInt(document.getElementById('CR_jun').value);
+            var CR_jul = parseInt(document.getElementById('CR_jul').value);
+            var CR_aug = parseInt(document.getElementById('CR_aug').value);
+            var CR_sep = parseInt(document.getElementById('CR_sep').value);
+            var CR_okt = parseInt(document.getElementById('CR_okt').value);
+            var CR_nov = parseInt(document.getElementById('CR_nov').value);
+            var CR_des = parseInt(document.getElementById('CR_des').value);
+
             var options = {
                 series: [{
-                    name: 'Net Profit',
-                    data: [30, 45, 32, 70, 40]
+                    name: 'Closing Rate',
+                    data: [CR_jan, CR_feb, CR_mar, CR_apr, CR_may, CR_jun, CR_jul, CR_aug, CR_sep, CR_okt, CR_nov, CR_des]
                 }],
                 chart: {
                     fontFamily: 'inherit',
@@ -56,7 +69,7 @@ var KTWidgets = function () {
                     colors: [baseColor]
                 },
                 xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
                     axisBorder: {
                         show: false,
                     },
@@ -90,7 +103,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 80,
+                    max: 100,
                     labels: {
                         show: false,
                         style: {
@@ -126,7 +139,7 @@ var KTWidgets = function () {
                     },
                     y: {
                         formatter: function(val) {
-                            return "$" + val + " thousands"
+                            return val + " %"
                         }
                     }
                 },
@@ -159,10 +172,23 @@ var KTWidgets = function () {
             var baseColor = KTUtil.getCssVariableValue('--bs-' + color);
             var lightColor = KTUtil.getCssVariableValue('--bs-light-' + color );
 
+            var CA_jan = parseInt(document.getElementById('CA_jan').value);
+            var CA_feb = parseInt(document.getElementById('CA_feb').value);
+            var CA_mar = parseInt(document.getElementById('CA_mar').value);
+            var CA_apr = parseInt(document.getElementById('CA_apr').value);
+            var CA_may = parseInt(document.getElementById('CA_may').value);
+            var CA_jun = parseInt(document.getElementById('CA_jun').value);
+            var CA_jul = parseInt(document.getElementById('CA_jul').value);
+            var CA_aug = parseInt(document.getElementById('CA_aug').value);
+            var CA_sep = parseInt(document.getElementById('CA_sep').value);
+            var CA_okt = parseInt(document.getElementById('CA_okt').value);
+            var CA_nov = parseInt(document.getElementById('CA_nov').value);
+            var CA_des = parseInt(document.getElementById('CA_des').value);
+
             var options = {
                 series: [{
-                    name: 'Net Profit',
-                    data: [40, 40, 30, 30, 35, 35, 50]
+                    name: 'Cost Aquisition',
+                    data: [CA_jan, CA_feb, CA_mar, CA_apr, CA_may, CA_jun, CA_jul, CA_aug, CA_sep, CA_okt, CA_nov, CA_des]
                 }],
                 chart: {
                     fontFamily: 'inherit',
@@ -196,7 +222,7 @@ var KTWidgets = function () {
                     colors: [baseColor]
                 },
                 xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
                     axisBorder: {
                         show: false,
                     },
@@ -230,7 +256,7 @@ var KTWidgets = function () {
                 },
                 yaxis: {
                     min: 0,
-                    max: 60,
+                    max: 100,
                     labels: {
                         show: false,
                         style: {
@@ -266,7 +292,7 @@ var KTWidgets = function () {
                     },
                     y: {
                         formatter: function(val) {
-                            return "$" + val + " thousands"
+                            return val + " %"
                         }
                     }
                 },
@@ -1441,29 +1467,45 @@ var KTWidgets = function () {
 
         var product_count = parseInt(document.getElementById('product_count').value);
 
+        var x = 1;
+        var matchedData = [];
+
+        for(let i=0; i<product_count; i++){
+            // chart.appendSeries({
+            //     name: document.getElementById('product ' + i).value,
+            //     data: [30, 45, 32, 75, 40, 32, 90]
+            // });
+            matchedData[i] = {
+                // name: 'Generos',
+                name: document.getElementById('product ' + x).value,
+                data: [
+                    parseInt(document.getElementById(x + ' omset_jan').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_feb').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_mar').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_apr').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_may').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_jun').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_jul').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_aug').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_sep').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_okt').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_nov').value)/1000000,
+                    parseInt(document.getElementById(x + ' omset_des').value)/1000000,
+                ]
+            };
+            x+=1;
+        }
+
         if (!element) {
             return;
         }
 
         var options = {
-            series: [
-            {
-                name: 'Generos',
-                data: [30, 45, 32, 75, 40, 32, 90]
-            },{
-                name: 'Etawaku',
-                data: [12, 65, 52, 23, 33, 90, 115]
-            },{
-                name: 'Gizidat',
-                data: [40, 55, 42, 80, 52, 78, 120]
-            },{
-                name: 'Freshmag',
-                data: [45, 75, 62, 45, 23, 120, 123]
-            }],
+            series: matchedData,
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
-                height: 350,
+                height: product_count*70,
                 toolbar: {
                     show: false
                 }
@@ -1485,10 +1527,10 @@ var KTWidgets = function () {
                 curve: 'smooth',
                 show: true,
                 width: 3,
-                colors: [baseColor]
+                colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
                 axisBorder: {
                     show: false,
                 },
@@ -1504,7 +1546,7 @@ var KTWidgets = function () {
                 crosshairs: {
                     position: 'front',
                     stroke: {
-                        color: baseColor,
+                        color: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
                         width: 1,
                         dashArray: 3
                     }
@@ -1553,11 +1595,11 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val + "Jt"
+                        return val + " Jt"
                     }
                 }
             },
-            colors: [baseLightColor],
+            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -1568,7 +1610,7 @@ var KTWidgets = function () {
                 }
             },
             markers: {
-                strokeColor: baseColor,
+                strokeColor: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
                 strokeWidth: 3
             }
         };
@@ -1599,31 +1641,47 @@ var KTWidgets = function () {
         var fiveColor = KTUtil.getCssVariableValue('--bs-warning');
         var fiveLightColor = KTUtil.getCssVariableValue('--bs-light-warning');
 
+        var product_count = parseInt(document.getElementById('product_count').value);
+
+        var x = 1;
+        var matchedData = [];
+
+        for(let i=0; i<product_count; i++){
+            // chart.appendSeries({
+            //     name: document.getElementById('product ' + i).value,
+            //     data: [30, 45, 32, 75, 40, 32, 90]
+            // });
+            matchedData[i] = {
+                // name: 'Generos',
+                name: document.getElementById('product ' + x).value,
+                data: [
+                    parseInt(document.getElementById(x + ' bottle_jan').value),
+                    parseInt(document.getElementById(x + ' bottle_feb').value),
+                    parseInt(document.getElementById(x + ' bottle_mar').value),
+                    parseInt(document.getElementById(x + ' bottle_apr').value),
+                    parseInt(document.getElementById(x + ' bottle_may').value),
+                    parseInt(document.getElementById(x + ' bottle_jun').value),
+                    parseInt(document.getElementById(x + ' bottle_jul').value),
+                    parseInt(document.getElementById(x + ' bottle_aug').value),
+                    parseInt(document.getElementById(x + ' bottle_sep').value),
+                    parseInt(document.getElementById(x + ' bottle_okt').value),
+                    parseInt(document.getElementById(x + ' bottle_nov').value),
+                    parseInt(document.getElementById(x + ' bottle_des').value)
+                ]
+            };
+            x+=1;
+        }
+
         if (!element) {
             return;
         }
 
         var options = {
-            series: [{
-                name: 'Generos',
-                data: [30, 45, 32, 75, 40, 32, 90]
-            },{
-                name: 'Etawaku',
-                data: [12, 65, 52, 23, 33, 90, 115]
-            },{
-                name: 'Gizidat',
-                data: [40, 55, 42, 80, 52, 78, 120]
-            },{
-                name: 'Freshmag',
-                data: [45, 75, 62, 45, 23, 120, 123]
-            },{
-                name: 'Rube',
-                data: [78, 85, 72, 12, 46, 70, 130]
-            }],
+            series: matchedData,
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
-                height: 350,
+                height: product_count*70,
                 toolbar: {
                     show: false
                 }
@@ -1648,7 +1706,7 @@ var KTWidgets = function () {
                 colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
                 axisBorder: {
                     show: false,
                 },
@@ -1664,7 +1722,7 @@ var KTWidgets = function () {
                 crosshairs: {
                     position: 'front',
                     stroke: {
-                        color: baseColor,
+                        color: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
                         width: 1,
                         dashArray: 3
                     }
@@ -1713,7 +1771,7 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val + " Closing"
+                        return val + " Bottle"
                     }
                 }
             },
@@ -1759,31 +1817,47 @@ var KTWidgets = function () {
         var fiveColor = KTUtil.getCssVariableValue('--bs-warning');
         var fiveLightColor = KTUtil.getCssVariableValue('--bs-light-warning');
 
+        var product_count = parseInt(document.getElementById('product_count').value);
+
+        var x = 1;
+        var matchedData = [];
+
+        for(let i=0; i<product_count; i++){
+            // chart.appendSeries({
+            //     name: document.getElementById('product ' + i).value,
+            //     data: [30, 45, 32, 75, 40, 32, 90]
+            // });
+            matchedData[i] = {
+                // name: 'Generos',
+                name: document.getElementById('product ' + x).value,
+                data: [
+                    parseInt(document.getElementById(x + ' lead_jan').value),
+                    parseInt(document.getElementById(x + ' lead_feb').value),
+                    parseInt(document.getElementById(x + ' lead_mar').value),
+                    parseInt(document.getElementById(x + ' lead_apr').value),
+                    parseInt(document.getElementById(x + ' lead_may').value),
+                    parseInt(document.getElementById(x + ' lead_jun').value),
+                    parseInt(document.getElementById(x + ' lead_jul').value),
+                    parseInt(document.getElementById(x + ' lead_aug').value),
+                    parseInt(document.getElementById(x + ' lead_sep').value),
+                    parseInt(document.getElementById(x + ' lead_okt').value),
+                    parseInt(document.getElementById(x + ' lead_nov').value),
+                    parseInt(document.getElementById(x + ' lead_des').value),
+                ]
+            };
+            x+=1;
+        }
+
         if (!element) {
             return;
         }
 
         var options = {
-            series: [{
-                name: 'Generos',
-                data: [30, 45, 32, 75, 40, 32, 90]
-            },{
-                name: 'Etawaku',
-                data: [12, 65, 52, 23, 33, 90, 115]
-            },{
-                name: 'Gizidat',
-                data: [40, 55, 42, 80, 52, 78, 120]
-            },{
-                name: 'Freshmag',
-                data: [45, 75, 62, 45, 23, 120, 123]
-            },{
-                name: 'Rube',
-                data: [78, 85, 72, 12, 46, 70, 130]
-            }],
+            series: matchedData,
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
-                height: 350,
+                height: product_count*70,
                 toolbar: {
                     show: false
                 }
@@ -1808,7 +1882,7 @@ var KTWidgets = function () {
                 colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
                 axisBorder: {
                     show: false,
                 },
@@ -1824,7 +1898,7 @@ var KTWidgets = function () {
                 crosshairs: {
                     position: 'front',
                     stroke: {
-                        color: baseColor,
+                        color: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
                         width: 1,
                         dashArray: 3
                     }
@@ -1873,7 +1947,7 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return val + " Closing"
+                        return val + " Lead"
                     }
                 }
             },
@@ -1919,31 +1993,47 @@ var KTWidgets = function () {
         var fiveColor = KTUtil.getCssVariableValue('--bs-warning');
         var fiveLightColor = KTUtil.getCssVariableValue('--bs-light-warning');
 
+        var product_count = parseInt(document.getElementById('product_count').value);
+
+        var x = 1;
+        var matchedData = [];
+
+        for(let i=0; i<product_count; i++){
+            // chart.appendSeries({
+            //     name: document.getElementById('product ' + i).value,
+            //     data: [30, 45, 32, 75, 40, 32, 90]
+            // });
+            matchedData[i] = {
+                // name: 'Generos',
+                name: document.getElementById('product ' + x).value,
+                data: [
+                    parseInt(document.getElementById(x + ' closing_jan').value),
+                    parseInt(document.getElementById(x + ' closing_feb').value),
+                    parseInt(document.getElementById(x + ' closing_mar').value),
+                    parseInt(document.getElementById(x + ' closing_apr').value),
+                    parseInt(document.getElementById(x + ' closing_may').value),
+                    parseInt(document.getElementById(x + ' closing_jun').value),
+                    parseInt(document.getElementById(x + ' closing_jul').value),
+                    parseInt(document.getElementById(x + ' closing_aug').value),
+                    parseInt(document.getElementById(x + ' closing_sep').value),
+                    parseInt(document.getElementById(x + ' closing_okt').value),
+                    parseInt(document.getElementById(x + ' closing_nov').value),
+                    parseInt(document.getElementById(x + ' closing_des').value),
+                ]
+            };
+            x+=1;
+        }
+
         if (!element) {
             return;
         }
 
         var options = {
-            series: [{
-                name: 'Generos',
-                data: [30, 45, 32, 75, 40, 32, 90]
-            },{
-                name: 'Etawaku',
-                data: [12, 65, 52, 23, 33, 90, 115]
-            },{
-                name: 'Gizidat',
-                data: [40, 55, 42, 80, 52, 78, 120]
-            },{
-                name: 'Freshmag',
-                data: [45, 75, 62, 45, 23, 120, 123]
-            },{
-                name: 'Rube',
-                data: [78, 85, 72, 12, 46, 70, 130]
-            }],
+            series: matchedData,
             chart: {
                 fontFamily: 'inherit',
                 type: 'area',
-                height: 350,
+                height: product_count*70,
                 toolbar: {
                     show: false
                 }
@@ -1968,7 +2058,7 @@ var KTWidgets = function () {
                 colors: [baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,]
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
                 axisBorder: {
                     show: false,
                 },
@@ -1984,7 +2074,7 @@ var KTWidgets = function () {
                 crosshairs: {
                     position: 'front',
                     stroke: {
-                        color: baseColor,
+                        color: baseColor, secondaryColor, thirdColor, fourtColor, fiveColor,
                         width: 1,
                         dashArray: 3
                     }

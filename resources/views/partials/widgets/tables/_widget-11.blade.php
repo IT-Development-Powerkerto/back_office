@@ -1,6 +1,6 @@
 
 									<!--begin::Tables Widget 9-->
-									<div class="card card-xxl-stretch mb-5 mb-xl-8">
+									<div class="card card-xxl-stretch mt-n2 mb-xl-8">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5" style="background-color: #00509d;">
 											<h3 class="card-title align-items-start flex-column mt-n3">

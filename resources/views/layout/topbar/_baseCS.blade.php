@@ -1,17 +1,10 @@
 <!--begin::Toolbar wrapper-->
 <div class="d-flex align-items-stretch flex-shrink-0">
-	<!--begin::Search-->
-	<div class="d-flex align-items-stretch ms-1 ms-lg-3">
-
-		@include('layout/search/_base')
-
-	</div>
-	<!--end::Search-->
 	<!--begin::Activities-->
 	<div class="d-flex align-items-center ms-1 ms-lg-3">
 		<!--begin::Drawer toggle-->
 		<div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_activities_toggle">
-			<i class="bi bi-bell fs-2"></i>
+			<i class="bi bi-bell fs-2 text-white"></i>
 		</div>
 		<!--end::Drawer toggle-->
 	</div>

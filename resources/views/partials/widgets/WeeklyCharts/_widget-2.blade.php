@@ -2,10 +2,10 @@
 									<!--begin::Mixed Widget 5-->
 									<div class="card">
 										<!--begin::Beader-->
-										<div class="card-header border-0 py-5">
+										<div class="card-header border-0 py-3" style="background-color: #00509d;">
 											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Total Leads</span>
-												<span class="text-muted fw-bold fs-7">{{$lead_count}} Leads @ Week</span>
+												<span class="card-label fw-bolder fs-3 mb-1 text-white">Total Leads</span>
+												<span class="text-white fw-bold fs-7">{{$lead_count}} Leads @ Week</span>
                                                 <input id="lead_week1" value="{{$lead_week1->count()}}" hidden/>
                                                 <input id="lead_week2" value="{{$lead_week2->count()}}" hidden/>
                                                 <input id="lead_week3" value="{{$lead_week3->count()}}" hidden/>
@@ -77,7 +77,7 @@
 										<!--begin::Body-->
 										<div class="card-body d-flex flex-column">
 											<!--begin::Chart-->
-											<div class="mixed-widget-5-chart card-rounded-top" data-kt-chart-color="dark" style="height: 150px"></div>
+											<div class="mixed-widget-5-chart card-rounded-top" data-kt-chart-color="dark" style="height: 165px"></div>
 											<!--end::Chart-->
 										</div>
 										<!--end::Body-->

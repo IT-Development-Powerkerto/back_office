@@ -5,7 +5,7 @@
 								<div class="card-header border-0 pt-5" style="background-color: #00509d;">
 									<h3 class="card-title align-items-start flex-column mt-n3">
 										<span class="card-label text-white fw-bolder fs-3 mb-1">Lead Tunneling</span>
-									@if (auth()->user()->role_id == 1)
+									@if (auth()->user()->role_id == 1 || auth()->user()->role_id == 12)
 										<span class="text-white mt-1 fw-bold fs-7">{{$all_leads->count()}} Lead {{$all_spam->count()}} Spam</span>
 									@else
 										<span class="text-white mt-1 fw-bold fs-7">{{$all_leads->where('advertiser', auth()->user()->name)->count()}} Lead {{$all_spam->where('advertiser', auth()->user()->name)->count()}} Spam</span>
@@ -28,7 +28,7 @@
 													<i class="las la-print" style="font-size: 18px; color: #00509d;"></i>
 												</span>
 												<!--end::Svg Icon-->Export</button>
-											
+
 											<!-- Modal -->
 										<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
@@ -70,7 +70,7 @@
 										<form action="/adv" method="GET" class="d-flex">
 										@else
 										<form action="/JA-adv" method="GET" class="d-flex">
-											@endif
+										@endif
 											<div class="me-2 d-flex flex-row">
 												<input class="form-control mt-0 form-control-solid" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
 											</div>
