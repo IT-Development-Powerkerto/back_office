@@ -211,39 +211,39 @@ class ReportingController extends Controller
         $lead_week1 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfMonth(),
             Carbon::now()->endOfMonth()->subWeek(3),
-        ])->count();
+        ])->get();
         $lead_week2 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfMonth()->addWeek(1),
             Carbon::now()->endOfMonth()->subWeek(2),
-        ])->count();
+        ])->get();
         $lead_week3 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfMonth()->addWeek(2),
             Carbon::now()->endOfMonth()->subWeek(1),
-        ])->count();
+        ])->get();
         $lead_week4 = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfMonth()->addWeek(3),
             Carbon::now()->endOfMonth(),
-        ])->count();
-        $lead_week_max = max($lead_week1, $lead_week2, $lead_week3, $lead_week4);
+        ])->get();
+        $lead_week_max = max($lead_week1->count(), $lead_week2->count(), $lead_week3->count(), $lead_week4->count());
 
         //count lead closing every week
         $closing_week1 = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
             Carbon::now()->startOfMonth(),
             Carbon::now()->endOfMonth()->subWeek(3),
-        ])->count();
+        ])->get();
         $closing_week2 = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
             Carbon::now()->startOfMonth()->addWeek(1),
             Carbon::now()->endOfMonth()->subWeek(2),
-        ])->count();
+        ])->get();
         $closing_week3 = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
             Carbon::now()->startOfMonth()->addWeek(2),
             Carbon::now()->endOfMonth()->subWeek(1),
-        ])->count();
+        ])->get();
         $closing_week4 = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
             Carbon::now()->startOfMonth()->addWeek(3),
             Carbon::now()->endOfMonth(),
-        ])->count();
-        $closing_week_max = max($closing_week1, $closing_week2, $closing_week3, $closing_week4);
+        ])->get();
+        $closing_week_max = max($closing_week1->count(), $closing_week2->count(), $closing_week3->count(), $closing_week4->count());
 
         //omset this week
         $omset_week_count = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
@@ -309,8 +309,8 @@ class ReportingController extends Controller
         $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
         $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
         $inputer = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
-            Carbon::now()->startOfMonth(),
-            Carbon::now()->endOfMonth(),
+            Carbon::now()->startOfWeek(),
+            Carbon::now()->endOfWeek(),
         ])->get();
         $announcement = Announcement::where('admin_id', auth()->user()->admin_id)->get();
         $leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();

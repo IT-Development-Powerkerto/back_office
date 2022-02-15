@@ -7,11 +7,15 @@
 										<label class="text-dark fw-bolder fs-3">Cost Aquisition</label>
 									</div>
 									<span class="symbol symbol-50px">
-										<span class="symbol-label fs-5 fw-bolder bg-light-primary text-primary">10Jt</span>
+										<span class="symbol-label fs-5 fw-bolder bg-light-primary text-primary">{{($omset_week_count == 0) ? 0 : ($advertising_week_count / $omset_week_count)*100}} %</span>
 									</span>
 								</div>
-								<div class="statistics-widget-3-chart card-rounded-bottom" data-kt-chart-color="primary" style="height: 150px"></div>
+								<div class="statistics-widget-4-chart card-rounded-bottom" data-kt-chart-color="primary" style="height: 150px"></div>
 							</div>
+                            <input id="CA_week1" value="{{($omset_week1->count() == 0) ? 0 : ($advertising_week1 / $omset_week1->count())*100}}" hidden/>
+                            <input id="CA_week2" value="{{($omset_week2->count() == 0) ? 0 : ($advertising_week2 / $omset_week2->count())*100}}" hidden/>
+                            <input id="CA_week3" value="{{($omset_week3->count() == 0) ? 0 : ($advertising_week3 / $omset_week3->count())*100}}" hidden/>
+                            <input id="CA_week4" value="{{($omset_week4->count() == 0) ? 0 : ($advertising_week4 / $omset_week4->count())*100}}" hidden/>
 							<!--end::Body-->
 						</div>
 						<!--end::Statistics Widget 3-->

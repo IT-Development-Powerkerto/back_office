@@ -17,6 +17,22 @@
 											<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{ ($closing_count == 0) ? 0 : $quantity / $closing_count }}</div>
 											<div class="fw-bold text-white">Upselling</div>
 										</div>
+                                        <?php
+                                            $n=0;
+                                            $week1=0;
+                                            $week2=0;
+                                            $week3=0;
+                                            $week4=0;
+                                        ?>
+                                        @foreach ($products as $product)
+                                            {{-- <input id="{{$product->name}}" value="{{$inputer->where('product_name', $product->name)->sum('total_price') - $inputer->where('product_name', $product->name)->sum('product_promotion')}}" hidden/> --}}
+                                            <input id="{{$week1+=1}} closing_week1" value="{{$closing_week1->where('product_id', $product->id)->count()}}" hidden/>
+                                            <input id="{{$week2+=1}} closing_week2" value="{{$closing_week2->where('product_id', $product->id)->count()}}" hidden/>
+                                            <input id="{{$week3+=1}} closing_week3" value="{{$closing_week3->where('product_id', $product->id)->count()}}" hidden/>
+                                            <input id="{{$week4+=1}} closing_week4" value="{{$closing_week4->where('product_id', $product->id)->count()}}" hidden/>
+
+                                            <input id="product {{$n+=1}}" value="{{$product->name}}" hidden/>
+                                        @endforeach
 										<!--end::Body-->
 									</label>
 									<!--end::Statistics Widget 5-->

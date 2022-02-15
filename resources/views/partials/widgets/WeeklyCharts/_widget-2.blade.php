@@ -6,12 +6,29 @@
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1 text-white">Total Leads</span>
 												<span class="text-white fw-bold fs-7">{{$lead_week_count}} Leads @ Week</span>
-                                                <input id="lead_week1" value="{{$lead_week1}}" hidden/>
-                                                <input id="lead_week2" value="{{$lead_week2}}" hidden/>
-                                                <input id="lead_week3" value="{{$lead_week3}}" hidden/>
-                                                <input id="lead_week4" value="{{$lead_week4}}" hidden/>
-												<input id="lead_week4" value="{{$lead_week4}}" hidden/>
+                                                <input id="lead_week1" value="{{$lead_week1->count()}}" hidden/>
+                                                <input id="lead_week2" value="{{$lead_week2->count()}}" hidden/>
+                                                <input id="lead_week3" value="{{$lead_week3->count()}}" hidden/>
+                                                <input id="lead_week4" value="{{$lead_week4->count()}}" hidden/>
 												<input id="lead_week_max" value="{{$lead_week_max}}" hidden/>
+                                                <input id="product_count" value="{{$products->count()}}" hidden/>
+                                                <?php
+                                                    $n=0;
+                                                    $week1=0;
+                                                    $week2=0;
+                                                    $week3=0;
+                                                    $week4=0;
+                                                ?>
+                                                @foreach ($products as $product)
+                                                    {{-- <input id="{{$product->name}}" value="{{$inputer->where('product_name', $product->name)->sum('total_price') - $inputer->where('product_name', $product->name)->sum('product_promotion')}}" hidden/> --}}
+
+                                                    <input id="{{$week1+=1}} bottle_week1" value="{{$omset_week1->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                                    <input id="{{$week2+=1}} bottle_week2" value="{{$omset_week2->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                                    <input id="{{$week3+=1}} bottle_week3" value="{{$omset_week3->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+                                                    <input id="{{$week4+=1}} bottle_week4" value="{{$omset_week4->where('product_name', $product->name)->sum('quantity')}}" hidden/>
+
+                                                    <input id="product {{$n+=1}}" value="{{$product->name}}" hidden/>
+                                                @endforeach
 											</h3>
 											{{-- <div class="card-toolbar">
 												<!--begin::Menu-->
