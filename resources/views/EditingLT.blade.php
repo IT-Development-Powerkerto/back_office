@@ -345,7 +345,7 @@
 												<div class="col-lg-7">
 													<button class="btn btn-info" id="copy">Copy to Clipboard</button>
 													<input type="submit" class="btn btn-primary" value="Save">
-                                                    <a type="button" class="btn btn-secondary" href="{{ url()->previous() }}">Cancel</a>
+                                                    <a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
 												</div>
 											</div>
 										</div>
@@ -567,25 +567,6 @@
 					var province_id = $('#province').find(":selected").val();
 					var ongkir = parseInt(shipping_price);
 					var total_price = (parseInt(price) * parseInt(quantity));
-					if (product == 'Generos'){
-						if(province_id == 3 || province_id == 5 || province_id == 6 || province_id == 9 || province_id == 10 || province_id == 11){
-							ongkir <= 20000 ? ongkir = 0 : ongkir -= 20000;
-						}else{
-							ongkir <= 35000 ? ongkir = 0 : ongkir -= 35000;
-						}
-					}
-					else if (product != 'Generos' && total_price >= 120000){
-						if (ongkir > 50000){
-							ongkir -= 25000;
-						}
-						else{
-							ongkir = ongkir*0.5;
-						}
-					}
-					else
-					{
-						ongkir = ongkir;
-					}
 
 					if(promotion_id)
                     {
@@ -596,18 +577,45 @@
 							success: function(promotion){
 								$('#product_promotion').val(parseInt(promotion.product_promotion));
 								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
-								
-								
-								if (ongkir <= parseInt(promotion.shipping_promotion)){
-									var total_ongkir = 0;
+								var shipping_promotion = parseInt(promotion.shipping_promotion);
+								var shipping_promotion_percent = parseInt(promotion.shipping_promotion_percent);
+								var product_promotion = parseInt(promotion.product_promotion);
+								var product_promotion_percent = parseInt(promotion.product_promotion_percent);
+								console.log(promotion);
+
+								if(shipping_promotion_percent == 0 && shipping_promotion == 0){
+									var promo_ongkir = 0;
+								}else if(shipping_promotion_percent != 0 && shipping_promotion == 0){
+									var promo_ongkir = ongkir*shipping_promotion_percent/100;
+								}else if(shipping_promotion_percent == 0 && shipping_promotion != 0){
+									var promo_ongkir = shipping_promotion;
+								}else{
+									if ((ongkir*shipping_promotion_percent/100) > shipping_promotion){
+										var promo_ongkir = shipping_promotion;
+									}
+									else{
+										var promo_ongkir = ongkir*shipping_promotion_percent/100;
+									}
 								}
-								else{
-									var total_ongkir = ongkir - parseInt(promotion.shipping_promotion);
+								if(product_promotion_percent == 0 && product_promotion == 0){
+									var promo_product = 0;
+								}else if(product_promotion_percent != 0 && product_promotion == 0){
+									var promo_product = total_price*product_promotion_percent/100;
+								}else if(product_promotion_percent == 0 && product_promotion != 0){
+									var promo_product = product_promotion;
+								}else{
+									if ((total_price*product_promotion_percent/100) > product_promotion){
+										var promo_product = product_promotion;
+									}
+									else{
+										var promo_product = total_price*product_promotion_percent/100;
+									}
 								}
+
 								if(courier === 'Ninja' && payment_method === 'COD'){
 									var admin = (total_price + ongkir) * 0.025;
 									admin = Math.ceil(admin / 1000) * 1000;
-									var total_payment = total_price + total_ongkir + admin - parseInt(promotion.product_promotion);
+									var total_payment = total_price + ongkir + admin - promo_ongkir - promo_product;
 								}
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
 									var admin = (total_price + ongkir)*0.030;
@@ -615,7 +623,7 @@
 										admin = 2000;
 									}
 									admin = Math.ceil(admin / 1000) * 1000;
-									var total_payment = total_price + total_ongkir + admin - parseInt(promotion.product_promotion);
+									var total_payment = total_price + ongkir + admin - promo_ongkir - promo_product;
                                 }
                                 else if(courier === 'JNT' && payment_method === 'COD'){
 									var admin = (total_price + ongkir)*0.030;
@@ -623,11 +631,14 @@
 										admin = 5000;
 									}
 									admin = Math.ceil(admin / 1000) * 1000;
-									var total_payment = total_price + total_ongkir + admin - parseInt(promotion.product_promotion);
+									var total_payment = total_price + ongkir + admin - promo_ongkir - promo_product;
                                 }
                                 else if(payment_method == "Transfer"){
-									var total_payment = total_price + total_ongkir - parseInt(promotion.product_promotion);
+									var total_payment = total_price + ongkir - promo_ongkir - promo_product;
+								}else{
+									alert('Courier not available for COD');
 								}
+								console.log(total_payment);
 								$('#total_payment').val(parseInt(total_payment));
 							}
 						});
@@ -657,6 +668,10 @@
                         else if(payment_method == "Transfer"){
                             var total_payment = total_price + ongkir;
                         }
+						else{
+							alert('Courier not available for COD');
+						}
+						console.log(total_payment);
 						$('#total_payment').val(parseInt(total_payment));
 					}
 				});
