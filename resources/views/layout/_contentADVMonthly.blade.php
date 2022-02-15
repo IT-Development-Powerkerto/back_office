@@ -104,20 +104,11 @@
 
 		</div>
 		<!--end::Col-->
-
-		<!--begin::Col-->
-		<div class="col-xl-12">
-
-			@include('partials/widgets/tables/_widget-8')
-
-		</div>
-		<!--end::Col-->
-
 		<!--begin::Col-->
 		<div class="col-xl-6 mt-n2">
 
 			@include('partials/widgets/tables/_widget-7')
-			
+
 		</div>
 		<!--end::Col-->
 
@@ -127,12 +118,8 @@
 			@include('partials/widgets/tables/_widget-6')
 
 		</div>
-
 	</div>
 	<!--end::Row-->
-
-
-
 	<!--begin::Row-->
 	<div class="row gy-5 g-xl-1 mt-n3">
 		@include('partials/widgets/tables/_widget-8')
