@@ -127,23 +127,107 @@
                                             </div>
                                             <div class="form-group mt-5">
                                                 <label class="col-form-label">Promotion Product Price</label>
+												<span class="form-text text-muted"><a href="#" data-bs-toggle="modal" data-bs-target="#modal-help-product">help</a></span>
+												<div class="modal fade" tabindex="-1" id="modal-help-product">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title">Promotion Product Rules</h5>
+																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body">
+																<ol>
+																	<p>There are 3 possibilities that happen</p>
+																	<li>if you only fill the fixed promotion then </li>
+																	<p>product price - fixed promotion</p>
+																	<li>if you only fill precentage promotion then</li>
+																	<p>product price - precentage promotion</p>
+																	<p>	Example : <br>
+																		Product price = 100.000 <br>
+																		Precentage promo = 50% -> 100.000*50%= 50.000 <br>
+																		Product price - precentage promotion = 100.000 - 10.000 = 90.000</p>
+																	<li>if you fill both (fixed promotion & precentage promotion) there are 2 possibilities : </li>
+																	<ul>
+																		<li>if fixed promotion > precentage promotion -> precentage promotion</li>
+																		<li>if fixed promotion < precentage promotion -> fixed promotion</li>
+																	</ul>
+																	<p> Example 1 : <br>
+																		Product price = 100.000 <br>
+																		Fixed promo = 10.000 <br>
+																		Precentage promo = 50% -> 100.000*50%= 50.000 (fixed promotion < precentage promotion) <br>
+																		Product price - fixed promotion = 100.000 - 10.000 = 90.000 </p>
+																	<br>
+																	<p> Example 2 : <br>
+																		Product price = 100.000 <br>
+																		Fixed promo = 60.000 <br>
+																		Precentage promo = 50% -> 100.000*50%= 50.000 (fixed promotion > precentage promotion) <br>
+																		Product price - precentage promotion = 100.000 - 50.000 = 50.000</p>
+																</ol>
+															</div>
+														</div>
+													</div>
+												</div>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" value="0" name="promotion_product_price" id="promotion_product_price" onchange="calculate()" class="form-control form-control" placeholder="0" required/>
+                                                    <input type="number" min="0" value="0" name="promotion_product_price" id="promotion_product_price" onchange="calculate()" class="form-control form-control" placeholder="0" required/>
+                                                    <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">%</span></div>
+                                                    <input type="number" min="0" max="100" value="0" name="promotion_product_percent" id="promotion_product_percent" class="form-control form-control" placeholder="0" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group mt-5">
                                                 <label class="col-form-label">Promotion Shippment Cost</label>
+												<span class="form-text text-muted"><a href="#" data-bs-toggle="modal" data-bs-target="#modal-help-shippment">help</a></span>
+												<div class="modal fade" tabindex="-1" id="modal-help-shippment">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title">Promotion Shippment Rules</h5>
+																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body">
+																<ol>
+																	<p>There are 3 possibilities that happen</p>
+																	<li>if you only fill the fixed promotion then </li>
+																	<p>shipment cost - fixed promotion</p>
+																	<li>if you only fill precentage promotion then</li>
+																	<p>shipment cost - precentage promotion</p>
+																	<p> Example : <br>
+																		shipment cost = 20.000 <br> 
+																		Precentage promo = 10% -> 20.000*10%= 2.000 <br>
+																		shipment cost - precentage promotion = 20.000 - 2.000 = 18.000</p>
+																	<li>if you fill both (fixed promotion & precentage promotion) there are 2 possibilities : </li>
+																	<ul>
+																		<li>if fixed promotion > precentage promotion -> precentage promotion</li>
+																		<li>if fixed promotion < precentage promotion -> fixed promotion</li>
+																	</ul>
+																	<p> Example 1 : <br>
+																		shipment cost = 30.000 <br>
+																		Fixed promo = 10.000 <br>
+																		Precentage promo = 50% -> 30.000*50%= 15.000 (fixed promotion < precentage promotion) <br>
+																		Shipment price - fixed promotion = 30.000 - 10.000 = 20.000</p>
+																	<br>
+																	<p> Example 2 : <br>
+																		shipment cost = 30.000 <br>
+																		Fixed promo = 20.000 <br>
+																		Precentage promo = 50% -> 30.000*50%= 15.000 (fixed promotion > precentage promotion) <br>
+																		Shipment price - precentage promotion = 30.000 - 20.000 = 10.000</p>
+																</ol>
+															</div>
+														</div>
+													</div>
+												</div>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" value="0" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate()" class="form-control form-control" placeholder="0" required/>
+                                                    <input type="text" min="0" value="0" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate(), numberFormat($this.value)" class="form-control form-control" placeholder="0" required/>
+                                                    <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">%</span></div>
+                                                    <input type="number" min="0" value="0" max="100" name="promotion_shippment_percent" id="promotion_shippment_percent" onchange="calculate(), numberFormat($this.value)" class="form-control form-control" placeholder="0" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group mt-5">
                                                 <label class="col-form-label">Total Promotion</label>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" name="total_promotion" id="total_promotion" class="form-control form-control" placeholder="0" disabled/>
+                                                    <input type="number" min="0" name="total_promotion" id="total_promotion" class="form-control form-control" placeholder="0" disabled/>
                                                 </div>
                                             </div>
                                         </div>
@@ -241,6 +325,16 @@
 				total_promotion.value = total;
 			}
 		</script>
+		{{--  <script>
+			$(function(){
+				$('#promotion_shippment_cost').change(function(){
+					var x = $('#promotion_shippment_cost').val()
+					{{--  x = parseInt(x);  --}}
+					var num = x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+					$('#promotion_shippment_cost').val(num); 
+				});
+			});
+		</script>  --}}
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
