@@ -10,7 +10,7 @@
 		</ul>
 		<ul class="nav me-2">
 			<li class="nav-item">
-				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4 me-1"
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
 					href="{{route('JA-adv.index')}}">Daily</a>
 			</li>
 			<li class="nav-item">
@@ -18,7 +18,7 @@
 					href="{{ route ('WeeklyJAADV') }}">Weekly</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4"
 					href="{{ route ('MonthlyJAADV') }}">Monthly</a>
 			</li>
 		</ul>
