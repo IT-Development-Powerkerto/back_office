@@ -6,18 +6,18 @@
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1 text-white">Total Leads</span>
 												<span class="text-white fw-bold fs-7">{{$lead_count}} Leads @ Month</span>
-                                                <input id="lead_jan" value="{{$lead_jan}}" hidden/>
-                                                <input id="lead_feb" value="{{$lead_feb}}" hidden/>
-                                                <input id="lead_mar" value="{{$lead_mar}}" hidden/>
-                                                <input id="lead_apr" value="{{$lead_apr}}" hidden/>
-                                                <input id="lead_may" value="{{$lead_may}}" hidden/>
-                                                <input id="lead_jun" value="{{$lead_jun}}" hidden/>
-                                                <input id="lead_jul" value="{{$lead_jul}}" hidden/>
-                                                <input id="lead_aug" value="{{$lead_aug}}" hidden/>
-                                                <input id="lead_sep" value="{{$lead_sep}}" hidden/>
-                                                <input id="lead_okt" value="{{$lead_okt}}" hidden/>
-                                                <input id="lead_nov" value="{{$lead_nov}}" hidden/>
-                                                <input id="lead_des" value="{{$lead_des}}" hidden/>
+                                                <input id="lead_jan" value="{{$lead_jan->count()}}" hidden/>
+                                                <input id="lead_feb" value="{{$lead_feb->count()}}" hidden/>
+                                                <input id="lead_mar" value="{{$lead_mar->count()}}" hidden/>
+                                                <input id="lead_apr" value="{{$lead_apr->count()}}" hidden/>
+                                                <input id="lead_may" value="{{$lead_may->count()}}" hidden/>
+                                                <input id="lead_jun" value="{{$lead_jun->count()}}" hidden/>
+                                                <input id="lead_jul" value="{{$lead_jul->count()}}" hidden/>
+                                                <input id="lead_aug" value="{{$lead_aug->count()}}" hidden/>
+                                                <input id="lead_sep" value="{{$lead_sep->count()}}" hidden/>
+                                                <input id="lead_okt" value="{{$lead_okt->count()}}" hidden/>
+                                                <input id="lead_nov" value="{{$lead_nov->count()}}" hidden/>
+                                                <input id="lead_des" value="{{$lead_des->count()}}" hidden/>
 												<input id="lead_month_max" value="{{$lead_month_max}}" hidden/>
                                                 <input id="product_count" value="{{$products->count()}}" hidden/>
                                                 <?php
