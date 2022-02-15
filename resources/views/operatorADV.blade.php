@@ -100,13 +100,11 @@
                                                             <label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $operator->user->phone }}</label>
                                                         </td>
                                                         <td>
-                                                            <div class="timeline-desc timeline-desc-light-primary">
-                                                                <span class="fw-mormal text-gray-800">{{ $campaign_count->where('user_id', $operator->user->id)->count() }} Campaigns</span>
-                                                            </div>
+                                                            <label class="text-dark fw-bolder text-hover-primary d-block fs-6">{{ $campaign_count->where('user_id', $operator->id)->count() }} Campaigns</label>
                                                         </td>
                                                         <td>
                                                             <div class="timeline-desc timeline-desc-light-primary">
-                                                                <span class="fw-mormal text-gray-800">{{ $lead_count->where('user_id', $operator->user->id)->where('created_at', $day)->count() }} Daily Lead</span>
+                                                                <span class="fw-mormal text-gray-800">{{ $lead_day_count->where('user_id', $operator->user->id)->count() }} Daily Lead</span>
                                                                 <p class="fw-bolder pb-2">
                                                                     {{ $lead_count->where('user_id', $operator->user->id)->count() }} Lead
                                                                 </p>
@@ -114,7 +112,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="timeline-desc timeline-desc-light-primary">
-                                                                <span class="fw-mormal text-gray-800">{{ $lead_count->where('user_id', $operator->user->id)->where('status_id', 5)->where('created_at', $day)->count() }} Daily Closing</span>
+                                                                <span class="fw-mormal text-gray-800">{{ $lead_day_count->where('user_id', $operator->user->id)->where('status_id', 5)->count() }} Daily Closing</span>
                                                                 <p class="fw-bolder pb-2">
                                                                     {{ $lead_count->where('user_id', $operator->user->id)->where('status_id', 5)->count() }} Closing
                                                                 </p>

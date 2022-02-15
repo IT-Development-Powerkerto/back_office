@@ -156,7 +156,7 @@
 													</td>
 													<td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
-                                                            <span class="fw-mormal text-gray-800">{{$operatorCampaign->lead->where('cretaed_at', $day)->count()}} Daily Leads</span>
+                                                            <span class="fw-mormal text-gray-800">{{$lead_day->where('user_id', $operatorCampaign->user->id)->count()}} Daily Leads</span>
                                                             <p class="fw-bolder">
                                                                 {{$operatorCampaign->lead->count()}} Total Leads
                                                             </p>
@@ -164,7 +164,7 @@
 													</td>
 													<td>
                                                         <div class="timeline-desc timeline-desc-light-primary">
-                                                            <span class="fw-mormal text-gray-800">{{$operatorCampaign->lead->where('status_id', 5)->where('cretaed_at', $day)->count()}} Daily Closing</span>
+                                                            <span class="fw-mormal text-gray-800">{{$lead_day->where('user_id', $operatorCampaign->user->id)->where('status_id', 5)->count()}} Daily Closing</span>
                                                             <p class="fw-bolder">
                                                                 {{$operatorCampaign->lead->where('status_id', 5)->count()}} Total Closing
                                                             </p>
