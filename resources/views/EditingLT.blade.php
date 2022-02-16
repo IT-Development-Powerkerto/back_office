@@ -368,11 +368,14 @@
 										{{ csrf_field() }}
 										<div class="card-footer">
 											<div class="row">
-												<div class="col-lg-5"></div>
-												<div class="col-lg-7">
-													<button class="btn btn-info" id="copy">Copy to Clipboard</button>
-													<input type="submit" class="btn btn-primary" value="Save">
-                                                    <a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
+												<div class="d-flex justify-content-between">
+													<div>
+														<button class="btn btn-success" id="copy">Copy to Clipboard</button>
+													</div>
+													<div>
+														<input type="submit" class="btn btn-primary" value="Save">
+														<a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
+													</div>
 												</div>
 											</div>
 										</div>
