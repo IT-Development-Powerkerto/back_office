@@ -1,7 +1,7 @@
 		
 		<!--begin::Exolore drawer toggle-->
-		<button id="kt_explore_toggle" class="explore-toggle btn btn-sm bg-body btn-color-gray-700 btn-active-primary shadow-sm position-fixed px-5 fw-bolder zindex-2 top-50 mt-10 end-0 transform-90 fs-6 rounded-top-0" title="Explore Metronic" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-trigger="hover">
-			<span id="kt_explore_toggle_label">Explore</span>
+		<button id="kt_explore_toggle" class="explore-toggle btn btn-sm bg-body btn-color-gray-700 btn-active-primary shadow-sm position-fixed px-5 fw-bolder zindex-2 top-50 mt-10 end-0 transform-90 fs-6" title="Explore Powerkerto" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-trigger="hover">
+			<span id="kt_explore_toggle_label">Explore Powerkerto</span>
 		</button>
 		<!--end::Exolore drawer toggle-->
 		<!--begin::Exolore drawer-->
@@ -9,8 +9,8 @@
 			<!--begin::Card-->
 			<div class="card shadow-none rounded-0 w-100">
 				<!--begin::Header-->
-				<div class="card-header" id="kt_explore_header">
-					<h3 class="card-title fw-bolder text-gray-700">Explore Metronic</h3>
+				<div class="card-header bg-white" id="kt_explore_header">
+					<h3 class="card-title fw-bolder text-gray-700">Explore Powerkerto</h3>
 					<div class="card-toolbar">
 						<button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n5" id="kt_explore_close">
 							<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
