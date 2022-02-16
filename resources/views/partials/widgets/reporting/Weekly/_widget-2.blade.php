@@ -4,10 +4,10 @@
 							<div class="card-body d-flex flex-column p-0">
 								<div class="d-flex flex-stack flex-grow-1 card-p">
 									<div class="d-flex flex-column me-2">
-										<label class="text-dark fw-bolder fs-3">Closing Rate</label>
+										<label class="my-auto px-3 rounded text-dark fw-bolder fs-3">Closing Rate</label>
 									</div>
 									<span class="symbol symbol-50px">
-										<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{($lead_count == 0) ? 0 : ($closing_count / $lead_count)*100}} %</span>
+										<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{($lead_count->count() == 0) ? 0 : ($closing_count->count() / $lead_count->count())*100}} %</span>
 									</span>
 								</div>
 								<div class="statistics-widget-3-chart card-rounded-bottom" data-kt-chart-color="success" style="height: 150px"></div>

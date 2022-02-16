@@ -170,8 +170,6 @@ class ReportingController extends Controller
         $inputer = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
         $product = Product::where('admin_id', auth()->user()->admin_id)->get();
 
-        $adv_rank = DB::table('inputers')->where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
-
         if(auth()->user()->role_id==1){
             return view('reporting.AdminReporting')->with('leads', $lead)->with('announcements', $announcement)
             ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
@@ -179,7 +177,7 @@ class ReportingController extends Controller
             ->with('closing_su', $closing_su)->with('closing_mo', $closing_mo)->with('closing_tu', $closing_tu)->with('closing_we', $closing_we)->with('closing_th', $closing_th)->with('closing_fr', $closing_fr)->with('closing_sa', $closing_sa)
             ->with('omset_su', $omset_su)->with('omset_mo', $omset_mo)->with('omset_tu', $omset_tu)->with('omset_we', $omset_we)->with('omset_th', $omset_th)->with('omset_fr', $omset_fr)->with('omset_sa', $omset_sa)
             ->with('advertising_su', $advertising_su)->with('advertising_mo', $advertising_mo)->with('advertising_tu', $advertising_tu)->with('advertising_we', $advertising_we)->with('advertising_th', $advertising_th)->with('advertising_fr', $advertising_fr)->with('advertising_sa', $advertising_sa)
-            ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)->with('user', $user)->with('icon', $icon)->with('adv_rank', $adv_rank);
+            ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)->with('user', $user)->with('icon', $icon);
         }elseif (auth()->user()->role_id==12){
             return view('reporting.Reporting')->with('leads', $lead)->with('announcements', $announcement)
             ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
@@ -187,24 +185,24 @@ class ReportingController extends Controller
             ->with('closing_su', $closing_su)->with('closing_mo', $closing_mo)->with('closing_tu', $closing_tu)->with('closing_we', $closing_we)->with('closing_th', $closing_th)->with('closing_fr', $closing_fr)->with('closing_sa', $closing_sa)
             ->with('omset_su', $omset_su)->with('omset_mo', $omset_mo)->with('omset_tu', $omset_tu)->with('omset_we', $omset_we)->with('omset_th', $omset_th)->with('omset_fr', $omset_fr)->with('omset_sa', $omset_sa)
             ->with('advertising_su', $advertising_su)->with('advertising_mo', $advertising_mo)->with('advertising_tu', $advertising_tu)->with('advertising_we', $advertising_we)->with('advertising_th', $advertising_th)->with('advertising_fr', $advertising_fr)->with('advertising_sa', $advertising_sa)
-            ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)->with('user', $user)->with('icon', $icon)->with('adv_rank', $adv_rank);
+            ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)->with('user', $user)->with('icon', $icon);
         }
     }
 
     public function weeklyReporting(){
         $day = Carbon::now()->format('Y-m-d');
         $user_expired = auth()->user()->expired_at;
-        $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
+        $user = User::where('admin_id', auth()->user()->admin_id)->get();
         $icon = Icon::all();
 
         $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
-        ])->count();
+        ])->get();
         $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
-        ])->count();
+        ])->get();
 
         //lead this week
         $lead_week_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
@@ -253,10 +251,7 @@ class ReportingController extends Controller
         $omset_week_count = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
-            Carbon::now()->startOfWeek(),
-            Carbon::now()->endOfWeek(),
-        ])->sum('product_promotion');
+        ])->get();
         //count omset every week
         $omset_week1 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfMonth(),
@@ -321,7 +316,7 @@ class ReportingController extends Controller
 
         if(auth()->user()->role_id==1){
             return view('reporting.AdminReportingWeekly')->with('announcements', $announcement)->with('leads', $leads)
-            ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+            ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user', $user)
             ->with('lead_week1', $lead_week1)->with('lead_week2', $lead_week2)->with('lead_week3', $lead_week3)->with('lead_week4', $lead_week4)
             ->with('closing_week1', $closing_week1)->with('closing_week2', $closing_week2)->with('closing_week3', $closing_week3)->with('closing_week4', $closing_week4)
             ->with('omset_week1', $omset_week1)->with('omset_week2', $omset_week2)->with('omset_week3', $omset_week3)->with('omset_week4', $omset_week4)
@@ -330,7 +325,7 @@ class ReportingController extends Controller
             ->with('closing_week_max', $closing_week_max)->with('lead_week_max', $lead_week_max)->with('icon', $icon);
         }elseif (auth()->user()->role_id==12){
             return view('reporting.ReportingWeekly')->with('announcements', $announcement)->with('leads', $leads)
-            ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+            ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user', $user)
             ->with('lead_week1', $lead_week1)->with('lead_week2', $lead_week2)->with('lead_week3', $lead_week3)->with('lead_week4', $lead_week4)
             ->with('closing_week1', $closing_week1)->with('closing_week2', $closing_week2)->with('closing_week3', $closing_week3)->with('closing_week4', $closing_week4)
             ->with('omset_week1', $omset_week1)->with('omset_week2', $omset_week2)->with('omset_week3', $omset_week3)->with('omset_week4', $omset_week4)
@@ -343,17 +338,17 @@ class ReportingController extends Controller
     public function monthlyReporting(){
         $day = Carbon::now()->format('Y-m-d');
         $user_expired = auth()->user()->expired_at;
-        $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
+        $user = User::where('admin_id', auth()->user()->admin_id)->get();
         $icon = Icon::all();
 
         $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfMonth(),
             Carbon::now()->endOfMonth(),
-        ])->count();
+        ])->get();
         $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereBetween('created_at', [
             Carbon::now()->startOfMonth(),
             Carbon::now()->endOfMonth(),
-        ])->count();
+        ])->get();
 
         //lead this mount
         $lead_month_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
@@ -466,10 +461,7 @@ class ReportingController extends Controller
         $omset_month_count = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfMonth(),
             Carbon::now()->endOfMonth(),
-        ])->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
-            Carbon::now()->startOfMonth(),
-            Carbon::now()->endOfMonth(),
-        ])->sum('product_promotion');
+        ])->get();
         //count omset every month
         $omset_jan = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfYear(),
@@ -594,7 +586,7 @@ class ReportingController extends Controller
 
         if(auth()->user()->role_id==1){
             return view('reporting.AdminReportingMonthly')->with('leads', $lead)->with('announcements', $announcement)
-            ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+            ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user', $user)
             ->with('lead_jan', $lead_jan)->with('lead_feb', $lead_feb)->with('lead_mar', $lead_mar)->with('lead_apr', $lead_apr)->with('lead_may', $lead_may)->with('lead_jun', $lead_jun)
             ->with('lead_jul', $lead_jul)->with('lead_aug', $lead_aug)->with('lead_sep', $lead_sep)->with('lead_okt', $lead_okt)->with('lead_nov', $lead_nov)->with('lead_des', $lead_des)
             ->with('closing_jan', $closing_jan)->with('closing_feb', $closing_feb)->with('closing_mar', $closing_mar)->with('closing_apr', $closing_apr)->with('closing_may', $closing_may)->with('closing_jun', $closing_jun)
@@ -607,7 +599,7 @@ class ReportingController extends Controller
             ->with('lead_month_max', $lead_month_max)->with('closing_month_max', $closing_month_max)->with('icon', $icon);
         }elseif (auth()->user()->role_id==12){
             return view('reporting.ReportingMonthly')->with('leads', $lead)->with('announcements', $announcement)
-            ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
+            ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user', $user)
             ->with('lead_jan', $lead_jan)->with('lead_feb', $lead_feb)->with('lead_mar', $lead_mar)->with('lead_apr', $lead_apr)->with('lead_may', $lead_may)->with('lead_jun', $lead_jun)
             ->with('lead_jul', $lead_jul)->with('lead_aug', $lead_aug)->with('lead_sep', $lead_sep)->with('lead_okt', $lead_okt)->with('lead_nov', $lead_nov)->with('lead_des', $lead_des)
             ->with('closing_jan', $closing_jan)->with('closing_feb', $closing_feb)->with('closing_mar', $closing_mar)->with('closing_apr', $closing_apr)->with('closing_may', $closing_may)->with('closing_jun', $closing_jun)

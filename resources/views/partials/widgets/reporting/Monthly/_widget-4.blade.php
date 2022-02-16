@@ -1,6 +1,6 @@
 
 	<!--begin::Nav Panel Widget 2-->
-	<div class="card shadow-sm card-custom card-stretch gutter-b" style="height: 515px">
+	<div class="card shadow-sm card-custom card-stretch gutter-b scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 515px">
         <!--begin::Header-->
         <div class="card-header border-0 bg-white py-5">
             <h3 class="card-title fw-bolder text-dark">ADV Ranking</h3>
@@ -16,7 +16,7 @@
 				<!--begin::Container-->
 				<div class="pb-5">
 					<!--begin::Header-->
-					<div class="d-flex flex-column flex-center">
+					{{-- <div class="d-flex flex-column flex-center">
 						<!--begin::Symbol-->
 						<div class="symbol symbol-150 symbol-circle symbol-success overflow-hidden">
 							<span class="symbol-label">
@@ -31,64 +31,29 @@
 						<!--begin::Info-->
 						<div class="fw-medium text-muted font-size-sm pb-6">IDR 30.000.000</div>
 						<!--end::Info-->
-					</div>
+					</div> --}}
 					<!--end::Header-->
 					<!--begin::Body-->
 					<div class="pt-1">
+                        @foreach ($user->where('role_id', 4) as $adv)
 						<!--begin::Item-->
 						<div class="d-flex align-items-center pb-6">
 							<!--begin::Symbol-->
 							<div class="symbol symbol-circle symbol-success overflow-hidden me-5">
 								<span class="symbol-label">
-								<img src="img/back.png" class="h-100 align-self-end" alt="image">
+								<img src="{{$adv->image}}" class="h-100 align-self-end" alt="image">
 								</span>
 							</div>
 							<!--end::Symbol-->
 							<!--begin::Text-->
 							<div class="d-flex flex-column flex-grow-1">
-								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 2</label>
-								<span class="text-dark fw-medium">Aldo</span>	
-                                <span class="text-muted fw-medium">IDR 25.000.000</span>	    
+								<label class="fw-bolder text-dark mb-1 font-size-lg">{{$adv->name}}</label>
+                                <span class="text-muted fw-medium">IDR {{$inputer->where('adv_name', $adv->name)->sum('total_price') - $inputer->where('adv_name', $adv->name)->sum('product_promotion')}}</span>
 							</div>
 							<!--end::Text-->
 						</div>
 						<!--end::Item-->
-						<!--begin::Item-->
-						<div class="d-flex align-items-center pb-6">
-							<!--begin::Symbol-->
-							<div class="symbol symbol-circle symbol-success overflow-hidden me-5">
-								<span class="symbol-label">
-								<img src="img/back.png" class="h-100 align-self-end" alt="image">
-								</span>
-							</div>
-							<!--end::Symbol-->
-							<!--begin::Text-->
-							<div class="d-flex flex-column flex-grow-1">
-								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 3</label>
-								<span class="text-dark fw-medium">Isnan</span>	
-                                <span class="text-muted fw-medium">IDR 25.000.000</span>	
-							</div>
-							<!--end::Text-->
-						</div>
-						<!--end::Item-->
-						<!--begin::Item-->
-						<div class="d-flex align-items-center pb-6">
-							<!--begin::Symbol-->
-							<div class="symbol symbol-circle symbol-success overflow-hidden me-5">
-								<span class="symbol-label">
-								<img src="img/back.png" class="h-100 align-self-end" alt="image">
-								</span>
-							</div>
-							<!--end::Symbol-->
-							<!--begin::Text-->
-							<div class="d-flex flex-column flex-grow-1">
-								<label class="fw-bolder text-dark mb-1 font-size-lg">Rank 4</label>
-								<span class="text-dark fw-medium">Awal</span>
-                                <span class="text-muted fw-medium">IDR 25.000.000</span>	
-							</div>
-							<!--end::Text-->
-						</div>
-						<!--end::Item-->
+                        @endforeach
 					</div>
 					<!--end::Body-->
 				</div>
