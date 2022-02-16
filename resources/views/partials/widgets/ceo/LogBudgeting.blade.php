@@ -2,10 +2,10 @@
 									<!--begin::Tables Widget 9-->
 									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull shadow-sm border mt-6" data-scroll="true" data-wheel-propagation="true">
 										<!--begin::Header-->
-										<div class="card-header border-0 pt-5">
-											<h3 class="card-title align-items-start flex-column">
-												<span class="card-label fw-bolder fs-3 mb-1">Activity Logs</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('status', '!=', 2)->where('requirement', '>=', 1000000)->count()}} Activity</span>
+										<div class="card-header border-0 pt-5" style="background-color: #00509d;">
+											<h3 class="card-title align-items-start flex-column mt-n3">
+												<span class="card-label text-white fw-bolder fs-3 mb-1">Activity Logs</span>
+												<span class="text-white mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('status', '!=', 2)->where('requirement', '>=', 1000000)->count()}} Activity</span>
 											</h3>
 										</div>
 										<!--end::Header-->

@@ -33,6 +33,7 @@ class ReportingController extends Controller
         $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
         $user = User::where('admin_id', auth()->user()->admin_id)->get();
+        $icon = Icon::all();
 
         $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->count();
         $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->where('created_at', $day)->count();
@@ -176,7 +177,7 @@ class ReportingController extends Controller
             ->with('closing_su', $closing_su)->with('closing_mo', $closing_mo)->with('closing_tu', $closing_tu)->with('closing_we', $closing_we)->with('closing_th', $closing_th)->with('closing_fr', $closing_fr)->with('closing_sa', $closing_sa)
             ->with('omset_su', $omset_su)->with('omset_mo', $omset_mo)->with('omset_tu', $omset_tu)->with('omset_we', $omset_we)->with('omset_th', $omset_th)->with('omset_fr', $omset_fr)->with('omset_sa', $omset_sa)
             ->with('advertising_su', $advertising_su)->with('advertising_mo', $advertising_mo)->with('advertising_tu', $advertising_tu)->with('advertising_we', $advertising_we)->with('advertising_th', $advertising_th)->with('advertising_fr', $advertising_fr)->with('advertising_sa', $advertising_sa)
-            ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)->with('user', $user);
+            ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)->with('user', $user)->with('icon', $icon);
         }elseif (auth()->user()->role_id==12){
             return view('reporting.Reporting')->with('leads', $lead)->with('announcements', $announcement)
             ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
@@ -184,7 +185,7 @@ class ReportingController extends Controller
             ->with('closing_su', $closing_su)->with('closing_mo', $closing_mo)->with('closing_tu', $closing_tu)->with('closing_we', $closing_we)->with('closing_th', $closing_th)->with('closing_fr', $closing_fr)->with('closing_sa', $closing_sa)
             ->with('omset_su', $omset_su)->with('omset_mo', $omset_mo)->with('omset_tu', $omset_tu)->with('omset_we', $omset_we)->with('omset_th', $omset_th)->with('omset_fr', $omset_fr)->with('omset_sa', $omset_sa)
             ->with('advertising_su', $advertising_su)->with('advertising_mo', $advertising_mo)->with('advertising_tu', $advertising_tu)->with('advertising_we', $advertising_we)->with('advertising_th', $advertising_th)->with('advertising_fr', $advertising_fr)->with('advertising_sa', $advertising_sa)
-            ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)->with('user', $user);
+            ->with('lead_day_count', $lead_day_count)->with('omset_day_count', $omset_day_count)->with('advertising_day_count', $advertising_day_count)->with('user', $user)->with('icon', $icon);
         }
     }
 
@@ -192,6 +193,7 @@ class ReportingController extends Controller
         $day = Carbon::now()->format('Y-m-d');
         $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
+        $icon = Icon::all();
 
         $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
@@ -323,7 +325,7 @@ class ReportingController extends Controller
             ->with('omset_week1', $omset_week1)->with('omset_week2', $omset_week2)->with('omset_week3', $omset_week3)->with('omset_week4', $omset_week4)
             ->with('advertising_week1', $advertising_week1)->with('advertising_week2', $advertising_week2)->with('advertising_week3', $advertising_week3)->with('advertising_week4', $advertising_week4)
             ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count)
-            ->with('closing_week_max', $closing_week_max)->with('lead_week_max', $lead_week_max);
+            ->with('closing_week_max', $closing_week_max)->with('lead_week_max', $lead_week_max)->with('icon', $icon);
         }elseif (auth()->user()->role_id==12){
             return view('reporting.ReportingWeekly')->with('announcements', $announcement)->with('leads', $leads)
             ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
@@ -332,7 +334,7 @@ class ReportingController extends Controller
             ->with('omset_week1', $omset_week1)->with('omset_week2', $omset_week2)->with('omset_week3', $omset_week3)->with('omset_week4', $omset_week4)
             ->with('advertising_week1', $advertising_week1)->with('advertising_week2', $advertising_week2)->with('advertising_week3', $advertising_week3)->with('advertising_week4', $advertising_week4)
             ->with('lead_week_count', $lead_week_count)->with('omset_week_count', $omset_week_count)->with('advertising_week_count', $advertising_week_count)
-            ->with('closing_week_max', $closing_week_max)->with('lead_week_max', $lead_week_max);
+            ->with('closing_week_max', $closing_week_max)->with('lead_week_max', $lead_week_max)->with('icon', $icon);
         }
     }
 
@@ -340,6 +342,7 @@ class ReportingController extends Controller
         $day = Carbon::now()->format('Y-m-d');
         $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
+        $icon = Icon::all();
 
         $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfMonth(),
@@ -599,7 +602,7 @@ class ReportingController extends Controller
             ->with('advertising_jan', $advertising_jan)->with('advertising_feb', $advertising_feb)->with('advertising_mar', $advertising_mar)->with('advertising_apr', $advertising_apr)->with('advertising_may', $advertising_may)->with('advertising_jun', $advertising_jun)
             ->with('advertising_jul', $advertising_jul)->with('advertising_aug', $advertising_aug)->with('advertising_sep', $advertising_sep)->with('advertising_okt', $advertising_okt)->with('advertising_nov', $advertising_nov)->with('advertising_des', $advertising_des)
             ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count)
-            ->with('lead_month_max', $lead_month_max)->with('closing_month_max', $closing_month_max);
+            ->with('lead_month_max', $lead_month_max)->with('closing_month_max', $closing_month_max)->with('icon', $icon);
         }elseif (auth()->user()->role_id==12){
             return view('reporting.ReportingMonthly')->with('leads', $lead)->with('announcements', $announcement)
             ->with('product', $product)->with('day', $day)->with('inputer', $inputer)->with('lead_count', $lead_count)->with('closing_count', $closing_count)->with('quantity', $quantity)->with('user_count', $user_count)
@@ -612,7 +615,7 @@ class ReportingController extends Controller
             ->with('advertising_jan', $advertising_jan)->with('advertising_feb', $advertising_feb)->with('advertising_mar', $advertising_mar)->with('advertising_apr', $advertising_apr)->with('advertising_may', $advertising_may)->with('advertising_jun', $advertising_jun)
             ->with('advertising_jul', $advertising_jul)->with('advertising_aug', $advertising_aug)->with('advertising_sep', $advertising_sep)->with('advertising_okt', $advertising_okt)->with('advertising_nov', $advertising_nov)->with('advertising_des', $advertising_des)
             ->with('lead_month_count', $lead_month_count)->with('omset_month_count', $omset_month_count)->with('advertising_month_count', $advertising_month_count)
-            ->with('lead_month_max', $lead_month_max)->with('closing_month_max', $closing_month_max);
+            ->with('lead_month_max', $lead_month_max)->with('closing_month_max', $closing_month_max)->with('icon', $icon);
         }
     }
 }

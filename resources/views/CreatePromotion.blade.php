@@ -20,46 +20,48 @@
 	<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed aside-secondary-enabled">
 		<!--begin::Main-->
 		<!--begin::Root-->
-		<div class="d-flex flex-column flex-root">
+		<div class="flex-root">
 			<!--begin::Page-->
-			<div class="page d-flex flex-row flex-column-fluid">
+			<div class="page">
 				<!--begin::Wrapper-->
-				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+				<div class="wrapper" id="kt_wrapper">
 					<!--begin::Header-->
 					<div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
 						<!--begin::Container-->
 						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
-							<!--begin::Page title-->
-							@include('layout/header/_base')
+							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
+								<!--begin::Page title-->
+								@include('layout/header/_base')
 
 
-							@include('layout/_toolbar')
-							<!--end::Page title=-->
-							<!--begin::Wrapper-->
-							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
-								<!--begin::Logo-->
-								    <img alt="Logo" src="../img/logo.png" class="h-40px" />
-								<!--end::Logo-->
-							</div>
-							<!--end::Wrapper-->
-							<!--begin::Toolbar wrapper-->
-							<!--begin::User-->
-							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-								<!--begin::Menu wrapper-->
-								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
-									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-									@if(is_null(Auth()->user()->image))
-									<img src="/assets/img/default.jpg" alt="" />
-									@else
-									<img src={{ Auth()->user()->image }} alt="image" />
-									@endif
+								@include('layout/_toolbar')
+								<!--end::Page title=-->
+								<!--begin::Wrapper-->
+								<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
+									<!--begin::Logo-->
+										<img alt="Logo" src="../img/logo.png" class="h-40px" />
+									<!--end::Logo-->
 								</div>
+								<!--end::Wrapper-->
+								<!--begin::Toolbar wrapper-->
+								<!--begin::User-->
+								<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+									<!--begin::Menu wrapper-->
+									<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
+										data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+										@if(is_null(Auth()->user()->image))
+										<img src="/assets/img/default.jpg" alt="" />
+										@else
+										<img src={{ Auth()->user()->image }} alt="image" />
+										@endif
+									</div>
 
-								@include('layout/topbar/partials/_user-menu')
+									@include('layout/topbar/partials/_user-menu')
 
-								<!--end::Menu wrapper-->
+									<!--end::Menu wrapper-->
+								</div>
+								<!--end::User -->
 							</div>
-							<!--end::User -->
 						</div>
 						<!--end::Container-->
 					</div>
@@ -84,10 +86,10 @@
 							<!--begin::details View-->
 							<div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
 								<!--begin::Card header-->
-								<div class="card-header cursor-pointer">
+								<div class="card-header cursor-pointer" style="background-color: #00509d;">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Create Promotion</h3>
+										<h3 class="fw-bolder text-white">Create Promotion</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
@@ -137,7 +139,7 @@
 															</div>
 															<div class="modal-body">
 																<ol>
-																	<p>There are 3 possibilities that happen</p>
+																	<p class="fw-bolder fs-3">There are 3 possibilities that happen</p>
 																	<li>if you only fill the fixed promotion then </li>
 																	<p>product price - fixed promotion</p>
 																	<li>if you only fill precentage promotion then</li>
@@ -325,16 +327,6 @@
 				total_promotion.value = total;
 			}
 		</script>
-		{{--  <script>
-			$(function(){
-				$('#promotion_shippment_cost').change(function(){
-					var x = $('#promotion_shippment_cost').val()
-					{{--  x = parseInt(x);  --}}
-					var num = x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-					$('#promotion_shippment_cost').val(num); 
-				});
-			});
-		</script>  --}}
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->

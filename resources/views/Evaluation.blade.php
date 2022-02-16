@@ -65,10 +65,10 @@
 							<!--begin::details View-->
 							<div class="card card-l-stretch mb-5 p-10 mb-xl-10" id="kt_profile_details_view">
                                 <!--begin::Card body-->
-								<div class="card shadow-sm  p-9">
+								<div class="card shadow-sm  p-0">
                                     <!--begin::Card header-->
                                     <div class="card-header border-0 pt-5">
-										<h3 class="card-title align-items-start flex-column">
+										<h3 class="card-title align-items-start flex-column mt-n3">
 											<span class="card-label fw-bolder fs-3 mb-1 ">Routine Evaluation</span>
 										</h3>
 									</div>
@@ -133,7 +133,7 @@
 								<div class="card shadow-sm card-l-stretch mb-5 mb-xl-8 scroll scroll-pull mt-6" data-scroll="true" data-wheel-propagation="true">
 									<!--begin::Header-->
 									<div class="card-header border-0 pt-5">
-										<h3 class="card-title align-items-start flex-column">
+										<h3 class="card-title align-items-start flex-column mt-n3">
 											<span class="card-label fw-bolder fs-3 mb-1">Routine Evaluation Log</span>
 											    <span class="text-muted mt-1 fw-bold fs-7">{{$evaluation->count()}} Data</span>
 										</h3>

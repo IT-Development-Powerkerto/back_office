@@ -4880,9 +4880,15 @@ textarea.form-control-lg {
 .card-header {
   padding: 0.5rem 1rem;
   margin-bottom: 0;
-  background-color: #ffffff;
+  background-color: rgba(0, 80, 157, 0.9) !important;
   border-bottom: 1px solid #EFF2F5;
 }
+
+.card-header span, h3 {
+  color: white !important;
+  /* margin-bottom: 15px !important; */
+}
+
 .card-header:first-child {
   border-radius: calc(0.475rem - 1px) calc(0.475rem - 1px) 0 0;
 }
@@ -46081,6 +46087,7 @@ code:not([class*=language-]) {
   transform: translateX(100%);
 }
 .drawer.drawer-on {
+  background-color: #00509d;
   transform: none;
   box-shadow: 0px 1px 9px -3px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease-in-out;
@@ -47462,6 +47469,7 @@ body {
     height: 55px;
     min-height: 55px;
     background-color: #ffffff;
+    color: black;
     box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
   }
   .header-tablet-and-mobile-fixed.toolbar-tablet-and-mobile-fixed .header {
