@@ -1173,7 +1173,7 @@ class DashboardController extends Controller
                     ->orderByDesc('l.id')
                     ->get();
                 $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
-                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('updated_at', $day)->get();
+                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)

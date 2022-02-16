@@ -20,16 +20,20 @@ class IconSeeder extends Seeder
                 'fa_name' => 'primary',
             ],
             [
-                'name'  => 'danger',
-                'fa_name' => 'danger',
+                'name'  => 'info',
+                'fa_name' => 'info',
             ],
             [
                 'name'  => 'success',
                 'fa_name' => 'success',
             ],
             [
-                'name'  => 'info',
-                'fa_name' => 'info',
+                'name'  => 'danger',
+                'fa_name' => 'danger',
+            ],
+            [
+                'name'  => 'warning',
+                'fa_name' => 'warning',
             ],
         ];
 
