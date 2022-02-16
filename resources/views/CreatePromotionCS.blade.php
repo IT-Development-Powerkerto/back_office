@@ -89,7 +89,7 @@
 								<div class="card-header cursor-pointer" style="background-color: #00509d;">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder text-white m-0 mt-n3">Create Promotion</h3>
+										<h3 class="fw-bolder text-white">Create Promotion</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
@@ -139,31 +139,37 @@
 															</div>
 															<div class="modal-body">
 																<ol>
-																	<p class="fw-bolder fs-3">There are 3 possibilities that happen</p>
-																	<li>if you only fill the fixed promotion then </li>
-																	<p>product price - fixed promotion</p>
-																	<li>if you only fill precentage promotion then</li>
-																	<p>product price - precentage promotion</p>
-																	<p>	Example : <br>
-																		Product price = 100.000 <br>
-																		Precentage promo = 50% -> 100.000*50%= 50.000 <br>
-																		Product price - precentage promotion = 100.000 - 10.000 = 90.000</p>
-																	<li>if you fill both (fixed promotion & precentage promotion) there are 2 possibilities : </li>
-																	<ul>
-																		<li>if fixed promotion > precentage promotion -> precentage promotion</li>
-																		<li>if fixed promotion < precentage promotion -> fixed promotion</li>
-																	</ul>
-																	<p> Example 1 : <br>
-																		Product price = 100.000 <br>
-																		Fixed promo = 10.000 <br>
-																		Precentage promo = 50% -> 100.000*50%= 50.000 (fixed promotion < precentage promotion) <br>
-																		Product price - fixed promotion = 100.000 - 10.000 = 90.000 </p>
+																	<p class="fw-bolder fs-3 ms-n3">There are 3 possibilities that happen</p>
+																	<li class="fw-bolder">if you only fill the fixed promotion then product price - fixed promotion</li>
 																	<br>
-																	<p> Example 2 : <br>
-																		Product price = 100.000 <br>
-																		Fixed promo = 60.000 <br>
-																		Precentage promo = 50% -> 100.000*50%= 50.000 (fixed promotion > precentage promotion) <br>
-																		Product price - precentage promotion = 100.000 - 50.000 = 50.000</p>
+																	<li class="fw-bolder">if you only fill precentage promotion then product price - precentage promotion</li>
+																		<ol>
+																			<p class="fw-bold fs-4 mt-2 ms-n3">	Example : </p>
+																			<li class="fw-bold ">	Product price = 100.000 </li>
+																			<li class="fw-bold my-2">	Precentage promo = 50% -> 100.000*50%= 50.000 </li>
+																			<li class="fw-bold mb-5">	Product price - precentage promotion = 100.000 - 10.000 = 90.000</li>
+																		</ol>
+																	<li class="fw-bolder mb-3">if you fill both (fixed promotion & precentage promotion) there are 2 possibilities : </li>
+																	<ul>
+																		<li class="fw-bold">if fixed promotion > precentage promotion -> precentage promotion</li>
+																		<li class="fw-bold my-2">if fixed promotion < precentage promotion -> fixed promotion</li>
+																	</ul>
+																	<br>
+																	<p class="fw-bolder fs-3 ms-n3"> Example 1 : </p>
+																	<ol>
+																		<li class="fw-bold">Product price = 100.000 </li>
+																		<li class="fw-bold mt-2">Fixed promo = 10.000 </li>
+																		<li class="fw-bold my-2">Precentage promo = 50% -> 100.000*50%= 50.000 (fixed promotion < precentage promotion) </li>
+																		<li class="fw-bold">Product price - fixed promotion = 100.000 - 10.000 = 90.000 </li>
+																	</ol>
+																	<br>
+																	<p class="fw-bolder fs-3 ms-n3"> Example 2 : </p>
+																	<ol>
+																		<li class="fw-bold"> Product price = 100.000 </li>
+																		<li class="fw-bold mt-2">Fixed promo = 60.000 </li>
+																		<li class="fw-bold my-2">Precentage promo = 50% -> 100.000*50%= 50.000 (fixed promotion > precentage promotion) </li>
+																		<li class="fw-bold">Product price - precentage promotion = 100.000 - 50.000 = 50.000</li>
+																	</ol>	
 																</ol>
 															</div>
 														</div>
@@ -171,7 +177,7 @@
 												</div>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="number" min="0" value="0" name="promotion_product_price" id="promotion_product_price" onchange="calculate()" class="form-control form-control" placeholder="0" required/>
+                                                    <input type="number" min="0" value="0" name="promotion_product_price" id="promotion_product_price" onchange="calculate()" class="form-control form-control me-3	" placeholder="0" required/>
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">%</span></div>
                                                     <input type="number" min="0" max="100" value="0" name="promotion_product_percent" id="promotion_product_percent" class="form-control form-control" placeholder="0" required/>
                                                 </div>
@@ -188,31 +194,37 @@
 															</div>
 															<div class="modal-body">
 																<ol>
-																	<p>There are 3 possibilities that happen</p>
-																	<li>if you only fill the fixed promotion then </li>
-																	<p>shipment cost - fixed promotion</p>
-																	<li>if you only fill precentage promotion then</li>
-																	<p>shipment cost - precentage promotion</p>
-																	<p> Example : <br>
-																		shipment cost = 20.000 <br> 
-																		Precentage promo = 10% -> 20.000*10%= 2.000 <br>
-																		shipment cost - precentage promotion = 20.000 - 2.000 = 18.000</p>
-																	<li>if you fill both (fixed promotion & precentage promotion) there are 2 possibilities : </li>
-																	<ul>
-																		<li>if fixed promotion > precentage promotion -> precentage promotion</li>
-																		<li>if fixed promotion < precentage promotion -> fixed promotion</li>
-																	</ul>
-																	<p> Example 1 : <br>
-																		shipment cost = 30.000 <br>
-																		Fixed promo = 10.000 <br>
-																		Precentage promo = 50% -> 30.000*50%= 15.000 (fixed promotion < precentage promotion) <br>
-																		Shipment price - fixed promotion = 30.000 - 10.000 = 20.000</p>
+																	<p class="fw-bolder fs-3 ms-n3">There are 3 possibilities that happen</p>
+																	<li class="fw-bolder">If you only fill the fixed promotion thenshipment cost - fixed promotion</li>
 																	<br>
-																	<p> Example 2 : <br>
-																		shipment cost = 30.000 <br>
-																		Fixed promo = 20.000 <br>
-																		Precentage promo = 50% -> 30.000*50%= 15.000 (fixed promotion > precentage promotion) <br>
-																		Shipment price - precentage promotion = 30.000 - 20.000 = 10.000</p>
+																	<li class="fw-bolder">If you only fill precentage promotion then shipment cost - precentage promotion</li>
+																		<ol>
+																			<p class="fw-bold fs-4 mt-2 ms-n3">	Example : </p>
+																			<li class="fw-bold ">Shipment cost = 20.000 </li>
+																			<li class="fw-bold my-2">Precentage promo = 10% -> 20.000*10%= 2.000</li>
+																			<li class="fw-bold mb-5">Shipment cost - precentage promotion = 20.000 - 2.000 = 18.00</li>
+																		</ol>
+																	<li class="fw-bolder mb-3">if you fill both (fixed promotion & precentage promotion) there are 2 possibilities : </li>
+																	<ul>
+																		<li class="fw-bold">If fixed promotion > precentage promotion -> precentage promotion</li>
+																		<li class="fw-bold my-2">If fixed promotion < precentage promotion -> fixed promotion</li>
+																	</ul>
+																	<br>
+																	<p class="fw-bolder fs-3 ms-n3"> Example 1 : </p>
+																	<ol>
+																		<li class="fw-bold">Shipment cost = 30.000 </li>
+																		<li class="fw-bold mt-2">Fixed promo = 10.000 </li>
+																		<li class="fw-bold my-2">Precentage promo = 50% -> 30.000*50%= 15.000 (fixed promotion < precentage promotion)</li>
+																		<li class="fw-bold">Shipment price - fixed promotion = 30.000 - 10.000 = 20.000</li>
+																	</ol>
+																	<br>
+																	<p class="fw-bolder fs-3 ms-n3"> Example 2 : </p>
+																	<ol>
+																		<li class="fw-bold">Shipment cost = 30.000 </li>
+																		<li class="fw-bold mt-2">Fixed promo = 20.000 </li>
+																		<li class="fw-bold my-2">Precentage promo = 50% -> 30.000*50%= 15.000 (fixed promotion > precentage promotion)</li>
+																		<li class="fw-bold">Shipment price - precentage promotion = 30.000 - 20.000 = 10.000</li>
+																	</ol>	
 																</ol>
 															</div>
 														</div>
@@ -220,7 +232,7 @@
 												</div>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" value="0" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate(), numberFormat($this.value)" class="form-control form-control" placeholder="0" required/>
+                                                    <input type="text" min="0" value="0" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate(), numberFormat($this.value)" class="form-control form-controll me-3" placeholder="0" required/>
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">%</span></div>
                                                     <input type="number" min="0" value="0" max="100" name="promotion_shippment_percent" id="promotion_shippment_percent" onchange="calculate(), numberFormat($this.value)" class="form-control form-control" placeholder="0" required/>
                                                 </div>

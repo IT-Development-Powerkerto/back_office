@@ -4,9 +4,9 @@
 			<!--begin::Header-->
 			<div class="card-header border-0 bg-white py-5">
 				<h3 class="card-title fw-bolder text-dark">Total Omset</h3>
-				<span class="symbol symbol-50px">
-					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{($inputer->sum('total_price') - $inputer->sum('product_promotion')) / 1000000}} JT</span>
-				</span>
+				<label class="symbol symbol-50px">
+					<label class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{($inputer->sum('total_price') - $inputer->sum('product_promotion')) / 1000000}} JT</label>
+				</label>
 				<input id="omset_su" value="{{$omset_su}}" hidden/>
 				<input id="omset_mo" value="{{$omset_mo}}" hidden/>
 				<input id="omset_tu" value="{{$omset_tu}}" hidden/>
@@ -77,6 +77,7 @@
                                     </div>
                                     <div>
                                         <div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">{{$product->name}}</div>
+										<div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">10JT</div>
                                     </div>
                                 </div>
                                 <!--end::Item-->

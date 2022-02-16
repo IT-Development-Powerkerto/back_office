@@ -32,6 +32,7 @@
 
 @include('layout/topbar/partials/_activity-drawer')
 
+@include('layout/explore/_main')
 
 <!--begin::Chat drawer-->
 <div id="kt_drawer_chat" class="bg-body" data-kt-drawer="true" data-kt-drawer-name="chat" data-kt-drawer-activate="true"
