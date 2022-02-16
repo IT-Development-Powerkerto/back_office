@@ -6,9 +6,7 @@
 									<div class="d-flex flex-column me-2">
 										<label class="text-dark fw-bolder fs-3">Cost Aquisition</label>
 									</div>
-									<span class="symbol symbol-50px">
-										<span class="symbol-label fs-5 fw-bolder bg-light-primary text-primary">{{($omset_month_count == 0) ? 0 : ($advertising_month_count / $omset_month_count)*100}} %</span>
-									</span>
+									<span class="my-auto px-3 rounded fs-5 fw-bolder bg-light-primary text-primary">{{($omset_month_count == 0) ? 0 : ($advertising_month_count / $omset_month_count)*100}} %</span>
 								</div>
 								<div class="statistics-widget-4-chart card-rounded-bottom" data-kt-chart-color="primary" style="height: 150px"></div>
 							</div>
