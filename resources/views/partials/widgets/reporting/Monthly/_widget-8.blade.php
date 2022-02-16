@@ -4,7 +4,7 @@
 			<!--begin::Header-->
 			<div class="card-header border-0 bg-white py-5">
 				<h3 class="card-title fw-bolder text-dark">Total Lead</h3>
-				<label class="my-auto px-3 rounded fs-5 fw-bolder bg-light-success text-success">{{$lead_count}} Lead</label>
+				<label class="my-auto px-3 rounded fs-5 fw-bolder bg-light-success text-success">{{$lead_count->count()}} Lead</label>
 			</div>
 			<!--end::Header-->
 			<!--begin::Body-->
