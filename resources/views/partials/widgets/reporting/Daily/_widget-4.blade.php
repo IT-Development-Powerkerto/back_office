@@ -57,7 +57,7 @@
 							<!--begin::Text-->
 							<div class="d-flex flex-column flex-grow-1">
 								<label class="fw-bolder text-dark mb-1 font-size-lg">{{$adv->name}}</label>
-                                <span class="text-muted fw-medium">IDR {{$adv_rank->where('adv_name', $adv->name)->sum('total_price') - $inputer->where('adv_name', $adv->name)->sum('product_promotion')}}</span>
+                                <span class="text-muted fw-medium">IDR {{$inputer->where('adv_name', $adv->name)->sum('total_price') - $inputer->where('adv_name', $adv->name)->sum('product_promotion')}}</span>
 							</div>
 							<!--end::Text-->
 						</div>
