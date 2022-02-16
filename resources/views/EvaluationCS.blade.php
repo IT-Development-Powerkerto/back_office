@@ -68,7 +68,7 @@
 								<div class="card-header">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Routine Evaluation</h3>
+										<h3 class="fw-bolder m-0 mt-n3">Routine Evaluation</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
@@ -134,9 +134,9 @@
 								<div class="card card-l-stretch mb-5 mb-xl-8 scroll scroll-pull mt-6" data-scroll="true" data-wheel-propagation="true">
 									<!--begin::Header-->
 									<div class="card-header border-0 pt-5">
-										<h3 class="card-title align-items-start flex-column">
+										<h3 class="card-title align-items-start flex-column mt-n3">
 											<span class="card-label fw-bolder fs-3 mb-1">Routine Evaluation Log</span>
-											    <span class="text-muted mt-1 fw-bold fs-7">{{$evaluation->where('user_id', auth()->user()->id)->count()}} Data</span>
+											<span class="text-muted mt-1 fw-bold fs-7">{{$evaluation->where('user_id', auth()->user()->id)->count()}} Data</span>
 										</h3>
 									</div>
 									<!--end::Header-->

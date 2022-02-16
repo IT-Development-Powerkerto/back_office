@@ -31,7 +31,7 @@
 						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
 								<!--begin::Page title-->
-								@include('layout/header/_base')
+								@include('layout/header/_baseCS')
 	
 	
 								@include('layout/_toolbar')

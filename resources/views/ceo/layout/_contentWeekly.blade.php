@@ -36,28 +36,32 @@
 			@include('partials/widgets/ceo/_widget-4')
 
 		</div>
-			<!--begin::Action group-->
-		<div class="d-flex align-items-center justify-content-end flex-wrap">
-			<!--begin::Wrapper-->
-			<div class="flex-shrink-0 me-2">
-				<ul class="nav">
-					<li class="nav-item">
-						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
-							href="{{route('ceo')}}">Daily</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4 me-1"
-							href="#">Weekly</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
-							href="{{ route ('CEOmonthlydashboard') }}">Monthly</a>
-					</li>
-				</ul>
-			</div>
-			<!--end::Wrapper-->
-		</div>
-		<!--end::Action group-->
+	</div>
+	<!--begin::Action group-->
+	<div class="d-flex align-items-center justify-content-between rounded mt-n5 py-3" style="background-color: #00509d;">
+		<ul class="nav">
+			<li class="nav-item">
+				<h1 class="text-white fw-bold fs-7 px-4 ms-2 mt-2"
+					>Filter Dashboard</h1>
+			</li>
+		</ul>
+		<ul class="nav me-2">
+			<li class="nav-item">
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4 me-1"
+					href="{{route('ceo')}}">Daily</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4 me-1"
+					href="{{ route ('CEOweeklydashboard') }}">Weekly</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light fw-bold fs-7 px-4"
+					href="{{ route ('CEOmonthlydashboard') }}">Monthly</a>
+			</li>
+		</ul>
+	</div>
+	<!--end::Action group-->
+	<div class="row gy-5 g-xl-12 my-1">
 		<!--begin::Col-->
 		<div class="col-xl-6">
 

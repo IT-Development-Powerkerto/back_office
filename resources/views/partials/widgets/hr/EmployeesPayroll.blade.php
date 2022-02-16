@@ -3,7 +3,7 @@
 									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull shadow-sm border mt-6" data-scroll="true" data-wheel-propagation="true">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
-											<h3 class="card-title align-items-start flex-column">
+											<h3 class="card-title align-items-start flex-column mt-n3">
 												<span class="card-label fw-bolder fs-3 mb-1">Employees Payroll</span>
 												<span class="text-muted mt-1 fw-bold fs-7">1 Data</span>
 											</h3>
@@ -11,9 +11,8 @@
 											<form action="/dashboard" method="GET" class="d-flex">
 											@endif
 											<form action="/adv" method="GET" class="d-flex">
-												<div class="me-2 d-flex flex-row">
+												<div class="me-2 d-flex flex-row mt-n3">
 													<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
-													<button type="button" class="btn btn-sm btn-light btn-active-primary ms-2" style="height: 33px;" title="Click For Export">GO</button>
 												</div>
 											</form>
 										</div>

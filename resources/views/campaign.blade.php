@@ -57,7 +57,7 @@
 							<div class="card card-xxl-stretch mb-5 mb-xl-8">
 								<!--begin::Header-->
 								<div class="card-header border-0 pt-5">
-									<h3 class="card-title align-items-start flex-column">
+									<h3 class="card-title align-items-start flex-column mt-n3">
 										<span class="card-label fw-bolder fs-3 mb-1">Campaign</span>
                                         @if (auth()->user()->role_id == 1)
                                             <span class="text-muted mt-1 fw-bold fs-7">{{$campaigns->count()}} Campaign</span>
@@ -65,7 +65,7 @@
                                             <span class="text-muted mt-1 fw-bold fs-7">{{$campaigns->where('user_id', auth()->user()->id)->count()}} Campaign</span>
                                         @endif
 									</h3>
-									<div class="card-toolbar" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Campaign">
+									<div class="card-toolbar mt-n3" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a Campaign">
 										<a href="" data-bs-toggle="modal" data-bs-target="#create-campaign" class="btn btn-sm btn-light btn-active-primary">
 										<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 										<span class="svg-icon svg-icon-3">

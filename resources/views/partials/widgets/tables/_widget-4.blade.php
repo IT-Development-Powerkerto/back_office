@@ -3,7 +3,7 @@
 									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull shadow-sm border mt-6" data-scroll="true" data-wheel-propagation="true">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
-											<h3 class="card-title align-items-start flex-column">
+											<h3 class="card-title align-items-start flex-column mt-n3">
 												<span class="card-label fw-bolder fs-3 mb-1">List Promotion</span>
 												<span class="text-muted mt-1 fw-bold fs-7">{{$promotion->count()}} Promotion</span>
 											</h3>
