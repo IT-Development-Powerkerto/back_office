@@ -4,9 +4,7 @@
 			<!--begin::Header-->
 			<div class="card-header border-0 bg-white py-5">
 				<h3 class="card-title fw-bolder text-dark">Total Omset</h3>
-				<label class="symbol symbol-50px">
-					<label class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{($inputer->sum('total_price') - $inputer->sum('product_promotion')) / 1000000}} JT</label>
-				</label>
+				<label class="my-auto px-3 rounded fs-5 fw-bolder bg-light-success text-success">{{($inputer->sum('total_price') - $inputer->sum('product_promotion')) / 1000000}} JT</label>
 				<input id="omset_su" value="{{$omset_su}}" hidden/>
 				<input id="omset_mo" value="{{$omset_mo}}" hidden/>
 				<input id="omset_tu" value="{{$omset_tu}}" hidden/>
