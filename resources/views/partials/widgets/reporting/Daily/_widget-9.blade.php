@@ -5,7 +5,7 @@
 			<div class="card-header border-0 bg-white py-5">
 				<h3 class="card-title fw-bolder text-dark">Total Closing</h3>
 				<span class="symbol symbol-50px">
-					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{$closing_count}} Closing</span>
+					<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{$closing_count->count()}} Closing</span>
 				</span>
 			</div>
 			<!--end::Header-->

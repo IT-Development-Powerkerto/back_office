@@ -7,7 +7,7 @@
 										<label class="text-dark fw-bolder fs-3">Cost Aquisition</label>
 									</div>
 									<span class="symbol symbol-50px">
-										<span class="symbol-label fs-5 fw-bolder bg-light-primary text-primary">{{($omset_day_count == 0) ? 0 : ($advertising_day_count / $omset_day_count)*100}} %</span>
+										<span class="symbol-label fs-5 fw-bolder bg-light-primary text-primary">{{($omset_day_count->sum('total_price')-$omset_day_count->sum('product_promotion') == 0) ? 0 : ($advertising_day_count / ($omset_day_count->sum('total_price')-$omset_day_count->sum('product_promotion')))*100}} %</span>
 									</span>
 								</div>
 								<div class="statistics-widget-4-chart card-rounded-bottom" data-kt-chart-color="primary" style="height: 150px"></div>
