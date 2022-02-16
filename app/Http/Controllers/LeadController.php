@@ -101,7 +101,7 @@ class LeadController extends Controller
             ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image', 'i.product_weight as product_weight', 'i.product_promotion as product_promotion', 'i.shipping_promotion as shipping_promotion', 'i.province_id as province', 'i.total_price as total_price', 'i.promotion_id as promotion_id', 'i.shipping_price as shipping_price', 'i.total_payment as total_payment', 'i.province_id as province_id', 'i.city_id as city_id', 'i.subdistrict_id as subdistrict_id')
             ->where('l.id', $id)
             ->where('l.admin_id', auth()->user()->admin_id);
-        $promotion = Promotion::where('admin_id', auth()->user()->admin_id)->get();
+        $promotion = Promotion::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->get();
         // return view('EditingLT', compact('lead'));
         $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province');
         $response = json_decode($response, true);
@@ -325,5 +325,13 @@ class LeadController extends Controller
         $to_date = $request->to_date;
         // dd($from_date);
         return Excel::download(new LeadsExport($from_date,$to_date), 'leads.xlsx', 'Xlsx');
+    }
+    public function changeStatus($lead){
+        // $lead = DB::table('leads')->where('id', $lead)->get();
+        // return $lead;
+        DB::table('leads')->where('id', $lead)->update([
+            'status_id' => 4,
+            'updated_at' => Carbon::now()
+        ]);
     }
 }
