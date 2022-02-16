@@ -322,6 +322,33 @@
 											  	</div>
 										 	</div>
 											<div class="separator separator-dashed my-10"></div>
+											<div class="form-group row">
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Admin Cost</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<input type="number" class="form-control" placeholder="Shipping Promotion" id="shipping_promotion" name="shipping_promotion" value="{{ $inputer->implode('shipping_promotion') ?? 0 }}" readonly>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Auto-Filled Total</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Admin Cost</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $inputer->implode('shipping_price') ?? '' }}">
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Input Promotion</span>
+												</div>
+                                                <label class="col-lg-1 col-form-label text-lg-right mt-8">Total Admin Cost</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+														<input type="text" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $inputer->implode('shipping_price') ?? '' }}" readonly>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Auto-Filled Total</span>
+												</div>
+										 	</div>
+											<div class="separator separator-dashed my-10"></div>
 											<div class="form-group row mt-3">
 												<label class="col-lg-1 col-form-label text-lg-right">Grand Total</label>
 												<div class="col-lg">
@@ -341,11 +368,14 @@
 										{{ csrf_field() }}
 										<div class="card-footer">
 											<div class="row">
-												<div class="col-lg-5"></div>
-												<div class="col-lg-7">
-													<button class="btn btn-info" id="copy">Copy to Clipboard</button>
-													<input type="submit" class="btn btn-primary" value="Save">
-                                                    <a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
+												<div class="d-flex justify-content-between">
+													<div>
+														<button class="btn btn-success" id="copy">Copy to Clipboard</button>
+													</div>
+													<div>
+														<input type="submit" class="btn btn-primary" value="Save">
+														<a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
+													</div>
 												</div>
 											</div>
 										</div>
