@@ -4,9 +4,7 @@
 			<!--begin::Header-->
 			<div class="card-header border-0 bg-white py-5">
 				<h3 class="card-title fw-bolder text-dark">Total Bottle</h3>
-				<label class="symbol symbol-50px">
-					<label class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{$inputer->sum('quantity')}} Bottle</label>
-				</label>
+				<label class="my-auto px-3 rounded fs-5 fw-bolder bg-light-success text-success">{{$inputer->sum('quantity')}} Bottle</label>
 			</div>
 			<!--end::Header-->
 			<!--begin::Body-->
@@ -45,6 +43,7 @@
                                     </div>
                                     <div>
                                         <div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">{{$product->name}}</div>
+                                        <div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">50</div>
                                     </div>
                                 </div>
                                 <!--end::Item-->
