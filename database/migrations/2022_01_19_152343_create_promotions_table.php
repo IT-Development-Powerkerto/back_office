@@ -24,6 +24,8 @@ class CreatePromotionsTable extends Migration
             $table->integer('promotion_product_percent')->nullable();
             $table->integer('promotion_shippment_cost')->nullable();
             $table->integer('promotion_shippment_percent')->nullable();
+            $table->integer('promotion_admin_cost')->nullable();
+            $table->integer('promotion_admin_percent')->nullable();
             $table->integer('total_promotion');
             $table->timestamps();
             $table->softDeletes();

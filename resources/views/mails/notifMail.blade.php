@@ -106,11 +106,14 @@
 																<td align="center">
 																	<table class="center" border="0" cellspacing="0" cellpadding="0" style="text-align:center;">
 																		<tr>
-																			<td class="blue-button text-button" style="background:#66c7ff; color:#c1cddc; font-family:'Muli', Arial,sans-serif; font-size:14px; line-height:18px; padding:12px 30px; text-align:center; border-radius:0px 22px 22px 22px; font-weight:bold;"><div mc:edit="text_4"><a href="https://api.whatsapp.com/send/?phone={{$details['client_number']}}&text={{ rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($details['client'], $details['client_number'], $details['operator'], $details['product']), $details['FU_text'])) }}" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none;"><span class="link-white" style="color:#ffffff; text-decoration:none;">Followup</span></a></div></td>
+																			{{--  <td class="blue-button text-button" style="background:#66c7ff; color:#c1cddc; font-family:'Muli', Arial,sans-serif; font-size:14px; line-height:18px; padding:12px 30px; text-align:center; border-radius:0px 22px 22px 22px; font-weight:bold;"><div mc:edit="text_4"><a href="https://api.whatsapp.com/send/?phone={{$details['client_number']}}&text={{ rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($details['client'], $details['client_number'], $details['operator'], $details['product']), $details['FU_text'])) }}" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none;"><span class="link-white" style="color:#ffffff; text-decoration:none;">Followup</span></a></div></td>  --}}
+												
+																			<td class="blue-button text-button" style="background:#66c7ff; color:#c1cddc; font-family:'Muli', Arial,sans-serif; font-size:14px; line-height:18px; padding:12px 30px; text-align:center; border-radius:0px 22px 22px 22px; font-weight:bold;"><div mc:edit="text_4"><a href="{{ route('changeStatus', ['lead' => $details['lead_id']]) }}" class="link-white" style="color:#ffffff; text-decoration:none;"><span class="link-white" style="color:#ffffff; text-decoration:none;">FollowUP</span></a></div></td>
 																		</tr>
 																	</table>
 																</td>
 															</tr>
+															{{--  <a href="{{ route('changeStatus', ['lead' => $details['lead_id']]) }}" class="btn btn-primary">Proses</a>  --}}
 															<!-- END Button -->
                                                             
 														</table>

@@ -43,7 +43,7 @@
                                     </div>
                                     <div>
                                         <div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">{{$product->name}}</div>
-                                        <div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">50</div>
+                                        <div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">{{$omset_day_count->where('product_name', $product->name)->sum('quantity')}}</div>
                                     </div>
                                 </div>
                                 <!--end::Item-->
