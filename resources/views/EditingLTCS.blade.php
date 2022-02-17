@@ -490,7 +490,7 @@
 				});
 			});
 		</script> --}}
-        <script>
+        {{--  <script>
 			$(function(){
 				$('#quantity, #price, #promotion_id').on('change', function(){
 					var quantity = $('#quantity').val();
@@ -518,7 +518,7 @@
 					}
 				});
 			});
-		</script>
+		</script>  --}}
 		<script>
 			$(function(){
 				$('#weight, #warehouse, #province, #city, #subdistrict, #courier, #shipping_promotion').on('change', function(){
@@ -587,7 +587,7 @@
 		<script>
 			$(function(){
 				$('#clipboard').hide();
-				$('#payment_method, #courier, #promotion_id, #province, #promotion_admin').on('change', function(){
+				$('#payment_method, #courier, #quantity, #promotion_id, #province, #promotion_admin').on('change', function(){
 					var name = $('#name').val();
 					var address = $('#address').val();
 					var province = $('#province').find(":selected").text();
@@ -640,19 +640,23 @@
 									var promo_product = 0;
 								}else if(product_promotion_percent != 0 && product_promotion == 0){
 									var promo_product = total_price*product_promotion_percent/100;
+									$('#total_price').val(parseInt(total_price-promo_product));
 								}else if(product_promotion_percent == 0 && product_promotion != 0){
 									var promo_product = product_promotion;
+									$('#total_price').val(parseInt(total_price-promo_product));
 								}else{
 									if ((total_price*product_promotion_percent/100) > product_promotion){
 										var promo_product = product_promotion;
+										$('#total_price').val(parseInt(total_price-promo_product));
 									}
 									else{
 										var promo_product = total_price*product_promotion_percent/100;
+										$('#total_price').val(parseInt(total_price-promo_product));
 									}
 								}
 
 								if(courier === 'Ninja' && payment_method === 'COD'){
-									var admin = (total_price + ongkir) * 0.025;
+									var admin = (total_price - promo_product + ongkir) * 0.025;
 									admin = Math.ceil(admin / 1000) * 1000;
 									$('#shipping_admin').val(admin);
 									
@@ -662,7 +666,7 @@
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
 								}
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
-									var admin = (total_price + ongkir)*0.030;
+									var admin = (total_price - promo_product + ongkir)*0.030;
 									if(admin < 2000){
 										admin = 2000;
 									}
@@ -675,7 +679,7 @@
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
                                 }
                                 else if(courier === 'JNT' && payment_method === 'COD'){
-									var admin = (total_price + ongkir)*0.030;
+									var admin = (total_price - promo_product + ongkir)*0.030;
 									if(admin < 5000){
 										admin = 5000;
 									}
@@ -690,8 +694,6 @@
                                 else if(payment_method == "Transfer"){
 									var total_payment = total_price + ongkir - promo_ongkir - promo_product;
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) = ${total_payment}`;
-								}else{
-									alert('Courier not available for COD');
 								}
 								console.log(total_payment);
 								$('#total_payment').val(parseInt(total_payment));
@@ -700,6 +702,7 @@
 						});
 					}
                     else{
+						$('#total_price').val(total_price);
 						if(courier === 'Ninja' && payment_method === 'COD'){
                             var admin = (total_price + ongkir)*0.025;
 							admin = Math.ceil(admin / 1000) * 1000;
@@ -740,12 +743,10 @@
                             var total_payment = total_price + ongkir;
 							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) = ${total_payment}`;
                         }
-						else{
-							alert('Courier not available for COD');
-						}
 						console.log(total_payment);
 						$('#total_payment').val(parseInt(total_payment));
 					}
+					console.log(text);
 					$("#clipboard").val(text);
 				});
 			});
