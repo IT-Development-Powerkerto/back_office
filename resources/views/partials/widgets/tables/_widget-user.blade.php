@@ -13,11 +13,11 @@
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>
 												</form>
 											</div>
-											
+
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
-										<div class="card-body py-3">
+                                        <div class="card-body py-3 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
 											<!--begin::Table container-->
 											<div class="table-responsive">
 												<!--begin::Table-->
@@ -43,7 +43,7 @@
 																		@if(is_null($user->image))
 																		<img src="/assets/img/default.jpg" width="100px" alt="" />
 																		@else
-																		
+
 																		<img src="{{$user->image}}" width="100px" alt="" />
 																		@endif
 																	</div>
