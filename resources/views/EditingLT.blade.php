@@ -149,62 +149,79 @@
 												</div>
 											</div>
 										 	<div class="separator separator-dashed my-10"></div>
-											 <div class="form-group row mt-3">
-												<label class="col-lg-1 col-form-label text-lg-right">Product</label>
-												<div class="col-lg-3">
-													<div class="input-group">
-														<label type="text"class="form-control" id="product" placeholder="Product Name">{{ old('product_name') ?? $lead->implode('product_name') }}</label>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Auto-Filled Product Name</span>
-										  		</div>
-												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
-												<div class="col-lg-3">
-													<div class="input-group">
-														<input type="number" placeholder="Quantity Product" min="0"  id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Please enter quantity</span>
-										  		</div>
-												<label class="col-lg-1 col-form-label text-lg-right">Price</label>
-												<div class="col-lg-3">
-													<div class="input-group">
-														<input type="number" placeholder="Enter price" min="0" id="price" name="price" value="{{ old('price') ?? $lead->implode('price') }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline"/>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-money-bill-wave" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Please enter price</span>
-												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
-												<div class="col-lg-3 mt-8">
-													<div class="input-group">
-														<select class="form-control" name="promotion_id" id="promotion_id">
-                                                            <option value=""hidden>Select Promotion</option>
-															<option value="">Not Have Promotion</option>
-															@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
-															<option value="{{$promotion->id}}" {{ $inputer->implode('promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
-															@endforeach
-														</select>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Please enter promotion type</span>
-													</div>
-													<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Promotion</label>
-													<div class="col-lg-3 mt-8">
-														<div class="input-group">
-															<input type="number" value="{{ $inputer->implode('product_promotion') ?? 0 }}" name="product_promotion" id="product_promotion"  class="form-control" placeholder="Promotion Price" readonly/>
-															<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+
+											<div id="kt_repeater_1">
+												<div id="kt_repeater_1" data-repeater-list="" >
+													<div class="form-group row mt-3" data-repeater-item>
+														<label class="col-lg-1 col-form-label text-lg-right">Product</label>
+														<div class="col-lg-3">
+															<div class="input-group">
+																<label type="text"class="form-control" id="product" placeholder="Product Name">{{ old('product_name') ?? $lead->implode('product_name') }}</label>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Auto-Filled Product Name</span>
 														</div>
-														<span class="form-text text-muted">Auto-Filled Promotion Price</span>
+														<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
+														<div class="col-lg-3">
+															<div class="input-group">
+																<input type="number" placeholder="Quantity Product" min="0"  id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter quantity</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right">Price</label>
+														<div class="col-lg-3">
+															<div class="input-group">
+																<input type="number" placeholder="Enter price" min="0" id="price" name="price" value="{{ old('price') ?? $lead->implode('price') }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline"/>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-money-bill-wave" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter price</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<select class="form-control" name="promotion_id" id="promotion_id">
+																	<option value=""hidden>Select Promotion</option>
+																	<option value="">Not Have Promotion</option>
+																	@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@endforeach
+																</select>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter promotion type</span>
+															</div>
+															<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Promotion</label>
+															<div class="col-lg-3 mt-8">
+																<div class="input-group">
+																	<input type="number" value="{{ $inputer->implode('product_promotion') ?? 0 }}" name="product_promotion" id="product_promotion"  class="form-control" placeholder="Promotion Price" readonly/>
+																	<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+																</div>
+																<span class="form-text text-muted">Auto-Filled Promotion Price</span>
+															</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<input type="number" value="{{ $inputer->implode('total_price') }}" name="total_price" id="total_price" class="form-control" placeholder="Total Price" readonly/>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Auto-Filled Total</span>
+														</div>
+														<div class="d-flex justify-content-end mt-5 pb-5">
+															<a href="javascript:;" data-repeater-delete class="btn btn-sm font-weight-bolder btn-light-danger">
+																<i class="la la-trash"></i>delete
+															</a>
+														</div>
 													</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
-												<div class="col-lg-3 mt-8">
-													<div class="input-group">
-														<input type="number" value="{{ $inputer->implode('total_price') }}" name="total_price" id="total_price" class="form-control" placeholder="Total Price" readonly/>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Auto-Filled Total</span>
+												</div>
+												<div class="d-flex justify-content-end">
+													<a href="javascript:;" data-repeater-create class="btn btn-sm font-weight-bolder btn-light-primary" style="width: 90px;">
+														<i class="la la-plus"></i>Add
+													</a>
 												</div>
 											</div>
+
+
 										 	<div class="separator separator-dashed my-10"></div>
 										 	<div class="form-group row">
 
@@ -406,15 +423,63 @@
 		</div>
 		<!--end::Root-->
 		<!--end::Main-->
-		<script>var hostUrl = "assets/";</script>
+		<script>
+			var hostUrl = "../assets/";
+		</script>
 		<!--begin::Javascript-->
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="../assets/plugins/global/plugins.bundle.js"></script>
 		<script src="../assets/js/scripts.bundle.js"></script>
 		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Vendors Javascript(used by this page)-->
+		<script src="../assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<script src="../assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<!--end::Page Vendors Javascript-->
 		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src="../assets/js/custom/apps/customers/list/export.js"></script>
+		<script src="../assets/js/custom/apps/customers/list/leads.js"></script>
+		<script src="../assets/js/custom/apps/customers/add.js"></script>
 		<script src="../assets/js/custom/widgets.js"></script>
-		<!--end::Page Custom Javascript-->
+		<script src="../assets/js/custom/apps/chat/chat.js"></script>
+		<script src="../assets/js/custom/modals/create-app.js"></script>
+		<script src="../assets/js/custom/modals/upgrade-plan.js"></script>
+		<script src="../assets/js/custom/intro.js"></script>
+		<script src="../assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+		<script>
+			// Class definition
+			var KTFormRepeater = function() {
+
+			// Private functions
+			var demo1 = function() {
+				$('#kt_repeater_1').repeater({
+					initEmpty: false,
+
+					defaultValues: {
+						'text-input': 'foo'
+					},
+
+					show: function () {
+						$(this).slideDown();
+					},
+
+					hide: function (deleteElement) {
+						$(this).slideUp(deleteElement);
+					}
+				});
+			}
+
+			return {
+				// public functions
+				init: function() {
+					demo1();
+				}
+			};
+			}();
+
+			jQuery(document).ready(function() {
+			KTFormRepeater.init();
+			});
+		</script>
 		<script>
 			$(document).ready(function(){
 				$('#province').on('change', function(){
