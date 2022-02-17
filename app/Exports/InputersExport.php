@@ -109,7 +109,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
                 'Shipping Promotion' => $data->shipping_promotion,
                 'Payment Method' => $data->payment_method,
                 'Total Payment' => $data->total_payment,
-                'Date/Time' => date('d-m-Y', strtotime($data->updated_at)),
+                'Date/Time' => date('d-m-Y H:i:s', strtotime($data->updated_at)),
                 'Shipping Instruction' => $data->product_name.' '.$data->quantity.' '.$data->operator_name,
                 'Invoice' => 'PWK.WP.'.$wh.'/'.$year.'/'.$res.'-'.$data->lead_id
             );

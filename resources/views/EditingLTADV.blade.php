@@ -149,62 +149,107 @@
 												</div>
 											</div>
 										 	<div class="separator separator-dashed my-10"></div>
-											 <div class="form-group row mt-3">
-												<label class="col-lg-1 col-form-label text-lg-right">Product</label>
-												<div class="col-lg-3">
-													<div class="input-group">
-														<label type="text"class="form-control" id="product" placeholder="Product Name">{{ old('product_name') ?? $lead->implode('product_name') }}</label>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Auto-Filled Product Name</span>
-										  		</div>
-												<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
-												<div class="col-lg-3">
-													<div class="input-group">
-														<input type="number" placeholder="Quantity Product" min="0"  id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Please enter quantity</span>
-										  		</div>
-												<label class="col-lg-1 col-form-label text-lg-right">Price</label>
-												<div class="col-lg-3">
-													<div class="input-group">
-														<input type="number" placeholder="Enter price" min="0" id="price" name="price" value="{{ old('price') ?? $lead->implode('price') }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline"/>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-money-bill-wave" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Please enter price</span>
-												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion</label>
-												<div class="col-lg-3 mt-8">
-													<div class="input-group">
-														<select class="form-control" name="promotion_id" id="promotion_id">
-                                                            <option value=""hidden>Select Promotion</option>
-															<option value="">Not Have Promotion</option>
-															@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
-															<option value="{{$promotion->id}}" {{ $inputer->implode('promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
-															@endforeach
-														</select>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Please enter promotion type</span>
-													</div>
-													<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Promotion</label>
-													<div class="col-lg-3 mt-8">
-														<div class="input-group">
-															<input type="number" value="{{ $inputer->implode('product_promotion') ?? 0 }}" name="product_promotion" id="product_promotion"  class="form-control" placeholder="Promotion Price" readonly/>
-															<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+
+											<div id="kt_repeater_1">
+												<div id="kt_repeater_1" data-repeater-list="" >
+													<div class="form-group row mt-3" data-repeater-item>
+														<label class="col-lg-1 col-form-label text-lg-right">Product</label>
+														<div class="col-lg-3">
+															<div class="input-group">
+																<label type="text"class="form-control" id="product" placeholder="Product Name">{{ old('product_name') ?? $lead->implode('product_name') }}</label>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Auto-Filled Product Name</span>
 														</div>
-														<span class="form-text text-muted">Auto-Filled Promotion Price</span>
+														<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
+														<div class="col-lg-3">
+															<div class="input-group">
+																<input type="number" placeholder="Quantity Product" min="0"  id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter quantity</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right">Price</label>
+														<div class="col-lg-3">
+															<div class="input-group">
+																<input type="number" placeholder="Enter price" min="0" id="price" name="price" value="{{ old('price') ?? $lead->implode('price') }}" id="inputprice" class="form-control" aria-describedby="priceHelpInline"/>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-money-bill-wave" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter price</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Product</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<select class="form-control" name="promotion_id" id="promotion_id">
+																	<option value=""hidden>Select Promotion</option>
+																	<option value="">Not Have Promotion</option>
+																	@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@endforeach
+																</select>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter promotion type</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Shipping</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<select class="form-control" name="promotion_id" id="promotion_id">
+																	<option value=""hidden>Select Promotion</option>
+																	<option value="">Not Have Promotion</option>
+																	@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@endforeach
+																</select>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter promotion type</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Admin</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<select class="form-control" name="promotion_id" id="promotion_id">
+																	<option value=""hidden>Select Promotion</option>
+																	<option value="">Not Have Promotion</option>
+																	@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@endforeach
+																</select>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter promotion type</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Promotion</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<input type="number" value="{{ $inputer->implode('product_promotion') ?? 0 }}" name="product_promotion" id="product_promotion"  class="form-control" placeholder="Promotion Price" readonly/>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Auto-Filled Promotion Price</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
+														<div class="col-lg-7 mt-8">
+															<div class="input-group">
+																<input type="number" value="{{ $inputer->implode('total_price') }}" name="total_price" id="total_price" class="form-control" placeholder="Total Price" readonly/>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Auto-Filled Total</span>
+														</div>
+														{{-- <div class="d-flex justify-content-end mt-5 pb-5">
+															<a href="javascript:;" data-repeater-delete class="btn btn-sm font-weight-bolder btn-light-danger">
+																<i class="la la-trash"></i>delete
+															</a>
+														</div> --}}
 													</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
-												<div class="col-lg-3 mt-8">
-													<div class="input-group">
-														<input type="number" value="{{ $inputer->implode('total_price') }}" name="total_price" id="total_price" class="form-control" placeholder="Total Price" readonly/>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Auto-Filled Total</span>
 												</div>
+												{{-- <div class="d-flex justify-content-end">
+													<a href="javascript:;" data-repeater-create class="btn btn-sm font-weight-bolder btn-light-primary" style="width: 90px;">
+														<i class="la la-plus"></i>Add
+													</a>
+												</div> --}}
 											</div>
+
+
 										 	<div class="separator separator-dashed my-10"></div>
 										 	<div class="form-group row">
 
@@ -326,7 +371,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Admin Cost</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Shipping Admin" id="shipping_admin" name="shipping_admin" value="0" readonly>
+														<input type="number" class="form-control" placeholder="Shipping Promotion" id="shipping_promotion" name="shipping_promotion" value="{{ $inputer->implode('shipping_promotion') ?? 0 }}" readonly>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -334,7 +379,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Admin Cost</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Promotion Admin" id="promotion_admin" name="promotion_admin" value="0">
+														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $inputer->implode('shipping_price') ?? '' }}">
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Input Promotion</span>
@@ -342,7 +387,7 @@
                                                 <label class="col-lg-1 col-form-label text-lg-right mt-8">Total Admin Cost</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Total Admin" id="total_admin" name="total_admin" value="0" readonly>
+														<input type="text" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $inputer->implode('shipping_price') ?? '' }}" readonly>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -406,15 +451,63 @@
 		</div>
 		<!--end::Root-->
 		<!--end::Main-->
-		<script>var hostUrl = "assets/";</script>
+		<script>
+			var hostUrl = "../assets/";
+		</script>
 		<!--begin::Javascript-->
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="../assets/plugins/global/plugins.bundle.js"></script>
 		<script src="../assets/js/scripts.bundle.js"></script>
 		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Vendors Javascript(used by this page)-->
+		<script src="../assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+		<script src="../assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<!--end::Page Vendors Javascript-->
 		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src="../assets/js/custom/apps/customers/list/export.js"></script>
+		<script src="../assets/js/custom/apps/customers/list/leads.js"></script>
+		<script src="../assets/js/custom/apps/customers/add.js"></script>
 		<script src="../assets/js/custom/widgets.js"></script>
-		<!--end::Page Custom Javascript-->
+		<script src="../assets/js/custom/apps/chat/chat.js"></script>
+		<script src="../assets/js/custom/modals/create-app.js"></script>
+		<script src="../assets/js/custom/modals/upgrade-plan.js"></script>
+		<script src="../assets/js/custom/intro.js"></script>
+		<script src="../assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+		<script>
+			// Class definition
+			var KTFormRepeater = function() {
+
+			// Private functions
+			var demo1 = function() {
+				$('#kt_repeater_1').repeater({
+					initEmpty: false,
+
+					defaultValues: {
+						'text-input': 'foo'
+					},
+
+					show: function () {
+						$(this).slideDown();
+					},
+
+					hide: function (deleteElement) {
+						$(this).slideUp(deleteElement);
+					}
+				});
+			}
+
+			return {
+				// public functions
+				init: function() {
+					demo1();
+				}
+			};
+			}();
+
+			jQuery(document).ready(function() {
+			KTFormRepeater.init();
+			});
+		</script>
 		<script>
 			$(document).ready(function(){
 				$('#province').on('change', function(){
@@ -490,7 +583,7 @@
 				});
 			});
 		</script> --}}
-        {{--  <script>
+        <script>
 			$(function(){
 				$('#quantity, #price, #promotion_id').on('change', function(){
 					var quantity = $('#quantity').val();
@@ -518,7 +611,7 @@
 					}
 				});
 			});
-		</script>  --}}
+		</script>
 		<script>
 			$(function(){
 				$('#weight, #warehouse, #province, #city, #subdistrict, #courier, #shipping_promotion').on('change', function(){
@@ -587,7 +680,7 @@
 		<script>
 			$(function(){
 				$('#clipboard').hide();
-				$('#payment_method, #courier, #quantity, #promotion_id, #province, #promotion_admin').on('change', function(){
+				$('#payment_method, #courier, #promotion_id, #province').on('change', function(){
 					var name = $('#name').val();
 					var address = $('#address').val();
 					var province = $('#province').find(":selected").text();
@@ -599,13 +692,11 @@
 					var promotion_id = $('#promotion_id').val();
 					var shipping_price = $('#shipping_price').val();
 					var payment_method = $('#payment_method').val();
-					var promotion_admin = $('#promotion_admin').val();
 					var courier = $('#courier').val();
 					var product = $('#product').text();
 					var province_id = $('#province').find(":selected").val();
 					var ongkir = parseInt(shipping_price);
 					var total_price = (parseInt(price) * parseInt(quantity));
-					{{--  console.log(promotion_admin);  --}}
 
 					if(promotion_id)
                     {
@@ -640,60 +731,46 @@
 									var promo_product = 0;
 								}else if(product_promotion_percent != 0 && product_promotion == 0){
 									var promo_product = total_price*product_promotion_percent/100;
-									$('#total_price').val(parseInt(total_price-promo_product));
 								}else if(product_promotion_percent == 0 && product_promotion != 0){
 									var promo_product = product_promotion;
-									$('#total_price').val(parseInt(total_price-promo_product));
 								}else{
 									if ((total_price*product_promotion_percent/100) > product_promotion){
 										var promo_product = product_promotion;
-										$('#total_price').val(parseInt(total_price-promo_product));
 									}
 									else{
 										var promo_product = total_price*product_promotion_percent/100;
-										$('#total_price').val(parseInt(total_price-promo_product));
 									}
 								}
 
 								if(courier === 'Ninja' && payment_method === 'COD'){
-									var admin = (total_price - promo_product + ongkir) * 0.025;
+									var admin = (total_price + ongkir) * 0.025;
 									admin = Math.ceil(admin / 1000) * 1000;
-									$('#shipping_admin').val(admin);
-									
-									var total_admin = admin - parseInt(promotion_admin);
-									$('#total_admin').val(parseInt(total_admin));
-									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
-									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
+									var total_payment = total_price + ongkir + admin - promo_ongkir - promo_product;
+									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
 								}
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
-									var admin = (total_price - promo_product + ongkir)*0.030;
+									var admin = (total_price + ongkir)*0.030;
 									if(admin < 2000){
 										admin = 2000;
 									}
 									admin = Math.ceil(admin / 1000) * 1000;
-									$('#shipping_admin').val(admin);
-									
-									var total_admin = admin - parseInt(promotion_admin);
-									$('#total_admin').val(parseInt(total_admin));
-									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
-									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
+									var total_payment = total_price + ongkir + admin - promo_ongkir - promo_product;
+									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
                                 }
                                 else if(courier === 'JNT' && payment_method === 'COD'){
-									var admin = (total_price - promo_product + ongkir)*0.030;
+									var admin = (total_price + ongkir)*0.030;
 									if(admin < 5000){
 										admin = 5000;
 									}
 									admin = Math.ceil(admin / 1000) * 1000;
-									$('#shipping_admin').val(admin);
-									
-									var total_admin = admin - parseInt(promotion_admin);
-									$('#total_admin').val(parseInt(total_admin));
-									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
-									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD)= ${total_payment}`;
+									var total_payment = total_price + ongkir + admin - promo_ongkir - promo_product;
+									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
                                 }
                                 else if(payment_method == "Transfer"){
 									var total_payment = total_price + ongkir - promo_ongkir - promo_product;
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) = ${total_payment}`;
+								}else{
+									alert('Courier not available for COD');
 								}
 								console.log(total_payment);
 								$('#total_payment').val(parseInt(total_payment));
@@ -702,16 +779,11 @@
 						});
 					}
                     else{
-						$('#total_price').val(total_price);
 						if(courier === 'Ninja' && payment_method === 'COD'){
                             var admin = (total_price + ongkir)*0.025;
 							admin = Math.ceil(admin / 1000) * 1000;
-							$('#shipping_admin').val(admin);
-							
-							var total_admin = admin - parseInt(promotion_admin);
-							$('#total_admin').val(parseInt(total_admin));
-							var total_payment = total_price + ongkir + total_admin;
-							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
+							var total_payment = total_price + ongkir + admin;
+							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
 						}
                         else if(courier === 'Sicepat' && payment_method === 'COD'){
                             var admin = (total_price + ongkir)*0.030;
@@ -719,12 +791,8 @@
                                 admin = 2000;
                             }
 							admin = Math.ceil(admin / 1000) * 1000;
-							$('#shipping_admin').val(admin);
-							
-							var total_admin = admin - parseInt(promotion_admin);
-							$('#total_admin').val(parseInt(total_admin));
-                            var total_payment = total_price + ongkir + total_admin;
-							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
+                            var total_payment = total_price + ongkir + admin;
+							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
 						}
                         else if(courier === 'JNT' && payment_method === 'COD'){
                             var admin = (total_price + ongkir)*0.030;
@@ -732,21 +800,19 @@
                                 admin = 5000;
                             }
 							admin = Math.ceil(admin / 1000) * 1000;
-							$('#shipping_admin').val(admin);
-							
-							var total_admin = admin - parseInt(promotion_admin);
-							$('#total_admin').val(parseInt(total_admin));
-                            var total_payment = total_price + ongkir + total_admin;
-							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
+                            var total_payment = total_price + ongkir + admin;
+							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
 						}
                         else if(payment_method == "Transfer"){
                             var total_payment = total_price + ongkir;
 							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) = ${total_payment}`;
                         }
+						else{
+							alert('Courier not available for COD');
+						}
 						console.log(total_payment);
 						$('#total_payment').val(parseInt(total_payment));
 					}
-					console.log(text);
 					$("#clipboard").val(text);
 				});
 			});
