@@ -78,7 +78,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Label-->
 									<div class="stepper-label">
 										<h3 class="stepper-title">Account Info</h3>
-										<div class="stepper-desc fw-bold">Setup Your Account Settings</div>
+										<div class="stepper-desc fw-bold">Setup Your Account</div>
 									</div>
 									<!--end::Label-->
 								</div>
@@ -97,7 +97,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Label-->
 									<div class="stepper-label">
 										<h3 class="stepper-title">Payment</h3>
-										<div class="stepper-desc fw-bold">Your Business Related Info</div>
+										<div class="stepper-desc fw-bold">Payment your account</div>
 									</div>
 									<!--end::Label-->
 								</div>
@@ -116,7 +116,7 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Label-->
 									<div class="stepper-label">
 										<h3 class="stepper-title">Completed</h3>
-										<div class="stepper-desc fw-bold">Set Your Payment Methods</div>
+										<div class="stepper-desc fw-bold">Completed</div>
 									</div>
 									<!--end::Label-->
 								</div>
@@ -139,23 +139,23 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Wrapper-->
 						<div class="w-lg-700px p-10 p-lg-15 mx-auto">
 							<!--begin::Form-->
-							<form action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data" class="my-auto pb-5" novalidate="novalidate" id="kt_create_account_form">
-								<!--begin::Step 1-->
+                            <form action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data">
+                                <!--begin::Step 1-->
                                 <div class="current" data-kt-stepper-element="content">
                                     <!--begin::Wrapper-->
                                     <div class="w-100">
                                         <!--begin::Heading-->
-                                        <div class="pb-10 pb-lg-15">
-                                            <!--begin::Title-->
-                                            <h2 class="fw-bolder d-flex align-items-center text-dark">Choose Account Type
-                                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Billing is issued based on your selected account type"></i></h2>
-                                            <!--end::Title-->
-                                            <!--begin::Notice-->
-                                            <div class="text-muted fw-bold fs-6">If you need more info, please check out
-                                            <a href="#" class="link-primary fw-bolder">Help Page</a>.</div>
-                                            <!--end::Notice-->
-                                        </div>
-                                        <!--end::Heading-->
+										<div class="pb-10 pb-lg-15">
+											<!--begin::Title-->
+											<h2 class="fw-bolder d-flex align-items-center text-dark">Choose Account Type
+											<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Billing is issued based on your selected account type"></i></h2>
+											<!--end::Title-->
+											<!--begin::Notice-->
+											<div class="text-muted fw-bold fs-6">If you need more info, please check out
+											<a href="#" class="link-primary fw-bolder">Help Page</a>.</div>
+											<!--end::Notice-->
+										</div>
+										<!--end::Heading-->
                                         <!--begin::Input group-->
                                         <div class="fv-row">
                                             <!--begin::Row-->
@@ -165,7 +165,6 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin::Option-->
                                                     <input type="radio" class="btn-check" name="paket_id" value="1" checked="checked" id="kt_create_account_form_account_type_personal" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_personal">
-
                                                         <!--begin::Info-->
                                                         <span class="d-block fw-bold text-start">
                                                             <span class="text-dark fw-bolder d-block fs-4 mb-2">Entrepreneur Plan</span>
@@ -196,7 +195,7 @@ License: For each use you must have a valid license purchased only from above li
                                                     <!--begin::Option-->
                                                     <input type="radio" class="btn-check" name="paket_id" value="3" id="kt_create_account_form_account_type_corporate" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center" for="kt_create_account_form_account_type_corporate">
-
+    
                                                         <!--begin::Info-->
                                                         <span class="d-block fw-bold text-start">
                                                             <span class="text-dark fw-bolder d-block fs-4 mb-2">Corporate Plan</span>
@@ -215,7 +214,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--end::Wrapper-->
                                 </div>
                                 <!--end::Step 1-->
-								<!--begin::Step 2-->
+    
+                                <!--begin::Step 2-->
                                 <div data-kt-stepper-element="content">
                                     <!--begin::Wrapper-->
                                     <div class="w-100">
@@ -236,7 +236,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <label class="form-label required">Name</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input name="name" type="text" value="Name" class="form-control border border-secondary form-control-lg form-control-solid @error('name') is-invalid @enderror"/>
+                                            <input name="name" type="text" value="Your Name" class="form-control border border-secondary form-control-lg form-control-solid @error('name') is-invalid @enderror"/>
                                             @error('name')
                                                 <div class="form-control alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -251,7 +251,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input name="username" value="Username" type="text"  class="form-control border border-secondary form-control-lg form-control-solid @error('username') is-invalid @enderror"/>
+                                            <input name="username" value="Your Username" type="text"  class="form-control border border-secondary form-control-lg form-control-solid @error('username') is-invalid @enderror"/>
                                             @error('username')
                                                 <div class="form-control alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -266,7 +266,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input name="password" type="password" value="Password" class="form-control border border-secondary form-control-lg form-control-solid @error('password') is-invalid @enderror" />
+                                            <input name="password" type="password" value="password" class="form-control border border-secondary form-control-lg form-control-solid @error('password') is-invalid @enderror" />
                                             @error('password')
                                                 <div class="form-control alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -279,7 +279,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <label class="fs-6 fw-bold form-label required">Email</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input name="email" value="example@example.com" type="text"  class="form-control border border-secondary form-control-lg form-control-solid @error('email') is-invalid @enderror"/>
+                                            <input name="email" value="Your Email" type="text"  class="form-control border border-secondary form-control-lg form-control-solid @error('email') is-invalid @enderror"/>
                                             @error('email')
                                                 <div class="form-control alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -294,7 +294,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input name="phone" value="081245527***" type="text" class="form-control border border-secondary form-control-lg form-control-solid @error('phone') is-invalid @enderror"/>
+                                            <input name="phone" value="Your Phone Number" type="text" class="form-control border border-secondary form-control-lg form-control-solid @error('phone') is-invalid @enderror"/>
                                             @error('phone')
                                                 <div class="form-control alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -305,8 +305,8 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--end::Wrapper-->
                                 </div>
                                 <!--end::Step 2-->
-								<!--begin::Step 3-->
-								<div data-kt-stepper-element="content">
+                                <!--begin::Step 4-->
+                                <div data-kt-stepper-element="content">
                                     <!--begin::Wrapper-->
                                     <div class="w-100">
                                         <!--begin::Heading-->
@@ -330,16 +330,16 @@ License: For each use you must have a valid license purchased only from above li
                                                 @enderror
                                                 <!--end::Input-->
                                             </div>
-
+    
                                             <!--end::Notice-->
                                         </div>
                                         <!--end::Heading-->
                                     </div>
                                     <!--end::Wrapper-->
                                 </div>
-								<!--end::Step 3-->
-								<!--begin::Step 4-->
-								<div data-kt-stepper-element="content">
+                                <!--end::Step 4-->
+                                <!--begin::Step 5-->
+                                <div data-kt-stepper-element="content">
                                     <!--begin::Wrapper-->
                                     <div class="w-100">
                                         <!--begin::Heading-->
@@ -362,48 +362,55 @@ License: For each use you must have a valid license purchased only from above li
                                     </div>
                                     <!--end::Wrapper-->
                                 </div>
-								<!--end::Step 4-->
-								<!--begin::Actions-->
-								<div class="d-flex flex-stack pt-15">
-									<div class="mr-2">
-										<button type="button" class="btn btn-lg btn-light-primary me-3" data-kt-stepper-action="previous">
-										<!--begin::Svg Icon | path: icons/duotune/arrows/arr063.svg-->
-										<span class="svg-icon svg-icon-4 me-1">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-												<rect opacity="0.5" x="6" y="11" width="13" height="2" rx="1" fill="black" />
-												<path d="M8.56569 11.4343L12.75 7.25C13.1642 6.83579 13.1642 6.16421 12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75L5.70711 11.2929C5.31658 11.6834 5.31658 12.3166 5.70711 12.7071L11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25C13.1642 17.8358 13.1642 17.1642 12.75 16.75L8.56569 12.5657C8.25327 12.2533 8.25327 11.7467 8.56569 11.4343Z" fill="black" />
-											</svg>
-										</span>
-										<!--end::Svg Icon-->Previous</button>
-									</div>
-									<div>
-										<button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="submit">
-											<span class="indicator-label">Submit
-											<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-											<span class="svg-icon svg-icon-4 ms-2">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-													<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black" />
-													<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black" />
-												</svg>
-											</span>
-											<!--end::Svg Icon--></span>
-											<span class="indicator-progress">Please wait...
-											<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-										</button>
-										<button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="next">Continue
-										<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-										<span class="svg-icon svg-icon-4 ms-1">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-												<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black" />
-												<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black" />
-											</svg>
-										</span>
-										<!--end::Svg Icon--></button>
-									</div>
-								</div>
-								<!--end::Actions-->
-							</form>
-							<!--end::Form-->
+                                <!--end::Step 5-->
+                                <!--begin::Actions-->
+                                <div class="d-flex flex-stack pt-15">
+                                    <!--begin::Wrapper-->
+                                    <div class="mr-2">
+                                        <button type="button" class="btn btn-lg btn-light-primary me-3" data-kt-stepper-action="previous">
+                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr063.svg-->
+                                        <span class="svg-icon svg-icon-4 me-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <rect opacity="0.5" x="6" y="11" width="13" height="2" rx="1" fill="black" />
+                                                <path d="M8.56569 11.4343L12.75 7.25C13.1642 6.83579 13.1642 6.16421 12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75L5.70711 11.2929C5.31658 11.6834 5.31658 12.3166 5.70711 12.7071L11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25C13.1642 17.8358 13.1642 17.1642 12.75 16.75L8.56569 12.5657C8.25327 12.2533 8.25327 11.7467 8.56569 11.4343Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->Back</button>
+                                    </div>
+                                    <!--end::Wrapper-->
+                                    <!--begin::Wrapper-->
+                                    <div>
+    
+                                        {{-- <button type="button" class="btn btn-lg btn-primary me-3" data-kt-stepper-action="submit">
+                                            <span class="indicator-label">Submit
+                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                            <span class="svg-icon svg-icon-3 ms-2 me-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black" />
+                                                    <path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black" />
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon--></span>
+                                            <span class="indicator-progress">Please wait...
+                                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                        </button> --}}
+                                        <button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="next">Continue
+                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+                                        <span class="svg-icon svg-icon-4 ms-1 me-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black" />
+                                                <path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon--></button>
+                                    </div>
+                                    {{ csrf_field() }}
+                                    <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Submit" data-kt-stepper-action="submit">
+                                    <!--end::Wrapper-->
+                                </div>
+                                <!--end::Actions-->
+                            </form>
+                            <!--end::Form-->
 						</div>
 						<!--end::Wrapper-->
 					</div>
