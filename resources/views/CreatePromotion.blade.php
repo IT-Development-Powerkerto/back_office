@@ -102,11 +102,10 @@
                                             <div class="form-group mt-5">
                                                 <label for="inputProgress" class="col-form-label">Promotion Type</label>
                                                 <div class="dropdown" required>
-                                                    <select name="promotion_type" id="promotion_type" class="form-control">
-                                                        <option hidden>Promotion Type</option>
+                                                    <select name="promotion_type" id="promotion_type" class="form-control" onchange="promo_type()">
                                                         <option value="Product Price" required>Product Price</option>
                                                         <option value="Shipping Cost" required>Shipping Cost</option>
-                                                        <option value="Product Price & Shipping Cost" required>Product & Shipping Cost</option>
+                                                        <option value="Admin Cost" required>Admin Cost</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -127,7 +126,7 @@
                                                 <input type="text" class="form-control form-control" name="promotion_name" id="promotion_name" placeholder="Enter Promotion name" required/>
                                                 <span class="form-text text-muted">Please enter name promotion with the rules ex: Generos Subsidi Ongkir Min. Belanja 120rb</span>
                                             </div>
-                                            <div class="form-group mt-5">
+                                            <div class="form-group mt-5" id="promotion_product">
                                                 <label class="col-form-label">Promotion Product Price</label>
 												<span class="form-text text-muted"><a href="#" data-bs-toggle="modal" data-bs-target="#modal-help-product">help</a></span>
 												<div class="modal fade" tabindex="-1" id="modal-help-product">
@@ -169,7 +168,7 @@
 																		<li class="fw-bold mt-2">Fixed promo = 60.000 </li>
 																		<li class="fw-bold my-2">Precentage promo = 50% -> 100.000*50%= 50.000 (fixed promotion > precentage promotion) </li>
 																		<li class="fw-bold">Product price - precentage promotion = 100.000 - 50.000 = 50.000</li>
-																	</ol>	
+																	</ol>
 																</ol>
 															</div>
 														</div>
@@ -182,7 +181,7 @@
                                                     <input type="number" min="0" max="100" value="0" name="promotion_product_percent" id="promotion_product_percent" class="form-control form-control" placeholder="0" required/>
                                                 </div>
                                             </div>
-                                            <div class="form-group mt-5">
+                                            <div class="form-group mt-5" id="promotion_shippment" style="display: none">
                                                 <label class="col-form-label">Promotion Shippment Cost</label>
 												<span class="form-text text-muted"><a href="#" data-bs-toggle="modal" data-bs-target="#modal-help-shippment">help</a></span>
 												<div class="modal fade" tabindex="-1" id="modal-help-shippment">
@@ -224,7 +223,7 @@
 																		<li class="fw-bold mt-2">Fixed promo = 20.000 </li>
 																		<li class="fw-bold my-2">Precentage promo = 50% -> 30.000*50%= 15.000 (fixed promotion > precentage promotion)</li>
 																		<li class="fw-bold">Shipment price - precentage promotion = 30.000 - 20.000 = 10.000</li>
-																	</ol>	
+																	</ol>
 																</ol>
 															</div>
 														</div>
@@ -235,6 +234,61 @@
                                                     <input type="text" min="0" value="0" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate(), numberFormat($this.value)" class="form-control form-controll me-3" placeholder="0" required/>
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">%</span></div>
                                                     <input type="number" min="0" value="0" max="100" name="promotion_shippment_percent" id="promotion_shippment_percent" onchange="calculate(), numberFormat($this.value)" class="form-control form-control" placeholder="0" required/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mt-5" id="promotion_admin" style="display: none">
+                                                <label class="col-form-label">Promotion Admin Cost</label>
+												<span class="form-text text-muted"><a href="#" data-bs-toggle="modal" data-bs-target="#modal-help-admin">help</a></span>
+												<div class="modal fade" tabindex="-1" id="modal-help-admin">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title">Promotion Admin Rules</h5>
+																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body">
+																<ol>
+																	<p class="fw-bolder fs-3 ms-n3">There are 3 possibilities that happen</p>
+																	<li class="fw-bolder">If you only fill the fixed promotion thenshipment cost - fixed promotion</li>
+																	<br>
+																	<li class="fw-bolder">If you only fill precentage promotion then shipment cost - precentage promotion</li>
+																		<ol>
+																			<p class="fw-bold fs-4 mt-2 ms-n3">	Example : </p>
+																			<li class="fw-bold ">Shipment cost = 20.000 </li>
+																			<li class="fw-bold my-2">Precentage promo = 10% -> 20.000*10%= 2.000</li>
+																			<li class="fw-bold mb-5">Shipment cost - precentage promotion = 20.000 - 2.000 = 18.00</li>
+																		</ol>
+																	<li class="fw-bolder mb-3">if you fill both (fixed promotion & precentage promotion) there are 2 possibilities : </li>
+																	<ul>
+																		<li class="fw-bold">If fixed promotion > precentage promotion -> precentage promotion</li>
+																		<li class="fw-bold my-2">If fixed promotion < precentage promotion -> fixed promotion</li>
+																	</ul>
+																	<br>
+																	<p class="fw-bolder fs-3 ms-n3"> Example 1 : </p>
+																	<ol>
+																		<li class="fw-bold">Shipment cost = 30.000 </li>
+																		<li class="fw-bold mt-2">Fixed promo = 10.000 </li>
+																		<li class="fw-bold my-2">Precentage promo = 50% -> 30.000*50%= 15.000 (fixed promotion < precentage promotion)</li>
+																		<li class="fw-bold">Shipment price - fixed promotion = 30.000 - 10.000 = 20.000</li>
+																	</ol>
+																	<br>
+																	<p class="fw-bolder fs-3 ms-n3"> Example 2 : </p>
+																	<ol>
+																		<li class="fw-bold">Shipment cost = 30.000 </li>
+																		<li class="fw-bold mt-2">Fixed promo = 20.000 </li>
+																		<li class="fw-bold my-2">Precentage promo = 50% -> 30.000*50%= 15.000 (fixed promotion > precentage promotion)</li>
+																		<li class="fw-bold">Shipment price - precentage promotion = 30.000 - 20.000 = 10.000</li>
+																	</ol>
+																</ol>
+															</div>
+														</div>
+													</div>
+												</div>
+                                                <div class="input-group input-group-lg">
+                                                    <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
+                                                    <input type="text" min="0" value="0" name="promotion_admin_cost" id="promotion_admin_cost" onchange="calculate(), numberFormat($this.value)" class="form-control form-controll me-3" placeholder="0" required/>
+                                                    <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">%</span></div>
+                                                    <input type="number" min="0" value="0" max="100" name="promotion_admin_percent" id="promotion_admin_percent" onchange="calculate(), numberFormat($this.value)" class="form-control form-control" placeholder="0" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group mt-5">
@@ -284,39 +338,6 @@
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="../assets/js/custom/widgets.js"></script>
 		<!--end::Page Custom Javascript-->
-
-        <script>
-            $(document).ready(function() {
-                $('#event_id').on('change', function() {
-                    var eventId = $(this).val();
-                    if(eventId) {
-                        $.ajax({
-                            url: '/getEvent/'+eventId,
-                            type: "GET",
-                            data : {"_token":"{{ csrf_token() }}"},
-                            dataType: "json",
-                            success:function(data)
-                        });
-                    }
-                });
-            });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $('#product_id').on('change', function() {
-                    var productId = $(this).val();
-                    if(productId) {
-                        $.ajax({
-                            url: '/getProduct/'+productId,
-                            type: "GET",
-                            data : {"_token":"{{ csrf_token() }}"},
-                            dataType: "json",
-                            success:function(data)
-                        });
-                    }
-                });
-            });
-        </script>
         <script>
             $(function () {
                 var $src = $('#product_name'),
@@ -332,13 +353,34 @@
 
 				var product_price = parseInt(document.getElementById('promotion_product_price').value);
                 var shippment_cost = parseInt(document.getElementById('promotion_shippment_cost').value);
+                var admin_cost = parseInt(document.getElementById('promotion_admin_cost').value);
 
-				var total = product_price + shippment_cost;
+				var total = product_price + shippment_cost + admin_cost;
 
 				var total_promotion = document.getElementById('total_promotion');
 				total_promotion.value = total;
 			}
 		</script>
+        <script type="text/javascript">
+            function promo_type(){
+                var promo_type = document.getElementById('promotion_type').value;
+                if (promo_type == 'Product Price'){
+                    document.getElementById('promotion_product').style.display = 'block';
+                    document.getElementById('promotion_shippment').style.display = 'none';
+                    document.getElementById('promotion_admin').style.display = 'none';
+                }
+                else if (promo_type == 'Shipping Cost'){
+                    document.getElementById('promotion_product').style.display = 'none';
+                    document.getElementById('promotion_shippment').style.display = 'block';
+                    document.getElementById('promotion_admin').style.display = 'none';
+                }
+                else {
+                    document.getElementById('promotion_product').style.display = 'none';
+                    document.getElementById('promotion_shippment').style.display = 'none';
+                    document.getElementById('promotion_admin').style.display = 'block';
+                }
+            }
+        </script>
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
