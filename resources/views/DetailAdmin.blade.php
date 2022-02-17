@@ -63,7 +63,7 @@
 									@endif
 								</div>
 
-								@include('layout/topbar/partials/_user-menuSA')
+								@include('layout/topbar/partials/_user-menu')
 
 								<!--end::Menu wrapper-->
 							</div>

@@ -1,6 +1,6 @@
 
 									<!--begin::Tables Widget 9-->
-									<div class="card card-xxl-stretch mb-5 mb-xl-8 scroll scroll-pull shadow-sm border" data-scroll="true" data-wheel-propagation="true">
+									<div class="card card-xxl-stretch mb-5 mb-xl-8">
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column mt-n3">
@@ -9,7 +9,7 @@
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
-										<div class="card-body py-3">
+										<div class="card-body py-3 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
 											<!--begin::Table container-->
 											<div class="table-responsive">
 												<!--begin::Table-->
