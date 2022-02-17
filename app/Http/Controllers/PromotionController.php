@@ -19,10 +19,11 @@ class PromotionController extends Controller
     {
         $product = Product::where('admin_id', auth()->user()->admin_id)->get();
         $promotion = Promotion::where('admin_id', auth()->user()->admin_id)->get();
+        $promotion_cs = Promotion::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->get();
         if(auth()->user()->role_id==1){
             return view('CreatePromotion')->with('product', $product)->with('promotion', $promotion);
         }elseif (auth()->user()->role_id==5){
-            return view('CreatePromotionCS')->with('product', $product)->with('promotion', $promotion);
+            return view('CreatePromotionCS')->with('product', $product)->with('promotion', $promotion_cs);
         }
     }
 
@@ -87,7 +88,12 @@ class PromotionController extends Controller
     {
         $product = Product::where('admin_id', auth()->user()->admin_id)->get();
         $promotion = Promotion::where('admin_id', auth()->user()->admin_id)->whereId($id)->get();
-        return view('EditingPromotion', ['promotion' => $promotion])->with('product', $product);
+        if(auth()->user()->role_id == 1){
+            return view('EditingPromotion', ['promotion' => $promotion])->with('product', $product);
+        }
+        elseif(auth()->user()->role_id == 5){
+            return view('EditingPromotionCS', ['promotion' => $promotion])->with('product', $product);
+        }
     }
 
     /**
@@ -99,18 +105,20 @@ class PromotionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $total_promotion = $request->promotion_product_price + $request->promotion_shippment_cost;
+        $total_promotion = $request->promotion_product_price + $request->promotion_shippment_cost + $request->promotion_admin_cost;
         DB::table('promotions')->where('id', $id)->update([
-            'admin_id'                   => auth()->user()->admin_id,
-            'promotion_type'             => $request->promotion_type,
-            'product_name'               => $request->product_name,
-            'promotion_name'             => $request->promotion_name,
-            'promotion_product_price'    => $request->promotion_product_price,
-            'promotion_shippment_cost'   => $request->promotion_shippment_cost,
-            'promotion_admin_price'      => $request->promotion_admin_price,
-            'total_promotion'            => $total_promotion,
-            'created_at'                 => Carbon::now()->toDateTimeString(),
-            'updated_at'                 => Carbon::now()->toDateTimeString(),
+            'promotion_type'                => $request->promotion_type,
+            'product_name'                  => $request->product_name,
+            'promotion_name'                => $request->promotion_name,
+            'promotion_product_price'       => $request->promotion_product_price,
+            'promotion_product_percent'     => $request->promotion_product_percent,
+            'promotion_shippment_cost'      => $request->promotion_shippment_cost,
+            'promotion_shippment_percent'   => $request->promotion_shippment_percent,
+            'promotion_admin_cost'          => $request->promotion_admin_cost,
+            'promotion_admin_percent'       => $request->promotion_admin_percent,
+            'total_promotion'               => $total_promotion,
+            'created_at'                    => Carbon::now()->toDateTimeString(),
+            'updated_at'                    => Carbon::now()->toDateTimeString(),
         ]);
 
         return redirect('/promotion')->with('success','Successull! Promotion has been Edited!');

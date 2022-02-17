@@ -176,9 +176,9 @@
 												</div>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="number" min="0" value="0" name="promotion_product_price" id="promotion_product_price" onchange="calculate()" class="form-control form-control me-3	" placeholder="0" required/>
+                                                    <input type="number" min="0" value="0" name="promotion_product_price" id="promotion_product_price" onchange="calculate(), numberFormat($this.value)" class="form-control form-control me-3	" placeholder="0" required/>
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">%</span></div>
-                                                    <input type="number" min="0" max="100" value="0" name="promotion_product_percent" id="promotion_product_percent" class="form-control form-control" placeholder="0" required/>
+                                                    <input type="number" min="0" max="100" value="0" name="promotion_product_percent" id="promotion_product_percent" onchange="calculate(), numberFormat($this.value)" class="form-control form-control" placeholder="0" required/>
                                                 </div>
                                             </div>
                                             <div class="form-group mt-5" id="promotion_shippment" style="display: none">
@@ -231,7 +231,7 @@
 												</div>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" value="0" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate(), numberFormat($this.value)" class="form-control form-controll me-3" placeholder="0" required/>
+                                                    <input type="number" min="0" value="0" name="promotion_shippment_cost" id="promotion_shippment_cost" onchange="calculate(), numberFormat($this.value)" class="form-control form-controll me-3" placeholder="0" required/>
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">%</span></div>
                                                     <input type="number" min="0" value="0" max="100" name="promotion_shippment_percent" id="promotion_shippment_percent" onchange="calculate(), numberFormat($this.value)" class="form-control form-control" placeholder="0" required/>
                                                 </div>
@@ -286,7 +286,7 @@
 												</div>
                                                 <div class="input-group input-group-lg">
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">IDR</span></div>
-                                                    <input type="text" min="0" value="0" name="promotion_admin_cost" id="promotion_admin_cost" onchange="calculate(), numberFormat($this.value)" class="form-control form-controll me-3" placeholder="0" required/>
+                                                    <input type="number" min="0" value="0" name="promotion_admin_cost" id="promotion_admin_cost" onchange="calculate(), numberFormat($this.value)" class="form-control form-controll me-3" placeholder="0" required/>
                                                     <div class="input-group-prepend"><span class="input-group-text" style="font-size: 18px">%</span></div>
                                                     <input type="number" min="0" value="0" max="100" name="promotion_admin_percent" id="promotion_admin_percent" onchange="calculate(), numberFormat($this.value)" class="form-control form-control" placeholder="0" required/>
                                                 </div>
