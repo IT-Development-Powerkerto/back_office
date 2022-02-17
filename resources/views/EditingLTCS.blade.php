@@ -656,7 +656,7 @@
 								}
 
 								if(courier === 'Ninja' && payment_method === 'COD'){
-									var admin = (total_price - promo_product + ongkir) * 0.025;
+									var admin = (total_price - promo_product + ongkir - promo_ongkir) * 0.025;
 									admin = Math.ceil(admin / 1000) * 1000;
 									$('#shipping_admin').val(admin);
 									
@@ -666,7 +666,7 @@
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
 								}
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
-									var admin = (total_price - promo_product + ongkir)*0.030;
+									var admin = (total_price - promo_product + ongkir - promo_ongkir)*0.030;
 									if(admin < 2000){
 										admin = 2000;
 									}
@@ -679,7 +679,7 @@
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
                                 }
                                 else if(courier === 'JNT' && payment_method === 'COD'){
-									var admin = (total_price - promo_product + ongkir)*0.030;
+									var admin = (total_price - promo_product + ongkir - promo_ongkir)*0.030;
 									if(admin < 5000){
 										admin = 5000;
 									}
