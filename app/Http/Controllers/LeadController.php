@@ -18,6 +18,9 @@ use Maatwebsite\Excel\Excel as ExcelExcel;
 use Maatwebsite\Excel\Facades\Excel;
 use File;
 use App\Http\Resources\LeadResource;
+use App\Models\Operator;
+use App\Models\Product;
+use App\Models\User;
 
 class LeadController extends Controller
 {
@@ -331,7 +334,21 @@ class LeadController extends Controller
         // return $lead;
         DB::table('leads')->where('id', $lead)->update([
             'status_id' => 4,
-            'updated_at' => Carbon::now()
+            'updated_at' => Carbon::now()->toDateTimeString()
         ]);
+        DB::table('clients')->where('id', $lead)->update([
+            'updated_at'   => Carbon::now()->toDateTimeString(),
+        ]);
+        $user_id = DB::table('leads')->where('id', $lead)->where('deleted_at', null)->value('user_id');
+        // $phone = DB::table('users')->whereId($user_id)->value('phone');
+        $campaign_id = DB::table('leads')->where('id', $lead)->where('deleted_at', null)->value('campaign_id');
+        $client_id = DB::table('leads')->where('id', $lead)->where('deleted_at', null)->value('client_id');
+        $client_name = Client::where('id', $client_id)->where('deleted_at', null)->value('name');
+        $client_number = Client::where('id', $client_id)->where('deleted_at', null)->value('whatsapp');
+        $operator_name = Operator::where('campaign_id', $campaign_id)->where('deleted_at', null)->where('user_id', $user_id)->value('name');
+        $product_id = DB::table('leads')->where('id', $lead)->where('deleted_at', null)->value('product_id');
+        $product_name = Product::where('id', $product_id)->where('deleted_at', null)->value('name');
+        $FU_text = DB::table('campaigns')->where('id', $campaign_id)->where('deleted_at', null)->value('cs_to_customer');
+        return redirect('https://api.whatsapp.com/send/?phone='.$client_number.'&text='.rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($client_name, $client_number, $operator_name, $product_name), $FU_text)));
     }
 }
