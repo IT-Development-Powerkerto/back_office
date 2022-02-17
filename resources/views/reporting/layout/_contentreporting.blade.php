@@ -1,11 +1,11 @@
 <!--begin::Container-->
 <div id="kt_content_container" class="container-xxl" >
-	<div class="d-flex align-items-center justify-content-between mt-10">
+	<div class="d-flex align-items-center justify-content-between mt-10 rounded mt-10 py-3" style="background-color: #00509d;">
 		<div>
 			<!--begin::Menu-->
-			<button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-primary btn-active-color- border-0  mb-5" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" style="width: 160px">
+			<button type="button" class="btn btn-sm btn-icon btn-color-white btn-active-primary btn-active-primary border-0 ms-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" style="width: 160px">
 				<!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-				<span class="svg-icon svg-icon-primary svg-icon-2x">
+				<span class="svg-icon svg-icon-white text-white svg-icon-2x">
 					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 						<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 							<rect x="0" y="0" width="24" height="24"/>
@@ -127,7 +127,7 @@
 			
 			<!--end::Menu-->
 		</div>
-		<ul class="nav">
+		<ul class="nav me-3">
 			<li class="nav-item">
 				<a class="nav-link btn btn-sm btn-color-muted btn-active-color-primary btn-active-light active fw-bold fs-7 px-4 me-1"
 					href="#">Daily</a>
@@ -143,7 +143,7 @@
 		</ul>
 	</div>
 	<!--begin::Row-->
-	<div class="row gy-5 g-xl-12">
+	<div class="row gy-5 g-xl-12 mt-3">
 		<!--begin::Col-->
 		<div id="totalOmset" class="col-xl-6">
 
