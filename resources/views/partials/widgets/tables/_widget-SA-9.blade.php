@@ -14,7 +14,7 @@
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
-										<div class="card-body py-3">
+                                        <div class="card-body py-3 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
 											<!--begin::Table container-->
 											<div class="table-responsive">
 												<!--begin::Table-->
