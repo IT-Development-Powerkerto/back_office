@@ -660,7 +660,7 @@
 									admin = Math.ceil(admin / 1000) * 1000;
 									$('#shipping_admin').val(admin);
 									
-									var total_admin = admin - parseInt(promotion_admin);
+									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
 									$('#total_admin').val(parseInt(total_admin));
 									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
@@ -673,7 +673,7 @@
 									admin = Math.ceil(admin / 1000) * 1000;
 									$('#shipping_admin').val(admin);
 									
-									var total_admin = admin - parseInt(promotion_admin);
+									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
 									$('#total_admin').val(parseInt(total_admin));
 									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
@@ -686,22 +686,28 @@
 									admin = Math.ceil(admin / 1000) * 1000;
 									$('#shipping_admin').val(admin);
 									
-									var total_admin = admin - parseInt(promotion_admin);
+									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
 									$('#total_admin').val(parseInt(total_admin));
 									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD)= ${total_payment}`;
                                 }
                                 else if(payment_method == "Transfer"){
 									var total_payment = total_price + ongkir - promo_ongkir - promo_product;
+									$('#shipping_admin').val(0);
+									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
+									$('#total_admin').val(parseInt(total_admin));
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) = ${total_payment}`;
 								}
 								console.log(total_payment);
 								$('#total_payment').val(parseInt(total_payment));
-
+								console.log(text);
+								$("#clipboard").val(text);
 							}
 						});
 					}
                     else{
+						$('#product_promotion').val(0);
+						$('#shipping_promotion').val(0);
 						$('#total_price').val(total_price);
 						if(courier === 'Ninja' && payment_method === 'COD'){
                             var admin = (total_price + ongkir)*0.025;
@@ -721,7 +727,7 @@
 							admin = Math.ceil(admin / 1000) * 1000;
 							$('#shipping_admin').val(admin);
 							
-							var total_admin = admin - parseInt(promotion_admin);
+							var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
 							$('#total_admin').val(parseInt(total_admin));
                             var total_payment = total_price + ongkir + total_admin;
 							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
@@ -734,20 +740,23 @@
 							admin = Math.ceil(admin / 1000) * 1000;
 							$('#shipping_admin').val(admin);
 							
-							var total_admin = admin - parseInt(promotion_admin);
+							var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
 							$('#total_admin').val(parseInt(total_admin));
                             var total_payment = total_price + ongkir + total_admin;
 							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
 						}
                         else if(payment_method == "Transfer"){
                             var total_payment = total_price + ongkir;
+							$('#shipping_admin').val(0);
+							var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
+							$('#total_admin').val(parseInt(total_admin));
 							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) = ${total_payment}`;
                         }
 						console.log(total_payment);
 						$('#total_payment').val(parseInt(total_payment));
+						console.log(text);
+						$("#clipboard").val(text);
 					}
-					console.log(text);
-					$("#clipboard").val(text);
 				});
 			});
 		</script>
