@@ -1,12 +1,5 @@
 <!--begin::Toolbar wrapper-->
 <div class="d-flex align-items-stretch flex-shrink-0">
-	<!--begin::Search-->
-	<div class="d-flex align-items-stretch ms-1 ms-lg-3">
-
-		@include('layout/search/_base')
-
-	</div>
-	<!--end::Search-->
 	<!--begin::Activities-->
 	<div class="d-flex align-items-center ms-1 ms-lg-3">
 		<!--begin::Drawer toggle-->

@@ -150,9 +150,9 @@
 											</div>
 										 	<div class="separator separator-dashed my-10"></div>
 
-											<div id="kt_repeater_1">
-												<div id="kt_repeater_1" data-repeater-list="" >
-													<div class="form-group row mt-3" data-repeater-item>
+											{{--  <div id="kt_repeater_1">  --}}
+												{{--  <div id="kt_repeater_1" data-repeater-list="" >  --}}
+													<div class="form-group row mt-3">
 														<label class="col-lg-1 col-form-label text-lg-right">Product</label>
 														<div class="col-lg-3">
 															<div class="input-group">
@@ -180,11 +180,11 @@
 														<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Product</label>
 														<div class="col-lg-3 mt-8">
 															<div class="input-group">
-																<select class="form-control" name="promotion_id" id="promotion_id">
+																<select class="form-control" name="product_promotion_id" id="product_promotion_id">
 																	<option value=""hidden>Select Promotion</option>
 																	<option value="">Not Have Promotion</option>
-																	@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
-																	<option value="{{$promotion->id}}" {{ $inputer->implode('promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@foreach ($product_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('product_promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
 																	@endforeach
 																</select>
 																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
@@ -194,11 +194,11 @@
 														<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Shipping</label>
 														<div class="col-lg-3 mt-8">
 															<div class="input-group">
-																<select class="form-control" name="promotion_id" id="promotion_id">
+																<select class="form-control" name="shipping_promotion_id" id="shipping_promotion_id">
 																	<option value=""hidden>Select Promotion</option>
 																	<option value="">Not Have Promotion</option>
-																	@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
-																	<option value="{{$promotion->id}}" {{ $inputer->implode('promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@foreach ($shipping_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" >{{ $promotion->promotion_name }}</option>
 																	@endforeach
 																</select>
 																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
@@ -208,11 +208,11 @@
 														<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Admin</label>
 														<div class="col-lg-3 mt-8">
 															<div class="input-group">
-																<select class="form-control" name="promotion_id" id="promotion_id">
+																<select class="form-control" name="admin_promotion_id" id="admin_promotion_id">
 																	<option value=""hidden>Select Promotion</option>
 																	<option value="">Not Have Promotion</option>
-																	@foreach ($promotion->where('product_name', $lead->implode('product_name')) as $promotion)
-																	<option value="{{$promotion->id}}" {{ $inputer->implode('promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@foreach ($admin_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('admin_promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
 																	@endforeach
 																</select>
 																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
@@ -241,13 +241,13 @@
 															</a>
 														</div> --}}
 													</div>
-												</div>
+												{{--  </div>  --}}
 												{{-- <div class="d-flex justify-content-end">
 													<a href="javascript:;" data-repeater-create class="btn btn-sm font-weight-bolder btn-light-primary" style="width: 90px;">
 														<i class="la la-plus"></i>Add
 													</a>
 												</div> --}}
-											</div>
+											{{--  </div>  --}}
 
 
 										 	<div class="separator separator-dashed my-10"></div>
@@ -371,7 +371,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Admin Cost</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Shipping Promotion" id="shipping_promotion" name="shipping_promotion" value="{{ $inputer->implode('shipping_promotion') ?? 0 }}" readonly>
+														<input type="number" class="form-control" placeholder="Shipping Admin" id="shipping_admin" name="shipping_admin" value="0" readonly>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -379,7 +379,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Admin Cost</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $inputer->implode('shipping_price') ?? '' }}">
+														<input type="number" class="form-control" placeholder="Promotion Admin" id="promotion_admin" name="promotion_admin" value="0">
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Input Promotion</span>
@@ -387,7 +387,7 @@
                                                 <label class="col-lg-1 col-form-label text-lg-right mt-8">Total Admin Cost</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="text" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $inputer->implode('shipping_price') ?? '' }}" readonly>
+														<input type="number" class="form-control" placeholder="Total Admin" id="total_admin" name="total_admin" value="0" readonly>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
@@ -583,7 +583,7 @@
 				});
 			});
 		</script> --}}
-        <script>
+        {{--  <script>
 			$(function(){
 				$('#quantity, #price, #promotion_id').on('change', function(){
 					var quantity = $('#quantity').val();
@@ -611,7 +611,7 @@
 					}
 				});
 			});
-		</script>
+		</script>  --}}
 		<script>
 			$(function(){
 				$('#weight, #warehouse, #province, #city, #subdistrict, #courier, #shipping_promotion').on('change', function(){
@@ -680,7 +680,7 @@
 		<script>
 			$(function(){
 				$('#clipboard').hide();
-				$('#payment_method, #courier, #promotion_id, #province').on('change', function(){
+				$('#payment_method, #courier, #quantity, #promotion_id, #province, #promotion_admin').on('change', function(){
 					var name = $('#name').val();
 					var address = $('#address').val();
 					var province = $('#province').find(":selected").text();
@@ -692,11 +692,13 @@
 					var promotion_id = $('#promotion_id').val();
 					var shipping_price = $('#shipping_price').val();
 					var payment_method = $('#payment_method').val();
+					var promotion_admin = $('#promotion_admin').val();
 					var courier = $('#courier').val();
 					var product = $('#product').text();
 					var province_id = $('#province').find(":selected").val();
 					var ongkir = parseInt(shipping_price);
 					var total_price = (parseInt(price) * parseInt(quantity));
+					{{--  console.log(promotion_admin);  --}}
 
 					if(promotion_id)
                     {
@@ -731,59 +733,84 @@
 									var promo_product = 0;
 								}else if(product_promotion_percent != 0 && product_promotion == 0){
 									var promo_product = total_price*product_promotion_percent/100;
+									$('#total_price').val(parseInt(total_price-promo_product));
 								}else if(product_promotion_percent == 0 && product_promotion != 0){
 									var promo_product = product_promotion;
+									$('#total_price').val(parseInt(total_price-promo_product));
 								}else{
 									if ((total_price*product_promotion_percent/100) > product_promotion){
 										var promo_product = product_promotion;
+										$('#total_price').val(parseInt(total_price-promo_product));
 									}
 									else{
 										var promo_product = total_price*product_promotion_percent/100;
+										$('#total_price').val(parseInt(total_price-promo_product));
 									}
 								}
 
 								if(courier === 'Ninja' && payment_method === 'COD'){
-									var admin = (total_price + ongkir) * 0.025;
+									var admin = (total_price - promo_product + ongkir - promo_ongkir) * 0.025;
 									admin = Math.ceil(admin / 1000) * 1000;
-									var total_payment = total_price + ongkir + admin - promo_ongkir - promo_product;
-									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
+									$('#shipping_admin').val(admin);
+									
+									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
+									$('#total_admin').val(parseInt(total_admin));
+									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
+									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
 								}
                                 else if(courier === 'Sicepat' && payment_method === 'COD'){
-									var admin = (total_price + ongkir)*0.030;
+									var admin = (total_price - promo_product + ongkir - promo_ongkir)*0.030;
 									if(admin < 2000){
 										admin = 2000;
 									}
 									admin = Math.ceil(admin / 1000) * 1000;
-									var total_payment = total_price + ongkir + admin - promo_ongkir - promo_product;
-									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
+									$('#shipping_admin').val(admin);
+									
+									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
+									$('#total_admin').val(parseInt(total_admin));
+									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
+									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
                                 }
                                 else if(courier === 'JNT' && payment_method === 'COD'){
-									var admin = (total_price + ongkir)*0.030;
+									var admin = (total_price - promo_product + ongkir - promo_ongkir)*0.030;
 									if(admin < 5000){
 										admin = 5000;
 									}
 									admin = Math.ceil(admin / 1000) * 1000;
-									var total_payment = total_price + ongkir + admin - promo_ongkir - promo_product;
-									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
+									$('#shipping_admin').val(admin);
+									
+									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
+									$('#total_admin').val(parseInt(total_admin));
+									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
+									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD)= ${total_payment}`;
                                 }
                                 else if(payment_method == "Transfer"){
 									var total_payment = total_price + ongkir - promo_ongkir - promo_product;
+									$('#shipping_admin').val(0);
+									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
+									$('#total_admin').val(parseInt(total_admin));
 									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) = ${total_payment}`;
-								}else{
-									alert('Courier not available for COD');
 								}
 								console.log(total_payment);
 								$('#total_payment').val(parseInt(total_payment));
-
+								console.log(text);
+								$("#clipboard").val(text);
 							}
 						});
 					}
                     else{
+						$('#product_promotion').val(0);
+						$('#shipping_promotion').val(0);
+						$('#total_price').val(total_price);
 						if(courier === 'Ninja' && payment_method === 'COD'){
                             var admin = (total_price + ongkir)*0.025;
 							admin = Math.ceil(admin / 1000) * 1000;
-							var total_payment = total_price + ongkir + admin;
-							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
+							$('#shipping_admin').val(admin);
+							
+							var total_admin = admin - parseInt(promotion_admin);
+							$('#total_admin').val(parseInt(total_admin));
+							var total_payment = total_price + ongkir + total_admin;
+							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
 						}
                         else if(courier === 'Sicepat' && payment_method === 'COD'){
                             var admin = (total_price + ongkir)*0.030;
@@ -791,8 +818,12 @@
                                 admin = 2000;
                             }
 							admin = Math.ceil(admin / 1000) * 1000;
-                            var total_payment = total_price + ongkir + admin;
-							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
+							$('#shipping_admin').val(admin);
+							
+							var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
+							$('#total_admin').val(parseInt(total_admin));
+                            var total_payment = total_price + ongkir + total_admin;
+							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
 						}
                         else if(courier === 'JNT' && payment_method === 'COD'){
                             var admin = (total_price + ongkir)*0.030;
@@ -800,20 +831,25 @@
                                 admin = 5000;
                             }
 							admin = Math.ceil(admin / 1000) * 1000;
-                            var total_payment = total_price + ongkir + admin;
-							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) = ${total_payment}`;
+							$('#shipping_admin').val(admin);
+							
+							var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
+							$('#total_admin').val(parseInt(total_admin));
+                            var total_payment = total_price + ongkir + total_admin;
+							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
 						}
                         else if(payment_method == "Transfer"){
                             var total_payment = total_price + ongkir;
+							$('#shipping_admin').val(0);
+							var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
+							$('#total_admin').val(parseInt(total_admin));
 							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) = ${total_payment}`;
                         }
-						else{
-							alert('Courier not available for COD');
-						}
 						console.log(total_payment);
 						$('#total_payment').val(parseInt(total_payment));
+						console.log(text);
+						$("#clipboard").val(text);
 					}
-					$("#clipboard").val(text);
 				});
 			});
 		</script>
