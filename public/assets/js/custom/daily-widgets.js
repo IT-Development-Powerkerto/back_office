@@ -309,21 +309,21 @@ var KTWidgets = function () {
         var baseColor = KTUtil.getCssVariableValue('--bs-primary');
         var secondaryColor = KTUtil.getCssVariableValue('--bs-gray-300');
 
-        var omset_su = parseInt(document.getElementById('omset_su').value)/1000;
-        var omset_mo = parseInt(document.getElementById('omset_mo').value)/1000;
-        var omset_tu = parseInt(document.getElementById('omset_tu').value)/1000;
-        var omset_we = parseInt(document.getElementById('omset_we').value)/1000;
-        var omset_th = parseInt(document.getElementById('omset_th').value)/1000;
-        var omset_fr = parseInt(document.getElementById('omset_fr').value)/1000;
-        var omset_sa = parseInt(document.getElementById('omset_sa').value)/1000;
+        var omset_su = parseInt(document.getElementById('omset_su').value)/1000000;
+        var omset_mo = parseInt(document.getElementById('omset_mo').value)/1000000;
+        var omset_tu = parseInt(document.getElementById('omset_tu').value)/1000000;
+        var omset_we = parseInt(document.getElementById('omset_we').value)/1000000;
+        var omset_th = parseInt(document.getElementById('omset_th').value)/1000000;
+        var omset_fr = parseInt(document.getElementById('omset_fr').value)/1000000;
+        var omset_sa = parseInt(document.getElementById('omset_sa').value)/1000000;
 
-        var advertising_su = parseInt(document.getElementById('advertising_su').value)/1000;
-        var advertising_mo = parseInt(document.getElementById('advertising_mo').value)/1000;
-        var advertising_tu = parseInt(document.getElementById('advertising_tu').value)/1000;
-        var advertising_we = parseInt(document.getElementById('advertising_we').value)/1000;
-        var advertising_th = parseInt(document.getElementById('advertising_th').value)/1000;
-        var advertising_fr = parseInt(document.getElementById('advertising_fr').value)/1000;
-        var advertising_sa = parseInt(document.getElementById('advertising_sa').value)/1000;
+        var advertising_su = parseInt(document.getElementById('advertising_su').value)/1000000;
+        var advertising_mo = parseInt(document.getElementById('advertising_mo').value)/1000000;
+        var advertising_tu = parseInt(document.getElementById('advertising_tu').value)/1000000;
+        var advertising_we = parseInt(document.getElementById('advertising_we').value)/1000000;
+        var advertising_th = parseInt(document.getElementById('advertising_th').value)/1000000;
+        var advertising_fr = parseInt(document.getElementById('advertising_fr').value)/1000000;
+        var advertising_sa = parseInt(document.getElementById('advertising_sa').value)/1000000;
 
         if (!element) {
             return;
@@ -416,7 +416,7 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return  val + " thousands"
+                        return  val + " Million"
                     }
                 }
             },

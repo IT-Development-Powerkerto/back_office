@@ -303,15 +303,15 @@ var KTWidgets = function () {
         var baseColor = KTUtil.getCssVariableValue('--bs-primary');
         var secondaryColor = KTUtil.getCssVariableValue('--bs-gray-300');
 
-        var omset_week1 = parseInt(document.getElementById('omset_week1').value)/1000;
-        var omset_week2 = parseInt(document.getElementById('omset_week2').value)/1000;
-        var omset_week3 = parseInt(document.getElementById('omset_week3').value)/1000;
-        var omset_week4 = parseInt(document.getElementById('omset_week4').value)/1000;
+        var omset_week1 = parseInt(document.getElementById('omset_week1').value)/1000000;
+        var omset_week2 = parseInt(document.getElementById('omset_week2').value)/1000000;
+        var omset_week3 = parseInt(document.getElementById('omset_week3').value)/1000000;
+        var omset_week4 = parseInt(document.getElementById('omset_week4').value)/1000000;
 
-        var advertising_week1 = parseInt(document.getElementById('advertising_week1').value)/1000;
-        var advertising_week2 = parseInt(document.getElementById('advertising_week2').value)/1000;
-        var advertising_week3 = parseInt(document.getElementById('advertising_week3').value)/1000;
-        var advertising_week4 = parseInt(document.getElementById('advertising_week4').value)/1000;
+        var advertising_week1 = parseInt(document.getElementById('advertising_week1').value)/1000000;
+        var advertising_week2 = parseInt(document.getElementById('advertising_week2').value)/1000000;
+        var advertising_week3 = parseInt(document.getElementById('advertising_week3').value)/1000000;
+        var advertising_week4 = parseInt(document.getElementById('advertising_week4').value)/1000000;
 
         if (!element) {
             return;
@@ -404,7 +404,7 @@ var KTWidgets = function () {
                 },
                 y: {
                     formatter: function (val) {
-                        return  val + " thousands"
+                        return  val + " Million"
                     }
                 }
             },
