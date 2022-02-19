@@ -31,7 +31,23 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<div class="fw-bolder fs-5 text-gray-800 pe-1">Rp. {{$budgeting->requirement}}</div>
+						<div class="fw-bolder fs-5 text-gray-800 pe-1">Rp.
+                            <script>
+                                var bilangan = {{$budgeting->requirement}};
+
+                                var	number_string = bilangan.toString(),
+                                    sisa 	= number_string.length % 3,
+                                    rupiah 	= number_string.substr(0, sisa),
+                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                if (ribuan) {
+                                    separator = sisa ? '.' : '';
+                                    rupiah += separator + ribuan.join('.');
+                                }
+
+                                document.write(rupiah);
+                            </script>
+                        </div>
 					</div>
 					<!--end::Label-->
 				</div>

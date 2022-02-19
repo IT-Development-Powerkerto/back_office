@@ -109,7 +109,8 @@ class ManagerController extends Controller
         ])->get();
         $closing_max = max($closing_mo->count(), $closing_tu->count(), $closing_we->count(), $closing_th->count(), $closing_fr->count(), $closing_sa->count(), $closing_su->count());
         //omset this day
-        $omset_day_count = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('product_promotion');
+
+        $omset_day_count = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('product_promotion');
         //count omset every month
         $omset_mo = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek(),
@@ -184,7 +185,7 @@ class ManagerController extends Controller
             Carbon::now()->endOfMonth(),
         ])->get();
         $lead_all = Lead::where('admin_id', auth()->user()->admin_id)->get();
-        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('product_promotion');
+        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('product_promotion');
         $omset_week = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
@@ -486,7 +487,7 @@ class ManagerController extends Controller
             Carbon::now()->endOfMonth(),
         ])->get();
         $lead_all = Lead::where('admin_id', auth()->user()->admin_id)->get();
-        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('product_promotion');
+        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('product_promotion');
         $omset_week = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
@@ -836,7 +837,7 @@ class ManagerController extends Controller
             Carbon::now()->endOfMonth(),
         ])->get();
         $lead_all = Lead::where('admin_id', auth()->user()->admin_id)->get();
-        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('product_promotion');
+        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('product_promotion');
         $omset_week = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
