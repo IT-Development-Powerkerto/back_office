@@ -11,6 +11,7 @@ use App\Http\Controllers\UpsellingController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\API\UserPowerkertoController;
+use App\Http\Controllers\API\UserInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +49,5 @@ Route::get('leads', [LeadController::class, 'index']);
 
 //API route for register new user
 Route::resource('userPWK', UserPowerkertoController::class);
+Route::resource('userInfo', UserInfoController::class);
 

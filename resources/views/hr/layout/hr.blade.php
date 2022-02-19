@@ -8,7 +8,7 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0">Data Budgeting</h3>
+										<h3 class="fw-bolder m-0">Information Data</h3>
 									</div>
 									<!--end::Card title-->
 								</div>
