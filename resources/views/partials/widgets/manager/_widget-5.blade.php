@@ -12,7 +12,23 @@
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
 				<span class="fw-bold fs-7">Total Lead</span>
-				<span id="lead_count" class="fw-bolder fs-2x pt-1">{{ $lead_all->count() }}</span>
+				<span id="lead_count" class="fw-bolder fs-2x pt-1">
+                    <script>
+                        var bilangan = {{ $lead_all->count() }};
+
+                        var	number_string = bilangan.toString(),
+                            sisa 	= number_string.length % 3,
+                            rupiah 	= number_string.substr(0, sisa),
+                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                        if (ribuan) {
+                            separator = sisa ? '.' : '';
+                            rupiah += separator + ribuan.join('.');
+                        }
+
+                        document.write(rupiah);
+                    </script>
+                </span>
 			</div>
 			<!--end::Balance-->
 		</div>
@@ -47,7 +63,23 @@
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
-						<label id="product_count" class="fw-bolder fs-5 text-gray-800 pe-1">{{ $lead_all->where('product_id', $product->id)->count() }}</label>
+						<label id="product_count" class="fw-bolder fs-5 text-gray-800 pe-1">
+                            <script>
+                                var bilangan = {{ $lead_all->where('product_id', $product->id)->count() }};
+
+                                var	number_string = bilangan.toString(),
+                                    sisa 	= number_string.length % 3,
+                                    rupiah 	= number_string.substr(0, sisa),
+                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                if (ribuan) {
+                                    separator = sisa ? '.' : '';
+                                    rupiah += separator + ribuan.join('.');
+                                }
+
+                                document.write(rupiah);
+                            </script>
+                        </label>
 					</div>
 					<!--end::Label-->
 				</div>
