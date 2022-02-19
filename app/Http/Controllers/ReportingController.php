@@ -101,7 +101,7 @@ class ReportingController extends Controller
         ])->get();
 
         //omset this day
-        $omset_day_count = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
+        $omset_day_count = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->get();
         //count omset every month
         $omset_mo = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
@@ -167,7 +167,7 @@ class ReportingController extends Controller
         $quantity = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->where('created_at', $day)->sum('quantity');
         $lead = Lead::where('admin_id', auth()->user()->admin_id)->get();
         $announcement = Announcement::where('admin_id', auth()->user()->admin_id)->get();
-        $inputer = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
+        $inputer = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->get();
         $product = Product::where('admin_id', auth()->user()->admin_id)->get();
 
         if(auth()->user()->role_id==1){

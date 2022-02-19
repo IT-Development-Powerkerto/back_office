@@ -57,7 +57,7 @@
                                     </div>
                                     <div>
                                         <div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">{{$product->name}}</div>
-										<div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">10JT</div>
+										<div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">{{($omset_week_count->where('product_name', $product->name)->sum('total_price')-$omset_week_count->where('product_name', $product->name)->sum('product_promotion')) / 1000000}} JT</div>
                                     </div>
                                 </div>
                                 <!--end::Item-->
