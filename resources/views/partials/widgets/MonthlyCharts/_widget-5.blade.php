@@ -14,7 +14,7 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{ ($closing_count == 0) ? 0 : $quantity / $closing_count }}</div>
+											<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{ ($closing_count == 0) ? 0 : round($quantity / $closing_count, 1) }}</div>
 											<div class="fw-bold text-white">Upselling</div>
 										</div>
                                         <?php
