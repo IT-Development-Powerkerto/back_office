@@ -14,7 +14,7 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-light fw-bolder fs-2 mb-2 mt-5">{{($lead_count == 0) ? 0 : ($closing_count / $lead_count)*100}} %</div>
+											<div class="text-light fw-bolder fs-2 mb-2 mt-5">{{($lead_count == 0) ? 0 : round(($closing_count / $lead_count)*100,1)}} %</div>
 											<div class="fw-bold text-light">Closing Rate</div>
 										</div>
                                         <?php
