@@ -25,7 +25,7 @@
 		</div>
 	</div>
 	<!--begin::Action group-->
-	<div class="d-flex align-items-center justify-content-between rounded mt-n5 mb-5 py-3" style="background-color: #00509d;">
+	<div class="d-flex align-items-center justify-content-between rounded mt-n5 mb-5 py-3" style="background-color: rgba(0, 80, 157, 0.9)">
 		<ul class="nav">
 			<li class="nav-item">
 				<h1 class="text-white fw-bold fs-7 px-4 ms-2 mt-2"

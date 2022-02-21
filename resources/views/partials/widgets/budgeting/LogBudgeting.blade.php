@@ -6,9 +6,41 @@
 											<h3 class="card-title align-items-start flex-column mt-n3">
 												<span class="card-label fw-bolder fs-3 mb-1">ADV Activity Budgeting</span>
                                                 @if (auth()->user()->role_id == 1)
-                                                    <span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->count()}} Activity</span>
+                                                    <span class="text-muted mt-1 fw-bold fs-7">
+                                                        <script>
+                                                            var bilangan = {{$budgeting->where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->count()}};
+
+                                                            var	number_string = bilangan.toString(),
+                                                                sisa 	= number_string.length % 3,
+                                                                rupiah 	= number_string.substr(0, sisa),
+                                                                ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                            if (ribuan) {
+                                                                separator = sisa ? '.' : '';
+                                                                rupiah += separator + ribuan.join('.');
+                                                            }
+
+                                                            document.write(rupiah);
+                                                        </script> Activity
+                                                    </span>
                                                 @else
-												    <span class="text-muted mt-1 fw-bold fs-7">{{$budgeting->where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('user_id', auth()->user()->id)->count()}} Activity</span>
+												    <span class="text-muted mt-1 fw-bold fs-7">
+                                                        <script>
+                                                            var bilangan = {{$budgeting->where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('user_id', auth()->user()->id)->count()}};
+
+                                                            var	number_string = bilangan.toString(),
+                                                                sisa 	= number_string.length % 3,
+                                                                rupiah 	= number_string.substr(0, sisa),
+                                                                ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                            if (ribuan) {
+                                                                separator = sisa ? '.' : '';
+                                                                rupiah += separator + ribuan.join('.');
+                                                            }
+
+                                                            document.write(rupiah);
+                                                        </script> Activity
+                                                    </span>
                                                 @endif
 											</h3>
 										</div>
@@ -51,12 +83,44 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->requirement}}</h1>
+                                                                        <h1 class="text-dark fw-normal fs-6">Rp.
+                                                                            <script>
+                                                                                var bilangan = {{$budgeting->requirement}};
+
+                                                                                var	number_string = bilangan.toString(),
+                                                                                    sisa 	= number_string.length % 3,
+                                                                                    rupiah 	= number_string.substr(0, sisa),
+                                                                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                                                if (ribuan) {
+                                                                                    separator = sisa ? '.' : '';
+                                                                                    rupiah += separator + ribuan.join('.');
+                                                                                }
+
+                                                                                document.write(rupiah);
+                                                                            </script>
+                                                                        </h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->target}}</h1>
+                                                                        <h1 class="text-dark fw-normal fs-6">Rp.
+                                                                            <script>
+                                                                                var bilangan = {{$budgeting->target}};
+
+                                                                                var	number_string = bilangan.toString(),
+                                                                                    sisa 	= number_string.length % 3,
+                                                                                    rupiah 	= number_string.substr(0, sisa),
+                                                                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                                                if (ribuan) {
+                                                                                    separator = sisa ? '.' : '';
+                                                                                    rupiah += separator + ribuan.join('.');
+                                                                                }
+
+                                                                                document.write(rupiah);
+                                                                            </script>
+                                                                        </h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>
@@ -91,12 +155,44 @@
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->requirement}}</h1>
+                                                                        <h1 class="text-dark fw-normal fs-6">Rp.
+                                                                            <script>
+                                                                                var bilangan = {{$budgeting->requirement}};
+
+                                                                                var	number_string = bilangan.toString(),
+                                                                                    sisa 	= number_string.length % 3,
+                                                                                    rupiah 	= number_string.substr(0, sisa),
+                                                                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                                                if (ribuan) {
+                                                                                    separator = sisa ? '.' : '';
+                                                                                    rupiah += separator + ribuan.join('.');
+                                                                                }
+
+                                                                                document.write(rupiah);
+                                                                            </script>
+                                                                        </h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
-                                                                        <h1 class="text-dark fw-normal fs-6">Rp. {{$budgeting->target}}</h1>
+                                                                        <h1 class="text-dark fw-normal fs-6">Rp.
+                                                                            <script>
+                                                                                var bilangan = {{$budgeting->target}};
+
+                                                                                var	number_string = bilangan.toString(),
+                                                                                    sisa 	= number_string.length % 3,
+                                                                                    rupiah 	= number_string.substr(0, sisa),
+                                                                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                                                if (ribuan) {
+                                                                                    separator = sisa ? '.' : '';
+                                                                                    rupiah += separator + ribuan.join('.');
+                                                                                }
+
+                                                                                document.write(rupiah);
+                                                                            </script>
+                                                                        </h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>

@@ -14,7 +14,23 @@
 												</svg>
 											</span>
 											<!--end::Svg Icon-->
-											<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{$quantity}}</div>
+											<div class="text-white fw-bolder fs-2 mb-2 mt-5">
+                                                <script>
+                                                    var bilangan = {{$quantity}};
+
+                                                    var	number_string = bilangan.toString(),
+                                                        sisa 	= number_string.length % 3,
+                                                        rupiah 	= number_string.substr(0, sisa),
+                                                        ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                    if (ribuan) {
+                                                        separator = sisa ? '.' : '';
+                                                        rupiah += separator + ribuan.join('.');
+                                                    }
+
+                                                    document.write(rupiah);
+                                                </script>
+                                            </div>
 											<div class="fw-bold text-white">Total Box</div>
 										</div>
 										<!--end::Body-->

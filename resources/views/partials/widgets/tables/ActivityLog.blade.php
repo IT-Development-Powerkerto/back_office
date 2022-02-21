@@ -5,7 +5,23 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column mt-n3">
 												<span class="card-label fw-bolder fs-3 mb-1">Activity Logs</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$reimbursement->count()}} Activity Logs</span>
+												<span class="text-muted mt-1 fw-bold fs-7">
+                                                    <script>
+                                                        var bilangan = {{$reimbursement->count()}};
+
+                                                        var	number_string = bilangan.toString(),
+                                                            sisa 	= number_string.length % 3,
+                                                            rupiah 	= number_string.substr(0, sisa),
+                                                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                        if (ribuan) {
+                                                            separator = sisa ? '.' : '';
+                                                            rupiah += separator + ribuan.join('.');
+                                                        }
+
+                                                        document.write(rupiah);
+                                                    </script> Activity Logs
+                                                </span>
 											</h3>
 										</div>
 										<!--end::Header-->
@@ -48,7 +64,23 @@
 																</div>
 															</td>
 															<td>
-																<label class="text-dark fw-medium text-hover-primary d-block fs-6">Rp. {{$reimbursement->nominal}}</label>
+																<label class="text-dark fw-medium text-hover-primary d-block fs-6">Rp.
+                                                                    <script>
+                                                                        var bilangan = {{$reimbursement->nominal}};
+
+                                                                        var	number_string = bilangan.toString(),
+                                                                            sisa 	= number_string.length % 3,
+                                                                            rupiah 	= number_string.substr(0, sisa),
+                                                                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                                        if (ribuan) {
+                                                                            separator = sisa ? '.' : '';
+                                                                            rupiah += separator + ribuan.join('.');
+                                                                        }
+
+                                                                        document.write(rupiah);
+                                                                    </script>
+                                                                </label>
 															</td>
 															<td class="text-end">
 																<div class="d-flex align-items-center">

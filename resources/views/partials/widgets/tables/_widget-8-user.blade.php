@@ -2,7 +2,7 @@
 							<!--begin::Card-->
 							<div class="card card-xxl-stretch mb-5 mb-xl-8 p-0">
 								<!--begin::Header-->
-								<div class="card-header border-0" style="background-color: #00509d;">
+								<div class="card-header border-0">
 									<h3 class="card-title align-items-start flex-column">
 										<span class="card-label fw-bolder fs-3 mb-1 text-white">Lead Tunneling</span>
 									@if (auth()->user()->role_id == 1)

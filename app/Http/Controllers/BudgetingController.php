@@ -52,7 +52,7 @@ class BudgetingController extends Controller
                 Carbon::now()->endOfMonth(),
             ])->get();
 
-            $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
+            $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->get();
             $omset1 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
                 Carbon::now()->endOfMonth()->subWeek(4),
                 Carbon::now()->endOfMonth()->subWeek(3),
@@ -131,7 +131,7 @@ class BudgetingController extends Controller
                 Carbon::now()->endOfMonth(),
             ])->get();
 
-            $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
+            $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->get();
             $omset1 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
                 Carbon::now()->endOfMonth()->subWeek(4),
                 Carbon::now()->endOfMonth()->subWeek(3),
@@ -209,7 +209,7 @@ class BudgetingController extends Controller
                 Carbon::now()->endOfMonth(),
             ])->get();
 
-            $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
+            $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->get();
             $omset1 = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
                 Carbon::now()->endOfMonth()->subWeek(4),
                 Carbon::now()->endOfMonth()->subWeek(3),

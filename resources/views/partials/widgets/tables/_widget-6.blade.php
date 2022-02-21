@@ -2,7 +2,7 @@
 									<!--begin::Tables Widget 9-->
 									<div class="card card-l-stretch mb-5 mb-xl-8 pb-4" style="height: 500px">
 										<!--begin::Header-->
-										<div class="card-header border-0 pt-5" style="background-color: #00509d;">
+										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column mt-n3">
 												<span class="card-label text-white fw-bolder fs-3 mb-1">Product</span>
 												<span class="text-white mt-1 fw-bold fs-7">{{$products->count()}} Product</span>
@@ -108,7 +108,23 @@
 															<td>
 																<div class="d-flex align-items-center">
 																	<div class="d-flex justify-content-start flex-column">
-																		<span class="text-dark text-hover-primary fs-6">{{ $product->price }}</span>
+																		<span class="text-dark text-hover-primary fs-6">Rp.
+                                                                            <script>
+                                                                                var bilangan = {{ $product->price }};
+
+                                                                                var	number_string = bilangan.toString(),
+                                                                                    sisa 	= number_string.length % 3,
+                                                                                    rupiah 	= number_string.substr(0, sisa),
+                                                                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                                                if (ribuan) {
+                                                                                    separator = sisa ? '.' : '';
+                                                                                    rupiah += separator + ribuan.join('.');
+                                                                                }
+
+                                                                                document.write(rupiah);
+                                                                            </script>
+                                                                        </span>
 																	</div>
 																</div>
 															</td>
