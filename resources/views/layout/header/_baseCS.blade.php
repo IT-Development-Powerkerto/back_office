@@ -1,8 +1,8 @@
 <!--begin::Header-->
-<div id="kt_header"  style="background-color: rgba(0, 80, 157, 0.9)" class="header align-items-stretch">
+<div id="kt_header"  style="background-color: rgba(0, 80, 157, 1)" class="header align-items-stretch">
 	<!--begin::Container-->
 	<div class="container-fluid d-flex align-items-stretch justify-content-between">
-		
+
 		<!--begin::Mobile logo-->
 		<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
 			<a href="?page=index" class="d-lg-none">

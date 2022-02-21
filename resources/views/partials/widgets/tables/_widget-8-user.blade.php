@@ -22,7 +22,7 @@
 												<i class="las la-print" style="font-size: 18px; color: #00509d;"></i>
 											</span>
 											<!--end::Svg Icon-->Export</button>
-										
+
 										<!-- Modal -->
 										<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
@@ -163,6 +163,28 @@
 													<div class="d-flex align-items-center clock{{ $lead->id }}">
 														<script>
 															window.addEventListener('load', function() {
+																var createdDate = new Date('{{$lead->client_created_at}}');
+																var updatedDate = new Date('{{$lead->client_updated_at}}');
+																var nowDate = new Date();
+																if('{{$lead->status_id == 3}}'){
+																	// var futureDate = new Date(createdDate.getTime() - 0);
+																	// var dif = (nowDate.getTime() - futureDate.getTime()) / 1000;
+																	var dif = (nowDate.getTime() - createdDate.getTime()) / 1000;
+																	var Seconds_Between_Dates = Math.abs(Math.round(dif));
+																	var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
+																	display = document.querySelector('.clock{{ $lead->id }}');
+																	CountUpTimer(fiveMinutes{{$lead->id}}, display);
+																} else {
+																	var dif = (createdDate.getTime() - updatedDate.getTime()) / 1000;
+																	var Seconds_Between_Dates = Math.abs(Math.round(dif));
+																	var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
+																	display = document.querySelector('.clock{{ $lead->id }}');
+																	StopTimer(fiveMinutes{{$lead->id}}, display);
+																}
+															});
+														</script>
+                                                        <script>
+															window.addEventListener('click', function() {
 																var createdDate = new Date('{{$lead->client_created_at}}');
 																var updatedDate = new Date('{{$lead->client_updated_at}}');
 																var nowDate = new Date();
