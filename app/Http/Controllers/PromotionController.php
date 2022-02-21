@@ -153,4 +153,31 @@ class PromotionController extends Controller
         ];
         return json_encode($promotion);
     }
+    public function get_product_promotion($id){
+        $product_promotion = Promotion::where('id', $id)->value('promotion_product_price');
+        $product_promotion_percent = Promotion::where('id', $id)->value('promotion_product_percent');
+        $promotion = [
+            'product_promotion' => $product_promotion,
+            'product_promotion_percent' => $product_promotion_percent,
+        ];
+        return json_encode($promotion);
+    }
+    public function get_shipping_promotion($id){
+        $shipping_promotion = Promotion::where('id', $id)->value('promotion_shippment_cost');
+        $shipping_promotion_percent = Promotion::where('id', $id)->value('promotion_shippment_percent');
+        $promotion = [
+            'shipping_promotion' => $shipping_promotion,
+            'shipping_promotion_percent' => $shipping_promotion_percent,
+        ];
+        return json_encode($promotion);
+    }
+    public function get_admin_promotion($id){
+        $admin_promotion = Promotion::where('id', $id)->value('promotion_admin_cost');
+        $admin_promotion_percent = Promotion::where('id', $id)->value('promotion_admin_percent');
+        $promotion = [
+            'admin_promotion' => $admin_promotion,
+            'admin_promotion_percent' => $admin_promotion_percent
+        ];
+        return json_encode($promotion);
+    }
 }
