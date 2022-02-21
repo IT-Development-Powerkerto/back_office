@@ -2,7 +2,7 @@
 									<!--begin::Tables Widget 9-->
 									<div class="card card-xl-stretch mb-5 mb-xl-8 p-0 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 500px">
 										<!--begin::Header-->
-										<div class="card-header border-0 pt-5"  style="background-color: #00509d;">
+										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column mt-n3" >
 												<span class="card-label fw-bolder fs-3 mb-1 text-white">Staff</span>
 												<span class="text-white mt-1 fw-bold fs-7">{{$users->count()}} Staff</span>

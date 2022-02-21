@@ -2,7 +2,7 @@
 							<!--begin::Card-->
 							<div class="card card-xxl-stretch mb-5 mb-xl-8">
 								<!--begin::Header-->
-								<div class="card-header border-0 pt-5" style="background-color: #00509d;">
+								<div class="card-header border-0 pt-5">
 									<h3 class="card-title align-items-start flex-column mt-n3">
 										<span class="card-label text-white fw-bolder fs-3 mb-1">Lead Tunneling</span>
 									@if (auth()->user()->role_id == 1 || auth()->user()->role_id == 12)
@@ -45,7 +45,7 @@
 																	<input class="form-control mt-0" name="from_date"  id="from_date" type="date" style="height: 33px;">
 																</div>
 																<div class="col-2">
-																	<h3 class="text-center text-dark fw-bolder fs-6 pt-3">Until</h3>
+																	<h3 class= text-dark fw-bolder fs-6 pt-3">Until</h3>
 																</div>
 																<div class="col-5">
 																	<input class="form-control mt-0" name="to_date"  id="to_date" type="date" style="height: 33px;">
@@ -103,16 +103,16 @@
 										<thead>
 											<!--begin::Table row-->
 											<tr class="text-start text-gray-400 fw-bolder fs-8 text-uppercase gs-0">
-												<th class="text-center">No</th>
-												<th class="text-center">Order ID</th>
-												<th class="text-center">Advertiser Name</th>
-												<th class="text-center">Operator Name</th>
-												<th class="text-center">Customer Name</th>
-												<th class="text-center">Whatsapp Customer</th>
-												<th class="text-center">Product Name</th>
-												<th class="text-center">Date/Time</th>
-												<th class="text-center">Response Time</th>
-												<th class="text-center">Lead Progress</th>
+												<th class="">No</th>
+												<th class="">Order ID</th>
+												<th class="">Advertiser Name</th>
+												<th class="">Operator Name</th>
+												<th class="">Customer Name</th>
+												<th class="">Whatsapp Customer</th>
+												<th class="">Product Name</th>
+												<th class="">Date/Time</th>
+												<th class="">Response Time</th>
+												<th class="">Lead Progress</th>
 												<th class="text-end">Actions</th>
 											</tr>
 											<!--end::Table row-->
@@ -125,42 +125,42 @@
 											<tr>
 												<td>
 													<div class="d-flex align-items-center">
-														<h1 class="text-dark fw-normal text-center text-center fs-6">{{$n+=1}}</h1>
+														<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
 													</div>
 												</td>
 												<td>
 													<div class="d-flex align-items-center">
-														<h1 class="text-dark fw-normal text-center fs-6">Ord-{{ $lead->id}}</h1>
+														<h1 class="text-dark fw-normal fs-6">Ord-{{ $lead->id}}</h1>
 													</div>
 												</td>
 												<td>
 													<div class="d-flex align-items-center">
-														<h1 class="text-dark fw-normal text-center fs-6">{{ $lead->advertiser}}</h1>
+														<h1 class="text-dark fw-normal fs-6">{{ $lead->advertiser}}</h1>
 													</div>
 												</td>
 												<td>
 													<div class="d-flex align-items-center">
-														<h1 class="text-dark fw-normal text-center fs-6">{{ $lead->operator_name}}</h1>
+														<h1 class="text-dark fw-normal fs-6">{{ $lead->operator_name}}</h1>
 													</div>
 												</td>
 												<td>
 													<div class="d-flex align-items-center">
-														<h1 class="text-primary fw-normal text-center fs-6 text-hover-primary">{{$lead->client_name}}</h1>
+														<h1 class="text-primary fw-normal fs-6 text-hover-primary">{{$lead->client_name}}</h1>
 													</div>
 												</td>
 												<td>
 													<div class="d-flex align-items-center">
-														<a class="text-primary fw-normal text-center fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_wa}}&text={{ rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($lead->client_name, $lead->client_wa, $lead->operator_name, $lead->product_name), $lead->text)) }}">{{$lead->client_wa}}</a>
+														<a class="text-primary fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_wa}}&text={{ rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($lead->client_name, $lead->client_wa, $lead->operator_name, $lead->product_name), $lead->text)) }}">{{$lead->client_wa}}</a>
 													</div>
 												</td>
 												<td>
 													<div class="d-flex align-items-center">
-														<h1 class="text-dark fw-normal text-center fs-6">{{$lead->product_name}}</h1>
+														<h1 class="text-dark fw-normal fs-6">{{$lead->product_name}}</h1>
 													</div>
 												</td>
 												<td>
 													<div class="d-flex align-items-center">
-														<h1 class="text-dark fw-normal text-center fs-6">{{$lead->client_created_at}}</h1>
+														<h1 class="text-dark fw-normal fs-6">{{$lead->client_created_at}}</h1>
 													</div>
 												</td>
 												<td>
@@ -191,7 +191,7 @@
 												</td>
 												<td>
 													<div class="d-flex align-items-center">
-														<h1 class="text-dark fw-normal text-center fs-6 badge badge-light-info">{{ $lead->status }}</h1>
+														<h1 class="text-dark fw-normal fs-6 badge badge-light-info">{{ $lead->status }}</h1>
 													</div>
 												</td>
 												<td>

@@ -2,7 +2,7 @@
 									<!--begin::Tables Widget 9-->
 									<div class="card card-l-stretch mb-5 mb-xl-8 pb-4" style="height: 500px">
 										<!--begin::Header-->
-										<div class="card-header border-0 pt-5" style="background-color: #00509d;">
+										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder text-white fs-3 mt-n3">Information</span>
 											</h3>
