@@ -175,7 +175,7 @@ class DashboardController extends Controller
         if($day >= $user_expired){
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            return redirect('/');
+            return redirect()->back()->with('error' ,'Your subscription has expired');
         }
         else{
             if($request->date_filter){
@@ -575,7 +575,7 @@ class DashboardController extends Controller
         if($day >= $user_expired){
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            return redirect('/');
+            return redirect()->back()->with('error' ,'Your subscription has expired');
         }
         else{
             if($request){
@@ -764,7 +764,7 @@ class DashboardController extends Controller
         if($day >= $user_expired){
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            return redirect('/');
+            return redirect()->back()->with('error' ,'Your subscription has expired');
         }
         else{
             if($request){
@@ -1082,7 +1082,7 @@ class DashboardController extends Controller
         if($day >= $user_expired){
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            return redirect('/');
+            return redirect()->back()->with('error' ,'Your subscription has expired');
         }
         else{
             if($request){
@@ -1140,7 +1140,7 @@ class DashboardController extends Controller
         if($day >= $user_expired){
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            return redirect('/');
+            return redirect()->back()->with('error' ,'Your subscription has expired');
         }
         else{
             if($request){
@@ -1337,7 +1337,7 @@ class DashboardController extends Controller
         if($day >= $user_expired){
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            return redirect('/');
+            return redirect()->back()->with('error' ,'Your subscription has expired');
         }
         else{
             if($request->date_filter){
@@ -1664,7 +1664,7 @@ class DashboardController extends Controller
         if($day >= $user_expired){
             $request->session()->invalidate();
             $request->session()->regenerateToken();
-            return redirect('/');
+            return redirect()->back()->with('error' ,'Your subscription has expired');
         }
         else{
             if($request->date_filter){
