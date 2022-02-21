@@ -1,6 +1,6 @@
 <!--begin::Container-->
 <div id="kt_content_container" class="container-xxl" >
-	<div class="d-flex align-items-center justify-content-between mt-10 rounded mt-10 py-3" style="background-color: #00509d;">
+	<div class="d-flex align-items-center justify-content-between mt-10 rounded mt-10 py-3" style="background-color: rgba(0, 80, 157, 0.9)">
 		<div>
 			<!--begin::Menu-->
 			<button type="button" class="btn btn-sm btn-icon btn-color-white btn-active-primary btn-active-primary border-0 ms-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" style="width: 160px">
