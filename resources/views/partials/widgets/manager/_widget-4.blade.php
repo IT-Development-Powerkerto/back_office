@@ -12,7 +12,23 @@
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
 				<span class="fw-bold fs-7">Expense</span>
-				<span id="budgeting" class="fw-bolder fs-2x pt-1">Rp. {{$budgeting->where('status', 1)->sum('requirement')}}</span>
+				<span id="budgeting" class="fw-bolder fs-2x pt-1">Rp.
+                    <script>
+                        var bilangan = {{$budgeting->where('status', 1)->sum('requirement')}};
+
+                        var	number_string = bilangan.toString(),
+                            sisa 	= number_string.length % 3,
+                            rupiah 	= number_string.substr(0, sisa),
+                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                        if (ribuan) {
+                            separator = sisa ? '.' : '';
+                            rupiah += separator + ribuan.join('.');
+                        }
+
+                        document.write(rupiah);
+                    </script>
+                </span>
 			</div>
 			<!--end::Balance-->
 		</div>

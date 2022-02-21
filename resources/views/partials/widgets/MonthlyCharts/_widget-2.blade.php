@@ -5,7 +5,23 @@
 										<div class="card-header border-0 py-3" style="background-color: #00509d;">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1 text-white">Total Leads</span>
-												<span class="text-white fw-bold fs-7">{{$lead_count}} Leads @ Month</span>
+												<span class="text-white fw-bold fs-7">
+                                                    <script>
+                                                        var bilangan = {{$lead_count}};
+
+                                                        var	number_string = bilangan.toString(),
+                                                            sisa 	= number_string.length % 3,
+                                                            rupiah 	= number_string.substr(0, sisa),
+                                                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                        if (ribuan) {
+                                                            separator = sisa ? '.' : '';
+                                                            rupiah += separator + ribuan.join('.');
+                                                        }
+
+                                                        document.write(rupiah);
+                                                    </script> Leads @ Month
+                                                </span>
                                                 <input id="lead_jan" value="{{$lead_jan->count()}}" hidden/>
                                                 <input id="lead_feb" value="{{$lead_feb->count()}}" hidden/>
                                                 <input id="lead_mar" value="{{$lead_mar->count()}}" hidden/>

@@ -5,7 +5,23 @@
 										<div class="card-header border-0 py-3" style="background-color: #00509d;">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1 text-white">Total Closing</span>
-												<span class="text-white fw-bold fs-7">{{$closing_count}} Closing @ Daily</span>
+												<span class="text-white fw-bold fs-7">
+                                                    <script>
+                                                        var bilangan = {{$closing_count}};
+
+                                                        var	number_string = bilangan.toString(),
+                                                            sisa 	= number_string.length % 3,
+                                                            rupiah 	= number_string.substr(0, sisa),
+                                                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                        if (ribuan) {
+                                                            separator = sisa ? '.' : '';
+                                                            rupiah += separator + ribuan.join('.');
+                                                        }
+
+                                                        document.write(rupiah);
+                                                    </script> Closing @ Daily
+                                                </span>
                                                 <input id="closing_su" value="{{$closing_su->count()}}" hidden/>
                                                 <input id="closing_mo" value="{{$closing_mo->count()}}" hidden/>
                                                 <input id="closing_tu" value="{{$closing_tu->count()}}" hidden/>
