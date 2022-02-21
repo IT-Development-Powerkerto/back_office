@@ -39,11 +39,11 @@ class DashboardController extends Controller
         $user_expired = auth()->user()->expired_at;
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
 
-        $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->count();
-        $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->where('created_at', $day)->count();
+        $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->count();
+        $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 5)->whereDate('created_at', $day)->count();
 
         //lead this day
-        $lead_day_count = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->count();
+        $lead_day_count = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->count();
         //count lead every day
         $lead_mo = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
@@ -195,8 +195,8 @@ class DashboardController extends Controller
             ->orderByDesc('l.id')
             ->get();
 
-            $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
-            $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
+            $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->get();
+            $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->whereDate('created_at', $day)->get();
             //dd($leads);
             $users = User::where('admin_id', auth()->user()->admin_id)->get();
             $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
@@ -410,11 +410,11 @@ class DashboardController extends Controller
         $day = Carbon::now()->format('Y-m-d');
         $user_count = User::where('admin_id', auth()->user()->admin_id)->count();
 
-        $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('created_at', $day)->count();
-        $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->where('created_at', $day)->count();
+        $lead_count = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->whereDate('created_at', $day)->count();
+        $closing_count = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 5)->whereDate('created_at', $day)->count();
 
         //lead this day
-        $lead_day_count = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('created_at', $day)->count();
+        $lead_day_count = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->whereDate('created_at', $day)->count();
         //count lead every day
         $lead_mo = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
@@ -543,7 +543,7 @@ class DashboardController extends Controller
 
         $quantity = Inputer::where('admin_id', auth()->user()->admin_id)->where('adv_name', auth()->user()->name)->whereDate('created_at', $day)->sum('quantity');
 
-        $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day);
+        $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day);
         $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
@@ -606,8 +606,8 @@ class DashboardController extends Controller
                     ->where('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
-                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('created_at', $day)->get();
-                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 6)->where('created_at', $day)->get();
+                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->whereDate('created_at', $day)->get();
+                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 6)->whereDate('created_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('adv',['role'=>$roles])->with('day', $day)->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
@@ -733,7 +733,7 @@ class DashboardController extends Controller
             Carbon::now()->endOfWeek(),
         ])->sum('quantity');
 
-        $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day);
+        $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day);
         $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
@@ -743,7 +743,7 @@ class DashboardController extends Controller
             Carbon::now()->endOfMonth(),
         ])->get();
         $lead_all = Lead::where('admin_id', auth()->user()->admin_id)->get();
-        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('product_promotion');
+        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('product_promotion');
         $omset_week = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
@@ -795,8 +795,8 @@ class DashboardController extends Controller
                     ->where('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
-                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('created_at', $day)->get();
-                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 6)->where('created_at', $day)->get();
+                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->whereDate('created_at', $day)->get();
+                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 6)->whereDate('created_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('Weeklyadv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
@@ -1050,7 +1050,7 @@ class DashboardController extends Controller
             Carbon::now()->endOfMonth(),
         ])->sum('quantity');
 
-        $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day);
+        $lead_day = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day);
         $lead_week = Lead::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
@@ -1060,7 +1060,7 @@ class DashboardController extends Controller
             Carbon::now()->endOfMonth(),
         ])->get();
         $lead_all = Lead::where('admin_id', auth()->user()->admin_id)->get();
-        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->sum('product_promotion');
+        $omset_day = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('total_price') - Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->sum('product_promotion');
         $omset_week = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [
             Carbon::now()->startOfWeek(),
             Carbon::now()->endOfWeek(),
@@ -1113,8 +1113,8 @@ class DashboardController extends Controller
                     ->where('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
-                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('created_at', $day)->get();
-                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 6)->where('created_at', $day)->get();
+                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->whereDate('created_at', $day)->get();
+                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->where('status_id', 6)->whereDate('created_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('Monthlyadv',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
@@ -1172,8 +1172,8 @@ class DashboardController extends Controller
                     ->where('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
-                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
-                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
+                $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->get();
+                $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->whereDate('created_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
@@ -1206,7 +1206,7 @@ class DashboardController extends Controller
         } else {
             $day = Carbon::now()->format('Y-m-d');
         }
-        $lead = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->orderByDesc('id')->get();
+        $lead = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->orderByDesc('id')->get();
         $leads = Lead::where('admin_id', auth()->user()->admin_id)->get();
         $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
         $x = auth()->user();
@@ -1331,8 +1331,8 @@ class DashboardController extends Controller
             Carbon::now()->endOfWeek(),
         ])->sum('quantity');
 
-        $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
-        $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
+        $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->get();
+        $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->whereDate('created_at', $day)->get();
 
         if($day >= $user_expired){
             $request->session()->invalidate();
@@ -1658,8 +1658,8 @@ class DashboardController extends Controller
             Carbon::now()->endOfMonth(),
         ])->sum('quantity');
 
-        $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('created_at', $day)->get();
-        $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->where('created_at', $day)->get();
+        $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->get();
+        $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->whereDate('created_at', $day)->get();
 
         if($day >= $user_expired){
             $request->session()->invalidate();
