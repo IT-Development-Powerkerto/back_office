@@ -26,7 +26,7 @@ class CreateInputersTable extends Migration
             $table->integer('product_price')->nullable();
             $table->integer('product_weight')->nullable();
             $table->integer('quantity')->nullable();
-            $table->foreignId('promotion_id')->nullable();
+            $table->foreignId('product_promotion_id')->constrained('promotions')->nullable();
             $table->integer('product_promotion')->nullable();
             $table->integer('total_price')->nullable();
             $table->string('warehouse')->nullable();
@@ -37,13 +37,19 @@ class CreateInputersTable extends Migration
             $table->integer('subdistrict_id')->nullable();
             $table->string('subdistrict')->nullable();
             $table->string('courier')->nullable();
-            $table->integer('shipping_promotion')->nullable();
             $table->integer('shipping_price')->nullable();
+            $table->foreignId('shipping_promotion_id')->constrained('promotions')->nullable();
+            $table->integer('shipping_promotion')->nullable();
+            $table->integer('total_shipping')->nullable();
+            $table->integer('shipping_admin')->nullable();
+            $table->foreignId('admin_promotion_id')->constrained('promotions')->nullable();
+            $table->integer('admin_promotion')->nullable();
+            $table->integer('total_admin')->nullable();
             $table->string('payment_method')->nullable();
             $table->integer('total_payment')->nullable();
             $table->string('payment_proof')->nullable();
-            $table->date('created_at');
-            $table->date('updated_at');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

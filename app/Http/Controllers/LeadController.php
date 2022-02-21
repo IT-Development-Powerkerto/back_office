@@ -163,7 +163,6 @@ class LeadController extends Controller
         //$total_price = ($request->price * $request->quantity) - $request->promotion_name;
         //$total_payment = $total_price + $request->shipping_price;
 
-
         if(substr(trim($request->whatsapp), 0, 1)=='0'){
             $whatsapp = '62'.substr(trim($request->whatsapp), 1);
         } else{
@@ -171,6 +170,8 @@ class LeadController extends Controller
         }
 
         // dd($whatsapp);
+        
+        // dd($province, $city, $subdistrict);
 
         if($request->status_id == 5){
             $validator = Validator::make($request->all(), [
@@ -184,9 +185,9 @@ class LeadController extends Controller
                 'total_price'       => 'required',
                 'weight'            => 'required',
                 'warehouse'         => 'required',
-                'province'          => 'required',
-                'city'              => 'required',
-                'subdistrict'       => 'required',
+                'province_id'          => 'required',
+                'city_id'              => 'required',
+                'subdistrict_id'       => 'required',
                 'courier'           => 'required',
                 'shipping_promotion'=> 'required',
                 'shipping_price'    => 'required',
@@ -196,8 +197,14 @@ class LeadController extends Controller
             if($validator->fails()){
                 // return back()->with('error','Error! User not been Added')->withInput()->withErrors($validator);
                 return redirect()->back()->withInput();
+                // return 'gagal';
             }
             else{
+                $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/subdistrict?id='.$request->subdistrict_id);
+                $response = json_decode($response, true);
+                $province = $response['rajaongkir']['results']['province'];
+                $city = $response['rajaongkir']['results']['city'];
+                $subdistrict = $response['rajaongkir']['results']['subdistrict_name'];
                 DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
                     'name'         => $request->name,
                     'whatsapp'     => $whatsapp,
@@ -213,6 +220,7 @@ class LeadController extends Controller
                 ]);
                 $inputer = Inputer::where('lead_id', $lead)->exists();
                 $lead = Lead::findOrFail($lead);
+                
                 if($inputer == true){
                     $order_image = Inputer::where('lead_id', $lead->id)->get();
                     if($request->hasFile('image')){
@@ -233,19 +241,28 @@ class LeadController extends Controller
                         'customer_number'  => $whatsapp,
                         'customer_address' => $request->address,
                         'product_name'     => $lead->product->name,
-                        'product_weight'   => $request->weight,
                         'product_price'    => $request->price,
+                        'product_weight'   => $request->weight,
                         'quantity'         => $request->quantity,
-                        'promotion_id'        => $request->promotion_id,
+                        'product_promotion_id'     => $request->product_promotion_id,
                         'product_promotion'        => $request->product_promotion,
-                        'shipping_promotion'        => $request->shipping_promotion,
                         'total_price'      => $request->total_price,
                         'warehouse'        => $request->warehouse,
-                        'province_id'      => $request->province,
-                        'city_id'          => $request->city,
-                        'subdistrict_id'   => $request->subdistrict,
+                        'province_id'      => $request->province_id,
+                        'province'      => $province,
+                        'city_id'          => $request->city_id,
+                        'city'          => $city,
+                        'subdistrict_id'   => $request->subdistrict_id,
+                        'subdistrict'   => $subdistrict,
                         'courier'          => $request->courier,
                         'shipping_price'   => $request->shipping_price,
+                        'shipping_promotion_id'        => $request->shipping_promotion_id,
+                        'shipping_promotion'        => $request->shipping_promotion,
+                        'total_shipping'        => $request->total_shipping,
+                        'shipping_admin'        => $request->shipping_admin,
+                        'admin_promotion_id' => $request->admin_promotion_id,
+                        'admin_promotion' => $request->admin_promotion,
+                        'total_admin' => $request->total_admin,
                         'payment_method'   => $request->payment_method,
                         'total_payment'    => $request->total_payment,
                         'payment_proof'    => $image,
@@ -270,24 +287,31 @@ class LeadController extends Controller
                         'customer_number'  => $whatsapp,
                         'customer_address' => $request->address,
                         'product_name'     => $lead->product->name,
-                        'product_weight'   => $request->weight,
                         'product_price'    => $request->price,
+                        'product_weight'   => $request->weight,
                         'quantity'         => $request->quantity,
-                        'promotion_id'     => $request->promotion_id,
+                        'product_promotion_id'     => $request->product_promotion_id,
                         'product_promotion'        => $request->product_promotion,
-                        'shipping_promotion'        => $request->shipping_promotion,
                         'total_price'      => $request->total_price,
                         'warehouse'        => $request->warehouse,
-                        'province_id'      => $request->province,
-                        'city_id'          => $request->city,
-                        'subdistrict_id'   => $request->subdistrict,
+                        'province_id'      => $request->province_id,
+                        'province'      => $province,
+                        'city_id'          => $request->city_id,
+                        'city'          => $city,
+                        'subdistrict_id'   => $request->subdistrict_id,
+                        'subdistrict'   => $subdistrict,
                         'courier'          => $request->courier,
                         'shipping_price'   => $request->shipping_price,
+                        'shipping_promotion_id'        => $request->shipping_promotion_id,
+                        'shipping_promotion'        => $request->shipping_promotion,
+                        'total_shipping'        => $request->total_shipping,
+                        'shipping_admin'        => $request->shipping_admin,
+                        'admin_promotion_id' => $request->admin_promotion_id,
+                        'admin_promotion' => $request->admin_promotion,
+                        'total_admin' => $request->total_admin,
                         'payment_method'   => $request->payment_method,
                         'total_payment'    => $request->total_payment,
                         'payment_proof'    => $image,
-                    //     'created_at'       => Carbon::now()->format('Y-m-d'),
-                    //     'updated_at'       => Carbon::now()->format('Y-m-d'),
                     ]);
                 }
             }

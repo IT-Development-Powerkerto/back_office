@@ -5,6 +5,7 @@
 		<title>Edit Lead Tunelling</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
+		{{--  <meta name="csrf-token" content="{{ csrf_token() }}">  --}}
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<link rel="icon" href="../img/favicon.png">
 		<!--end::Fonts-->
@@ -164,7 +165,7 @@
 														<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
 														<div class="col-lg-3">
 															<div class="input-group">
-																<input type="number" placeholder="Quantity Product" min="0"  id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity') }}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+																<input type="number" placeholder="Quantity Product" min="0"  id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->implode('quantity')}}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
 																<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
 															</div>
 															<span class="form-text text-muted">Please enter quantity</span>
@@ -198,7 +199,7 @@
 																	<option value=""hidden>Select Promotion</option>
 																	<option value="">Not Have Promotion</option>
 																	@foreach ($shipping_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
-																	<option value="{{$promotion->id}}" >{{ $promotion->promotion_name }}</option>
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('shipping_promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
 																	@endforeach
 																</select>
 																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
@@ -277,7 +278,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right">Destination Province</label>
 												<div class="col-lg-3">
 													<div class="input-group">
-														<select class="form-control" id="province" name="province" >
+														<select class="form-control" id="province_id" name="province_id" >
 															<option value="" hidden>Destination Province</option>
 															@foreach ($all_province as $all_province)
 																<option value="{{ $all_province['province_id'] }}" {{ $inputer->implode('province_id') == $all_province['province_id'] ? 'selected': ''}}>{{ $all_province['province'] }}</option>
@@ -290,7 +291,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination City</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" id="city" name="city" >
+														<select class="form-control" id="city_id" name="city_id" >
 															<option value="" hidden>Destination City</option>
 															@isset($all_city)
 															@foreach ($all_city as $all_city)
@@ -307,7 +308,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Destination Subdistrict</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<select class="form-control" id="subdistrict" name="subdistrict">
+														<select class="form-control" id="subdistrict_id" name="subdistrict_id">
 															<option value="" hidden>Destination Subdistrict</option>
 															@isset($all_subdistrict)
 
@@ -379,7 +380,7 @@
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Admin Cost</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Promotion Admin" id="promotion_admin" name="promotion_admin" value="0">
+														<input type="number" class="form-control" placeholder="Promotion Admin" id="admin_promotion" name="admin_promotion" value="0">
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Input Promotion</span>
@@ -410,7 +411,6 @@
 											</div>
 
 										</div>
-										{{ csrf_field() }}
 										<div class="card-footer">
 											<div class="row">
 												<div class="d-flex justify-content-between">
@@ -418,7 +418,7 @@
 														<button class="btn btn-success" id="copy">Copy to Clipboard</button>
 													</div>
 													<div>
-														<input type="submit" class="btn btn-primary" value="Save">
+														<input id="submit" type="submit" class="btn btn-primary" value="Save">
 														<a type="button" class="btn btn-secondary" href="/dashboard">Cancel</a>
 													</div>
 												</div>
@@ -510,7 +510,7 @@
 		</script>
 		<script>
 			$(document).ready(function(){
-				$('#province').on('change', function(){
+				$('#province_id').on('change', function(){
 					let province_id = $(this).val();
 					if(province_id){
 						$.ajax({
@@ -518,14 +518,14 @@
 							type: 'GET',
 							dataType: 'json',
 							success: function(data){
-								$('#city').empty();
+								$('#city_id').empty();
 								$.each(data, function(key, value){
-									$('#city').append('<option value="'+value.city_id+'" namakota="'+ value.type +' ' +value.city_name+ '">' + value.type + ' ' + value.city_name + '</option>');
+									$('#city_id').append('<option value="'+value.city_id+'" namakota="'+ value.type +' ' +value.city_name+ '">' + value.type + ' ' + value.city_name + '</option>');
 								});
 							}
 						});
 					}else {
-						$('#city').empty();
+						$('#city_id').empty();
 					}
 				});
 			});
@@ -533,7 +533,7 @@
 		</script>
 		<script>
 			$(document).ready(function(){
-				$('#city').on('change', function(){
+				$('#city_id').on('change', function(){
 					let city_id = $(this).val();
 					if(city_id){
 						$.ajax({
@@ -541,318 +541,20 @@
 							type: 'GET',
 							dataType: 'json',
 							success: function(data){
-								$('#subdistrict').empty();
+								$('#subdistrict_id').empty();
 								$.each(data, function(key, value){
-									$('#subdistrict').append('<option value="'+value.subdistrict_id+'">' + value.subdistrict_name + '</option>');
+									$('#subdistrict_id').append('<option value="'+value.subdistrict_id+'">' + value.subdistrict_name + '</option>');
 								});
 							}
 						});
 					}else {
-						$('#subdistrict').empty();
+						$('#subdistrict_id').empty();
 					}
 				});
 			});
 		</script>
-		
-		{{-- <script>
-			$(document).ready(function(){
-				$('#quantity, #price, #promotion_id').on('change', function(){
-					var quantity = $('#quantity').val();
-					var price = $('#price').val();
-					var promotion_id = $('#promotion_id').val();
-					if(promotion_id){
-						$.ajax({
-							url: "get_promotion/"+promotion_id,
-							type: "GET",
-							dataType: "json",
-							success: function(promotion){
-								$('#product_promotion').val(parseInt(promotion.product_promotion));
-								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
-								var total = (price * quantity) - parseInt(promotion.product_promotion);
-								$('#total_price').val(total);
-								$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
-							}
-						});
-					}else{
-						$('#product_promotion').val(0);
-						$('#shipping_promotion').val(0);
-						var total = (price * quantity);
-						$('#total_price').val(total);
-						$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
-					}
-				});
-			});
-		</script> --}}
-        {{--  <script>
-			$(function(){
-				$('#quantity, #price, #promotion_id').on('change', function(){
-					var quantity = $('#quantity').val();
-					var price = $('#price').val();
-					var promotion_id = $('#promotion_id').val();
-					if(promotion_id){
-						$.ajax({
-							url: "get_promotion/"+promotion_id,
-							type: "GET",
-							dataType: "json",
-							success: function(promotion){
-								$('#product_promotion').val(parseInt(promotion.product_promotion));
-								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
-								var total = (price * quantity);
-								$('#total_price').val(total);
-								//$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
-							}
-						});
-					}else{
-						$('#product_promotion').val(0);
-						$('#shipping_promotion').val(0);
-						var total = (price * quantity);
-						$('#total_price').val(total);
-						//$('#total_payment').val(total+parseInt(promotion.shipping_promotion));
-					}
-				});
-			});
-		</script>  --}}
-		<script>
-			$(function(){
-				$('#weight, #warehouse, #province, #city, #subdistrict, #courier, #shipping_promotion').on('change', function(){
-					var weight = $("#weight").val();
-					var warehouse = $("#warehouse").val();
-					var province = $("#province").val();
-					var city = $("#city").val();
-					var subdistrict = $("#subdistrict").val();
-					var	courier = $("#courier").val();
-					var courier = courier.toLowerCase();
-					var shipping_promotion = $("#shipping_promotion").val();
-					if(warehouse == 'Cilacap'){
-						document.getElementById("warehouse").setAttribute('class', 'form-control');
-						var origin = 1442;
-					}else if(warehouse == 'Kosambi'){
-						document.getElementById("warehouse").setAttribute('class', 'form-control');
-						var origin = 6278;
-					}else if(warehouse == 'Tandes.Sby'){
-						document.getElementById("warehouse").setAttribute('class', 'form-control');
-						var origin = 6156;
-					}else{
-						document.getElementById("warehouse").setAttribute('class', 'form-control is-invalid');
-					}
-
-					if(subdistrict == ""){
-						document.getElementById("subdistrict").setAttribute('class', 'form-control is-invalid');
-					}else{
-						document.getElementById("subdistrict").setAttribute('class', 'form-control');
-					}
-					if(weight == ""){
-						document.getElementById("weight").setAttribute('class', 'form-control is-invalid');
-					}else{
-						document.getElementById("weight").setAttribute('class', 'form-control');
-					}
-					if(courier == ""){
-						document.getElementById("courier").setAttribute('class', 'form-control is-invalid');
-					}else{
-						document.getElementById("courier").setAttribute('class', 'form-control');
-					}
-					if(warehouse != "" && subdistrict != "" && weight != "" && courier != ""){
-
-						$.ajax({
-							type: 'GET',
-							url: "{{ route('ongkir') }}",
-							data: {'origin': origin, 'destination': subdistrict, 'weight': weight, 'courier': courier},
-							dataType: 'json',
-							success: function(data){
-								data = Math.ceil(data / 1000) * 1000;
-                                shipping_price.value = data;
-								// var total_shipping_price = data-shipping_promotion;
-								// if(total_shipping_price <= 0){
-								// 	shipping_price.value = 0;
-								// }else{
-								// 	shipping_price.value = total_shipping_price;
-								// }
-							},
-							error: function(){
-								alert('Courier is not available, please choose another courier!');
-								shipping_price.value = 0;
-							}
-						});
-					}
-				});
-			});
-		</script>
-		<script>
-			$(function(){
-				$('#clipboard').hide();
-				$('#payment_method, #courier, #quantity, #promotion_id, #province, #promotion_admin').on('change', function(){
-					var name = $('#name').val();
-					var address = $('#address').val();
-					var province = $('#province').find(":selected").text();
-					var city = $('#city').find(":selected").text();
-					var subdistrict = $('#subdistrict').find(":selected").text();
-					var whatsapp = $('#whatsapp').val();
-					var quantity = $('#quantity').val();
-					var price = $('#price').val();
-					var promotion_id = $('#promotion_id').val();
-					var shipping_price = $('#shipping_price').val();
-					var payment_method = $('#payment_method').val();
-					var promotion_admin = $('#promotion_admin').val();
-					var courier = $('#courier').val();
-					var product = $('#product').text();
-					var province_id = $('#province').find(":selected").val();
-					var ongkir = parseInt(shipping_price);
-					var total_price = (parseInt(price) * parseInt(quantity));
-					{{--  console.log(promotion_admin);  --}}
-
-					if(promotion_id)
-                    {
-						$.ajax({
-							url: "get_promotion/"+promotion_id,
-							type: "GET",
-							dataType: "json",
-							success: function(promotion){
-								$('#product_promotion').val(parseInt(promotion.product_promotion));
-								$('#shipping_promotion').val(parseInt(promotion.shipping_promotion));
-								var shipping_promotion = parseInt(promotion.shipping_promotion);
-								var shipping_promotion_percent = parseInt(promotion.shipping_promotion_percent);
-								var product_promotion = parseInt(promotion.product_promotion);
-								var product_promotion_percent = parseInt(promotion.product_promotion_percent);
-								console.log(promotion);
-
-								if(shipping_promotion_percent == 0 && shipping_promotion == 0){
-									var promo_ongkir = 0;
-								}else if(shipping_promotion_percent != 0 && shipping_promotion == 0){
-									var promo_ongkir = ongkir*shipping_promotion_percent/100;
-								}else if(shipping_promotion_percent == 0 && shipping_promotion != 0){
-									var promo_ongkir = shipping_promotion;
-								}else{
-									if ((ongkir*shipping_promotion_percent/100) > shipping_promotion){
-										var promo_ongkir = shipping_promotion;
-									}
-									else{
-										var promo_ongkir = ongkir*shipping_promotion_percent/100;
-									}
-								}
-								if(product_promotion_percent == 0 && product_promotion == 0){
-									var promo_product = 0;
-								}else if(product_promotion_percent != 0 && product_promotion == 0){
-									var promo_product = total_price*product_promotion_percent/100;
-									$('#total_price').val(parseInt(total_price-promo_product));
-								}else if(product_promotion_percent == 0 && product_promotion != 0){
-									var promo_product = product_promotion;
-									$('#total_price').val(parseInt(total_price-promo_product));
-								}else{
-									if ((total_price*product_promotion_percent/100) > product_promotion){
-										var promo_product = product_promotion;
-										$('#total_price').val(parseInt(total_price-promo_product));
-									}
-									else{
-										var promo_product = total_price*product_promotion_percent/100;
-										$('#total_price').val(parseInt(total_price-promo_product));
-									}
-								}
-
-								if(courier === 'Ninja' && payment_method === 'COD'){
-									var admin = (total_price - promo_product + ongkir - promo_ongkir) * 0.025;
-									admin = Math.ceil(admin / 1000) * 1000;
-									$('#shipping_admin').val(admin);
-									
-									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
-									$('#total_admin').val(parseInt(total_admin));
-									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
-									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
-								}
-                                else if(courier === 'Sicepat' && payment_method === 'COD'){
-									var admin = (total_price - promo_product + ongkir - promo_ongkir)*0.030;
-									if(admin < 2000){
-										admin = 2000;
-									}
-									admin = Math.ceil(admin / 1000) * 1000;
-									$('#shipping_admin').val(admin);
-									
-									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
-									$('#total_admin').val(parseInt(total_admin));
-									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
-									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
-                                }
-                                else if(courier === 'JNT' && payment_method === 'COD'){
-									var admin = (total_price - promo_product + ongkir - promo_ongkir)*0.030;
-									if(admin < 5000){
-										admin = 5000;
-									}
-									admin = Math.ceil(admin / 1000) * 1000;
-									$('#shipping_admin').val(admin);
-									
-									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
-									$('#total_admin').val(parseInt(total_admin));
-									var total_payment = total_price + ongkir + total_admin - promo_ongkir - promo_product;
-									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD)= ${total_payment}`;
-                                }
-                                else if(payment_method == "Transfer"){
-									var total_payment = total_price + ongkir - promo_ongkir - promo_product;
-									$('#shipping_admin').val(0);
-									var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
-									$('#total_admin').val(parseInt(total_admin));
-									var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} - ${promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) = ${total_payment}`;
-								}
-								console.log(total_payment);
-								$('#total_payment').val(parseInt(total_payment));
-								console.log(text);
-								$("#clipboard").val(text);
-							}
-						});
-					}
-                    else{
-						$('#product_promotion').val(0);
-						$('#shipping_promotion').val(0);
-						$('#total_price').val(total_price);
-						if(courier === 'Ninja' && payment_method === 'COD'){
-                            var admin = (total_price + ongkir)*0.025;
-							admin = Math.ceil(admin / 1000) * 1000;
-							$('#shipping_admin').val(admin);
-							
-							var total_admin = admin - parseInt(promotion_admin);
-							$('#total_admin').val(parseInt(total_admin));
-							var total_payment = total_price + ongkir + total_admin;
-							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
-						}
-                        else if(courier === 'Sicepat' && payment_method === 'COD'){
-                            var admin = (total_price + ongkir)*0.030;
-                            if(admin < 2000){
-                                admin = 2000;
-                            }
-							admin = Math.ceil(admin / 1000) * 1000;
-							$('#shipping_admin').val(admin);
-							
-							var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
-							$('#total_admin').val(parseInt(total_admin));
-                            var total_payment = total_price + ongkir + total_admin;
-							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
-						}
-                        else if(courier === 'JNT' && payment_method === 'COD'){
-                            var admin = (total_price + ongkir)*0.030;
-                            if(admin < 5000){
-                                admin = 5000;
-                            }
-							admin = Math.ceil(admin / 1000) * 1000;
-							$('#shipping_admin').val(admin);
-							
-							var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
-							$('#total_admin').val(parseInt(total_admin));
-                            var total_payment = total_price + ongkir + total_admin;
-							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) + ${admin} (biaya admin COD) - ${promotion_admin} (promo biaya admin COD) = ${total_payment}`;
-						}
-                        else if(payment_method == "Transfer"){
-                            var total_payment = total_price + ongkir;
-							$('#shipping_admin').val(0);
-							var total_admin = parseInt($('#shipping_admin').val()) - parseInt(promotion_admin);
-							$('#total_admin').val(parseInt(total_admin));
-							var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${total_price} + ${ongkir} (ongkir) = ${total_payment}`;
-                        }
-						console.log(total_payment);
-						$('#total_payment').val(parseInt(total_payment));
-						console.log(text);
-						$("#clipboard").val(text);
-					}
-				});
-			});
-		</script>
+		<script src="../assets/js/cek-ongkir.js"></script>
+		<script src="../assets/js/promo.js"></script>
 		<script>
 			$(function(){
 				$("#clipboard").hide();
