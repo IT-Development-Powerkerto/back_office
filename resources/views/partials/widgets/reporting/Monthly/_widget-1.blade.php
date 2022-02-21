@@ -4,7 +4,7 @@
 			<!--begin::Header-->
 			<div class="card-header border-0 bg-white py-5">
 				<h3 class="card-title fw-bolder text-dark">Total Omset</h3>
-				<label class="my-auto px-3 rounded fs-5 fw-bolder bg-light-success text-success">{{($inputer->sum('total_price') - $inputer->sum('product_promotion')) / 1000000}} JT</label>
+				<label class="my-auto px-3 rounded fs-5 fw-bolder bg-light-success text-success">{{round(($inputer->sum('total_price') - $inputer->sum('product_promotion')) / 1000000, 1)}} JT</label>
                     <input id="omset_jan" value="{{$omset_jan}}" hidden/>
                     <input id="omset_feb" value="{{$omset_feb}}" hidden/>
                     <input id="omset_mar" value="{{$omset_mar}}" hidden/>
@@ -106,7 +106,7 @@
                                     </div>
                                     <div>
                                         <div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">{{$product->name}}</div>
-                                        <div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">{{($omset_month_count->where('product_name', $product->name)->sum('total_price')-$omset_month_count->where('product_name', $product->name)->sum('product_promotion')) / 1000000}} JT</div>
+                                        <div class="font-size-sm fw-bold text-{{$icon->where('id', ($n%5 == 0) ? 5 : $n%5)->implode('name')}}">{{round(($omset_month_count->where('product_name', $product->name)->sum('total_price')-$omset_month_count->where('product_name', $product->name)->sum('product_promotion')) / 1000000, 1)}} JT</div>
                                     </div>
                                 </div>
                                 <!--end::Item-->

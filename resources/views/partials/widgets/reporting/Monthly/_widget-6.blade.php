@@ -1,6 +1,6 @@
 
 	<!--begin::Nav Panel Widget 2-->
-	<div class="card shadow-sm card-custom card-stretch gutter-b scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 515px">
+	<div class="card shadow-sm card-custom card-stretch gutter-b">
         <!--begin::Header-->
         <div class="card-header border-0 bg-white pt-5">
             <h3 class="card-title align-items-start flex-column">
@@ -23,7 +23,23 @@
                             <label class="card bg-danger hoverable card-xl-stretch mb-xl-8">
                                 <!--begin::Body-->
                                 <div class="card-body">
-                                    <div class="text-white fw-bolder fs-4">{{$closing_count->count()}}</div>
+                                    <div class="text-white fw-bolder fs-4">
+                                        <script>
+                                            var bilangan = {{$closing_count->count()}};
+
+                                            var	number_string = bilangan.toString(),
+                                                sisa 	= number_string.length % 3,
+                                                rupiah 	= number_string.substr(0, sisa),
+                                                ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                            if (ribuan) {
+                                                separator = sisa ? '.' : '';
+                                                rupiah += separator + ribuan.join('.');
+                                            }
+
+                                            document.write(rupiah);
+                                        </script>
+                                    </div>
                                     <div class="fw-medium text-white fs-7">Total Closing</div>
                                 </div>
                                 <!--end::Body-->
@@ -35,7 +51,23 @@
                             <label class="card bg-primary hoverable card-xl-stretch mb-xl-8">
                                 <!--begin::Body-->
                                 <div class="card-body">
-                                    <div class="text-white fw-bolder fs-4">{{$lead_count->count()}}</div>
+                                    <div class="text-white fw-bolder fs-4">
+                                        <script>
+                                            var bilangan = {{$lead_count->count()}};
+
+                                            var	number_string = bilangan.toString(),
+                                                sisa 	= number_string.length % 3,
+                                                rupiah 	= number_string.substr(0, sisa),
+                                                ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                            if (ribuan) {
+                                                separator = sisa ? '.' : '';
+                                                rupiah += separator + ribuan.join('.');
+                                            }
+
+                                            document.write(rupiah);
+                                        </script>
+                                    </div>
                                     <div class="fw-medium text-white fs-7">Total Leads</div>
                                 </div>
                                 <!--end::Body-->
@@ -47,7 +79,7 @@
                             <label class="card bg-success hoverable card-xl-stretch mb-5 mb-xl-8">
                                 <!--begin::Body-->
                                 <div class="card-body">
-                                    <div class="text-white fw-bolder fs-4">{{($omset_month_count->sum('total_price')-$omset_month_count->sum('product_promotion')) / 1000000}} Juta</div>
+                                    <div class="text-white fw-bolder fs-4">{{round(($omset_month_count->sum('total_price')-$omset_month_count->sum('product_promotion')) / 1000000, 1)}} Juta</div>
                                     <div class="fw-medium text-white fs-7">Total Omset</div>
                                 </div>
                                 <!--end::Body-->
@@ -58,7 +90,7 @@
                     <!--end::Row-->
 					<!--end::Header-->
 					<!--begin::Body-->
-					<div class="pt-1">
+					<div class="pt-1 scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 300px">
                         @foreach ($product as $product)
                         <!--begin::Item-->
 						<div class="d-flex align-items-center pb-7">
@@ -75,9 +107,41 @@
 							</div>
 							<!--end::Text-->
 							<!--begin::label-->
-							<span class="fw-medium text-muted label label-xl label-light-success label-inline px-3 py-5 min-w-45px">{{$lead_count->where('product_id', $product->id)->count()}} Leads</span>
-							<span class="fw-medium text-muted label label-xl label-light-success label-inline px-3 py-5 min-w-45px">{{$closing_count->where('product_id', $product->id)->count()}} Closing</span>
-                            <span class="fw-medium text-muted label label-xl label-light-success label-inline px-3 py-5 min-w-45px">{{($omset_month_count->where('product_name', $product->name)->sum('total_price')-$omset_month_count->where('product_name', $product->name)->sum('product_promotion')) / 1000000}} Juta</span>
+							<span class="fw-medium text-muted label label-xl label-light-success label-inline px-3 py-5 min-w-45px">
+                                <script>
+                                    var bilangan = {{$lead_count->where('product_id', $product->id)->count()}};
+
+                                    var	number_string = bilangan.toString(),
+                                        sisa 	= number_string.length % 3,
+                                        rupiah 	= number_string.substr(0, sisa),
+                                        ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                    if (ribuan) {
+                                        separator = sisa ? '.' : '';
+                                        rupiah += separator + ribuan.join('.');
+                                    }
+
+                                    document.write(rupiah);
+                                </script> Leads
+                            </span>
+							<span class="fw-medium text-muted label label-xl label-light-success label-inline px-3 py-5 min-w-45px">
+                                <script>
+                                    var bilangan = {{$closing_count->where('product_id', $product->id)->count()}};
+
+                                    var	number_string = bilangan.toString(),
+                                        sisa 	= number_string.length % 3,
+                                        rupiah 	= number_string.substr(0, sisa),
+                                        ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                    if (ribuan) {
+                                        separator = sisa ? '.' : '';
+                                        rupiah += separator + ribuan.join('.');
+                                    }
+
+                                    document.write(rupiah);
+                                </script> Closing
+                            </span>
+                            <span class="fw-medium text-muted label label-xl label-light-success label-inline px-3 py-5 min-w-45px">{{round(($omset_month_count->where('product_name', $product->name)->sum('total_price')-$omset_month_count->where('product_name', $product->name)->sum('product_promotion')) / 1000000, 1)}} Juta</span>
 							<!--end::label-->
 						</div>
 						<!--end::Item-->

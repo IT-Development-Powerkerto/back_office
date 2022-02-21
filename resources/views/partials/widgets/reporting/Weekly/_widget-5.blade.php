@@ -1,6 +1,6 @@
 
 	<!--begin::Nav Panel Widget 2-->
-	<div class="card card-custom shadow-sm card-stretch gutter-b scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 515px">
+	<div class="card card-custom shadow-sm card-stretch gutter-b">
         <!--begin::Header-->
         <div class="card-header border-0 bg-white py-5">
             <h3 class="card-title fw-bolder text-dark">CS Ranking</h3>
@@ -10,7 +10,7 @@
         </div>
         <!--end::Header-->
         <!--begin::Body-->
-        <div class="card-body ">
+        <div class="card-body scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 515px">
             <!--begin::Wrapper-->
             <div class="d-flex justify-content-between flex-column pt-4 h-100">
 				<!--begin::Container-->
@@ -48,7 +48,38 @@
 							<!--begin::Text-->
 							<div class="d-flex flex-column flex-grow-1">
 								<label class="fw-bolder text-dark mb-1 font-size-lg">{{$cs->name}}</label>
-                                <span class="text-muted fw-medium">{{$lead_count->where('user_id', $cs->id)->count()}} Leads, {{$closing_count->where('user_id', $cs->id)->count()}} Closing</span>
+                                <span class="text-muted fw-medium">
+                                    <script>
+                                        var bilangan = {{$lead_count->where('user_id', $cs->id)->count()}};
+
+                                        var	number_string = bilangan.toString(),
+                                            sisa 	= number_string.length % 3,
+                                            rupiah 	= number_string.substr(0, sisa),
+                                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                        if (ribuan) {
+                                            separator = sisa ? '.' : '';
+                                            rupiah += separator + ribuan.join('.');
+                                        }
+
+                                        document.write(rupiah);
+                                    </script> Leads,
+                                    <script>
+                                        var bilangan = {{$closing_count->where('user_id', $cs->id)->count()}};
+
+                                        var	number_string = bilangan.toString(),
+                                            sisa 	= number_string.length % 3,
+                                            rupiah 	= number_string.substr(0, sisa),
+                                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                        if (ribuan) {
+                                            separator = sisa ? '.' : '';
+                                            rupiah += separator + ribuan.join('.');
+                                        }
+
+                                        document.write(rupiah);
+                                    </script> Closing
+                                </span>
 							</div>
 							<!--end::Text-->
 						</div>

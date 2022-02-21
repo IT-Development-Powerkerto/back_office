@@ -7,7 +7,7 @@
 										<label class="my-auto px-3 rounded text-dark fw-bolder fs-3">Closing Rate</label>
 									</div>
 									<span class="symbol symbol-50px">
-										<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{($lead_count->count() == 0) ? 0 : ($closing_count->count() / $lead_count->count())*100}} %</span>
+										<span class="symbol-label fs-5 fw-bolder bg-light-success text-success">{{($lead_count->count() == 0) ? 0 : round(($closing_count->count() / $lead_count->count())*100, 1)}} %</span>
 									</span>
 								</div>
 								<div class="statistics-widget-3-chart card-rounded-bottom" data-kt-chart-color="success" style="height: 150px"></div>
