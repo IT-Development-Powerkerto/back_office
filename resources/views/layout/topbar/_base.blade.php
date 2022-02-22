@@ -24,7 +24,7 @@
 			@endif
 		</div>
 
-		@include('layout/topbar/partials/_user-menu')
+		@include('layout/topbar/partials/_user-menu-admin')
 
 		<!--end::Menu wrapper-->
 	</div>

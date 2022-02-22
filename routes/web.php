@@ -35,6 +35,8 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\ErrorPagesController;
 use App\Http\Controllers\JuniorAdvController;
 use App\Http\Controllers\ReportingController;
+use App\Http\Controllers\WarehouseController;
+use App\Http\Controllers\CourierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -197,4 +199,10 @@ Route::get('/404', [ErrorPagesController::class, 'abort'])->name('error-404');
 Route::get('/live-reporting',[ReportingController::class, 'index'])->name('reporting')->middleware('auth');
 Route::get('/live-reporting/weekly',[ReportingController::class, 'weeklyReporting'])->name('reporting-weekly')->middleware('auth');
 Route::get('/live-reporting/monthly',[ReportingController::class, 'monthlyReporting'])->name('reporting-monthly')->middleware('auth');
+
+Route::resource('/warehouse', WarehouseController::class);
+Route::get('/edit/warehouse', [WarehouseController::class, 'editingwarehouse'])->name('editWH');
+
+Route::resource('/courier', CourierController::class);
+Route::get('/edit/courier', [CourierController::class, 'editingcourier'])->name('editCR');
 

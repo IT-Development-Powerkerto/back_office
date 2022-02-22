@@ -45,7 +45,7 @@
 																	<input class="form-control mt-0" name="from_date"  id="from_date" type="date" style="height: 33px;">
 																</div>
 																<div class="col-2">
-																	<h3 class= text-dark fw-bolder fs-6 pt-3">Until</h3>
+																	<h3 class="text-dark fw-bolder fs-6 pt-3">Until</h3>
 																</div>
 																<div class="col-5">
 																	<input class="form-control mt-0" name="to_date"  id="to_date" type="date" style="height: 33px;">
