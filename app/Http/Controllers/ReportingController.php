@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Announcement;
 use App\Models\Campaign;
-use App\Models\Client;
+// use App\Models\Client;
 use App\Models\CRM;
 use App\Models\Role;
 use App\Models\Icon;
@@ -304,7 +304,7 @@ class ReportingController extends Controller
         $icons = Icon::all();
         $product = Product::where('admin_id', auth()->user()->admin_id)->get();
 
-        $client = Client::where('admin_id', auth()->user()->admin_id)->get();
+        $client = Lead::where('admin_id', auth()->user()->admin_id)->select('id', 'client_name', 'client_whatsapp')->get();
         $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
         $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
         $inputer = Inputer::where('admin_id', auth()->user()->admin_id)->whereBetween('created_at', [

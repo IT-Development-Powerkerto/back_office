@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Carbon\Carbon;
 
 class UserPWK extends JsonResource
 {
@@ -17,7 +18,7 @@ class UserPWK extends JsonResource
         return [
             'id'            => $this->id,
             'role_id'       => $this->role_id,
-            'paket_id'      => $this->paket_id,
+            'paket'         => $this->paket,
             'name'          => $this->name,
             'username'      => $this->username,
             'email'         => $this->email,
@@ -26,6 +27,7 @@ class UserPWK extends JsonResource
             'image'         => $this->image,
             'created_at'    => $this->created_at,
             'updated_at'    => $this->updated_at,
+            'expired_at'    => Carbon::parse($this->expired_at)->subDay()->diffForHumans(),
         ];
     }
 }

@@ -45,7 +45,7 @@
 																	<input class="form-control mt-0" name="from_date"  id="from_date" type="date" style="height: 33px;">
 																</div>
 																<div class="col-2">
-																	<h3 class="text-dark fw-bolder fs-6 pt-3">Until</h3>
+																	<h3 class= "text-dark fw-bolder fs-6 pt-3">Until</h3>
 																</div>
 																<div class="col-5">
 																	<input class="form-control mt-0" name="to_date"  id="to_date" type="date" style="height: 33px;">
@@ -165,8 +165,30 @@
 												</td>
 												<td>
 													<div class="d-flex align-items-center clock{{ $lead->id }}">
-														<script>
+														<script type="text/javascript">
 															window.addEventListener('load', function() {
+																var createdDate = new Date('{{$lead->client_created_at}}');
+																var updatedDate = new Date('{{$lead->client_updated_at}}');
+																var nowDate = new Date();
+																if('{{$lead->status_id == 3}}'){
+																	// var futureDate = new Date(createdDate.getTime() - 0);
+																	// var dif = (nowDate.getTime() - futureDate.getTime()) / 1000;
+																	var dif = (nowDate.getTime() - createdDate.getTime()) / 1000;
+																	var Seconds_Between_Dates = Math.abs(Math.round(dif));
+																	var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
+																	display = document.querySelector('.clock{{ $lead->id }}');
+																	CountUpTimer(fiveMinutes{{$lead->id}}, display);
+																} else {
+																	var dif = (createdDate.getTime() - updatedDate.getTime()) / 1000;
+																	var Seconds_Between_Dates = Math.abs(Math.round(dif));
+																	var fiveMinutes{{ $lead->id}} = Seconds_Between_Dates;
+																	display = document.querySelector('.clock{{ $lead->id }}');
+																	StopTimer(fiveMinutes{{$lead->id}}, display);
+																}
+															});
+														</script>
+                                                        <script type="text/javascript">
+															window.addEventListener('click', function() {
 																var createdDate = new Date('{{$lead->client_created_at}}');
 																var updatedDate = new Date('{{$lead->client_updated_at}}');
 																var nowDate = new Date();

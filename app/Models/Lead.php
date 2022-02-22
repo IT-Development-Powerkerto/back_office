@@ -13,16 +13,17 @@ class Lead extends Model
     protected $table = 'leads';
     protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'advertiser',
-        'operator',
-        'client_id',
-        'product_id',
-        'quantity',
-        'price',
-        'total_price',
-        'status_id',
-    ];
+    protected $guarded = ['id'];
+    // protected $fillable = [
+    //     'advertiser',
+    //     'operator',
+    //     'client_id',
+    //     'product_id',
+    //     'quantity',
+    //     'price',
+    //     'total_price',
+    //     'status_id',
+    // ];
 
     public function user(){
         return $this->belongsTo(User::class);
