@@ -38,6 +38,7 @@ use App\Http\Controllers\ReportingController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\SyncController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -208,3 +209,7 @@ Route::resource('/courier', CourierController::class);
 Route::get('/edit/courier', [CourierController::class, 'editingcourier'])->name('editCR');
 
 Route::get('/sync', [SyncController::class, 'tableClient']);
+
+Route::get('/sites/pwkmaintenance', function (){
+    return Artisan::call('down');
+});
