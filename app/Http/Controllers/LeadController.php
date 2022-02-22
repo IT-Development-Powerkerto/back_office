@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\LeadsExport;
-use App\Models\Client;
+// use App\Models\Client;
 use App\Models\Lead;
 use App\Models\Promotion;
 use App\Models\Inputer;
@@ -94,9 +94,9 @@ class LeadController extends Controller
             ->join('operators as o', 'l.operator_id', '=', 'o.id')
             ->join('products as p', 'l.product_id', '=', 'p.id' )
             ->join('statuses as s', 'l.status_id', '=', 's.id')
-            ->join('clients as c', 'l.client_id', '=', 'c.id')
+            // ->join('clients as c', 'l.client_id', '=', 'c.id')
             ->join('campaigns as cp', 'l.campaign_id', '=', 'cp.id')
-            ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.name as client_name', 'c.whatsapp as client_wa', 'c.created_at as client_created_at', 'c.updated_at as client_updated_at', 'cp.cs_to_customer as cs_to_customer', 's.name as status_name')
+            ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'l.created_at as client_created_at', 'l.updated_at as client_updated_at', 'cp.cs_to_customer as cs_to_customer', 's.name as status_name')
             ->where('l.id', $id)
             ->where('l.admin_id', auth()->user()->admin_id);
         $inputer = DB::table('inputers as i')
@@ -205,13 +205,15 @@ class LeadController extends Controller
                 $province = $response['rajaongkir']['results']['province'];
                 $city = $response['rajaongkir']['results']['city'];
                 $subdistrict = $response['rajaongkir']['results']['subdistrict_name'];
-                DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                // DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                //     'name'         => $request->name,
+                //     'whatsapp'     => $whatsapp,
+                //     'updated_at'   => Carbon::now()->toDateTimeString(),
+                // ]);
+                DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                    // 'client_id'       => $lead,
                     'name'         => $request->name,
                     'whatsapp'     => $whatsapp,
-                    'updated_at'   => Carbon::now()->toDateTimeString(),
-                ]);
-                DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
-                    'client_id'       => $lead,
                     'quantity'        => $request->quantity,
                     'price'           => $request->price,
                     'total_price'     => $request->total_price,
@@ -317,13 +319,15 @@ class LeadController extends Controller
             }
         }
         else{
-            DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+            // DB::table('clients')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+            //     'name'         => $request->name,
+            //     'whatsapp'     => $whatsapp,
+            //     'updated_at'   => Carbon::now()->toDateTimeString(),
+            // ]);
+            DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
+                // 'client_id'       => $lead,
                 'name'         => $request->name,
                 'whatsapp'     => $whatsapp,
-                'updated_at'   => Carbon::now()->toDateTimeString(),
-            ]);
-            DB::table('leads')->where('id', $lead)->where('admin_id', auth()->user()->admin_id)->update([
-                'client_id'       => $lead,
                 'quantity'        => $request->quantity,
                 'price'           => $request->price,
                 'total_price'     => $request->total_price,
@@ -344,8 +348,8 @@ class LeadController extends Controller
     {
         // dd($lead);
         $lead->delete();
-        $client = Client::whereid($lead->client_id);
-        $client->delete();
+        // $client = Client::whereid($lead->client_id);
+        // $client->delete();
         DB::table('products')->whereid($lead->product_id)->decrement('lead');
         return redirect('/dashboard')->with('success','Successull! Lead Deleted');
     }
@@ -363,19 +367,20 @@ class LeadController extends Controller
             'status_id' => 4,
             'updated_at' => Carbon::now()->toDateTimeString()
         ]);
-        DB::table('clients')->where('id', $lead)->update([
-            'updated_at'   => Carbon::now()->toDateTimeString(),
-        ]);
+        // DB::table('clients')->where('id', $lead)->update([
+        //     'updated_at'   => Carbon::now()->toDateTimeString(),
+        // ]);
         $user_id = DB::table('leads')->where('id', $lead)->where('deleted_at', null)->value('user_id');
         // $phone = DB::table('users')->whereId($user_id)->value('phone');
         $campaign_id = DB::table('leads')->where('id', $lead)->where('deleted_at', null)->value('campaign_id');
-        $client_id = DB::table('leads')->where('id', $lead)->where('deleted_at', null)->value('client_id');
-        $client_name = Client::where('id', $client_id)->where('deleted_at', null)->value('name');
-        $client_number = Client::where('id', $client_id)->where('deleted_at', null)->value('whatsapp');
+        // $client_id = DB::table('leads')->where('id', $lead)->where('deleted_at', null)->value('client_id');
+        $client_name = Lead::where('id', $lead)->value('client_name');
+        $client_number = Lead::where('id', $lead)->value('client_whatsapp');
         $operator_name = Operator::where('campaign_id', $campaign_id)->where('deleted_at', null)->where('user_id', $user_id)->value('name');
         $product_id = DB::table('leads')->where('id', $lead)->where('deleted_at', null)->value('product_id');
         $product_name = Product::where('id', $product_id)->where('deleted_at', null)->value('name');
         $FU_text = DB::table('campaigns')->where('id', $campaign_id)->where('deleted_at', null)->value('cs_to_customer');
         return redirect('https://api.whatsapp.com/send/?phone='.$client_number.'&text='.rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($client_name, $client_number, $operator_name, $product_name), $FU_text)));
     }
+    
 }

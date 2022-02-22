@@ -19,11 +19,12 @@ class LeadResource extends JsonResource
             'id'              => $this->id,
             'advertiser'      => $this->advertiser,
             'operator'        => $this->operator,
-            'customer'        => $this->client,
+            'customer_name'        => $this->client_name,
+            'customer_whatsapp'        => $this->client_whatsapp,
             'product'         => $this->product,
             'status'          => $this->status,
-            'created_at'      => Carbon::parse($this->client->created_at)->isoFormat('D/M/YYYY HH:mm'),
-            'updated_at'      => Carbon::parse($this->client->updated_at)->isoFormat('D/M/YYYY HH:mm'),
+            'created_at'      => Carbon::parse($this->created_at)->isoFormat('D/M/YYYY HH:mm'),
+            'updated_at'      => Carbon::parse($this->updated_at)->isoFormat('D/M/YYYY HH:mm'),
         ];
     }
 }
