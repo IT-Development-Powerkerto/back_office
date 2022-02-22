@@ -16,6 +16,7 @@ class UserPWK extends JsonResource
     public function toArray($request)
     {
         return [
+            'from'          => 'Banyumax',
             'id'            => $this->id,
             'role_id'       => $this->role_id,
             'paket'         => $this->paket,
