@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Inputer extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    // use HasFactory, SoftDeletes;
     // protected $fillable = [
     //     'admin_id',
     //     'lead_id',

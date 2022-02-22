@@ -6,7 +6,7 @@
 									<div class="d-flex flex-column me-2">
 										<label class="text-dark fw-bolder fs-3">Closing Rate</label>
 									</div>
-									<label class="my-auto px-3 rounded fs-5 fw-bolder bg-light-success text-success">{{($lead_count->count() == 0) ? 0 : ($closing_count->count() / $lead_count->count())*100}} %</label>
+									<label class="my-auto px-3 rounded fs-5 fw-bolder bg-light-success text-success">{{round(($lead_count->count() == 0) ? 0 : ($closing_count->count() / $lead_count->count())*100, 1)}} %</label>
 								</div>
 								<div class="statistics-widget-3-chart card-rounded-bottom" data-kt-chart-color="success" style="height: 150px"></div>
 							</div>

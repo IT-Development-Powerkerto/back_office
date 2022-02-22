@@ -1447,10 +1447,10 @@ var KTWidgets = function () {
                 // name: 'Generos',
                 name: document.getElementById('product ' + x).value,
                 data: [
-                    parseInt(document.getElementById(x + ' omset_week1').value)/1000000,
-                    parseInt(document.getElementById(x + ' omset_week2').value)/1000000,
-                    parseInt(document.getElementById(x + ' omset_week3').value)/1000000,
-                    parseInt(document.getElementById(x + ' omset_week4').value)/1000000
+                    (parseInt(document.getElementById(x + ' omset_week1').value)/1000000).toFixed(1),
+                    (parseInt(document.getElementById(x + ' omset_week2').value)/1000000).toFixed(1),
+                    (parseInt(document.getElementById(x + ' omset_week3').value)/1000000).toFixed(1),
+                    (parseInt(document.getElementById(x + ' omset_week4').value)/1000000).toFixed(1)
                 ]
             };
             x+=1;

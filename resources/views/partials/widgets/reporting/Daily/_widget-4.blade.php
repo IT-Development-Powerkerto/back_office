@@ -1,6 +1,6 @@
 
 	<!--begin::Nav Panel Widget 2-->
-	<div class="card shadow-sm card-custom card-stretch gutter-b scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 515px">
+	<div class="card shadow-sm card-custom card-stretch gutter-b">
         <!--begin::Header-->
         <div class="card-header border-0 bg-white py-5">
             <h3 class="card-title fw-bolder text-dark">ADV Ranking</h3>
@@ -17,7 +17,7 @@
         @endforeach --}}
         {{-- {{dd($x)}} --}}
         <!--begin::Body-->
-        <div class="card-body">
+        <div class="card-body scroll scroll-pull" data-scroll="true" data-wheel-propagation="true" style="height: 515px">
             <!--begin::Wrapper-->
             <div class="d-flex justify-content-between flex-column pt-4 h-100">
 				<!--begin::Container-->
@@ -57,7 +57,23 @@
 							<!--begin::Text-->
 							<div class="d-flex flex-column flex-grow-1">
 								<label class="fw-bolder text-dark mb-1 font-size-lg">{{$adv->name}}</label>
-                                <span class="text-muted fw-medium">IDR {{$inputer->where('adv_name', $adv->name)->sum('total_price') - $inputer->where('adv_name', $adv->name)->sum('product_promotion')}}</span>
+                                <span class="text-muted fw-medium">RP.
+                                    <script>
+                                        var bilangan = {{$inputer->where('adv_name', $adv->name)->sum('total_price') - $inputer->where('adv_name', $adv->name)->sum('product_promotion')}};
+
+                                        var	number_string = bilangan.toString(),
+                                            sisa 	= number_string.length % 3,
+                                            rupiah 	= number_string.substr(0, sisa),
+                                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                        if (ribuan) {
+                                            separator = sisa ? '.' : '';
+                                            rupiah += separator + ribuan.join('.');
+                                        }
+
+                                        document.write(rupiah);
+                                    </script>
+                                </span>
 							</div>
 							<!--end::Text-->
 						</div>

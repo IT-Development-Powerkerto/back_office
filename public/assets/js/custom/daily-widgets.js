@@ -1459,13 +1459,13 @@ var KTWidgets = function () {
                 // name: 'Generos',
                 name: document.getElementById('product ' + x).value,
                 data: [
-                    parseInt(document.getElementById(x + ' omset_su').value)/1000000,
-                    parseInt(document.getElementById(x + ' omset_mo').value)/1000000,
-                    parseInt(document.getElementById(x + ' omset_tu').value)/1000000,
-                    parseInt(document.getElementById(x + ' omset_we').value)/1000000,
-                    parseInt(document.getElementById(x + ' omset_th').value)/1000000,
-                    parseInt(document.getElementById(x + ' omset_fr').value)/1000000,
-                    parseInt(document.getElementById(x + ' omset_sa').value)/1000000
+                    (parseInt(document.getElementById(x + ' omset_su').value)/1000000).toFixed(1),
+                    (parseInt(document.getElementById(x + ' omset_mo').value)/1000000).toFixed(1),
+                    (parseInt(document.getElementById(x + ' omset_tu').value)/1000000).toFixed(1),
+                    (parseInt(document.getElementById(x + ' omset_we').value)/1000000).toFixed(1),
+                    (parseInt(document.getElementById(x + ' omset_th').value)/1000000).toFixed(1),
+                    (parseInt(document.getElementById(x + ' omset_fr').value)/1000000).toFixed(1),
+                    (parseInt(document.getElementById(x + ' omset_sa').value)/1000000).toFixed(1)
                 ]
             };
             x+=1;
