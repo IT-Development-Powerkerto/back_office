@@ -7,7 +7,7 @@ use App\Mail\BigFlipMail;
 use App\Mail\NotificationMail;
 use App\Mail\ResetPasswordMail;
 use App\Models\Campaign;
-use App\Models\Client;
+// use App\Models\Client;
 use App\Models\Lead;
 use App\Models\Operator;
 use App\Models\Product;
@@ -19,13 +19,13 @@ use Illuminate\Support\Facades\Redirect;
 
 class MailController extends Controller
 {
-    public function index($email, $number, $campaign_id, $product_id, $client_id, $lead_id)
+    public function index($email, $number, $campaign_id, $product_id, $lead_id)
     {
         $FU_text = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('cs_to_customer');
         $date = Lead::whereId($lead_id)->value('created_at');
         $date = Carbon::parse($date)->format('d/m/Y');
-        $client_name = Client::where('id', $client_id)->where('deleted_at', null)->value('name');
-        $client_number = Client::where('id', $client_id)->where('deleted_at', null)->value('whatsapp');
+        $client_name = Lead::where('id', $lead_id)->value('client_name');
+        $client_number = Lead::where('id', $lead_id)->value('client_whatsapp');
         // dd($clients);
         $user_id = User::where('phone', $number)->where('deleted_at', null)->where('deleted_at', null)->value('id');
         $operator_name = Operator::where('campaign_id', $campaign_id)->where('deleted_at', null)->where('user_id', $user_id)->value('name');
@@ -44,7 +44,7 @@ class MailController extends Controller
             'date' => $date
         ];
         Mail::to($email)->send(new NotificationMail($details));
-        return Redirect::away('http://orderku.site/'.$number.'/'.rawurlencode($wa_text).'/'.$thanks);
+        // return Redirect::away('http://orderku.site/'.$number.'/'.rawurlencode($wa_text).'/'.$thanks);
         // return Redirect::away('http://127.0.0.1:8080/'.$number.'/'.rawurlencode($wa_text).'/'.$thanks);
     }
 

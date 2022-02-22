@@ -35,6 +35,7 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\ErrorPagesController;
 use App\Http\Controllers\JuniorAdvController;
 use App\Http\Controllers\ReportingController;
+use App\Http\Controllers\SyncController;
 
 /*
 |--------------------------------------------------------------------------
@@ -153,7 +154,7 @@ Route::get('leads/{lead}', [LeadController::class, 'changeStatus'])->name('chang
 Route::get('inputer/export', [InputerController::class, 'export'])->name('export-inputer')->middleware('auth');
 Route::get('inputer/export/{id}', [InputerController::class, 'exportOne'])->name('export-one-inputer')->middleware('auth');
 // Route::get('send/{email}/{number}/{text}/{thanks}/{product}/{client}/{client_number}/{FU_text}/{operator}', [MailController::class, 'index'])->name('send');
-Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{client_id}/{lead_id}', [MailController::class, 'index'])->name('send');
+Route::get('send/{email}/{number}/{campaign_id}/{product_id}/{lead_id}', [MailController::class, 'index'])->name('send');
 Route::get('activation/{email}', [MailController::class, 'activation'])->name('activation');
 
 
@@ -198,3 +199,4 @@ Route::get('/live-reporting',[ReportingController::class, 'index'])->name('repor
 Route::get('/live-reporting/weekly',[ReportingController::class, 'weeklyReporting'])->name('reporting-weekly')->middleware('auth');
 Route::get('/live-reporting/monthly',[ReportingController::class, 'monthlyReporting'])->name('reporting-monthly')->middleware('auth');
 
+Route::get('/sync', [SyncController::class, 'tableClient']);

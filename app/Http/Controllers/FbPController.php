@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
-use App\Models\Client;
+// use App\Models\Client;
 use App\Models\Lead;
 use App\Events\MessageCreated;
+use App\Models\Operator;
+use App\Models\Product;
 use Pusher\Pusher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +24,7 @@ class FbPController extends Controller
      */
     public function index()
     {
-        $clients = Client::all()->toJson(JSON_PRETTY_PRINT);
+        $clients = Lead::select('id', 'client_name', 'client_whatsapp')->toJson(JSON_PRETTY_PRINT);
         return response($clients, 200);
     }
 
@@ -106,14 +108,15 @@ class FbPController extends Controller
             } else{
                 $whatsapp = $request->whatsapp;
             }
-            $client_id = DB::table('clients')->insertGetId([
-                'admin_id' => $admin_id,
-                'campaign_id' => $campaign_id,
-                'name' => $request->name,
-                'whatsapp' => $whatsapp,
-                'created_at'      => Carbon::now()->toDateTimeString(),
-                'updated_at'      => Carbon::now()->toDateTimeString()
-            ]);
+            // $client_id = DB::table('clients')->insertGetId([
+            //     'admin_id' => $admin_id,
+            //     'campaign_id' => $campaign_id,
+            //     'name' => $request->name,
+            //     'whatsapp' => $whatsapp,
+            //     'created_at'      => Carbon::now()->toDateTimeString(),
+            //     'updated_at'      => Carbon::now()->toDateTimeString()
+            // ]);
+            // return $client_id;
             // $clients = new Client();
             // $clients->admin_id = $admin_id;
             // $clients->campaign_id = $campaign_id;
@@ -166,7 +169,9 @@ class FbPController extends Controller
                 'campaign_id' => $campaign_id,
                 'operator_id'   => $operator_id,
                 'product_id' => $product_id,
-                'client_id'    => $client_id,
+                // 'client_id'    => $client_id,
+                'client_name' => $request->name,
+                'client_whatsapp' => $whatsapp,
                 'user_id'    => $user_id,
                 'price'      => $product_price,
                 'status_id'  => 3,
@@ -193,28 +198,36 @@ class FbPController extends Controller
             $pusher->trigger('message-channel', 'App\\Events\\MessageCreated', $data);
 
             $wa_number = $wa[$counter]->phone;
-
+            $thanks = Campaign::where('id', $campaign_id)->where('deleted_at', null)->value('message');
+            $client_name = Lead::where('id', $lead_id)->value('client_name');
+            $client_number = Lead::where('id', $lead_id)->where('deleted_at', null)->value('client_whatsapp');
+            $operator_name = Operator::where('campaign_id', $campaign_id)->where('deleted_at', null)->where('user_id', $user_id)->value('name');
+            $product_name = Product::where('id', $product_id)->where('deleted_at', null)->value('name');
+            $wa_text = 'Kode Order: ord-'.$lead_id.'%0A'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($client_name, $client_number, $operator_name, $product_name), $text);
 
             $cs_email = DB::table('users')->where('phone', $wa[$counter]->phone)->where('deleted_at', null)->value('email');
-            return Redirect::route('send', [
-                'email' => $cs_email,
-                'number' => $wa_number,
-                'campaign_id' => $campaign_id,
-                'product_id' => $product_id,
-                'client_id' => $client_id,
-                'lead_id' => $lead_id
-            ]);
+            $sendMail = new MailController;
+            $sendMail->index($cs_email, $wa_number, $campaign_id, $product_id, $lead_id);
+            // return Redirect::route('send', [
+            //     'email' => $cs_email,
+            //     'number' => $wa_number,
+            //     'campaign_id' => $campaign_id,
+            //     'product_id' => $product_id,
+            //     'client_id' => $client_id,
+            //     'lead_id' => $lead_id
+            // ]);
+            return redirect('http://orderku.site/'.$wa_number.'/'.rawurlencode($wa_text).'/'.$thanks);
         }
     }
 
     public function lead_wa($campaign_id, $product_id){
         $admin_id = DB::table('campaigns')->where('id', $campaign_id)->value('admin_id');
-        $client_id = DB::table('clients')->insertGetId([
-            'admin_id' => $admin_id,
-            'campaign_id' => $campaign_id,
-            'created_at'      => Carbon::now()->toDateTimeString(),
-            'updated_at'      => Carbon::now()->toDateTimeString()
-        ]);
+        // $client_id = DB::table('clients')->insertGetId([
+        //     'admin_id' => $admin_id,
+        //     'campaign_id' => $campaign_id,
+        //     'created_at'      => Carbon::now()->toDateTimeString(),
+        //     'updated_at'      => Carbon::now()->toDateTimeString()
+        // ]);
         // $clients = new Client();
         // $clients->admin_id = $admin_id;
         // $clients->campaign_id = $campaign_id;
@@ -268,7 +281,7 @@ class FbPController extends Controller
             'campaign_id' => $campaign_id,
             'operator_id'   => $operator_id,
             'product_id' => $product_id,
-            'client_id'    => $client_id,
+            // 'client_id'    => $client_id,
             'user_id'    => $user_id,
             'price'      => $product_price,
             'status_id'  => 3,
@@ -294,7 +307,7 @@ class FbPController extends Controller
         $pusher->trigger('message-channel', 'App\\Events\\MessageCreated', $data);
 
         // return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.$text);
-        $client = DB::table('clients')->where('admin_id', $admin_id)->where('id', $client_id)->get();
+        $client = Lead::where('admin_id', $admin_id)->where('id', $lead_id)->select('client_whatsapp as whatsapp', 'client_name as name')->get();
         return redirect('https://api.whatsapp.com/send/?phone='.$wa[$counter]->phone.'&text='.'Kode Order: ord-'.$lead_id.'%0A'.str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($client['name'] ?? 'From WA', $client['whatsapp'] ?? 'From WA', $operator_name, $product_name), $text));
     }
 }

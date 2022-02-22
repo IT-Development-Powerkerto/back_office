@@ -10,6 +10,7 @@ use App\Models\CsInputer;
 use Illuminate\Http\Request;
 use App\Models\Inputer;
 use App\Models\Lead;
+use App\Models\Promotion;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
@@ -36,9 +37,9 @@ class InputerController extends Controller
             ->join('operators as o', 'l.operator_id', '=', 'o.id')
             ->join('products as p', 'l.product_id', '=', 'p.id' )
             ->join('statuses as s', 'l.status_id', '=', 's.id')
-            ->join('clients as c', 'l.client_id', '=', 'c.id')
+            // ->join('clients as c', 'l.client_id', '=', 'c.id')
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+            ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
             ->where('l.admin_id', auth()->user()->admin_id)
             ->where('l.updated_at', $day)
             ->orderByDesc('l.id')
@@ -62,15 +63,16 @@ class InputerController extends Controller
             ->join('operators as o', 'l.operator_id', '=', 'o.id')
             ->join('products as p', 'l.product_id', '=', 'p.id' )
             ->join('statuses as s', 'l.status_id', '=', 's.id')
-            ->join('clients as c', 'l.client_id', '=', 'c.id')
+            // ->join('clients as c', 'l.client_id', '=', 'c.id')
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+            ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
             ->where('l.admin_id', auth()->user()->admin_id)
             ->where('l.updated_at', $day)
             ->orderByDesc('l.id')
             ->paginate(5);
             //dd($leads);
             $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
+            $promotions = Promotion::all();
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $all_inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
@@ -78,7 +80,7 @@ class InputerController extends Controller
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
             // dd($cs_inputers);
-            return view('inputer.Dashboard', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers']));
+            return view('inputer.Dashboard', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'promotions']));
         }else if(Auth::user()->role_id == 12){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
@@ -89,9 +91,9 @@ class InputerController extends Controller
             ->join('operators as o', 'l.operator_id', '=', 'o.id')
             ->join('products as p', 'l.product_id', '=', 'p.id' )
             ->join('statuses as s', 'l.status_id', '=', 's.id')
-            ->join('clients as c', 'l.client_id', '=', 'c.id')
+            // ->join('clients as c', 'l.client_id', '=', 'c.id')
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
-            ->select('l.id as id', 'advertiser', 'c.name as client_name', 'c.whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'c.updated_at as client_updated_at', 'c.created_at as client_created_at')
+            ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
             ->where('l.admin_id', auth()->user()->admin_id)
             ->where('l.updated_at', $day)
             ->orderByDesc('l.id')
