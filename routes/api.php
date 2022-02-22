@@ -12,6 +12,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\API\UserPowerkertoController;
 use App\Http\Controllers\API\UserInfoController;
+use App\Http\Controllers\API\DashboardSuperAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,4 +51,6 @@ Route::get('leads', [LeadController::class, 'index']);
 //API route for register new user
 Route::resource('userPWK', UserPowerkertoController::class);
 Route::resource('userInfo', UserInfoController::class);
+
+Route::get('waiting_list', [DashboardSuperAdminController::class, 'waiting_list']);
 
