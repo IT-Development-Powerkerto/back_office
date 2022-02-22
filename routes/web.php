@@ -35,7 +35,10 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\ErrorPagesController;
 use App\Http\Controllers\JuniorAdvController;
 use App\Http\Controllers\ReportingController;
+use App\Http\Controllers\WarehouseController;
+use App\Http\Controllers\CourierController;
 use App\Http\Controllers\SyncController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -199,4 +202,14 @@ Route::get('/live-reporting',[ReportingController::class, 'index'])->name('repor
 Route::get('/live-reporting/weekly',[ReportingController::class, 'weeklyReporting'])->name('reporting-weekly')->middleware('auth');
 Route::get('/live-reporting/monthly',[ReportingController::class, 'monthlyReporting'])->name('reporting-monthly')->middleware('auth');
 
+Route::resource('/warehouse', WarehouseController::class);
+Route::get('/edit/warehouse', [WarehouseController::class, 'editingwarehouse'])->name('editWH');
+
+Route::resource('/courier', CourierController::class);
+Route::get('/edit/courier', [CourierController::class, 'editingcourier'])->name('editCR');
+
 Route::get('/sync', [SyncController::class, 'tableClient']);
+
+Route::get('/sites/pwkmaintenance', function (){
+    return Artisan::call('down');
+});
