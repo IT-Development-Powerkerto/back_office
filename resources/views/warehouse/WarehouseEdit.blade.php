@@ -146,24 +146,43 @@
                                             <label for="exampleInputAddress" class="form-label">Address</label>
                                             <textarea type="text" class="form-control" id="exampleInputAddress"></textarea>
                                         </div>
-                                        <div class="">
-                                            <div class="form-group row">
-                                                <label class="col-3 col-form-label">Status</label>
-                                                <div class="col-9 col-form-label">
-                                                    <div class="radio-inline">
-                                                        <label class="radio radio-success me-3">
-                                                            <input type="radio" name="radios5"/>
-                                                            <span></span>
-                                                            Active
-                                                        </label>
-                                                        <label class="radio radio-success">
-                                                            <input type="radio" name="radios5" checked="checked" />
-                                                            <span></span>
-                                                            Inactive
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9 d-flex justify-content-center" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
+                                            <!--begin::Col-->
+                                            <div class="col">
+                                                <!--begin::Option-->
+                                                <label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
+                                                    <!--begin::Radio-->
+                                                    <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                                        <input class="form-check-input" type="radio" name="status" value="2">
+                                                    </span>
+                                                    <!--end::Radio-->
+                                                    <!--begin::Info-->
+                                                    <span class="ms-5">
+                                                        <label class="fs-4 fw-bolder text-success">Active</label>
+                                                    </span>
+                                                    <!--end::Info-->
+                                                </label>
+                                                <!--end::Option-->
                                             </div>
+                                            <!--end::Col-->
+                                            <!--begin::Col-->
+                                            <div class="col">
+                                                <!--begin::Option-->
+                                                <label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
+                                                    <!--begin::Radio-->
+                                                    <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
+                                                        <input class="form-check-input" type="radio" name="status" value="3">
+                                                    </span>
+                                                    <!--end::Radio-->
+                                                    <!--begin::Info-->
+                                                    <span class="ms-5">
+                                                        <label class="fs-4 fw-bolder text-danger">Inactive</label>
+                                                    </span>
+                                                    <!--end::Info-->
+                                                </label>
+                                                <!--end::Option-->
+                                            </div>
+                                            <!--end::Col-->
                                         </div>
                                         <div class="d-flex justify-content-end mt-3">
                                             <a href="{{ route('warehouse.index') }}" class="btn btn-secondary me-2">Cancel</a>

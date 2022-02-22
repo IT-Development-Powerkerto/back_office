@@ -201,13 +201,10 @@ Route::get('/live-reporting',[ReportingController::class, 'index'])->name('repor
 Route::get('/live-reporting/weekly',[ReportingController::class, 'weeklyReporting'])->name('reporting-weekly')->middleware('auth');
 Route::get('/live-reporting/monthly',[ReportingController::class, 'monthlyReporting'])->name('reporting-monthly')->middleware('auth');
 
-<<<<<<< HEAD
 Route::resource('/warehouse', WarehouseController::class);
 Route::get('/edit/warehouse', [WarehouseController::class, 'editingwarehouse'])->name('editWH');
 
 Route::resource('/courier', CourierController::class);
 Route::get('/edit/courier', [CourierController::class, 'editingcourier'])->name('editCR');
 
-=======
 Route::get('/sync', [SyncController::class, 'tableClient']);
->>>>>>> 842d0d50d25f5620cb8d02c1180acab1aa665e78
