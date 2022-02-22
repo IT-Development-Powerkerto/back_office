@@ -139,7 +139,7 @@ class DashboardController extends Controller
         ])->get();
 
         //advertising cost this day
-        $advertising_day_count = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->where('updated_at', $day)->sum('requirement');
+        $advertising_day_count = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereDate('updated_at', $day)->sum('requirement');
         //count advertising cost every month
         $advertising_mo = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek(),
@@ -191,7 +191,7 @@ class DashboardController extends Controller
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
             ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
             ->where('l.admin_id', auth()->user()->admin_id)
-            ->where('l.created_at', $day)
+            ->whereDate('l.created_at', $day)
             ->orderByDesc('l.id')
             ->get();
 
@@ -511,7 +511,7 @@ class DashboardController extends Controller
         ])->get();
 
         //advertising cost this day
-        $advertising_day_count = Budgeting::where('admin_id', auth()->user()->admin_id)->where('user_name', auth()->user()->name)->where('role_id', 4)->where('status', 1)->where('updated_at', $day)->sum('requirement');
+        $advertising_day_count = Budgeting::where('admin_id', auth()->user()->admin_id)->where('user_name', auth()->user()->name)->where('role_id', 4)->where('status', 1)->whereDate('updated_at', $day)->sum('requirement');
         //count advertising cost every month
         $advertising_mo = Budgeting::where('admin_id', auth()->user()->admin_id)->where('user_name', auth()->user()->name)->where('role_id', 4)->where('status', 1)->whereBetween('updated_at', [
             Carbon::now()->startOfWeek(),
@@ -604,7 +604,7 @@ class DashboardController extends Controller
                     ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
                     ->where('l.admin_id', auth()->user()->admin_id)
                     ->where('l.advertiser', $x->name)
-                    ->where('l.created_at', $day)
+                    ->whereDate('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
                 $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->whereDate('created_at', $day)->get();
@@ -793,7 +793,7 @@ class DashboardController extends Controller
                     ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
                     ->where('l.admin_id', auth()->user()->admin_id)
                     ->where('l.advertiser', $x->name)
-                    ->where('l.created_at', $day)
+                    ->whereDate('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
                 $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->where('advertiser', auth()->user()->name)->whereDate('created_at', $day)->get();
@@ -1354,7 +1354,7 @@ class DashboardController extends Controller
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
             ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
             ->where('l.admin_id', auth()->user()->admin_id)
-            ->where('l.created_at', $day)
+            ->whereDate('l.created_at', $day)
             ->orderByDesc('l.id')
             ->get();
             //dd($leads);
@@ -1681,7 +1681,7 @@ class DashboardController extends Controller
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
             ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
             ->where('l.admin_id', auth()->user()->admin_id)
-            ->where('l.created_at', $day)
+            ->whereDate('l.created_at', $day)
             ->orderByDesc('l.id')
             ->get();
             //dd($leads);
