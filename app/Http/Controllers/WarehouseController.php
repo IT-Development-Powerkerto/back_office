@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
 
 class WarehouseController extends Controller
@@ -34,7 +35,28 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required'
+        ]);
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'product-'.time().".".$extFile;
+            $path = $request->image->move('public/assets/img/product',$namaFile);
+            $image = $path;
+        }else{
+            $image = null;
+        }
+        Warehouse::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'image' => $image,
+            'address' => $request->address,
+            'status' => $request->status
+        ]);
+        return view('warehouse.Dashboard')->with('success', 'Successfull! Warehouse Added');
     }
 
     /**
