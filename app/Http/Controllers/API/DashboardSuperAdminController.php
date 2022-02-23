@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Resources\WaitingListResource;
 use App\Http\Resources\UserPWK;
+use Carbon\Carbon;
 
 
 class DashboardSuperAdminController extends Controller
@@ -26,12 +27,12 @@ class DashboardSuperAdminController extends Controller
         if ($aktive) {
             return response()->json([
                 'success' => true,
-                'message' => 'User Berhasil Diupdate!',
+                'message' => 'User Berhasil Diaktivasi!',
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'User Gagal Diupdate!',
+                'message' => 'User Gagal Diaktivasi!',
             ], 401);
         }
 
@@ -43,11 +44,21 @@ class DashboardSuperAdminController extends Controller
 
     public function updateNonAktive($user){
         $day = Carbon::now()->format('Y-m-d');
-        DB::table('users')->where('admin_id', $user)->update([
+        $non_aktive = User::where('admin_id', $user)->update([
             'exp' => 0,
             'expired_at' => $day,
         ]);
 
-        return redirect('/superadmin');
+        if ($non_aktive) {
+            return response()->json([
+                'success' => true,
+                'message' => 'User Berhasil Dinon-aktivasi!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'User Gagal Dinon-aktivasi!',
+            ], 401);
+        }
     }
 }
