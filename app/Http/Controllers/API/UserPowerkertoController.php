@@ -23,7 +23,7 @@ class UserPowerkertoController extends Controller
      */
     public function index(Request $request)
     {
-        $data = User::latest();
+        $data = User::orderBy('id');
 
         if($request->has('role_id')){
             $data->where('role_id', $request['role_id']);
@@ -125,7 +125,7 @@ class UserPowerkertoController extends Controller
     {
         $user = User::find($id);
         if (is_null($user)) {
-            return response()->json('Data not found', 404); 
+            return response()->json('Data not found', 404);
         }
         return response()->json([new UserPWK($user)]);
     }

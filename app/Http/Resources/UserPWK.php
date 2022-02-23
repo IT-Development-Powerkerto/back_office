@@ -26,9 +26,11 @@ class UserPWK extends JsonResource
             'phone'         => $this->phone,
             'password'      => $this->password,
             'image'         => $this->image,
+            'exp'           => $this->exp,
             'created_at'    => $this->created_at,
             'updated_at'    => $this->updated_at,
-            'expired_at'    => Carbon::parse($this->expired_at)->subDay()->diffForHumans(),
+            'expired_at'    => $this->expired_at,
+            'expired_in'    => Carbon::parse($this->expired_at)->diffForHumans(),
         ];
     }
 }

@@ -103,16 +103,15 @@
 										<thead>
 											<!--begin::Table row-->
 											<tr class="text-start text-gray-400 fw-bolder fs-8 text-uppercase gs-0">
-												<th class="">No</th>
-												<th class="">Order ID</th>
-												<th class="">Advertiser Name</th>
-												<th class="">Operator Name</th>
-												<th class="">Customer Name</th>
-												<th class="">Whatsapp Customer</th>
-												<th class="">Product Name</th>
-												<th class="">Date/Time</th>
-												<th class="">Response Time</th>
-												<th class="">Lead Progress</th>
+												<th class="min-w-75px">Order ID</th>
+												<th class="min-w-125px">Advertiser Name</th>
+												<th class="min-w-150px">Operator Name</th>
+												<th class="">Customer</th>
+												<th class="">Whatsapp</th>
+												<th class="">Product</th>
+												<th class="min-w-150px">Date/Time</th>
+												<th class="">Response</th>
+												<th class="">Status</th>
 												<th class="text-end">Actions</th>
 											</tr>
 											<!--end::Table row-->
@@ -120,14 +119,8 @@
 										<!--end::Table head-->
 										<!--begin::Table body-->
 										<tbody class="fw-bold text-gray-600">
-                                            <?php $n=0; ?>
 											@foreach ($leads as $lead)
 											<tr>
-												<td>
-													<div class="d-flex align-items-center">
-														<h1 class="text-dark fw-normal fs-6">{{$n+=1}}</h1>
-													</div>
-												</td>
 												<td>
 													<div class="d-flex align-items-center">
 														<h1 class="text-dark fw-normal fs-6">Ord-{{ $lead->id}}</h1>

@@ -53,4 +53,4 @@ Route::resource('userPWK', UserPowerkertoController::class);
 Route::resource('userInfo', UserInfoController::class);
 
 Route::get('waiting_list', [DashboardSuperAdminController::class, 'waiting_list']);
-
+Route::post('/update/aktive/{user}', [DashboardSuperAdminController::class, 'updateAktive']);
