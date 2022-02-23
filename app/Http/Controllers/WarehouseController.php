@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WarehouseController extends Controller
 {
@@ -14,6 +15,7 @@ class WarehouseController extends Controller
      */
     public function index()
     {
+    
         return view('warehouse/Dashboard');
     }
 
@@ -49,6 +51,7 @@ class WarehouseController extends Controller
             $image = null;
         }
         Warehouse::create([
+            'admin_id' => Auth::id(),
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
