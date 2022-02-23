@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\CsInputer;
 use App\Models\Inputer;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -40,15 +41,14 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
     // }
     public function collection()
     {
+        $cs_id = CsInputer::where('inputer_id', auth()->user()->id)->pluck('cs_id');
+        $operator_name = DB::table('users')->whereIn('id', $cs_id)->pluck('name');
         $data = DB::table('inputers')
             ->where('admin_id', auth()->user()->admin_id)
             ->whereBetween('updated_at',[ $this->from_date,$this->to_date])
-            // ->where('l.updated_at', $day)
+            ->whereIn('operator_name', $operator_name)
             ->select('lead_id','adv_name', 'operator_name', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion','payment_method', 'total_payment', 'updated_at', 'warehouse')
             ->get();
-        
-        // return $data;
-        // dd($data);
         $dataInputer[] = array();
         foreach($data as $data){
             if($data->warehouse == 'Cilacap'){
