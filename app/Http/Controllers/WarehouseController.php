@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Warehouse;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use File;
 class WarehouseController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        return view('warehouse/Dashboard');
+        $warehouses = Warehouse::where('admin_id', Auth::user()->admin_id)->get();
+        return view('warehouse/Dashboard', compact('warehouses'));
     }
 
     /**
@@ -34,7 +37,29 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required'
+        ]);
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'warehouse-'.time().".".$extFile;
+            $path = $request->image->move('public/assets/img/warehouse',$namaFile);
+            $image = $path;
+        }else{
+            $image = null;
+        }
+        Warehouse::create([
+            'admin_id' => Auth::user()->admin_id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'image' => $image,
+            'address' => $request->address,
+            'status' => $request->status
+        ]);
+        return redirect('warehouse')->with('success', 'Successfull! Warehouse Added');
     }
 
     /**
@@ -56,7 +81,8 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $warehouse = Warehouse::findOrFail($id);
+        return view('warehouse.WarehouseEdit', compact('warehouse'));
     }
 
     /**
@@ -79,7 +105,11 @@ class WarehouseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // return 'ok';
+        $warehouse = Warehouse::find($id);
+        File::delete($warehouse->image);
+        $warehouse->delete();
+        return redirect()->back()->with('success','Successull! Product Deleted');;
     }
 
     public function editingwarehouse(){
