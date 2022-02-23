@@ -1,20 +1,21 @@
-									@if(session()->has('success'))
-									<div class="alert alert-success alert-dismissible fade show" role="alert">
-										{{ session('success') }}
-										<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-									</div>
-									@endif
 
-									@if(session()->has('error'))
-									<div class="alert alert-danger alert-dismissible fade show" role="alert">
-										{{ session('error') }}
-										<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-									</div>
-									@endif
 									<!--begin::Container-->
 									<div id="kt_content_container" class="container-xxl" >				
 										<!--begin::Tables Widget 9-->
 										<div class="card card-xl-stretch mt-12 mb-5 mb-xl-8">
+											@if(session()->has('success'))
+											<div class="alert alert-success alert-dismissible fade show" role="alert">
+												{{ session('success') }}
+												<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+											</div>
+											@endif
+
+											@if(session()->has('error'))
+											<div class="alert alert-danger alert-dismissible fade show" role="alert">
+												{{ session('error') }}
+												<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+											</div>
+											@endif
 											<!--begin::Header-->
 											<div class="card-header border-0 pt-5 ">
 												<h3 class="card-title align-items-start flex-column mt-n3">
