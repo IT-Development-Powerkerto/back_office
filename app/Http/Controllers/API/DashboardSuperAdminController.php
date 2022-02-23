@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Resources\WaitingListResource;
+use App\Http\Resources\AlmostExpiredResource;
 use App\Http\Resources\UserPWK;
 use Carbon\Carbon;
 
@@ -15,7 +16,14 @@ class DashboardSuperAdminController extends Controller
     public function waiting_list(){
         $data = User::where('role_id', 1)->where('expired_at', null);
 
-        return response()->json([WaitingListResource::collection($data->get()), 'Programs fetched.']);
+        return response()->json(WaitingListResource::collection($data->get()));
+    }
+
+    public function almost_expired(){
+        $day = Carbon::now()->format('Y-m-d');
+        $data = User::where('role_id', 1)->where('expired_at', '<=', $day);
+
+        return response()->json(AlmostExpiredResource::collection($data->get()));
     }
 
     public function updateAktive($user){
