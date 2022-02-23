@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 class WarehouseController extends Controller
 {
     /**
@@ -15,8 +14,8 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-    
-        return view('warehouse/Dashboard');
+        $warehouses = Warehouse::where('admin_id', Auth::user()->admin_id)->get();
+        return view('warehouse/Dashboard', compact('warehouses'));
     }
 
     /**
@@ -51,7 +50,7 @@ class WarehouseController extends Controller
             $image = null;
         }
         Warehouse::create([
-            'admin_id' => Auth::id(),
+            'admin_id' => Auth::user()->admin_id,
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -59,7 +58,7 @@ class WarehouseController extends Controller
             'address' => $request->address,
             'status' => $request->status
         ]);
-        return view('warehouse.Dashboard')->with('success', 'Successfull! Warehouse Added');
+        return redirect('warehouse')->with('success', 'Successfull! Warehouse Added');
     }
 
     /**
