@@ -205,7 +205,7 @@
 																<td>
 																	<div class="d-flex align-items-center">
 																		<div class="symbol symbol-45px me-5 image-size">
-																			<img src="/assets/img/default.jpg" width="100px" alt="" />
+																			<img src="{{ $warehouse->image ?? '/assets/img/default.jpg' }}" width="100px" alt="" />
 																		</div>
 																		<div class="d-flex justify-content-start flex-column">
 																			<label class="text-dark fw-medium text-hover-primary fs-6">{{ $warehouse->name }}</label>

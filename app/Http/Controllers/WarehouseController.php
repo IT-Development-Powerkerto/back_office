@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use File;
 class WarehouseController extends Controller
 {
     /**
@@ -43,8 +44,8 @@ class WarehouseController extends Controller
         if($request->hasFile('image'))
         {
             $extFile = $request->image->getClientOriginalExtension();
-            $namaFile = 'product-'.time().".".$extFile;
-            $path = $request->image->move('public/assets/img/product',$namaFile);
+            $namaFile = 'warehouse-'.time().".".$extFile;
+            $path = $request->image->move('public/assets/img/warehouse',$namaFile);
             $image = $path;
         }else{
             $image = null;
