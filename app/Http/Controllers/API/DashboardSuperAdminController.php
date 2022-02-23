@@ -69,4 +69,20 @@ class DashboardSuperAdminController extends Controller
             ], 401);
         }
     }
+
+    public function sales_statistic(){
+        $day = Carbon::now()->format('Y-m-d');
+        $user_enterpreneur_count = User::where('role_id', 1)->where('paket_id', 1)->where('expired_at', '>=', $day)->count();
+        $enterpreneur_price = 139000*$user_enterpreneur_count;
+        $user_corporate_count = User::where('role_id', 1)->where('paket_id', 3)->where('expired_at', '>=', $day)->count();
+        $corporate_price = 299000*$user_corporate_count;
+
+        return response()->json([
+            'from'               => 'Banyumax',
+            'enterpreneur_price' => $enterpreneur_price,
+            'flexible_price'     => 'in develop',
+            'corporate_price'    => $corporate_price,
+            'total_price'        => $enterpreneur_price + $corporate_price,
+        ], 200);
+    }
 }
