@@ -97,7 +97,7 @@
 																		</div>
 																		<div class="mb-3">
 																			<label for="email" class="form-label">Email</label>
-																			<input type="text" value="" class="form-control" id="email" name="email">
+																			<input type="email" value="" class="form-control" id="email" name="email">
 																		</div>
 																		<div class="mb-3">
 																			<label for="phone" class="form-label">Phone</label>
@@ -230,7 +230,7 @@
 																</td>
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
-																		<a href="{{ route('editWH') }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+																		<a href="{{ route('warehouse.edit', ['warehouse' => $warehouse->id]) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
 																			<span class="svg-icon svg-icon-3">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

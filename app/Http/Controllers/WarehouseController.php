@@ -80,7 +80,8 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $warehouse = Warehouse::findOrFail($id);
+        return view('warehouse.WarehouseEdit', compact('warehouse'));
     }
 
     /**
