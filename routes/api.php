@@ -56,3 +56,4 @@ Route::get('waiting_list', [DashboardSuperAdminController::class, 'waiting_list'
 Route::get('almost_expired', [DashboardSuperAdminController::class, 'almost_expired']);
 Route::post('/update/aktive/{user}', [DashboardSuperAdminController::class, 'updateAktive']);
 Route::post('/update/nonaktive/{user}', [DashboardSuperAdminController::class, 'updateNonAktive']);
+Route::get('/sales_statistic', [DashboardSuperAdminController::class, 'sales_statistic']);
