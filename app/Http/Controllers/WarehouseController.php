@@ -103,7 +103,11 @@ class WarehouseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // return 'ok';
+        $warehouse = Warehouse::find($id);
+        File::delete($warehouse->image);
+        $warehouse->delete();
+        return redirect()->back()->with('success','Successull! Product Deleted');;
     }
 
     public function editingwarehouse(){
