@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use File;
 class WarehouseController extends Controller
 {
     /**
@@ -43,8 +44,8 @@ class WarehouseController extends Controller
         if($request->hasFile('image'))
         {
             $extFile = $request->image->getClientOriginalExtension();
-            $namaFile = 'product-'.time().".".$extFile;
-            $path = $request->image->move('public/assets/img/product',$namaFile);
+            $namaFile = 'warehouse-'.time().".".$extFile;
+            $path = $request->image->move('public/assets/img/warehouse',$namaFile);
             $image = $path;
         }else{
             $image = null;
@@ -80,7 +81,8 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $warehouse = Warehouse::findOrFail($id);
+        return view('warehouse.WarehouseEdit', compact('warehouse'));
     }
 
     /**
@@ -103,7 +105,11 @@ class WarehouseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // return 'ok';
+        $warehouse = Warehouse::find($id);
+        File::delete($warehouse->image);
+        $warehouse->delete();
+        return redirect()->back()->with('success','Successull! Product Deleted');;
     }
 
     public function editingwarehouse(){

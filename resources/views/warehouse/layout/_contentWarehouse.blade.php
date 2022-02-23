@@ -20,7 +20,7 @@
 											<div class="card-header border-0 pt-5 ">
 												<h3 class="card-title align-items-start flex-column mt-n3">
 													<span class="card-label fw-bolder fs-3 mb-1">Warehouse</span>
-													<span class="text-muted mt-1 fw-bold fs-7">2</span>
+													<span class="text-muted mt-1 fw-bold fs-7">{{ $warehouses->count() }}</span>
 												</h3>
 												<div class="card-toolbar mt-n3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 													<button type="button" class="btn btn-sm btn-light btn-active-primary me-2" data-bs-toggle="modal" data-bs-target="#addWarehouse">
@@ -97,7 +97,7 @@
 																		</div>
 																		<div class="mb-3">
 																			<label for="email" class="form-label">Email</label>
-																			<input type="text" value="" class="form-control" id="email" name="email">
+																			<input type="email" value="" class="form-control" id="email" name="email">
 																		</div>
 																		<div class="mb-3">
 																			<label for="phone" class="form-label">Phone</label>
@@ -205,7 +205,7 @@
 																<td>
 																	<div class="d-flex align-items-center">
 																		<div class="symbol symbol-45px me-5 image-size">
-																			<img src="/assets/img/default.jpg" width="100px" alt="" />
+																			<img src="{{ $warehouse->image ?? '/assets/img/default.jpg' }}" width="100px" alt="" />
 																		</div>
 																		<div class="d-flex justify-content-start flex-column">
 																			<label class="text-dark fw-medium text-hover-primary fs-6">{{ $warehouse->name }}</label>
@@ -230,7 +230,7 @@
 																</td>
 																<td>
 																	<div class="d-flex justify-content-end flex-shrink-0">
-																		<a href="{{ route('editWH') }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+																		<a href="{{ route('warehouse.edit', ['warehouse' => $warehouse->id]) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
 																			<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
 																			<span class="svg-icon svg-icon-3">
 																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -240,17 +240,21 @@
 																			</span>
 																			<!--end::Svg Icon-->
 																		</a>
-																		<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
-																			<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-																			<span class="svg-icon svg-icon-3">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="black" />
-																					<path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="black" />
-																					<path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black" />
-																				</svg>
-																			</span>
-																			<!--end::Svg Icon-->
-																		</a>
+																		<form action="{{ route('warehouse.destroy', ['warehouse' => $warehouse->id]) }}" method="post">
+																			@csrf
+																			@method('DELETE')
+																			<button type="submit" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+																				<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+																				<span class="svg-icon svg-icon-3">
+																					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																						<path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="black" />
+																						<path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="black" />
+																						<path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black" />
+																					</svg>
+																				</span>
+																				<!--end::Svg Icon-->
+																			</button>
+																		</form>
 																	</div>
 																</td>
 															</tr>

@@ -10,13 +10,13 @@
         <!--end::Fonts-->
     
         <!--begin::Page Vendor Stylesheets(used by this page)-->
-        <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
         <!--end::Page Vendor Stylesheets-->
     
         <!--begin::Global Stylesheets Bundle(used by all pages)-->
-        <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
         <!--end::Global Stylesheets Bundle-->
@@ -131,20 +131,20 @@
                                         </div>
                                         <!--end::Input group-->
                                         <div class="mb-3">
-                                            <label for="exampleInputWarehouse" class="form-label">Warehouse</label>
-                                            <input type="text" class="form-control" id="exampleInputWarehouse">
+                                            <label for="name"  class="form-label">Warehouse</label>
+                                            <input type="text" class="form-control" id="name" value="{{ old('name') ?? $warehouse->name }}" name="name" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="exampleInputEmail" class="form-label">Email</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') ?? $warehouse->email }}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="exampleInputPhone" class="form-label">Phone</label>
-                                            <input type="text" class="form-control" id="exampleInputPhone">
+                                            <label for="phone" class="form-label">Phone</label>
+                                            <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') ?? $warehouse->phone }}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="exampleInputAddress" class="form-label">Address</label>
-                                            <textarea type="text" class="form-control" id="exampleInputAddress"></textarea>
+                                            <label for="address" class="form-label">Address</label>
+                                            <textarea type="text" class="form-control" id="address" name="address" required>{{ old('address') ?? $warehouse->address }}</textarea>
                                         </div>
                                         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9 d-flex justify-content-center" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
                                             <!--begin::Col-->
@@ -153,7 +153,7 @@
                                                 <label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
                                                     <!--begin::Radio-->
                                                     <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                                                        <input class="form-check-input" type="radio" name="status" value="2">
+                                                        <input class="form-check-input" type="radio" name="status" value="active" {{ $warehouse->status == 'active' ? 'checked': '' }}>
                                                     </span>
                                                     <!--end::Radio-->
                                                     <!--begin::Info-->
@@ -171,7 +171,7 @@
                                                 <label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
                                                     <!--begin::Radio-->
                                                     <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                                                        <input class="form-check-input" type="radio" name="status" value="3">
+                                                        <input class="form-check-input" type="radio" name="status" value="inactive" {{ $warehouse->status == 'inactive' ? 'checked': '' }}>
                                                     </span>
                                                     <!--end::Radio-->
                                                     <!--begin::Info-->
@@ -219,22 +219,22 @@
         </script>
         <!--begin::Javascript-->
         <!--begin::Global Javascript Bundle(used by all pages)-->
-        <script src="assets/plugins/global/plugins.bundle.js"></script>
-        <script src="assets/js/scripts.bundle.js"></script>
+        <script src="../assets/plugins/global/plugins.bundle.js"></script>
+        <script src="../assets/js/scripts.bundle.js"></script>
         <!--end::Global Javascript Bundle-->
         <!--begin::Page Vendors Javascript(used by this page)-->
-        <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-        <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+        <script src="../assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+        <script src="../assets/plugins/custom/datatables/datatables.bundle.js"></script>
         <!--end::Page Vendors Javascript-->
         <!--begin::Page Custom Javascript(used by this page)-->
-        <script src="assets/js/custom/apps/customers/list/export.js"></script>
-        <script src="assets/js/custom/apps/customers/list/warehouse.js"></script>
-        <script src="assets/js/custom/apps/customers/add.js"></script>
-        <script src="assets/js/custom/widgets.js"></script>
-        <script src="assets/js/custom/apps/chat/chat.js"></script>
-        <script src="assets/js/custom/modals/create-app.js"></script>
-        <script src="assets/js/custom/modals/upgrade-plan.js"></script>
-        <script src="assets/js/custom/intro.js"></script>
+        <script src="../assets/js/custom/apps/customers/list/export.js"></script>
+        <script src="../assets/js/custom/apps/customers/list/warehouse.js"></script>
+        <script src="../assets/js/custom/apps/customers/add.js"></script>
+        <script src="../assets/js/custom/widgets.js"></script>
+        <script src="../assets/js/custom/apps/chat/chat.js"></script>
+        <script src="../assets/js/custom/modals/create-app.js"></script>
+        <script src="../assets/js/custom/modals/upgrade-plan.js"></script>
+        <script src="../assets/js/custom/intro.js"></script>
         <!--end::Page Custom Javascript-->
         <!--end::Javascript-->
 	</body>
