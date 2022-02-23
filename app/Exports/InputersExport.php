@@ -47,7 +47,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             ->where('admin_id', auth()->user()->admin_id)
             ->whereBetween('updated_at',[ $this->from_date,$this->to_date])
             ->whereIn('operator_name', $operator_name)
-            ->select('lead_id','adv_name', 'operator_name', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion','payment_method', 'total_payment', 'updated_at', 'warehouse')
+            ->select('lead_id','adv_name', 'operator_name', 'province', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion','payment_method', 'total_payment', 'updated_at', 'warehouse')
             ->get();
         $dataInputer[] = array();
         foreach($data as $data){
@@ -96,6 +96,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
                 'CS Name' => $data->operator_name,
                 'Customer Name' => $data->customer_name,
                 'Warehouse' => $warehouse,
+                'Dest Province' => $data->province,
                 'Customer WA' => $data->customer_number,
                 'Address' => $data->customer_address,
                 'Product' => $data->product_name,
@@ -127,6 +128,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'CS Name',
             'Customer Name',
             'Warehouse',
+            'Dest Province',
             'Customer WA',
             'Address',
             'Product',
@@ -148,7 +150,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
     public function columnFormats(): array
     {
         return [
-            'F' => NumberFormat::FORMAT_NUMBER,
+            'G' => NumberFormat::FORMAT_NUMBER,
         ];
     }
     public function columnWidths(): array
@@ -161,20 +163,21 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'E' => 15,            
             'F' => 15,            
             'G' => 20,            
-            'H' => 9,            
+            'H' => 20,            
             'I' => 9,            
             'J' => 9,            
             'K' => 9,            
-            'L' => 18,            
-            'M' => 10,            
-            'N' => 9,            
-            'O' => 13,            
-            'P' => 19,            
-            'Q' => 16,            
-            'R' => 14,            
+            'L' => 9,            
+            'M' => 18,            
+            'N' => 10,            
+            'O' => 9,            
+            'P' => 13,            
+            'Q' => 19,            
+            'R' => 16,            
             'S' => 14,
-            'T' => 25,
-            'U' => 20            
+            'T' => 14,
+            'U' => 25,
+            'V' => 20            
         ];
     }
 }
