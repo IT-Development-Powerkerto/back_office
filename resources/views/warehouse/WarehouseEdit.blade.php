@@ -81,7 +81,9 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form>
+									<form action="{{ route('warehouse.update', ['warehouse' => $warehouse->id]) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PATCH')
                                         <!--begin::Input group-->
                                         <div class="d-flex flex-column mb-1 fv-row">
                                             <!--begin::Label-->
@@ -94,9 +96,10 @@
                                                 <!--begin::Col-->
                                                 <div class="col-lg-8">
                                                     <!--begin::Image input-->
-                                                    <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url(assets/mediaTwo/ImagePhoto.png)">
+                                                    <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url(assets/mediaTwo/ImagePhoto.png);">
                                                         <!--begin::Preview existing avatar-->
-                                                        <div class="image-input-wrapper w-125px h-125px" style="background-image: url(assets/mediaTwo/ImagePhoto.png)"></div>
+                                                        {{-- <div class="image-input-wrapper w-125px h-125px" style="background-image: url(assets/mediaTwo/ImagePhoto.png)"></div> --}}
+                                                        <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{ url('').'/'.str_replace('\\', '/', $warehouse->image) }}')"></div>
                                                         <!--end::Preview existing avatar-->
                                                         <!--begin::Label-->
                                                         <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
@@ -186,7 +189,7 @@
                                         </div>
                                         <div class="d-flex justify-content-end mt-3">
                                             <a href="{{ route('warehouse.index') }}" class="btn btn-secondary me-2">Cancel</a>
-                                            <button type="button" class="btn btn-primary">Edit</button>
+                                            <button type="submit" class="btn btn-primary">Edit</button>
                                         </div>
                                     </form>
 								</div>
