@@ -124,5 +124,15 @@ class HumanResourceController extends Controller
         }
     }
 
+    public function Payroll()
+    {
+        $users = User::all();
+        if(auth()->user()->role_id==11){
+            return view('hr.Payroll')->with('user', $users);
+        }elseif (auth()->user()->role_id==1){
+            return view('hr.AdminPayroll')->with('user', $users);
+        }
+    }
+
     
 }
