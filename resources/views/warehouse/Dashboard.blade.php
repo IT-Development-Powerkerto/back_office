@@ -4,7 +4,7 @@
 
 <head>
 	<base href="">
-	<title>{{Auth()->user()->role->name}}</title>
+	<title>Warehouse</title>
 
 	<link rel="icon" href="img/favicon.png">
 
