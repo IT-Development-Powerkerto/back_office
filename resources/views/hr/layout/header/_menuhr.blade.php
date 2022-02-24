@@ -32,7 +32,7 @@
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
-			<a class="menu-link py-3" href="#">
+			<a class="menu-link py-3" href="{{ route ('Payroll') }}">
 				<span class="menu-title">Employees Payroll</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>

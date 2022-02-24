@@ -5,17 +5,9 @@
 	data-kt-drawer-close="#kt_activities_close">
 	<div class="card shadow-none rounded-0">
 		<!--begin::Header-->
-		<div class="card-header" id="kt_activities_header">
+		<div class="card-header" id="kt_activities_header" style="width: 900px">
 			<div class="d-flex flex-row">
-				<h3 class="card-title fw-bolder text-dark">Notifications</h3>
-				@if (auth()->user()->role_id == 1)
-				<form action="/dashboard" method="GET" class="d-flex">
-				@endif
-				<form action="/adv" method="GET" class="d-flex">
-					<div class="card-title fw-bolder text-dark">
-						<input class="form-control text-muted mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
-					</div>
-				</form>
+				<h3 class="card-title fw-bolder text-white">Notifications</h3>
 			</div>
 			<div class="card-toolbar">
 				<button type="button" class="btn btn-sm btn-icon btn-active-light-primary me-n5"

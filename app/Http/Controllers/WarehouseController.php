@@ -94,7 +94,35 @@ class WarehouseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($id);
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'address' => 'required'
+        ]);
+        $warehouse = Warehouse::find($id);
+        // dd($warehouse);
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'warehouse-'.time().".".$extFile;
+            File::delete($warehouse->image);
+            $path = $request->image->move('public/assets/img/warehouse',$namaFile);
+            $image = $path;
+        }
+        else{
+            $image = Warehouse::where('id', $id)->value('image');
+        }
+        Warehouse::where('id', $id)->update([
+            'admin_id' => Auth::user()->admin_id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'image' => $image,
+            'address' => $request->address,
+            'status' => $request->status
+        ]);
+        return redirect('warehouse')->with('success', 'Successfull! Warehouse Edited');
     }
 
     /**

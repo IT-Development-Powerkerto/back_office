@@ -27,43 +27,9 @@
 				<div class="wrapper" id="kt_wrapper">
 					<!--begin::Header-->
 					<div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
-						<!--begin::Container-->
-						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
-							<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
-								<!--begin::Page title-->
-								@include('layout/header/_baseCS')
+						
+						@include('layout/header/_baseCS')
 
-
-								@include('layout/_toolbar')
-								<!--end::Page title=-->
-								<!--begin::Wrapper-->
-								<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
-									<!--begin::Logo-->
-										<img alt="Logo" src="../img/logo.png" class="h-40px" />
-									<!--end::Logo-->
-								</div>
-								<!--end::Wrapper-->
-								<!--begin::Toolbar wrapper-->
-								<!--begin::User-->
-								<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-									<!--begin::Menu wrapper-->
-									<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
-										data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-										@if(is_null(Auth()->user()->image))
-										<img src="/assets/img/default.jpg" alt="" />
-										@else
-										<img src={{ Auth()->user()->image }} alt="image" />
-										@endif
-									</div>
-
-									@include('layout/topbar/partials/_user-menu')
-
-									<!--end::Menu wrapper-->
-								</div>
-								<!--end::User -->
-							</div>
-						</div>
-						<!--end::Container-->
 					</div>
 					<!--end::Header-->
 					<!--begin::Content-->

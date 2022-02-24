@@ -28,41 +28,7 @@
 				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 					<!--begin::Header-->
 					<div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
-						<!--begin::Container-->
-						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
-							<!--begin::Page title-->
-							@include('layout/header/_baseCS')
-
-
-							@include('layout/_toolbar')
-							<!--end::Page title=-->
-							<!--begin::Wrapper-->
-							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
-								<!--begin::Logo-->
-								    <img alt="Logo" src="../img/logo.png" class="h-40px" />
-								<!--end::Logo-->
-							</div>
-							<!--end::Wrapper-->
-							<!--begin::Toolbar wrapper-->
-							<!--begin::User-->
-							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-								<!--begin::Menu wrapper-->
-								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
-									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-									@if(auth()->user()->image == null)
-									    <img src="/assets/img/default.jpg" alt="" />
-									@else
-									    <img src={{auth()->user()->image }} alt="image" />
-									@endif
-								</div>
-
-								@include('layout/topbar/partials/_user-menu')
-
-								<!--end::Menu wrapper-->
-							</div>
-							<!--end::User -->
-						</div>
-						<!--end::Container-->
+						@include('layout/header/_baseCS')
 					</div>
 					<!--end::Header-->
 					<!--begin::Content-->
@@ -214,6 +180,48 @@
 																	<option value="">Not Have Promotion</option>
 																	@foreach ($admin_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
 																	<option value="{{$promotion->id}}" {{ $inputer->implode('admin_promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@endforeach
+																</select>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter promotion type</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Product</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<select class="form-control" name="add_product_promotion_id" id="add_product_promotion_id">
+																	<option value=""hidden>Select Promotion</option>
+																	<option value="">Not Have Promotion</option>
+																	@foreach ($product_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('add_product_promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@endforeach
+																</select>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter promotion type</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Shipping</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<select class="form-control" name="add_shipping_promotion_id" id="add_shipping_promotion_id">
+																	<option value=""hidden>Select Promotion</option>
+																	<option value="">Not Have Promotion</option>
+																	@foreach ($shipping_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('add_shipping_promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@endforeach
+																</select>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter promotion type</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Admin</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<select class="form-control" name="add_admin_promotion_id" id="add_admin_promotion_id">
+																	<option value=""hidden>Select Promotion</option>
+																	<option value="">Not Have Promotion</option>
+																	@foreach ($admin_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('add_admin_promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
 																	@endforeach
 																</select>
 																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
@@ -424,6 +432,12 @@
 												</div>
 											</div>
 										</div>
+										<input type="number" name="ori_product_promotion" id="ori_product_promotion" value="" hidden>
+										<input type="number" name="ori_shipping_promotion" id="ori_shipping_promotion" value="" hidden>
+										<input type="number" name="ori_admin_promotion" id="ori_admin_promotion" value="" hidden>
+										<input type="number" name="add_product_promotion" id="add_product_promotion" value="" hidden>
+										<input type="number" name="add_shipping_promotion" id="add_shipping_promotion" value="" hidden>
+										<input type="number" name="add_admin_promotion" id="add_admin_promotion" value="" hidden>
 									</form>
 									<textarea id="clipboard" cols="30" rows="10"></textarea>
 								</div>
@@ -434,20 +448,7 @@
 						<!--end::Wrapper-->
 					</div>
 					<!--end::Page-->
-					<!--begin::Footer-->
-					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
-						<!--begin::Container-->
-						<div class="container-xxl d-flex flex-column flex-md-row flex-stack">
-							<!--begin::Copyright-->
-							<div class="text-dark order-2 order-md-1">
-								<span class="text-gray-400 fw-bold me-1">Created by</span>
-								<a href="https://powerkerto.com" target="_blank" class="text-muted text-hover-primary fw-bold me-2 fs-6">Powerkerto</a>
-							</div>
-							<!--end::Copyright-->
-						</div>
-						<!--end::Container-->
-					</div>
-					<!--end::Footer-->
+				@include('layout/_footer')
 		</div>
 		<!--end::Root-->
 		<!--end::Main-->

@@ -11,8 +11,8 @@
 											<form action="/dashboard" method="GET" class="d-flex">
 											@endif
 											<form action="/adv" method="GET" class="d-flex">
-												<div class="me-2 d-flex flex-row mt-n3">
-													<input class="form-control text-muted" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+												<div class="me-2 d-flex flex-row">
+													<input class="form-control text-muted mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
 												</div>
 											</form>
 										</div>
