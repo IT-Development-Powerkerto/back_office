@@ -27,48 +27,7 @@
 					<!--begin::Header-->
 					<div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
 						<!--begin::Container-->
-						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
-							<!--begin::Page title-->
-							<div class="page-title d-flex flex-column align-items-start justify-content-center flex-wrap me-lg-2 pb-5 pb-lg-0" data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', lg: '#kt_header_container'}">
-								<!--begin::Heading-->
-								<h1 class="text-dark fw-bold my-0 fs-2">Edit Product</h1>
-								<!--end::Heading-->
-								<!--begin::Breadcrumb-->
-								<ul class="breadcrumb breadcrumb-line text-muted fw-bold fs-base my-1">
-									<li class="breadcrumb-item text-muted">
-										<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
-									</li>
-									<li class="breadcrumb-item text-dark">Edit Product</li>
-								</ul>
-								<!--end::Breadcrumb-->
-							</div>
-							<!--end::Page title=-->
-							<!--begin::Wrapper-->
-							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
-								<!--begin::Logo-->
-								    <img alt="Logo" src="../img/logo.png" class="h-40px" />
-								<!--end::Logo-->
-							</div>
-							<!--end::Wrapper-->
-							<!--begin::Toolbar wrapper-->
-							<!--begin::User-->
-							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-								<!--begin::Menu wrapper-->
-								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
-									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-									@if(is_null(Auth()->user()->image))
-									<img src="/assets/img/default.jpg" alt="" />
-									@else
-									<img src={{ Auth()->user()->image }} alt="image" />
-									@endif
-								</div>
-
-								@include('layout/topbar/partials/_user-menu')
-
-								<!--end::Menu wrapper-->
-							</div>
-							<!--end::User -->
-						</div>
+						@include('layout/header/_base')
 						<!--end::Container-->
 					</div>
 					<!--end::Header-->
@@ -143,24 +102,12 @@
 								<!--end::Card body-->
 							</div>
 							<!--end::details View-->
-					<!--begin::Footer-->
-					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
-						<!--begin::Container-->
-						<div class="container-xxl d-flex flex-column flex-md-row flex-stack">
-							<!--begin::Copyright-->
-							<div class="text-dark order-2 order-md-1">
-								<span class="text-gray-400 fw-bold me-1">Created by</span>
-								<a href="https://powerkerto.com" target="_blank" class="text-muted text-hover-primary fw-bold me-2 fs-6">Powerkerto</a>
-							</div>
-							<!--end::Copyright-->
 						</div>
-						<!--end::Container-->
 					</div>
-					<!--end::Footer-->
+					<!--end::Wrapper-->
 				</div>
-				<!--end::Wrapper-->
-			</div>
-			<!--end::Page-->
+				<!--end::Page-->
+			@include('layout/_footer')
 		</div>
 		<!--end::Root-->
 		<!--end::Main-->

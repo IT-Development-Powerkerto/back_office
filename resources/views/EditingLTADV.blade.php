@@ -28,41 +28,7 @@
 				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 					<!--begin::Header-->
 					<div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
-						<!--begin::Container-->
-						<div class="container-xxl d-flex align-items-center justify-content-between" id="kt_header_container">
-							<!--begin::Page title-->
-							@include('layout/header/_baseADV')
-
-
-							@include('layout/_toolbar')
-							<!--end::Page title=-->
-							<!--begin::Wrapper-->
-							<div class="d-flex d-lg-none align-items-center ms-n2 me-2">
-								<!--begin::Logo-->
-								    <img alt="Logo" src="../img/logo.png" class="h-40px" />
-								<!--end::Logo-->
-							</div>
-							<!--end::Wrapper-->
-							<!--begin::Toolbar wrapper-->
-							<!--begin::User-->
-							<div class="d-flex align-items-center ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-								<!--begin::Menu wrapper-->
-								<div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="click"
-									data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-									@if(auth()->user()->image == null)
-									    <img src="/assets/img/default.jpg" alt="" />
-									@else
-									    <img src={{auth()->user()->image }} alt="image" />
-									@endif
-								</div>
-
-								@include('layout/topbar/partials/_user-menu')
-
-								<!--end::Menu wrapper-->
-							</div>
-							<!--end::User -->
-						</div>
-						<!--end::Container-->
+						@include('layout/header/_baseADV')
 					</div>
 					<!--end::Header-->
 					<!--begin::Content-->
@@ -476,20 +442,7 @@
 						<!--end::Wrapper-->
 					</div>
 					<!--end::Page-->
-					<!--begin::Footer-->
-					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
-						<!--begin::Container-->
-						<div class="container-xxl d-flex flex-column flex-md-row flex-stack">
-							<!--begin::Copyright-->
-							<div class="text-dark order-2 order-md-1">
-								<span class="text-gray-400 fw-bold me-1">Created by</span>
-								<a href="https://powerkerto.com" target="_blank" class="text-muted text-hover-primary fw-bold me-2 fs-6">Powerkerto</a>
-							</div>
-							<!--end::Copyright-->
-						</div>
-						<!--end::Container-->
-					</div>
-					<!--end::Footer-->
+				@include('layout/_footer')
 		</div>
 		<!--end::Root-->
 		<!--end::Main-->

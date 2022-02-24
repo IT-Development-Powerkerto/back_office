@@ -107,7 +107,7 @@
 						<span class="menu-bullet">
 							<span class="bullet bullet-dot"></span>
 						</span>
-						<a href="#" class="menu-title">Employees Payroll</a>
+						<a href="{{ route ('Payroll') }}" class="menu-title">Employees Payroll</a>
 					</span>
 				</div>
 				<div class="menu-item menu-lg-down-accordion">
