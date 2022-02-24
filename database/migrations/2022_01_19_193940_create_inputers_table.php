@@ -28,6 +28,8 @@ class CreateInputersTable extends Migration
             $table->integer('quantity')->nullable();
             $table->foreignId('product_promotion_id')->constrained('promotions')->nullable();
             $table->integer('product_promotion')->nullable();
+            $table->foreignId('add_product_promotion_id')->constrained('promotions')->nullable();
+            $table->integer('add_product_promotion')->nullable();
             $table->integer('total_price')->nullable();
             $table->string('warehouse')->nullable();
             $table->integer('province_id')->nullable();
@@ -40,10 +42,14 @@ class CreateInputersTable extends Migration
             $table->integer('shipping_price')->nullable();
             $table->foreignId('shipping_promotion_id')->constrained('promotions')->nullable();
             $table->integer('shipping_promotion')->nullable();
+            $table->foreignId('add_shipping_promotion_id')->constrained('promotions')->nullable();
+            $table->integer('add_shipping_promotion')->nullable();
             $table->integer('total_shipping')->nullable();
             $table->integer('shipping_admin')->nullable();
             $table->foreignId('admin_promotion_id')->constrained('promotions')->nullable();
             $table->integer('admin_promotion')->nullable();
+            $table->foreignId('add_admin_promotion_id')->constrained('promotions')->nullable();
+            $table->integer('add_admin_promotion')->nullable();
             $table->integer('total_admin')->nullable();
             $table->string('payment_method')->nullable();
             $table->integer('total_payment')->nullable();
