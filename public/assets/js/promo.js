@@ -139,17 +139,58 @@ $(function(){
                 }
             }
             promo_ongkir = parseInt(promo_ongkir);
+            console.log('promo ongkir: '+promo_ongkir);
             $("#shipping_promotion").val(promo_ongkir);
         }else{
             promo_ongkir = 0;
             $("#shipping_promotion").val(promo_ongkir);
         }
-        if(promo_ongkir >= ongkir){
-            var total_ongkir = 0;
-            promo_ongkir = ongkir;
+        if(add_shipping_promotion_id){
+            var asp = $.parseJSON(
+                $.ajax({
+                    url: "get_shipping_promotion/"+add_shipping_promotion_id,
+                    type: "GET",
+                    dataType: "json",
+                    async: false,
+                    success: function(data){
+                        // console.log(data);
+                        // $("#shipping_promotion").val(parseInt(data.shipping_promotion));
+                    },
+                    error: function(err){
+                        console.log(err);
+                    }
+                }).responseText
+            );
+            if(asp.shipping_promotion_percent == 0 && asp.shipping_promotion == 0){
+                var add_promo_ongkir = 0;
+            }else if(asp.shipping_promotion_percent != 0 && asp.shipping_promotion == 0){
+                var add_promo_ongkir = ongkir*asp.shipping_promotion_percent/100;
+            }else if(asp.shipping_promotion_percent == 0 && asp.shipping_promotion != 0){
+                var add_promo_ongkir = asp.shipping_promotion;
+            }else{
+                if ((ongkir*asp.shipping_promotion_percent/100) > asp.shipping_promotion){
+                    var add_promo_ongkir = asp.shipping_promotion;
+                }
+                else{
+                    var add_promo_ongkir = ongkir*asp.shipping_promotion_percent/100;
+                }
+            }
+            add_promo_ongkir = parseInt(add_promo_ongkir);
+            var total_promo_ongkir = promo_ongkir+add_promo_ongkir;
+            total_promo_ongkir = parseInt(total_promo_ongkir);
+            $("#shipping_promotion").val(total_promo_ongkir);
         }else{
-            var total_ongkir = ongkir - promo_ongkir;
-            promo_ongkir = promo_ongkir;
+            add_promo_ongkir = 0;
+            var total_promo_ongkir = promo_ongkir+add_promo_ongkir;
+            total_promo_ongkir = parseInt(total_promo_ongkir);
+            $("#shipping_promotion").val(total_promo_ongkir);
+        }
+        if(total_promo_ongkir >= ongkir){
+            var total_ongkir = 0;
+            total_promo_ongkir = ongkir;
+        }else{
+            var total_ongkir = ongkir - total_promo_ongkir;
+            total_promo_ongkir = total_promo_ongkir;
         }
         total_ongkir = parseInt(total_ongkir);
         console.log('ongkir: '+ongkir, 'promo: '+promo_ongkir, 'total ongkir: '+total_ongkir);
@@ -232,7 +273,7 @@ $(function(){
         var total_payment = total_price + total_ongkir + total_admin;
         total_payment = parseInt(total_payment);
         $('#total_payment').val(total_payment);
-        var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp : ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nTotal Pembayaran: ${price*quantity} - ${promo_product} (promo produk) - ${add_promo_product} (tambahan promo produk) + ${ongkir} (ongkir) - ${promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${promo_admin} (promo biaya admin COD) = ${total_payment}`;
+        var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp: ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nPromo Produk: ${promo_product} (promo produk) + ${add_promo_product} (tambahan promo produk) = ${promo_product+add_promo_product}\nPromo Ongkir: ${promo_ongkir} (potongan ongkir) + ${add_promo_ongkir} (tambahan promo ongkir) = ${promo_ongkir+add_promo_ongkir}\nTotal Pembayaran: ${price*quantity} - ${promo_product+add_promo_product} (promo produk) + ${ongkir} (ongkir) - ${total_promo_ongkir} (potongan ongkir)+ ${admin} (biaya admin COD) - ${promo_admin} (promo biaya admin COD) = ${total_payment}`;
         console.log(text);
         $("#clipboard").val(text);
     });
