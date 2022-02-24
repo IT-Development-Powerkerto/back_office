@@ -220,6 +220,48 @@
 															</div>
 															<span class="form-text text-muted">Please enter promotion type</span>
 														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Product</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<select class="form-control" name="add_product_promotion_id" id="add_product_promotion_id">
+																	<option value=""hidden>Select Promotion</option>
+																	<option value="">Not Have Promotion</option>
+																	@foreach ($product_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('add_product_promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@endforeach
+																</select>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter promotion type</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Shipping</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<select class="form-control" name="add_shipping_promotion_id" id="add_shipping_promotion_id">
+																	<option value=""hidden>Select Promotion</option>
+																	<option value="">Not Have Promotion</option>
+																	@foreach ($shipping_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('add_shipping_promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@endforeach
+																</select>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter promotion type</span>
+														</div>
+														<label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Admin</label>
+														<div class="col-lg-3 mt-8">
+															<div class="input-group">
+																<select class="form-control" name="add_admin_promotion_id" id="add_admin_promotion_id">
+																	<option value=""hidden>Select Promotion</option>
+																	<option value="">Not Have Promotion</option>
+																	@foreach ($admin_promotion->where('product_name', $lead->implode('product_name')) as $promotion)
+																	<option value="{{$promotion->id}}" {{ $inputer->implode('add_admin_promotion_id') == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+																	@endforeach
+																</select>
+																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+															</div>
+															<span class="form-text text-muted">Please enter promotion type</span>
+														</div>
 														<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Promotion</label>
 														<div class="col-lg-3 mt-8">
 															<div class="input-group">
