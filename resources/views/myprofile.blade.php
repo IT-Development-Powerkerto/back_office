@@ -25,8 +25,7 @@
 				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 					<!--begin::Header-->
 					@include('layout/header/_base')
-
-					@include('layout/_toolbar')
+					
 					<!--end::Header-->
 					@if(session()->has('success'))
 						<div class="alert alert-success alert-dismissible fade show" role="alert">
