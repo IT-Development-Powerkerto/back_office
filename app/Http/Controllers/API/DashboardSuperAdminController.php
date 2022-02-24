@@ -8,7 +8,9 @@ use App\Models\User;
 use App\Http\Resources\WaitingListResource;
 use App\Http\Resources\AlmostExpiredResource;
 use App\Http\Resources\UserPWK;
+use App\Http\Resources\ProofPaymentResource;
 use Carbon\Carbon;
+use App\Models\ProofOfPayment;
 
 
 class DashboardSuperAdminController extends Controller

@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Carbon\Carbon;
+use App\Models\ProofOfPayment;
 
 class UserPWK extends JsonResource
 {
@@ -15,6 +16,8 @@ class UserPWK extends JsonResource
      */
     public function toArray($request)
     {
+        $proof_payment = ProofOfPayment::where('user_id', $this->id)->value('image');
+
         return [
             'from'          => 'Banyumax',
             'id'            => $this->id,
@@ -27,6 +30,7 @@ class UserPWK extends JsonResource
             'password'      => $this->password,
             'image'         => $this->image,
             'exp'           => $this->exp,
+            'proof_payment' => url($proof_payment),
             'created_at'    => $this->created_at,
             'updated_at'    => $this->updated_at,
             'expired_at'    => $this->expired_at,
