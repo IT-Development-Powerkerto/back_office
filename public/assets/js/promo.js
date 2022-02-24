@@ -1,6 +1,6 @@
 $(function(){
     $('#clipboard').hide();
-    $('#payment_method, #courier, #quantity, #product_promotion_id, #add_product_promotion_id, #shipping_promotion_id, #add_shipping_promotion_id, #admin_promotion_id, #admin_promotion_id, #province, #promotion_admin').on('change', function(){
+    $('#payment_method, #courier, #quantity, #product_promotion_id, #add_product_promotion_id, #shipping_promotion_id, #add_shipping_promotion_id, #admin_promotion_id, #add_admin_promotion_id, #province, #promotion_admin').on('change', function(){
         var name = $('#name').val();
         var address = $('#address').val();
         var province = $('#province_id').find(":selected").text();
@@ -55,11 +55,13 @@ $(function(){
             }
             promo_product = parseInt(promo_product);
             $("#product_promotion").val(promo_product);
+            $("#ori_product_promotion").val(promo_product);
             total_price -= promo_product;
             $('#total_price').val(parseInt(total_price));
         }else{
             promo_product = 0;
             $("#product_promotion").val(promo_product);
+            $("#ori_product_promotion").val(promo_product);
             total_price -= promo_product;
             $('#total_price').val(total_price);
         }
@@ -97,11 +99,13 @@ $(function(){
                 }
             }
             add_promo_product = parseInt(add_promo_product);
+            $("#add_product_promotion").val(add_promo_product);
             $("#product_promotion").val(promo_product+add_promo_product);
             total_price -= add_promo_product;
             $('#total_price').val(parseInt(total_price));
         }else{
             add_promo_product = 0;
+            $("#add_product_promotion").val(add_promo_product);
             $("#product_promotion").val(promo_product+add_promo_product);
             total_price -= add_promo_product;
             $('#total_price').val(total_price);
@@ -141,8 +145,10 @@ $(function(){
             promo_ongkir = parseInt(promo_ongkir);
             console.log('promo ongkir: '+promo_ongkir);
             $("#shipping_promotion").val(promo_ongkir);
+            $("#ori_shipping_promotion").val(promo_ongkir);
         }else{
             promo_ongkir = 0;
+            $("#ori_shipping_promotion").val(promo_ongkir);
             $("#shipping_promotion").val(promo_ongkir);
         }
         if(add_shipping_promotion_id){
@@ -176,11 +182,13 @@ $(function(){
                 }
             }
             add_promo_ongkir = parseInt(add_promo_ongkir);
+            $("#add_shipping_promotion").val(add_promo_ongkir);
             var total_promo_ongkir = promo_ongkir+add_promo_ongkir;
             total_promo_ongkir = parseInt(total_promo_ongkir);
             $("#shipping_promotion").val(total_promo_ongkir);
         }else{
             add_promo_ongkir = 0;
+            $("#add_shipping_promotion").val(add_promo_ongkir);
             var total_promo_ongkir = promo_ongkir+add_promo_ongkir;
             total_promo_ongkir = parseInt(total_promo_ongkir);
             $("#shipping_promotion").val(total_promo_ongkir);
@@ -254,17 +262,62 @@ $(function(){
             }
             // console.log(ap);
             promo_admin = parseInt(promo_admin);
+            $("#ori_admin_promotion").val(promo_admin);
             $("#admin_promotion").val(promo_admin);
         }else{
             promo_admin = 0;
+            $("#ori_admin_promotion").val(promo_admin);
             $("#admin_promotion").val(promo_admin);
         }
-        if(promo_admin >= admin){
-            var total_admin = 0;
-            promo_admin = admin;
+        if(add_admin_promotion_id){
+            var aap = $.parseJSON(
+                $.ajax({
+                    url: "get_admin_promotion/"+add_admin_promotion_id,
+                    type: "GET",
+                    dataType: "json",
+                    async: false,
+                    success: function(data){
+                        // console.log(data);
+                        // $("#admin_promotion").val(parseInt(data.admin_promotion));
+                    },
+                    error: function(err){
+                        console.log(err);
+                    }
+                }).responseText
+            ); 
+            if(aap.admin_promotion_percent == 0 && aap.admin_promotion == 0){
+                var add_promo_admin = 0;
+            }else if(aap.admin_promotion_percent != 0 && aap.admin_promotion == 0){
+                var add_promo_admin = admin*aap.admin_promotion_percent/100;
+            }else if(aap.admin_promotion_percent == 0 && aap.admin_promotion != 0){
+                var add_promo_admin = aap.admin_promotion;
+            }else{
+                if ((ongkir*aap.admin_promotion_percent/100) > aap.admin_promotion){
+                    var add_promo_admin = aap.admin_promotion;
+                }
+                else{
+                    var add_promo_admin = admin*aap.admin_promotion_percent/100;
+                }
+            }
+            // console.log(ap);
+            add_promo_admin = parseInt(add_promo_admin);
+            $("#add_admin_promotion").val(add_promo_admin);
+            var total_promo_admin = promo_admin+add_promo_admin;
+            total_promo_admin = parseInt(total_promo_admin);
+            $("#admin_promotion").val(total_promo_admin);
         }else{
-            var total_admin = admin - promo_admin;
-            promo_admin = promo_admin;
+            add_promo_admin = 0;
+            $("#add_admin_promotion").val(add_promo_admin);
+            var total_promo_admin = promo_admin+add_promo_admin;
+            total_promo_admin = parseInt(total_promo_admin);
+            $("#admin_promotion").val(total_promo_admin);
+        }
+        if(total_promo_admin >= admin){
+            var total_admin = 0;
+            total_promo_admin = admin;
+        }else{
+            var total_admin = admin - total_promo_admin;
+            total_promo_admin = total_promo_admin;
         }
         console.log('admin COD: '+admin);
         total_admin = parseInt(total_admin);
@@ -273,7 +326,7 @@ $(function(){
         var total_payment = total_price + total_ongkir + total_admin;
         total_payment = parseInt(total_payment);
         $('#total_payment').val(total_payment);
-        var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp: ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nPromo Produk: ${promo_product} (promo produk) + ${add_promo_product} (tambahan promo produk) = ${promo_product+add_promo_product}\nPromo Ongkir: ${promo_ongkir} (potongan ongkir) + ${add_promo_ongkir} (tambahan promo ongkir) = ${promo_ongkir+add_promo_ongkir}\nTotal Pembayaran: ${price*quantity} - ${promo_product+add_promo_product} (promo produk) + ${ongkir} (ongkir) - ${total_promo_ongkir} (potongan ongkir)+ ${admin} (biaya admin COD) - ${promo_admin} (promo biaya admin COD) = ${total_payment}`;
+        var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp: ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nPromo Produk: ${promo_product} (promo produk) + ${add_promo_product} (tambahan promo produk) = ${promo_product+add_promo_product}\nPromo Ongkir: ${promo_ongkir} (potongan ongkir) + ${add_promo_ongkir} (tambahan promo ongkir) = ${promo_ongkir+add_promo_ongkir}\nPromo Admin COD: ${promo_admin} (promo biaya admin COD) + ${add_promo_admin} (tambahan promo biaya admin COD) = ${total_promo_admin}\nTotal Pembayaran: ${price*quantity} - ${promo_product+add_promo_product} (promo produk) + ${ongkir} (ongkir) - ${total_promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${total_promo_admin} (promo biaya admin COD) = ${total_payment}`;
         console.log(text);
         $("#clipboard").val(text);
     });

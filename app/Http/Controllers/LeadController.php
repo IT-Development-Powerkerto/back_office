@@ -101,7 +101,7 @@ class LeadController extends Controller
             ->where('l.admin_id', auth()->user()->admin_id);
         $inputer = DB::table('inputers as i')
             ->join('leads as l', 'i.lead_id', '=', 'l.id')
-            ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image', 'i.product_weight as product_weight', 'i.product_promotion as product_promotion', 'i.shipping_promotion as shipping_promotion', 'i.province_id as province', 'i.total_price as total_price', 'i.shipping_price as shipping_price', 'i.total_payment as total_payment', 'i.province_id as province_id', 'i.city_id as city_id', 'i.subdistrict_id as subdistrict_id', 'i.product_promotion_id as product_promotion_id', 'i.shipping_promotion_id as shipping_promotion_id', 'i.admin_promotion_id as admin_promotion_id')
+            ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image', 'i.product_weight as product_weight', 'i.product_promotion as product_promotion', 'i.shipping_promotion as shipping_promotion', 'i.province_id as province', 'i.total_price as total_price', 'i.shipping_price as shipping_price', 'i.total_payment as total_payment', 'i.province_id as province_id', 'i.city_id as city_id', 'i.subdistrict_id as subdistrict_id', 'i.product_promotion_id as product_promotion_id', 'i.shipping_promotion_id as shipping_promotion_id', 'i.admin_promotion_id as admin_promotion_id', 'i.product_promotion_id as add_product_promotion_id', 'i.add_shipping_promotion_id as add_shipping_promotion_id', 'i.add_admin_promotion_id as add_admin_promotion_id')
             ->where('l.id', $id)
             ->where('l.admin_id', auth()->user()->admin_id);
         $product_promotion = Promotion::where('admin_id', auth()->user()->admin_id)->where('promotion_type', 'Product Price')->where('user_id', auth()->user()->id)->get();
@@ -247,7 +247,7 @@ class LeadController extends Controller
                         'product_weight'            => $request->weight,
                         'quantity'                  => $request->quantity,
                         'product_promotion_id'      => $request->product_promotion_id,
-                        'product_promotion'         => $request->product_promotion,
+                        'product_promotion'         => $request->ori_product_promotion,
                         'add_product_promotion_id'  => $request->add_product_promotion_id,
                         'add_product_promotion'     => $request->add_product_promotion,
                         'total_price'               => $request->total_price,
@@ -261,13 +261,13 @@ class LeadController extends Controller
                         'courier'                   => $request->courier,
                         'shipping_price'            => $request->shipping_price,
                         'shipping_promotion_id'     => $request->shipping_promotion_id,
-                        'shipping_promotion'        => $request->shipping_promotion,
+                        'shipping_promotion'        => $request->ori_shipping_promotion,
                         'add_shipping_promotion_id' => $request->add_shipping_promotion_id,
                         'add_shipping_promotion'    => $request->add_shipping_promotion,
                         'total_shipping'            => $request->total_shipping,
                         'shipping_admin'            => $request->shipping_admin,
                         'admin_promotion_id'        => $request->admin_promotion_id,
-                        'admin_promotion'           => $request->admin_promotion,
+                        'admin_promotion'           => $request->ori_admin_promotion,
                         'add_admin_promotion_id'    => $request->add_admin_promotion_id,
                         'add_admin_promotion'       => $request->add_admin_promotion,
                         'total_admin'               => $request->total_admin,
@@ -298,7 +298,7 @@ class LeadController extends Controller
                         'product_weight'            => $request->weight,
                         'quantity'                  => $request->quantity,
                         'product_promotion_id'      => $request->product_promotion_id,
-                        'product_promotion'         => $request->product_promotion,
+                        'product_promotion'         => $request->ori_product_promotion,
                         'add_product_promotion_id'  => $request->add_product_promotion_id,
                         'add_product_promotion'     => $request->add_product_promotion,
                         'total_price'               => $request->total_price,
@@ -312,13 +312,13 @@ class LeadController extends Controller
                         'courier'                   => $request->courier,
                         'shipping_price'            => $request->shipping_price,
                         'shipping_promotion_id'     => $request->shipping_promotion_id,
-                        'shipping_promotion'        => $request->shipping_promotion,
+                        'shipping_promotion'        => $request->ori_shipping_promotion,
                         'add_shipping_promotion_id' => $request->add_shipping_promotion_id,
                         'add_shipping_promotion'    => $request->add_shipping_promotion,
                         'total_shipping'            => $request->total_shipping,
                         'shipping_admin'            => $request->shipping_admin,
                         'admin_promotion_id'        => $request->admin_promotion_id,
-                        'admin_promotion'           => $request->admin_promotion,
+                        'admin_promotion'           => $request->ori_admin_promotion,
                         'add_admin_promotion_id'    => $request->add_admin_promotion_id,
                         'add_admin_promotion'       => $request->add_admin_promotion,
                         'total_admin'               => $request->total_admin,
