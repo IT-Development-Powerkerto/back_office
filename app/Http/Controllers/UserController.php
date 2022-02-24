@@ -20,7 +20,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('myprofile');
+        $users = User::all();
+        if(auth()->user()->role_id==1){
+            return view('myprofile')->with('user', $users);
+        }elseif (auth()->user()->role_id==4){
+            return view('myprofileADV')->with('user', $users);
+        }elseif (auth()->user()->role_id==5){
+            return view('myprofileCS')->with('user', $users);
+        }elseif (auth()->user()->role_id==12){
+            return view('myprofileJA-ADV')->with('user', $users);
+        }
     }
 
 
@@ -66,7 +75,16 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $result = User::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
-        return view('editing',['user' => $result])->with('roles', $roles);
+        $users = User::all();
+        if(auth()->user()->role_id==1){
+            return view('editing',['user' => $result])->with('roles', $roles);
+        }elseif (auth()->user()->role_id==4){
+            return view('editingADV',['user' => $result])->with('roles', $roles);
+        }elseif (auth()->user()->role_id==5){
+            return view('editingCS',['user' => $result])->with('roles', $roles);
+        }elseif (auth()->user()->role_id==12){
+            return view('editingJA-ADV',['user' => $result])->with('roles', $roles);
+        }
     }
 
     /**
