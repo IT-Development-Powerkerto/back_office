@@ -89,7 +89,27 @@ class CourierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $courier = Courier::find($id);
+        // dd($courier);
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'couri$courier-'.time().".".$extFile;
+            File::delete($courier->image);
+            $path = $request->image->move('public/assets/img/couri$courier',$namaFile);
+            $image = $path;
+        }
+        else{
+            $image = Courier::where('id', $id)->value('image');
+        }
+        Courier::where('id', $id)->update([
+            'name' => $request->name,
+            'image' => $image,
+        ]);
+        return redirect('courier')->with('success', 'Successfull! Courier Edited');
     }
 
     /**

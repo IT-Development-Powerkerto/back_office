@@ -81,7 +81,9 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form>
+									<form action="{{ route('courier.update', ['courier' => $courier->id]) }}" method="POST" enctype="multipart/form-data">
+										@csrf
+										@method('PATCH')
 										<!--begin::Input group-->
 										<div class="d-flex flex-column mb-1 fv-row">
 											<!--begin::Label-->
@@ -135,7 +137,7 @@
 										<!--end::Input group-->
                                         <div class="d-flex justify-content-end mt-3">
                                             <a href="{{ route('courier.index') }}" class="btn btn-secondary me-2">Cancel</a>
-                                            <button type="button" class="btn btn-primary">Edit</button>
+                                            <button type="submit" class="btn btn-primary">Edit</button>
                                         </div>
                                     </form>
 								</div>
