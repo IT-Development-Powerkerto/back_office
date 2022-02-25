@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use File;
+use Illuminate\Support\Facades\File;
 class WarehouseController extends Controller
 {
     /**
@@ -137,7 +137,7 @@ class WarehouseController extends Controller
         $warehouse = Warehouse::find($id);
         File::delete($warehouse->image);
         $warehouse->delete();
-        return redirect()->back()->with('success','Successull! Product Deleted');;
+        return redirect()->back()->with('success','Successull! Warehouse Deleted');
     }
 
     public function editingwarehouse(){

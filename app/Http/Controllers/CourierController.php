@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Courier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class CourierController extends Controller
 {
@@ -98,7 +99,10 @@ class CourierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $courier = Courier::find($id);
+        File::delete($courier->image);
+        $courier->delete();
+        return redirect()->back()->with('success','Successull! Courier Deleted');
     }
 
     public function editingcourier(){
