@@ -76,7 +76,8 @@ class CourierController extends Controller
      */
     public function edit($id)
     {
-        //
+        $courier = Courier::findOrFail($id);
+        return view('courier.CourierEdit', compact('courier'));
     }
 
     /**
