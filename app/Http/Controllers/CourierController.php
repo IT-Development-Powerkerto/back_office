@@ -15,7 +15,8 @@ class CourierController extends Controller
      */
     public function index()
     {
-        return view('courier/Dashboard');
+        $couriers = Courier::all();
+        return view('courier/Dashboard', compact('couriers'));
     }
 
     /**
