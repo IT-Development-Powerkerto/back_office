@@ -15,7 +15,7 @@
 			<!--begin::Content-->
 			<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-				@include('courier/layout/_contentwarehouse')
+				@include('courier/layout/_contentCourier')
 
 			</div>
 			<!--end::Content-->

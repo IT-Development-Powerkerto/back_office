@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CourierController extends Controller
 {
@@ -34,7 +36,23 @@ class CourierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'courier-'.time().".".$extFile;
+            $path = $request->image->move('public/assets/img/courier',$namaFile);
+            $image = $path;
+        }else{
+            $image = null;
+        }
+        Courier::create([
+            'name' => $request->name,
+            'image' => $image
+        ]);
+        return redirect('courier')->with('success', 'Successfull! Courier Added');
     }
 
     /**

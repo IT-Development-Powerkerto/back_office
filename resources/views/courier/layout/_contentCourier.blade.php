@@ -10,7 +10,7 @@
 													<span class="text-muted mt-1 fw-bold fs-7">2</span>
 												</h3>
 												<div class="card-toolbar mt-n3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
-													<button type="button" class="btn btn-sm btn-light btn-active-primary me-2" data-bs-toggle="modal" data-bs-target="#addWarehouse">
+													<button type="button" class="btn btn-sm btn-light btn-active-primary me-2" data-bs-toggle="modal" data-bs-target="#addCourier">
 													<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 													<span class="svg-icon svg-icon-3">
 														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -21,15 +21,16 @@
 													<!--end::Svg Icon-->Add Courier</button>
 
 													<!-- Modal -->
-													<div class="modal fade" id="addWarehouse" tabindex="-1" aria-labelledby="addWarehouse" aria-hidden="true">
+													<div class="modal fade" id="addCourier" tabindex="-1" aria-labelledby="addCourier" aria-hidden="true">
 														<div class="modal-dialog">
 															<div class="modal-content">
 																<div class="modal-header">
 																	<h5 class="modal-title" id="exampleModalLabel">Add Courier</h5>
 																	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																</div>
-																<div class="modal-body">
-																	<form>
+																<form action="{{ route('courier.store') }}" method="POST" enctype="multipart/form-data">
+																	<div class="modal-body">
+																		@csrf
 																		<!--begin::Input group-->
 																		<div class="d-flex flex-column mb-1 fv-row">
 																			<!--begin::Label-->
@@ -79,15 +80,15 @@
 																		</div>
 																		<!--end::Input group-->
 																		<div class="mb-3">
-																			<label for="exampleInputCourier" class="form-label">Courier</label>
-																			<input type="text" class="form-control" id="exampleInputCourier">
+																			<label for="name" class="form-label">Courier</label>
+																			<input type="text" class="form-control" id="name" name="name" required>
 																		</div>
-																	</form>
-																</div>
-																<div class="modal-footer">
-																	<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-																	<button type="button" class="btn btn-primary">Add Courier</button>
-																</div>
+																	</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+																		<button type="submit" class="btn btn-primary">Add Courier</button>
+																	</div>
+																</form>
 															</div>
 														</div>
 													</div>
