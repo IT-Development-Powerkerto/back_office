@@ -114,7 +114,7 @@
 																			<select name="province" id="province" class="form-control">
 																				<option value="" hidden>Province</option>
 																				@foreach ($provinces as $province)
-																				<option value="{{ $province['province_id'] }}_{{ $province['province'] }}">{{ $province['province'] }}</option>
+																				<option value="{{ $province['province_id'].'_'.$province['province'] }}">{{ $province['province'] }}</option>
 																				@endforeach
 																			</select>
 																		</div>

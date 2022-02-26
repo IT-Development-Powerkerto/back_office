@@ -105,8 +105,20 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
+        $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province');
+        $response = json_decode($response, true);
+        $provinces = $response['rajaongkir']['results'];
+        $province_id = Warehouse::whereId($id)->value('province_id');
+        $all_city = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/city?&province='.$province_id);
+        $all_city = json_decode($all_city, true);
+        $all_city = $all_city['rajaongkir']['results'];
+        $city_id = Warehouse::whereId($id)->value('city_id');
+        $all_subdistrict = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/subdistrict?city='.$city_id);
+        $all_subdistrict = json_decode($all_subdistrict, true);
+        $all_subdistrict = $all_subdistrict['rajaongkir']['results'];
         $warehouse = Warehouse::findOrFail($id);
-        return view('warehouse.WarehouseEdit', compact('warehouse'));
+        
+        return view('warehouse.WarehouseEdit', compact('warehouse', 'provinces', 'all_city', 'all_subdistrict'));
     }
 
     /**
