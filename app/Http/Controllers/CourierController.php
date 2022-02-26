@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class CourierController extends Controller
 {
@@ -13,7 +16,8 @@ class CourierController extends Controller
      */
     public function index()
     {
-        return view('courier/Dashboard');
+        $couriers = Courier::all();
+        return view('courier/Dashboard', compact('couriers'));
     }
 
     /**
@@ -34,7 +38,23 @@ class CourierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'courier-'.time().".".$extFile;
+            $path = $request->image->move('public/assets/img/courier',$namaFile);
+            $image = $path;
+        }else{
+            $image = null;
+        }
+        Courier::create([
+            'name' => $request->name,
+            'image' => $image
+        ]);
+        return redirect('courier')->with('success', 'Successfull! Courier Added');
     }
 
     /**
@@ -56,7 +76,8 @@ class CourierController extends Controller
      */
     public function edit($id)
     {
-        //
+        $courier = Courier::findOrFail($id);
+        return view('courier.CourierEdit', compact('courier'));
     }
 
     /**
@@ -68,7 +89,27 @@ class CourierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+        $courier = Courier::find($id);
+        // dd($courier);
+        if($request->hasFile('image'))
+        {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'couri$courier-'.time().".".$extFile;
+            File::delete($courier->image);
+            $path = $request->image->move('public/assets/img/couri$courier',$namaFile);
+            $image = $path;
+        }
+        else{
+            $image = Courier::where('id', $id)->value('image');
+        }
+        Courier::where('id', $id)->update([
+            'name' => $request->name,
+            'image' => $image,
+        ]);
+        return redirect('courier')->with('success', 'Successfull! Courier Edited');
     }
 
     /**
@@ -79,7 +120,10 @@ class CourierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $courier = Courier::find($id);
+        File::delete($courier->image);
+        $courier->delete();
+        return redirect()->back()->with('success','Successull! Courier Deleted');
     }
 
     public function editingcourier(){

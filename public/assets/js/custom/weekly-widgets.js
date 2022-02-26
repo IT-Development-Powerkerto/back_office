@@ -1559,7 +1559,7 @@ var KTWidgets = function () {
                     }
                 }
             },
-            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
+            colors: ['transparent'],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -1727,7 +1727,7 @@ var KTWidgets = function () {
                     }
                 }
             },
-            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
+            colors: ['transparent'],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -1895,7 +1895,7 @@ var KTWidgets = function () {
                     }
                 }
             },
-            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
+            colors: ['transparent'],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,
@@ -2063,7 +2063,7 @@ var KTWidgets = function () {
                     }
                 }
             },
-            colors: [baseLightColor, secondaryLightColor, thirdLightColor, fourtLightColor, fiveLightColor],
+            colors: ['transparent'],
             grid: {
                 borderColor: borderColor,
                 strokeDashArray: 4,

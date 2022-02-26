@@ -2,16 +2,15 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Edit</title>
+		<title>My Profile</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="img/favicon.png">	
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
-		<!-- <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" /> -->
-		<link href="{{ URL::asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-		<link href="{{ URL::asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-		<!-- <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" /> -->
+		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
 	</head>
 	<!--end::Head-->
@@ -25,10 +24,22 @@
 				<!--begin::Wrapper-->
 				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 					<!--begin::Header-->
-					<div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
-						@include('layout/header/_base')
-					</div>
+					@include('layout/header/_baseADV')
+					
 					<!--end::Header-->
+					@if(session()->has('success'))
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+							{{ session('success') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					@endif
+				
+					@if(session()->has('error'))
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							{{ session('error') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					@endif
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 						<!--begin::Container-->
@@ -41,10 +52,10 @@
 										<!--begin: Pic-->
 										<div class="me-7 mb-4">
 											<div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-												@if(is_null($user->image))
-												<img src="{{ url('') }}/assets/img/default.jpg" alt="" />
+                                                @if(is_null(Auth()->user()->image))
+												<img src="/assets/img/default.jpg" alt="" />
 												@else
-												<img src="{{ url('') }}/{{ $user->image }}" alt="image" />
+												<img src={{ Auth()->user()->image }} alt="image" />
 												@endif
 												<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"></div>
 											</div>
@@ -58,7 +69,7 @@
 												<div class="d-flex flex-column">
 													<!--begin::Name-->
 													<div class="d-flex align-items-center mb-2">
-														<label class="text-gray-800 text-hover-primary fs-2 fw-bolder me-1">{{ $user->name }}</label>
+														<label class="text-gray-800 text-hover-primary fs-2 fw-bolder me-1">{{ Auth()->user()->name }}</label>
 													</div>
 													<!--end::Name-->
 													<!--begin::Info-->
@@ -71,7 +82,7 @@
 																<path d="M12 22C14.6 22 17 21 18.7 19.4C17.9 16.9 15.2 15 12 15C8.8 15 6.09999 16.9 5.29999 19.4C6.99999 21 9.4 22 12 22Z" fill="black" />
 															</svg>
 														</span>
-														<!--end::Svg Icon-->{{ $user->role->name}}</label>
+														<!--end::Svg Icon-->{{ Auth()->user()->role->name }}</label>
                                                         <label href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
 														<!--begin::Svg Icon | path: icons/duotune/communication/com011.svg-->
 														<span class="svg-icon svg-icon-4 me-1">
@@ -80,7 +91,7 @@
 																<path d="M21 5H2.99999C2.69999 5 2.49999 5.10005 2.29999 5.30005L11.2 13.3C11.7 13.7 12.4 13.7 12.8 13.3L21.7 5.30005C21.5 5.10005 21.3 5 21 5Z" fill="black" />
 															</svg>
 														</span>
-														<!--end::Svg Icon-->{{ $user->email }}</label>
+														<!--end::Svg Icon-->{{ Auth()->user()->email }}</label>
 													</div>
 													<!--end::Info-->
 												</div>
@@ -186,6 +197,7 @@
 														<div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
 															<!--begin::Number-->
 															<div class="d-flex align-items-center">
+																<!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
 																<span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo2/dist/../src/media/svg/icons/Media/Equalizer.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 																	<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 																		<rect x="0" y="0" width="24" height="24"/>
@@ -234,96 +246,92 @@
 								<div class="card-header cursor-pointer">
 									<!--begin::Card title-->
 									<div class="card-title m-0">
-										<h3 class="fw-bolder m-0 mt-n3">Edit Profile</h3>
+										<h3 class="fw-bolder m-0">Profile Details</h3>
 									</div>
 									<!--end::Card title-->
+									<!--begin::Action-->
+									<form action="{{ route('users.edit',['user' => Auth()->user()->id]) }}">
+										<button type="submit" data-bs-toggle="modal" data-bs-target="#add-user" class="btn btn-primary btn-xs mt-4">
+											Edit Profile
+										</button>
+									</form>
+									<!--end::Action-->
 								</div>
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form action="{{ route('users.update',['user' => $user->id]) }}" method="POST" enctype="multipart/form-data">
-										@csrf
-										@method('PATCH')
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputFullname" class="col-form-label">Fullname</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="name" value="{{ old('name') ?? $user->name }}" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline">
-											</div>
+									<!--begin::Row-->
+									<div class="row mb-7">
+										<!--begin::Label-->
+										<label class="col-lg-4 fw-bold text-muted">Full Name</label>
+										<!--end::Label-->
+										<!--begin::Col-->
+										<div class="col-lg-8">
+											<label class="fw-bolder fs-6 text-gray-800">{{ Auth()->user()->name }}</label>
 										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputEmail" class="col-form-label">Email</label>
-											</div>
-											<div class="col-10">
-												<input type="email" name="email" value="{{ old('email') ?? $user->email }}" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
-											</div>
+										<!--end::Col-->
+									</div>
+									<!--end::Row-->
+									<!--begin::Input group-->
+									<div class="row mb-7">
+										<!--begin::Label-->
+										<label class="col-lg-4 fw-bold text-muted">Company</label>
+										<!--end::Label-->
+										<!--begin::Col-->
+										<div class="col-lg-8 fv-row">
+											<label class="fw-bolder fs-6 text-gray-800">Powerkerto</label>
 										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputPhone" class="col-form-label">Phone</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="phone" value="{{ old('phone') ?? $user->phone }}" id="inputPhone" class="form-control" aria-describedby="phoneHelpInline">
-											</div>
+										<!--end::Col-->
+									</div>
+									<!--end::Input group-->
+									<!--begin::Input group-->
+									<div class="row mb-7">
+										<!--begin::Label-->
+										<label class="col-lg-4 fw-bold text-muted">Contact Phone
+										<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Phone number must be active"></i></label>
+										<!--end::Label-->
+										<!--begin::Col-->
+										<div class="col-lg-8 d-flex align-items-center">
+											<span class="fw-bolder fs-6 me-2 text-gray-800">{{ Auth()->user()->phone }}</span>
+											<span class="badge badge-success">Verified</span>
 										</div>
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputUsername" class="col-form-label">Username</label>
-											</div>
-											<div class="col-10">
-												<input type="text" name="username" value="{{ old('username') ?? $user->username }}" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
-											</div>
+										<!--end::Col-->
+									</div>
+									<!--end::Input group-->
+									<!--begin::Input group-->
+									<div class="row mb-7">
+										<!--begin::Label-->
+										<label class="col-lg-4 fw-bold text-muted">Company Site</label>
+										<!--end::Label-->
+										<!--begin::Col-->
+										<div class="col-lg-8">
+											<a href="#" class="fw-bolder fs-6 text-gray-800">powerkerto.com</a>
 										</div>
-										{{-- @can('change-role') --}}
-
-
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputRole" class="col-form-label">Role</label>
-											</div>
-											<div class="dropdown col-10">
-												@if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2 || auth()->user()->role_id == 3)
-													<select name="role_id" id="role_id1" class="form-control">
-														<option selected value="{{ $user->role_id }}" hidden>{{$user->role->name}}</option>
-														@if (auth()->user()->admin_id != 1)
-															@foreach ($roles->skip(1) as $role)
-                                                                <option value="{{$role->id}}">{{$role->name}}</option>
-															@endforeach
-														@else
-															<option value={{$role->id}}>{{$role->name}}</option>
-														@endif
-													</select>
-												@else
-													<label class="form-control">{{$user->role->name}}</label>
-													{{-- <input class="form-control" type="text" value="{{ $user->role_id }}" hidden> --}}
-												@endif
-											</div>
+										<!--end::Col-->
+									</div>
+									<!--end::Input group-->
+									<!--begin::Input group-->
+									<div class="row mb-7">
+										<!--begin::Label-->
+										<label class="col-lg-4 fw-bold text-muted">Country
+										<i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i></label>
+										<!--end::Label-->
+										<!--begin::Col-->
+										<div class="col-lg-8">
+											<label class="fw-bolder fs-6 text-gray-800">Indonesia</label>
 										</div>
-										{{-- @endcan --}}
-										<div class="row align-items-center col-12 pb-5">
-											<div class="col-2">
-												<label for="inputimage" class="col-form-label">Image</label>
-											</div>
-
-											<div class="dropdown col-10">
-												<div class="mb-3">
-													<input class="form-control" value="{{ old('image') ?? $user->image }}" type="file" id="inputimage" name="image" id="formFileMultiple" multiple id>
-												</div>
-											</div>
-										</div>
-										{{ csrf_field() }}
-										<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Edit">
-									</form>
+										<!--end::Col-->
+									</div>
+									<!--end::Input group-->
 								</div>
 								<!--end::Card body-->
 							</div>
-							<!--end::details View-->
-						</div>
-						<!--end::Wrapper-->
-					</div>
-				@include('layout/_footer')
+							<!--end::details View-->			
+					<!--begin::Footer-->
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			@include('layout/_footer')
 			<!--end::Page-->
 		</div>
 		<!--end::Root-->
@@ -331,74 +339,29 @@
 		<script>var hostUrl = "assets/";</script>
 		<!--begin::Javascript-->
 		<!--begin::Global Javascript Bundle(used by all pages)-->
-		<script src="../assets/plugins/global/plugins.bundle.js"></script>
-		<script src="../assets/js/scripts.bundle.js"></script>
-		<script>
-			var avatar1 = new KTImageInput('kt_image_1');
-		</script>
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Page Custom Javascript(used by this page)-->
-		<script src="../assets/js/custom/widgets.js"></script>
+		<script src="assets/js/custom/widgets.js"></script>
 		<!--end::Page Custom Javascript-->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script>
-			$(document).ready(function() {
-				$('#role_id1').on('change', function() {
-					var roleId = $(this).val();
-					if(roleId) {
-						$.ajax({
-							url: '/getRole/'+roleId,
-							type: "GET",
-							data : {"_token":"{{ csrf_token() }}"},
-							dataType: "json",
-							//success:function(data)
-							// {
-							//     if(data){
-							//         $('#course').empty();
-							//         $('#course').append('<option hidden>Choose Course</option>');
-							//         $.each(data, function(key, course){
-							//             $('select[name="course"]').append('<option value="'+ key +'">' + course.name+ '</option>');
-							//         });
-							//     }else{
-							//         $('#course').empty();
-							//     }
-							// }
-						});
-					}//else{
-					//     $('#course').empty();
-				// }
-				});
-			});
-		</script>
-		<script>
-			$(document).ready(function() {
-				$('#role_id2').on('change', function() {
-					var roleId = $(this).val();
-					if(roleId) {
-						$.ajax({
-							url: '/getRole/'+roleId,
-							type: "GET",
-							data : {"_token":"{{ csrf_token() }}"},
-							dataType: "json",
-							//success:function(data)
-							// {
-							//     if(data){
-							//         $('#course').empty();
-							//         $('#course').append('<option hidden>Choose Course</option>');
-							//         $.each(data, function(key, course){
-							//             $('select[name="course"]').append('<option value="'+ key +'">' + course.name+ '</option>');
-							//         });
-							//     }else{
-							//         $('#course').empty();
-							//     }
-							// }
-						});
-					}//else{
-					//     $('#course').empty();
-				// }
-				});
-			});
+			function currentPwd() {
+				var x = document.getElementById("current");
+				if (x.type === "password") {
+					x.type = "text";
+				} else {
+					x.type = "password";
+				}
+			}
+			function newpwd() {
+				var x = document.getElementById("new");
+				if (x.type === "password") {
+					x.type = "text";
+				} else {
+					x.type = "password";
+				}
+			}
 		</script>
 		<!--end::Javascript-->
 	</body>

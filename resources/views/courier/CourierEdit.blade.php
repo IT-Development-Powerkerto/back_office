@@ -14,9 +14,9 @@
         <!--end::Page Vendor Stylesheets-->
     
         <!--begin::Global Stylesheets Bundle(used by all pages)-->
-        <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
-        <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
         <!--end::Global Stylesheets Bundle-->
@@ -81,7 +81,9 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
-									<form>
+									<form action="{{ route('courier.update', ['courier' => $courier->id]) }}" method="POST" enctype="multipart/form-data">
+										@csrf
+										@method('PATCH')
 										<!--begin::Input group-->
 										<div class="d-flex flex-column mb-1 fv-row">
 											<!--begin::Label-->
@@ -96,7 +98,7 @@
 													<!--begin::Image input-->
 													<div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url(assets/mediaTwo/ImagePhoto.png)">
 														<!--begin::Preview existing avatar-->
-														<div class="image-input-wrapper w-125px h-125px" style="background-image: url(assets/mediaTwo/ImagePhoto.png)"></div>
+														<div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{ url('').'/'.str_replace('\\', '/', $courier->image) }}')"></div>
 														<!--end::Preview existing avatar-->
 														<!--begin::Label-->
 														<label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
@@ -129,13 +131,13 @@
 											</div>
 										</div>
 										<div class="mb-3">
-											<label for="exampleInputCourier" class="form-label">Courier</label>
-											<input type="text" class="form-control" id="exampleInputCourier">
+											<label for="name" class="form-label">Courier</label>
+											<input type="text" class="form-control" id="name" name="name" value="{{ $courier->name }}">
 										</div>
 										<!--end::Input group-->
                                         <div class="d-flex justify-content-end mt-3">
                                             <a href="{{ route('courier.index') }}" class="btn btn-secondary me-2">Cancel</a>
-                                            <button type="button" class="btn btn-primary">Edit</button>
+                                            <button type="submit" class="btn btn-primary">Edit</button>
                                         </div>
                                     </form>
 								</div>
@@ -168,22 +170,22 @@
         </script>
         <!--begin::Javascript-->
         <!--begin::Global Javascript Bundle(used by all pages)-->
-        <script src="assets/plugins/global/plugins.bundle.js"></script>
-        <script src="assets/js/scripts.bundle.js"></script>
+        <script src="../assets/plugins/global/plugins.bundle.js"></script>
+        <script src="../assets/js/scripts.bundle.js"></script>
         <!--end::Global Javascript Bundle-->
         <!--begin::Page Vendors Javascript(used by this page)-->
-        <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-        <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+        <script src="../assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+        <script src="../assets/plugins/custom/datatables/datatables.bundle.js"></script>
         <!--end::Page Vendors Javascript-->
         <!--begin::Page Custom Javascript(used by this page)-->
-        <script src="assets/js/custom/apps/customers/list/export.js"></script>
-        <script src="assets/js/custom/apps/customers/list/warehouse.js"></script>
-        <script src="assets/js/custom/apps/customers/add.js"></script>
-        <script src="assets/js/custom/widgets.js"></script>
-        <script src="assets/js/custom/apps/chat/chat.js"></script>
-        <script src="assets/js/custom/modals/create-app.js"></script>
-        <script src="assets/js/custom/modals/upgrade-plan.js"></script>
-        <script src="assets/js/custom/intro.js"></script>
+        <script src="../assets/js/custom/apps/customers/list/export.js"></script>
+        <script src="../assets/js/custom/apps/customers/list/warehouse.js"></script>
+        <script src="../assets/js/custom/apps/customers/add.js"></script>
+        <script src="../assets/js/custom/widgets.js"></script>
+        <script src="../assets/js/custom/apps/chat/chat.js"></script>
+        <script src="../assets/js/custom/modals/create-app.js"></script>
+        <script src="../assets/js/custom/modals/upgrade-plan.js"></script>
+        <script src="../assets/js/custom/intro.js"></script>
         <!--end::Page Custom Javascript-->
         <!--end::Javascript-->
 	</body>

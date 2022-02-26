@@ -204,10 +204,8 @@ Route::get('/live-reporting/weekly',[ReportingController::class, 'weeklyReportin
 Route::get('/live-reporting/monthly',[ReportingController::class, 'monthlyReporting'])->name('reporting-monthly')->middleware('auth');
 
 Route::resource('/warehouse', WarehouseController::class);
-Route::get('/edit/warehouse', [WarehouseController::class, 'editingwarehouse'])->name('editWH');
 
 Route::resource('/courier', CourierController::class);
-Route::get('/edit/courier', [CourierController::class, 'editingcourier'])->name('editCR');
 
 Route::get('/sync', [SyncController::class, 'tableClient']);
 
