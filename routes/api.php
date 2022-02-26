@@ -13,6 +13,7 @@ use App\Http\Controllers\LeadController;
 use App\Http\Controllers\API\UserPowerkertoController;
 use App\Http\Controllers\API\UserInfoController;
 use App\Http\Controllers\API\DashboardSuperAdminController;
+use App\Http\Controllers\API\DashboardCRMController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,3 +58,5 @@ Route::get('almost_expired', [DashboardSuperAdminController::class, 'almost_expi
 Route::post('/update/aktive/{user}', [DashboardSuperAdminController::class, 'updateAktive']);
 Route::post('/update/nonaktive/{user}', [DashboardSuperAdminController::class, 'updateNonAktive']);
 Route::get('/sales_statistic', [DashboardSuperAdminController::class, 'sales_statistic']);
+
+Route::get('/order', [DashboardCRMController::class, 'order']);
