@@ -32,21 +32,21 @@
 					<!--end::Header-->
 					<!--begin::Content-->
 					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-						<!--begin::Container-->
-						@if(session()->has('success'))
-							<div class="alert alert-success alert-dismissible fade show" role="alert">
-								{{ session('success') }}
-								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-							</div>
-						@endif
-
-						@if(session()->has('error'))
-							<div class="alert alert-danger alert-dismissible fade show" role="alert">
-								{{ session('error') }}
-								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-							</div>
-						@endif
-						<div class="container-xxl" id="kt_content_container">
+                        <div class="container-xxl" id="kt_content_container">
+                            <!--begin::Container-->
+                            @if(session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
+    
+                            @if(session()->has('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ session('error') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
 							<!--begin::Tables Widget 11-->
 							<div class="card card-xxl-stretch mb-5 mb-xl-8">
 								<!--begin::Header-->
@@ -82,18 +82,18 @@
 														@csrf
 
 														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
+															<div class="col-4">
 																<label for="inputtitle" class="col-form-label">Tittle</label>
 															</div>
-															<div class="col-10">
+															<div class="col-8">
 																<input type="text" name="title" value="" required id="inputtitle" class="form-control" aria-describedby="titleHelpInline">
 															</div>
 														</div>
                                                         <div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
+															<div class="col-4">
 																<label for="inputRole" class="col-form-label">Product</label>
 															</div>
-															<div class="dropdown col-10">
+															<div class="dropdown col-8">
 																<select name="product_id" id="product_id" class="form-control">
 																	@foreach ($products as $product)
 																	<option value="{{$product->id}}" required>{{$product->name}}</option>
@@ -102,18 +102,18 @@
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
+															<div class="col-4">
 																<label for="inputfbp" class="col-form-label">Facebook Pixel</label>
 															</div>
-															<div class="col-10">
+															<div class="col-8">
 																<textarea type="text" name="fbp" required id="inputfbp" class="form-control" aria-describedby="fbpHelpInline"></textarea>
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
+															<div class="col-4">
 																<label for="inputRole" class="col-form-label">Facebook Event Form</label>
 															</div>
-															<div class="dropdown col-10">
+															<div class="dropdown col-8">
 																<select name="event_id" id="event_id" class="form-control">
 																	@foreach ($events as $event)
 																	<option value="{{$event->id}}" required>{{$event->name}}</option>
@@ -122,18 +122,18 @@
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
+															<div class="col-4">
 																<label for="inputtp"  class="col-form-label">Thanks Page</label>
 															</div>
-															<div class="col-10">
+															<div class="col-8">
 																<textarea type="text" name="tp" required id="inputtp" class="form-control" aria-describedby="tpHelpInline"></textarea>
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
+															<div class="col-4">
 																<label for="wa_event_id" class="col-form-label">Facebook Event WA</label>
 															</div>
-															<div class="dropdown col-10">
+															<div class="dropdown col-8">
 																<select name="event_wa" id="wa_event_id" class="form-control">
 																	@foreach ($eventWa as $event)
 																	<option value="{{$event->id}}" required>{{$event->name}}</option>
@@ -142,21 +142,32 @@
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
+															<div class="col-4">
 																<label for="inputat"  class="col-form-label">Customer to CS</label>
 															</div>
-															<div class="col-10">
+															<div class="col-8">
 																<textarea type="text" name="customer_to_cs" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
 															</div>
 														</div>
 														<div class="row align-items-center col-12 pb-5">
-															<div class="col-2">
+															<div class="col-4">
 																<label for="inputat"  class="col-form-label">CS to Customer</label>
 															</div>
-															<div class="col-10">
+															<div class="col-8">
 																<textarea type="text" name="cs_to_customer" required id="inputat" class="form-control" aria-describedby="atHelpInline"></textarea>
 															</div>
 														</div>
+                                                        {{-- <div class="row align-items-center col-12 pb-5">
+															<div class="col-4">
+																<label for="wa_event_id" class="col-form-label">Distribution Leads</label>
+															</div>
+															<div class="dropdown col-8">
+																<select name="event_wa" id="wa_event_id" class="form-control">
+																	<option value="#" required>By Rank CS</option>
+                                                                    <option value="#" required>Using Ratio</option>
+																</select>
+															</div>
+														</div> --}}
 
 														{{ csrf_field() }}
 														<input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Create">

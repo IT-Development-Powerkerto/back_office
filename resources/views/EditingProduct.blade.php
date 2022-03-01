@@ -105,7 +105,6 @@
 						</div>
 					</div>
 					<!--end::Wrapper-->
-				</div>
 				<!--end::Page-->
 			@include('layout/_footer')
 		</div>

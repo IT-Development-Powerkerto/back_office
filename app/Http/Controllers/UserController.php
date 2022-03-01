@@ -75,7 +75,6 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $result = User::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
-        $users = User::all();
         if(auth()->user()->role_id==1){
             return view('editing',['user' => $result])->with('roles', $roles);
         }elseif (auth()->user()->role_id==4){
