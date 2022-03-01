@@ -6,9 +6,71 @@
 									<h3 class="card-title align-items-start flex-column">
 										<span class="card-label fw-bolder fs-3 mb-1 text-white">Lead Tunneling</span>
 									@if (auth()->user()->role_id == 1)
-										<span class="text-white mt-1 fw-bold fs-7">{{$all_leads->count()}} Lead {{$all_spam->count()}} Spam</span>
+										<span class="text-white mt-1 fw-bold fs-7">
+                                            <script>
+                                                var bilangan = {{$all_leads->count()}};
+
+                                                var	number_string = bilangan.toString(),
+                                                    sisa 	= number_string.length % 3,
+                                                    rupiah 	= number_string.substr(0, sisa),
+                                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                if (ribuan) {
+                                                    separator = sisa ? '.' : '';
+                                                    rupiah += separator + ribuan.join('.');
+                                                }
+
+                                                document.write(rupiah);
+                                            </script> Lead
+                                            <script>
+                                                var bilangan = {{$all_spam->count()}};
+
+                                                var	number_string = bilangan.toString(),
+                                                    sisa 	= number_string.length % 3,
+                                                    rupiah 	= number_string.substr(0, sisa),
+                                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                if (ribuan) {
+                                                    separator = sisa ? '.' : '';
+                                                    rupiah += separator + ribuan.join('.');
+                                                }
+
+                                                document.write(rupiah);
+                                            </script> Spam
+                                        </span>
 									@else
-										<span class="text-white mt-1 fw-bold fs-7">{{$all_leads->where('user_id', auth()->user()->id)->count()}} Lead {{$all_spam->where('user_id', auth()->user()->id)->count()}} Spam</span>
+										<span class="text-white mt-1 fw-bold fs-7">
+                                            <script>
+                                                var bilangan = {{$all_leads->where('user_id', auth()->user()->id)->count()}};
+
+                                                var	number_string = bilangan.toString(),
+                                                    sisa 	= number_string.length % 3,
+                                                    rupiah 	= number_string.substr(0, sisa),
+                                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                if (ribuan) {
+                                                    separator = sisa ? '.' : '';
+                                                    rupiah += separator + ribuan.join('.');
+                                                }
+
+                                                document.write(rupiah);
+                                            </script> Lead
+                                            <script>
+                                                var bilangan = {{$all_spam->where('user_id', auth()->user()->id)->count()}};
+
+                                                var	number_string = bilangan.toString(),
+                                                    sisa 	= number_string.length % 3,
+                                                    rupiah 	= number_string.substr(0, sisa),
+                                                    ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                if (ribuan) {
+                                                    separator = sisa ? '.' : '';
+                                                    rupiah += separator + ribuan.join('.');
+                                                }
+
+                                                document.write(rupiah);
+                                            </script> Spam
+                                        </span>
 									@endif
 									</h3>
 									<audio controls autoplay hidden>
@@ -58,7 +120,7 @@
                                                                     <select class="form-control" name="campaign_id" id='campaign_id'>
                                                                         <option value="" hidden>Select Campaigns</option>
                                                                         @foreach ($my_campaigns as $my_campaign)
-                                                                        <option value="{{$my_campaign->campaign_id}}">{{$campaigns->where('id', $my_campaign->campaign_id)->implode('title')}}</option>
+                                                                        <option value="{{$my_campaign->campaign_id}}">{{$campaigns->where('id', $my_campaign->campaign_id)->implode('title')}} @ {{$users->where('id', $campaigns->where('id', $my_campaign->campaign_id)->implode('user_id'))->implode('name')}}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>

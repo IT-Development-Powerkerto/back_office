@@ -5,7 +5,23 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column">
 												<span class="card-label fw-bolder fs-3 mb-1">Admin</span>
-												<span class="text-muted mt-1 fw-bold fs-7">{{$user->count()}} Admin</span>
+												<span class="text-muted mt-1 fw-bold fs-7">
+                                                    <script>
+                                                        var bilangan = {{$user->count()}};
+
+                                                        var	number_string = bilangan.toString(),
+                                                            sisa 	= number_string.length % 3,
+                                                            rupiah 	= number_string.substr(0, sisa),
+                                                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                        if (ribuan) {
+                                                            separator = sisa ? '.' : '';
+                                                            rupiah += separator + ribuan.join('.');
+                                                        }
+
+                                                        document.write(rupiah);
+                                                    </script> Admin
+                                                </span>
 											</h3>
 											<form action="#" method="GET" class="d-flex ms-2">
 												<input class="form-control mt-0" type="text" placeholder="Search" name="search" id="searchstaff" style="height: 33px;">

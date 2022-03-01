@@ -5,7 +5,23 @@
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column mt-n3">
 												<span class="card-label text-white fw-bolder fs-3 mb-1">Product</span>
-												<span class="text-white mt-1 fw-bold fs-7">{{$products->count()}} Product</span>
+												<span class="text-white mt-1 fw-bold fs-7">
+                                                    <script>
+                                                        var bilangan = {{$products->count()}};
+
+                                                        var	number_string = bilangan.toString(),
+                                                            sisa 	= number_string.length % 3,
+                                                            rupiah 	= number_string.substr(0, sisa),
+                                                            ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
+
+                                                        if (ribuan) {
+                                                            separator = sisa ? '.' : '';
+                                                            rupiah += separator + ribuan.join('.');
+                                                        }
+
+                                                        document.write(rupiah);
+                                                    </script> Product
+                                                </span>
 											</h3>
 											<div class="card-toolbar mt-n3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Click to add a product">
 												<a href="#" data-bs-toggle="modal" data-bs-target="#add-product" class="btn btn-sm btn-light btn-active-primary text-hover-white" data-bs-toggle="modal" data-bs-target="#kt_modal_invite_friends" style="color: #00509d;">
