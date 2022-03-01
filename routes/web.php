@@ -212,3 +212,5 @@ Route::get('/sync', [SyncController::class, 'tableClient']);
 Route::get('/sites/pwkmaintenance', function (){
     return Artisan::call('down');
 });
+
+Route::get('/getProduct/{campaign_id}', [DashboardController::class, 'getProduct']);

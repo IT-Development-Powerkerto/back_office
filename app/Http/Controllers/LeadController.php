@@ -21,6 +21,7 @@ use App\Http\Resources\LeadResource;
 use App\Models\Operator;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Campaign;
 
 class LeadController extends Controller
 {
@@ -66,7 +67,25 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product_id = Campaign::where('id', $request->campaign_id)->value('product_id');
+        $operator_id = Operator::where('campaign_id', $request->campaign_id)->where('user_id', auth()->user()->id)->value('id');
+        $advertiser = User::where('id', Campaign::where('id', $request->campaign_id)->value('user_id'))->value('name');
+        DB::table('leads')->insert([
+            'admin_id'        => auth()->user()->admin_id,
+            'advertiser'      => $advertiser,
+            'operator_id'     => $operator_id,
+            'campaign_id'     => $request->campaign_id,
+            'client_name'     => $request->customer_name,
+            'client_whatsapp' => $request->customer_number,
+            'product_id'      => $product_id,
+            'user_id'         => auth()->user()->id,
+            'price'           => Product::where('id', $product_id)->value('price'),
+            'status_id'       => 3,
+            'created_at'      => Carbon::now()->toDateTimeString(),
+            'updated_at'      => Carbon::now()->toDateTimeString(),
+        ]);
+
+        return redirect('/dashboard')->with('success','Successull! Lead Added');
     }
 
     /**
@@ -170,7 +189,7 @@ class LeadController extends Controller
         }
 
         // dd($whatsapp);
-        
+
         // dd($province, $city, $subdistrict);
 
         if($request->status_id == 5){
@@ -222,7 +241,7 @@ class LeadController extends Controller
                 ]);
                 $inputer = Inputer::where('lead_id', $lead)->exists();
                 $lead = Lead::findOrFail($lead);
-                
+
                 if($inputer == true){
                     $order_image = Inputer::where('lead_id', $lead->id)->get();
                     if($request->hasFile('image')){
@@ -393,5 +412,5 @@ class LeadController extends Controller
         $FU_text = DB::table('campaigns')->where('id', $campaign_id)->where('deleted_at', null)->value('cs_to_customer');
         return redirect('https://api.whatsapp.com/send/?phone='.$client_number.'&text='.rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($client_name, $client_number, $operator_name, $product_name), $FU_text)));
     }
-    
+
 }

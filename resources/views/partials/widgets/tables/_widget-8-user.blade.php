@@ -16,6 +16,13 @@
 									</audio>
 									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 										<!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Export" data-bs-toggle="modal" data-bs-target="#AddLeadModal" style="color: #00509d;">
+											<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+											<span class="svg-icon svg-icon-3">
+												<i class="las la-plus-square" style="font-size: 18px; color: #00509d;"></i>
+											</span>
+											<!--end::Svg Icon-->Add Manual Lead</button>
+
 										<button type="button" class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Export" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #00509d;">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
 											<span class="svg-icon svg-icon-3">
@@ -24,6 +31,69 @@
 											<!--end::Svg Icon-->Export</button>
 
 										<!-- Modal -->
+                                        <div class="modal fade" tabindex="-1" id="AddLeadModal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Add Manual Lead</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ route('lead.store') }}" method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <div class="row align-items-center col-12 pb-5">
+                                                                <div class="col-2">
+                                                                    <label for="inputFullname" class="col-form-label">Operator</label>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <label type="text" class="form-control" placeholder="Full name">{{ auth()->user()->name }}</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row align-items-center col-12 pb-5">
+                                                                <div class="col-2">
+                                                                    <label for="inputFullname" class="col-form-label">Campaign</label>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <select class="form-control" name="campaign_id" id='campaign_id'>
+                                                                        <option value="" hidden>Select Campaigns</option>
+                                                                        @foreach ($my_campaigns as $my_campaign)
+                                                                        <option value="{{$my_campaign->campaign_id}}">{{$campaigns->where('id', $my_campaign->campaign_id)->implode('title')}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row align-items-center col-12 pb-5">
+                                                                <div class="col-2">
+                                                                    <label for="inputFullname" class="col-form-label">Product</label>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <input type="text" name="product_name" id="product_name" class="form-control" placeholder="Select Campaigns" aria-describedby="priceHelpInline" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row align-items-center col-12 pb-5">
+                                                                <div class="col-2">
+                                                                    <label for="inputprice" class="col-form-label">Customer Name</label>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <input type="text" name="customer_name" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row align-items-center col-12 pb-5">
+                                                                <div class="col-2">
+                                                                    <label for="inputdiscount" class="col-form-label">Customer Number</label>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <input type="text" name="customer_number" id="inputdiscount" class="form-control" aria-describedby="discountHelpInline">
+                                                                </div>
+                                                            </div>
+                                                            {{ csrf_field() }}
+                                                            <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Lead">
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
 										<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<div class="modal-content">

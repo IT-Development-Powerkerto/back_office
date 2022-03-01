@@ -103,6 +103,28 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function(){
+            $('#campaign_id').on('change', function(){
+                let campaign_id = $(this).val();
+                if(campaign_id){
+                    $.ajax({
+                        url: "/getProduct/"+campaign_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data){
+                            $('#product_name').empty();
+                            $.each(data, function(key, value){
+                                $('#product_name').val(value.name);
+                            });
+                        }
+                    });
+                }else {
+                    $('#product_name').empty();
+                }
+            });
+        });
+    </script>
 	<!--end::Page Custom Javascript-->
     {{-- Countdown --}}
     <script>
