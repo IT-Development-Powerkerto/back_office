@@ -109,7 +109,28 @@
 																			<label for="address" class="form-label">Address</label>
 																			<textarea type="text" value="" class="form-control" id="address" name="address" required></textarea>
 																		</div>
-																		<div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9 d-flex justify-content-center" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
+																		<div class="mb-3">
+																			<label for="province" class="form-label">Province</label>
+																			<select name="province" id="province" class="form-control">
+																				<option value="" hidden>Province</option>
+																				@foreach ($provinces as $province)
+																				<option value="{{ $province['province_id'].'_'.$province['province'] }}">{{ $province['province'] }}</option>
+																				@endforeach
+																			</select>
+																		</div>
+																		<div class="mb-3">
+																			<label for="city" class="form-label">City</label>
+																			<select class="form-control" id="city" name="city" >
+																				<option value="" hidden>City</option>
+																			</select>
+																		</div>
+																		<div class="mb-3">
+																			<label for="subdistrict" class="form-label">Subdistrict</label>
+																			<select class="form-control" id="subdistrict" name="subdistrict" >
+																				<option value="" hidden>Subdistrict</option>
+																			</select>
+																		</div>
+																		<div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9 d-flex justify-content-center" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']" required>
 																			<!--begin::Col-->
 																			<div class="col">
 																				<!--begin::Option-->

@@ -149,6 +149,32 @@
                                             <label for="address" class="form-label">Address</label>
                                             <textarea type="text" class="form-control" id="address" name="address" required>{{ old('address') ?? $warehouse->address }}</textarea>
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="province" class="form-label">Province</label>
+                                            {{-- {{ $warehouse->implkde }} --}}
+                                            <select name="province" id="province" class="form-control">
+                                                <option value="" hidden>Province</option>
+                                                @foreach ($provinces as $province)
+                                                <option value="{{ $province['province_id'].'_'.$province['province'] }}" {{ implode('_', array($warehouse->province_id, $warehouse->province)) == $province['province_id'].'_'.$province['province'] ? 'selected':'' }}>{{ $province['province'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="city" class="form-label">City</label>
+                                            <select class="form-control" id="city" name="city" >
+                                                @foreach ($all_city as $all_city)
+                                                <option value="{{ $all_city['city_id'].'_'.$all_city['city_name'] }}" {{ implode('_', array($warehouse->city_id, $warehouse->city)) == $all_city['city_id'].'_'.$all_city['city_name'] ? 'selected': ''}}>{{ $all_city['type'] }} {{ $all_city['city_name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="subdistrict" class="form-label">Subdistrict</label>
+                                            <select class="form-control" id="subdistrict" name="subdistrict" >
+                                                @foreach ($all_subdistrict as $all_subdistrict)
+                                                <option value="{{ $all_subdistrict['subdistrict_id'].'_'.$all_subdistrict['subdistrict_name'] }}" {{ implode('_', array($warehouse->subdistrict_id, $warehouse->subdistrict)) == $all_subdistrict['subdistrict_id'].'_'.$all_subdistrict['subdistrict_name'] ? 'selected': ''}}>{{ $all_subdistrict['subdistrict_name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9 d-flex justify-content-center" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
                                             <!--begin::Col-->
                                             <div class="col">

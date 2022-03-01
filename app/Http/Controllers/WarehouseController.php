@@ -6,6 +6,8 @@ use App\Models\Warehouse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
+
 class WarehouseController extends Controller
 {
     /**
@@ -15,8 +17,11 @@ class WarehouseController extends Controller
      */
     public function index()
     {
+        $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province');
+        $response = json_decode($response, true);
+        $provinces = $response['rajaongkir']['results'];
         $warehouses = Warehouse::where('admin_id', Auth::user()->admin_id)->get();
-        return view('warehouse/Dashboard', compact('warehouses'));
+        return view('warehouse/Dashboard', compact('warehouses', 'provinces'));
     }
 
     /**
@@ -37,6 +42,19 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
+        $p = explode('_', $request->province);
+        $province_id = $p[0];
+        $province = $p[1];
+        
+        $c = explode('_', $request->city);
+        $city_id = $c[0];
+        $city = $c[1];
+        
+        $s = explode('_', $request->subdistrict);
+        $subdistrict_id = $s[0];
+        $subdistrict = $s[1];
+
+
         $request->validate([
             'name' => 'required',
             'address' => 'required'
@@ -57,6 +75,12 @@ class WarehouseController extends Controller
             'phone' => $request->phone,
             'image' => $image,
             'address' => $request->address,
+            'province_id' => $province_id,
+            'province' => $province,
+            'city_id' => $city_id,
+            'city' => $city,
+            'subdistrict_id' => $subdistrict_id,
+            'subdistrict' => $subdistrict,
             'status' => $request->status
         ]);
         return redirect('warehouse')->with('success', 'Successfull! Warehouse Added');
@@ -81,8 +105,20 @@ class WarehouseController extends Controller
      */
     public function edit($id)
     {
+        $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province');
+        $response = json_decode($response, true);
+        $provinces = $response['rajaongkir']['results'];
+        $province_id = Warehouse::whereId($id)->value('province_id');
+        $all_city = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/city?&province='.$province_id);
+        $all_city = json_decode($all_city, true);
+        $all_city = $all_city['rajaongkir']['results'];
+        $city_id = Warehouse::whereId($id)->value('city_id');
+        $all_subdistrict = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/subdistrict?city='.$city_id);
+        $all_subdistrict = json_decode($all_subdistrict, true);
+        $all_subdistrict = $all_subdistrict['rajaongkir']['results'];
         $warehouse = Warehouse::findOrFail($id);
-        return view('warehouse.WarehouseEdit', compact('warehouse'));
+        
+        return view('warehouse.WarehouseEdit', compact('warehouse', 'provinces', 'all_city', 'all_subdistrict'));
     }
 
     /**
