@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('lead')->default(0);
             $table->double('discount')->nullable();
             $table->string('image')->nullable();
-            $table->string('product_link');
+            $table->string('product_link')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
