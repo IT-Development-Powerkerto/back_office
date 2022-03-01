@@ -78,12 +78,6 @@
 									</audio>
 									<div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
 										<!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Export" data-bs-toggle="modal" data-bs-target="#AddLeadModal" style="color: #00509d;">
-											<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-											<span class="svg-icon svg-icon-3">
-												<i class="las la-plus-square" style="font-size: 18px; color: #00509d;"></i>
-											</span>
-											<!--end::Svg Icon-->Add Manual Lead</button>
 
 										<button type="button" class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Export" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #00509d;">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
@@ -91,6 +85,13 @@
 												<i class="las la-print" style="font-size: 18px; color: #00509d;"></i>
 											</span>
 											<!--end::Svg Icon-->Export</button>
+
+										<button type="button" class="btn btn-sm btn-light btn-active-primary me-2 text-hover-white" title="Click For Export" data-bs-toggle="modal" data-bs-target="#AddLeadModal" style="color: #00509d;">
+											<!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+											<span class="svg-icon svg-icon-3">
+												<i class="las la-plus-square" style="font-size: 18px; color: #00509d;"></i>
+											</span>
+											<!--end::Svg Icon-->Add Manual Lead</button>
 
 										<!-- Modal -->
                                         <div class="modal fade" tabindex="-1" id="AddLeadModal">
