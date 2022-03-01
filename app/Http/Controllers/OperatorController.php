@@ -29,7 +29,7 @@ class OperatorController extends Controller
         $lead_day_count = DB::table('leads')
         ->join('operators', 'leads.operator_id', '=', 'operators.id')
         ->where('leads.admin_id', auth()->user()->admin_id)
-        ->where('leads.created_at', $day)
+        ->whereDate('leads.created_at', $day)
         ->get();
         $campaign_count = Operator::where('admin_id', auth()->user()->admin_id)->get();
         $campaign_id = Campaign::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->get();
