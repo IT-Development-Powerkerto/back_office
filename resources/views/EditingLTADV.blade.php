@@ -123,7 +123,12 @@
 														<label class="col-lg-1 col-form-label text-lg-right">Product</label>
 														<div class="col-lg-3">
 															<div class="input-group">
-																<label type="text"class="form-control" id="product" placeholder="Product Name">{{ old('product_name') ?? $lead->implode('product_name') }}</label>
+																<select class="form-control" name="product_name" id="product_name">
+																	@foreach ($products as $product)
+																	<option value="{{ $product->name }}" {{ $product->name == $lead->implode('product_name') ? 'selected':''}}>{{ $product->name }}</option>
+																	@endforeach
+																</select>
+																{{-- <label type="text"class="form-control" id="product" placeholder="Product Name">{{ old('product_name') ?? $lead->implode('product_name') }}</label> --}}
 																<div class="input-group-append"><span class="input-group-text"><i class="las la-box" style="font-size: 24px"></i></span></div>
 															</div>
 															<span class="form-text text-muted">Auto-Filled Product Name</span>
