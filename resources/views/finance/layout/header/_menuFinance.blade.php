@@ -7,21 +7,21 @@
 	<!--begin::Menu-->
 	<div class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
 		id="#kt_header_menu" data-kt-menu="true">
-		<div class="menu-item here show menu-lg-down-accordion me-lg-1">
-			<a class="menu-link active py-3" href="{{ route ('finance') }}">
-				<span class="menu-title">Dashboard</span>
+		<div class="menu-item menu-lg-down-accordion me-lg-1">
+			<a class="menu-link py-3 bg-white" href="{{ route ('finance') }}">
+				<span class="menu-title" style="color: darkblue">Dashboard</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('budgetingreq') }}">
-				<span class="menu-title">Budgeting Request</span>
+				<span class="menu-title text-white">Budgeting Request</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('budgeting_realization.index') }}">
-				<span class="menu-title">Budgeting Realization</span>
+				<span class="menu-title text-white">Budgeting Realization</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
