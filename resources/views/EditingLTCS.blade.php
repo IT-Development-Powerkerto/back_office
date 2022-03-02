@@ -562,6 +562,7 @@
 		</script>
 		<script src="../assets/js/cek-ongkir.js"></script>
 		<script src="../assets/js/promo.js"></script>
+		<script src="../assets/js/get-promotion-list.js"></script>
 		<script>
 			$(function(){
 				$("#clipboard").hide();

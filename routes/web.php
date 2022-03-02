@@ -190,6 +190,7 @@ Route::get('/download/{file}', [BudgetingRealizationController::class, 'download
 
 Route::resource('promotion', PromotionController::class)->middleware('auth');
 Route::get('lead/get_promotion/{id}', [PromotionController::class, 'get_promotion'])->name('get_promotion');
+Route::get('lead/get_product/{product_name}', [ProductController::class, 'get_product']);
 Route::get('lead/get_product_promotion/{id}', [PromotionController::class, 'get_product_promotion'])->name('get_product_promotion');
 Route::get('lead/get_shipping_promotion/{id}', [PromotionController::class, 'get_shipping_promotion'])->name('get_shipping_promotion');
 Route::get('lead/get_admin_promotion/{id}', [PromotionController::class, 'get_admin_promotion'])->name('get_admin_promotion');
