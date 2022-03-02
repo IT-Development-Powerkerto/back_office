@@ -192,6 +192,7 @@ class DashboardController extends Controller
             ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
             ->where('l.admin_id', auth()->user()->admin_id)
             ->whereDate('l.created_at', $day)
+            ->whereNull('l.deleted_at')
             ->orderByDesc('l.id')
             ->get();
 
@@ -604,6 +605,7 @@ class DashboardController extends Controller
                     ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
                     ->where('l.admin_id', auth()->user()->admin_id)
                     ->where('l.advertiser', $x->name)
+                    ->whereNull('l.deleted_at')
                     ->whereDate('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
@@ -793,6 +795,7 @@ class DashboardController extends Controller
                     ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
                     ->where('l.admin_id', auth()->user()->admin_id)
                     ->where('l.advertiser', $x->name)
+                    ->whereNull('l.deleted_at')
                     ->whereDate('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
@@ -1111,6 +1114,7 @@ class DashboardController extends Controller
                     ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
                     ->where('l.admin_id', auth()->user()->admin_id)
                     ->where('l.advertiser', $x->name)
+                    ->whereNull('l.deleted_at')
                     ->where('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
@@ -1170,6 +1174,7 @@ class DashboardController extends Controller
                     ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
                     ->where('l.admin_id', auth()->user()->admin_id)
                     ->where('l.user_id', $operator)
+                    ->whereNull('l.deleted_at')
                     ->whereDate('l.created_at', $day)
                     ->orderByDesc('l.id')
                     ->get();
@@ -1356,6 +1361,7 @@ class DashboardController extends Controller
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
             ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
             ->where('l.admin_id', auth()->user()->admin_id)
+            ->whereNull('l.deleted_at')
             ->whereDate('l.created_at', $day)
             ->orderByDesc('l.id')
             ->get();
@@ -1683,6 +1689,7 @@ class DashboardController extends Controller
             ->join('campaigns as cm', 'l.campaign_id', '=', 'cm.id')
             ->select('l.id as id', 'advertiser', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'cm.cs_to_customer as text', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.updated_at as client_updated_at', 'l.created_at as client_created_at')
             ->where('l.admin_id', auth()->user()->admin_id)
+            ->whereNull('l.deleted_at')
             ->whereDate('l.created_at', $day)
             ->orderByDesc('l.id')
             ->get();

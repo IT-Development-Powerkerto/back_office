@@ -438,6 +438,7 @@
 										<input type="number" name="add_product_promotion" id="add_product_promotion" value="" hidden>
 										<input type="number" name="add_shipping_promotion" id="add_shipping_promotion" value="" hidden>
 										<input type="number" name="add_admin_promotion" id="add_admin_promotion" value="" hidden>
+										<input type="number" name="total_shipping" id="total_shipping" value="" hidden>
 									</form>
 									<textarea id="clipboard" cols="30" rows="10"></textarea>
 								</div>
