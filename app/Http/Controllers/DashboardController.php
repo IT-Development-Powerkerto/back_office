@@ -1181,7 +1181,8 @@ class DashboardController extends Controller
                 $all_leads = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->get();
                 $all_spam  = Lead::where('admin_id', auth()->user()->admin_id)->where('status_id', 6)->whereDate('created_at', $day)->get();
                 $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
-                $my_campaigns = Operator::where('user_id', auth()->user()->id)->get();
+                $my_campaigns = DB::table('operators as o')->where('o.user_id', auth()->user()->id)->join('campaigns as c', 'o.campaign_id', 'c.id' )->whereNull(['c.deleted_at', 'o.deleted_at'])->get();
+                // dd($my_campaigns);
                 $total_lead = DB::table('products')->where('admin_id', auth()->user()->admin_id)->pluck('lead');
                 return view('cs',['role'=>$roles])->with('users',$users)->with('announcements',$announcements)->with('icon',$icons)
                 ->with('products', $products)->with('leads', $leads)->with('all_leads', $all_leads)->with('all_spam', $all_spam)->with('total_lead', $total_lead)->with('campaigns', $campaigns)->with('day', $day)
