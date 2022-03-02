@@ -109,6 +109,7 @@ class LeadController extends Controller
     {
         // $lead = Lead::findOrFail($id);
         session(['previous-url' => url()->previous()]);
+        $products = Product::all();
         $lead = DB::table('leads as l')
             ->join('operators as o', 'l.operator_id', '=', 'o.id')
             ->join('products as p', 'l.product_id', '=', 'p.id' )
@@ -151,19 +152,19 @@ class LeadController extends Controller
             $all_subdistrict = $all_subdistrict['rajaongkir']['results'];
 
             if(Auth::user()->role_id == 1){
-                return view('EditingLT', compact('lead', 'inputer', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLT', compact('lead','products','inputer', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 4){
-                return view('EditingLTADV', compact('lead', 'inputer', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTADV', compact('lead','products', 'inputer', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 5){
-                return view('EditingLTCS', compact('lead', 'inputer', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTCS', compact('lead','products', 'inputer', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }
         }else{
             if(Auth::user()->role_id == 1){
-                return view('EditingLT', compact('lead', 'inputer', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLT', compact('lead','products', 'inputer', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 4){
-                return view('EditingLTADV', compact('lead', 'inputer', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTADV', compact('lead','products', 'inputer', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 5){
-                return view('EditingLTCS', compact('lead', 'inputer', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTCS', compact('lead','products', 'inputer', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }
         }
     }
