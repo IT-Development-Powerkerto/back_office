@@ -105,6 +105,7 @@ Route::get('/DailyCheckin', [HumanResourceController::class, 'DailyCheckin'])->n
 Route::get('/LeaveApplication', [HumanResourceController::class, 'LeaveApplication'])->name('LeaveApplication')->middleware('auth');
 Route::get('/CustomizeEmployeesData', [HumanResourceController::class, 'Customize'])->name('Customize')->middleware('auth');
 Route::get('/EmployeesPayroll', [HumanResourceController::class, 'Payroll'])->name('Payroll')->middleware('auth');
+Route::get('/HumanResource-Purchase', [HumanResourceController::class, 'hrPurchase'])->name('hrpurchase')->middleware('auth');
 
 Route::get('/ld', [DashboardController::class, 'ld'])->name('dashboard.ld')->middleware('auth');
 
