@@ -2,9 +2,10 @@
 <html lang="en">
 	<!--begin::Head-->
 	<head><base href="../">
-		<title>Edit Admin</title>
+		<title>Edit</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta charset="utf-8" />
+		<link rel="icon" href="../img/favicon.png">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
