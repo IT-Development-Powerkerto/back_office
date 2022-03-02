@@ -123,7 +123,7 @@
 														<label class="col-lg-1 col-form-label text-lg-right">Product</label>
 														<div class="col-lg-3">
 															<div class="input-group">
-																<select class="form-control" name="product" id="product">
+																<select class="form-control" name="product_name" id="product_name">
 																	@foreach ($products as $product)
 																	<option value="{{ $product->name }}" {{ $product->name == $lead->implode('product_name') ? 'selected':''}}>{{ $product->name }}</option>
 																	@endforeach

@@ -183,6 +183,10 @@ class LeadController extends Controller
         //$total_price = ($request->price * $request->quantity) - $request->promotion_name;
         //$total_payment = $total_price + $request->shipping_price;
 
+    
+        // $product_name = ;
+        $product_id = Product::where('name', $request->product_name)->value('id');
+        // dd($product_id);
         if(substr(trim($request->whatsapp), 0, 1)=='0'){
             $whatsapp = '62'.substr(trim($request->whatsapp), 1);
         } else{
@@ -234,6 +238,7 @@ class LeadController extends Controller
                     // 'client_id'       => $lead,
                     'client_name'         => $request->name,
                     'client_whatsapp'     => $whatsapp,
+                    'product_id' => $product_id,
                     'quantity'        => $request->quantity,
                     'price'           => $request->price,
                     'total_price'     => $request->total_price,
@@ -262,7 +267,7 @@ class LeadController extends Controller
                         'customer_name'             => $request->name,
                         'customer_number'           => $whatsapp,
                         'customer_address'          => $request->address,
-                        'product_name'              => $lead->product->name,
+                        'product_name'              => $request->product_name,
                         'product_price'             => $request->price,
                         'product_weight'            => $request->weight,
                         'quantity'                  => $request->quantity,
@@ -313,7 +318,7 @@ class LeadController extends Controller
                         'customer_name'             => $request->name,
                         'customer_number'           => $whatsapp,
                         'customer_address'          => $request->address,
-                        'product_name'              => $lead->product->name,
+                        'product_name'              => $request->product_name,
                         'product_price'             => $request->price,
                         'product_weight'            => $request->weight,
                         'quantity'                  => $request->quantity,
@@ -359,6 +364,7 @@ class LeadController extends Controller
                 // 'client_id'       => $lead,
                 'client_name'         => $request->name,
                 'client_whatsapp'     => $whatsapp,
+                'product_id' => $product_id,
                 'quantity'        => $request->quantity,
                 'price'           => $request->price,
                 'total_price'     => $request->total_price,
