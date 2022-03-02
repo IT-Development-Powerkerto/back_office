@@ -47,7 +47,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             ->where('admin_id', auth()->user()->admin_id)
             ->whereBetween('updated_at',[ $this->from_date,$this->to_date])
             ->whereIn('operator_name', $operator_name)
-            ->select('lead_id','adv_name', 'operator_name', 'province', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion','payment_method', 'total_payment', 'updated_at', 'warehouse')
+            ->select('lead_id','adv_name', 'operator_name', 'province', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'add_product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion', 'add_shipping_promotion', 'total_shipping','shipping_admin', 'admin_promotion', 'add_admin_promotion', 'total_admin', 'payment_method', 'total_payment', 'updated_at', 'warehouse')
             ->get();
         $dataInputer[] = array();
         foreach($data as $data){
@@ -104,10 +104,17 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
                 'Weight' => $data->product_weight,
                 'Qty' => $data->quantity,
                 'Product Promotion' => $data->product_promotion,
+                'Additional Product Promotion' => $data->add_product_promotion,
                 'Total Price' => $data->total_price,
                 'Courier' => $data->courier,
                 'Shipping Price' => $data->shipping_price,
                 'Shipping Promotion' => $data->shipping_promotion,
+                'Additional Shipping Promotion' => $data->add_shipping_promotion,
+                'Total Shipping' => $data->total_shipping,
+                'Shipping Admin' => $data->shipping_admin, 
+                'Admin Promotion' => $data->admin_promotion,
+                'Additional Admin Promotion' => $data->add_admin_promotion,
+                'Total Admin' => $data->total_admin,
                 'Payment Method' => $data->payment_method,
                 'Total Payment' => $data->total_payment,
                 'Date/Time' => date('d-m-Y H:i:s', strtotime($data->updated_at)),
@@ -136,10 +143,17 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'Weight',
             'Qty',
             'Product Promotion',
+            'Additional Product Promotion',
             'Total Price',
             'Courier',
             'Shipping Price',
             'Shipping Promotion',
+            'Additional Shipping Promotion',
+            'Total Shipping',
+            'Shipping Admin', 
+            'Admin Promotion',
+            'Additional Admin Promotion',
+            'Total Admin',
             'Payment Method',
             'Total Payment',
             'Date Closing',
@@ -177,7 +191,14 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'S' => 14,
             'T' => 14,
             'U' => 25,
-            'V' => 20            
+            'V' => 20,
+            'W' => 20,
+            'X' => 20,
+            'Y' => 20,
+            'Z' => 20,
+            'AA' =>20,
+            'AB' => 20,
+            'AC' => 20,            
         ];
     }
 }
