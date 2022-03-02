@@ -16,8 +16,8 @@ class CreateOperatorsTable extends Migration
         Schema::create('operators', function (Blueprint $table) {
             $table->id();
             $table->integer('admin_id');
-            $table->foreignId('campaign_id');
-            $table->foreignId('user_id');
+            $table->foreignId('campaign_id')->cascadeOnDelete();
+            $table->foreignId('user_id')->cascadeOnDelete();
             $table->string('name');
             // $table->double('closing_rate');
             $table->timestamps();
