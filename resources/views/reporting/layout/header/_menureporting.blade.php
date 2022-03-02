@@ -15,37 +15,37 @@
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('DailyCheckin') }}">
-				<span class="menu-title">Daily Check-in</span>
+				<span class="menu-title text-white">Daily Check-in</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('LeaveApplication') }}">
-				<span class="menu-title">Leave Application</span>
+				<span class="menu-title text-white">Leave Application</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('Customize') }}">
-				<span class="menu-title">Employees Data</span>
+				<span class="menu-title text-white">Employees Data</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="#">
-				<span class="menu-title">Employees Payroll</span>
+				<span class="menu-title text-white">Employees Payroll</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('budgetingreq') }}">
-				<span class="menu-title">Budgeting Request</span>
+				<span class="menu-title text-white">Budgeting Request</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('budgeting_realization.index') }}">
-				<span class="menu-title">Budgeting Realization</span>
+				<span class="menu-title text-white">Budgeting Realization</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>

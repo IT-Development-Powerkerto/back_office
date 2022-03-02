@@ -15,13 +15,13 @@
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('budgetingreq') }}">
-				<span class="menu-title">Budgeting Request</span>
+				<span class="menu-title text-white">Budgeting Request</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
 		<div class="menu-item menu-lg-down-accordion me-lg-1">
 			<a class="menu-link py-3" href="{{ route ('budgeting_realization.index') }}">
-				<span class="menu-title">Budgeting Realization</span>
+				<span class="menu-title text-white">Budgeting Realization</span>
 				<span class="menu-arrow d-lg-none"></span>
 			</a>
 		</div>
