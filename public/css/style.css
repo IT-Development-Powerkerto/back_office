@@ -46,19 +46,22 @@ body {
     margin-top: 70px;
 }
 
-.lp h2 {
-    margin-top: 30px;
+.lp h2, p{
+    font-family: 'Poppins', sans-serif;
 }
 
-.lp h2, p{
-    display: flex;
-    justify-content: center;
-    font-family: viga;
+.lp .contents h2 {
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: bolder;
     color: black;
 }
 
-.lp p {
-    color: rgb(0, 0, 0, 0.3);
+.lp .contents p {
+    margin-top: -10px;
+    color: #009EF7;
+    font-size: 24px;
+    font-weight: bolder;
 }
 
 .lp h1 span{

@@ -33,9 +33,9 @@
     <div class="loginlp">
         <div class="lp">
             <h1><span>POWER</span>KERTO</h1>
-            <h2>Sign In</h2>
-            <p>Enter your username and password</p>
             <div class="contents">
+                <h2>Hello,</h2>
+                <p>Welcome Back</p>
                 @if(session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
