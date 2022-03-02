@@ -54,7 +54,7 @@
 																				<label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
 																					<!--begin::Radio-->
 																					<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-																						<input class="form-check-input" type="radio" name="status" value="active">
+																						<input class="form-check-input" type="checkbox" name="status" value="active">
 																					</span>
 																					<!--end::Radio-->
 																					<!--begin::Info-->
@@ -72,7 +72,7 @@
 																				<label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
 																					<!--begin::Radio-->
 																					<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-																						<input class="form-check-input" type="radio" name="status" value="inactive">
+																						<input class="form-check-input" type="checkbox" name="status" value="inactive">
 																					</span>
 																					<!--end::Radio-->
 																					<!--begin::Info-->
@@ -90,7 +90,7 @@
 																				<label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
 																					<!--begin::Radio-->
 																					<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-																						<input class="form-check-input" type="radio" name="status" value="inactive">
+																						<input class="form-check-input" type="checkbox" name="status" value="inactive">
 																					</span>
 																					<!--end::Radio-->
 																					<!--begin::Info-->
@@ -108,7 +108,7 @@
 																				<label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
 																					<!--begin::Radio-->
 																					<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-																						<input class="form-check-input" type="radio" name="status" value="inactive">
+																						<input class="form-check-input" type="checkbox" name="status" value="inactive">
 																					</span>
 																					<!--end::Radio-->
 																					<!--begin::Info-->
@@ -126,7 +126,7 @@
 																				<label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
 																					<!--begin::Radio-->
 																					<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-																						<input class="form-check-input" type="radio" name="status" value="inactive">
+																						<input class="form-check-input" type="checkbox" name="status" value="inactive">
 																					</span>
 																					<!--end::Radio-->
 																					<!--begin::Info-->
