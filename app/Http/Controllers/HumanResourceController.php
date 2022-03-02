@@ -133,6 +133,11 @@ class HumanResourceController extends Controller
             return view('hr.AdminPayroll')->with('user', $users);
         }
     }
+    
+    public function hrPurchase()
+    {
+        return view('purchase.hrPurchase');
+    }
 
     
 }
