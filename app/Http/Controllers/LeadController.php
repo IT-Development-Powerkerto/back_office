@@ -81,8 +81,8 @@ class LeadController extends Controller
             'user_id'         => auth()->user()->id,
             'price'           => Product::where('id', $product_id)->value('price'),
             'status_id'       => 3,
-            'created_at'      => Carbon::now()->toDateTimeString(),
-            'updated_at'      => Carbon::now()->toDateTimeString(),
+            'created_at'      => $request->date,
+            'updated_at'      => $request->date,
         ]);
 
         return redirect('/dashboard')->with('success','Successull! Lead Added');

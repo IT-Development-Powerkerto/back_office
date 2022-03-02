@@ -149,6 +149,14 @@
                                                                     <input type="text" name="customer_number" id="inputdiscount" class="form-control" aria-describedby="discountHelpInline">
                                                                 </div>
                                                             </div>
+                                                            <div class="row align-items-center col-12 pb-5">
+                                                                <div class="col-2">
+                                                                    <label for="inputdiscount" class="col-form-label">Date</label>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <input class="form-control mt-0 form-control-solid" name="date"  id="date" type="date" style="height: 33px;">
+                                                                </div>
+                                                            </div>
                                                             {{ csrf_field() }}
                                                             <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Add Lead">
                                                         </form>
