@@ -201,7 +201,8 @@ $(function(){
             total_promo_ongkir = total_promo_ongkir;
         }
         total_ongkir = parseInt(total_ongkir);
-        console.log('ongkir: '+ongkir, 'promo: '+promo_ongkir, 'total ongkir: '+total_ongkir);
+        $('#total_shipping').val(total_ongkir);
+        // console.log('ongkir: '+ongkir, 'promo: '+promo_ongkir, 'total ongkir: '+total_ongkir);
         if(courier === 'Ninja' && payment_method === 'COD'){
             var admin = (total_price + total_ongkir) * 0.025;
             admin = Math.ceil(admin / 1000) * 1000;
