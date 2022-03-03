@@ -46,12 +46,6 @@ $(function(){
                 success: function(data){
                     data = Math.ceil(data / 1000) * 1000;
                     $('#shipping_price').val(data);
-                    // var total_shipping_price = data-shipping_promotion;
-                    // if(total_shipping_price <= 0){
-                    // 	shipping_price.value = 0;
-                    // }else{
-                    // 	shipping_price.value = total_shipping_price;
-                    // }
                 },
                 error: function(){
                     alert('Courier is not available, please choose another courier!');

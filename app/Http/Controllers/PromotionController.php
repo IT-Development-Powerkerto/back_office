@@ -137,8 +137,6 @@ class PromotionController extends Controller
     }
 
     public function get_promotion_list($product_name){
-
-        // $product_name = Product::whereId($product_id)->value('name');
         $product_promotion = Promotion::where('admin_id', auth()->user()->admin_id)->where('promotion_type', 'Product Price')->where('user_id', auth()->user()->id)->where('product_name', $product_name)->select('id', 'promotion_name')->get();
         $shipping_promotion = Promotion::where('admin_id', auth()->user()->admin_id)->where('promotion_type', 'Shipping Cost')->where('user_id', auth()->user()->id)->where('product_name', $product_name)->select('id', 'promotion_name')->get();
         $admin_promotion = Promotion::where('admin_id', auth()->user()->admin_id)->where('promotion_type', 'Admin Cost')->where('user_id', auth()->user()->id)->where('product_name', $product_name)->select('id', 'promotion_name')->get();
@@ -149,7 +147,6 @@ class PromotionController extends Controller
             'admin_promotion' => $admin_promotion,
         ];
         return json_encode($data);
-        // $promotions = 
     }
     public function get_product_promotion($id){
         $product_promotion = Promotion::where('id', $id)->value('promotion_product_price');
