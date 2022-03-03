@@ -63,14 +63,14 @@
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
                                                                         <h1 class="text-dark fw-normal fs-6">
-                                                                            {{$lead->client->name}}
+                                                                            {{$lead->client_name}}
                                                                         </h1>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     {{--<label class="text-dark fw-normal d-block fs-6">{{$lead->client->whatsapp}}</label>--}}
                                                                     {{--  <a href="https://api.whatsapp.com/send/?phone={{ $lead->client->whatsapp }}&text={{ $lead->campaign->cs_to_customer }}">{{ $lead->client->whatsapp }}</a>  --}}
-                                                                    <a class="text-primary fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client->whatsapp}}&text=Kode Order: ord-{{$lead->id}}%0A{{ rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($lead->client->name, $lead->client->whatsapp, $lead->operator->name ?? '', $lead->product->name), $lead->campaign->cs_to_customer)) }}">{{$lead->client->whatsapp}}</a>
+                                                                    <a class="text-primary fw-normal fs-6 text-hover-primary" href="https://api.whatsapp.com/send/?phone={{$lead->client_whatsapp}}&text=Kode Order: ord-{{$lead->id}}%0A{{ rawurlencode(str_replace(array('[cname]', '[cphone]', '[oname]', '[product]'), array($lead->client_name, $lead->client_whatsapp, $lead->operator->name ?? '', $lead->product->name), $lead->campaign->cs_to_customer)) }}">{{$lead->client_whatsapp}}</a>
                                                                 </td>
                                                                 <td class="">
                                                                     <div class="d-flex align-items-center">
@@ -81,8 +81,8 @@
                                                                     <div class="d-flex align-items-end clock{{ $lead->id }}">
 																		<script>
                                                                             window.addEventListener('load', function() {
-                                                                                var createdDate = new Date('{{$lead->client->created_at}}');
-                                                                                var updatedDate = new Date('{{$lead->client->updated_at}}');
+                                                                                var createdDate = new Date('{{$lead->created_at}}');
+                                                                                var updatedDate = new Date('{{$lead->updated_at}}');
                                                                                 var nowDate = new Date();
                                                                                 if('{{$lead->status_id == 3}}'){
                                                                                     var futureDate = new Date(createdDate.getTime() + 0);
