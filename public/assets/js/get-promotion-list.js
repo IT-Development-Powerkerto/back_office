@@ -12,22 +12,23 @@ $(function(){
 				$('#price').val(data);
 			}
 		});
+		$('#product_promotion_id').empty();
+		$.ajax({
+			url: "get_promotion_list/"+product,
+			type: "GET",
+			dataType: "JSON",
+			success: function(data){
+				console.log(data);
+				$.each(data.product_promotion, function(key, value){
+					// $('#product_promotion_id').append('<option value="'+value.id+'" namakota="'+ value.type +' ' +value.city_name+ '">' + value.type + ' ' + value.city_name + '</option>');
+					$('#product_promotion_id').append(`<option value=""hidden>Select Promotion</option>`);
+					$('#product_promotion_id').append(`<option value="">Not Have Promotion</option>`);
+					$('#product_promotion_id').append(`<option value="${value.id}">${value.promotion_name}</option>`);
+				});
+			}
+		});
 	});
 });
-// $(function(){
-// 	var product_id = $('#product').val();
-// 	$.ajax({
-// 		url: 'get_promotion_list/'+product_id,
-// 		type: 'GET',
-// 		dataType: 'json',
-// 		success: function(data){
-// 			console.log(data);
-// 			$.each(data, function(key, value){
-// 				$('#product_promotion_id').append('<option value="'+value.id+'" namakota="'+ value.type +' ' +value.city_name+ '">' + value.type + ' ' + value.city_name + '</option>');
-// 			});
-// 		}
-// 	});
-// })
 // $(function(){
 // 	$('#product').on('change',function(){
 // 		var product_id = $('#product').val();

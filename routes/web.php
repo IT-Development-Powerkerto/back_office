@@ -189,6 +189,7 @@ Route::resource('budgeting_realization', BudgetingRealizationController::class)-
 Route::get('/download/{file}', [BudgetingRealizationController::class, 'download'])->name('download');
 
 Route::resource('promotion', PromotionController::class)->middleware('auth');
+Route::get('lead/get_promotion_list/{product_name}', [PromotionController::class, 'get_promotion_list']);
 Route::get('lead/get_promotion/{id}', [PromotionController::class, 'get_promotion'])->name('get_promotion');
 Route::get('lead/get_product/{product_name}', [ProductController::class, 'get_product']);
 Route::get('lead/get_product_promotion/{id}', [PromotionController::class, 'get_product_promotion'])->name('get_product_promotion');
