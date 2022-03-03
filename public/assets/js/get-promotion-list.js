@@ -8,8 +8,8 @@ $(function(){
 			type: "GET",
 			dataType: "JSON",
 			success: function(data){
-				// console.log(data[0]);
-				$('#price').val(data[0]);
+				// console.log(data);
+				$('#price').val(data);
 			}
 		});
 	});

@@ -1,6 +1,6 @@
 $(function(){
     $('#clipboard').hide();
-    $('#payment_method, #courier, #quantity, #product_promotion_id, #add_product_promotion_id, #shipping_promotion_id, #add_shipping_promotion_id, #admin_promotion_id, #add_admin_promotion_id, #province, #promotion_admin').on('change', function(){
+    $('#payment_method, #courier, #quantity, #product_name, #price, #product_promotion_id, #add_product_promotion_id, #shipping_promotion_id, #add_shipping_promotion_id, #admin_promotion_id, #add_admin_promotion_id, #province, #promotion_admin').on('change', function(){
         var name = $('#name').val();
         var address = $('#address').val();
         var province = $('#province_id').find(":selected").text();
@@ -18,7 +18,7 @@ $(function(){
         var shipping_price = $('#shipping_price').val();
         var payment_method = $('#payment_method').val();
         var courier = $('#courier').val();
-        var product = $('#product').text();
+        var product = $('#product_name').find(":selected").text();
         var province_id = $('#province_id').find(":selected").val();
         var ongkir = parseInt(shipping_price);
         var total_price = (parseInt(price) * parseInt(quantity));
@@ -65,9 +65,6 @@ $(function(){
             total_price -= promo_product;
             $('#total_price').val(total_price);
         }
-        console.log('promo: '+promo_product);
-        
-        console.log('total price: '+total_price);
         if(add_product_promotion_id){
             var app = $.parseJSON(
                 $.ajax({

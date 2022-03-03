@@ -135,4 +135,8 @@ class ProductController extends Controller
 
         return redirect('/dashboard')->with('success','Successull! Product Deleted');
     }
+    public function get_product($product_name){
+        $product = Product::where('name', $product_name)->value('price');
+        return $product;
+    }
 }
