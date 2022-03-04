@@ -28,6 +28,10 @@ $(function(){
 		$('#admin_promotion_id').empty();
 		$('#admin_promotion_id').append(`<option value="" hidden>Select Promotion</option>`);
 		$('#admin_promotion_id').append(`<option value="">Not Have Promotion</option>`);
+		
+		$('#add_admin_promotion_id').empty();
+		$('#add_admin_promotion_id').append(`<option value="" hidden>Select Promotion</option>`);
+		$('#add_admin_promotion_id').append(`<option value="">Not Have Promotion</option>`);
 		$.ajax({
 			url: "get_promotion_list/"+product,
 			type: "GET",
@@ -46,7 +50,7 @@ $(function(){
 				
 				$.each(data.admin_promotion, function(key, value){
 					$('#admin_promotion_id').append(`<option value="${value.id}">${value.promotion_name}</option>`);
-					// $('#add_shipping_promotion_id').append(`<option value="${value.id}">${value.promotion_name}</option>`);
+					$('#add_admin_promotion_id').append(`<option value="${value.id}">${value.promotion_name}</option>`);
 				});
 			}
 		});
