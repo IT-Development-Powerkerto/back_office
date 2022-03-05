@@ -119,6 +119,7 @@ class LeadController extends Controller
             ->select('l.id as id', 'advertiser', 'o.name as operator_name', 'p.name as product_name', 'l.quantity as quantity', 'l.price as price', 'l.total_price as total_price', 'l.created_at as created_at', 'l.updated_at as updated_at', 'l.status_id as status_id', 's.name as status', 'l.client_name as client_name', 'l.client_whatsapp as client_wa', 'l.created_at as client_created_at', 'l.updated_at as client_updated_at', 'cp.cs_to_customer as cs_to_customer', 's.name as status_name')
             ->where('l.id', $id)
             ->where('l.admin_id', auth()->user()->admin_id);
+        $user_inputers = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 10)->select('id', 'name')->get();
         $inputer = DB::table('inputers as i')
             ->join('leads as l', 'i.lead_id', '=', 'l.id')
             ->select('i.customer_address as address', 'i.payment_method as payment_method', 'i.warehouse as warehouse', 'i.courier as courier', 'i.payment_proof as image', 'i.product_weight as product_weight', 'i.product_promotion as product_promotion', 'i.shipping_promotion as shipping_promotion', 'i.province_id as province', 'i.total_price as total_price', 'i.shipping_price as shipping_price', 'i.total_payment as total_payment', 'i.province_id as province_id', 'i.city_id as city_id', 'i.subdistrict_id as subdistrict_id', 'i.product_promotion_id as product_promotion_id', 'i.shipping_promotion_id as shipping_promotion_id', 'i.admin_promotion_id as admin_promotion_id', 'i.product_promotion_id as add_product_promotion_id', 'i.add_shipping_promotion_id as add_shipping_promotion_id', 'i.add_admin_promotion_id as add_admin_promotion_id')
@@ -152,19 +153,19 @@ class LeadController extends Controller
             $all_subdistrict = $all_subdistrict['rajaongkir']['results'];
 
             if(Auth::user()->role_id == 1){
-                return view('EditingLT', compact('lead','products','inputer', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLT', compact('lead','products','inputer','user_inputers' ,'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 4){
-                return view('EditingLTADV', compact('lead','products', 'inputer', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTADV', compact('lead','products', 'inputer','user_inputers', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 5){
-                return view('EditingLTCS', compact('lead','products', 'inputer', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTCS', compact('lead','products', 'inputer','user_inputers', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }
         }else{
             if(Auth::user()->role_id == 1){
-                return view('EditingLT', compact('lead','products', 'inputer', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLT', compact('lead','products', 'inputer','user_inputers', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 4){
-                return view('EditingLTADV', compact('lead','products', 'inputer', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTADV', compact('lead','products', 'inputer','user_inputers', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 5){
-                return view('EditingLTCS', compact('lead','products', 'inputer', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTCS', compact('lead','products', 'inputer','user_inputers', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }
         }
     }
