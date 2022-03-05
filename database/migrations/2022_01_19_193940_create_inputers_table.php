@@ -22,6 +22,7 @@ class CreateInputersTable extends Migration
             $table->string('customer_name')->nullable();
             $table->string('customer_number')->nullable();
             $table->string('customer_address')->nullable();
+            $table->string('sale_type')->nullable();
             $table->string('product_name')->nullable();
             $table->integer('product_price')->nullable();
             $table->integer('product_weight')->nullable();

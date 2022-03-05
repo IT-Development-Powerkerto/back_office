@@ -22,6 +22,7 @@ use App\Models\Operator;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Campaign;
+use App\Models\CsInputer;
 
 class LeadController extends Controller
 {
@@ -248,7 +249,11 @@ class LeadController extends Controller
                 ]);
                 $inputer = Inputer::where('lead_id', $lead)->exists();
                 $lead = Lead::findOrFail($lead);
-
+                CsInputer::create([
+                    'admin_id' => Auth::user()->admin_id,
+                    'inputer_id' => $request->inputer_id,
+                    'cs_id' => Auth::id()
+                ]);
                 if($inputer == true){
                     $order_image = Inputer::where('lead_id', $lead->id)->get();
                     if($request->hasFile('image')){
@@ -268,6 +273,7 @@ class LeadController extends Controller
                         'customer_name'             => $request->name,
                         'customer_number'           => $whatsapp,
                         'customer_address'          => $request->address,
+                        'sale_type'                 => $request->sale_type,
                         'product_name'              => $request->product_name,
                         'product_price'             => $request->price,
                         'product_weight'            => $request->weight,
@@ -319,6 +325,7 @@ class LeadController extends Controller
                         'customer_name'             => $request->name,
                         'customer_number'           => $whatsapp,
                         'customer_address'          => $request->address,
+                        'sale_type'                 => $request->sale_type,
                         'product_name'              => $request->product_name,
                         'product_price'             => $request->price,
                         'product_weight'            => $request->weight,
