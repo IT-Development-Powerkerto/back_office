@@ -185,9 +185,24 @@
 					@include('partials/widgets/reporting/Daily/_widget-2')
 		
 				</div>
-				<div class="col-xl-12">
+				<div class="col-xl-3">
 
-					@include('partials/widgets/reporting/Daily/_widget-3')
+					@include('partials/widgets/reporting/Daily/_widget-10')
+		
+				</div>
+				<div class="col-xl-3">
+
+					@include('partials/widgets/reporting/Daily/_widget-11')
+		
+				</div>
+				<div class="col-xl-3">
+
+					@include('partials/widgets/reporting/Daily/_widget-12')
+		
+				</div>
+				<div class="col-xl-3">
+
+					@include('partials/widgets/reporting/Daily/_widget-13')
 		
 				</div>
 			</div>
