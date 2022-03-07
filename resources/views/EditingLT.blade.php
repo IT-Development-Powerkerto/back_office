@@ -114,6 +114,31 @@
 													</div>
 													<span class="form-text text-muted">Please enter your address</span>
 												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-10">Inputer</label>
+												<div class="col-lg-3 mt-10">
+													<div class="input-group">
+														<select class="form-control" name="inputer_id" id="inputer_id">
+															@foreach ($user_inputers as $user_inputer)
+															<option value="{{ $user_inputer->id }}">{{ $user_inputer->name }}</option>
+															@endforeach
+														</select>
+														{{-- <label type="text"class="form-control" id="product" placeholder="Product Name">{{ old('product_name') ?? $lead->implode('product_name') }}</label> --}}
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-user" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please select your inputer name</span>
+												</div>
+												<label class="col-lg-1 col-form-label text-lg-right mt-10">Sale Type</label>
+												<div class="col-lg-3 mt-10">
+													<div class="input-group">
+														<select class="form-control" name="sale_type" id="sale_type">
+															<option value="new customer" required>New Customer</option>
+															<option value="resending" required>Resending</option>
+															<option value="send less" required>Send Less</option>
+														</select>
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-user" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Please select your sale type</span>
+												</div>
 											</div>
 										 	<div class="separator separator-dashed my-10"></div>
 
@@ -562,6 +587,7 @@
 		</script>
 		<script src="../assets/js/cek-ongkir.js"></script>
 		<script src="../assets/js/promo.js"></script>
+		<script src="../assets/js/get-promotion-list.js"></script>
 		<script>
 			$(function(){
 				$("#clipboard").hide();
