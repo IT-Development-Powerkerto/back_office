@@ -23,7 +23,7 @@
                             <label class="card bg-danger hoverable card-xl-stretch mb-xl-8">
                                 <!--begin::Body-->
                                 <div class="card-body">
-                                    <div class="text-white fw-bolder fs-4">
+                                    <div class="text-white fw-bolder fs-2hx mt-n2">
                                         <script>
                                             var bilangan = {{$closing_count->count()}};
 
@@ -51,7 +51,7 @@
                             <label class="card bg-primary hoverable card-xl-stretch mb-xl-8">
                                 <!--begin::Body-->
                                 <div class="card-body">
-                                    <div class="text-white fw-bolder fs-4">
+                                    <div class="text-white fw-bolder fs-2hx mt-n2">
                                         <script>
                                             var bilangan = {{$lead_count->count()}};
 
@@ -79,7 +79,7 @@
                             <label class="card bg-success hoverable card-xl-stretch mb-5 mb-xl-8">
                                 <!--begin::Body-->
                                 <div class="card-body">
-                                    <div class="text-white fw-bolder fs-4">{{round(($omset_day_count->sum('total_price')-$omset_day_count->sum('product_promotion')) / 1000000, 1)}} Juta</div>
+                                    <div class="text-white fw-bolder fs-2hx mt-n2">{{round(($omset_day_count->sum('total_price')-$omset_day_count->sum('product_promotion')) / 1000000, 1)}} Juta</div>
                                     <div class="fw-medium text-white fs-7">Total Omset</div>
                                 </div>
                                 <!--end::Body-->
