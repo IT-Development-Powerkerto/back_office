@@ -185,9 +185,24 @@
 					@include('partials/widgets/reporting/Monthly/_widget-2')
 		
 				</div>
-				<div class="col-xl-12">
+				<div class="col-xl-3">
 
-					@include('partials/widgets/reporting/Monthly/_widget-3')
+					@include('partials/widgets/reporting/Monthly/_widget-10')
+		
+				</div>
+				<div class="col-xl-3">
+
+					@include('partials/widgets/reporting/Monthly/_widget-11')
+		
+				</div>
+				<div class="col-xl-3">
+
+					@include('partials/widgets/reporting/Monthly/_widget-12')
+		
+				</div>
+				<div class="col-xl-3">
+
+					@include('partials/widgets/reporting/Monthly/_widget-13')
 		
 				</div>
 			</div>
