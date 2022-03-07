@@ -39,38 +39,43 @@
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
+		
 		<!--begin::Col-->
-		<div class="col-xl-6">
+		<div class="col-xl-3">
 
 			@include('partials/widgets/WeeklyCharts/_widget-1')
 
 		</div>
 		<!--end::Col-->
+		
 		<!--begin::Col-->
 		<div class="col-xl-3">
 
 			@include('partials/widgets/WeeklyCharts/_widget-2')
-			<!--begin::Col-->
-			<div class="col-xl-12 mt-7">
-
-				@include('partials/widgets/WeeklyCharts/_widget-4')
-
-			</div>
-			<!--end::Col-->
 
 		</div>
 		<!--end::Col-->
+
 		<!--begin::Col-->
 		<div class="col-xl-3">
 
 			@include('partials/widgets/WeeklyCharts/_widget-3')
-			<!--begin::Col-->
-			<div class="col-xl-12 mt-7">
 
-				@include('partials/widgets/WeeklyCharts/_widget-5')
+		</div>
+		<!--end::Col-->
 
-			</div>
-			<!--end::Col-->
+		<!--begin::Col-->
+		<div class="col-xl-3">
+
+			@include('partials/widgets/WeeklyCharts/_widget-4')
+
+		</div>
+		<!--end::Col-->
+
+		<!--begin::Col-->
+		<div class="col-xl-3 mt-n2">
+
+			@include('partials/widgets/WeeklyCharts/_widget-5')
 
 		</div>
 		<!--end::Col-->
@@ -101,6 +106,30 @@
 		<div class="col-xl-3 mt-n2">
 
 			@include('partials/widgets/WeeklyCharts/_widget-9')
+
+		</div>
+		<!--end::Col-->
+
+		<!--begin::Col-->
+		<div class="col-xl-3 mt-n2">
+
+			@include('partials/widgets/WeeklyCharts/_widget-10')
+
+		</div>
+		<!--end::Col-->
+
+		<!--begin::Col-->
+		<div class="col-xl-3 mt-n2">
+
+			@include('partials/widgets/WeeklyCharts/_widget-1')
+
+		</div>
+		<!--end::Col-->
+
+		<!--begin::Col-->
+		<div class="col-xl-3 mt-n2">
+
+			@include('partials/widgets/WeeklyCharts/_widget-12')
 
 		</div>
 		<!--end::Col-->
