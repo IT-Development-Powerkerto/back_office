@@ -12,6 +12,7 @@
 		<!-- <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" /> -->
 		<link href="{{ URL::asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{ URL::asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 		<!-- <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" /> -->
 		<!--end::Global Stylesheets Bundle-->
 	</head>
@@ -75,28 +76,11 @@
 								<!--begin::Card header-->
 								<!--begin::Card body-->
 								<div class="card-body p-9">
+                                    @include('partials/widgets/budgeting/BudgetingReq')
 									@include('partials/widgets/budgeting/DailyBudgetADV')
-									@include('partials/widgets/budgeting/LastWeekBudgetADV')
+									{{-- @include('partials/widgets/budgeting/LastWeekBudgetADV')
 									@include('partials/widgets/budgeting/LastMonthBudgetADV')
-									@include('partials/widgets/budgeting/WeeklyInfoBudgetADV')
-
-                                    <form action="{{route('budgeting.store')}}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="row col-12 d-flex align-items-center justify-content-center">
-                                            <div class="col-1">
-                                                <h1 class="fw-bolder ms-5">Rp</h1>
-                                            </div>
-                                            <div class="col-4">
-                                                <input type="text" class="form-control" name="requirement" placeholder="Request" aria-label="Budget Submission">
-                                            </div>
-                                            <div class="col-4">
-                                                <input type="text" class="form-control" name="target" placeholder="Target" aria-label="Target">
-                                            </div>
-                                            <div class="col-3">
-                                                <input type="submit" class="btn btn-primary" value="Apply">
-                                            </div>
-                                        </div>
-                                    </form>
+									@include('partials/widgets/budgeting/WeeklyInfoBudgetADV') --}}
 									@include('partials/widgets/budgeting/LogBudgeting')
 
 
@@ -117,16 +101,27 @@
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="../assets/plugins/global/plugins.bundle.js"></script>
 		<script src="../assets/js/scripts.bundle.js"></script>
-		<script>
-			var avatar1 = new KTImageInput('kt_image_1');
-		</script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="../assets/js/custom/widgets.js"></script>
 		<!--end::Page Custom Javascript-->
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script>
+			var avatar1 = new KTImageInput('kt_image_1');
+		</script>
 		<!--end::Javascript-->
+		<script>
+			$(function() {
+			  $('input[name="daterange"]').daterangepicker({
+				opens: 'left'
+			  }, function(start, end, label) {
+				console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+			  });
+			});
+		</script>
 	</body>
 	<!--end::Body-->
 </html>

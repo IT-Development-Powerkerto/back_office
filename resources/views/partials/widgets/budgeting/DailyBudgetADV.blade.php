@@ -4,8 +4,12 @@
 										<!--begin::Header-->
 										<div class="card-header border-0 pt-5">
 											<h3 class="card-title align-items-start flex-column mt-n3">
-												<span class="card-label fw-bolder fs-3 mb-1">Daily Info ADV Activity</span>
+												<span class="card-label fw-bolder fs-3 mb-1">Data Budgeting ADV</span>
+                                                <span class="text-muted mt-1 fw-bold fs-7">Daily</span>
 											</h3>
+                                            <div class="card-toolbar" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover">
+                                                <input class="form-control mt-n6" type="text" name="daterange" value="Date Range" style="width:220px" />
+											</div>
 										</div>
 										<!--end::Header-->
 										<!--begin::Body-->
