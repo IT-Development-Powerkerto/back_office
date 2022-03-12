@@ -280,7 +280,7 @@
 										<!--end::Label-->
 										<!--begin::Col-->
 										<div class="col-lg-8">
-											<label class="fw-bolder fs-6 text-gray-800">Zall</label>
+											<label class="fw-bolder fs-6 text-gray-800">{{ Auth()->user()->nickname }}</label>
 										</div>
 										<!--end::Col-->
 									</div>

@@ -258,7 +258,7 @@
 												<label for="inputnickname" class="col-form-label">Nickname</label>
 											</div>
 											<div class="col-10">
-												<input type="text" name="nickname" value="" id="inputnickname" class="form-control" aria-describedby="nicknameHelpInline">
+												<input type="text" name="nickname" value="{{ old('nickname') ?? $user->nickname }}" id="inputnickname" class="form-control" aria-describedby="nicknameHelpInline">
 											</div>
 										</div>
 										<div class="row align-items-center col-12 pb-5">

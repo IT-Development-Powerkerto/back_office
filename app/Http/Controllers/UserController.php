@@ -123,6 +123,7 @@ class UserController extends Controller
         }
         DB::table('users')->where('admin_id', auth()->user()->admin_id)->where('id', $user->id)->update([
             'admin_id'  => auth()->user()->admin_id,
+            'nickname'      => $request->nickname,
             'name'      => $request->name,
             'role_id'   => $role_id,
             'phone'     => $phone,
