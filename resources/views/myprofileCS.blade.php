@@ -272,6 +272,18 @@
 										<!--end::Col-->
 									</div>
 									<!--end::Row-->
+									<!--begin::Row-->
+									<div class="row mb-7">
+										<!--begin::Label-->
+										<label class="col-lg-4 fw-bold text-muted">Nickname</label>
+										<!--end::Label-->
+										<!--begin::Col-->
+										<div class="col-lg-8">
+											<label class="fw-bolder fs-6 text-gray-800">Zall</label>
+										</div>
+										<!--end::Col-->
+									</div>
+									<!--end::Row-->
 									<!--begin::Input group-->
 									<div class="row mb-7">
 										<!--begin::Label-->

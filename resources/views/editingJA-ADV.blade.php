@@ -255,6 +255,14 @@
 										</div>
 										<div class="row align-items-center col-12 pb-5">
 											<div class="col-2">
+												<label for="inputnickname" class="col-form-label">Nickname</label>
+											</div>
+											<div class="col-10">
+												<input type="text" name="nickname" value="" id="inputnickname" class="form-control" aria-describedby="nicknameHelpInline">
+											</div>
+										</div>
+										<div class="row align-items-center col-12 pb-5">
+											<div class="col-2">
 												<label for="inputEmail" class="col-form-label">Email</label>
 											</div>
 											<div class="col-10">
