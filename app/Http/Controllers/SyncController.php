@@ -30,6 +30,13 @@ class SyncController extends Controller
                 'adv_id' => $adv->id,
             ]);
         }
+        $cs = User::where('role_id', 5)->get();
+        foreach($cs as $cs){
+            // $adv_name[] = array($adv->name);
+            Inputer::where('operator_name', $cs->name)->update([
+                'cs_id' => $cs->id,
+            ]);
+        }
         // $inputer = Inputer::whereIn('adv_name', $adv_name)->limit(5)->get();
     //    $inputer = DB::table('inputers')->limit(5)->get();
         // return $inputer;
