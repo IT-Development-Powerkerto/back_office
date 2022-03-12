@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inputer;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,5 +20,21 @@ class SyncController extends Controller
             ]);
         }
         // return $clients;
+    }
+    public function tableInputer(){
+        $advs = User::where('role_id', 4)->get();
+        // return $advs;
+        foreach($advs as $adv){
+            // $adv_name[] = array($adv->name);
+            Inputer::where('adv_name', $adv->name)->update([
+                'adv_id' => $adv->id,
+            ]);
+        }
+        // $inputer = Inputer::whereIn('adv_name', $adv_name)->limit(5)->get();
+    //    $inputer = DB::table('inputers')->limit(5)->get();
+        // return $inputer;
+        // Inputer::updated([
+        //     'adv_name' => 
+        // ]);
     }
 }
