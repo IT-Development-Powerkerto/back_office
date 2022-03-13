@@ -35,4 +35,10 @@ class Inputer extends Model
     public function promotion() {
         return $this->belongsTo(Promotion::class);
     }
+    public function adv(){
+        return $this->belongsTo(User::class);
+    }
+    public function cs(){
+        return $this->belongsTo(User::class);
+    }
 }

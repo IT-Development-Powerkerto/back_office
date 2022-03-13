@@ -4,6 +4,7 @@ namespace App\Exports;
 
 use App\Models\CsInputer;
 use App\Models\Inputer;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -45,9 +46,9 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
         $operator_name = DB::table('users')->whereIn('id', $cs_id)->pluck('name');
         $data = DB::table('inputers')
             ->where('admin_id', auth()->user()->admin_id)
-            ->whereBetween('updated_at',[ $this->from_date,$this->to_date])
+            ->whereBetween('created_at',[$this->from_date,$this->to_date])
             ->whereIn('operator_name', $operator_name)
-            ->select('lead_id','adv_name', 'operator_name', 'province', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'add_product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion', 'add_shipping_promotion', 'total_shipping','shipping_admin', 'admin_promotion', 'add_admin_promotion', 'total_admin', 'payment_method', 'total_payment', 'updated_at', 'warehouse')
+            ->select('lead_id','adv_name', 'adv_id','cs_id', 'operator_name', 'province', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'add_product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion', 'add_shipping_promotion', 'total_shipping','shipping_admin', 'admin_promotion', 'add_admin_promotion', 'total_admin', 'payment_method', 'total_payment', 'updated_at', 'warehouse')
             ->get();
         $dataInputer[] = array();
         foreach($data as $data){
@@ -90,6 +91,8 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             $n = $n % $numeral;
             }
             
+            $adv_nickname = User::whereId($data->adv_id)->value('nickname');
+            $cs_nickname = User::whereId($data->cs_id)->value('nickname');
             $dataInputer[] = array(
                 'Order ID' => $data->lead_id,
                 'ADV Name' => $data->adv_name,
@@ -119,12 +122,15 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
                 'Total Payment' => $data->total_payment,
                 'Date/Time' => date('d-m-Y H:i:s', strtotime($data->updated_at)),
                 'Shipping Instruction' => $data->product_name.' '.$data->quantity.' '.$data->operator_name,
-                'Invoice' => 'PWK.WP.'.$wh.'/'.$year.'/'.$res.'-'.$data->lead_id
+                'Invoice' => 'PWK.WP.'.$wh.'/'.$year.'/'.$res.'-'.$data->lead_id,
+                'Tags' => ($cs_nickname ?? 'Not Set').'||'.$data->courier.'|Adv.'.($adv_nickname ?? 'Not Set').'|JAHanif',
             );
         }
         // return $data;
         // dd($data);
-        return collect($dataInputer);
+        // return collect($dataInputer);
+        // $dataInputer = Inputer::whereBetween('created_at',[ $this->from_date,$this->to_date])->get();
+        dd($dataInputer);
     }
     
     public function headings(): array
@@ -158,7 +164,8 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'Total Payment',
             'Date Closing',
             'Shipping Instruction',
-            'Invoice'
+            'Invoice',
+            'Tags'
         ];
     }
     public function columnFormats(): array
@@ -198,7 +205,8 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'Z' => 20,
             'AA' =>20,
             'AB' => 20,
-            'AC' => 20,            
+            'AC' => 20, 
+            'AD' => 15           
         ];
     }
 }

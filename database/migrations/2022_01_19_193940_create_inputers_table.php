@@ -17,7 +17,9 @@ class CreateInputersTable extends Migration
             $table->id();
             $table->integer('admin_id')->nullable();
             $table->foreignId('lead_id')->nullable();
+            $table->foreignId('adv_id')->constrained('users');
             $table->string('adv_name')->nullable();
+            $table->foreignId('cs_id')->constrained('users');
             $table->string('operator_name')->nullable();
             $table->string('customer_name')->nullable();
             $table->string('customer_number')->nullable();
