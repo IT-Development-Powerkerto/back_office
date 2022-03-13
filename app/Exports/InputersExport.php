@@ -48,7 +48,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             ->where('admin_id', auth()->user()->admin_id)
             ->whereBetween('created_at',[$this->from_date,$this->to_date])
             ->whereIn('operator_name', $operator_name)
-            ->select('lead_id','adv_name', 'adv_id','cs_id', 'operator_name', 'province', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'add_product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion', 'add_shipping_promotion', 'total_shipping','shipping_admin', 'admin_promotion', 'add_admin_promotion', 'total_admin', 'payment_method', 'total_payment', 'updated_at', 'warehouse')
+            ->select('lead_id','adv_name', 'operator_name', 'province', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'add_product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion', 'add_shipping_promotion', 'total_shipping','shipping_admin', 'admin_promotion', 'add_admin_promotion', 'total_admin', 'payment_method', 'total_payment', 'updated_at', 'warehouse')
             ->get();
         $dataInputer[] = array();
         foreach($data as $data){
@@ -91,8 +91,8 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             $n = $n % $numeral;
             }
             
-            $adv_nickname = User::whereId($data->adv_id)->value('nickname');
-            $cs_nickname = User::whereId($data->cs_id)->value('nickname');
+            $adv_nickname = User::where('name', $data->adv_name)->value('nickname');
+            $cs_nickname = User::whereId('name', $data->operator_name)->value('nickname');
             $dataInputer[] = array(
                 'Order ID' => $data->lead_id,
                 'ADV Name' => $data->adv_name,
