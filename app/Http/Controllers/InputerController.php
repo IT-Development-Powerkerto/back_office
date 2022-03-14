@@ -201,10 +201,8 @@ class InputerController extends Controller
     }
     public function export(Request $request)
     {
-        $from_date=$request->from_date;
-        $to_date = $request->to_date;
-        // dd($from_date);
-        return Excel::download(new InputersExport($from_date,$to_date), 'Data Inputer '.date("d F Y", strtotime($from_date)).' - '.date("d F Y", strtotime($to_date)).'.xlsx', 'Xlsx');
+        $daterange = explode(' - ', $request->daterange);
+        return Excel::download(new InputersExport($daterange[0],$daterange[1]), 'Data Inputer '.date("d F Y", strtotime($daterange[0])).' - '.date("d F Y", strtotime($daterange[1])).'.xlsx', 'Xlsx');
     }
     public function exportOne($id)
     {
@@ -212,7 +210,6 @@ class InputerController extends Controller
     }
     public function addCS(Request $request){
         $CsExists = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->where('cs_id', $request->cs_id)->exists();
-        // dd($CsExists);
         if($CsExists){
             return back()->with('error','Error!, Customer Service already exists');
         }

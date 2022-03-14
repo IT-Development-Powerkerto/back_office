@@ -25,7 +25,7 @@
 																	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 																</div>
 																<div class="modal-body">
-																	<div class="row align-items-center col-12 pb-5">
+																	{{-- <div class="row align-items-center col-12 pb-5">
 																		<div class="col-5">
 																			<input class="form-control mt-0" name="from_date"  id="from_date" type="date" style="height: 33px;">
 																		</div>
@@ -35,17 +35,17 @@
 																		<div class="col-5">
 																			<input class="form-control mt-0" name="to_date"  id="to_date" type="date" style="height: 33px;">
 																		</div>
-																	</div>
-																</div>
-																<div class="row align-items-center col-12">
-																	<div class="col-2 ps-10">
-																		<label for="inputdate" class="col-form-label">Date</label>
-																	</div>
-																	<div class="col-10">
-																		<div class='input-group' id='kt_daterangepicker_2'>
-																			<input type="text" class="form-control" name="daterange" value="Pick Date Range" />
-																			<div class="input-group-append ">
-																				<span class="input-group-text"><i class="la la-calendar-check-o" style="font-size: 24px"></i></span>
+																	</div> --}}
+																	<div class="row align-items-center col-12">
+																		<div class="col-2 ps-10">
+																			<label for="inputdate" class="col-form-label">Date</label>
+																		</div>
+																		<div class="col-10">
+																			<div class='input-group' id='kt_daterangepicker_2'>
+																				<input type="text" class="form-control" name="daterange" value="Pick Date Range" />
+																				<div class="input-group-append ">
+																					<span class="input-group-text"><i class="la la-calendar-check-o" style="font-size: 24px"></i></span>
+																				</div>
 																			</div>
 																		</div>
 																	</div>

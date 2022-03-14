@@ -5,6 +5,7 @@ namespace App\Exports;
 use App\Models\CsInputer;
 use App\Models\Inputer;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -25,21 +26,9 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
     protected $from_date;
     protected $to_date;
     function __construct($from_date,$to_date) {
-        $this->from_date = $from_date;
-        $this->to_date = $to_date;
+        $this->from_date = Carbon::parse($from_date)->format('Y-m-d');
+        $this->to_date = Carbon::parse($to_date)->format('Y-m-d');
     }
-    
-    // public function query()
-    // {
-    //     $data = DB::table('inputers')
-    //         ->where('admin_id', auth()->user()->admin_id)
-    //         ->whereBetween('updated_at',[ $this->from_date,$this->to_date])
-    //         // ->where('l.updated_at', $day)
-    //         ->select('adv_name', 'operator_name', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion','payment_method', 'total_payment', 'updated_at')
-    //         ->orderByDesc('id');
-        
-    //     return $data;
-    // }
     public function collection()
     {
         $cs_id = CsInputer::where('inputer_id', auth()->user()->id)->pluck('cs_id');
@@ -128,9 +117,9 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
         }
         // return $data;
         // dd($data);
-        // return collect($dataInputer);
+        return collect($dataInputer);
         // $dataInputer = Inputer::whereBetween('created_at',[ $this->from_date,$this->to_date])->get();
-        dd($dataInputer);
+        // dd($dataInputer);
     }
     
     public function headings(): array
