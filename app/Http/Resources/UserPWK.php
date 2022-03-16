@@ -27,7 +27,7 @@ class UserPWK extends JsonResource
             'username'      => $this->username,
             'email'         => $this->email,
             'phone'         => $this->phone,
-            'password'      => $this->password,
+            // 'password'      => $this->password,
             'image'         => $this->image,
             'exp'           => $this->exp,
             'proof_payment' => url($proof_payment),
