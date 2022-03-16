@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AccountsControllerAPI;
 use App\Http\Controllers\BigFlipCallbackController;
 use App\Http\Controllers\BigFlipController;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ use App\Http\Controllers\API\UserPowerkertoController;
 use App\Http\Controllers\API\UserInfoController;
 use App\Http\Controllers\API\DashboardSuperAdminController;
 use App\Http\Controllers\API\DashboardCRMController;
+use App\Http\Controllers\API\LeadControllerAPI;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,7 @@ use App\Http\Controllers\API\DashboardCRMController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/pkl', function (Request $request) {
     return $request->user();
 });
 
@@ -60,3 +62,11 @@ Route::post('/update/nonaktive/{user}', [DashboardSuperAdminController::class, '
 Route::get('/sales_statistic', [DashboardSuperAdminController::class, 'sales_statistic']);
 
 Route::get('/order', [DashboardCRMController::class, 'order']);
+
+Route::post('login', [AccountsControllerAPI::class, 'login']);
+Route::middleware('auth:api')->group(function(){
+    Route::get('users', [AccountsControllerAPI::class, 'index']);
+    Route::get('leads', [LeadControllerAPI::class, 'index']);
+    // Route::apiResource('/authors', AuthorsController::class);
+    // Route::apiResource('/books', BooksController::class);
+});
