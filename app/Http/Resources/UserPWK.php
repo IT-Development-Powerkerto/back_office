@@ -21,7 +21,7 @@ class UserPWK extends JsonResource
         return [
             'from'          => 'Banyumax',
             'id'            => $this->id,
-            'role_id'       => $this->role,
+            'role'       => $this->role,
             'paket'         => $this->paket,
             'name'          => $this->name,
             'username'      => $this->username,
