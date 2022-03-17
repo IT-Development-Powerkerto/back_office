@@ -28,7 +28,7 @@ class SuperAdminController extends Controller
         $user = User::where('role_id', 1)->get();
         $count_flexible = User::where('role_id', 1)->where('paket_id', 2)->value('admin_id');
         $paket = Paket::all();
-        $lead = Lead::whereDate('created_id', $day);
+        $lead = Lead::whereDate('created_at', $day)->get();
         $announcement = Announcement::all();
         $paket = Paket::all();
         $all_lead = Lead::where('admin_id', $count_flexible);
