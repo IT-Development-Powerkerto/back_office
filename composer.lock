@@ -1478,6 +1478,18 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< HEAD
+            "version": "v8.83.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "33b1b981266e3a19fbc826b60c4a6847e311ac95"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/33b1b981266e3a19fbc826b60c4a6847e311ac95",
+                "reference": "33b1b981266e3a19fbc826b60c4a6847e311ac95",
+=======
             "version": "v8.83.6",
             "source": {
                 "type": "git",
@@ -1488,6 +1500,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/dffcec0cb686eafaa3b8f33db11da2cd9d69af1c",
                 "reference": "dffcec0cb686eafaa3b8f33db11da2cd9d69af1c",
+>>>>>>> 5c9deab0c7bbca37044ed13aac1fa403fb9e7737
                 "shasum": ""
             },
             "require": {
@@ -1647,7 +1660,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< HEAD
+            "time": "2022-03-15T13:37:44+00:00"
+=======
             "time": "2022-03-29T14:41:02+00:00"
+>>>>>>> 5c9deab0c7bbca37044ed13aac1fa403fb9e7737
         },
         {
             "name": "laravel/passport",
@@ -1787,6 +1804,18 @@
         },
         {
             "name": "laravel/tinker",
+<<<<<<< HEAD
+            "version": "v2.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/tinker.git",
+                "reference": "1e2d500585a4e546346fadd3adc6f9c1a97e15f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/1e2d500585a4e546346fadd3adc6f9c1a97e15f4",
+                "reference": "1e2d500585a4e546346fadd3adc6f9c1a97e15f4",
+=======
             "version": "v2.7.2",
             "source": {
                 "type": "git",
@@ -1797,6 +1826,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/tinker/zipball/dff39b661e827dae6e092412f976658df82dbac5",
                 "reference": "dff39b661e827dae6e092412f976658df82dbac5",
+>>>>>>> 5c9deab0c7bbca37044ed13aac1fa403fb9e7737
                 "shasum": ""
             },
             "require": {
@@ -1849,9 +1879,15 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/tinker/issues",
+<<<<<<< HEAD
+                "source": "https://github.com/laravel/tinker/tree/v2.7.1"
+            },
+            "time": "2022-03-15T15:25:01+00:00"
+=======
                 "source": "https://github.com/laravel/tinker/tree/v2.7.2"
             },
             "time": "2022-03-23T12:38:24+00:00"
+>>>>>>> 5c9deab0c7bbca37044ed13aac1fa403fb9e7737
         },
         {
             "name": "lcobucci/clock",
@@ -2468,6 +2504,18 @@
         },
         {
             "name": "maatwebsite/excel",
+<<<<<<< HEAD
+            "version": "3.1.37",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SpartnerNL/Laravel-Excel.git",
+                "reference": "49ccd4142d3d7bce492d6bfb9dd9a27b12935408"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/49ccd4142d3d7bce492d6bfb9dd9a27b12935408",
+                "reference": "49ccd4142d3d7bce492d6bfb9dd9a27b12935408",
+=======
             "version": "3.1.38",
             "source": {
                 "type": "git",
@@ -2478,6 +2526,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/dff132ce4d30b19863f4e84de1613fca99604992",
                 "reference": "dff132ce4d30b19863f4e84de1613fca99604992",
+>>>>>>> 5c9deab0c7bbca37044ed13aac1fa403fb9e7737
                 "shasum": ""
             },
             "require": {
@@ -2530,7 +2579,11 @@
             ],
             "support": {
                 "issues": "https://github.com/SpartnerNL/Laravel-Excel/issues",
+<<<<<<< HEAD
+                "source": "https://github.com/SpartnerNL/Laravel-Excel/tree/3.1.37"
+=======
                 "source": "https://github.com/SpartnerNL/Laravel-Excel/tree/3.1.38"
+>>>>>>> 5c9deab0c7bbca37044ed13aac1fa403fb9e7737
             },
             "funding": [
                 {
@@ -2542,7 +2595,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2022-02-28T10:20:04+00:00"
+=======
             "time": "2022-03-24T16:00:29+00:00"
+>>>>>>> 5c9deab0c7bbca37044ed13aac1fa403fb9e7737
         },
         {
             "name": "maennchen/zipstream-php",
@@ -7661,6 +7718,18 @@
         },
         {
             "name": "laravel/sail",
+<<<<<<< HEAD
+            "version": "v1.13.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/sail.git",
+                "reference": "2092e1ce6e4ba534bff443de8c3a7bb280aba121"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/2092e1ce6e4ba534bff443de8c3a7bb280aba121",
+                "reference": "2092e1ce6e4ba534bff443de8c3a7bb280aba121",
+=======
             "version": "v1.13.8",
             "source": {
                 "type": "git",
@@ -7671,6 +7740,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/sail/zipball/b00f1b64afff9c16355d23bb1e0f83a7ea9bbb7e",
                 "reference": "b00f1b64afff9c16355d23bb1e0f83a7ea9bbb7e",
+>>>>>>> 5c9deab0c7bbca37044ed13aac1fa403fb9e7737
                 "shasum": ""
             },
             "require": {
@@ -7717,7 +7787,11 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
+<<<<<<< HEAD
+            "time": "2022-03-11T14:11:15+00:00"
+=======
             "time": "2022-03-23T12:35:34+00:00"
+>>>>>>> 5c9deab0c7bbca37044ed13aac1fa403fb9e7737
         },
         {
             "name": "mockery/mockery",
