@@ -6,7 +6,7 @@
 											<div class="fw-bold fs-3 mb-2 mt-5">Cost Per Result</div>
                                             <div class="fw-bolder fs-2hx mt-3">Rp.
                                                 <script>
-                                                    var bilangan = {{($lead_day_count == 0) ? 0 : $advertising_day_count / $lead_day_count}};
+                                                    var bilangan = {{($lead_day_count == 0) ? 0 : round($advertising_day_count / $lead_day_count)}};
 
                                                     var	number_string = bilangan.toString(),
                                                         sisa 	= number_string.length % 3,
