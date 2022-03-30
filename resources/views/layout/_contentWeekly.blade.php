@@ -39,7 +39,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			</div>
 		@endif
-		
+
 		<!--begin::Col-->
 		<div class="col-xl-3">
 
@@ -47,7 +47,7 @@
 
 		</div>
 		<!--end::Col-->
-		
+
 		<!--begin::Col-->
 		<div class="col-xl-3">
 
@@ -121,7 +121,7 @@
 		<!--begin::Col-->
 		<div class="col-xl-3 mt-n2">
 
-			@include('partials/widgets/WeeklyCharts/_widget-1')
+			@include('partials/widgets/WeeklyCharts/_widget-11')
 
 		</div>
 		<!--end::Col-->
@@ -146,7 +146,7 @@
 		<div class="col-xl-6 mt-n2">
 
 			@include('partials/widgets/tables/_widget-7')
-			
+
 		</div>
 		<!--end::Col-->
 

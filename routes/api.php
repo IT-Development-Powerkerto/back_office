@@ -16,6 +16,8 @@ use App\Http\Controllers\API\UserInfoController;
 use App\Http\Controllers\API\DashboardSuperAdminController;
 use App\Http\Controllers\API\DashboardCRMController;
 use App\Http\Controllers\API\LeadControllerAPI;
+use App\Http\Controllers\API\UserControllerAPI;
+use App\Http\Resources\Mobile\UserResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,8 +66,8 @@ Route::get('/sales_statistic', [DashboardSuperAdminController::class, 'sales_sta
 Route::get('/order', [DashboardCRMController::class, 'order']);
 
 Route::post('login', [AccountsControllerAPI::class, 'login']);
+Route::apiResource('/users', UserControllerAPI::class);
 Route::middleware('auth:api')->group(function(){
-    Route::get('users', [AccountsControllerAPI::class, 'index']);
     Route::get('leads', [LeadControllerAPI::class, 'index']);
     // Route::apiResource('/authors', AuthorsController::class);
     // Route::apiResource('/books', BooksController::class);

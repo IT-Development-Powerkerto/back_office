@@ -245,7 +245,7 @@ class LeadController extends Controller
                     'price'           => $request->price,
                     'total_price'     => $request->total_price,
                     'status_id'       => $request->status_id,
-                    'updated_at'      => Carbon::now()->toDateTimeString(),
+                    // 'updated_at'      => Carbon::now()->toDateTimeString(),
                 ]);
                 $inputer = Inputer::where('lead_id', $lead)->exists();
                 $lead = Lead::findOrFail($lead);
@@ -306,6 +306,7 @@ class LeadController extends Controller
                         'payment_method'            => $request->payment_method,
                         'total_payment'             => $request->total_payment,
                         'payment_proof'             => $image,
+                        'updated_at'                => Carbon::now()->toDateTimeString(),
                     ]);
                 }
                 else{
@@ -358,6 +359,8 @@ class LeadController extends Controller
                         'payment_method'            => $request->payment_method,
                         'total_payment'             => $request->total_payment,
                         'payment_proof'             => $image,
+                        'created_at'                => Carbon::now()->toDateTimeString(),
+                        'updated_at'                => Carbon::now()->toDateTimeString(),
                     ]);
                 }
             }
