@@ -19,6 +19,8 @@ use App\Http\Controllers\API\LeadControllerAPI;
 use App\Http\Controllers\API\UserControllerAPI;
 use App\Http\Resources\Mobile\UserResource;
 
+use App\Services\MidtransService;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -71,4 +73,18 @@ Route::middleware('auth:api')->group(function(){
     Route::get('leads', [LeadControllerAPI::class, 'index']);
     // Route::apiResource('/authors', AuthorsController::class);
     // Route::apiResource('/books', BooksController::class);
+});
+
+//Midtrans API
+Route::group([
+    'prefix'=>'payment',
+    'as'=>'payment.'
+], function() {
+    Route::post('/token', function(Request $request) {
+        $midtrans = new MidtransService();
+        return response()->json($midtrans->getSnapToken($request->trxData), 200);
+    });
+    Route::get('/orderId', function() {
+        return response()->json("BMX-ORD/".\Illuminate\Support\Carbon::now()->timestamp, 200);
+    });
 });

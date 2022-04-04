@@ -22,11 +22,11 @@ var KTCreateAccount = function () {
 
 		// Stepper change event
 		stepperObj.on('kt.stepper.changed', function (stepper) {
-			if (stepperObj.getCurrentStepIndex() === 4) {
+			if (stepperObj.getCurrentStepIndex() === 3) {
 				formSubmitButton.classList.remove('d-none');
 				formSubmitButton.classList.add('d-inline-block');
 				formContinueButton.classList.add('d-none');
-			} else if (stepperObj.getCurrentStepIndex() === 5) {
+			} else if (stepperObj.getCurrentStepIndex() === 4) {
 				formSubmitButton.classList.add('d-none');
 				formContinueButton.classList.add('d-none');
 			} else {
@@ -38,14 +38,14 @@ var KTCreateAccount = function () {
 
 		// Validation before going to next page
 		stepperObj.on('kt.stepper.next', function (stepper) {
-			console.log('stepper.next');
+			// console.log('stepper.next');
 
 			// Validate form before change stepper step
 			var validator = validations[stepper.getCurrentStepIndex() - 1]; // get validator for currnt step
 
 			if (validator) {
 				validator.validate().then(function (status) {
-					console.log('validated!');
+					// console.log('validated!');
 
 					if (status == 'Valid') {
 						stepper.goNext();
@@ -74,7 +74,7 @@ var KTCreateAccount = function () {
 
 		// Prev event
 		stepperObj.on('kt.stepper.previous', function (stepper) {
-			console.log('stepper.previous');
+			// console.log('stepper.previous');
 
 			stepper.goPrevious();
 			KTUtil.scrollTop();
@@ -82,12 +82,13 @@ var KTCreateAccount = function () {
 	}
 
 	var handleForm = function() {
+		// console.log("HandleForm init")
 		formSubmitButton.addEventListener('click', function (e) {
 			// Validate form before change stepper step
-			var validator = validations[3]; // get validator for last form
+			var validator = validations[1]; // get validator for last form
 
 			validator.validate().then(function (status) {
-				console.log('validated!');
+				// console.log('validated!');
 
 				if (status == 'Valid') {
 					// Prevent default button action
@@ -99,17 +100,114 @@ var KTCreateAccount = function () {
 					// Show loading indication
 					formSubmitButton.setAttribute('data-kt-indicator', 'on');
 
-					// Simulate form submission
-					setTimeout(function() {
-						// Hide loading indication
-						formSubmitButton.removeAttribute('data-kt-indicator');
+					// console.log('clicked');
 
-						// Enable button
-						formSubmitButton.disabled = false;
+					const data = $('#kt_create_account_form').serializeArray();
+					const rawName = data.find(element => element["name"] == "name")["value"].split(" ");
+					const subsId = data.find(element => element["name"] == "paket_id")["value"];
 
-						stepperObj.goNext();
-						//KTUtil.scrollTop();
-					}, 2000);
+					var itemDetails = {};
+					var price = 0;
+					if(subsId == 1) {
+						itemDetails = {
+							"id": 1,
+							"price": 139000,
+							"quantity": 1,
+							"name": "Enterpreneur Plan"
+						}
+						price = 139000;
+					}else if(subsId == 2) {
+						itemDetails = {
+							"id": 2,
+							"price": 299000,
+							"quantity": 1,
+							"name": "Corporate Plan"
+						}
+						price = 299000;
+					}
+
+					/**
+					 * 1
+					 * Enterpreneur Plan
+					 * 139.000
+					 * 
+					 * 2
+					 * Corporate Plan
+					 * 299.000
+					 * 
+					 * 3 Not Supported
+					 * Flexible Plan
+					 * 300/lead
+					 * 
+					 * "item_details": [{
+						"id": "a1",
+						"price": 50000,
+						"quantity": 2,
+						"name": "Apel",
+						"brand": "Fuji Apple",
+						"category": "Fruit",
+						"merchant_name": "Fruit-store",
+						"tenor": "12",
+						"code_plan": "000",
+						"mid": "123456"
+					}]
+					 */
+
+					$.ajax({
+						url: '/api/payment/orderId',
+						method: 'GET',
+						dataType: 'json',
+						success: function(orderIdResult) {
+							let parameter = {
+								"transaction_details": {
+									"order_id": orderIdResult,
+									"gross_amount": price
+								},
+								"customer_details": {
+									"first_name": rawName.shift(),
+									"last_name": rawName.join(" "),
+									"email": data.find(element => element["name"] == "email")["value"],
+									"phone": data.find(element => element["name"] == "phone")["value"],
+								},
+								"item_details": [itemDetails]
+							};
+		
+							$.ajax({
+								url: '/api/payment/token',
+								method: 'POST',
+								data: {
+									_token: data.find(element => element["name"] == "_token")["value"],
+									trxData: parameter,
+								},
+								dataType: 'json',
+								success: function(result) {
+									// console.log("Udah sampe sini nih")
+									window.snap.pay(result, {
+										onSuccess: function(payResult) {
+											console.log(payResult);
+											// noncashCallback(payResult);
+										},
+										onPending: function(payResult) {
+											console.log(payResult);
+											// noncashCallback(payResult);
+										}, 
+										onClose: function(payResult) {
+											console.log(payResult); 
+											// submitButton.removeAttr("data-kt-indicator");
+											// submitButton.disabled = !1;
+										}
+									});
+		
+									formSubmitButton.removeAttribute('data-kt-indicator');
+		
+									formSubmitButton.disabled = false;
+		
+									stepperObj.goNext();
+								}
+							});
+						}
+					});
+
 				} else {
 					Swal.fire({
 						text: "Sorry, looks like there are some errors detected, please try again.",
@@ -125,24 +223,6 @@ var KTCreateAccount = function () {
 				}
 			});
 		});
-
-		// Expiry month. For more info, plase visit the official plugin site: https://select2.org/
-        $(form.querySelector('[name="card_expiry_month"]')).on('change', function() {
-            // Revalidate the field when an option is chosen
-            validations[3].revalidateField('card_expiry_month');
-        });
-
-		// Expiry year. For more info, plase visit the official plugin site: https://select2.org/
-        $(form.querySelector('[name="card_expiry_year"]')).on('change', function() {
-            // Revalidate the field when an option is chosen
-            validations[3].revalidateField('card_expiry_year');
-        });
-
-		// Expiry year. For more info, plase visit the official plugin site: https://select2.org/
-        $(form.querySelector('[name="business_type"]')).on('change', function() {
-            // Revalidate the field when an option is chosen
-            validations[2].revalidateField('business_type');
-        });
 	}
 
 	var initValidation = function () {
@@ -152,10 +232,10 @@ var KTCreateAccount = function () {
 			form,
 			{
 				fields: {
-					account_type: {
+					paket_id: {
 						validators: {
 							notEmpty: {
-								message: 'Account type is required'
+								message: 'Subscription Package is required'
 							}
 						}
 					}
@@ -176,149 +256,42 @@ var KTCreateAccount = function () {
 			form,
 			{
 				fields: {
-					'account_team_size': {
+					'name': {
 						validators: {
 							notEmpty: {
-								message: 'Time size is required'
+								message: 'Name is required'
 							}
 						}
 					},
-					'account_name': {
+					'username': {
 						validators: {
 							notEmpty: {
-								message: 'Account name is required'
+								message: 'Username name is required'
 							}
 						}
 					},
-					'account_plan': {
+					'password': {
 						validators: {
 							notEmpty: {
-								message: 'Account plan is required'
+								message: 'Password is required'
+							}
+						}
+					},
+					'email': {
+						validators: {
+							notEmpty: {
+								message: 'Email Address is required'
+							}
+						}
+					},
+					'phone': {
+						validators: {
+							notEmpty: {
+								message: 'Phone Number is required'
 							}
 						}
 					}
 				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					// Bootstrap Framework Integration
-					bootstrap: new FormValidation.plugins.Bootstrap5({
-						rowSelector: '.fv-row',
-                        eleInvalidClass: '',
-                        eleValidClass: ''
-					})
-				}
-			}
-		));
-
-		// Step 3
-		validations.push(FormValidation.formValidation(
-			form,
-			{
-				fields: {
-					'business_name': {
-						validators: {
-							notEmpty: {
-								message: 'Busines name is required'
-							}
-						}
-					},
-					'business_descriptor': {
-						validators: {
-							notEmpty: {
-								message: 'Busines descriptor is required'
-							}
-						}
-					},
-					'business_type': {
-						validators: {
-							notEmpty: {
-								message: 'Busines type is required'
-							}
-						}
-					},
-					'business_description': {
-						validators: {
-							notEmpty: {
-								message: 'Busines description is required'
-							}
-						}
-					},
-					'business_email': {
-						validators: {
-							notEmpty: {
-								message: 'Busines email is required'
-							},
-							emailAddress: {
-								message: 'The value is not a valid email address'
-							}
-						}
-					}
-				},
-				plugins: {
-					trigger: new FormValidation.plugins.Trigger(),
-					// Bootstrap Framework Integration
-					bootstrap: new FormValidation.plugins.Bootstrap5({
-						rowSelector: '.fv-row',
-                        eleInvalidClass: '',
-                        eleValidClass: ''
-					})
-				}
-			}
-		));
-
-		// Step 4
-		validations.push(FormValidation.formValidation(
-			form,
-			{
-				fields: {
-					'card_name': {
-						validators: {
-							notEmpty: {
-								message: 'Name on card is required'
-							}
-						}
-					},
-					'card_number': {
-						validators: {
-							notEmpty: {
-								message: 'Card member is required'
-							},
-                            creditCard: {
-                                message: 'Card number is not valid'
-                            }
-						}
-					},
-					'card_expiry_month': {
-						validators: {
-							notEmpty: {
-								message: 'Month is required'
-							}
-						}
-					},
-					'card_expiry_year': {
-						validators: {
-							notEmpty: {
-								message: 'Year is required'
-							}
-						}
-					},
-					'card_cvv': {
-						validators: {
-							notEmpty: {
-								message: 'CVV is required'
-							},
-							digits: {
-								message: 'CVV must contain only digits'
-							},
-							stringLength: {
-								min: 3,
-								max: 4,
-								message: 'CVV must contain 3 to 4 digits only'
-							}
-						}
-					}
-				},
-
 				plugins: {
 					trigger: new FormValidation.plugins.Trigger(),
 					// Bootstrap Framework Integration
@@ -332,8 +305,9 @@ var KTCreateAccount = function () {
 		));
 	}
 
+
 	var handleFormSubmit = function() {
-		
+		// console.log("HandleFormTriggered");
 	}
 
 	return {

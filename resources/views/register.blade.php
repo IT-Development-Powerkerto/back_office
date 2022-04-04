@@ -83,7 +83,7 @@ License: For each use you must have a valid license purchased only from above li
 								</div>
 								<!--end::Step 2-->
 								<!--begin::Step 3-->
-								<div class="stepper-item" data-kt-stepper-element="nav">
+								{{-- <div class="stepper-item" data-kt-stepper-element="nav">
 									<!--begin::Line-->
 									<div class="stepper-line w-40px"></div>
 									<!--end::Line-->
@@ -99,7 +99,7 @@ License: For each use you must have a valid license purchased only from above li
 										<div class="stepper-desc fw-bold">Payment your account</div>
 									</div>
 									<!--end::Label-->
-								</div>
+								</div> --}}
 								<!--end::Step 3-->
 								<!--begin::Step 4-->
 								<div class="stepper-item" data-kt-stepper-element="nav">
@@ -109,13 +109,13 @@ License: For each use you must have a valid license purchased only from above li
 									<!--begin::Icon-->
 									<div class="stepper-icon w-40px h-40px">
 										<i class="stepper-check fas fa-check"></i>
-										<span class="stepper-number">4</span>
+										<span class="stepper-number">3</span>
 									</div>
 									<!--end::Icon-->
 									<!--begin::Label-->
 									<div class="stepper-label">
-										<h3 class="stepper-title">Completed</h3>
-										<div class="stepper-desc fw-bold">Completed</div>
+										<h3 class="stepper-title">Pay to Complete</h3>
+										<div class="stepper-desc fw-bold">Finish your account</div>
 									</div>
 									<!--end::Label-->
 								</div>
@@ -138,7 +138,8 @@ License: For each use you must have a valid license purchased only from above li
 						<!--begin::Wrapper-->
 						<div class="w-lg-700px p-10 p-lg-15 mx-auto">
 							<!--begin::Form-->
-                            <form action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data">
+                            {{-- <form id="register" action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data"> --}}
+                            <form id="kt_create_account_form" method="POST" enctype="multipart/form-data">
                                 <!--begin::Step 1-->
                                 <div class="current" data-kt-stepper-element="content">
                                     <!--begin::Wrapper-->
@@ -177,22 +178,7 @@ License: For each use you must have a valid license purchased only from above li
                                                 <!--begin::Col-->
                                                 <div class="col-lg-6">
                                                     <!--begin::Option-->
-                                                    <input type="radio" class="btn-check" name="paket_id" value="2" id="kt_create_account_form_account_type_flexible" />
-                                                    <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_flexible">
-                                                        <!--begin::Info-->
-                                                        <span class="d-block fw-bold text-start">
-                                                            <span class="text-dark fw-bolder d-block fs-4 mb-2">Flexible Plan</span>
-                                                            <span class="text-primary fw-bold fs-1">Rp. 300<span class="text-primary fw-bold fs-8">/lead</span></span>
-                                                        </span>
-                                                        <!--end::Info-->
-                                                    </label>
-                                                    <!--end::Option-->
-                                                </div>
-                                                <!--end::Col-->
-                                                <!--begin::Col-->
-                                                <div class="col-lg-6">
-                                                    <!--begin::Option-->
-                                                    <input type="radio" class="btn-check" name="paket_id" value="3" id="kt_create_account_form_account_type_corporate" />
+                                                    <input type="radio" class="btn-check" name="paket_id" value="2" id="kt_create_account_form_account_type_corporate" />
                                                     <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center" for="kt_create_account_form_account_type_corporate">
     
                                                         <!--begin::Info-->
@@ -204,6 +190,23 @@ License: For each use you must have a valid license purchased only from above li
                                                     </label>
                                                     <!--end::Option-->
                                                 </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                {{-- Disabled For Development                                           
+                                                <div class="col-lg-6" >
+                                                    <!--begin::Option-->
+                                                    <input type="radio" class="btn-check" name="paket_id" value="3" id="kt_create_account_form_account_type_flexible" disabled/>
+                                                    <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_flexible">
+                                                        <!--begin::Info-->
+                                                        <span class="d-block fw-bold text-start">
+                                                            <span class="text-dark fw-bolder d-block fs-4 mb-2">Flexible Plan</span>
+                                                            <span class="text-primary fw-bold fs-1">Rp. 300<span class="text-primary fw-bold fs-8">/lead</span></span>
+                                                        </span>
+                                                        <!--end::Info-->
+                                                    </label>
+                                                    <!--end::Option-->
+                                                </div>
+                                                --}}
                                                 <!--end::Col-->
                                             </div>
                                             <!--end::Row-->
@@ -235,7 +238,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <label class="form-label required">Name</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input name="name" type="text" value="Your Name" class="form-control border border-secondary form-control-lg form-control-solid @error('name') is-invalid @enderror"/>
+                                            <input name="name" type="text" placeholder="Your Name" class="form-control border border-secondary form-control-lg form-control-solid @error('name') is-invalid @enderror"/>
                                             @error('name')
                                                 <div class="form-control alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -250,7 +253,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input name="username" value="Your Username" type="text"  class="form-control border border-secondary form-control-lg form-control-solid @error('username') is-invalid @enderror"/>
+                                            <input name="username" placeholder="Your Username" type="text"  class="form-control border border-secondary form-control-lg form-control-solid @error('username') is-invalid @enderror"/>
                                             @error('username')
                                                 <div class="form-control alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -261,7 +264,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <div class="fv-row mb-10" data-kt-password-meter="true">
                                             <!--begin::Wrapper-->
                                             <div class="mb-1">
-                                                 <!--begin::Label-->
+                                                <!--begin::Label-->
                                                 <label class="d-flex align-items-center form-label">
                                                     <span class="required">Password</span>
                                                 </label>
@@ -307,7 +310,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <label class="fs-6 fw-bold form-label required">Email</label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input name="email" value="Your Email" type="text"  class="form-control border border-secondary form-control-lg form-control-solid @error('email') is-invalid @enderror"/>
+                                            <input id="email" name="email" placeholder="Your Email" type="text"  class="form-control border border-secondary form-control-lg form-control-solid @error('email') is-invalid @enderror"/>
                                             @error('email')
                                                 <div class="form-control alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -322,7 +325,7 @@ License: For each use you must have a valid license purchased only from above li
                                             </label>
                                             <!--end::Label-->
                                             <!--begin::Input-->
-                                            <input name="phone" value="Your Phone Number" type="text" class="form-control border border-secondary form-control-lg form-control-solid @error('phone') is-invalid @enderror"/>
+                                            <input name="phone" placeholder="Your Phone Number" type="text" class="form-control border border-secondary form-control-lg form-control-solid @error('phone') is-invalid @enderror"/>
                                             @error('phone')
                                                 <div class="form-control alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -334,7 +337,7 @@ License: For each use you must have a valid license purchased only from above li
                                 </div>
                                 <!--end::Step 2-->
                                 <!--begin::Step 4-->
-                                <div data-kt-stepper-element="content">
+                                {{-- <div data-kt-stepper-element="content">
                                     <!--begin::Wrapper-->
                                     <div class="w-100">
                                         <!--begin::Heading-->
@@ -344,7 +347,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Title-->
                                             <!--begin::Notice-->
                                             <div class="text-muted fw-bold fs-6 mt-3">Continue your payment with click right here.</div>
-                                            <a href="#" type="button" class="btn btn-lg btn-primary mt-5" target="_blank">Payment</a>
+                                            <button class="btn btn-lg btn-primary mt-5">Payment</button>
                                             <div class="fv-row mt-8">
                                                 <!--begin::Label-->
                                                 <label class="d-flex align-items-center form-label">
@@ -364,7 +367,7 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--end::Heading-->
                                     </div>
                                     <!--end::Wrapper-->
-                                </div>
+                                </div> --}}
                                 <!--end::Step 4-->
                                 <!--begin::Step 5-->
                                 <div data-kt-stepper-element="content">
@@ -373,17 +376,17 @@ License: For each use you must have a valid license purchased only from above li
                                         <!--begin::Heading-->
                                         <div class="pb-8 pb-lg-10">
                                             <!--begin::Title-->
-                                            <h2 class="fw-bolder text-dark">Your Are Done!</h2>
+                                            <h2 class="fw-bolder text-dark">Your Are Almost Done!</h2>
                                             <!--end::Title-->
                                             <!--begin::Notice-->
-                                            <div class="text-muted fw-bold fs-6">Please wait a minute...</div>
+                                            <div class="text-muted fw-bold fs-6">Please finish payment to activate account</div>
                                             <!--end::Notice-->
                                         </div>
                                         <!--end::Heading-->
                                         <!--begin::Body-->
                                         <div class="mb-0">
                                             <!--begin::Text-->
-                                            <div class="fs-6 text-gray-600 mb-5">Your account is being verified by admin. The verification will be sent to your email account (banyumax@support.com).</div>
+                                            <div class="fs-6 text-gray-600 mb-5">Your account is being verified automatically in less than 24 hours. Notification will be sent to your email account</div>
                                             <!--end::Text-->
                                         </div>
                                         <!--end::Body-->
@@ -408,9 +411,9 @@ License: For each use you must have a valid license purchased only from above li
                                     <!--end::Wrapper-->
                                     <!--begin::Wrapper-->
                                     <div>
-    
-                                        {{-- <button type="button" class="btn btn-lg btn-primary me-3" data-kt-stepper-action="submit">
-                                            <span class="indicator-label">Submit
+                                        @csrf
+                                        <button type="button" class="btn btn-lg btn-primary me-3" data-kt-stepper-action="submit">
+                                            <span class="indicator-label">Pay now
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                             <span class="svg-icon svg-icon-3 ms-2 me-0">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -421,7 +424,7 @@ License: For each use you must have a valid license purchased only from above li
                                             <!--end::Svg Icon--></span>
                                             <span class="indicator-progress">Please wait...
                                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                        </button> --}}
+                                        </button>
                                         <button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="next">Continue
                                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                                         <span class="svg-icon svg-icon-4 ms-1 me-0">
@@ -432,8 +435,10 @@ License: For each use you must have a valid license purchased only from above li
                                         </span>
                                         <!--end::Svg Icon--></button>
                                     </div>
-                                    {{ csrf_field() }}
-                                    <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Submit" data-kt-stepper-action="submit">
+                                    {{-- {{ csrf_field() }} --}}
+                                    {{-- <input type="submit" class="btn btn-primary mt-5 float-end me-6" value="Submit" data-kt-stepper-action="submit"> --}}
+                                    {{-- <button class="btn btn-primary mt-5 float-end me-6" data-kt-stepper-action="submit">Submit</button> --}}
+                                    
                                     <!--end::Wrapper-->
                                 </div>
                                 <!--end::Actions-->
@@ -444,7 +449,7 @@ License: For each use you must have a valid license purchased only from above li
 					</div>
 					<!--end::Content-->
 					<!--begin::Footer-->
-					<div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
+					{{-- <div class="d-flex flex-center flex-wrap fs-6 p-5 pb-0">
 						<!--begin::Links-->
 						<div class="d-flex flex-center fw-bold fs-6">
 							<a href="https://keenthemes.com" class="text-muted text-hover-primary px-2" target="_blank">About</a>
@@ -452,7 +457,7 @@ License: For each use you must have a valid license purchased only from above li
 							<a href="https://1.envato.market/EA4JP" class="text-muted text-hover-primary px-2" target="_blank">Purchase</a>
 						</div>
 						<!--end::Links-->
-					</div>
+					</div> --}}
 					<!--end::Footer-->
 				</div>
 				<!--end::Body-->
@@ -462,13 +467,88 @@ License: For each use you must have a valid license purchased only from above li
 		<!--end::Main-->
 		<script>var hostUrl = "assets/";</script>
 		<!--begin::Javascript-->
+        <script src="js/jquery-3.6.0.min.js"></script>
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="assets/plugins/global/plugins.bundle.js"></script>
 		<script src="assets/js/scripts.bundle.js"></script>
 		<!--end::Global Javascript Bundle-->
+        <script>
+            $(document).ready(function() {
+
+                Inputmask({
+                    mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+                    greedy: false,
+                    onBeforePaste: function (pastedValue, opts) {
+                        pastedValue = pastedValue.toLowerCase();
+                        return pastedValue.replace("mailto:", "");
+                    },
+                    definitions: {
+                        "*": {
+                            validator: '[0-9A-Za-z!#$%&"*+/=?^_`{|}~\-]',
+                            cardinality: 1,
+                            casing: "lower"
+                        }
+                    }
+                }).mask("#email");
+
+                // let parameter = {
+                //     "transaction_details": {
+                //         "order_id": "BMX-ORD/{{ \Illuminate\Support\Carbon::now()->timestamp }}",
+                //         "gross_amount": 10000
+                //     },
+                //     "credit_card":{
+                //         "secure" : true
+                //     },
+                //     "customer_details": {
+                //         "first_name": "budi",
+                //         "last_name": "pratama",
+                //         "email": "budi.pra@example.com",
+                //         "phone": "08111222333"
+                //     }
+                // };
+
+                // $("#submitButton").on('click', function() {
+                //     console.log($('#register').serializeArray());
+                // });
+
+                // $.ajax({
+                //     url: '{{ url("api/payment/token") }}',
+                //     method: 'POST',
+                //     data: {
+                //         _token: '{{ csrf_token() }}',
+                //         trxData: parameter,
+                //     },
+                //     dataType: 'json',
+                //     success: function(result) {
+                //         console.log("Udah sampe sini nih")
+                //         window.snap.pay(result
+                //         // , {
+                //         //     onSuccess: function(payResult) {
+                //         //         console.log(payResult);
+                //         //         // noncashCallback(payResult);
+                //         //     },
+                //         //     onPending: function(payResult) {
+                //         //         console.log(payResult);
+                //         //         // noncashCallback(payResult);
+                //         //     }, 
+                //         //     onClose: function(payResult) {
+                //         //         console.log(payResult); 
+                //         //         // submitButton.removeAttr("data-kt-indicator");
+                //         //         // submitButton.disabled = !1;
+                //         //     }
+                //         // }
+                //         );
+                //     }
+                // });
+            });
+        </script>
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="assets/js/custom/modals/create-account.js"></script>
 		<!--end::Page Custom Javascript-->
+        <script type="text/javascript"
+        src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ env('MT_CLIENT_KEY') }}"></script>
+        
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->
