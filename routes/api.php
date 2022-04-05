@@ -18,6 +18,7 @@ use App\Http\Controllers\API\DashboardCRMController;
 use App\Http\Controllers\API\LeadControllerAPI;
 use App\Http\Controllers\API\UserControllerAPI;
 use App\Http\Resources\Mobile\UserResource;
+use App\Http\Controllers\API\RegisterController;
 
 use App\Services\MidtransService;
 
@@ -88,3 +89,5 @@ Route::group([
         return response()->json("BMX-ORD/".\Illuminate\Support\Carbon::now()->timestamp, 200);
     });
 });
+
+Route::post('user-register', [RegisterController::class, 'store']);
