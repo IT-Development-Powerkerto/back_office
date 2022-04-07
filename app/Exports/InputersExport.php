@@ -33,7 +33,9 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
     {
         $cs_id = CsInputer::where('inputer_id', auth()->user()->id)->pluck('cs_id');
         $operator_name = DB::table('users')->whereIn('id', $cs_id)->pluck('name');
-        $data = DB::table('inputers')
+        $data = Inputer::whereHas('lead', function($q){
+                $q->where('status_id', 5);
+            })
             ->where('admin_id', auth()->user()->admin_id)
             ->whereBetween('created_at',[$this->from_date,$this->to_date])
             ->whereIn('operator_name', $operator_name)
