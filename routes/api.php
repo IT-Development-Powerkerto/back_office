@@ -18,6 +18,10 @@ use App\Http\Controllers\API\DashboardCRMController;
 use App\Http\Controllers\API\LeadControllerAPI;
 use App\Http\Controllers\API\UserControllerAPI;
 use App\Http\Resources\Mobile\UserResource;
+use App\Http\Controllers\API\RegisterController;
+
+use App\Services\MidtransService;
+use App\Models\Payment;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +64,7 @@ Route::resource('userInfo', UserInfoController::class);
 Route::get('waiting_list', [DashboardSuperAdminController::class, 'waiting_list']);
 Route::get('almost_expired', [DashboardSuperAdminController::class, 'almost_expired']);
 Route::post('/update/aktive/{user}', [DashboardSuperAdminController::class, 'updateAktive']);
+Route::post('/update/aktive_trx/', [DashboardSuperAdminController::class, 'updateAktiveByTrxId']);
 Route::post('/update/nonaktive/{user}', [DashboardSuperAdminController::class, 'updateNonAktive']);
 Route::get('/sales_statistic', [DashboardSuperAdminController::class, 'sales_statistic']);
 
@@ -72,3 +77,25 @@ Route::middleware('auth:api')->group(function(){
     // Route::apiResource('/authors', AuthorsController::class);
     // Route::apiResource('/books', BooksController::class);
 });
+
+//Midtrans API
+Route::group([
+    'prefix'=>'payment',
+    'as'=>'payment.'
+], function() {
+    Route::post('/token', function(Request $request) {
+        $midtrans = new MidtransService();
+        return response()->json($midtrans->getSnapToken($request->trxData), 200);
+    });
+    Route::get('/orderId', function() {
+        return response()->json("BMX-ORD/".\Illuminate\Support\Carbon::now()->timestamp, 200);
+    });
+    Route::post('/update', function(Request $request) {
+        $payment = Payment::where('transaction_id', $request->transaction_id)->first();
+        $payment->transaction_status = $request->transaction_status;
+        $payment->save();
+        return response()->json("OK", 200);
+    });
+});
+
+Route::post('user-register', [RegisterController::class, 'store']);

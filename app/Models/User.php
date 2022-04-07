@@ -110,4 +110,7 @@ class User extends Authenticatable
     public function inputer(){
         return $this->hasMany(CsInputer::class, 'inputer_id');
     }
+    public function payment(){
+        return $this->hasMany(Payment::class);
+    }
 }
