@@ -35,7 +35,7 @@
             <h1><span>POWER</span>KERTO</h1>
             <div class="contents">
                 <h2>Hello,</h2>
-                <p>Welcome Back</p>
+                <p id="welcomeMessage">Welcome Back</p>
                 @if(session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
@@ -148,5 +148,30 @@
     });
     </script>
     @endif
+
+    <script>
+        $(document).ready(function() {
+            if(sessionStorage.getItem("success")) {
+                var div = document.createElement("div");
+                div.classList.add("alert");
+                div.classList.add("alert-success");
+                div.classList.add("alert-dismissible");
+                div.classList.add("fade");
+                div.classList.add("show");
+                div.setAttribute('role', 'alert');
+                div.innerHTML = sessionStorage.getItem("success");
+
+                var button = document.createElement("button");
+                button.setAttribute('type', 'button');
+                button.classList.add("btn-close");
+                button.setAttribute('data-bs-dismiss', 'alert');
+                button.setAttribute('aria-label', 'Close');
+
+                div.appendChild(button);
+                $(div).insertAfter($("#welcomeMessage"));
+                sessionStorage.removeItem("success")
+            }
+        })
+    </script>
 </body>
 </html>

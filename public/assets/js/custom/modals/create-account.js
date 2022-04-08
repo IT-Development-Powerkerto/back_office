@@ -81,6 +81,24 @@ var KTCreateAccount = function () {
 		});
 	}
 
+	var successCallback = function(payResult, data) {
+		$.ajax({
+			url: '/api/user-register',
+			method: 'POST',
+			data: {
+				_token: data.find(element => element["name"] == "_token")["value"],
+				trxData: data,
+				paymentData: payResult
+			},
+			success: function(result) {
+				sessionStorage.setItem('success', 'Register Success!');
+				window.location.href = "/login";
+			}
+		});
+
+
+	}
+
 	var handleForm = function() {
 		// console.log("HandleForm init")
 		formSubmitButton.addEventListener('click', function (e) {
@@ -184,17 +202,12 @@ var KTCreateAccount = function () {
 									// console.log("Udah sampe sini nih")
 									window.snap.pay(result, {
 										onSuccess: function(payResult) {
-											console.log(payResult);
-											// noncashCallback(payResult);
+											// console.log(payResult);
+											successCallback(payResult, data);
 										},
 										onPending: function(payResult) {
-											console.log(payResult);
-											// noncashCallback(payResult);
-										}, 
-										onClose: function(payResult) {
-											console.log(payResult); 
-											// submitButton.removeAttr("data-kt-indicator");
-											// submitButton.disabled = !1;
+											// console.log(payResult);
+											successCallback(payResult, data);
 										}
 									});
 		
