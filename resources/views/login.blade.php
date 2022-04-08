@@ -73,14 +73,14 @@
                 </form>
             </div>
             <footer>
-                <p class="mb-5">Powered by powerkerto</p>
+                <label class="fw-bold text-muted mb-2" style="font-size: 12px">Powered by <span class="text-info">POWER<span class="text-dark">KERTO</span></span></label>
             </footer>
         </div>
         
 
         <div class="lr">
-            {{-- <h1>Welcome To Powerkerto Back Office!</h1>
-            <h2>Don't be busy, be productive!</h2> --}}
+            <!-- <h1>Welcome To Powerkerto Back Office!</h1>
+            <h2>Don't be busy, be productive!</h2> -->
         </div>
     </div>
 
@@ -104,7 +104,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control rounded-pill" id="exampleInputEmail1" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">We never share your email with anyone else.</div>
                     </div>
                 </div>
