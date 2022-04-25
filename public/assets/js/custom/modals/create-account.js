@@ -95,8 +95,6 @@ var KTCreateAccount = function () {
 				window.location.href = "/login";
 			}
 		});
-
-
 	}
 
 	var handleForm = function() {
