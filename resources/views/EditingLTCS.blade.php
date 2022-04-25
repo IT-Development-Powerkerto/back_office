@@ -114,7 +114,7 @@
 													</div>
 													<span class="form-text text-muted">Please enter your address</span>
 												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-10">Inputer</label>
+												{{-- <label class="col-lg-1 col-form-label text-lg-right mt-10">Inputer</label>
 												<div class="col-lg-3 mt-10">
 													<div class="input-group">
 														<select class="form-control" name="inputer_id" id="inputer_id">
@@ -122,7 +122,6 @@
 															<option value="{{ $user_inputer->id }}">{{ $user_inputer->name }}</option>
 															@endforeach
 														</select>
-														{{-- <label type="text"class="form-control" id="product" placeholder="Product Name">{{ old('product_name') ?? $lead->implode('product_name') }}</label> --}}
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-user" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please select your inputer name</span>
@@ -138,7 +137,7 @@
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-user" style="font-size: 24px"></i></span></div>
 													</div>
 													<span class="form-text text-muted">Please select your sale type</span>
-												</div>
+												</div> --}}
 											</div>
 										 	<div class="separator separator-dashed my-10"></div>
 
@@ -592,6 +591,37 @@
 			$(function(){
 				$("#clipboard").hide();
 				$('#copy').click(function(){
+				    var name = $('#name').val();
+                    var address = $('#address').val();
+                    var province = $('#province_id').find(":selected").text();
+                    var city = $('#city').find(":selected").text();
+                    var subdistrict = $('#subdistrict_id').find(":selected").text();
+                    var whatsapp = $('#whatsapp').val();
+                    var quantity = $('#quantity').val();
+                    var price = parseInt($('#price').val());
+                    var product_promotion_id = $('#product_promotion_id').val();
+                    var shipping_promotion_id = $('#shipping_promotion_id').val();
+                    var admin_promotion_id = $('#admin_promotion_id').val();
+                    var add_product_promotion_id = $('#add_product_promotion_id').val();
+                    var add_shipping_promotion_id = $('#add_shipping_promotion_id').val();
+                    var add_admin_promotion_id = $('#add_admin_promotion_id').val();
+                    var shipping_price = parseInt($('#shipping_price').val());
+                    var payment_method = $('#payment_method').val();
+                    var courier = $('#courier').val();
+                    var product = $('#product_name').find(":selected").text();
+                    var province_id = $('#province_id').find(":selected").val();
+                    var ongkir = parseInt(shipping_price);
+                    var total_price = (parseInt(price) * parseInt(quantity));
+                    var promo_product = parseInt($("#product_promotion").val());
+                    var add_promo_product = parseInt($("#add_product_promotion").val());
+                    var promo_ongkir = parseInt($("#shipping_promotion").val());
+                    var add_promo_ongkir = parseInt($("#add_shipping_promotion").val());
+                    var promo_admin = parseInt($("#admin_promotion").val());
+                    var add_promo_admin = parseInt($("#add_admin_promotion").val());
+                    var admin = parseInt($('#shipping_admin').val());
+                    var total_payment = parseInt($('#total_payment').val());
+                    var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp: ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nPromo Produk: ${promo_product} (promo produk) + ${add_promo_product} (tambahan promo produk) = ${promo_product+add_promo_product}\nPromo Ongkir: ${promo_ongkir} (potongan ongkir) + ${add_promo_ongkir} (tambahan promo ongkir) = ${promo_ongkir+add_promo_ongkir}\nPromo Admin COD: ${promo_admin} (promo biaya admin COD) + ${add_promo_admin} (tambahan promo biaya admin COD) = ${promo_admin+add_promo_admin}\nTotal Pembayaran: ${price*quantity} - ${promo_product+add_promo_product} (promo produk) + ${ongkir} (ongkir) - ${promo_admin+add_promo_admin} (potongan ongkir) + ${admin} (biaya admin COD) - ${promo_admin+add_promo_admin} (promo biaya admin COD) = ${total_payment}`;
+					$("#clipboard").val(text);
 					$("#clipboard").show().select();
 					document.execCommand("copy");
 					$("#clipboard").hide();
