@@ -43,7 +43,7 @@ class LoginController extends Controller
                 $request->session()->regenerate();
                 return redirect('/adv');
             }
-            elseif($role_id == 5){
+            elseif($role_id == 5 || $role_id == 13){
                 $request->session()->regenerate();
                 return redirect('/cs');
             }

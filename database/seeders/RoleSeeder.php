@@ -51,6 +51,9 @@ class RoleSeeder extends Seeder
             [
                 'name'  => 'Junior Advertiser',
             ],
+            [
+                'name'  => 'CS External',
+            ],
         ];
 
         DB::table('roles')->insert($role);

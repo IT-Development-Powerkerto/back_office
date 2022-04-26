@@ -1155,7 +1155,7 @@ class DashboardController extends Controller
             }
             $x = auth()->user();
             $operator = Operator::where('user_id', $x->id)->value('user_id');
-            if($x->role_id == 5){
+            if($x->role_id == 5 || $x->role_id == 13){
                 $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
                 $roles = Role::all();
                 $icons = Icon::all();

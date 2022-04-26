@@ -53,7 +53,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="exampleusername" class="form-label">Username</label>
-                        <input type="text" name="username" class="form-control rounded-pill" id="exampleusername" aria-describedby="emailHelp">
+                        <input type="text" name="username" class="form-control rounded-pill" id="exampleusername" aria-describedby="emailHelp" required autofocus>
                         @error('username')
                         <div class="invalid-feedback">
                         {{ $message }}
@@ -65,7 +65,7 @@
                         <input type="password" name="password" class="form-control rounded-pill" id="exampleInputPassword1" required>
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center">
-                        
+
                         <button type="submit" class="btn btn-primary rounded-pill" style="width: 100%">Login</button>
                         <a href="#" class="text-primary py-3" style="text-decoration: none" data-bs-toggle="modal" data-bs-target="#forgetPassword">Forget Your Password ?</a>
                         <label class="text-dark" style="font-size: 12px">don't have an account? Click Right <a href="{{ route('register.index') }}" class="text-primary" style="text-decoration: none"> Here</a></label>
@@ -76,7 +76,7 @@
                 <label class="fw-bold text-muted mb-2" style="font-size: 12px">Powered by <span class="text-info">POWER<span class="text-dark">KERTO</span></span></label>
             </footer>
         </div>
-        
+
 
         <div class="lr">
             <!-- <h1>Welcome To Powerkerto Back Office!</h1>
