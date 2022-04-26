@@ -28,7 +28,7 @@
 														<i class="las la-print" style="font-size: 18px"></i>
 													</span>
 													<!--end::Svg Icon-->Export</button>
-												
+
 												<!-- Modal -->
 												<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 													<div class="modal-dialog">
@@ -72,11 +72,11 @@
                                                 <form action="/JA-adv" method="GET" class="d-flex">
                                                 @endif
 													<div class="me-2 d-flex flex-row">
-														<input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+														<input class="form-control mt-0" name="date_filter"  id="date_filter" value="{{ $day }}" type="date" style="height: 33px;" onchange="submit()">
 														<button type="button" class="btn btn-sm btn-light btn-active-primary ms-2" title="Click For Export">GO</button>
 													</div>
 												</form>
-												
+
 												{{-- <form action="#" method="GET" class="d-flex">
 													<input class="form-control mt-0" name="search" id="searchlead" type="text" placeholder="Search" aria-label="Search" style="height: 33px;">
 													<button class="btn mt-n2" type="submit" style="height: 30px;"><i class="fas fa-search fas-7x"></i></button>

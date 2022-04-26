@@ -17,7 +17,7 @@
 													<!--end::Svg Icon-->Export</button>
 												<form action="/manager" method="GET" class="d-flex">
 													<div class="me-2 d-flex flex-row">
-														<input class="form-control text-muted mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+														<input class="form-control text-muted mt-0" name="date_filter" value="{{ $day }}" id="date_filter" type="date" style="height: 33px;" onchange="submit()">
 													</div>
 												</form>
 											</div>
@@ -129,7 +129,7 @@
                                                 <form action="/dashboard" method="GET" class="d-flex">
                                                 <form action="/adv" method="GET" class="d-flex">
                                                     <div class="me-2 d-flex flex-row">
-                                                        <input class="form-control mt-0" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+                                                        <input class="form-control mt-0" name="date_filter" value="{{ $day }}" id="date_filter" type="date" style="height: 33px;" onchange="submit()">
                                                         <button type="button" class="btn btn-sm btn-light btn-active-primary ms-2" title="Click For Export">GO</button>
                                                     </div>
                                                 </form>
