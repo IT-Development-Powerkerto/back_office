@@ -237,7 +237,7 @@ class DashboardController extends Controller
             else if($x->role_id == 4){
                 return redirect(route('advDashboard'));
             }
-            else if($x->role_id == 5){
+            else if($x->role_id == 5 || $x->role_id == 13){
                 return redirect(route('csDashboard'));
             }
             else if($x->role_id == 9){
@@ -1404,7 +1404,7 @@ class DashboardController extends Controller
             else if($x->role_id == 4){
                 return redirect(route('advDashboard'));
             }
-            else if($x->role_id == 5){
+            else if($x->role_id == 5 || $x->role_id == 13){
                 return redirect(route('csDashboard'));
             }
             else if($x->role_id == 9){
@@ -1732,7 +1732,7 @@ class DashboardController extends Controller
             else if($x->role_id == 4){
                 return redirect(route('advDashboard'));
             }
-            else if($x->role_id == 5){
+            else if($x->role_id == 5 || $x->role_id == 13){
                 return redirect(route('csDashboard'));
             }
             else if($x->role_id == 9){
@@ -1766,7 +1766,7 @@ class DashboardController extends Controller
         $products = Product::where('admin_id', auth()->user()->admin_id)->get();
         if(auth()->user()->role_id==4){
             return view('evaluationADV')->with('product', $products);
-        }elseif (auth()->user()->role_id==5){
+        }elseif (auth()->user()->role_id==5 || auth()->user()->role_id==13){
             return view('evaluationCS')->with('product', $products);
         }elseif (auth()->user()->role_id==1){
             return view('evaluation')->with('product', $products);

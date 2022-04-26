@@ -22,7 +22,7 @@ class PromotionController extends Controller
         $promotion_cs = Promotion::where('admin_id', auth()->user()->admin_id)->where('user_id', auth()->user()->id)->get();
         if(auth()->user()->role_id==1){
             return view('CreatePromotion')->with('product', $product)->with('promotion', $promotion);
-        }elseif (auth()->user()->role_id==5){
+        }elseif (auth()->user()->role_id==5 || auth()->user()->role_id==13){
             return view('CreatePromotionCS')->with('product', $product)->with('promotion', $promotion_cs);
         }
     }
@@ -91,7 +91,7 @@ class PromotionController extends Controller
         if(auth()->user()->role_id == 1){
             return view('EditingPromotion', ['promotion' => $promotion])->with('product', $product);
         }
-        elseif(auth()->user()->role_id == 5){
+        elseif(auth()->user()->role_id == 5 || auth()->user()->role_id == 13){
             return view('EditingPromotionCS', ['promotion' => $promotion])->with('product', $product);
         }
     }

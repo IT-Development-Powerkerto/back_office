@@ -22,7 +22,7 @@ class BudgetingRealizationController extends Controller
             return view('budgeting.BudgetingRelADV')->with('budgeting_realization', $budgeting_realization);
         }elseif (auth()->user()->role_id==12){
             return view('budgeting.BudgetingRel-JA-ADV')->with('budgeting_realization', $budgeting_realization);
-        }elseif (auth()->user()->role_id==5){
+        }elseif (auth()->user()->role_id==5 || auth()->user()->role_id==13){
             return view('budgeting.BudgetingRelCS')->with('budgeting_realization', $budgeting_realization);
         }elseif (auth()->user()->role_id==10){
             return view('budgeting.BudgetingRelInputer')->with('budgeting_realization', $budgeting_realization);

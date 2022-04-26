@@ -30,7 +30,7 @@ class SyncController extends Controller
                 'adv_id' => $adv->id,
             ]);
         }
-        $cs = User::where('role_id', 5)->get();
+        $cs = User::whereIn('role_id', [5,13])->get();
         foreach($cs as $cs){
             // $adv_name[] = array($adv->name);
             Inputer::where('operator_name', $cs->name)->update([
@@ -41,7 +41,7 @@ class SyncController extends Controller
     //    $inputer = DB::table('inputers')->limit(5)->get();
         // return $inputer;
         // Inputer::updated([
-        //     'adv_name' => 
+        //     'adv_name' =>
         // ]);
     }
 }

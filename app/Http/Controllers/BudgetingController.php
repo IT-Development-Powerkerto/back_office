@@ -399,7 +399,7 @@ class BudgetingController extends Controller
         $budgeting = Budgeting::where('admin_id', auth()->user()->admin_id)->where('role_id', '!=', 4)->get();
         if(auth()->user()->role_id==1){
             return view('budgeting.BudgetingReq')->with('role', $role)->with('budgeting', $budgeting);
-        }elseif (auth()->user()->role_id==5){
+        }elseif (auth()->user()->role_id==5 || auth()->user()->role_id==13){
             return view('budgeting.BudgetingReqCS')->with('role', $role)->with('budgeting', $budgeting);
         }elseif (auth()->user()->role_id==4){
             return view('budgeting.BudgetingReqADV')->with('role', $role)->with('budgeting', $budgeting);

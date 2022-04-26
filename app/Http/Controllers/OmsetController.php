@@ -72,7 +72,7 @@ class OmsetController extends Controller
         }
         $admin_id = Lead::where('admin_id', auth()->user()->admin_id)->value('admin_id');
         // $user = User::all();
-        $cs = User::where('role_id', 5)->where('admin_id', auth()->user()->admin_id)->get();
+        $cs = User::whereIn('role_id', [5,13])->where('admin_id', auth()->user()->admin_id)->get();
         $products = Product::where('admin_id', auth()->user()->admin_id)->get();
         foreach($cs as $cs){
             foreach($products as $product){

@@ -69,6 +69,7 @@ class CampaignController extends Controller
             'facebook_pixel'  => $request->fbp,
             'event_pixel_id'  => $request->event_id,
             'event_wa_id'     => $request->event_wa,
+            // 'tiktok_pixel' => $request->tkp,
             'cs_to_customer'  => $request->cs_to_customer,
             'customer_to_cs'  => $request->customer_to_cs,
             'created_at' => Carbon::now()->toDateTimeString(),
@@ -170,7 +171,7 @@ class CampaignController extends Controller
         $day = Carbon::now()->format('Y-m-d');
         $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->findOrFail($id);
         // untuk menampilkan daftar CS di dropdown saat menambah operator
-        $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+        $operators = User::where('admin_id', auth()->user()->admin_id)->whereIn('role_id', [5,13])->get();
         // untuk menampilkan operator berdasarkan campaign
         $operatorCampaigns = Operator::where('admin_id', auth()->user()->admin_id)->where('campaign_id', $id)->get();
         $lead = Lead::where('admin_id', auth()->user()->admin_id)->get();

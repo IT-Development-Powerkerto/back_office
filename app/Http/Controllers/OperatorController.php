@@ -21,7 +21,7 @@ class OperatorController extends Controller
     public function index()
     {
         $day = Carbon::now()->format('Y-m-d');
-        $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+        $operators = User::where('admin_id', auth()->user()->admin_id)->whereIn('role_id', [5,13])->get();
         $lead_count = DB::table('leads')
             ->join('operators', 'leads.operator_id', '=', 'operators.id')
             ->where('leads.admin_id', auth()->user()->admin_id)
@@ -41,7 +41,7 @@ class OperatorController extends Controller
         if($x->role_id == 12){
             return view('operator-JA-ADV', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns)->with('lead_day_count', $lead_day_count);
         }
-        if($x->role_id == 5){
+        if($x->role_id == 5 || $x->role_id == 13){
             return view('operatorCS', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns)->with('lead_day_count', $lead_day_count);
         }
         return view('operator', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns)->with('lead_day_count', $lead_day_count);

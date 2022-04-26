@@ -35,7 +35,7 @@
 					<!--end::Header-->
 					<!--begin::Body-->
 					<div class="pt-1">
-                        @foreach ($user->where('role_id', 5) as $cs)
+                        @foreach ($user->whereIn('role_id', [5,13]) as $cs)
 						<!--begin::Item-->
 						<div class="d-flex align-items-center pb-6">
 							<!--begin::Symbol-->
