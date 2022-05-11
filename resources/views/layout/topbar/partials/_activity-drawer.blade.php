@@ -22,7 +22,7 @@
 						</svg>
 					</span>
 					<!--end::Svg Icon-->
-					
+
 				</button>
 			</div>
 		</div>
@@ -35,7 +35,7 @@
 				data-kt-scroll-dependencies="#kt_activities_header, #kt_activities_footer" data-kt-scroll-offset="5px">
 				<!--begin::Timeline items-->
 				<div class="timeline">
-					@foreach ($leads as $lead)
+					{{-- @foreach ($leads as $lead)
 					<!--begin::Timeline item-->
 					<div class="timeline-item">
 						<!--begin::Timeline line-->
@@ -111,9 +111,9 @@
 						</div>
 						<!--end::Timeline content-->
 					</div>
-					@endforeach
+					@endforeach --}}
 					<!--end::Timeline item-->
-					
+
 					@foreach ($announcements->reverse() as $announcement)
 					<div class="timeline-item">
 						<!--begin::Timeline line-->
@@ -155,7 +155,7 @@
 							</div>
 							<!--end::Timeline heading-->
 							<!--begin::Timeline details-->
-							<div class="overflow-auto pb-5">						
+							<div class="overflow-auto pb-5">
 								<!--begin::Notice-->
 								<div class="notice d-flex bg-light-primary rounded border-primary border border-dashed min-w-lg-600px flex-shrink-0 p-6">
 									<!--begin::Icon-->
