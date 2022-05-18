@@ -39,7 +39,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             ->where('admin_id', auth()->user()->admin_id)
             ->whereBetween('created_at',[$this->from_date,$this->to_date])
             ->whereIn('operator_name', $operator_name)
-            ->select('lead_id','adv_name', 'operator_name', 'province', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'add_product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion', 'add_shipping_promotion', 'total_shipping','shipping_admin', 'admin_promotion', 'add_admin_promotion', 'total_admin', 'payment_method', 'total_payment', 'updated_at', 'warehouse', 'subdistrict')
+            ->select('lead_id','adv_name', 'operator_name', 'province', 'customer_name', 'customer_number', 'customer_address', 'product_name', 'product_price', 'product_weight', 'quantity', 'product_promotion', 'add_product_promotion', 'total_price', 'courier', 'shipping_price', 'shipping_promotion', 'add_shipping_promotion', 'total_shipping','shipping_admin', 'admin_promotion', 'add_admin_promotion', 'total_admin', 'payment_method', 'total_payment', 'updated_at', 'warehouse', 'city')
             ->get();
         $dataInputer[] = array();
         foreach($data as $data){
@@ -90,7 +90,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
                 'CS Name' => $data->operator_name,
                 'Customer Name' => $data->customer_name,
                 'Warehouse' => $warehouse,
-                'Dest Subdistrict' => $data->subdistrict,
+                'Dest City' => $data->city,
                 'Dest Province' => $data->province,
                 'Customer WA' => $data->customer_number,
                 'Address' => $data->customer_address,
@@ -133,7 +133,7 @@ class InputersExport implements WithHeadings, FromCollection, WithColumnFormatti
             'CS Name',
             'Customer Name',
             'Warehouse',
-            'Dest Subdistrict',
+            'Dest City',
             'Dest Province',
             'Customer WA',
             'Address',
