@@ -203,13 +203,13 @@
 										<form action="/dashboard" method="GET" class="d-flex">
 										@elseif (auth()->user()->role_id == 4)
 										<form action="/adv" method="GET" class="d-flex">
-										@elseif (auth()->user()->role_id == 5)
+										@elseif (auth()->user()->role_id == 5 || auth()->user()->role_id == 13)
 										<form action="/cs" method="GET" class="d-flex">
 										@else
 										<form action="/JA-adv" method="GET" class="d-flex">
 											@endif
 											<div class="me-2 d-flex flex-row">
-												<input class="form-control mt-0 form-control-solid" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+												<input class="form-control mt-0 form-control-solid" name="date_filter" value="{{ $day }}" id="date_filter" type="date" style="height: 33px;" onchange="submit()">
 											</div>
 										</form>
 										<!--begin::Search-->

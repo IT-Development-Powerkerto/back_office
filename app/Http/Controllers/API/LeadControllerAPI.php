@@ -27,7 +27,7 @@ class LeadControllerAPI extends Controller
             $total_closing = Lead::where('admin_id', $user->admin_id)->where('status_id', 5)->count();
             $daily_lead = Lead::where('admin_id', $user->admin_id)->whereDate('created_at', $day)->count();
             $daily_closing = Lead::where('admin_id', $user->admin_id)->whereDate('created_at', $day)->where('status_id', 5)->count();
-        }else if($user->role_id == 5){
+        }else if($user->role_id == 5 || $user->role_id == 13){
             $leads = Lead::where('admin_id', $user->admin_id)->whereDate('created_at', $day)->where('user_id', $user->id)->latest()->get();
             $total_lead = Lead::where('admin_id', $user->admin_id)->where('user_id', $user->id)->count();
             $total_closing = Lead::where('admin_id', $user->admin_id)->where('user_id', $user->id)->where('status_id', 5)->count();

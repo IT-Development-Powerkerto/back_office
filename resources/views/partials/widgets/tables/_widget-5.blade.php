@@ -25,7 +25,7 @@
 											</h3>
                                             <form action="/ld" method="GET" class="d-flex">
                                                 <div class="me-2 d-flex flex-row">
-                                                    <input class="form-control mt-0 form-control-solid" name="date_filter"  id="date_filter" type="date" style="height: 33px;" onchange="submit()">
+                                                    <input class="form-control mt-0 form-control-solid" name="date_filter" value="{{ $day }}" id="date_filter" type="date" style="height: 33px;" onchange="submit()">
                                                 </div>
                                             </form>
 											{{-- <div class="me-2">

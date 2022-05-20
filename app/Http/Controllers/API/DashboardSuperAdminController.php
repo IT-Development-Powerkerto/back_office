@@ -11,6 +11,7 @@ use App\Http\Resources\UserPWK;
 use App\Http\Resources\ProofPaymentResource;
 use Carbon\Carbon;
 use App\Models\ProofOfPayment;
+use App\Models\Payment;
 
 
 class DashboardSuperAdminController extends Controller
@@ -50,6 +51,27 @@ class DashboardSuperAdminController extends Controller
         // $data = User::where('admin_id', $user);
         // return redirect()->back();
         // return response()->json([UserPWK::collection($data->get()), 'Programs fetched.']);
+    }
+
+    public function updateAktiveByTrxId(Request $request) {
+        $payment = Payment::where('transaction_id', $request->transaction_id)->first();
+        $user = $payment->user->id;
+        $aktive = User::where('admin_id', $user)->update([
+            'exp' => 1,
+            'expired_at' => date('Y-m-d', strtotime('+1 month')),
+        ]);
+
+        if ($aktive) {
+            return response()->json([
+                'success' => true,
+                'message' => 'User Berhasil Diaktivasi!',
+            ], 200);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'User Gagal Diaktivasi!',
+            ], 401);
+        }
     }
 
     public function updateNonAktive($user){

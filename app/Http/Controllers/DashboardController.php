@@ -237,7 +237,7 @@ class DashboardController extends Controller
             else if($x->role_id == 4){
                 return redirect(route('advDashboard'));
             }
-            else if($x->role_id == 5){
+            else if($x->role_id == 5 || $x->role_id == 13){
                 return redirect(route('csDashboard'));
             }
             else if($x->role_id == 9){
@@ -1155,7 +1155,7 @@ class DashboardController extends Controller
             }
             $x = auth()->user();
             $operator = Operator::where('user_id', $x->id)->value('user_id');
-            if($x->role_id == 5){
+            if($x->role_id == 5 || $x->role_id == 13){
                 $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
                 $roles = Role::all();
                 $icons = Icon::all();
@@ -1216,13 +1216,13 @@ class DashboardController extends Controller
             $day = Carbon::now()->format('Y-m-d');
         }
         $lead = Lead::where('admin_id', auth()->user()->admin_id)->whereDate('created_at', $day)->orderByDesc('id')->get();
-        $leads = Lead::where('admin_id', auth()->user()->admin_id)->get();
+        // $leads = Lead::where('admin_id', auth()->user()->admin_id)->get();
         $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
         $x = auth()->user();
         if($x->role_id == 1){
             return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);
         }elseif($x->role_id == 4){
-            return view('DetailLeadADV')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);
+            return view('DetailLeadADV')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('announcements', $announcements)->with('day', $day);
         }elseif($x->role_id == 12){
             return view('DetailLeadJA-ADV')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);
         }
@@ -1404,7 +1404,7 @@ class DashboardController extends Controller
             else if($x->role_id == 4){
                 return redirect(route('advDashboard'));
             }
-            else if($x->role_id == 5){
+            else if($x->role_id == 5 || $x->role_id == 13){
                 return redirect(route('csDashboard'));
             }
             else if($x->role_id == 9){
@@ -1732,7 +1732,7 @@ class DashboardController extends Controller
             else if($x->role_id == 4){
                 return redirect(route('advDashboard'));
             }
-            else if($x->role_id == 5){
+            else if($x->role_id == 5 || $x->role_id == 13){
                 return redirect(route('csDashboard'));
             }
             else if($x->role_id == 9){
@@ -1766,7 +1766,7 @@ class DashboardController extends Controller
         $products = Product::where('admin_id', auth()->user()->admin_id)->get();
         if(auth()->user()->role_id==4){
             return view('evaluationADV')->with('product', $products);
-        }elseif (auth()->user()->role_id==5){
+        }elseif (auth()->user()->role_id==5 || auth()->user()->role_id==13){
             return view('evaluationCS')->with('product', $products);
         }elseif (auth()->user()->role_id==1){
             return view('evaluation')->with('product', $products);

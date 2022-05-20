@@ -25,7 +25,7 @@ class UserController extends Controller
             return view('myprofile')->with('user', $users);
         }elseif (auth()->user()->role_id==4){
             return view('myprofileADV')->with('user', $users);
-        }elseif (auth()->user()->role_id==5){
+        }elseif (auth()->user()->role_id==5 || auth()->user()->role_id==13){
             return view('myprofileCS')->with('user', $users);
         }elseif (auth()->user()->role_id==12){
             return view('myprofileJA-ADV')->with('user', $users);
@@ -79,7 +79,7 @@ class UserController extends Controller
             return view('editing',['user' => $result])->with('roles', $roles);
         }elseif (auth()->user()->role_id==4){
             return view('editingADV',['user' => $result])->with('roles', $roles);
-        }elseif (auth()->user()->role_id==5){
+        }elseif (auth()->user()->role_id==5 || auth()->user()->role_id==13){
             return view('editingCS',['user' => $result])->with('roles', $roles);
         }elseif (auth()->user()->role_id==12){
             return view('editingJA-ADV',['user' => $result])->with('roles', $roles);

@@ -21,7 +21,7 @@ class EvaluationController extends Controller
         $evaluation = Evaluation::where('admin_id', auth()->user()->admin_id)->get();
         if(auth()->user()->role_id==4){
             return view('EvaluationADV')->with('product', $products)->with('evaluation', $evaluation);
-        }elseif (auth()->user()->role_id==5){
+        }elseif (auth()->user()->role_id==5 || auth()->user()->role_id==13){
             return view('EvaluationCS')->with('product', $products)->with('evaluation', $evaluation);
         }elseif (auth()->user()->role_id==1){
             return view('Evaluation')->with('product', $products)->with('evaluation', $evaluation);

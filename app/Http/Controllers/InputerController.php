@@ -75,7 +75,7 @@ class InputerController extends Controller
             $promotions = Promotion::all();
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $all_inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
-            $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+            $cs = User::where('admin_id', auth()->user()->admin_id)->whereIn('role_id', [5,13])->get();
             // $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
@@ -102,7 +102,7 @@ class InputerController extends Controller
             $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $all_inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
-            $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+            $cs = User::where('admin_id', auth()->user()->admin_id)->whereIn('role_id', [5,13])->get();
             // $cs_inputers = DB::table('cs_inputers as i')->join('users as u', 'u.id', '=', 'i.cs_id')->where('i.inputer_id', Auth::user()->id)->where('i.deleted_at', null)->select('i.id as id', 'u.name as name', 'u.email as email', 'u.phone as phone')->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');

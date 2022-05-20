@@ -39,7 +39,7 @@ class UpsellingController extends Controller
             $year = date('Y');
         }
         // $user = User::all();
-        $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+        $cs = User::where('admin_id', auth()->user()->admin_id)->whereIn('role_id', [5,13])->get();
         $products = Product::where('admin_id', auth()->user()->admin_id)->get();
         foreach($cs as $cs){
             foreach($products as $product){

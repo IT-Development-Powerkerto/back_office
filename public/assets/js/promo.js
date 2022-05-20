@@ -1,5 +1,5 @@
 $(function(){
-    $('#clipboard').hide();
+
     $('#payment_method, #courier, #quantity, #product_name, #price, #product_promotion_id, #add_product_promotion_id, #shipping_promotion_id, #add_shipping_promotion_id, #admin_promotion_id, #add_admin_promotion_id, #province, #promotion_admin').on('change', function(){
         var name = $('#name').val();
         var address = $('#address').val();
@@ -204,7 +204,7 @@ $(function(){
             var admin = (total_price + total_ongkir) * 0.025;
             admin = Math.ceil(admin / 1000) * 1000;
             $('#shipping_admin').val(parseInt(admin));
-            
+
         }
         else if(courier === 'Sicepat' && payment_method === 'COD'){
             var admin = (total_price + total_ongkir)*0.030;
@@ -221,13 +221,13 @@ $(function(){
             }
             admin = Math.ceil(admin / 1000) * 1000;
             $('#shipping_admin').val(parseInt(admin));
-            
+
         }
         else if(payment_method == "Transfer"){
             admin = 0;
             $('#shipping_admin').val(admin);
         }
-        
+
         if(admin_promotion_id){
             var ap = $.parseJSON(
                 $.ajax({
@@ -243,7 +243,7 @@ $(function(){
                         console.log(err);
                     }
                 }).responseText
-            ); 
+            );
             if(ap.admin_promotion_percent == 0 && ap.admin_promotion == 0){
                 var promo_admin = 0;
             }else if(ap.admin_promotion_percent != 0 && ap.admin_promotion == 0){
@@ -282,7 +282,7 @@ $(function(){
                         console.log(err);
                     }
                 }).responseText
-            ); 
+            );
             if(aap.admin_promotion_percent == 0 && aap.admin_promotion == 0){
                 var add_promo_admin = 0;
             }else if(aap.admin_promotion_percent != 0 && aap.admin_promotion == 0){
@@ -320,12 +320,9 @@ $(function(){
         console.log('admin COD: '+admin);
         total_admin = parseInt(total_admin);
         $('#total_admin').val(total_admin);
-        
+
         var total_payment = total_price + total_ongkir + total_admin;
         total_payment = parseInt(total_payment);
         $('#total_payment').val(total_payment);
-        var text = `Nama Pemesan: ${name}\nAlamat: ${address}\nProvinsi: ${province}\nKota/Kabupaten: ${city}\nKecamatan: ${subdistrict}\nNo. Tlp: ${whatsapp}\nProduk yang dipesan: ${product}\nJumlah Pesanan: ${quantity}\nKurir: ${courier}\nMetode: ${payment_method}\nPromo Produk: ${promo_product} (promo produk) + ${add_promo_product} (tambahan promo produk) = ${promo_product+add_promo_product}\nPromo Ongkir: ${promo_ongkir} (potongan ongkir) + ${add_promo_ongkir} (tambahan promo ongkir) = ${promo_ongkir+add_promo_ongkir}\nPromo Admin COD: ${promo_admin} (promo biaya admin COD) + ${add_promo_admin} (tambahan promo biaya admin COD) = ${total_promo_admin}\nTotal Pembayaran: ${price*quantity} - ${promo_product+add_promo_product} (promo produk) + ${ongkir} (ongkir) - ${total_promo_ongkir} (potongan ongkir) + ${admin} (biaya admin COD) - ${total_promo_admin} (promo biaya admin COD) = ${total_payment}`;
-        console.log(text);
-        $("#clipboard").val(text);
     });
 });

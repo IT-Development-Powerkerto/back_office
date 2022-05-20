@@ -32,7 +32,7 @@
 												<!--end::Svg Icon-->Detail</a>
 												<form action="/dashboard" method="GET" class="d-flex">
 												<div class="me-2">
-													<input class="form-control mt-0" name="date_filter" id="date_filter" type="date" style="height: 33px;" onkeypress="submit()">
+													<input class="form-control mt-0" name="date_filter" id="date_filter" value="{{ $day }}" type="date" style="height: 33px;" onkeypress="submit()">
 												</div>
 												</form>
 
