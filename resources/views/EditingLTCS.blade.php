@@ -160,7 +160,7 @@
 														<label class="col-lg-1 col-form-label text-lg-right">Quantity</label>
 														<div class="col-lg-3">
 															<div class="input-group">
-																<input type="number" placeholder="Quantity Product" min="0"  id="quantity" name="quantity" value="{{ old('quantity') ?? $lead->quantity}}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
+																<input type="number" placeholder="Quantity Product" min="0"  id="quantity" name="quantity" value="{{ old('quantity') ?? ($lead->quantity ?? 0)}}" id="inputquantity" class="form-control" aria-describedby="quantityHelpInline"/>
 																<div class="input-group-append"><span class="input-group-text"><i class="las la-boxes" style="font-size: 24px"></i></span></div>
 															</div>
 															<span class="form-text text-muted">Please enter quantity</span>
@@ -194,48 +194,8 @@
 															</div>
 															<span class="form-text text-muted">Please enter promotion type</span>
 														</div>
-														<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Shipping</label>
-														<div class="col-lg-3 mt-8">
-															<div class="input-group">
-																<select class="form-control" name="shipping_promotion_id" id="shipping_promotion_id">
-																	<option hidden>Select Promotion</option>
-                                                                    @if ($lead->inputer == null)
-                                                                        <option value="">Not Have Promotion</option>
-                                                                        @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
-                                                                        <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
-                                                                        @endforeach
-                                                                    @else
-                                                                        <option value="" {{ $lead->inputer->shipping_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
-                                                                        @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
-                                                                        <option value="{{$promotion->id}}" {{ $lead->inputer->shipping_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
-                                                                        @endforeach
-                                                                    @endif
-																</select>
-																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
-															</div>
-															<span class="form-text text-muted">Please enter promotion type</span>
-														</div>
-														<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Admin</label>
-														<div class="col-lg-3 mt-8">
-															<div class="input-group">
-																<select class="form-control" name="admin_promotion_id" id="admin_promotion_id">
-																	<option hidden>Select Promotion</option>
-                                                                    @if ($lead->inputer == null)
-                                                                        <option value="">Not Have Promotion</option>
-                                                                        @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
-                                                                        <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
-                                                                        @endforeach
-                                                                    @else
-                                                                        <option value="" {{ $lead->inputer->admin_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
-                                                                        @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
-                                                                        <option value="{{$promotion->id}}" {{ $lead->inputer->admin_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
-                                                                        @endforeach
-                                                                    @endif
-																</select>
-																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
-															</div>
-															<span class="form-text text-muted">Please enter promotion type</span>
-														</div>
+
+
 														<label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Product</label>
 														<div class="col-lg-3 mt-8">
 															<div class="input-group">
@@ -257,48 +217,7 @@
 															</div>
 															<span class="form-text text-muted">Please enter promotion type</span>
 														</div>
-														<label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Shipping</label>
-														<div class="col-lg-3 mt-8">
-															<div class="input-group">
-																<select class="form-control" name="add_shipping_promotion_id" id="add_shipping_promotion_id">
-																	<option hidden>Select Promotion</option>
-                                                                    @if ($lead->inputer == null)
-                                                                        <option value="">Not Have Promotion</option>
-                                                                        @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
-                                                                        <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
-                                                                        @endforeach
-                                                                    @else
-                                                                        <option value="" {{ $lead->inputer->add_shipping_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
-                                                                        @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
-                                                                        <option value="{{$promotion->id}}" {{ $lead->inputer->add_shipping_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
-                                                                        @endforeach
-                                                                    @endif
-																</select>
-																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
-															</div>
-															<span class="form-text text-muted">Please enter promotion type</span>
-														</div>
-														<label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Admin</label>
-														<div class="col-lg-3 mt-8">
-															<div class="input-group">
-																<select class="form-control" name="add_admin_promotion_id" id="add_admin_promotion_id">
-																	<option hidden>Select Promotion</option>
-                                                                    @if ($lead->inputer == null)
-                                                                        <option value="">Not Have Promotion</option>
-                                                                        @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
-                                                                        <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
-                                                                        @endforeach
-                                                                    @else
-                                                                        <option value="" {{ $lead->inputer->add_admin_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
-                                                                        @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
-                                                                        <option value="{{$promotion->id}}" {{ $lead->inputer->add_admin_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
-                                                                        @endforeach
-                                                                    @endif
-																</select>
-																<div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
-															</div>
-															<span class="form-text text-muted">Please enter promotion type</span>
-														</div>
+
 														<label class="col-lg-1 col-form-label text-lg-right mt-8">Product Promotion</label>
 														<div class="col-lg-3 mt-8">
 															<div class="input-group">
@@ -308,7 +227,7 @@
 															<span class="form-text text-muted">Auto-Filled Promotion Price</span>
 														</div>
 														<label class="col-lg-1 col-form-label text-lg-right mt-8">Total Price</label>
-														<div class="col-lg-7 mt-8">
+														<div class="col-lg mt-8">
 															<div class="input-group">
 																<input type="number" value="{{ $lead->inputer->total_price ?? 0 }}" name="total_price" id="total_price" class="form-control" placeholder="Total Price" readonly/>
 																<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
@@ -419,6 +338,28 @@
 													</div>
 													<span class="form-text text-muted">Please select an destination subdistrict</span>
 												</div>
+                                                <label class="col-lg-1 col-form-label text-lg-right mt-8">Payment</label>
+												<div class="col-lg-3 mt-8">
+													<div class="input-group">
+                                                        @if ($lead->inputer == null)
+
+														<select class="form-control" name="payment_method" id="payment_method">
+															<option value="" hidden>Payment Method</option>
+															<option value="COD" required>COD</option>
+															<option value="Transfer" required>Transfer</option>
+														</select>
+                                                        @else
+
+														<select class="form-control" value="{{ old('payment_method') ?? $lead->inputer->payment_method }}" name="payment_method" id="payment_method">
+															<option value="" hidden>Payment Method</option>
+															<option value="COD" {{ (old('payment_method') ?? $lead->inputer->payment_method ) == 'COD' ? 'selected': '' }} required>COD</option>
+															<option value="Transfer" {{ (old('payment_method') ?? $lead->inputer->payment_method ) == 'Transfer' ? 'selected': '' }} required>Transfer</option>
+														</select>
+                                                        @endif
+														<div class="input-group-append"><span class="input-group-text"><i class="las la-file-invoice-dollar" style="font-size: 24px"></i></span></div>
+													</div>
+													<span class="form-text text-muted">Select an payment method.</span>
+											  	</div>
 										  		<label class="col-lg-1 col-form-label text-lg-right mt-8">Courier</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
@@ -449,6 +390,58 @@
 													</div>
 													<span class="form-text text-muted">JNE OKE & JNE REG not available for COD payment.</span>
 											  	</div>
+
+                                                <label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Price</label>
+                                                <div class="col-lg-3 mt-8">
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control" placeholder="Shipping Price" id="shipping_price" name="shipping_price" value="{{ $lead->inputer->shipping_price ?? '' }}" readonly>
+                                                        <div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+                                                    </div>
+                                                    <span class="form-text text-muted">Auto-Filled Total</span>
+                                                </div>
+
+                                                <label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Shipping</label>
+                                                <div class="col-lg-3 mt-8">
+                                                    <div class="input-group">
+                                                        <select class="form-control" name="shipping_promotion_id" id="shipping_promotion_id">
+                                                            <option hidden>Select Promotion</option>
+                                                            @if ($lead->inputer == null)
+                                                                <option value="">Not Have Promotion</option>
+                                                                @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
+                                                                <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
+                                                                @endforeach
+                                                            @else
+                                                                <option value="" {{ $lead->inputer->shipping_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
+                                                                @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
+                                                                <option value="{{$promotion->id}}" {{ $lead->inputer->shipping_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+                                                                @endforeach
+                                                            @endif
+                                                        </select>
+                                                        <div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+                                                    </div>
+                                                    <span class="form-text text-muted">Please enter promotion type</span>
+                                                </div>
+                                                <label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Shipping</label>
+                                                <div class="col-lg-3 mt-8">
+                                                    <div class="input-group">
+                                                        <select class="form-control" name="add_shipping_promotion_id" id="add_shipping_promotion_id">
+                                                            <option hidden>Select Promotion</option>
+                                                            @if ($lead->inputer == null)
+                                                                <option value="">Not Have Promotion</option>
+                                                                @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
+                                                                <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
+                                                                @endforeach
+                                                            @else
+                                                                <option value="" {{ $lead->inputer->add_shipping_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
+                                                                @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
+                                                                <option value="{{$promotion->id}}" {{ $lead->inputer->add_shipping_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+                                                                @endforeach
+                                                            @endif
+                                                        </select>
+                                                        <div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+                                                    </div>
+                                                    <span class="form-text text-muted">Please enter promotion type</span>
+                                                </div>
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Promotion</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
@@ -457,36 +450,15 @@
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
 												</div>
-												<label class="col-lg-1 col-form-label text-lg-right mt-8">Shipping Price</label>
-												<div class="col-lg-3 mt-8">
-													<div class="input-group">
-														<input type="number" class="form-control" placeholder="Total Shipping Price" id="shipping_price" name="shipping_price" value="{{ $lead->inputer->shipping_price ?? '' }}" readonly>
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Auto-Filled Total</span>
-												</div>
-                                                <label class="col-lg-1 col-form-label text-lg-right mt-8">Payment</label>
-												<div class="col-lg-3 mt-8">
-													<div class="input-group">
-                                                        @if ($lead->inputer == null)
+                                                <label class="col-lg-1 col-form-label text-lg-right mt-8">Total Shipping Price</label>
+                                                <div class="col-lg-3 mt-8">
+                                                    <div class="input-group">
+                                                        <input type="number" class="form-control" placeholder="Total Shipping Price" id="total_shipping" name="total_shipping" value="{{ $lead->inputer->total_shipping ?? 0}}" readonly>
+                                                        <div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
+                                                    </div>
+                                                    <span class="form-text text-muted">Auto-Filled Total</span>
+                                                </div>
 
-														<select class="form-control" name="payment_method" id="payment_method">
-															<option value="" hidden>Payment Method</option>
-															<option value="COD" required>COD</option>
-															<option value="Transfer" required>Transfer</option>
-														</select>
-                                                        @else
-
-														<select class="form-control" value="{{ old('payment_method') ?? $lead->inputer->payment_method }}" name="payment_method" id="payment_method">
-															<option value="" hidden>Payment Method</option>
-															<option value="COD" {{ (old('payment_method') ?? $lead->inputer->payment_method ) == 'COD' ? 'selected': '' }} required>COD</option>
-															<option value="Transfer" {{ (old('payment_method') ?? $lead->inputer->payment_method ) == 'Transfer' ? 'selected': '' }} required>Transfer</option>
-														</select>
-                                                        @endif
-														<div class="input-group-append"><span class="input-group-text"><i class="las la-file-invoice-dollar" style="font-size: 24px"></i></span></div>
-													</div>
-													<span class="form-text text-muted">Select an payment method.</span>
-											  	</div>
 										 	</div>
 											 <div class="separator separator-dashed my-10"></div>
 											<div class="form-group row">
@@ -498,6 +470,48 @@
 													</div>
 													<span class="form-text text-muted">Auto-Filled Total</span>
 												</div>
+                                                <label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Admin</label>
+                                                <div class="col-lg-3 mt-8">
+                                                    <div class="input-group">
+                                                        <select class="form-control" name="admin_promotion_id" id="admin_promotion_id">
+                                                            <option hidden>Select Promotion</option>
+                                                            @if ($lead->inputer == null)
+                                                                <option value="">Not Have Promotion</option>
+                                                                @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
+                                                                <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
+                                                                @endforeach
+                                                            @else
+                                                                <option value="" {{ $lead->inputer->admin_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
+                                                                @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
+                                                                <option value="{{$promotion->id}}" {{ $lead->inputer->admin_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+                                                                @endforeach
+                                                            @endif
+                                                        </select>
+                                                        <div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+                                                    </div>
+                                                    <span class="form-text text-muted">Please enter promotion type</span>
+                                                </div>
+                                                <label class="col-lg-1 col-form-label text-lg-right mt-8">Additional Promotion Admin</label>
+                                                <div class="col-lg-3 mt-8">
+                                                    <div class="input-group">
+                                                        <select class="form-control" name="add_admin_promotion_id" id="add_admin_promotion_id">
+                                                            <option hidden>Select Promotion</option>
+                                                            @if ($lead->inputer == null)
+                                                                <option value="">Not Have Promotion</option>
+                                                                @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
+                                                                <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
+                                                                @endforeach
+                                                            @else
+                                                                <option value="" {{ $lead->inputer->add_admin_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
+                                                                @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
+                                                                <option value="{{$promotion->id}}" {{ $lead->inputer->add_admin_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
+                                                                @endforeach
+                                                            @endif
+                                                        </select>
+                                                        <div class="input-group-append"><span class="input-group-text"><i class="las la-percent" style="font-size: 24px"></i></span></div>
+                                                    </div>
+                                                    <span class="form-text text-muted">Please enter promotion type</span>
+                                                </div>
 												<label class="col-lg-1 col-form-label text-lg-right mt-8">Promotion Admin Cost</label>
 												<div class="col-lg-3 mt-8">
 													<div class="input-group">
@@ -507,7 +521,7 @@
 													<span class="form-text text-muted">Input Promotion</span>
 												</div>
                                                 <label class="col-lg-1 col-form-label text-lg-right mt-8">Total Admin Cost</label>
-												<div class="col-lg-3 mt-8">
+												<div class="col-lg-7 mt-8">
 													<div class="input-group">
 														<input type="number" class="form-control" placeholder="Total Admin" id="total_admin" name="total_admin" value="{{ $lead->inputer->total_admin ?? 0 }}" readonly>
 														<div class="input-group-append"><span class="input-group-text"><i class="las la-equals" style="font-size: 24px"></i></span></div>
@@ -548,10 +562,10 @@
 										<input type="number" name="ori_product_promotion" id="ori_product_promotion" value="" hidden>
 										<input type="number" name="ori_shipping_promotion" id="ori_shipping_promotion" value="" hidden>
 										<input type="number" name="ori_admin_promotion" id="ori_admin_promotion" value="" hidden>
-										<input type="number" name="add_product_promotion" id="add_product_promotion" value="" hidden>
-										<input type="number" name="add_shipping_promotion" id="add_shipping_promotion" value="" hidden>
-										<input type="number" name="add_admin_promotion" id="add_admin_promotion" value="" hidden>
-										<input type="number" name="total_shipping" id="total_shipping" value="" hidden>
+										<input type="number" name="add_product_promotion" id="add_product_promotion" value="{{ $lead->inputer->add_product_promotion ?? 0}}" hidden>
+										<input type="number" name="add_shipping_promotion" id="add_shipping_promotion" value="{{ $lead->inputer->add_product_promotion ?? 0}}" hidden>
+										<input type="number" name="add_admin_promotion" id="add_admin_promotion" value="{{ $lead->inputer->add_product_promotion ?? 0}}" hidden>
+										{{-- <input type="number" name="total_shipping" id="total_shipping" value="{{ $lead->inputer->add_product_promotion ?? 0}}" hidden> --}}
 									</form>
 									<textarea id="clipboard" cols="30" rows="10"></textarea>
 								</div>
