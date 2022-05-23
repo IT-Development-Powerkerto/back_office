@@ -59,7 +59,7 @@
 																</div>
 																<div class="row align-items-center col-12 pb-5">
 																	<div class="col-2">
-																		<label for="inputdiscount" class="col-form-label">Discount</label>
+																		<label for="inputdiscount" class="col-form-label">SKU</label>
 																	</div>
 																	<div class="col-10">
 																		<input type="text" name="discount" id="inputdiscount" class="form-control" aria-describedby="discountHelpInline">
