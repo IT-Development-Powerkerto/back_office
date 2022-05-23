@@ -21,7 +21,20 @@ class WarehouseController extends Controller
         $response = json_decode($response, true);
         $provinces = $response['rajaongkir']['results'];
         $warehouses = Warehouse::where('admin_id', Auth::user()->admin_id)->get();
-        return view('warehouse/Dashboard', compact('warehouses', 'provinces'));
+        $x = auth()->user();
+        if($x->admin_id == 2){
+            return view('warehouse.Dashboard', compact('warehouses', 'provinces'));
+        }
+        else if($x->role_id == 5){
+            return view('warehouse.DashboardCS', compact('warehouses', 'provinces'));
+        }
+        else if($x->role_id == 4){
+            return view('warehouse.DashboardADV', compact('warehouses', 'provinces'));
+        }
+        else if($x->role_id == 12){
+            return view('warehouse.DashboardJA', compact('warehouses', 'provinces'));
+        }
+            
     }
 
     /**
@@ -45,7 +58,6 @@ class WarehouseController extends Controller
         $p = explode('_', $request->province);
         $province_id = $p[0];
         $province = $p[1];
-        
         $c = explode('_', $request->city);
         $city_id = $c[0];
         $city = $c[1];
@@ -117,8 +129,20 @@ class WarehouseController extends Controller
         $all_subdistrict = json_decode($all_subdistrict, true);
         $all_subdistrict = $all_subdistrict['rajaongkir']['results'];
         $warehouse = Warehouse::findOrFail($id);
+        $x = auth()->user();
+        if($x->admin_id == 2){
+            return view('warehouse.WarehouseEdit', compact('warehouse', 'provinces', 'all_city', 'all_subdistrict'));
+        }
+        else if($x->role_id == 5){
+            return view('warehouse.WarehouseEditCS', compact('warehouse', 'provinces', 'all_city', 'all_subdistrict'));
+        }
+        else if($x->role_id == 4){
+            return view('warehouse.WarehouseEditADV', compact('warehouse', 'provinces', 'all_city', 'all_subdistrict'));
+        }
+        else if($x->role_id == 12){
+            return view('warehouse.WarehouseEditJA', compact('warehouse', 'provinces', 'all_city', 'all_subdistrict'));
+        }
         
-        return view('warehouse.WarehouseEdit', compact('warehouse', 'provinces', 'all_city', 'all_subdistrict'));
     }
 
     /**
