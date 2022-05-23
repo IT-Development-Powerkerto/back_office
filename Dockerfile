@@ -6,7 +6,7 @@ RUN composer global require hirak/prestissimo && composer self-update
 FROM php:8.1.0alpha3-apache
 RUN docker-php-ext-install pdo pdo_mysql
 
-EXPOSE 8000
+EXPOSE 8080
 COPY --from=build /app /var/www/
 COPY docker/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY .env.example /var/www/.env
