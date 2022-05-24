@@ -73,7 +73,7 @@
                 </form>
             </div>
             <footer>
-                <label class="fw-bold text-muted mb-2" style="font-size: 12px">Powered by <span class="text-info">POWER<span class="text-dark">KERTO</span></span></label>
+                <label class="fw-bold text-muted mt-n7" style="font-size: 12px">Powered by <span class="text-info">POWER<span class="text-dark">KERTO</span></span></label>
             </footer>
         </div>
 
