@@ -26,16 +26,19 @@ class CampaignController extends Controller
         $campaigns = Campaign::where('admin_id', auth()->user()->admin_id)->get();
         $events = EventPixel::all();
         $eventWa = EventWa::all();
-        $product = Product::where('admin_id', auth()->user()->admin_id)->get();
-        $x=auth()->user();
-        if($x->role_id == 4){
-            return view('campaignADV', ['eventWa'=>$eventWa])->with('campaigns', $campaigns)->with('products', $product)->with('events', $events);
+        $products = Product::where('admin_id', auth()->user()->admin_id)->get();
+        $user=auth()->user();
+        if($user->role_id == 4){
+            // return view('campaignADV', ['eventWa'=>$eventWa])->with('campaigns', $campaigns)->with('products', $product)->with('events', $events);
+            return view('campaignADV', compact('eventWa', 'campaigns', 'products', 'events'));
         }
-        elseif($x->role_id == 12){
-            return view('campaign-JA-ADV', ['eventWa'=>$eventWa])->with('campaigns', $campaigns)->with('products', $product)->with('events', $events);
-        } else {
+        elseif($user->role_id == 12){
+            return view('campaign-JA-ADV', compact('eventWa', 'campaigns', 'products', 'events'));
+        } elseif($user->role_id == 1) {
         // return view('operator', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count);
-            return view('campaign', ['eventWa'=>$eventWa])->with('campaigns', $campaigns)->with('products', $product)->with('events', $events);
+            return view('campaign', compact('eventWa', 'campaigns', 'products', 'events'));
+        } else {
+            abort(404);
         }
     }
 
