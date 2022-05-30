@@ -157,6 +157,16 @@ class WarehouseController extends Controller
     {
         // dd($id);
         // dd($request->all());
+        $p = explode('_', $request->province);
+        $province_id = $p[0];
+        $province = $p[1];
+        $c = explode('_', $request->city);
+        $city_id = $c[0];
+        $city = $c[1];
+
+        $s = explode('_', $request->subdistrict);
+        $subdistrict_id = $s[0];
+        $subdistrict = $s[1];
         $request->validate([
             'name' => 'required',
             'address' => 'required'
@@ -181,7 +191,13 @@ class WarehouseController extends Controller
             'phone' => $request->phone,
             'image' => $image,
             'address' => $request->address,
-            'status' => $request->status
+            'status' => $request->status,
+            'province_id' => $province_id,
+            'province' => $province,
+            'city_id' => $city_id,
+            'city' => $city,
+            'subdistrict_id' => $subdistrict_id,
+            'subdistrict' => $subdistrict,
         ]);
         return redirect('warehouse')->with('success', 'Successfull! Warehouse Edited');
     }
