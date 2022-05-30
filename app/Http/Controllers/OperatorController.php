@@ -21,7 +21,7 @@ class OperatorController extends Controller
     public function index()
     {
         $day = Carbon::now()->format('Y-m-d');
-        $operators = User::where('admin_id', auth()->user()->admin_id)->whereIn('role_id', [5,13])->get();
+        $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
         $lead_count = DB::table('leads')
             ->join('operators', 'leads.operator_id', '=', 'operators.id')
             ->where('leads.admin_id', auth()->user()->admin_id)
@@ -41,7 +41,7 @@ class OperatorController extends Controller
         if($x->role_id == 12){
             return view('operator-JA-ADV', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns)->with('lead_day_count', $lead_day_count);
         }
-        if($x->role_id == 5 || $x->role_id == 13){
+        if($x->role_id == 5){
             return view('operatorCS', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns)->with('lead_day_count', $lead_day_count);
         }
         return view('operator', ['operators'=>$operators])->with('lead_count', $lead_count)->with('campaign_count', $campaign_count)->with('operatorCampaigns', $operatorCampaigns)->with('lead_day_count', $lead_day_count);
@@ -65,6 +65,7 @@ class OperatorController extends Controller
      */
     public function store(Request $request, $id)
     {
+        // ddd($request->all());
         // $rules = [];
         // foreach($request->input('user_id') as $key => $value) {
         //     $rules["user_id.{$key}"] = 'required';
@@ -79,12 +80,14 @@ class OperatorController extends Controller
         // }
         // return response()->json(['error'=>$validator->errors()->all()]);
 
-        $user_id = $request->operator_id;
-        $name = User::where('admin_id', auth()->user()->admin_id)->where('id', $user_id)->value('name');
-        $operatorExists = Operator::where('admin_id', auth()->user()->admin_id)->where('campaign_id', $id)->where('user_id', $user_id)->exists();
-        if($operatorExists){
-            return redirect('/campaign')->with('error','Error!, Operator already exists');
-        }
+        $user_id = collect($request->user_id);
+        // dd($user);
+        foreach ($user_id as $user_id){
+            $name = User::where('admin_id', auth()->user()->admin_id)->where('id', $user_id)->value('name');
+            $operatorExists = Operator::where('admin_id', auth()->user()->admin_id)->where('campaign_id', $id)->where('user_id', $user_id)->exists();
+            if($operatorExists){
+                return redirect(url()->previous())->with('error','Error!, '.$name.' already exists');
+            }
             DB::table('operators')->insert([
                 'admin_id'        => auth()->user()->admin_id,
                 'campaign_id'     => $id,
@@ -93,7 +96,8 @@ class OperatorController extends Controller
                 'created_at' => Carbon::now()->toDateTimeString(),
                 'updated_at' => Carbon::now()->toDateTimeString(),
             ]);
-            return redirect('/campaign')->with('success','Successfull! Campaign Added');
+        }
+        return redirect(url()->previous())->with('success','Successfull! Operator Added');
     }
 
     /**
@@ -142,6 +146,6 @@ class OperatorController extends Controller
         // dd($operator);
         $operator = Operator::where('id', $operator)->where('campaign_id', $campaign);
         $operator->delete();
-        return redirect('/campaign')->with('success','Successull! Operator Deleted');
+        return redirect(url()->previous())->with('success','Successull! Operator Deleted');
     }
 }
