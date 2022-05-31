@@ -8,11 +8,11 @@
         <!--begin::Fonts-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
         <!--end::Fonts-->
-    
+
         <!--begin::Page Vendor Stylesheets(used by this page)-->
         <link href="../assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
         <!--end::Page Vendor Stylesheets-->
-    
+
         <!--begin::Global Stylesheets Bundle(used by all pages)-->
         <link href="../assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
         <link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
@@ -134,8 +134,12 @@
                                         </div>
                                         <!--end::Input group-->
                                         <div class="mb-3">
-                                            <label for="name"  class="form-label">Warehouse</label>
+                                            <label for="name"  class="form-label">Warehouse Name</label>
                                             <input type="text" class="form-control" id="name" value="{{ old('name') ?? $warehouse->name }}" name="name" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="name"  class="form-label">Warehouse Initials</label>
+                                            <input type="text" class="form-control" id="initials" value="{{ old('initials') ?? ($warehouse->initials ?? '') }}" name="initials">
                                         </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>

@@ -311,7 +311,7 @@ $(function(){
             }else if(ap.admin_promotion_percent == 0 && ap.admin_promotion != 0){
                 var promo_admin = ap.admin_promotion;
             }else{
-                if ((ongkir*ap.admin_promotion_percent/100) > ap.admin_promotion){
+                if ((admin*ap.admin_promotion_percent/100) > ap.admin_promotion){
                     var promo_admin = ap.admin_promotion;
                 }
                 else{

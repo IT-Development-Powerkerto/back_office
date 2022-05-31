@@ -34,7 +34,7 @@ class WarehouseController extends Controller
         else if($x->role_id == 12){
             return view('warehouse.DashboardJA', compact('warehouses', 'provinces'));
         }
-            
+
     }
 
     /**
@@ -61,7 +61,7 @@ class WarehouseController extends Controller
         $c = explode('_', $request->city);
         $city_id = $c[0];
         $city = $c[1];
-        
+
         $s = explode('_', $request->subdistrict);
         $subdistrict_id = $s[0];
         $subdistrict = $s[1];
@@ -83,6 +83,7 @@ class WarehouseController extends Controller
         Warehouse::create([
             'admin_id' => Auth::user()->admin_id,
             'name' => $request->name,
+            'initials' => $request->initials,
             'email' => $request->email,
             'phone' => $request->phone,
             'image' => $image,
@@ -142,7 +143,7 @@ class WarehouseController extends Controller
         else if($x->role_id == 12){
             return view('warehouse.WarehouseEditJA', compact('warehouse', 'provinces', 'all_city', 'all_subdistrict'));
         }
-        
+
     }
 
     /**
@@ -156,6 +157,16 @@ class WarehouseController extends Controller
     {
         // dd($id);
         // dd($request->all());
+        $p = explode('_', $request->province);
+        $province_id = $p[0];
+        $province = $p[1];
+        $c = explode('_', $request->city);
+        $city_id = $c[0];
+        $city = $c[1];
+
+        $s = explode('_', $request->subdistrict);
+        $subdistrict_id = $s[0];
+        $subdistrict = $s[1];
         $request->validate([
             'name' => 'required',
             'address' => 'required'
@@ -174,13 +185,19 @@ class WarehouseController extends Controller
             $image = Warehouse::where('id', $id)->value('image');
         }
         Warehouse::where('id', $id)->update([
-            'admin_id' => Auth::user()->admin_id,
             'name' => $request->name,
+            'initials' => $request->initials,
             'email' => $request->email,
             'phone' => $request->phone,
             'image' => $image,
             'address' => $request->address,
-            'status' => $request->status
+            'status' => $request->status,
+            'province_id' => $province_id,
+            'province' => $province,
+            'city_id' => $city_id,
+            'city' => $city,
+            'subdistrict_id' => $subdistrict_id,
+            'subdistrict' => $subdistrict,
         ]);
         return redirect('warehouse')->with('success', 'Successfull! Warehouse Edited');
     }
