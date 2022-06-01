@@ -44,4 +44,26 @@ class SyncController extends Controller
         //     'adv_name' =>
         // ]);
     }
+    public function warehouse()
+    {
+        $data_closing = Inputer::all();
+        foreach ($data_closing as $d) {
+            if($d->warehouse == 'Kosambi'){
+                Inputer::where('warehouse', 'Kosambi')->update([
+                    'warehouse_id' => 4
+                ]);
+            }
+            elseif($d->warehouse == 'Tandes.Sby'){
+                Inputer::where('warehouse', 'Tandes.Sby')->update([
+                    'warehouse_id' => 3
+                ]);
+            }
+            elseif($d->warehouse == 'Cilacap'){
+                Inputer::where('warehouse', 'Cilacap')->update([
+                    'warehouse_id' => 1
+                ]);
+            }
+        }
+        return 'sync success';
+    }
 }
