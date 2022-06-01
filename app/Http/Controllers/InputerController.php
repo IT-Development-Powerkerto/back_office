@@ -51,19 +51,28 @@ class InputerController extends Controller
             $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $all_inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
-            $payment = Inputer::where('admin_id', $user_admin_id)->whereNotNull('total_payment')->get(['payment_method' , 'total_payment']);
+            $payment = Inputer::where('admin_id', $user_admin_id)->whereNotNull('total_payment')->whereHas('lead', function($q){
+                $q->where('status_id', 5);
+            })->get(['payment_method' , 'total_payment', 'warehouse_id']);
             $total_payment = $payment->sum('total_payment');
             $count_cod = $payment->where('payment_method', 'COD')->count();
             $payment_cod = $payment->where('payment_method', 'COD')->sum('total_payment');
             $count_transfer = $payment->where('payment_method', 'Transfer')->count();
             $payment_transfer = $payment->where('payment_method', 'Transfer')->sum('total_payment');
-            // ->map(function($val){
-            //     return [
-            //         'total_payment' => $val->sum('total_payment')
-            //     ];
-            // });
-            $warehouse_count = Warehouse::where('admin_id', $user_admin_id)->withCount('inputers')->get();
-            // return $count_cod;
+            // $warehouse_count = Warehouse::where('admin_id', $user_admin_id)->withCount('inputers')->get();
+            // $warehouse_count = Warehouse::where('admin_id', $user_admin_id)->with('inputers', function($q){
+            //     // $q->count();
+            //     $q->whereHas('lead', function($q1){
+            //         $q1->where('status_id', 5);
+            //     });
+            // })->get();
+            $warehouse_count = Warehouse::all()->map(function($val) use ($payment){
+                return [
+                    'name' => $val->name,
+                    'inputers_count' => $payment->where('warehouse_id', $val->id)->count()
+                ];
+            });
+            // return $warehouse_count;
             $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();

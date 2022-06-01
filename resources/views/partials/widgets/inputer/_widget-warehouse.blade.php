@@ -37,13 +37,13 @@
 				<div class="d-flex align-items-center flex-wrap w-100">
 					<!--begin::Title-->
 					<div class="mb-1 pe-3 flex-grow-1">
-						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">{{ $wc->name }}</label>
+						<label class="fs-5 text-gray-800 text-hover-primary fw-bolder">{{ $wc['name'] }}</label>
 					</div>
 					<!--end::Title-->
 					<!--begin::Label-->
 					<div class="d-flex align-items-center">
 						<div class="fw-bolder fs-5 text-gray-800 pe-1">
-                            {{ number_format($wc->inputers_count,0,',','.' ) }}
+                            {{ number_format($wc['inputers_count'],0,',','.' ) }}
                         </div>
 					</div>
 					<!--end::Label-->
