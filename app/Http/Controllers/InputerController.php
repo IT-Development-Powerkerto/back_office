@@ -12,6 +12,7 @@ use App\Models\Inputer;
 use App\Models\Lead;
 use App\Models\Promotion;
 use App\Models\User;
+use App\Models\Warehouse;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Facades\Excel;
@@ -27,12 +28,14 @@ class InputerController extends Controller
      */
     public function index(Request $request)
     {
-        if(Auth::user()->role_id == 10){
-            if($request->date_filter){
-                $day = Carbon::parse($request->date_filter)->format('Y-m-d');
-            } else {
-                $day = Carbon::now()->format('Y-m-d');
-            }
+        if($request->date_filter){
+            $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+        } else {
+            $day = Carbon::now()->format('Y-m-d');
+        }
+        $user_role_id = Auth::user()->role_id;
+        $user_admin_id = Auth::user()->admin_id;
+        if($user_role_id == 10){
             $leads = DB::table('leads as l')
             ->join('operators as o', 'l.operator_id', '=', 'o.id')
             ->join('products as p', 'l.product_id', '=', 'p.id' )
@@ -48,11 +51,14 @@ class InputerController extends Controller
             $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $all_inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
+            $warehouse_count = Warehouse::where('admin_id', $user_admin_id)->withCount('inputers')->limit(5)->get();
+            // return $warehouse_count;
             $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
-            return view('inputer.Inputer', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers']))->with('operators', $operator);
+            // return $cs_inputers;
+            return view('inputer.Inputer', compact(['leads','warehouse_count', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'day']))->with('operators', $operator);
         }else if(Auth::user()->role_id == 1){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
@@ -80,7 +86,7 @@ class InputerController extends Controller
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
             // dd($cs_inputers);
-            return view('inputer.Dashboard', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'promotions']));
+            return view('inputer.Dashboard', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'promotions', 'day']));
         }else if(Auth::user()->role_id == 12){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
@@ -107,7 +113,7 @@ class InputerController extends Controller
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
             // dd($cs_inputers);
-            return view('inputer.inputerJA', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers']));
+            return view('inputer.inputerJA', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'day']));
         }else{
             return redirect()->back();
         }

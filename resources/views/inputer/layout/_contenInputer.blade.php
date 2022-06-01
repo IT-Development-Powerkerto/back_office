@@ -5,7 +5,7 @@
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
-			@include('partials/widgets/inputer/_widget-5')
+			@include('partials/widgets/inputer/_widget-warehouse')
 
 
 		</div>
