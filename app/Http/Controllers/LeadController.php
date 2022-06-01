@@ -127,7 +127,7 @@ class LeadController extends Controller
                 $q->withTrashed();
             },
             'product' , 'status', 'campaign', 'inputer'])->withTrashed()->first();
-        // return $lead;
+        // return $lead->inputer->warehouse_id;
 
         $user_inputers = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 10)->select('id', 'name')->get();
         // $inputer = DB::table('inputers as i')
@@ -198,6 +198,8 @@ class LeadController extends Controller
         } else{
             $whatsapp = $request->whatsapp;
         }
+        $warehouse = explode('_', $request->warehouse);
+        $warehouse = $warehouse[0];
 
         // dd($whatsapp);
 
@@ -281,7 +283,7 @@ class LeadController extends Controller
                         'add_product_promotion_id'  => $request->add_product_promotion_id,
                         'add_product_promotion'     => $request->add_product_promotion,
                         'total_price'               => $request->total_price,
-                        'warehouse'                 => $request->warehouse,
+                        'warehouse_id'                 => $warehouse,
                         'province_id'               => $request->province_id,
                         'province'                  => $province,
                         'city_id'                   => $request->city_id,
@@ -332,7 +334,7 @@ class LeadController extends Controller
                         'add_product_promotion_id'  => $request->add_product_promotion_id,
                         'add_product_promotion'     => $request->add_product_promotion,
                         'total_price'               => $request->total_price,
-                        'warehouse'                 => $request->warehouse,
+                        'warehouse_id'                 => $warehouse,
                         'province_id'               => $request->province_id,
                         'province'                  => $province,
                         'city_id'                   => $request->city_id,

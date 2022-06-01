@@ -271,16 +271,19 @@
                                                             <option value="Kosambi" required>Kosambi</option>
                                                             <option value="Tandes.Sby" required>Tandes.Sby</option> --}}
                                                             @foreach ($warehouses as $warehouse)
-                                                                <option value="{{ $warehouse->subdistrict_id }}">{{ $warehouse->name }}</option>
+                                                                <option value="{{ $warehouse->id.'_'.$warehouse->subdistrict_id }}">{{ $warehouse->name }}</option>
                                                             @endforeach
                                                         </select>
 
                                                         @else
                                                             <select class="form-control" name="warehouse" id="warehouse" >
                                                                 <option value="" hidden>Warehouse</option>
-                                                                <option value="Cilacap" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Cilacap' ? 'selected': '' }} required>Cilacap</option>
+                                                                {{-- <option value="Cilacap" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Cilacap' ? 'selected': '' }} required>Cilacap</option>
                                                                 <option value="Kosambi" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Kosambi' ? 'selected': '' }} required>Kosambi</option>
-                                                                <option value="Tandes.Sby" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Tandes.Sby' ? 'selected': '' }} required>Tandes.Sby</option>
+                                                                <option value="Tandes.Sby" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Tandes.Sby' ? 'selected': '' }} required>Tandes.Sby</option> --}}
+                                                                @foreach ($warehouses as $warehouse)
+                                                                    <option value="{{ $warehouse->id.'_'.$warehouse->subdistrict_id }}" {{ $lead->inputer->warehouse_id == $warehouse->id ? 'selected': '' }} required>{{ $warehouse->name }}</option>
+                                                                @endforeach
                                                             </select>
 
                                                         @endif

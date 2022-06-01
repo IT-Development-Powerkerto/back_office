@@ -271,7 +271,7 @@
                                                             <option value="Kosambi" required>Kosambi</option>
                                                             <option value="Tandes.Sby" required>Tandes.Sby</option> --}}
                                                             @foreach ($warehouses as $warehouse)
-                                                                <option value="{{ $warehouse->subdistrict_id }}">{{ $warehouse->name }}</option>
+                                                                <option value="{{ $warehouse->id.'_'.$warehouse->subdistrict_id }}">{{ $warehouse->name }}</option>
                                                             @endforeach
                                                         </select>
 
@@ -282,7 +282,7 @@
                                                                 <option value="Kosambi" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Kosambi' ? 'selected': '' }} required>Kosambi</option>
                                                                 <option value="Tandes.Sby" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Tandes.Sby' ? 'selected': '' }} required>Tandes.Sby</option> --}}
                                                                 @foreach ($warehouses as $warehouse)
-                                                                    <option value="{{ $warehouse->subdistrict_id }}">{{ $warehouse->name }}</option>
+                                                                    <option value="{{ $warehouse->id.'_'.$warehouse->subdistrict_id }}" {{ $lead->inputer->warehouse_id == $warehouse->id ? 'selected': '' }} required>{{ $warehouse->name }}</option>
                                                                 @endforeach
                                                             </select>
 
