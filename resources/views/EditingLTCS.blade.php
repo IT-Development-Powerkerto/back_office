@@ -179,12 +179,12 @@
 																<select class="form-control" name="product_promotion_id" id="product_promotion_id">
 																	<option hidden>Select Promotion</option>
                                                                     @if ($lead->inputer == null)
-                                                                        <option value="">Not Have Promotion</option>
+                                                                        <option value="">Without Promotion</option>
                                                                         @foreach ($product_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                         <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
                                                                         @endforeach
                                                                     @else
-                                                                        <option value="" {{ $lead->inputer->product_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
+                                                                        <option value="" {{ $lead->inputer->product_promotion_id == null ? 'selected': ''}}>Without Promotion</option>
                                                                         @foreach ($product_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                         <option value="{{$promotion->id}}" {{ $lead->inputer->product_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
                                                                         @endforeach
@@ -202,12 +202,12 @@
 																<select class="form-control" name="add_product_promotion_id" id="add_product_promotion_id">
 																	<option hidden>Select Promotion</option>
                                                                     @if ($lead->inputer == null)
-                                                                        <option value="">Not Have Promotion</option>
+                                                                        <option value="">Without Promotion</option>
                                                                         @foreach ($product_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                         <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
                                                                         @endforeach
                                                                     @else
-                                                                        <option value="" {{ $lead->inputer->add_product_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
+                                                                        <option value="" {{ $lead->inputer->add_product_promotion_id == null ? 'selected': ''}}>Without Promotion</option>
                                                                         @foreach ($product_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                         <option value="{{$promotion->id}}" {{ $lead->inputer->add_product_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
                                                                         @endforeach
@@ -264,19 +264,23 @@
 												<div class="col-lg-3">
 													<div class="input-group">
                                                         @if ($lead->inputer == null)
-                                                            <select class="form-control" name="warehouse" id="warehouse" >
-                                                                <option value="" hidden>Warehouse</option>
-                                                                <option value="Cilacap" required>Cilacap</option>
-                                                                <option value="Kosambi" required>Kosambi</option>
-                                                                <option value="Tandes.Sby" required>Tandes.Sby</option>
-                                                            </select>
+                                                        <option value="" hidden>Warehouse</option>
+                                                        {{-- <option value="Cilacap" required>Cilacap</option>
+                                                        <option value="Kosambi" required>Kosambi</option>
+                                                        <option value="Tandes.Sby" required>Tandes.Sby</option> --}}
+                                                        @foreach ($warehouses as $warehouse)
+                                                            <option value="{{ $warehouse->subdistrict_id }}">{{ $warehouse->name }}</option>
+                                                        @endforeach
 
                                                         @else
                                                             <select class="form-control" name="warehouse" id="warehouse" >
                                                                 <option value="" hidden>Warehouse</option>
-                                                                <option value="Cilacap" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Cilacap' ? 'selected': '' }} required>Cilacap</option>
+                                                                {{-- <option value="Cilacap" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Cilacap' ? 'selected': '' }} required>Cilacap</option>
                                                                 <option value="Kosambi" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Kosambi' ? 'selected': '' }} required>Kosambi</option>
-                                                                <option value="Tandes.Sby" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Tandes.Sby' ? 'selected': '' }} required>Tandes.Sby</option>
+                                                                <option value="Tandes.Sby" {{ (old('warehouse') ?? $lead->inputer->warehouse ) == 'Tandes.Sby' ? 'selected': '' }} required>Tandes.Sby</option> --}}
+                                                                @foreach ($warehouses as $warehouse)
+                                                                    <option value="{{ $warehouse->subdistrict_id }}">{{ $warehouse->name }}</option>
+                                                                @endforeach
                                                             </select>
 
                                                         @endif
@@ -406,12 +410,12 @@
                                                         <select class="form-control" name="shipping_promotion_id" id="shipping_promotion_id">
                                                             <option hidden>Select Promotion</option>
                                                             @if ($lead->inputer == null)
-                                                                <option value="">Not Have Promotion</option>
+                                                                <option value="">Without Promotion</option>
                                                                 @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                 <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
                                                                 @endforeach
                                                             @else
-                                                                <option value="" {{ $lead->inputer->shipping_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
+                                                                <option value="" {{ $lead->inputer->shipping_promotion_id == null ? 'selected': ''}}>Without Promotion</option>
                                                                 @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                 <option value="{{$promotion->id}}" {{ $lead->inputer->shipping_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
                                                                 @endforeach
@@ -427,12 +431,12 @@
                                                         <select class="form-control" name="add_shipping_promotion_id" id="add_shipping_promotion_id">
                                                             <option hidden>Select Promotion</option>
                                                             @if ($lead->inputer == null)
-                                                                <option value="">Not Have Promotion</option>
+                                                                <option value="">Without Promotion</option>
                                                                 @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                 <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
                                                                 @endforeach
                                                             @else
-                                                                <option value="" {{ $lead->inputer->add_shipping_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
+                                                                <option value="" {{ $lead->inputer->add_shipping_promotion_id == null ? 'selected': ''}}>Without Promotion</option>
                                                                 @foreach ($shipping_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                 <option value="{{$promotion->id}}" {{ $lead->inputer->add_shipping_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
                                                                 @endforeach
@@ -476,12 +480,12 @@
                                                         <select class="form-control" name="admin_promotion_id" id="admin_promotion_id">
                                                             <option hidden>Select Promotion</option>
                                                             @if ($lead->inputer == null)
-                                                                <option value="">Not Have Promotion</option>
+                                                                <option value="">Without Promotion</option>
                                                                 @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                 <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
                                                                 @endforeach
                                                             @else
-                                                                <option value="" {{ $lead->inputer->admin_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
+                                                                <option value="" {{ $lead->inputer->admin_promotion_id == null ? 'selected': ''}}>Without Promotion</option>
                                                                 @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                 <option value="{{$promotion->id}}" {{ $lead->inputer->admin_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
                                                                 @endforeach
@@ -497,12 +501,12 @@
                                                         <select class="form-control" name="add_admin_promotion_id" id="add_admin_promotion_id">
                                                             <option hidden>Select Promotion</option>
                                                             @if ($lead->inputer == null)
-                                                                <option value="">Not Have Promotion</option>
+                                                                <option value="">Without Promotion</option>
                                                                 @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                 <option value="{{$promotion->id}}">{{ $promotion->promotion_name }}</option>
                                                                 @endforeach
                                                             @else
-                                                                <option value="" {{ $lead->inputer->add_admin_promotion_id == null ? 'selected': ''}}>Not Have Promotion</option>
+                                                                <option value="" {{ $lead->inputer->add_admin_promotion_id == null ? 'selected': ''}}>Without Promotion</option>
                                                                 @foreach ($admin_promotion->where('product_name', $lead->product->name) as $promotion)
                                                                 <option value="{{$promotion->id}}" {{ $lead->inputer->add_admin_promotion_id == $promotion->id ? 'selected': ''}}>{{ $promotion->promotion_name }}</option>
                                                                 @endforeach
