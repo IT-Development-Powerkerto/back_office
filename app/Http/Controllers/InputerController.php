@@ -53,7 +53,7 @@ class InputerController extends Controller
             $all_inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
             $payment = Inputer::where('admin_id', $user_admin_id)->whereNotNull('total_payment')->whereHas('lead', function($q){
                 $q->where('status_id', 5);
-            })->get(['payment_method' , 'total_payment', 'warehouse_id']);
+            })->get(['payment_method' , 'total_payment', 'warehouse_id', 'courier']);
             $total_payment = $payment->sum('total_payment');
             $count_cod = $payment->where('payment_method', 'COD')->count();
             $payment_cod = $payment->where('payment_method', 'COD')->sum('total_payment');
@@ -72,13 +72,18 @@ class InputerController extends Controller
                     'inputers_count' => $payment->where('warehouse_id', $val->id)->count()
                 ];
             });
-            // return $warehouse_count;
+            $courier = $payment->map(function($val){
+                return [
+                    'name' => $val->courier
+                ];
+            });
+            // return $warehouse_count->count();
             $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
             // return $cs_inputers;
-            return view('inputer.Inputer', compact('leads','warehouse_count', 'announcements', 'count_cod','payment_cod', 'count_transfer', 'payment_transfer', 'total_payment', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'day', 'operators'));
+            return view('inputer.Inputer', compact('leads','warehouse_count', 'courier', 'announcements', 'count_cod','payment_cod', 'count_transfer', 'payment_transfer', 'total_payment', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'day', 'operators'));
         }else if(Auth::user()->role_id == 1){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');

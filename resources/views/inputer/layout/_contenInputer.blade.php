@@ -20,7 +20,7 @@
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
-			@include('partials/widgets/inputer/_widget-4')
+			@include('partials/widgets/inputer/_widget-courier')
 
 		</div>
 		<!--end::Col-->

@@ -13,7 +13,7 @@
 			<div class="d-flex text-center flex-column text-white pt-8">
 				<span class="fw-bold fs-7">Warehouse</span>
 				<span class="fw-bolder fs-2x pt-1">
-                    {{ number_format($warehouse_count->sum('inputers_count'),0,',','.' ) }}
+                    {{ number_format($warehouse_count->count(),0,',','.' ) }}
                 </span>
 			</div>
 			<!--end::Balance-->

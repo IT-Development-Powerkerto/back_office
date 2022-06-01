@@ -11,7 +11,7 @@
 			<!--end::Heading-->
 			<!--begin::Balance-->
 			<div class="d-flex text-center flex-column text-white pt-8">
-				<span class="fw-bold fs-7">{{ number_format($warehouse_count->sum('inputers_count'),0,',','.' ) }} Payment</span>
+				<span class="fw-bold fs-7">{{ number_format($courier->count(),0,',','.' ) }} Payment</span>
 				<span class="fw-bolder fs-2x pt-1">Rp. {{ number_format($total_payment,0,',','.' ) }}</span>
 			</div>
 			<!--end::Balance-->
