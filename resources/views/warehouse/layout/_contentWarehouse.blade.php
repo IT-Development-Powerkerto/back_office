@@ -115,7 +115,7 @@
 																		</div>
 																		<div class="mb-3">
 																			<label for="province" class="form-label">Province</label>
-																			<select name="province" id="province" class="form-control">
+																			<select name="province" id="province" class="form-control" required>
 																				<option value="" hidden>Province</option>
 																				@foreach ($provinces as $province)
 																				<option value="{{ $province['province_id'].'_'.$province['province'] }}">{{ $province['province'] }}</option>
@@ -124,13 +124,13 @@
 																		</div>
 																		<div class="mb-3">
 																			<label for="city" class="form-label">City</label>
-																			<select class="form-control" id="city" name="city" >
+																			<select class="form-control" id="city" name="city" required>
 																				<option value="" hidden>City</option>
 																			</select>
 																		</div>
 																		<div class="mb-3">
 																			<label for="subdistrict" class="form-label">Subdistrict</label>
-																			<select class="form-control" id="subdistrict" name="subdistrict" >
+																			<select class="form-control" id="subdistrict" name="subdistrict" required>
 																				<option value="" hidden>Subdistrict</option>
 																			</select>
 																		</div>
@@ -141,7 +141,7 @@
 																				<label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
 																					<!--begin::Radio-->
 																					<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-																						<input class="form-check-input" type="radio" name="status" value="active">
+																						<input class="form-check-input" type="radio" name="status" value="active" required>
 																					</span>
 																					<!--end::Radio-->
 																					<!--begin::Info-->
@@ -159,7 +159,7 @@
 																				<label class="btn btn-outline btn-outline-dashed btn-outline-default d-flex text-start p-6" data-kt-button="true">
 																					<!--begin::Radio-->
 																					<span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-																						<input class="form-check-input" type="radio" name="status" value="inactive">
+																						<input class="form-check-input" type="radio" name="status" value="inactive" required>
 																					</span>
 																					<!--end::Radio-->
 																					<!--begin::Info-->
