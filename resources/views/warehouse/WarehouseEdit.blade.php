@@ -134,12 +134,8 @@
                                         </div>
                                         <!--end::Input group-->
                                         <div class="mb-3">
-                                            <label for="name"  class="form-label">Warehouse Name</label>
+                                            <label for="name"  class="form-label">Warehouse</label>
                                             <input type="text" class="form-control" id="name" value="{{ old('name') ?? $warehouse->name }}" name="name" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="name"  class="form-label">Warehouse Initials</label>
-                                            <input type="text" class="form-control" id="initials" value="{{ old('initials') ?? ($warehouse->initials ?? '') }}" name="initials">
                                         </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Email</label>
@@ -159,7 +155,7 @@
                                             <select name="province" id="province" class="form-control">
                                                 <option value="" hidden>Province</option>
                                                 @foreach ($provinces as $province)
-                                                <option value="{{ $province['province_id'].'_'.$province['province'] }}" {{ implode('_', array($warehouse->province_id, $warehouse->province)) == $province['province_id'].'_'.$province['province'] ? 'selected':'' }}>{{ $province['province'] }}</option>
+                                                <option value="{{ $province['province_id'].'_'.$province['province'] }}" {{ $warehouse->province_id == $province['province_id'] ? 'selected':'' }}>{{ $province['province'] }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -167,7 +163,7 @@
                                             <label for="city" class="form-label">City</label>
                                             <select class="form-control" id="city" name="city" >
                                                 @foreach ($all_city as $all_city)
-                                                <option value="{{ $all_city['city_id'].'_'.$all_city['city_name'] }}" {{ implode('_', array($warehouse->city_id, $warehouse->city)) == $all_city['city_id'].'_'.$all_city['city_name'] ? 'selected': ''}}>{{ $all_city['type'] }} {{ $all_city['city_name'] }}</option>
+                                                <option value="{{ $all_city['city_id'].'_'.$all_city['city_name'] }}" {{ $warehouse->city_id == $all_city['city_id'] ? 'selected': ''}}>{{ $all_city['type'] }} {{ $all_city['city_name'] }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -175,7 +171,7 @@
                                             <label for="subdistrict" class="form-label">Subdistrict</label>
                                             <select class="form-control" id="subdistrict" name="subdistrict" >
                                                 @foreach ($all_subdistrict as $all_subdistrict)
-                                                <option value="{{ $all_subdistrict['subdistrict_id'].'_'.$all_subdistrict['subdistrict_name'] }}" {{ implode('_', array($warehouse->subdistrict_id, $warehouse->subdistrict)) == $all_subdistrict['subdistrict_id'].'_'.$all_subdistrict['subdistrict_name'] ? 'selected': ''}}>{{ $all_subdistrict['subdistrict_name'] }}</option>
+                                                <option value="{{ $all_subdistrict['subdistrict_id'].'_'.$all_subdistrict['subdistrict_name'] }}" {{ $warehouse->subdistrict_id == $all_subdistrict['subdistrict_id'] ? 'selected': ''}}>{{ $all_subdistrict['subdistrict_name'] }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
