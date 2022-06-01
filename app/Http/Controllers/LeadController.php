@@ -23,6 +23,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Campaign;
 use App\Models\CsInputer;
+use App\Models\Warehouse;
 
 class LeadController extends Controller
 {
@@ -139,9 +140,11 @@ class LeadController extends Controller
         //     $q->where('id', $id);
         // })->first();
         // return $inputer;
-        $product_promotion = Promotion::where('admin_id', auth()->user()->admin_id)->where('promotion_type', 'Product Price')->where('user_id', auth()->user()->id)->get();
-        $shipping_promotion = Promotion::where('admin_id', auth()->user()->admin_id)->where('promotion_type', 'Shipping Cost')->where('user_id', auth()->user()->id)->get();
-        $admin_promotion = Promotion::where('admin_id', auth()->user()->admin_id)->where('promotion_type', 'Admin Cost')->where('user_id', auth()->user()->id)->get();
+        $user_admin_id = auth()->user()->admin_id;
+        $warehouses = Warehouse::where('admin_id', $user_admin_id)->get();
+        $product_promotion = Promotion::where('admin_id', $user_admin_id)->where('promotion_type', 'Product Price')->where('user_id', auth()->user()->id)->get();
+        $shipping_promotion = Promotion::where('admin_id', $user_admin_id)->where('promotion_type', 'Shipping Cost')->where('user_id', auth()->user()->id)->get();
+        $admin_promotion = Promotion::where('admin_id', $user_admin_id)->where('promotion_type', 'Admin Cost')->where('user_id', auth()->user()->id)->get();
         // return $promotion;
         // return view('EditingLT', compact('lead'));
         $response = Http::withHeaders(['key' => 'c2993a8c77565268712ef1e3bfb798f2'])->get('https://pro.rajaongkir.com/api/province');
@@ -167,19 +170,19 @@ class LeadController extends Controller
             $all_subdistrict = $all_subdistrict['rajaongkir']['results'];
 
             if(Auth::user()->role_id == 1){
-                return view('EditingLT', compact('lead','products','user_inputers' ,'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLT', compact('lead', 'warehouses','products','user_inputers' ,'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 4){
-                return view('EditingLTADV', compact('lead','products','user_inputers', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTADV', compact('lead', 'warehouses','products','user_inputers', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 5 || Auth::user()->role_id == 13){
-                return view('EditingLTCS', compact('lead','products','user_inputers', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTCS', compact('lead', 'warehouses','products','user_inputers', 'all_province', 'all_city', 'all_subdistrict', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }
         }else{
             if(Auth::user()->role_id == 1){
-                return view('EditingLT', compact('lead','products','user_inputers', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLT', compact('lead', 'warehouses','products','user_inputers', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 4){
-                return view('EditingLTADV', compact('lead','products','user_inputers', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTADV', compact('lead', 'warehouses','products','user_inputers', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }else if(Auth::user()->role_id == 5 || Auth::user()->role_id == 13){
-                return view('EditingLTCS', compact('lead','products','user_inputers', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
+                return view('EditingLTCS', compact('lead', 'warehouses','products','user_inputers', 'all_province', 'product_promotion', 'shipping_promotion', 'admin_promotion'));
             }
         }
     }
