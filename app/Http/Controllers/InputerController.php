@@ -48,9 +48,9 @@ class InputerController extends Controller
             ->orderByDesc('l.id')
             ->paginate(5);
             // dd($leads);
-            $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
-            $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
-            $all_inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
+            $announcements = Announcement::where('admin_id', $user_admin_id)->get();
+            $inputers = Inputer::where('admin_id', $user_admin_id)->whereDate('updated_at', $day)->get();
+            // $all_inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
             $payment = Inputer::where('admin_id', $user_admin_id)->whereNotNull('total_payment')->whereHas('lead', function($q){
                 $q->where('status_id', 5);
             })->get(['payment_method' , 'total_payment', 'warehouse_id', 'courier']);
@@ -78,12 +78,14 @@ class InputerController extends Controller
                 ];
             });
             // return $warehouse_count->count();
-            $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+            // $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
-            $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
-            $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
-            // return $cs_inputers;
-            return view('inputer.Inputer', compact('leads','warehouse_count', 'courier', 'announcements', 'count_cod','payment_cod', 'count_transfer', 'payment_transfer', 'total_payment', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'day', 'operators'));
+            $cs_inputers = CsInputer::where('admin_id', $user_admin_id)->where('inputer_id', auth()->user()->id)->get();
+            $name_cs_inputers = $cs_inputers->map(function($val){
+                return $val->cs->name;
+            });
+            // return $name_cs_inputers;
+            return view('inputer.Inputer', compact('leads','warehouse_count', 'courier', 'announcements', 'count_cod','payment_cod', 'count_transfer', 'payment_transfer', 'total_payment', 'inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'day'));
         }else if(Auth::user()->role_id == 1){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
