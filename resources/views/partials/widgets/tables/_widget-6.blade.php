@@ -59,10 +59,10 @@
 																</div>
 																<div class="row align-items-center col-12 pb-5">
 																	<div class="col-2">
-																		<label for="inputdiscount" class="col-form-label">SKU</label>
+																		<label for="sku" class="col-form-label">SKU</label>
 																	</div>
 																	<div class="col-10">
-																		<input type="text" name="discount" id="inputdiscount" class="form-control" aria-describedby="discountHelpInline">
+																		<input type="text" name="sku" id="sku" class="form-control" aria-describedby="discountHelpInline">
 																	</div>
 																</div>
 																<div class="row align-items-center col-12 pb-5">

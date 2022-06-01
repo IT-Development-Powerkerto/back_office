@@ -49,17 +49,24 @@ class ProductController extends Controller
         }else{
             $image = null;
         }
-
-        DB::table('products')->insert([
+        Product::create([
             'admin_id'     => auth()->user()->admin_id,
             'name'         => $request->name,
             'price'        => $request->price,
-            'discount'     => $request->discount,
+            'sku'     => $request->sku,
             'image'        => $image,
             'product_link' => $request->product_link,
-            'created_at'   => Carbon::now()->toDateTimeString(),
-            'updated_at'   => Carbon::now()->toDateTimeString(),
         ]);
+        // DB::table('products')->insert([
+        //     'admin_id'     => auth()->user()->admin_id,
+        //     'name'         => $request->name,
+        //     'price'        => $request->price,
+        //     'discount'     => $request->discount,
+        //     'image'        => $image,
+        //     'product_link' => $request->product_link,
+        //     'created_at'   => Carbon::now()->toDateTimeString(),
+        //     'updated_at'   => Carbon::now()->toDateTimeString(),
+        // ]);
 
         return redirect('/dashboard')->with('success','Successull! Product Added');
     }
