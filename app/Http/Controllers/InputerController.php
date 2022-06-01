@@ -47,18 +47,29 @@ class InputerController extends Controller
             ->where('l.updated_at', $day)
             ->orderByDesc('l.id')
             ->paginate(5);
-            //dd($leads);
+            // dd($leads);
             $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
             $all_inputers = Inputer::where('admin_id', auth()->user()->admin_id)->get();
-            $warehouse_count = Warehouse::where('admin_id', $user_admin_id)->withCount('inputers')->limit(5)->get();
-            // return $warehouse_count;
-            $operator = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
+            $payment = Inputer::where('admin_id', $user_admin_id)->whereNotNull('total_payment')->get(['payment_method' , 'total_payment']);
+            $total_payment = $payment->sum('total_payment');
+            $count_cod = $payment->where('payment_method', 'COD')->count();
+            $payment_cod = $payment->where('payment_method', 'COD')->sum('total_payment');
+            $count_transfer = $payment->where('payment_method', 'Transfer')->count();
+            $payment_transfer = $payment->where('payment_method', 'Transfer')->sum('total_payment');
+            // ->map(function($val){
+            //     return [
+            //         'total_payment' => $val->sum('total_payment')
+            //     ];
+            // });
+            $warehouse_count = Warehouse::where('admin_id', $user_admin_id)->withCount('inputers')->get();
+            // return $count_cod;
+            $operators = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs = User::where('admin_id', auth()->user()->admin_id)->where('role_id', 5)->get();
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
             // return $cs_inputers;
-            return view('inputer.Inputer', compact(['leads','warehouse_count', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'day']))->with('operators', $operator);
+            return view('inputer.Inputer', compact('leads','warehouse_count', 'announcements', 'count_cod','payment_cod', 'count_transfer', 'payment_transfer', 'total_payment', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'day', 'operators'));
         }else if(Auth::user()->role_id == 1){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');

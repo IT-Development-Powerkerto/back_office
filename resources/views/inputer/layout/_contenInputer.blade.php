@@ -13,7 +13,7 @@
 		<!--begin::Col-->
 		<div class="col-xl-4">
 
-			@include('partials/widgets/inputer/_widget-3')
+			@include('partials/widgets/inputer/_widget-payment')
 
 		</div>
 		<!--end::Col-->
