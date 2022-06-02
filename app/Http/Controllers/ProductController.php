@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use File;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -40,6 +41,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'price' => 'required',
+        ]);
+        if($validator->fails()){
+            return back()->with('error_code', 'add_product')->withErrors($validator)->withInput();
+        }
         if($request->hasFile('image'))
         {
             $extFile = $request->image->getClientOriginalExtension();

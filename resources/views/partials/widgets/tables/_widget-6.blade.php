@@ -46,7 +46,10 @@
 																		<label for="inputFullname" class="col-form-label">Name</label>
 																	</div>
 																	<div class="col-10">
-																		<input type="text" name="name" id="inputFullname" class="form-control" aria-describedby="fullnameHelpInline">
+																		<input type="text" name="name" id="inputFullname" class="form-control @error('name') is-invalid @enderror" aria-describedby="fullnameHelpInline" required>
+                                                                        @error('name')
+                                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                                        @enderror
 																	</div>
 																</div>
 																<div class="row align-items-center col-12 pb-5">
@@ -54,7 +57,10 @@
 																		<label for="inputprice" class="col-form-label">Price</label>
 																	</div>
 																	<div class="col-10">
-																		<input type="price" name="price" id="inputprice" class="form-control" aria-describedby="priceHelpInline">
+																		<input type="price" name="price" id="inputprice" class="form-control @error('price') is-invalid @enderror" aria-describedby="priceHelpInline" required>
+                                                                        @error('price')
+                                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                                        @enderror
 																	</div>
 																</div>
 																<div class="row align-items-center col-12 pb-5">

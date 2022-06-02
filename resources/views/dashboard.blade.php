@@ -159,6 +159,13 @@
     });
     </script>
     @endif
+    @if(!empty(Session::get('error_code')) && Session::get('error_code') == 'add_product')
+    <script>
+    $(function() {
+        $('#add-product').modal('show');
+    });
+    </script>
+    @endif
 
     <script>
         function StopTimer(duration, display) {
