@@ -86,12 +86,12 @@ class InputerController extends Controller
             });
             // return $name_cs_inputers;
             return view('inputer.Inputer', compact('leads','warehouse_count', 'courier', 'announcements', 'count_cod','payment_cod', 'count_transfer', 'payment_transfer', 'total_payment', 'inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'day'));
-        }else if(Auth::user()->role_id == 1){
-            if($request->date_filter){
-                $day = Carbon::parse($request->date_filter)->format('Y-m-d');
-            } else {
-                $day = Carbon::now()->format('Y-m-d');
-            }
+        }else if($user_role_id == 1){
+            // if($request->date_filter){
+            //     $day = Carbon::parse($request->date_filter)->format('Y-m-d');
+            // } else {
+            //     $day = Carbon::now()->format('Y-m-d');
+            // }
             $leads = DB::table('leads as l')
             ->join('operators as o', 'l.operator_id', '=', 'o.id')
             ->join('products as p', 'l.product_id', '=', 'p.id' )
@@ -104,6 +104,25 @@ class InputerController extends Controller
             ->orderByDesc('l.id')
             ->paginate(5);
             //dd($leads);
+            $payment = Inputer::where('admin_id', $user_admin_id)->whereNotNull('total_payment')->whereHas('lead', function($q){
+                $q->where('status_id', 5);
+            })->get(['payment_method' , 'total_payment', 'warehouse_id', 'courier']);
+            $total_payment = $payment->sum('total_payment');
+            $count_cod = $payment->where('payment_method', 'COD')->count();
+            $payment_cod = $payment->where('payment_method', 'COD')->sum('total_payment');
+            $count_transfer = $payment->where('payment_method', 'Transfer')->count();
+            $payment_transfer = $payment->where('payment_method', 'Transfer')->sum('total_payment');
+            $warehouse_count = Warehouse::all()->map(function($val) use ($payment){
+                return [
+                    'name' => $val->name,
+                    'inputers_count' => $payment->where('warehouse_id', $val->id)->count()
+                ];
+            });
+            $courier = $payment->map(function($val){
+                return [
+                    'name' => $val->courier
+                ];
+            });
             $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
             $promotions = Promotion::all();
             $inputers = Inputer::where('admin_id', auth()->user()->admin_id)->whereDate('updated_at', $day)->get();
@@ -113,7 +132,7 @@ class InputerController extends Controller
             $cs_inputers = CsInputer::where('admin_id', auth()->user()->admin_id)->where('inputer_id', auth()->user()->id)->get();
             $name_cs_inputers = User::where('admin_id', auth()->user()->admin_id)->where('id', $cs_inputers->implode('cs_id'))->value('name');
             // dd($cs_inputers);
-            return view('inputer.Dashboard', compact(['leads', 'announcements', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'promotions', 'day']));
+            return view('inputer.Dashboard', compact('leads','warehouse_count', 'courier', 'announcements','count_cod','payment_cod', 'count_transfer', 'payment_transfer', 'total_payment', 'inputers', 'all_inputers', 'cs', 'cs_inputers', 'name_cs_inputers', 'promotions', 'day'));
         }else if(Auth::user()->role_id == 12){
             if($request->date_filter){
                 $day = Carbon::parse($request->date_filter)->format('Y-m-d');
