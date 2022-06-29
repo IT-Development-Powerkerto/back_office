@@ -1207,11 +1207,11 @@ class DashboardController extends Controller
         $announcements = Announcement::where('admin_id', auth()->user()->admin_id)->get();
         $x = auth()->user();
         if($x->role_id == 1){
-            return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);
+            return view('DetailLead')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('announcements', $announcements);
         }elseif($x->role_id == 4){
             return view('DetailLeadADV')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('announcements', $announcements)->with('day', $day);
         }elseif($x->role_id == 12){
-            return view('DetailLeadJA-ADV')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('leads', $leads)->with('announcements', $announcements);
+            return view('DetailLeadJA-ADV')->with('campaign', $campaigns)->with('client', $client)->with('operator', $operator)->with('lead', $lead)->with('announcements', $announcements);
         }
     }
 
